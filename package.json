@@ -1,0 +1,32 @@
+{
+  "name": "lpma",
+  "description": "lpma",
+  "version": "0.0.1",
+  "author": "Simply Technologies <info@simplytechnologies.net>",
+  "dependencies": {
+    "gatsby": "^1.9.149",
+    "gatsby-link": "^1.6.32",
+    "gatsby-plugin-react-helmet": "^1.0.8",
+    "gatsby-plugin-sass": "^1.0.15",
+    "gatsby-source-filesystem": "^1.5.11"
+  },
+  "keywords": [
+    "gatsby"
+  ],
+  "license": "MIT",
+  "main": "n/a",
+  "scripts": {
+    "build": "gatsby build",
+    "develop": "gatsby develop",
+    "format": "prettier --write \"src/**/*.js\""
+  },
+  "devDependencies": {
+    "babel-eslint": "^8.1.1",
+    "eslint": "^4.13.1",
+    "eslint-config-prettier": "^2.9.0",
+    "eslint-plugin-jsx-a11y": "^6.0.3",
+    "eslint-plugin-prettier": "^2.4.0",
+    "eslint-plugin-react": "^7.5.1",
+    "prettier": "^1.9.2"
+  }
+}
