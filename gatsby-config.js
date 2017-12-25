@@ -1,14 +1,14 @@
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Default Starter`
+    title: `lpma`
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
     {
       resolve: `gatsby-source-contentful`,
       options: {
-        spaceId: `mp4fj9fzt99q`,
-        accessToken: `8eb674edd26e48fbd2b7d522a456cc75b4101451b7d070dceb92a0c4bad4991c`
+        spaceId: `nq4swzsk9dgh`,
+        accessToken: `ba8b8ceb07a42e08499a30361f30517ee29a0fd420aa0371f9ade92a2fd756c0`
       }
     }
   ]
