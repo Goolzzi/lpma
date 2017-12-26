@@ -2,8 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import Link from "gatsby-link";
 import Helmet from "react-helmet";
-import "bulma";
-import "./index.scss";
+import "../styles/app.scss";
 import Header from "../components/Header/index";
 
 const TemplateWrapper = ({children}) => (

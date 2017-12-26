@@ -5,6 +5,7 @@ import "./styles.scss";
 
 const Header = () => (
   <nav className={classNames("nav", {bar: true, d: false})}>
+    <button className="button is-danger">Danger</button>
     <div className="nav-center">
       <a className="nav-item">
         <span className="icon">
