@@ -1,9 +1,10 @@
 import React from "react";
+import classNames from "classnames";
 import Link from "gatsby-link";
 import "./styles.scss";
 
 const Header = () => (
-  <nav className="nav">
+  <nav className={classNames("nav", {bar: true, d: false})}>
     <div className="nav-center">
       <a className="nav-item">
         <span className="icon">
