@@ -5,12 +5,13 @@ class A extends React.Component {
   aaa = () => {};
 
   render() {
-    return <h1>sdsds</h1>;
+    return <React.Fragment>sdsds</React.Fragment>;
   }
 }
 
-const IndexPage = ({ data }) => (
+const IndexPage = ({data}) => (
   <div>
+    <React.Fragment>sdsds</React.Fragment>;
     <h1>{JSON.stringify(data)}</h1>
     <p>Welcome to your new Gatsby site.</p>
     <p>Now go build something great.</p>

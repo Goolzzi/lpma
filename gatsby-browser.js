@@ -1,7 +1,12 @@
 /**
- * Implement Gatsby's Browser APIs in this file.
- *
- * See: https://www.gatsbyjs.org/docs/browser-apis/
- */
+ * Gatsby's Browser APIs in this file.
+ * */
 
-// You can delete this file if you're not using it
+module.exports.onClientEntry = () => {
+  console.log("onClientEntry");
+  // callAnalyticsAPI();
+};
+
+exports.onInitialClientRender = () => {
+  console.log("ReactDOM.render has executed");
+};
