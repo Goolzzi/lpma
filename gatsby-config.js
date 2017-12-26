@@ -3,6 +3,7 @@ module.exports = {
     title: `lpma`
   },
   plugins: [
+    `gatsby-plugin-sass`,
     `gatsby-plugin-react-helmet`,
     {
       resolve: `gatsby-source-contentful`,

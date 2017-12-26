@@ -2,13 +2,12 @@ import React from "react";
 import PropTypes from "prop-types";
 import Link from "gatsby-link";
 import Helmet from "react-helmet";
-
-import "./index.css";
+import "bulma";
+import "./index.scss";
 
 const Header = () => (
   <div
     style={{
-      background: "rebeccapurple",
       marginBottom: "1.45rem"
     }}
   >
@@ -31,6 +30,25 @@ const Header = () => (
         </Link>
       </h1>
     </div>
+
+    <nav className="breadcrumb" aria-label="breadcrumbs">
+      <ul>
+        <li>
+          <a href="#">Bulma</a>
+        </li>
+        <li>
+          <a href="#">Documentation</a>
+        </li>
+        <li>
+          <a href="#">Components</a>
+        </li>
+        <li className="is-active">
+          <a href="#" aria-current="page">
+            Breadcrumb
+          </a>
+        </li>
+      </ul>
+    </nav>
   </div>
 );
 

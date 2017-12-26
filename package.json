@@ -4,6 +4,7 @@
   "version": "0.0.1",
   "author": "Simply Technologies <info@simplytechnologies.net>",
   "dependencies": {
+    "bulma": "^0.6.1",
     "gatsby": "^1.9.149",
     "gatsby-cli": "^1.1.28",
     "gatsby-link": "^1.6.32",
