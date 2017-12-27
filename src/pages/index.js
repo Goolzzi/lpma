@@ -1,14 +1,6 @@
 import React from "react";
 import Link from "gatsby-link";
 
-class A extends React.Component {
-  aaa = () => {};
-
-  render() {
-    return <React.Fragment>sdsds</React.Fragment>;
-  }
-}
-
 const IndexPage = ({data}) => (
   <div>
     <React.Fragment>sdsds</React.Fragment>;

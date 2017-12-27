@@ -1,7 +1,40 @@
 /**
- * Implement Gatsby's Node APIs in this file.
+ * Gatsby's Node APIs
  *
- * See: https://www.gatsbyjs.org/docs/node-apis/
  */
 
-// You can delete this file if you're not using it
+const path = require("path");
+
+module.exports.createPages = ({graphql, boundActionCreators}) => {
+  const {createPage} = boundActionCreators;
+  return new Promise((resolve, reject) => {
+    const bookTemplate = path.resolve(`src/templates/book.js`);
+    resolve(
+      graphql(`
+        {
+          allContentfulBook(limit: 100) {
+            edges {
+              node {
+                id
+              }
+            }
+          }
+        }
+      `).then(result => {
+        if (result.errors) {
+          reject(result.errors);
+        }
+        result.data.allContentfulBook.edges.forEach(edge => {
+          createPage({
+            path: edge.node.id,
+            component: bookTemplate,
+            context: {
+              id: edge.node.id,
+            },
+          });
+        });
+        return;
+      }),
+    );
+  });
+};

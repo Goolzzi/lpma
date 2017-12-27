@@ -1,11 +1,14 @@
 import React from "react";
 import PropTypes from "prop-types";
-import Link from "gatsby-link";
 import Helmet from "react-helmet";
 import "../styles/app.scss";
 import Header from "../components/Header/index";
 
-const TemplateWrapper = ({children}) => (
+const propTypes = {
+  children: PropTypes.func,
+};
+
+const LayoutTemplate = ({children}) => (
   <div>
     <Helmet
       title="lpma"
@@ -27,8 +30,6 @@ const TemplateWrapper = ({children}) => (
   </div>
 );
 
-TemplateWrapper.propTypes = {
-  children: PropTypes.func,
-};
+LayoutTemplate.propTypes = propTypes;
 
-export default TemplateWrapper;
+export default LayoutTemplate;
