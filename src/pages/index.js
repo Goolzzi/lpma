@@ -1,5 +1,10 @@
 import React from "react";
+import PropTypes from "prop-types";
 import Link from "gatsby-link";
+
+const propTypes = {
+  data: PropTypes.object.isRequired,
+};
 
 const IndexPage = ({data}) => (
   <div>
@@ -15,6 +20,8 @@ const IndexPage = ({data}) => (
     </ul>
   </div>
 );
+
+IndexPage.propTypes = propTypes;
 
 export default IndexPage;
 
