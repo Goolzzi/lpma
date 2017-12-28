@@ -3,11 +3,16 @@ import Link from "gatsby-link";
 
 const IndexPage = ({data}) => (
   <div>
-    <React.Fragment>sdsds</React.Fragment>;
-    <h1>{JSON.stringify(data)}</h1>
-    <p>Welcome to your new Gatsby site.</p>
-    <p>Now go build something great.</p>
-    <Link to="/page-2/">Go to page 2</Link>
+    <h1>index page</h1>
+
+    <code>{JSON.stringify(data)}</code>
+    <ul>
+      {data.allContentfulBook.edges.map(({node: {title, id}}) => (
+        <li key={id}>
+          <Link to={id}>{title}</Link>
+        </li>
+      ))}
+    </ul>
   </div>
 );
 
@@ -15,10 +20,13 @@ export default IndexPage;
 
 export const pageQuery = graphql`
   query PageQuery {
-    contentfulBook {
-      id
-      title
-      author
+    allContentfulBook(filter: {node_locale: {eq: "en-US"}}) {
+      edges {
+        node {
+          title
+          id
+        }
+      }
     }
   }
 `;
