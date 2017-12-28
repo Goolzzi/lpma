@@ -8,7 +8,7 @@ const propTypes = {
   children: PropTypes.func,
 };
 
-const LayoutTemplate = ({children}) => (
+const LayoutTemplate = ({children, data: {allContentfulMenuItem}}) => (
   <div>
     <Helmet
       title="lpma"
@@ -17,7 +17,7 @@ const LayoutTemplate = ({children}) => (
         {name: "keywords", content: "lpma, lpma2018"},
       ]}
     />
-    <Header />
+    <Header navItems={allContentfulMenuItem.edges} />
     <div
       style={{
         margin: "0 auto",
@@ -29,6 +29,21 @@ const LayoutTemplate = ({children}) => (
     </div>
   </div>
 );
+
+export const pageQuery = graphql`
+  query LayoutQuery {
+    allContentfulMenuItem {
+      edges {
+        node {
+          id
+          to
+          name
+          authRequired
+        }
+      }
+    }
+  }
+`;
 
 LayoutTemplate.propTypes = propTypes;
 
