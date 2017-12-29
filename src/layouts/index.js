@@ -2,13 +2,21 @@ import React from "react";
 import PropTypes from "prop-types";
 import Helmet from "react-helmet";
 import "../styles/app.scss";
-import Header from "../components/Header/index";
+import Header from "../components/Header";
+import Footer from "../components/Footer";
 
 const propTypes = {
   children: PropTypes.func,
+  data: PropTypes.object.isRequired,
 };
 
-const LayoutTemplate = ({children, data: {allContentfulMenuItem}}) => (
+const LayoutTemplate = ({
+  children,
+  data: {
+    allContentfulMenuItem,
+    contentfulSimpleTextBodyTextNode: {childMarkdownRemark},
+  },
+}) => (
   <div>
     <Helmet
       title="lpma"
@@ -26,6 +34,7 @@ const LayoutTemplate = ({children, data: {allContentfulMenuItem}}) => (
         paddingTop: 0,
       }}>
       {children()}
+      <Footer copyrightHTML={childMarkdownRemark.html} />
     </div>
   </div>
 );
@@ -39,6 +48,11 @@ export const pageQuery = graphql`
           to
           name
         }
+      }
+    }
+    contentfulSimpleTextBodyTextNode {
+      childMarkdownRemark {
+        html
       }
     }
   }
