@@ -9,15 +9,6 @@ const propTypes = {
 const IndexPage = ({data}) => (
   <div>
     <h1>index page</h1>
-
-    <code>{JSON.stringify(data)}</code>
-    <ul>
-      {data.allContentfulBook.edges.map(({node: {title, id}}) => (
-        <li key={id}>
-          <Link to={id}>{title}</Link>
-        </li>
-      ))}
-    </ul>
   </div>
 );
 
