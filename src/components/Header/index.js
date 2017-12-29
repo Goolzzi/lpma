@@ -11,12 +11,12 @@ const Header = ({navItems}) => (
   <nav className="navbar">
     <div className="navbar-brand">
       <a className="navbar-item" href="#">
-        <img src={require("./../../assets/images/logo.svg")} />
+        <img src={require("./../../assets/images/logo.svg")} alt="lpma-logo" />
       </a>
       <button className="button navbar-burger">
-        <span></span>
-        <span></span>
-        <span></span>
+        <span />
+        <span />
+        <span />
       </button>
     </div>
     <div className="navbar-menu">
