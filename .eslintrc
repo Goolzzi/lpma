@@ -2,7 +2,8 @@
   "extends": ["prettier",  "plugin:react/recommended", "plugin:jsx-a11y/recommended", "eslint:recommended"],
   "plugins": ["jsx-a11y", "prettier", "react"],
   "env": {
-    "browser": true
+    "browser": false,
+    "es6": true
   },
   "parser": "babel-eslint",
   "rules": {
@@ -20,6 +21,6 @@
   "globals": {
     "graphql": true,
     "require" : true,
-     "module": false
+     "module": true
   }
 }

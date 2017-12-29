@@ -1,31 +1,30 @@
 import React from "react";
+import PropTypes from "prop-types";
 import Link from "gatsby-link";
 
-class A extends React.Component {
-  aaa = () => {};
+const propTypes = {
+  data: PropTypes.object.isRequired,
+};
 
-  render() {
-    return <h1>sdsds</h1>;
-  }
-}
-
-const IndexPage = ({ data }) => (
+const IndexPage = ({data}) => (
   <div>
-    <h1>{JSON.stringify(data)}</h1>
-    <p>Welcome to your new Gatsby site.</p>
-    <p>Now go build something great.</p>
-    <Link to="/page-2/">Go to page 2</Link>
+    <h1>index page</h1>
   </div>
 );
+
+IndexPage.propTypes = propTypes;
 
 export default IndexPage;
 
 export const pageQuery = graphql`
   query PageQuery {
-    contentfulBook {
-      id
-      title
-      author
+    allContentfulBook(filter: {node_locale: {eq: "en-US"}}) {
+      edges {
+        node {
+          title
+          id
+        }
+      }
     }
   }
 `;

@@ -1,5 +1,6 @@
 /**
- * Implement Gatsby's Node APIs in this file.
- *
- * See: https://www.gatsbyjs.org/docs/node-apis/
+ * Gatsby's Node APIs
  */
+
+// module.exports.modifyWebpackConfig = require("./gatsby/modifyWebpackConfig");
+module.exports.createPages = require("./gatsby/createPages");

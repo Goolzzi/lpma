@@ -1,0 +1,53 @@
+@import './src/styles/app';
+
+.navbar {
+	background-color: $primary-color;
+	font-size: $navbar-font-size;
+	height: 5em;
+
+	.navbar-brand {
+		button.button.navbar-burger {
+			background-color: $transparent;
+
+			font-size: $navbar-font-size;
+
+			height: 5em;
+			width: 5em;
+
+			$burger-tickness: 4px;
+			span {
+				color: $white;
+
+				left: calc( 50% - #{$navbar-font-size} );
+				height: $burger-tickness;
+				width: calc( 2 * #{$navbar-font-size} );
+
+				&:nth-child(1) {
+					top: calc( 50% - #{$navbar-font-size} );
+				}
+				&:nth-child(2) {
+					top: calc( 50% - ( #{$burger-tickness} / 2 ) );
+				}
+				&:nth-child(3) {
+					top: calc( 50% - #{$burger-tickness} + #{$navbar-font-size} );
+				}
+			}
+		}
+
+		img {
+			height: 52px;
+			min-height: 52px;
+			margin: 0px;
+		}
+	}
+
+	a.navbar-item {
+		color: $white;
+		background-color: $transparent;
+
+		font-size: 1em;
+		line-height: 1em;
+		letter-spacing: 1px;
+		text-transform: uppercase;
+	}
+}
