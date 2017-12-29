@@ -8,12 +8,26 @@ const propTypes = {
 };
 
 const Header = ({navItems}) => (
-  <nav className="nav">
-    {navItems.map(({node: {id, to, name}}) => (
-      <Link className="nav-item" key={id} to={to}>
-        {name}
-      </Link>
-    ))}
+  <nav className="navbar">
+    <div className="navbar-brand">
+      <a className="navbar-item" href="#">
+        <img src={require("./../../assets/images/logo.svg")} />
+      </a>
+      <button className="button navbar-burger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div className="navbar-menu">
+      <div className="navbar-end">
+        {navItems.map(({node: {id, to, name}}) => (
+          <Link className="navbar-item" key={id} to={to}>
+            {name}
+          </Link>
+        ))}
+      </div>
+    </div>
   </nav>
 );
 
