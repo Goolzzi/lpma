@@ -9,4 +9,4 @@ Install Gatsby's command line tool
 
 `gatsby serve` Gatsby starts a local HTML server for testing your built site.
 
-`npm run deploy` deploying on Github pages
+Every commint on master will trigger to deploy on netlify!
