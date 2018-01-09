@@ -1,0 +1,20 @@
+.btn {
+  cursor: pointer;
+  border: none;
+  outline: none;
+  height: 60px;
+  padding-left: 21px;
+
+  line-height: 30px;
+  font-size: 24px;
+  text-align: left;
+}
+
+.btn.primary {
+  background-color: $primary-color;
+  color: $white;
+}
+
+.btn.fullwidth {
+  width: 100%;
+}

@@ -1,0 +1,15 @@
+$font-path:   "/static/";
+
+@font-face {
+  font-family: "DomaineSansMedium";
+  src: url($font-path + "DomaineSansText-Medium.otf" ) format("opentype");
+}
+
+@font-face {
+  font-family: "DomaineSans";
+  src: url($font-path + "DomaineSansText-Medium.otf") format("opentype");
+}
+
+body {
+  font-family: "DomaineSans";
+}

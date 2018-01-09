@@ -1,3 +1,82 @@
-.footer-site {
-  border: 2px solid blue;
+@import './src/styles/app';
+
+.footer {
+  padding: 0px;
+
+  .footer-links {
+    background-color: $secondary-color;
+    padding: 47px 50px;
+
+    .column {
+      -webkit-box-flex: 0;
+          -ms-flex: none;
+              flex: none;
+
+      padding: 0px;
+      position: relative;
+
+      .vertical-line {
+        background-color: $primary-color;
+        position: absolute;
+        top: 0px;
+        bottom: 0px;
+        left: calc( 50% - 1.5px );
+        width: 3px;
+      }
+    }
+
+    .footer-1 {
+      width: 11.1111%;
+    }
+    .footer-2 {
+      width: 22.2222%;
+    }
+    .footer-3 {
+      width: 33.3333%;
+    }
+
+    .primary-links-column {
+      a {
+        color: $primary-color;
+        display: block;
+
+        font-size: 28px;
+        line-height: 40px;
+      }
+    }
+
+    .white-links-column {
+      button {
+        position: absolute;
+        bottom: 0px;
+      }
+
+      a {
+        color: $white;
+        display: block;
+
+        font-size: 22px;
+        line-height: 40px;
+      }
+    }
+  }
+
+  .footer-copyright {
+    background-color: $primary-color;
+    padding: 30px 50px;
+
+    p, span, strong {
+      color: $white;
+      font-size: 20px;
+    }
+
+    img {
+      margin: 0px 10px 0px 0px;
+      height: 50px;
+    }
+
+    p {
+      margin: 0px;
+    }
+  }
 }
