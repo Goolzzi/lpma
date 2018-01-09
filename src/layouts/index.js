@@ -27,10 +27,10 @@ const LayoutTemplate = ({
       ]}
     />
     <Header navItems={allContentfulMenuItem.edges} />
-    <div className="container is-fluid">
+    <div className="page-container">
       {children()}
-      <Footer copyrightHTML={childMarkdownRemark.html} />
     </div>
+    <Footer copyrightHTML={childMarkdownRemark.html} />
   </div>
 );
 

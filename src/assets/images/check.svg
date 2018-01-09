@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="48px" height="48px" viewBox="0 0 48 48" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 48.2 (47327) - http://www.bohemiancoding.com/sketch -->
+    <title>Group 2</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="LPMA-Acquisition" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(-49.000000, -1366.000000)">
+        <g id="Group-2" transform="translate(49.000000, 1366.000000)" stroke="#6EBF56" stroke-width="3">
+            <g id="Tick">
+                <polyline id="Path-5" transform="translate(24.000000, 24.000000) rotate(-10.000000) translate(-24.000000, -24.000000) " points="12 24.9176702 19.9037017 33 36 15"></polyline>
+                <circle id="Oval" cx="24" cy="24" r="22.5"></circle>
+            </g>
+        </g>
+    </g>
+</svg>

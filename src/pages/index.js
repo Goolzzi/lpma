@@ -2,6 +2,8 @@ import React from "react";
 import PropTypes from "prop-types";
 import Link from "gatsby-link";
 
+import MemberBenefits from "../components/MemberBenefits";
+
 const propTypes = {
   data: PropTypes.object.isRequired,
 };
@@ -9,6 +11,8 @@ const propTypes = {
 const IndexPage = ({data}) => (
   <div>
     <h1>index page</h1>
+
+    <MemberBenefits />
   </div>
 );
 
