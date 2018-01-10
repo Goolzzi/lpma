@@ -3,6 +3,12 @@ import PropTypes from "prop-types";
 import Link from "gatsby-link";
 
 import MemberBenefits from "../components/MemberBenefits";
+import Testimonials from "../components/Testimonials";
+import Audience from "../components/Audience";
+import Top from "../components/Top";
+import TopColumns from "../components/TopColumns";
+import Exhibits from "../components/Exhibits";
+import Bottom from "../components/Bottom";
 
 const propTypes = {
   data: PropTypes.object.isRequired,
@@ -10,9 +16,13 @@ const propTypes = {
 
 const IndexPage = ({data}) => (
   <div>
-    <h1>index page</h1>
-
+    <Top />
+    <TopColumns />
     <MemberBenefits />
+    <Audience />
+    <Testimonials />
+    <Exhibits />
+    <Bottom />
   </div>
 );
 

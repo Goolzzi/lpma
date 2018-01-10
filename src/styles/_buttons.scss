@@ -4,6 +4,7 @@
   outline: none;
   height: 60px;
   padding-left: 21px;
+  padding-right: 21px;
 
   line-height: 30px;
   font-size: 24px;
@@ -17,4 +18,8 @@
 
 .btn.fullwidth {
   width: 100%;
+}
+
+.btn.halfwidth {
+  width: 50%;
 }

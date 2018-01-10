@@ -33,6 +33,18 @@
       width: 33.3333%;
     }
 
+    @media screen and (max-width: 768px) {
+      .footer-1 {
+        display: none;
+      }
+      .footer-2 {
+        width: 100%;
+      }
+      .footer-3 {
+        width: 100%;
+      }
+    }
+
     .primary-links-column {
       a {
         color: $primary-color;
@@ -41,6 +53,10 @@
         font-size: 28px;
         line-height: 40px;
       }
+    }
+
+    .white-links-column.with-button {
+      padding-bottom: 60px;
     }
 
     .white-links-column {

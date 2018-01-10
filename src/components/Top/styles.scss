@@ -1,0 +1,24 @@
+.top {
+  position: relative;
+
+  img {
+    margin: 0px;
+  }
+
+  .cont-wrapper {
+    background-color: $secondary-color;
+    position: absolute;
+    width: 50%;
+    left: 0px;
+    bottom: 0px;
+    padding: 56px 28px 46px 106px;
+
+    .cont {
+      p {
+        color: $white;
+        font-size: 48px;
+        margin-bottom: 5rem;
+      }
+    }
+  }
+}

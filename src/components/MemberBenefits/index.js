@@ -3,7 +3,7 @@ import Link from "gatsby-link";
 import "./styles.scss";
 
 const MemberBenefits = ({copyrightHTML}) => (
-  <div className="member-benefits">
+  <section className="section member-benefits">
     <h3>MEMBER BENEFITS</h3>
 
     <div className="columns is-multiline">
@@ -48,7 +48,7 @@ const MemberBenefits = ({copyrightHTML}) => (
         </div>
       </div>
     </div>
-  </div>
+  </section>
 );
 
 export default MemberBenefits;

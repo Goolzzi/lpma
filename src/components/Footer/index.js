@@ -10,7 +10,7 @@ const propTypes = {
 const Footer = ({copyrightHTML}) => (
   <div className="footer">
     <div className="footer-links">
-      <div className="columns">
+      <div className="columns is-multiline">
         <div className="column footer-3 primary-links-column">
           <Link to="#">Leading Property</Link>
           <Link to="#">Managers Association</Link>
@@ -30,7 +30,7 @@ const Footer = ({copyrightHTML}) => (
         <div className="column footer-1">
           <div className="vertical-line" />
         </div>
-        <div className="column footer-2 white-links-column">
+        <div className="column footer-2 white-links-column with-button">
           <Link to="#">Building Your Business</Link>
           <Link to="#">Building Your Career</Link>
 

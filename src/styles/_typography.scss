@@ -7,7 +7,7 @@ $font-path:   "/static/";
 
 @font-face {
   font-family: "DomaineSans";
-  src: url("/../assets/fonts/DomaineSansText-Regular.otf?") format("otf");
+  src: url($font-path + "DomaineSansText-Regular.otf?") format("opentype");
 }
 
 body {
