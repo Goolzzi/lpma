@@ -1,54 +1,29 @@
 import React from "react";
-import Link from "gatsby-link";
+import PropTypes from "prop-types";
 import "./styles.scss";
 
-const MemberBenefits = ({copyrightHTML}) => (
-  <section className="section member-benefits">
-    <h3>MEMBER BENEFITS</h3>
+const propTypes = {
+  title: PropTypes.string.isRequired,
+  memberBenefitItems: PropTypes.array.isRequired,
+};
 
+const MemberBenefits = ({title, memberBenefitItems}) => (
+  <section className="section member-benefits">
+    <h3>{title}</h3>
     <div className="columns is-multiline">
-      <div className="column is-6 is-12-mobile benefit-item">
-        <img src={require("./../../assets/images/check.svg")} />
-        <div className="cont">
-          <h4 className="text-title">Events</h4>
-          <p className="text">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-            eiusmod tempor.
-          </p>
+      {memberBenefitItems.map(({id, title, body, checkBoxIcon: {file}}) => (
+        <div key={id} className="column is-6 is-12-mobile benefit-item">
+          <img src={file.url} alt={file.fileName} />
+          <div className="cont">
+            <h4 className="text-title">{title}</h4>
+            <p className="text">{body.body}</p>
+          </div>
         </div>
-      </div>
-      <div className="column is-6 is-12-mobile benefit-item">
-        <img src={require("./../../assets/images/check.svg")} />
-        <div className="cont">
-          <h4 className="text-title">Events</h4>
-          <p className="text">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-            eiusmod tempor.
-          </p>
-        </div>
-      </div>
-      <div className="column is-6 is-12-mobile benefit-item">
-        <img src={require("./../../assets/images/check.svg")} />
-        <div className="cont">
-          <h4 className="text-title">Events</h4>
-          <p className="text">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-            eiusmod tempor.
-          </p>
-        </div>
-      </div>
-      <div className="column is-6 is-12-mobile benefit-item">
-        <img src={require("./../../assets/images/check.svg")} />
-        <div className="cont">
-          <h4 className="text-title">Events</h4>
-          <p className="text">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-            eiusmod tempor.
-          </p>
-        </div>
-      </div>
+      ))}
     </div>
   </section>
 );
+
+MemberBenefits.propTypes = propTypes;
 
 export default MemberBenefits;

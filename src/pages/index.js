@@ -1,6 +1,5 @@
 import React from "react";
 import PropTypes from "prop-types";
-import Link from "gatsby-link";
 
 import MemberBenefits from "../components/MemberBenefits";
 import Testimonials from "../components/Testimonials";
@@ -14,11 +13,11 @@ const propTypes = {
   data: PropTypes.object.isRequired,
 };
 
-const IndexPage = ({data}) => (
+const IndexPage = ({data: {contentfulMemberBenefits}}) => (
   <div>
     <Top />
     <TopColumns />
-    <MemberBenefits />
+    <MemberBenefits {...contentfulMemberBenefits} />
     <Audience />
     <Testimonials />
     <Exhibits />
@@ -31,12 +30,20 @@ IndexPage.propTypes = propTypes;
 export default IndexPage;
 
 export const pageQuery = graphql`
-  query PageQuery {
-    allContentfulBook(filter: {node_locale: {eq: "en-US"}}) {
-      edges {
-        node {
-          title
-          id
+  query IndexPageQuery {
+    contentfulMemberBenefits {
+      title
+      memberBenefitItems {
+        id
+        title
+        body {
+          body
+        }
+        checkBoxIcon {
+          file {
+            url
+            fileName
+          }
         }
       }
     }
