@@ -4,24 +4,21 @@ import Link from "gatsby-link";
 import "./styles.scss";
 
 const propTypes = {
-  navItems: PropTypes.array.isRequired,
+  topmenu: PropTypes.array.isRequired,
+  logo: PropTypes.object.isRequired,
 };
 
-const Header = ({navItems}) => (
+const Header = ({topmenu, logo: {file}}) => (
   <nav className="navbar">
     <div className="navbar-brand">
-      <a className="navbar-item" href="#">
-        <img src={require("./../../assets/images/logo.svg")} alt="lpma-logo" />
-      </a>
-      <button className="button navbar-burger">
-        <span />
-        <span />
-        <span />
-      </button>
+      <Link className="navbar-item" to={"/"}>
+        <img src={file.url} alt={file.fileName} />
+      </Link>
+      <button className="button navbar-burger" />
     </div>
     <div className="navbar-menu">
       <div className="navbar-end">
-        {navItems.map(({node: {id, to, name}}) => (
+        {topmenu.map(({id, to, name}) => (
           <Link className="navbar-item" key={id} to={to}>
             {name}
           </Link>

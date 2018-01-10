@@ -15,7 +15,7 @@ const propTypes = {
 const LayoutTemplate = ({
   children,
   data: {
-    allContentfulMenuItem,
+    contentfulHeader,
     contentfulSimpleTextBodyTextNode: {childMarkdownRemark},
   },
 }) => (
@@ -27,23 +27,25 @@ const LayoutTemplate = ({
         {name: "keywords", content: "lpma, lpma2018"},
       ]}
     />
-    <Header navItems={allContentfulMenuItem.edges} />
-    <div className="page-container">
-      {children()}
-    </div>
+    <Header {...contentfulHeader} />
+    <div className="page-container">{children()}</div>
     <Footer copyrightHTML={childMarkdownRemark.html} />
   </div>
 );
 
 export const pageQuery = graphql`
   query LayoutQuery {
-    allContentfulMenuItem {
-      edges {
-        node {
-          id
-          to
-          name
+    contentfulHeader {
+      logo {
+        file {
+          url
+          fileName
         }
+      }
+      topmenu {
+        id
+        name
+        to
       }
     }
     contentfulSimpleTextBodyTextNode {

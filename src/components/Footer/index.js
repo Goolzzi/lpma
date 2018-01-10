@@ -43,7 +43,7 @@ const Footer = ({copyrightHTML}) => (
         <div className="level-left">
           <div className="level-item">
             <img
-              src={require("./../../assets/images/logo.svg")}
+              // src={require("./../../assets/images/logo.svg")}
               alt="lpma-logo"
             />
           </div>
