@@ -14,10 +14,7 @@ const propTypes = {
 
 const LayoutTemplate = ({
   children,
-  data: {
-    contentfulHeader,
-    contentfulSimpleTextBodyTextNode: {childMarkdownRemark},
-  },
+  data: {contentfulHeader, contentfulFooter},
 }) => (
   <div>
     <Helmet
@@ -29,7 +26,7 @@ const LayoutTemplate = ({
     />
     <Header {...contentfulHeader} />
     <div className="page-container">{children()}</div>
-    <Footer copyrightHTML={childMarkdownRemark.html} />
+    <Footer {...contentfulFooter} />
   </div>
 );
 
@@ -48,9 +45,36 @@ export const pageQuery = graphql`
         to
       }
     }
-    contentfulSimpleTextBodyTextNode {
-      childMarkdownRemark {
-        html
+    contentfulFooter {
+      title {
+        childMarkdownRemark {
+          html
+        }
+      }
+      mainLinks {
+        id
+        name
+        to
+      }
+      secondaryLinks {
+        id
+        name
+        to
+      }
+      privacy {
+        childMarkdownRemark {
+          html
+        }
+      }
+      joinLink {
+        name
+        to
+      }
+      logo {
+        file {
+          url
+          fileName
+        }
       }
     }
   }
