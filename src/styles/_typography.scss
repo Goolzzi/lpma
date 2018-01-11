@@ -1,0 +1,35 @@
+$font-path:   "/static/";
+
+@font-face {
+  font-family: "DomaineSansMedium";
+  src: url($font-path + "DomaineSansText-Medium.otf" ) format("opentype");
+}
+
+@font-face {
+  font-family: "DomaineSans";
+  src: url($font-path + "DomaineSansText-Regular.otf?") format("opentype");
+}
+
+@font-face {
+  font-family: "CenturyExpdRoman";
+  src: url($font-path + "CenturyExpd BT Roman.ttf" ) format('truetype')
+}
+
+@font-face {
+  font-family: "AkzidenzGrotes";
+  src: url($font-path + "AkzidenzGroteskBE-MdEx.otf" ) format("opentype");
+}
+
+body {
+  font-family: 'DomaineSans';
+}
+
+html {
+    font-size: 18px;
+  }
+
+@media screen and (max-width: 1007px) {
+  html {
+    font-size: 12px;
+  }
+}

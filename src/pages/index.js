@@ -1,14 +1,27 @@
 import React from "react";
 import PropTypes from "prop-types";
-import Link from "gatsby-link";
+
+import MemberBenefits from "../components/MemberBenefits";
+import Testimonials from "../components/Testimonials";
+import Audience from "../components/Audience";
+import Top from "../components/Top";
+import TopColumns from "../components/TopColumns";
+import Bottom from "../components/Bottom";
 
 const propTypes = {
   data: PropTypes.object.isRequired,
 };
 
-const IndexPage = ({data}) => (
+const IndexPage = ({
+  data: {contentfulMemberBenefits, contentfulTestimonials},
+}) => (
   <div>
-    <h1>index page</h1>
+    <Top />
+    <TopColumns />
+    <MemberBenefits {...contentfulMemberBenefits} />
+    <Audience />
+    <Testimonials {...contentfulTestimonials} />
+    <Bottom />
   </div>
 );
 
@@ -17,12 +30,52 @@ IndexPage.propTypes = propTypes;
 export default IndexPage;
 
 export const pageQuery = graphql`
-  query PageQuery {
-    allContentfulBook(filter: {node_locale: {eq: "en-US"}}) {
-      edges {
-        node {
-          title
-          id
+  query IndexPageQuery {
+    contentfulMemberBenefits {
+      title
+      memberBenefitItems {
+        id
+        title
+        body {
+          body
+        }
+        checkBoxIcon {
+          file {
+            url
+            fileName
+          }
+        }
+      }
+    }
+    contentfulTestimonials {
+      title
+      testimonial1 {
+        id
+        authorName
+        body {
+          childMarkdownRemark {
+            html
+          }
+        }
+        authorPhoto {
+          file {
+            url
+            fileName
+          }
+        }
+      }
+      testimonial2 {
+        id
+        image {
+          file {
+            url
+            fileName
+          }
+        }
+        body {
+          childMarkdownRemark {
+            html
+          }
         }
       }
     }

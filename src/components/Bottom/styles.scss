@@ -1,0 +1,21 @@
+.bottom {
+  position: relative;
+
+  img {
+    margin-bottom: 0px;
+  }
+
+  .wrapper {
+    position: absolute;
+    width: 100%;
+    top: 0px;
+    left: 0px;
+
+    p {
+      border-left: 3px solid $primary-color;
+      padding-left: 3rem;
+      font-size: 48px;
+      color: $white;
+    }
+  }
+}
