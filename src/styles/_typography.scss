@@ -23,3 +23,13 @@ $font-path:   "/static/";
 body {
   font-family: 'DomaineSans';
 }
+
+html {
+    font-size: 18px;
+  }
+
+@media screen and (max-width: 1007px) {
+  html {
+    font-size: 12px;
+  }
+}

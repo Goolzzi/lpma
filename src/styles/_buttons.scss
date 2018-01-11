@@ -2,16 +2,24 @@
   cursor: pointer;
   outline: none;
   height: 60px;
-  padding-left: 21px;
-  padding-right: 21px;
+  padding-left: 1.2rem;
+  padding-right: 1.2rem;
 
   box-sizing: border-box;
   border-width: 0px;
   border-style: solid;
 
+  white-space: nowrap;
+
   line-height: 30px;
-  font-size: 24px;
+  font-size: 1.3333rem;
   text-align: left;
+}
+
+@media screen and (max-width: 768px) {
+  .btn {
+    height: 40px;
+  }
 }
 
 .btn.primary {
