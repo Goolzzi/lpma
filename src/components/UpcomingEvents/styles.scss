@@ -1,0 +1,45 @@
+.upcoming-events {
+  & > h3 {
+    font-size: 32px;
+    font-weight: 500;
+    line-height: normal;
+    letter-spacing: 2px;
+    color: $gray-dark;
+    margin-bottom: 4rem;
+  }
+	.event-item {
+    border-bottom: 3px solid $primary-color;
+
+    .event-name {
+      padding-top: 1rem;
+
+      h3 {
+        color: $primary-color;
+        font-size: 32px;
+        font-weight: normal;
+        font-style: normal;
+        line-height: 2rem;
+        height: 4rem;
+        margin-bottom: 0px;
+      }
+    }
+
+    .event-date {
+      padding-top: 1rem;
+
+      h4 {
+        color: $gray-light;
+        font-size: 26px;
+        font-weight: normal;
+        font-style: normal;
+        line-height: 2rem;
+        height: 4rem;
+        margin-bottom: 0px;
+      }
+    }
+
+    .event-button {
+      padding-top: 5rem;
+    }
+  }
+}
