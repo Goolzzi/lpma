@@ -1,40 +1,53 @@
 import React from "react";
-import Link from "gatsby-link";
+import PropTypes from "prop-types";
 import "./styles.scss";
 
-const Testimonials = ({copyrightHTML}) => (
-  <section className="section testimonials">
-    <h3>TESTIMONIALS</h3>
+const propTypes = {
+  title: PropTypes.string.isRequired,
+  testimonial1: PropTypes.array.isRequired,
+  testimonial2: PropTypes.array.isRequired,
+};
 
-    <div className="columns is-multiline">
-      <div className="column is-6 is-12-mobile testimonial-item">
-        <div className="text-cont">
-          <p className="text-p">
-            “Change effects every industry. You need to embrace it, and use it to your advantage. That’s what the LPMA helps its members to do.”
-          </p>
-          <p className="name-p">
-            – Ewan Morton
-          </p>
-        </div>
-        <div className="img-cont">
-          <img src={require("./../../assets/images/testimonial1.png")} />
-        </div>
+const Testimonials = ({title, testimonial1, testimonial2}) => (
+  <React.Fragment>
+    <section className="section testimonials">
+      <h3>{title}</h3>
+      <div className="columns is-multiline">
+        {testimonial1.map(({id, authorName, body, authorPhoto}) => (
+          <div key={id} className="column is-6 is-12-mobile testimonial-item">
+            <div className="text-cont">
+              <p
+                className="text-p"
+                dangerouslySetInnerHTML={{
+                  __html: body.childMarkdownRemark.html,
+                }}
+              />
+              <p className="name-p">{authorName}</p>
+            </div>
+            <div className="img-cont">
+              <img src={authorPhoto.file.url} alt={authorName} />
+            </div>
+          </div>
+        ))}
       </div>
-      <div className="column is-6 is-12-mobile testimonial-item">
-        <div className="text-cont">
-          <p className="text-p">
-            “Leaders are those who can think creatively, decisively and quickly put their vision into action. This is what the LPMA is all about.”
-          </p>
-          <p className="name-p">
-            – Andrew Coronis
-          </p>
-        </div>
-        <div className="img-cont">
-          <img src={require("./../../assets/images/testimonial2.png")} />
-        </div>
+    </section>
+    <section className="hero exhibits">
+      <div className="columns is-gapless">
+        {testimonial2.map(({id, image, body}) => (
+          <div key={id} className="column is-4 is-12-mobile exhibit-item">
+            <div className="image is-16by9">
+              <img src={image.file.url} alt="exhibit" />
+            </div>
+            <p
+              dangerouslySetInnerHTML={{__html: body.childMarkdownRemark.html}}
+            />
+          </div>
+        ))}
       </div>
-    </div>
-  </section>
+    </section>
+  </React.Fragment>
 );
+
+Testimonials.propTypes = propTypes;
 
 export default Testimonials;

@@ -6,21 +6,21 @@ import Testimonials from "../components/Testimonials";
 import Audience from "../components/Audience";
 import Top from "../components/Top";
 import TopColumns from "../components/TopColumns";
-import Exhibits from "../components/Exhibits";
 import Bottom from "../components/Bottom";
 
 const propTypes = {
   data: PropTypes.object.isRequired,
 };
 
-const IndexPage = ({data: {contentfulMemberBenefits}}) => (
+const IndexPage = ({
+  data: {contentfulMemberBenefits, contentfulTestimonials},
+}) => (
   <div>
     <Top />
     <TopColumns />
     <MemberBenefits {...contentfulMemberBenefits} />
     <Audience />
-    <Testimonials />
-    <Exhibits />
+    <Testimonials {...contentfulTestimonials} />
     <Bottom />
   </div>
 );
@@ -43,6 +43,38 @@ export const pageQuery = graphql`
           file {
             url
             fileName
+          }
+        }
+      }
+    }
+    contentfulTestimonials {
+      title
+      testimonial1 {
+        id
+        authorName
+        body {
+          childMarkdownRemark {
+            html
+          }
+        }
+        authorPhoto {
+          file {
+            url
+            fileName
+          }
+        }
+      }
+      testimonial2 {
+        id
+        image {
+          file {
+            url
+            fileName
+          }
+        }
+        body {
+          childMarkdownRemark {
+            html
           }
         }
       }
