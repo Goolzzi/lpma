@@ -58,18 +58,18 @@ export const pageQuery = graphql`
           }
         }
         authorPhoto {
-          file {
-            url
-            fileName
+          responsiveResolution {
+            src
+            srcSet
           }
         }
       }
       testimonial2 {
         id
         image {
-          file {
-            url
-            fileName
+          responsiveResolution {
+            src
+            srcSet
           }
         }
         body {
