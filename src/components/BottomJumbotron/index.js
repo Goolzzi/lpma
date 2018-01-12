@@ -1,8 +1,7 @@
 import React from "react";
-import Link from "gatsby-link";
 import "./styles.scss";
 
-const Bottom = ({copyrightHTML}) => (
+const BottomJumbotron = () => (
   <section className="hero bottom">
     <img src={require("./../../assets/images/Audience (43).png")} />
 
@@ -21,4 +20,4 @@ const Bottom = ({copyrightHTML}) => (
   </section>
 );
 
-export default Bottom;
+export default BottomJumbotron;

@@ -4,24 +4,28 @@ import PropTypes from "prop-types";
 import MemberBenefits from "../components/MemberBenefits";
 import Testimonials from "../components/Testimonials";
 import Audience from "../components/Audience";
-import Top from "../components/Top";
+import TopJumbotron from "../components/TopJumbotron";
 import TopColumns from "../components/TopColumns";
-import Bottom from "../components/Bottom";
+import BottomJumbotron from "../components/BottomJumbotron";
 
 const propTypes = {
   data: PropTypes.object.isRequired,
 };
 
 const IndexPage = ({
-  data: {contentfulMemberBenefits, contentfulTestimonials},
+  data: {
+    contentfulMemberBenefits,
+    contentfulTestimonials,
+    allContentfulAcquisitionJumbotron: {edges},
+  },
 }) => (
   <div>
-    <Top />
+    <TopJumbotron {...edges[1].node} />
     <TopColumns />
     <MemberBenefits {...contentfulMemberBenefits} />
     <Audience />
     <Testimonials {...contentfulTestimonials} />
-    <Bottom />
+    <BottomJumbotron {...edges[0].node} />
   </div>
 );
 
@@ -75,6 +79,30 @@ export const pageQuery = graphql`
         body {
           childMarkdownRemark {
             html
+          }
+        }
+      }
+    }
+    allContentfulAcquisitionJumbotron {
+      edges {
+        node {
+          pageLocation
+          acquisitionJumbotron {
+            joinLink {
+              name
+              to
+            }
+            background {
+              id
+              resolutions {
+                src
+                srcSet
+              }
+            }
+            title {
+              title
+            }
+            titleVisible
           }
         }
       }

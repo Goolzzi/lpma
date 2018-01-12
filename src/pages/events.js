@@ -1,14 +1,14 @@
 import React from "react";
 
-import Top from "../components/Top";
-import Bottom from "../components/Bottom";
+import TopJumbotron from "../components/TopJumbotron";
+import BottomJumbotron from "../components/BottomJumbotron";
 import UpcomingEvents from "../components/UpcomingEvents";
 
 const eventsPage = () => (
   <div>
-    <Top />
+    <TopJumbotron />
     <UpcomingEvents />
-    <Bottom />
+    <BottomJumbotron />
   </div>
 );
 
