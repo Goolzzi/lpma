@@ -2,7 +2,7 @@ import React from "react";
 import Link from "gatsby-link";
 import "./styles.scss";
 
-const Testimonials = ({copyrightHTML}) => (
+const Testimonials = () => (
   <section className="section resources">
     <p className="top-p">
       Stand out from the crowd and leverage our exclusive LPMA Member assets to differentiate your PM business from your competitors.

@@ -1,6 +1,6 @@
 .upcoming-events {
   & > h3 {
-    font-size: 32px;
+    font-size: 1.7777rem;
     font-weight: 500;
     line-height: normal;
     letter-spacing: 2px;
@@ -15,12 +15,12 @@
 
       h3 {
         color: $primary-color;
-        font-size: 32px;
+        font-size: 1.7777rem;
         font-weight: normal;
         font-style: normal;
         line-height: 2rem;
         height: 4rem;
-        margin-bottom: 0px;
+        margin-bottom: 0rem;
       }
     }
 
@@ -29,12 +29,12 @@
 
       h4 {
         color: $gray-light;
-        font-size: 26px;
+        font-size: 1.4444rem;
         font-weight: normal;
         font-style: normal;
         line-height: 2rem;
         height: 4rem;
-        margin-bottom: 0px;
+        margin-bottom: 0rem;
       }
     }
 

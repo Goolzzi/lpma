@@ -1,9 +1,11 @@
 .member-benefits {
+  padding: 3.75rem 2.75rem 7rem;
+
   h3 {
     color: $gray-dark;
-    font-size: 32px;
+    font-size: 1.7777rem;
     font-family: "DomaineSansMedium",Helvetica, Arial, sans-serif;
-    margin-bottom: 2rem;
+    margin-bottom: 4rem;
   }
 
   .benefit-item {
@@ -11,28 +13,29 @@
 
     img {
       position: absolute;
-      left: 18px;
-      top: 5px;
+      top: 0.25rem;
       width: 48px;
       height: 48px;
-      margin: 0px;
+      margin: 0rem;
     }
 
     .cont {
-      margin-left: 72px;
+      margin-left: 4rem;
 
       h4.text-title {
         font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
         color: $primary-color;
-        font-size: 26px;
+        font-size: 1.4444rem;
         font-weight: normal;
         text-transform: initial;
+        margin-bottom: 1rem;
       }
 
       p.text {
         font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
         color: $gray-light;
-        font-size: 18px;
+        font-size: 1rem;
+        margin-bottom: 1.5rem;
       }
     }
   }

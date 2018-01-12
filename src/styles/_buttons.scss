@@ -1,4 +1,6 @@
 .btn {
+  background-color: $gray-lighter;
+
   cursor: pointer;
   outline: none;
   height: 60px;
@@ -49,4 +51,30 @@
 
 .btn.halfwidth {
   min-width: 50%;
+}
+
+
+.inp {
+  background-color: $gray-lighter;
+  color: $gray-dark;
+
+  cursor: pointer;
+  outline: none;
+  height: 60px;
+  padding-left: 1.2rem;
+  padding-right: 1.2rem;
+
+  box-sizing: border-box;
+  border-width: 0px;
+  border-style: solid;
+
+  white-space: nowrap;
+
+  line-height: 30px;
+  font-size: 1.3333rem;
+  text-align: left;
+
+  &::placeholder {
+    color: #c3c0c0;
+  }
 }

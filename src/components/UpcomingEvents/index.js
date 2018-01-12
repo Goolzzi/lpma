@@ -2,7 +2,7 @@ import React from "react";
 import Link from "gatsby-link";
 import "./styles.scss";
 
-const Testimonials = ({copyrightHTML}) => (
+const Testimonials = () => (
   <section className="section upcoming-events">
     <h3>UPCOMING EVENTS</h3>
     
