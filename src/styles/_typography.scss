@@ -25,11 +25,15 @@ body {
 }
 
 html {
-    font-size: 18px;
-  }
+  font-size: 18px;
+}
 
 @media screen and (max-width: 1007px) {
   html {
     font-size: 12px;
   }
+}
+
+a {
+  color: $primary-color;
 }

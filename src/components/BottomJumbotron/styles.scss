@@ -2,19 +2,19 @@
   position: relative;
 
   img {
-    margin-bottom: 0px;
+    margin-bottom: 0rem;
   }
 
   .wrapper {
     position: absolute;
     width: 100%;
-    top: 0px;
-    left: 0px;
+    top: 0rem;
+    left: 0rem;
 
     p {
       border-left: 3px solid $primary-color;
       padding-left: 3rem;
-      font-size: 48px;
+      font-size: 2.6666rem;
       color: $white;
     }
   }
