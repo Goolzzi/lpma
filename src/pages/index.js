@@ -88,7 +88,7 @@ export const pageQuery = graphql`
       edges {
         node {
           pageLocation
-          acquisitionJumbotron {
+          jumbotron {
             joinLink {
               name
               to

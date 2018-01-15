@@ -8,11 +8,13 @@ const propTypes = {
   data: PropTypes.object.isRequired,
 };
 
-const EventsPage = ({data: {contentfulUpcomingEvents}}) => (
+const EventsPage = ({
+  data: {contentfulUpcomingEvents, allContentfulEventsJumbotron: {edges}},
+}) => (
   <div>
-    {/* <TopJumbotron /> */}
+    <TopJumbotron {...edges[1].node} />
     <Events {...contentfulUpcomingEvents} />
-    {/* <BottomJumbotron /> */}
+    <BottomJumbotron {...edges[0].node} />
   </div>
 );
 
@@ -37,6 +39,30 @@ export const pageQuery = graphql`
         buyTicketsLink {
           to
           name
+        }
+      }
+    }
+    allContentfulEventsJumbotron {
+      edges {
+        node {
+          pageLocation
+          jumbotron {
+            joinLink {
+              name
+              to
+            }
+            background {
+              id
+              resolutions {
+                src
+                srcSet
+              }
+            }
+            title {
+              title
+            }
+            titleVisible
+          }
         }
       }
     }

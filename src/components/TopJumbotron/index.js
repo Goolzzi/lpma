@@ -4,16 +4,15 @@ import Link from "gatsby-link";
 import "./styles.scss";
 
 const propTypes = {
-  acquisitionJumbotron: PropTypes.array.isRequired,
+  jumbotron: PropTypes.array.isRequired,
 };
 
-const TopJumbotron = ({acquisitionJumbotron}) => {
-  const jumbotron = acquisitionJumbotron[0];
+const TopJumbotron = ({jumbotron}) => {
   const {
     background: {resolutions: {src, srcSet}},
     title: {title},
     joinLink,
-  } = jumbotron;
+  } = jumbotron[0];
   return (
     <section className="hero top">
       <div className="image is-16by9">
