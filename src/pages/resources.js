@@ -8,10 +8,15 @@ const propTypes = {
   data: PropTypes.object.isRequired,
 };
 
-const ResourcesPage = ({data: {allContentfulResoursesJumbotron: {edges}}}) => (
+const ResourcesPage = ({
+  data: {
+    allContentfulResoursesJumbotron: {edges},
+    contentfulEventsTopInfoRemark,
+  },
+}) => (
   <div>
     <TopJumbotron {...edges[1].node} />
-    <Resources />
+    <Resources {...contentfulEventsTopInfoRemark} />
     <BottomJumbotron {...edges[0].node} />
   </div>
 );
@@ -42,6 +47,16 @@ export const pageQuery = graphql`
               title
             }
             titleVisible
+          }
+        }
+      }
+    }
+    contentfulEventsTopInfoRemark {
+      info {
+        id
+        childContentfulColumnTextRemarkContentTextNode {
+          childMarkdownRemark {
+            html
           }
         }
       }
