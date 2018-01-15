@@ -1,15 +1,26 @@
 import React from "react";
-
+import PropTypes from "prop-types";
 import TopJumbotron from "../components/TopJumbotron";
 import BottomJumbotron from "../components/BottomJumbotron";
-import UpcomingEvents from "../components/UpcomingEvents";
+import Events from "../components/Events";
 
-const eventsPage = () => (
+const propTypes = {
+  data: PropTypes.object.isRequired,
+};
+
+const EventsPage = () => (
   <div>
-    <TopJumbotron />
-    <UpcomingEvents />
-    <BottomJumbotron />
+    {/* <TopJumbotron /> */}
+    <Events />
+    {/* <BottomJumbotron /> */}
   </div>
 );
 
-export default eventsPage;
+EventsPage.propTypes = propTypes;
+
+export default EventsPage;
+
+// export const pageQuery = graphql`
+//   query EventsPageQuery {
+//   }
+// `;
