@@ -16,9 +16,9 @@ const TopJumbotron = ({acquisitionJumbotron}) => {
   } = jumbotron;
   return (
     <section className="hero top">
-      <dev className="image is-16by9">
+      <div className="image is-16by9">
         <img src={src} srcSet={srcSet} alt="acquisition Jumbotron" />
-      </dev>
+      </div>
       <div className="cont-wrapper">
         <div className="cont">
           <p>{title}</p>
