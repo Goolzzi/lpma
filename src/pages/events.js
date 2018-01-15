@@ -8,10 +8,10 @@ const propTypes = {
   data: PropTypes.object.isRequired,
 };
 
-const EventsPage = () => (
+const EventsPage = ({data: {contentfulUpcomingEvents}}) => (
   <div>
     {/* <TopJumbotron /> */}
-    <Events />
+    <Events {...contentfulUpcomingEvents} />
     {/* <BottomJumbotron /> */}
   </div>
 );
@@ -20,7 +20,25 @@ EventsPage.propTypes = propTypes;
 
 export default EventsPage;
 
-// export const pageQuery = graphql`
-//   query EventsPageQuery {
-//   }
-// `;
+export const pageQuery = graphql`
+  query EventsPageQuery {
+    contentfulUpcomingEvents {
+      title
+      events {
+        id
+        name
+        date
+        location
+        description {
+          childMarkdownRemark {
+            html
+          }
+        }
+        buyTicketsLink {
+          to
+          name
+        }
+      }
+    }
+  }
+`;
