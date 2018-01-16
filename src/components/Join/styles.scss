@@ -1,81 +1,75 @@
-@media screen and (min-width: 769px) { 
-  .join {
-    padding-top: 0rem;
-    padding-left: 0rem;
-
-    .join-wrapper {
-      background-color: $white;
-      //transform: translateY(-60%);
-      padding-left: 2.75rem;
-      width: 70%;
-
-      .join-indentions {
-        background-color: $white;
-        margin-bottom: -40%;
-        margin-top: -60%;
-        position: relative;
-        z-index: 27;
-        padding: 2.75rem;
-
-        .join-cont {
-          border-left: 3px solid $primary-color;
-          padding-left: 3.6666rem;
-
-          input[type="text"] {
-            display: block;
-            margin-bottom: 1rem;
-            width: 100%;
-          }
-
-          h2 {
-            font-size: 2.6666rem;
-            font-weight: normal;
-            color: $primary-color;
-            margin-bottom: 2rem;
-          }
-
-          p {
-            font-size: 2rem;
-            font-weight: normal;
-            color: $gray-light;
-          }
-
-          ol > li {
-            font-size: 1.4444rem;
-            font-weight: normal;
-            line-height: 1.58;
-            color: $gray;
-            margin-bottom: 0rem;
-
-            &.selected {
-              color: $primary-color;
-            }
-          }
-
-          button {
-            margin-top: 3rem;
-          }
-        } 
-      }
-    }
-  }
+.join {
+  padding: 0px;
 
   .any-questions {
-    padding-top: 5rem;
+    padding: 5.5rem 2.75rem 5rem 2.75rem;
 
     h3 {
       font-size: 1.7777rem;
       font-weight: normal;
       color: $primary-color;
+      line-height: normal;
     }
 
     p {
-      margin-bottom: 2rem;
+      margin-bottom: 1.5rem;
 
       font-size: 1.1111rem;
       font-weight: normal;
       line-height: 1.45;
       color: $gray-light;
     }
+  }
+
+  .join-cont {
+    margin: 3rem 2.75rem;
+    border-left: 3px solid $primary-color;
+    padding-left: 3.5rem;
+
+    input[type="text"] {
+      display: block;
+      margin-bottom: 1.2rem;
+      width: 100%;
+    }
+
+    h2 {
+      font-size: 2.6666rem;
+      font-weight: normal;
+      color: $primary-color;
+      margin-bottom: 2.5rem;
+      line-height: normal;
+    }
+
+    p {
+      font-size: 2rem;
+      font-weight: normal;
+      color: $gray-light;
+      margin-bottom: 4.5rem;
+      line-height: normal;
+    }
+
+    ol > li {
+      font-size: 1.4444rem;
+      font-weight: normal;
+      line-height: 1.58;
+      color: $gray;
+      margin-bottom: 0rem;
+
+      &.selected {
+        color: $primary-color;
+      }
+    }
+
+    button {
+      margin-top: 3rem;
+    }
+  }
+}
+
+@media screen and (min-width: 769px) {
+  .join-wrapper {
+    margin-top: -36rem !important;
+    z-index: 1;
+    background-color: $white;
   }
 }

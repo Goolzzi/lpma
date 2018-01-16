@@ -19,14 +19,14 @@ const BottomJumbotron = ({jumbotron}) => {
         <img src={src} srcSet={srcSet} alt="acquisition bootom Jumbotron" />
       </div>
       <section className="section wrapper">
-        <div className="columns">
+        <div className="columns is-gapless">
           <div className="column is-6 is-12-mobile">
             <p>{title}</p>
           </div>
           <div className="column is-6 is-12-mobile">
             <div className="has-text-right">
               <Link to={joinLink.to}>
-                <button className="btn primary">{joinLink.name}</button>
+                <button className="btn primary halfwidth">{joinLink.name}</button>
               </Link>
             </div>
           </div>

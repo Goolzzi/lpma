@@ -4,14 +4,14 @@ import Link from "gatsby-link";
 import "./styles.scss";
 
 const Event = ({name, date, location, description, buyTicketsLink}) => (
-  <div className="columns event-item">
-    <div className="column is-6 event-name">
+  <div className="columns is-gapless event-item">
+    <div className="column is-7 event-name">
       <h3>{name}</h3>
       <p
         dangerouslySetInnerHTML={{__html: description.childMarkdownRemark.html}}
       />
     </div>
-    <div className="column is-3 event-date">
+    <div className="column is-2 event-date">
       <h4>{date}</h4>
       <p>{location}</p>
     </div>

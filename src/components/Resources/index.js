@@ -18,7 +18,7 @@ const Resources = ({info}) => {
         className="top-p"
         dangerouslySetInnerHTML={{__html: childMarkdownRemark.html}}
       />
-      <div className="columns is-multiline">
+      <div className="columns is-gapless is-multiline">
         <div className="column is-4-desktop is-6-tablet is-12-mobile resource-item">
           <h3>Free Window Stickers</h3>
           <p>
@@ -84,7 +84,7 @@ const Resources = ({info}) => {
           </p>
           <button className="btn secondary halfwidth">Contact Us</button>
         </div>
-      </div>*/}
+      </div>
     </section>
   );
 };

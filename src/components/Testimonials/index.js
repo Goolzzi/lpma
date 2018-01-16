@@ -12,7 +12,7 @@ const Testimonials = ({title, testimonial1, testimonial2}) => (
   <React.Fragment>
     <section className="section testimonials">
       <h3>{title}</h3>
-      <div className="columns is-multiline">
+      <div className="columns is-gapless is-multiline">
         {testimonial1.map(
           ({
             id,
@@ -43,7 +43,7 @@ const Testimonials = ({title, testimonial1, testimonial2}) => (
         {testimonial2.map(
           ({id, image: {responsiveResolution: {src, srcSet}}, body}) => (
             <div key={id} className="column is-4 is-12-mobile exhibit-item">
-              <div className="image is-16by9">
+              <div className="image is-3by2">
                 <img srcSet={srcSet} src={src} alt="exhibit" />
               </div>
               <p
