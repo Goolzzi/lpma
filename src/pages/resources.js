@@ -65,7 +65,7 @@ export const pageQuery = graphql`
         }
       }
     }
-    allContentfulLpmaResource {
+    allContentfulLpmaResource(sort: {fields: [orderid], order: ASC}) {
       edges {
         node {
           id
