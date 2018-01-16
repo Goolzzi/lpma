@@ -12,11 +12,15 @@ const ResourcesPage = ({
   data: {
     allContentfulResoursesJumbotron: {edges},
     contentfulEventsTopInfoRemark,
+    allContentfulLpmaResource,
   },
 }) => (
   <div>
     <TopJumbotron {...edges[1].node} />
-    <Resources {...contentfulEventsTopInfoRemark} />
+    <Resources
+      {...contentfulEventsTopInfoRemark}
+      {...allContentfulLpmaResource}
+    />
     <BottomJumbotron {...edges[0].node} />
   </div>
 );
@@ -57,6 +61,33 @@ export const pageQuery = graphql`
         childContentfulColumnTextRemarkContentTextNode {
           childMarkdownRemark {
             html
+          }
+        }
+      }
+    }
+    allContentfulLpmaResource(sort: {fields: [orderid], order: ASC}) {
+      edges {
+        node {
+          id
+          title
+          downloadLink {
+            name
+            resourseHref
+          }
+          orderLink {
+            to
+            name
+          }
+          description {
+            childMarkdownRemark {
+              html
+            }
+          }
+          image {
+            resolutions {
+              src
+              srcSet
+            }
           }
         }
       }
