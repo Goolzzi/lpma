@@ -18,13 +18,14 @@ const IndexPage = ({
     contentfulTestimonials,
     allContentfulAcquisitionJumbotron: {edges},
     contentfulAcquisitionTopInfoRemark,
+    allContentfulAcquisitionAudience,
   },
 }) => (
   <div>
     <TopJumbotron {...edges[1].node} />
     <TopInfoColumns {...contentfulAcquisitionTopInfoRemark} />
     <MemberBenefits {...contentfulMemberBenefits} />
-    <Audience />
+    <Audience {...allContentfulAcquisitionAudience} />
     <Testimonials {...contentfulTestimonials} />
     <BottomJumbotron {...edges[0].node} />
   </div>
@@ -114,6 +115,19 @@ export const pageQuery = graphql`
         childContentfulColumnTextRemarkContentTextNode {
           childMarkdownRemark {
             html
+          }
+        }
+      }
+    }
+    allContentfulAcquisitionAudience {
+      edges {
+        node {
+          id
+          image {
+            resolutions {
+              src
+              srcSet
+            }
           }
         }
       }
