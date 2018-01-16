@@ -3,7 +3,7 @@
 
   .footer-links {
     background-color: $secondary-color;
-    padding: 2.6rem 2.7rem;
+    padding: 2.6rem 2.75rem;
 
     .column {
       -webkit-box-flex: 0;
@@ -34,6 +34,9 @@
     }
 
     @media screen and (max-width: 768px) {
+      .column {
+        margin-bottom: 2rem;
+      }
       .footer-1 {
         display: none;
       }
@@ -55,6 +58,7 @@
 
     .white-links-column.with-button {
       padding-bottom: 3.3333rem;
+      min-height: 150px;
     }
 
     .white-links-column {
