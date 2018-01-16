@@ -4,24 +4,29 @@ import PropTypes from "prop-types";
 import MemberBenefits from "../components/MemberBenefits";
 import Testimonials from "../components/Testimonials";
 import Audience from "../components/Audience";
-import Top from "../components/Top";
-import TopColumns from "../components/TopColumns";
-import Bottom from "../components/Bottom";
+import TopJumbotron from "../components/TopJumbotron";
+import TopInfoColumns from "../components/TopInfoColumns";
+import BottomJumbotron from "../components/BottomJumbotron";
 
 const propTypes = {
   data: PropTypes.object.isRequired,
 };
 
 const IndexPage = ({
-  data: {contentfulMemberBenefits, contentfulTestimonials},
+  data: {
+    contentfulMemberBenefits,
+    contentfulTestimonials,
+    allContentfulAcquisitionJumbotron: {edges},
+    contentfulAcquisitionTopInfoRemark,
+  },
 }) => (
   <div>
-    <Top />
-    <TopColumns />
+    <TopJumbotron {...edges[1].node} />
+    <TopInfoColumns {...contentfulAcquisitionTopInfoRemark} />
     <MemberBenefits {...contentfulMemberBenefits} />
     <Audience />
     <Testimonials {...contentfulTestimonials} />
-    <Bottom />
+    <BottomJumbotron {...edges[0].node} />
   </div>
 );
 
@@ -58,21 +63,55 @@ export const pageQuery = graphql`
           }
         }
         authorPhoto {
-          file {
-            url
-            fileName
+          responsiveResolution {
+            src
+            srcSet
           }
         }
       }
       testimonial2 {
         id
         image {
-          file {
-            url
-            fileName
+          responsiveResolution {
+            src
+            srcSet
           }
         }
         body {
+          childMarkdownRemark {
+            html
+          }
+        }
+      }
+    }
+    allContentfulAcquisitionJumbotron {
+      edges {
+        node {
+          pageLocation
+          jumbotron {
+            joinLink {
+              name
+              to
+            }
+            background {
+              id
+              resolutions {
+                src
+                srcSet
+              }
+            }
+            title {
+              title
+            }
+            titleVisible
+          }
+        }
+      }
+    }
+    contentfulAcquisitionTopInfoRemark {
+      info {
+        id
+        childContentfulColumnTextRemarkContentTextNode {
           childMarkdownRemark {
             html
           }

@@ -1,15 +1,65 @@
 import React from "react";
-
-import Top from "../components/Top";
-import Bottom from "../components/Bottom";
+import PropTypes from "prop-types";
+import TopJumbotron from "../components/TopJumbotron";
+import BottomJumbotron from "../components/BottomJumbotron";
 import Resources from "../components/Resources";
 
-const resourcesPage = () => (
+const propTypes = {
+  data: PropTypes.object.isRequired,
+};
+
+const ResourcesPage = ({
+  data: {
+    allContentfulResoursesJumbotron: {edges},
+    contentfulEventsTopInfoRemark,
+  },
+}) => (
   <div>
-    <Top />
-    <Resources />
-    <Bottom />
+    <TopJumbotron {...edges[1].node} />
+    <Resources {...contentfulEventsTopInfoRemark} />
+    <BottomJumbotron {...edges[0].node} />
   </div>
 );
 
-export default resourcesPage;
+ResourcesPage.propTypes = propTypes;
+
+export default ResourcesPage;
+
+export const pageQuery = graphql`
+  query ResourcesPageQuery {
+    allContentfulResoursesJumbotron {
+      edges {
+        node {
+          pageLocation
+          jumbotron {
+            joinLink {
+              name
+              to
+            }
+            background {
+              id
+              resolutions {
+                src
+                srcSet
+              }
+            }
+            title {
+              title
+            }
+            titleVisible
+          }
+        }
+      }
+    }
+    contentfulEventsTopInfoRemark {
+      info {
+        id
+        childContentfulColumnTextRemarkContentTextNode {
+          childMarkdownRemark {
+            html
+          }
+        }
+      }
+    }
+  }
+`;

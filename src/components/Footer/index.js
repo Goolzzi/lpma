@@ -22,7 +22,7 @@ const Footer = ({
 }) => (
   <div className="footer">
     <div className="footer-links">
-      <div className="columns is-multiline">
+      <div className="columns is-gapless">
         <div className="column footer-3 primary-links-column">
           <div
             dangerouslySetInnerHTML={{__html: title.childMarkdownRemark.html}}

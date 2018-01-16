@@ -1,23 +1,23 @@
 .footer {
-  padding: 0px;
+  padding: 0rem;
 
   .footer-links {
     background-color: $secondary-color;
-    padding: 47px 50px;
+    padding: 2.6rem 2.75rem;
 
     .column {
       -webkit-box-flex: 0;
           -ms-flex: none;
               flex: none;
 
-      padding: 0px;
+      padding: 0rem;
       position: relative;
 
       .vertical-line {
         background-color: $primary-color;
         position: absolute;
-        top: 0px;
-        bottom: 0px;
+        top: 0rem;
+        bottom: 0rem;
         left: calc( 50% - 1.5px );
         width: 3px;
       }
@@ -34,6 +34,9 @@
     }
 
     @media screen and (max-width: 768px) {
+      .column {
+        margin-bottom: 2rem;
+      }
       .footer-1 {
         display: none;
       }
@@ -48,47 +51,48 @@
       div {
         color: $primary-color;
         display: block;
-        font-size: 28px;
-        line-height: 40px;
+        font-size: 1.5555rem;
+        line-height: 1.43;
       }
     }
 
     .white-links-column.with-button {
-      padding-bottom: 60px;
+      padding-bottom: 3.3333rem;
+      min-height: 150px;
     }
 
     .white-links-column {
       button {
         position: absolute;
-        bottom: 0px;
+        bottom: 0rem;
       }
 
       a {
         color: $white;
         display: block;
 
-        font-size: 22px;
-        line-height: 40px;
+        font-size: 1.2222rem;
+        line-height: 1.82;
       }
     }
   }
 
   .footer-copyright {
     background-color: $primary-color;
-    padding: 30px 50px;
+    padding: 1.6666rem 2.7777rem;
 
     p, span, strong {
       color: $white;
-      font-size: 20px;
+      font-size: 1.1111rem;
     }
 
     img {
-      margin: 0px 10px 0px 0px;
-      height: 50px;
+      margin: 0rem 1rem 0rem;
+      height: 2.7777rem;
     }
 
     p {
-      margin: 0px;
+      margin: 0rem;
     }
   }
 }

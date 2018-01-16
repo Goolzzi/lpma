@@ -1,0 +1,41 @@
+.bottom {
+  position: relative;
+
+  img {
+    margin-bottom: 0rem;
+  }
+
+  .wrapper {
+    padding: 0px;
+    position: absolute;
+    width: 100%;
+    top: 0rem;
+    left: 0rem;
+
+    .column {
+      padding: 3.5rem 2.75rem 0rem !important;
+
+      p {
+        padding-left: 3.1111rem;
+        border-left: 3px solid $primary-color;
+        font-size: 2.6666rem;
+        line-height: normal;
+        color: $white;
+      }
+
+      button {
+        margin-top: 0rem;
+      }
+    }
+
+    @media screen and (max-width: 768px) {
+      .column {
+        padding-top: 1.5rem !important;
+
+        p {
+          font-size: 1.5rem;
+        }
+      }
+    }
+  }
+}
