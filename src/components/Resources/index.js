@@ -84,7 +84,7 @@ const Resources = ({info}) => {
           </p>
           <button className="btn secondary halfwidth">Contact Us</button>
         </div>
-      </div>*/}
+      </div>
     </section>
   );
 };
