@@ -106,7 +106,6 @@ export const pageQuery = graphql`
             title {
               title
             }
-            titleVisible
           }
         }
       }
