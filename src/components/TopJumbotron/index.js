@@ -10,7 +10,7 @@ const propTypes = {
 const TopJumbotron = ({jumbotron}) => {
   const {
     background: {resolutions: {src, srcSet}},
-    title: {title},
+    title,
     joinLink,
   } = jumbotron[0];
   return (
@@ -20,10 +20,14 @@ const TopJumbotron = ({jumbotron}) => {
       </div>
       <div className="cont-wrapper">
         <div className="cont">
-          <p>{title}</p>
-          <Link to={joinLink.to}>
-            <button className="btn primary halfwidth">{joinLink.name}</button>
-          </Link>
+          {title ? <p>{title.title}</p> : <React.Fragment />}
+          {joinLink ? (
+            <Link to={joinLink.to}>
+              <button className="btn primary halfwidth">{joinLink.name}</button>
+            </Link>
+          ) : (
+            <React.Fragment />
+          )}
         </div>
       </div>
     </section>

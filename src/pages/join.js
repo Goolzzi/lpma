@@ -9,15 +9,11 @@ const propTypes = {
   data: PropTypes.object.isRequired,
 };
 
-const joinPage = ({
-  data: {
-    allContentfulAcquisitionJumbotron: {edges},
-  },
-}) => (
+const joinPage = ({data: {allContentfulJoinJumotron: {edges}}}) => (
   <div>
-    <Top {...edges[1].node} />
+    <Top {...edges[0].node} />
     <Join />
-    <Bottom {...edges[0].node} />
+    <Bottom {...edges[1].node} />
   </div>
 );
 
@@ -27,14 +23,16 @@ export default joinPage;
 
 export const pageQuery = graphql`
   query joinPageQuery {
-    allContentfulAcquisitionJumbotron {
+    allContentfulJoinJumotron(sort: {fields: [pageLocation], order: DESC}) {
       edges {
         node {
-          pageLocation
           jumbotron {
             joinLink {
               name
               to
+            }
+            title {
+              title
             }
             background {
               id
@@ -43,10 +41,6 @@ export const pageQuery = graphql`
                 srcSet
               }
             }
-            title {
-              title
-            }
-            titleVisible
           }
         }
       }

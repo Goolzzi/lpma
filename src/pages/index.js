@@ -22,12 +22,12 @@ const IndexPage = ({
   },
 }) => (
   <div>
-    <TopJumbotron {...edges[1].node} />
+    <TopJumbotron {...edges[0].node} />
     <TopInfoColumns {...contentfulAcquisitionTopInfoRemark} />
     <MemberBenefits {...contentfulMemberBenefits} />
     <Audience {...allContentfulAcquisitionAudience} />
     <Testimonials {...contentfulTestimonials} />
-    <BottomJumbotron {...edges[0].node} />
+    <BottomJumbotron {...edges[1].node} />
   </div>
 );
 
@@ -85,7 +85,9 @@ export const pageQuery = graphql`
         }
       }
     }
-    allContentfulAcquisitionJumbotron {
+    allContentfulAcquisitionJumbotron(
+      sort: {fields: [pageLocation], order: DESC}
+    ) {
       edges {
         node {
           pageLocation
