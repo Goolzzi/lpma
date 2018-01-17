@@ -17,15 +17,15 @@ const Testimonials = ({title, testimonial1, testimonial2}) => (
           ({
             id,
             authorName,
-            body,
+            childContentfulTestimonial1ContentTextNode: {childMarkdownRemark},
             authorPhoto: {responsiveResolution: {src, srcSet}},
           }) => (
             <div key={id} className="column is-6 is-12-mobile testimonial-item">
               <div className="text-cont">
-                <p
+                <div
                   className="text-p"
                   dangerouslySetInnerHTML={{
-                    __html: body.childMarkdownRemark.html,
+                    __html: childMarkdownRemark.html,
                   }}
                 />
                 <p className="name-p">{authorName}</p>
@@ -41,14 +41,19 @@ const Testimonials = ({title, testimonial1, testimonial2}) => (
     <section className="hero exhibits">
       <div className="columns is-gapless">
         {testimonial2.map(
-          ({id, image: {responsiveResolution: {src, srcSet}}, body}) => (
+          ({
+            id,
+            image: {responsiveResolution: {src, srcSet}},
+            childContentfulTestimonial2ContentTextNode: {childMarkdownRemark},
+          }) => (
             <div key={id} className="column is-4 is-12-mobile exhibit-item">
               <div className="image is-3by2">
                 <img srcSet={srcSet} src={src} alt="exhibit" />
               </div>
-              <p
+              <span
+                className="content"
                 dangerouslySetInnerHTML={{
-                  __html: body.childMarkdownRemark.html,
+                  __html: childMarkdownRemark.html,
                 }}
               />
             </div>

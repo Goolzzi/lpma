@@ -8,17 +8,15 @@ const Join = () => (
       <div className="column is-8 join-wrapper">
         <div className="join-cont">
           <h2>Join</h2>
-          <p>
-            You're taking your first step towards growing your network.
-          </p>
+          <p>Youre taking your first step towards growing your network.</p>
 
           <div className="columns">
             <div className="column is-7">
-              <input type="text" className='inp' placeholder="Firstname" />
-              <input type="text" className='inp' placeholder="Lastname" />
-              <input type="text" className='inp' placeholder="Agency Name" />
-              <input type="text" className='inp' placeholder="Email" />
-              <input type="text" className='inp' placeholder="Contact number" />
+              <input type="text" className="inp" placeholder="Firstname" />
+              <input type="text" className="inp" placeholder="Lastname" />
+              <input type="text" className="inp" placeholder="Agency Name" />
+              <input type="text" className="inp" placeholder="Email" />
+              <input type="text" className="inp" placeholder="Contact number" />
 
               <button className="btn primary halfwidth">Next</button>
             </div>

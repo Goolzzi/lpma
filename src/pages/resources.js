@@ -16,12 +16,12 @@ const ResourcesPage = ({
   },
 }) => (
   <div>
-    <TopJumbotron {...edges[1].node} />
+    <TopJumbotron {...edges[0].node} />
     <Resources
       {...contentfulEventsTopInfoRemark}
       {...allContentfulLpmaResource}
     />
-    <BottomJumbotron {...edges[0].node} />
+    <BottomJumbotron {...edges[1].node} />
   </div>
 );
 
@@ -31,7 +31,9 @@ export default ResourcesPage;
 
 export const pageQuery = graphql`
   query ResourcesPageQuery {
-    allContentfulResoursesJumbotron {
+    allContentfulResoursesJumbotron(
+      sort: {fields: [pageLocation], order: DESC}
+    ) {
       edges {
         node {
           pageLocation
@@ -50,7 +52,6 @@ export const pageQuery = graphql`
             title {
               title
             }
-            titleVisible
           }
         }
       }

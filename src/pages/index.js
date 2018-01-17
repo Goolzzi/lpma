@@ -22,12 +22,12 @@ const IndexPage = ({
   },
 }) => (
   <div>
-    <TopJumbotron {...edges[1].node} />
+    <TopJumbotron {...edges[0].node} />
     <TopInfoColumns {...contentfulAcquisitionTopInfoRemark} />
     <MemberBenefits {...contentfulMemberBenefits} />
     <Audience {...allContentfulAcquisitionAudience} />
     <Testimonials {...contentfulTestimonials} />
-    <BottomJumbotron {...edges[0].node} />
+    <BottomJumbotron {...edges[1].node} />
   </div>
 );
 
@@ -58,7 +58,7 @@ export const pageQuery = graphql`
       testimonial1 {
         id
         authorName
-        body {
+        childContentfulTestimonial1ContentTextNode {
           childMarkdownRemark {
             html
           }
@@ -78,14 +78,16 @@ export const pageQuery = graphql`
             srcSet
           }
         }
-        body {
+        childContentfulTestimonial2ContentTextNode {
           childMarkdownRemark {
             html
           }
         }
       }
     }
-    allContentfulAcquisitionJumbotron {
+    allContentfulAcquisitionJumbotron(
+      sort: {fields: [pageLocation], order: DESC}
+    ) {
       edges {
         node {
           pageLocation
@@ -104,7 +106,6 @@ export const pageQuery = graphql`
             title {
               title
             }
-            titleVisible
           }
         }
       }
