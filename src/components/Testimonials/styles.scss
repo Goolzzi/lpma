@@ -19,7 +19,7 @@
         line-height: 1.31;
       }
 
-      p.text-p {
+      div.text-p {
         color: $gray-light;
         margin-bottom: 1rem;
       }
@@ -63,7 +63,7 @@
       }
     }
 
-    > p {
+    > span.content {
       padding: 5rem 2.75rem 5rem 2.75rem;
       font-size: 1.1111rem;
       line-height: 1.4;

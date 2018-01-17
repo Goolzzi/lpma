@@ -58,7 +58,7 @@ export const pageQuery = graphql`
       testimonial1 {
         id
         authorName
-        body {
+        childContentfulTestimonial1ContentTextNode {
           childMarkdownRemark {
             html
           }
@@ -78,7 +78,7 @@ export const pageQuery = graphql`
             srcSet
           }
         }
-        body {
+        childContentfulTestimonial2ContentTextNode {
           childMarkdownRemark {
             html
           }
