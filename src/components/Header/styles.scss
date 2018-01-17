@@ -1,7 +1,7 @@
 .navbar {
   background-color: $primary-color;
   font-size: $navbar-font-size;
-  height: 5em;
+  min-height: 5em;
 
   .navbar-brand {
     .navbar-item {
@@ -9,6 +9,8 @@
     }
 
     button.button.navbar-burger {
+      border: none;
+      outline: none;
       background-color: $transparent;
 
       font-size: $navbar-font-size;
@@ -17,6 +19,10 @@
       width: 5em;
 
       $burger-tickness: 4px;
+
+      &:focus, &:active {
+        outline:0;
+      }
       span {
         color: $white;
 
@@ -34,12 +40,39 @@
           top: calc( 50% - #{$burger-tickness} + #{$navbar-font-size} );
         }
       }
+
+      &.is-active {
+        span {
+          color: $white;
+
+          left: calc( 50% - #{$navbar-font-size} );
+          height: $burger-tickness;
+          width: calc( 2 * #{$navbar-font-size} );
+
+          &:nth-child(1) {
+            top: calc( 50% - #{$navbar-font-size / 2} + #{$burger-tickness} );
+          }
+          &:nth-child(2) {
+            display: none;
+          }
+          &:nth-child(3) {
+            top: calc( 50% + #{$navbar-font-size / 2} - #{$burger-tickness} );
+          }
+        }
+      }
     }
 
     img {
       height: 52px;
       min-height: 52px;
       margin: 0px;
+    }
+  }
+
+  .navbar-menu.is-active {
+    a {
+      color: $black;
+      padding: 1rem;
     }
   }
 
