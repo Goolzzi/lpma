@@ -14,9 +14,13 @@ const Header = ({topmenu, logo: {file}}) => (
       <Link className="navbar-item" to={"/"}>
         <img src={file.url} alt={file.fileName} />
       </Link>
-      <button className="button navbar-burger" />
+      <button className="button navbar-burger is-active">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
     </div>
-    <div className="navbar-menu">
+    <div className="navbar-menu is-active">
       <div className="navbar-end">
         {topmenu.map(({id, to, name}) => (
           <Link className="navbar-item" key={id} to={to}>
