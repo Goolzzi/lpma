@@ -3,10 +3,10 @@
  * */
 
 module.exports.onClientEntry = () => {
-  console.log("onClientEntry");
+  //console.log("onClientEntry");
   // callAnalyticsAPI();
 };
 
 exports.onInitialClientRender = () => {
-  console.log("ReactDOM.render has executed");
+  //console.log("ReactDOM.render has executed");
 };
