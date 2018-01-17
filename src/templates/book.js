@@ -13,11 +13,11 @@ Book.propTypes = propTypes;
 
 export default Book;
 
-export const pageQuery = graphql`
-  query BookQuery($id: String!) {
-    contentfulBook(id: {eq: $id}) {
-      id
-      title
-    }
-  }
-`;
+// export const pageQuery = graphql`
+//   query BookQuery($id: String!) {
+//     contentfulBook(id: {eq: $id}) {
+//       id
+//       title
+//     }
+//   }
+// `;
