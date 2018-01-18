@@ -27,17 +27,19 @@ const ResurceItem = props => {
       ) : (
         <React.Fragment />
       )}
-      {orderLink ? (
-        <Link to={orderLink.to}>
-          <button className="btn secondary halfwidth">{orderLink.name}</button>
-        </Link>
-      ) : (
-        <a href={downloadLink.resourseHref} download>
-          <button className="btn secondary halfwidth">
-            {downloadLink.name}
-          </button>
-        </a>
-      )}
+      <div className="button-wrapper">
+        {orderLink ? (
+          <Link to={orderLink.to}>
+            <button className="btn secondary halfwidth">{orderLink.name}</button>
+          </Link>
+        ) : (
+          <a href={downloadLink.resourseHref} download>
+            <button className="btn secondary halfwidth">
+              {downloadLink.name}
+            </button>
+          </a>
+        )}
+      </div>
     </div>
   );
 };

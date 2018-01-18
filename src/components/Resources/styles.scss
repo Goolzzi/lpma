@@ -9,12 +9,6 @@
     line-height: normal;
   }
 
-  @media screen and (min-width: 1008px) {
-    p.top-p {
-      width: 50%;
-    }
-  }
-
   .column.resource-item {
     border-top: 3px solid $primary-color;
     padding: 5.5rem 3rem 2.5rem 0rem !important;
@@ -39,6 +33,22 @@
       line-height: 1.45;
       color: $gray-light;
       margin-bottom: 2rem;
+    }
+  }
+
+  @media screen and (min-width: 1008px) {
+    p.top-p {
+      width: 50%;
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    .column.resource-item {
+      padding: 5.5rem 0rem 2.5rem 0rem !important;
+
+      .button-wrapper {
+        text-align: center;
+      }
     }
   }
 }
