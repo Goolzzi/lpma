@@ -27,10 +27,12 @@ class Header extends React.Component {
             <img src={file.url} alt={file.fileName} />
           </Link>
           <button
-            onClick={() => this.setState({isActive: !this.state.isActive})}>
+            onClick={() =>
+              this.setState(prevState => ({isActive: !prevState.isActive}))
+            }
             className={classNames("button navbar-burger", {
               "is-active": isActive,
-            })}
+            })}>
             <span />
             <span />
             <span />
@@ -42,7 +44,13 @@ class Header extends React.Component {
           })}>
           <div className="navbar-end">
             {topmenu.map(({id, to, name}) => (
-              <Link className="navbar-item" key={id} to={to}>
+              <Link
+                className="navbar-item"
+                onClick={() => {
+                  this.setState(prevState => ({isActive: !prevState.isActive}));
+                }}
+                key={id}
+                to={to}>
                 {name}
               </Link>
             ))}
