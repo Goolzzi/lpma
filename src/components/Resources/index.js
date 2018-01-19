@@ -30,7 +30,9 @@ const ResurceItem = props => {
       <div className="button-wrapper">
         {orderLink ? (
           <Link to={orderLink.to}>
-            <button className="btn secondary halfwidth">{orderLink.name}</button>
+            <button className="btn secondary halfwidth">
+              {orderLink.name}
+            </button>
           </Link>
         ) : (
           <a href={downloadLink.resourseHref} download>

@@ -20,7 +20,7 @@ const Join = () => (
 
               <button className="btn primary halfwidth">Next</button>
             </div>
-            <div className="column is-4 is-offset-1">
+            <div className="column is-5 step-list">
               <ol>
                 <li className="selected">Contact Details</li>
                 <li>Choose a Plan</li>

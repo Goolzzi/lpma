@@ -21,42 +21,46 @@ class Header extends React.Component {
     const {topmenu, logo: {file}} = this.props;
     const {isActive} = this.state;
     return (
-      <nav className="navbar">
-        <div className="navbar-brand">
-          <Link className="navbar-item" to={"/"}>
-            <img src={file.url} alt={file.fileName} />
-          </Link>
-          <button
-            onClick={() =>
-              this.setState(prevState => ({isActive: !prevState.isActive}))
-            }
-            className={classNames("button navbar-burger", {
+      <div className="navbar-wrapper">
+        <nav className="navbar">
+          <div className="navbar-brand">
+            <Link className="navbar-item" to={"/"}>
+              <img src={file.url} alt={file.fileName} />
+            </Link>
+            <button
+              onClick={() =>
+                this.setState(prevState => ({isActive: !prevState.isActive}))
+              }
+              className={classNames("button navbar-burger", {
+                "is-active": isActive,
+              })}>
+              <span />
+              <span />
+              <span />
+            </button>
+          </div>
+          <div
+            className={classNames("navbar-menu", {
               "is-active": isActive,
             })}>
-            <span />
-            <span />
-            <span />
-          </button>
-        </div>
-        <div
-          className={classNames("navbar-menu", {
-            "is-active": isActive,
-          })}>
-          <div className="navbar-end">
-            {topmenu.map(({id, to, name}) => (
-              <Link
-                className="navbar-item"
-                onClick={() => {
-                  this.setState(prevState => ({isActive: !prevState.isActive}));
-                }}
-                key={id}
-                to={to}>
-                {name}
-              </Link>
-            ))}
+            <div className="navbar-end">
+              {topmenu.map(({id, to, name}) => (
+                <Link
+                  className="navbar-item"
+                  onClick={() => {
+                    this.setState(prevState => ({
+                      isActive: !prevState.isActive,
+                    }));
+                  }}
+                  key={id}
+                  to={to}>
+                  {name}
+                </Link>
+              ))}
+            </div>
           </div>
-        </div>
-      </nav>
+        </nav>
+      </div>
     );
   }
 }
