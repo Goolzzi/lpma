@@ -48,7 +48,9 @@ class Header extends React.Component {
                 <Link
                   className="navbar-item"
                   onClick={() => {
-                    this.setState(prevState => ({isActive: !prevState.isActive}));
+                    this.setState(prevState => ({
+                      isActive: !prevState.isActive,
+                    }));
                   }}
                   key={id}
                   to={to}>
