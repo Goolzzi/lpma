@@ -48,15 +48,25 @@
       line-height: normal;
     }
 
-    ol > li {
-      font-size: 1.4444rem;
-      font-weight: normal;
-      line-height: 1.58;
-      color: $gray;
-      margin-bottom: 0rem;
+    .step-list {
+      text-align: right;
+      
+      ol {
+        display: inline-block;
+      }
 
-      &.selected {
-        color: $primary-color;
+      ol > li {
+        font-size: 1.4444rem;
+        font-weight: normal;
+        line-height: 1.58;
+        color: $gray;
+        margin-bottom: 0rem;
+        white-space: nowrap;
+        text-align: left;
+
+        &.selected {
+          color: $primary-color;
+        }
       }
     }
 
