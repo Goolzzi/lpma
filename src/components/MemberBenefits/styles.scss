@@ -67,3 +67,17 @@
     }
   }
 }
+
+@media screen and (max-width: 768px) {
+  .member-benefits {
+    .benefit-item {
+      img {
+        top: 0.5rem;
+      }
+
+      .cont {
+        margin-left: 5rem;
+      }
+    }
+  }
+}
