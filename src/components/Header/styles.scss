@@ -1,47 +1,33 @@
-.navbar {
+.navbar-wrapper {
   background-color: $primary-color;
-  font-size: $navbar-font-size;
-  min-height: 5em;
 
-  .navbar-brand {
-    .navbar-item {
-      padding-left: 2.75rem;
-    }
+  .navbar {
+    max-width: 1392px;
+    margin: auto;
+    background-color: $primary-color;
+    font-size: $navbar-font-size;
+    min-height: 5em;
 
-    button.button.navbar-burger {
-      border: none;
-      outline: none;
-      background-color: $transparent;
-
-      font-size: $navbar-font-size;
-
-      height: 5em;
-      width: 5em;
-
-      $burger-tickness: 4px;
-
-      &:focus, &:active {
-        outline:0;
-      }
-      span {
-        color: $white;
-
-        left: calc( 50% - #{$navbar-font-size} );
-        height: $burger-tickness;
-        width: calc( 2 * #{$navbar-font-size} );
-
-        &:nth-child(1) {
-          top: calc( 50% - #{$navbar-font-size} );
-        }
-        &:nth-child(2) {
-          top: calc( 50% - ( #{$burger-tickness} / 2 ) );
-        }
-        &:nth-child(3) {
-          top: calc( 50% - #{$burger-tickness} + #{$navbar-font-size} );
-        }
+    .navbar-brand {
+      .navbar-item {
+        padding-left: 2.75rem;
       }
 
-      &.is-active {
+      button.button.navbar-burger {
+        border: none;
+        outline: none;
+        background-color: $transparent;
+
+        font-size: $navbar-font-size;
+
+        height: 5em;
+        width: 5em;
+
+        $burger-tickness: 4px;
+
+        &:focus, &:active {
+          outline:0;
+        }
         span {
           color: $white;
 
@@ -50,39 +36,63 @@
           width: calc( 2 * #{$navbar-font-size} );
 
           &:nth-child(1) {
-            top: calc( 50% - #{$navbar-font-size / 2} + #{$burger-tickness} );
+            top: calc( 50% - #{$navbar-font-size} );
           }
           &:nth-child(2) {
-            display: none;
+            top: calc( 50% - ( #{$burger-tickness} / 2 ) );
           }
           &:nth-child(3) {
-            top: calc( 50% + #{$navbar-font-size / 2} - #{$burger-tickness} );
+            top: calc( 50% - #{$burger-tickness} + #{$navbar-font-size} );
           }
+        }
+
+        @media screen and (max-width: 1007px) {
+          &.is-active {
+            span {
+              color: $white;
+
+              left: calc( 50% - #{$navbar-font-size} );
+              height: $burger-tickness;
+              width: calc( 2 * #{$navbar-font-size} );
+
+              &:nth-child(1) {
+                top: calc( 50% - #{$navbar-font-size / 2} + #{$burger-tickness} );
+              }
+              &:nth-child(2) {
+                display: none;
+              }
+              &:nth-child(3) {
+                top: calc( 50% + #{$navbar-font-size / 2} - #{$burger-tickness} );
+              }
+            }
+          }
+        }
+      }
+
+      img {
+        height: 52px;
+        min-height: 52px;
+        margin: 0px;
+      }
+    }
+
+    @media screen and (max-width: 1007px) {
+      .navbar-menu.is-active {
+        a {
+          color: $gray-dark;
+          padding: 1rem;
         }
       }
     }
 
-    img {
-      height: 52px;
-      min-height: 52px;
-      margin: 0px;
+    a.navbar-item {
+      color: $white;
+      background-color: $transparent;
+
+      font-size: 1em;
+      line-height: 1em;
+      letter-spacing: 1px;
+      text-transform: uppercase;
     }
-  }
-
-  .navbar-menu.is-active {
-    a {
-      color: $gray-dark;
-      padding: 1rem;
-    }
-  }
-
-  a.navbar-item {
-    color: $white;
-    background-color: $transparent;
-
-    font-size: 1em;
-    line-height: 1em;
-    letter-spacing: 1px;
-    text-transform: uppercase;
   }
 }
