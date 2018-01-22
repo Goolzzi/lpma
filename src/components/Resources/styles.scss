@@ -36,9 +36,24 @@
     }
   }
 
-  @media screen and (min-width: 1008px) {
+  @media screen and (min-width: 769px) {
     p.top-p {
       width: 50%;
+    }
+
+    .column.resource-item {
+      position: relative;
+
+      .image {
+        margin-bottom: 8rem;
+      }
+
+      .button-wrapper {
+        position: absolute;
+        bottom: 2.5rem;
+        left: 0px;
+        right: 0px;
+      }
     }
   }
 
