@@ -1,35 +1,11 @@
-const path = require("path");
+"use strict";
 
-module.exports = ({graphql, boundActionCreators}) => {
-  const {createPage} = boundActionCreators;
-  return new Promise((resolve, reject) => {
-    const bookTemplate = path.resolve(`src/templates/book.js`);
-    resolve(
-      graphql(`
-        {
-          allContentfulBook(limit: 100) {
-            edges {
-              node {
-                id
-              }
-            }
-          }
-        }
-      `).then(result => {
-        if (result.errors) {
-          reject(result.errors);
-        }
-        result.data.allContentfulBook.edges.forEach(edge => {
-          createPage({
-            path: edge.node.id,
-            component: bookTemplate,
-            context: {
-              id: edge.node.id,
-            },
-          });
-        });
-        return;
-      }),
-    );
+module.exports = ({boundActionCreators}) => {
+  const {createRedirect} = boundActionCreators;
+  createRedirect({
+    fromPath: `/login/*`,
+    isPermanent: true,
+    redirectInBrowser: true,
+    toPath: `https://halo-identity.lpma.com.au/users/sign_in`,
   });
 };
