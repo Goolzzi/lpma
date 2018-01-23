@@ -8,8 +8,9 @@ const Join = () => (
       <div className="column is-8 join-wrapper">
         <div className="join-cont">
           <h2>Join</h2>
-          <p>Youre taking your first step towards growing your network.</p>
-
+          <p>
+            You&apos;re taking your first step towards growing your network.
+          </p>
           <div className="columns">
             <div className="column is-7">
               <input type="text" className="inp" placeholder="Firstname" />
