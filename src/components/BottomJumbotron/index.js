@@ -15,9 +15,7 @@ const BottomJumbotron = ({jumbotron}) => {
   } = jumbotron[0];
   return (
     <section className="hero bottom">
-      <div className="image is-16by9">
-        <img src={src} srcSet={srcSet} alt="acquisition bootom Jumbotron" />
-      </div>
+      <img src={src} srcSet={srcSet} alt="acquisition bootom Jumbotron" />
       <section className="section wrapper">
         <div className="columns is-gapless">
           <div className="column is-6 is-12-mobile">
