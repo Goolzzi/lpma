@@ -39,7 +39,7 @@
   "scripts": {
     "build": "gatsby build",
     "develop": "gatsby develop",
-    "netlify-build": "node cp_netlify_public.js",
+    "netlify-build": "gatsby build",
     "format": "prettier --config .prettierrc --write \"src/**/*.js\""
   },
   "devDependencies": {
