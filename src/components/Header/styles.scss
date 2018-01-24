@@ -76,6 +76,10 @@
       }
     }
 
+    @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+      height: 90px;
+    }
+
     @media screen and (max-width: 1007px) {
       .navbar-menu.is-active {
         a {
