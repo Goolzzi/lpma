@@ -1,5 +1,3 @@
-#!/usr/bin/env bash
-
 echo "--- gatsby build completed!"
 echo "--- Copying netlify content..."
 
