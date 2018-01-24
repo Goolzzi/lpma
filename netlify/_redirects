@@ -1,4 +1,3 @@
 /login https://halo-identity.lpma.com.au/users/sign_in 301
-/login https://halo-identity.lpma.com.au/users/sign_in 301
-/events	 200! 	Role=admin
+/events/*	 200! 	Role=admin
 /home	 /  301
