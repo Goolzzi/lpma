@@ -10,6 +10,7 @@
   "dependencies": {
     "bulma": "^0.6.1",
     "classnames": "^2.2.5",
+    "fs-extra": "^5.0.0",
     "gatsby": "^1.9.149",
     "gatsby-cli": "^1.1.28",
     "gatsby-link": "^1.6.32",
@@ -38,7 +39,7 @@
   "scripts": {
     "build": "gatsby build",
     "develop": "gatsby develop",
-    "netlify-build" : "gatsby build && . cp_public.sh",
+    "netlify-build": "gatsby build && node cp_netlify_public.js",
     "format": "prettier --config .prettierrc --write \"src/**/*.js\""
   },
   "devDependencies": {
