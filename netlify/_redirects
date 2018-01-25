@@ -1,3 +1,2 @@
-/* /index.html 200
 /events/* 200! Role=admin
-/events/* /resources 301
+/events/* /resources 301!
