@@ -1,2 +1,3 @@
 /events/* 200! Role=admin
 /events/* /resources 302
+#test
