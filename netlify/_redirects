@@ -1,4 +1,2 @@
-/login https://halo-identity.lpma.com.au/users/sign_in 301
-
-/events 200! Role=user
-/events / 404
+/events/* 200! Role=admin
+/events/ / 302
