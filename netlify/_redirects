@@ -1,2 +1,2 @@
-/events 200! Role=admin
+/events/* 200! Role=admin
 /events/ / 302
