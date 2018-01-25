@@ -1,2 +1,2 @@
 /events/* 200! Role=admin
-/events/* /resources 404
+/events/* /resources 404!
