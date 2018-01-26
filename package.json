@@ -10,11 +10,11 @@
   "dependencies": {
     "bulma": "^0.6.1",
     "classnames": "^2.2.5",
+    "fs-extra": "^5.0.0",
     "gatsby": "^1.9.149",
     "gatsby-cli": "^1.1.28",
     "gatsby-link": "^1.6.32",
     "gatsby-plugin-catch-links": "^1.0.14",
-    "gatsby-plugin-netlify": "^1.0.14",
     "gatsby-plugin-react-helmet": "^1.0.8",
     "gatsby-plugin-react-next": "^1.0.7",
     "gatsby-plugin-sass": "^1.0.15",
@@ -39,6 +39,7 @@
   "scripts": {
     "build": "gatsby build",
     "develop": "gatsby develop",
+    "netlify-build": "gatsby build && node cp_netlify_public.js",
     "format": "prettier --config .prettierrc --write \"src/**/*.js\""
   },
   "devDependencies": {
