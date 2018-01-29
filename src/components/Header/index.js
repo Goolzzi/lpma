@@ -24,9 +24,9 @@ class Header extends React.Component {
       <div className="navbar-wrapper">
         <nav className="navbar">
           <div className="navbar-brand">
-            <Link className="navbar-item" to={"/"}>
+            <a className="navbar-item" href={"/"}>
               <img src={file.url} alt={file.fileName} />
-            </Link>
+            </a>
             <button
               onClick={() =>
                 this.setState(prevState => ({isActive: !prevState.isActive}))
@@ -45,7 +45,7 @@ class Header extends React.Component {
             })}>
             <div className="navbar-end">
               {topmenu.map(({id, to, name}) => (
-                <Link
+                <a
                   className="navbar-item"
                   onClick={() => {
                     this.setState(prevState => ({
@@ -53,9 +53,9 @@ class Header extends React.Component {
                     }));
                   }}
                   key={id}
-                  to={to}>
+                  href={to}>
                   {name}
-                </Link>
+                </a>
               ))}
             </div>
           </div>
