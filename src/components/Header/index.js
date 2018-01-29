@@ -9,7 +9,7 @@ const NavMenu = ({topmenu, us, handleClick}) => {
       className="navbar-item"
       onClick={handleClick}
       key={id}
-      href={us !== -1 ? `${to}-${country}` : to}>
+      href={us !== -1 && to === "events" ? `${to}-${country}` : to}>
       {name}
     </a>
   );
