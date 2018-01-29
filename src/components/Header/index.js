@@ -1,12 +1,33 @@
 import React from "react";
 import PropTypes from "prop-types";
-import Link from "gatsby-link";
 import classNames from "classnames";
 import "./styles.scss";
+
+const NavMenu = ({topmenu, us, handleClick}) => {
+  const getNavItem = (id, to, name, country) => (
+    <a
+      className="navbar-item"
+      onClick={handleClick}
+      key={id}
+      href={us !== -1 ? `${to}-${country}` : to}>
+      {name}
+    </a>
+  );
+  return (
+    <div className="navbar-end">
+      {topmenu.map(({id, to, name, country}) => {
+        if (us === -1 || country === "us") {
+          return getNavItem(id, to, name, country, us);
+        }
+      })}
+    </div>
+  );
+};
 
 const propTypes = {
   topmenu: PropTypes.array.isRequired,
   logo: PropTypes.object.isRequired,
+  us: PropTypes.number.isRequired,
 };
 
 class Header extends React.Component {
@@ -17,8 +38,14 @@ class Header extends React.Component {
     };
   }
 
+  handleClick = () => {
+    this.setState(prevState => ({
+      isActive: !prevState.isActive,
+    }));
+  };
+
   render() {
-    const {topmenu, logo: {file}} = this.props;
+    const {topmenu, logo: {file}, us} = this.props;
     const {isActive} = this.state;
     return (
       <div className="navbar-wrapper">
@@ -43,21 +70,7 @@ class Header extends React.Component {
             className={classNames("navbar-menu", {
               "is-active": isActive,
             })}>
-            <div className="navbar-end">
-              {topmenu.map(({id, to, name}) => (
-                <a
-                  className="navbar-item"
-                  onClick={() => {
-                    this.setState(prevState => ({
-                      isActive: !prevState.isActive,
-                    }));
-                  }}
-                  key={id}
-                  href={to}>
-                  {name}
-                </a>
-              ))}
-            </div>
+            <NavMenu topmenu={topmenu} us={us} handleClick={this.handleClick} />
           </div>
         </nav>
       </div>

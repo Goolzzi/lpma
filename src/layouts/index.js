@@ -12,23 +12,26 @@ const propTypes = {
   data: PropTypes.object.isRequired,
 };
 
-const LayoutTemplate = ({
-  children,
-  data: {contentfulHeader, contentfulFooter},
-}) => (
-  <div>
-    <Helmet
-      title="lpma"
-      meta={[
-        {name: "description", content: "lpma"},
-        {name: "keywords", content: "lpma, lpma2018"},
-      ]}
-    />
-    <Header {...contentfulHeader} />
-    <div className="page-container">{children()}</div>
-    <Footer {...contentfulFooter} />
-  </div>
-);
+const LayoutTemplate = props => {
+  const {children, data: {contentfulHeader, contentfulFooter}} = props;
+  return (
+    <div>
+      <Helmet
+        title="lpma"
+        meta={[
+          {name: "description", content: "lpma"},
+          {name: "keywords", content: "lpma, lpma2018"},
+        ]}
+      />
+      <Header
+        {...contentfulHeader}
+        us={props.location.pathname.indexOf("us")}
+      />
+      <div className="page-container">{children()}</div>
+      <Footer {...contentfulFooter} />
+    </div>
+  );
+};
 
 export const pageQuery = graphql`
   query LayoutQuery {
@@ -42,6 +45,7 @@ export const pageQuery = graphql`
       topmenu {
         id
         name
+        country
         to
       }
     }

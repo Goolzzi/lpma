@@ -2,4 +2,6 @@
 #/events/* /resources/ 404!
 #test
 
-/  /am   302  Country=am,us
+/  /us   302  Country=us
+/join-us /join 302
+/login-us /login
