@@ -9,6 +9,7 @@ const propTypes = {
   secondaryLinks: PropTypes.array.isRequired,
   privacy: PropTypes.object.isRequired,
   logo: PropTypes.object.isRequired,
+  us: PropTypes.number.isRequired,
   joinLink: PropTypes.object,
 };
 
@@ -19,6 +20,7 @@ const Footer = ({
   privacy,
   logo,
   joinLink,
+  us,
 }) => (
   <div className="footer">
     <div className="footer-links">
@@ -32,11 +34,17 @@ const Footer = ({
           <div className="vertical-line" />
         </div>
         <div className="column footer-2 white-links-column">
-          {mainLinks.map(({id, name, to}) => (
-            <Link key={id} to={to}>
-              {name}
-            </Link>
-          ))}
+          {mainLinks.map(({id, name, to, country}) => {
+            if (us === -1 || country === "us") {
+              return (
+                <a
+                  key={id}
+                  href={us !== -1 && to === "events" ? `${to}-${country}` : to}>
+                  {name}
+                </a>
+              );
+            }
+          })}
         </div>
         <div className="column footer-1">
           <div className="vertical-line" />

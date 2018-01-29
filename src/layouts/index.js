@@ -14,6 +14,7 @@ const propTypes = {
 
 const LayoutTemplate = props => {
   const {children, data: {contentfulHeader, contentfulFooter}} = props;
+  const us = props.location.pathname.indexOf("us");
   return (
     <div>
       <Helmet
@@ -23,12 +24,9 @@ const LayoutTemplate = props => {
           {name: "keywords", content: "lpma, lpma2018"},
         ]}
       />
-      <Header
-        {...contentfulHeader}
-        us={props.location.pathname.indexOf("us")}
-      />
+      <Header {...contentfulHeader} us={us} />
       <div className="page-container">{children()}</div>
-      <Footer {...contentfulFooter} />
+      <Footer {...contentfulFooter} us={us} />
     </div>
   );
 };
@@ -59,6 +57,7 @@ export const pageQuery = graphql`
         id
         name
         to
+        country
       }
       secondaryLinks {
         id
