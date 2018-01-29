@@ -4,12 +4,8 @@ import classNames from "classnames";
 import "./styles.scss";
 
 const NavMenu = ({topmenu, us, handleClick}) => {
-  const getNavItem = (id, to, name, country) => (
-    <a
-      className="navbar-item"
-      onClick={handleClick}
-      key={id}
-      href={us !== -1 && to === "events" ? `${to}-${country}` : to}>
+  const getNavItem = (id, to, name) => (
+    <a className="navbar-item" onClick={handleClick} key={id} href={to}>
       {name}
     </a>
   );

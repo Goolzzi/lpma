@@ -3,3 +3,4 @@
 #test
 
 /  /us   302  Country=us
+/events/* /events-us/ 302 Country=us

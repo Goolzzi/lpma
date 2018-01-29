@@ -37,9 +37,7 @@ const Footer = ({
           {mainLinks.map(({id, name, to, country}) => {
             if (us === -1 || country === "us") {
               return (
-                <a
-                  key={id}
-                  href={us !== -1 && to === "events" ? `${to}-${country}` : to}>
+                <a key={id} href={to}>
                   {name}
                 </a>
               );
