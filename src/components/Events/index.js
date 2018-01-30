@@ -31,7 +31,7 @@ const propTypes = {
 const Events = ({title, events}) => (
   <section className="section upcoming-events">
     <h3>{title}</h3>
-    {events.map(item => <Event key={item.id} {...item} />)}
+    {events.map(({node}) => <Event key={node.id} {...node} />)}
   </section>
 );
 

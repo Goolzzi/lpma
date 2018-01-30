@@ -9,11 +9,15 @@ const propTypes = {
 };
 
 const EventsPage = ({
-  data: {contentfulUpcomingEvents, allContentfulEventsJumbotron: {edges}},
+  data: {
+    contentfulUpcomingEvents,
+    allContentfulEventsJumbotron: {edges},
+    allContentfulEvent: {edges: eventEdges},
+  },
 }) => (
   <div>
     <TopJumbotron {...edges[0].node} />
-    <Events {...contentfulUpcomingEvents} />
+    <Events {...contentfulUpcomingEvents} events={eventEdges} />
     <BottomJumbotron {...edges[1].node} />
   </div>
 );
@@ -26,22 +30,30 @@ export const pageQuery = graphql`
   query EventsPageQuery {
     contentfulUpcomingEvents {
       title
-      events {
-        id
-        name
-        date
-        location
-        description {
-          childMarkdownRemark {
-            html
-          }
-        }
-        buyTicketsLink {
-          to
+    }
+    allContentfulEvent(filter: {country: {eq: "au"}}) {
+      edges {
+        node {
+          id
           name
+          date
+          location
+          name
+          date
+          location
+          description {
+            childMarkdownRemark {
+              html
+            }
+          }
+          buyTicketsLink {
+            to
+            name
+          }
         }
       }
     }
+
     allContentfulEventsJumbotron(sort: {fields: [pageLocation], order: DESC}) {
       edges {
         node {
