@@ -2,10 +2,11 @@ import React from "react";
 import PropTypes from "prop-types";
 
 import MemberBenefits from "../../components/MemberBenefits";
-import Audience from "../../components/Audience";
 import TopJumbotron from "../../components/TopJumbotron";
 import TopInfoColumns from "../../components/TopInfoColumns";
 import BottomJumbotron from "../../components/BottomJumbotron";
+import LPMATeam from "../../components/LPMATeam";
+import TestimonialsTwo from "../../components/TestimonilasTwo";
 
 const propTypes = {
   data: PropTypes.object.isRequired,
@@ -17,14 +18,15 @@ const IndexUSPage = ({
     contentfulTestimonials,
     allContentfulAcquisitionJumbotron: {edges},
     contentfulAcquisitionTopInfoRemark,
-    allContentfulAcquisitionAudience,
   },
 }) => (
   <div>
     <TopJumbotron {...edges[0].node} />
     <TopInfoColumns {...contentfulAcquisitionTopInfoRemark} />
     <MemberBenefits {...contentfulMemberBenefits} />
-    <Audience {...allContentfulAcquisitionAudience} />
+    <LPMATeam />
+    <h3 className="test-header">{contentfulTestimonials.title}</h3>
+    <TestimonialsTwo testimonial={contentfulTestimonials.testimonial2} />
     <BottomJumbotron {...edges[1].node} />
   </div>
 );
@@ -34,7 +36,7 @@ IndexUSPage.propTypes = propTypes;
 export default IndexUSPage;
 
 export const pageQuery = graphql`
-  query IndexUSPage {
+  query IndexPageQuery {
     contentfulMemberBenefits {
       title
       memberBenefitItems {
@@ -53,21 +55,6 @@ export const pageQuery = graphql`
     }
     contentfulTestimonials {
       title
-      testimonial1 {
-        id
-        authorName
-        childContentfulTestimonial1ContentTextNode {
-          childMarkdownRemark {
-            html
-          }
-        }
-        authorPhoto {
-          responsiveResolution {
-            src
-            srcSet
-          }
-        }
-      }
       testimonial2 {
         id
         image {
@@ -114,19 +101,6 @@ export const pageQuery = graphql`
         childContentfulColumnTextRemarkContentTextNode {
           childMarkdownRemark {
             html
-          }
-        }
-      }
-    }
-    allContentfulAcquisitionAudience {
-      edges {
-        node {
-          id
-          image {
-            resolutions {
-              src
-              srcSet
-            }
           }
         }
       }

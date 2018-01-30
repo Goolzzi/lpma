@@ -6,7 +6,6 @@ import Audience from "../components/Audience";
 import TopJumbotron from "../components/TopJumbotron";
 import TopInfoColumns from "../components/TopInfoColumns";
 import BottomJumbotron from "../components/BottomJumbotron";
-import LPMATeam from "../components/LPMATeam";
 import TestimonialsOne from "../components/TestimonialsOne";
 import TestimonialsTwo from "../components/TestimonilasTwo";
 
@@ -28,7 +27,6 @@ const IndexPage = ({
     <TopInfoColumns {...contentfulAcquisitionTopInfoRemark} />
     <MemberBenefits {...contentfulMemberBenefits} />
     <Audience {...allContentfulAcquisitionAudience} />
-    <LPMATeam />
     <h3 className="test-header">{contentfulTestimonials.title}</h3>
     <TestimonialsOne testimonial={contentfulTestimonials.testimonial1} />
     <TestimonialsTwo testimonial={contentfulTestimonials.testimonial2} />
