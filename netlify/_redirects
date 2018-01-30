@@ -3,7 +3,7 @@
 #test
 
 /  /us/   302  Country=us
-/us/* 302 / Country=au
+/us/*  / 302 Country=au
 
 #/events/* /events-us/ 302 Country=us
 #/events-us/* /events/ 302 Country=au
