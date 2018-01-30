@@ -7,8 +7,9 @@ import Audience from "../components/Audience";
 import TopJumbotron from "../components/TopJumbotron";
 import TopInfoColumns from "../components/TopInfoColumns";
 import BottomJumbotron from "../components/BottomJumbotron";
-import OurTeam from "../components/OurTeam";
-
+import LPMATeam from "../components/LPMATeam";
+import TestimonialsOne from "../components/TestimonialsOne";
+import TestimonialsTwo from "../components/TestimonilasTwo";
 
 const propTypes = {
   data: PropTypes.object.isRequired,
@@ -27,9 +28,11 @@ const IndexPage = ({
     <TopJumbotron {...edges[0].node} />
     <TopInfoColumns {...contentfulAcquisitionTopInfoRemark} />
     <MemberBenefits {...contentfulMemberBenefits} />
-    <OurTeam />
     <Audience {...allContentfulAcquisitionAudience} />
-    <Testimonials {...contentfulTestimonials} />
+    <LPMATeam />
+    <h3 className="test-header">{contentfulTestimonials.title}</h3>
+    <TestimonialsOne testimonial={contentfulTestimonials.testimonial1} />
+    <TestimonialsTwo testimonial={contentfulTestimonials.testimonial2} />
     <BottomJumbotron {...edges[1].node} />
   </div>
 );

@@ -1,13 +1,13 @@
-.testimonials {
-  h3 {
-    color: $gray-dark;
-    font-size: 1.7777rem;
-    font-family: "DomaineSansMedium";
-    margin-bottom: 0.75rem;
-    text-transform: uppercase;
-    padding: 2.25rem;
-  }
+h3.test-header{
+  color: $gray-dark;
+  font-size: 1.7777rem;
+  font-family: "DomaineSansMedium";
+  margin-bottom: 0.75rem;
+  text-transform: uppercase;
+  padding: 2.25rem;
+}
 
+.testimonials {
   .testimonial-item {
     .text-cont {
       display: inline-block;
@@ -51,26 +51,6 @@
       &:nth-child(odd) {
         border-right: 3px solid $primary-color;
       }
-    }
-  }
-}
-
-.exhibits {
-  margin-bottom: 5.25rem;
-
-  .exhibit-item {
-    .image {
-      img {
-        margin-bottom: 0rem;
-      }
-    }
-
-    > span.content {
-      display: inline-block;
-      padding: 5rem 2.75rem 5rem 2.75rem;
-      font-size: 1.1111rem;
-      line-height: 1.4;
-      color: $gray-light;
     }
   }
 }
