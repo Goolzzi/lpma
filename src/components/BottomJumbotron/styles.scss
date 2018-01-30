@@ -19,9 +19,12 @@
     width: 100%;
     top: 0rem;
     left: 0rem;
+    height: 100%;
+    display: flex;
+    align-items: center;
 
     .column {
-      padding: 3.5rem 2.75rem 0rem !important;
+      padding: 0rem 2.75rem 0rem !important;
 
       p {
         padding-left: 3.1111rem;
@@ -29,6 +32,7 @@
         font-size: 2.6666rem;
         line-height: normal;
         color: $white;
+        margin-bottom: 0px;
       }
 
       button {
@@ -38,10 +42,15 @@
 
     @media screen and (max-width: 768px) {
       .column {
-        padding-top: 1.5rem !important;
+        padding-top: 1.2rem !important;
+
+        &:last-child {
+          padding-top: 0.6rem !important;
+        }
 
         p {
           font-size: 1.5rem;
+          margin-bottom: 1rem;
         }
       }
     }

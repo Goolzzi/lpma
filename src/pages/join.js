@@ -10,7 +10,7 @@ const propTypes = {
 };
 
 const joinPage = ({data: {allContentfulJoinJumotron: {edges}}}) => (
-  <div>
+  <div className="join-page">
     <Top {...edges[0].node} />
     <Join />
     <Bottom {...edges[1].node} />

@@ -130,9 +130,13 @@ button.button.navbar-burger {
 
   $burger-tickness: 4px;
 
-  &:focus, &:active {
-    outline:0;
+  outline: none;
+  box-shadow: none;
+  &:focus {
+    outline: none;
+    box-shadow: none;
   }
+
   span {
     color: $white;
 

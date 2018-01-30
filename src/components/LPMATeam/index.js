@@ -6,7 +6,9 @@ const LPMATeam = () => (
     <h3>our team</h3>
     <div className="columns is-multiline out-team-item">
       <div className="column img-col is-3">
-        <img src={require("../../assets/images/profile-pic.jpg")} />
+        <div className="img-wrapper">
+          <img src={require("../../assets/images/profile-pic.jpg")} />
+        </div>
       </div>
       <div className="column is-9">
         <p>

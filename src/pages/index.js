@@ -2,7 +2,6 @@ import React from "react";
 import PropTypes from "prop-types";
 
 import MemberBenefits from "../components/MemberBenefits";
-import Testimonials from "../components/Testimonials";
 import Audience from "../components/Audience";
 import TopJumbotron from "../components/TopJumbotron";
 import TopInfoColumns from "../components/TopInfoColumns";

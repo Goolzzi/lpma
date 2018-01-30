@@ -1,3 +1,13 @@
+.join-page {
+  .top {
+    @media screen and (max-width: 768px) {
+      .cont-wrapper {
+        display: none;
+      }
+    }
+  }
+}
+
 .join {
   padding: 0px;
 
@@ -81,5 +91,15 @@
     margin-top: -36rem !important;
     z-index: 1;
     background-color: $white;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .join {
+    .join-cont {
+      .step-list {
+        text-align: left;
+      }
+    }
   }
 }
