@@ -1,29 +1,13 @@
 import React from "react";
 import PropTypes from "prop-types";
+import LPMALink from "../../utils/LPMALink";
 import classNames from "classnames";
 import "./styles.scss";
-
-const NavMenu = ({topmenu, us, handleClick}) => {
-  const getNavItem = (id, to, name) => (
-    <a className="navbar-item" onClick={handleClick} key={id} href={to}>
-      {name}
-    </a>
-  );
-  return (
-    <div className="navbar-end">
-      {topmenu.map(({id, to, name, country}) => {
-        if (us === -1 || country === "us") {
-          return getNavItem(id, to, name, country, us);
-        }
-      })}
-    </div>
-  );
-};
 
 const propTypes = {
   topmenu: PropTypes.array.isRequired,
   logo: PropTypes.object.isRequired,
-  us: PropTypes.number.isRequired,
+  forUSA: PropTypes.bool.isRequired,
 };
 
 class Header extends React.Component {
@@ -41,15 +25,18 @@ class Header extends React.Component {
   };
 
   render() {
-    const {topmenu, logo: {file}, us} = this.props;
+    const {topmenu, logo: {file}, forUSA} = this.props;
     const {isActive} = this.state;
+    const menuItems = forUSA
+      ? topmenu.filter(({country}) => country === "us")
+      : topmenu;
     return (
       <div className="navbar-wrapper">
         <nav className="navbar">
           <div className="navbar-brand">
-            <a className="navbar-item" href={"/"}>
+            <LPMALink cssClass={"navbar-item"} force={true} to={"/"}>
               <img src={file.url} alt={file.fileName} />
-            </a>
+            </LPMALink>
             <button
               onClick={() =>
                 this.setState(prevState => ({isActive: !prevState.isActive}))
@@ -66,7 +53,20 @@ class Header extends React.Component {
             className={classNames("navbar-menu", {
               "is-active": isActive,
             })}>
-            <NavMenu topmenu={topmenu} us={us} handleClick={this.handleClick} />
+            <div className="navbar-end">
+              {menuItems.map(({id, to, name, force}) => {
+                return (
+                  <LPMALink
+                    cssClass={"navbar-item"}
+                    force={!!force}
+                    onClick={this.handleClick}
+                    key={id}
+                    to={to}>
+                    {name}
+                  </LPMALink>
+                );
+              })}
+            </div>
           </div>
         </nav>
       </div>
