@@ -33,6 +33,33 @@ const Footer = ({
             <div
               dangerouslySetInnerHTML={{__html: title.childMarkdownRemark.html}}
             />
+            <div className="social-networks">
+              <img
+                className="social-network-icon"
+                src={require("../../assets/images/icons/Facebook.svg")}
+                alt="Facebook"
+              />
+              <img
+                className="social-network-icon"
+                src={require("../../assets/images/icons/Instagram.svg")}
+                alt="Instagram"
+              />
+              <img
+                className="social-network-icon"
+                src={require("../../assets/images/icons/Twitter.svg")}
+                alt="Twitter"
+              />
+              <img
+                className="social-network-icon"
+                src={require("../../assets/images/icons/LinkedIn.svg")}
+                alt="LinkedIn"
+              />
+              <img
+                className="social-network-icon"
+                src={require("../../assets/images/icons/Youtube.svg")}
+                alt="Youtube"
+              />
+            </div>
           </div>
           <div className="column footer-1">
             <div className="vertical-line" />
