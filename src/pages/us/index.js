@@ -18,13 +18,14 @@ const IndexUSPage = ({
     contentfulTestimonials,
     allContentfulAcquisitionJumbotron: {edges},
     contentfulAcquisitionTopInfoRemark,
+    contentfulAcquisitionLpmaTeam,
   },
 }) => (
   <div>
     <TopJumbotron {...edges[0].node} />
     <TopInfoColumns {...contentfulAcquisitionTopInfoRemark} />
     <MemberBenefits {...contentfulMemberBenefits} />
-    <LPMATeam />
+    <LPMATeam {...contentfulAcquisitionLpmaTeam} />
     <h3 className="test-header">{contentfulTestimonials.title}</h3>
     <TestimonialsTwo testimonial={contentfulTestimonials.testimonial2} />
     <BottomJumbotron {...edges[1].node} />
@@ -36,7 +37,7 @@ IndexUSPage.propTypes = propTypes;
 export default IndexUSPage;
 
 export const pageQuery = graphql`
-  query IndexPageQuery {
+  query IndexUSPageQuery {
     contentfulMemberBenefits {
       title
       memberBenefitItems {
@@ -50,6 +51,21 @@ export const pageQuery = graphql`
             url
             fileName
           }
+        }
+      }
+    }
+    contentfulAcquisitionLpmaTeam {
+      title
+      author
+      content {
+        childMarkdownRemark {
+          html
+        }
+      }
+      image {
+        resolutions {
+          src
+          srcSet
         }
       }
     }
