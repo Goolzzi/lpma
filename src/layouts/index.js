@@ -81,6 +81,16 @@ export const pageQuery = graphql`
           fileName
         }
       }
+      socialLinks {
+        id
+        href
+        icon {
+          id
+          file {
+            url
+          }
+        }
+      }
     }
   }
 `;

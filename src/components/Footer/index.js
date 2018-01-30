@@ -11,6 +11,7 @@ const propTypes = {
   logo: PropTypes.object.isRequired,
   forUSA: PropTypes.bool.isRequired,
   joinLink: PropTypes.object,
+  socialLinks: PropTypes.array.isRequired,
 };
 
 const Footer = ({
@@ -20,6 +21,7 @@ const Footer = ({
   privacy,
   logo,
   joinLink,
+  socialLinks,
   forUSA,
 }) => {
   const menuItems = forUSA
@@ -34,31 +36,15 @@ const Footer = ({
               dangerouslySetInnerHTML={{__html: title.childMarkdownRemark.html}}
             />
             <div className="social-networks">
-              <img
-                className="social-network-icon"
-                src={require("../../assets/images/icons/Facebook.svg")}
-                alt="Facebook"
-              />
-              <img
-                className="social-network-icon"
-                src={require("../../assets/images/icons/Instagram.svg")}
-                alt="Instagram"
-              />
-              <img
-                className="social-network-icon"
-                src={require("../../assets/images/icons/Twitter.svg")}
-                alt="Twitter"
-              />
-              <img
-                className="social-network-icon"
-                src={require("../../assets/images/icons/LinkedIn.svg")}
-                alt="LinkedIn"
-              />
-              <img
-                className="social-network-icon"
-                src={require("../../assets/images/icons/Youtube.svg")}
-                alt="Youtube"
-              />
+              {socialLinks.map(({id, href, icon: {file}}) => (
+                <a key={id} href={href}>
+                  <img
+                    className="social-network-icon"
+                    src={file.url}
+                    alt="Facebook"
+                  />
+                </a>
+              ))}
             </div>
           </div>
           <div className="column footer-1">
