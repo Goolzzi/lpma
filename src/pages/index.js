@@ -7,6 +7,8 @@ import Audience from "../components/Audience";
 import TopJumbotron from "../components/TopJumbotron";
 import TopInfoColumns from "../components/TopInfoColumns";
 import BottomJumbotron from "../components/BottomJumbotron";
+import OurTeam from "../components/OurTeam";
+
 
 const propTypes = {
   data: PropTypes.object.isRequired,
@@ -25,6 +27,7 @@ const IndexPage = ({
     <TopJumbotron {...edges[0].node} />
     <TopInfoColumns {...contentfulAcquisitionTopInfoRemark} />
     <MemberBenefits {...contentfulMemberBenefits} />
+    <OurTeam />
     <Audience {...allContentfulAcquisitionAudience} />
     <Testimonials {...contentfulTestimonials} />
     <BottomJumbotron {...edges[1].node} />

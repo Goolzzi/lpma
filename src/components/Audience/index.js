@@ -10,13 +10,11 @@ const Audience = ({edges}) => (
   <React.Fragment>
     {edges.map(({node: {id, image: {resolutions}}}) => (
       <section key={id} className="hero audience">
-        <div className="image">
-          <img
-            src={resolutions.src}
-            srcSet={resolutions.srcSet}
-            alt="audience"
-          />
-        </div>
+        <img
+          src={resolutions.src}
+          srcSet={resolutions.srcSet}
+          alt="audience"
+        />
       </section>
     ))}
   </React.Fragment>

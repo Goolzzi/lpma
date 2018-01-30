@@ -4,6 +4,7 @@
   img {
     margin: 0rem;
     object-fit: cover;
+    object-position: top;
     height: 750px;
   }
 
@@ -15,6 +16,7 @@
 
   .cont-wrapper {
     background-color: $secondary-color;
+    background-color: rgba(70, 79, 83, 0.7);
     position: absolute;
     width: 50%;
     left: 0rem;
@@ -27,9 +29,10 @@
 
       p {
         color: $white;
-        font-size: 2.6666rem;
+        font-size: 2.3333rem;
         line-height: normal;
-        margin-bottom: 6rem;
+        font-weight: normal;
+        margin-bottom: 2rem;
       }
     }
   }

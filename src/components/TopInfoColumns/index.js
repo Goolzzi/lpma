@@ -7,7 +7,7 @@ const propTypes = {
 };
 const TopInfoColumns = ({info}) => (
   <section className="section top-columns">
-    <div className="columns is-multiline">
+    <div className="columns is-multiline is-gapless">
       {info.map(
         ({
           id,

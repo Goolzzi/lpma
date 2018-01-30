@@ -1,9 +1,29 @@
 .top-columns {
-  padding: 3.75rem 2.75rem;
+  padding: 3rem 0rem 1rem;
 
   .top-column {
     font-size: 1.4444rem;
     line-height: 1.38;
     color: #9b9b9b;
+    
+    @media screen and (max-width: 768px) {
+      p {
+        padding: 1rem 2.75rem;
+      }
+    }
+
+    @media screen and (min-width: 769px) {
+      &:nth-child(odd) {
+        p {
+          padding: 0rem 5rem 0rem 2.75rem;
+        }
+      }
+
+      &:nth-child(even) {
+        p {
+          padding: 0rem 2.75rem 0rem 5rem;
+        }
+      }
+    }
   }
 }
