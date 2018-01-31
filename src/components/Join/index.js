@@ -23,7 +23,9 @@ const Join = () => (
                   className="inp"
                   placeholder="Contact number"
                 />
-                <button className="btn primary halfwidth">Submit</button>
+                <button type="submit" className="btn primary halfwidth">
+                  Submit
+                </button>
               </form>
             </div>
           </div>
