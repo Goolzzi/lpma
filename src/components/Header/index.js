@@ -72,7 +72,9 @@ class Header extends React.Component {
           </div>
           <button
             onClick={() =>
-              this.setState(prevState => ({isActiveMenu: !prevState.isActiveMenu}))
+              this.setState(prevState => ({
+                isActiveMenu: !prevState.isActiveMenu,
+              }))
             }
             className={classNames("button navbar-burger custom-burger", {
               "is-active": isActiveMenu,
@@ -84,49 +86,60 @@ class Header extends React.Component {
         </nav>
         <div
           className={classNames("desctop-menu", {
-            "active": isActiveMenu,
-          })}
-        >
+            active: isActiveMenu,
+          })}>
           <div className="columns">
             <div className="column is-9 desctop-menu-left">
               <div className="columns is-multiline">
                 <div className="column is-4 desctop-menu-item">
-                  <a href="#" className="title-link">About</a>
+                  <a href="#" className="title-link">
+                    About
+                  </a>
                   <a href="#">Blog</a>
                   <a href="#">Team</a>
                   <a href="#">Members</a>
                   <a href="#">Contact</a>
                 </div>
                 <div className="column is-4 desctop-menu-item">
-                  <a href="#" className="title-link">Membership</a>
+                  <a href="#" className="title-link">
+                    Membership
+                  </a>
                   <a href="#">Something</a>
                   <a href="#">Something</a>
                   <a href="#">Something</a>
                   <a href="#">Something</a>
                 </div>
                 <div className="column is-4 desctop-menu-item">
-                  <a href="#" className="title-link">Resources</a>
+                  <a href="#" className="title-link">
+                    Resources
+                  </a>
                   <a href="#">Something</a>
                   <a href="#">Something</a>
                   <a href="#">Something</a>
                   <a href="#">Something</a>
                 </div>
                 <div className="column is-4 desctop-menu-item">
-                  <a href="#" className="title-link">Events</a>
+                  <a href="#" className="title-link">
+                    Events
+                  </a>
                   <a href="#">Something</a>
                   <a href="#">Something</a>
                   <a href="#">Something</a>
                   <a href="#">Something</a>
                 </div>
                 <div className="column is-4 desctop-menu-item">
-                  <a href="#" className="title-link">Foundry</a>
+                  <a href="#" className="title-link">
+                    Foundry
+                  </a>
                   <a href="#">Something</a>
                   <a href="#">Something</a>
                   <a href="#">Something</a>
                   <a href="#">Something</a>
                 </div>
                 <div className="column is-4 desctop-menu-item">
-                  <a href="#" className="title-link">Something</a>
+                  <a href="#" className="title-link">
+                    Something
+                  </a>
                   <a href="#">Something</a>
                   <a href="#">Something</a>
                   <a href="#">Something</a>
@@ -137,9 +150,12 @@ class Header extends React.Component {
             <div className="column is-3 desctop-menu-right">
               <h3>Become a Member</h3>
               <p>
-                Build your career with the knowledge, tools and people you need to support you.
+                Build your career with the knowledge, tools and people you need
+                to support you.
               </p>
-              <button className="btn primary threequarterwidth">Join Today</button>
+              <button className="btn primary threequarterwidth">
+                Join Today
+              </button>
             </div>
           </div>
         </div>

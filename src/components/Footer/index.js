@@ -29,51 +29,83 @@ const Footer = ({
     : mainLinks;
   return (
     <div className="footer">
-      <div className="footer-links">
-        <div className="columns is-gapless">
-          <div className="column footer-3 primary-links-column">
-            <div
-              dangerouslySetInnerHTML={{__html: title.childMarkdownRemark.html}}
-            />
-            <div className="social-networks">
-              {socialLinks.map(({id, href, icon: {file}}) => (
-                <a key={id} href={href}>
-                  <img
-                    className="social-network-icon"
-                    src={file.url}
-                    alt="Facebook"
-                  />
-                </a>
-              ))}
+      {forUSA ? (
+        <div className="usa-footer-links">
+          <div className="columns is-gapless">
+            <div className="column is-6 footer-left">
+              <div
+                dangerouslySetInnerHTML={{
+                  __html: title.childMarkdownRemark.html,
+                }}
+              />
+            </div>
+            <div className="column is-6 footer-right">
+              <div className="social-networks">
+                <span>Follow us:</span>
+                {socialLinks.map(({id, href, icon: {file}}) => (
+                  <a key={id} href={href}>
+                    <img
+                      className="social-network-icon"
+                      src={file.url}
+                      alt="Facebook"
+                    />
+                  </a>
+                ))}
+              </div>
             </div>
           </div>
-          <div className="column footer-1">
-            <div className="vertical-line" />
-          </div>
-          <div className="column footer-2 white-links-column">
-            {menuItems.map(({id, name, to, force}) => {
-              return (
-                <LPMALink force={!!force} key={id} to={to}>
+        </div>
+      ) : (
+        <div className="footer-links">
+          <div className="columns is-gapless">
+            <div className="column footer-3 primary-links-column">
+              <div
+                dangerouslySetInnerHTML={{
+                  __html: title.childMarkdownRemark.html,
+                }}
+              />
+              <div className="social-networks">
+                {socialLinks.map(({id, href, icon: {file}}) => (
+                  <a key={id} href={href}>
+                    <img
+                      className="social-network-icon"
+                      src={file.url}
+                      alt="Facebook"
+                    />
+                  </a>
+                ))}
+              </div>
+            </div>
+            <div className="column footer-1">
+              <div className="vertical-line" />
+            </div>
+            <div className="column footer-2 white-links-column">
+              {menuItems.map(({id, name, to, force}) => {
+                return (
+                  <LPMALink force={!!force} key={id} to={to}>
+                    {name}
+                  </LPMALink>
+                );
+              })}
+            </div>
+            <div className="column footer-1">
+              <div className="vertical-line" />
+            </div>
+            <div className="column footer-2 white-links-column with-button">
+              {secondaryLinks.map(({id, name, to}) => (
+                <LPMALink key={id} to={to}>
                   {name}
                 </LPMALink>
-              );
-            })}
-          </div>
-          <div className="column footer-1">
-            <div className="vertical-line" />
-          </div>
-          <div className="column footer-2 white-links-column with-button">
-            {secondaryLinks.map(({id, name, to}) => (
-              <LPMALink key={id} to={to}>
-                {name}
+              ))}
+              <LPMALink to={joinLink.to}>
+                <button className="btn primary fullwidth">
+                  {joinLink.name}
+                </button>
               </LPMALink>
-            ))}
-            <LPMALink to={joinLink.to}>
-              <button className="btn primary fullwidth">{joinLink.name}</button>
-            </LPMALink>
+            </div>
           </div>
         </div>
-      </div>
+      )}
       <div className="footer-copyright">
         <div className="level">
           <div className="level-left">

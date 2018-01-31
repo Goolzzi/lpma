@@ -60,21 +60,13 @@
       img {
         top: 0.5rem;
       }
-
-      .cont {
-        margin-left: 5rem;
-      }
     }
   }
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1007px) {
   .member-benefits {
     .benefit-item {
-      img {
-        top: 0.5rem;
-      }
-
       .cont {
         margin-left: 5rem;
       }
