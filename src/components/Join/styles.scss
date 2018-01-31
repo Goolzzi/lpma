@@ -36,7 +36,7 @@
     border-left: 3px solid $primary-color;
     padding-left: 3.5rem;
 
-    input[type="text"] {
+    input[type="text"], input[type="email"] {
       display: block;
       margin-bottom: 1.2rem;
       width: 100%;

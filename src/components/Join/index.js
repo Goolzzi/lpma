@@ -2,16 +2,52 @@ import React from "react";
 import Link from "gatsby-link";
 import "./styles.scss";
 
+function getFormMarkup() {
+  return {
+    __html: ` <form  netlify name="joinForm">
+  <input
+   required
+    type="text"
+    class="inp"
+    name="FirstName"
+    placeholder="FirstName"
+  />
+  <input
+    type="text"
+    class="inp"
+    name="LastName"
+    placeholder="LastName"
+  />
+  <input
+    type="text"
+    class="inp"
+    name="AgencyName"
+    placeholder="AgencyName"
+  />
+  <input
+    required
+    type="email"
+    class="inp"
+    name="Email"
+    placeholder="Email"
+  />
+  <input
+    type="text"
+    class="inp"
+    name="ContactNumber"
+    placeholder="ContactNumber"
+  />
+  <button type="submit" class="btn primary halfwidth">
+    Submit
+  </button>
+</form>`,
+  };
+}
+
 class Join extends React.PureComponent {
   constructor(props) {
     super(props);
     this.formRef = null;
-  }
-
-  componentDidMount() {
-    if (this.formRef) {
-      this.formRef.setAttribute("data-netlify", "true");
-    }
   }
 
   render() {
@@ -25,47 +61,10 @@ class Join extends React.PureComponent {
                 You&apos;re taking your first step towards growing your network.
               </p>
               <div className="columns">
-                <div className="column is-7">
-                  <form
-                    ref={form => {
-                      this.formRef = form;
-                    }}
-                    name="join">
-                    <input
-                      type="text"
-                      className="inp"
-                      name="FirstName"
-                      placeholder="FirstName"
-                    />
-                    <input
-                      type="text"
-                      className="inp"
-                      name="LastName"
-                      placeholder="LastName"
-                    />
-                    <input
-                      type="text"
-                      className="inp"
-                      name="AgencyName"
-                      placeholder="AgencyName"
-                    />
-                    <input
-                      type="text"
-                      className="inp"
-                      name="Email"
-                      placeholder="Email"
-                    />
-                    <input
-                      type="text"
-                      className="inp"
-                      name="Contactnumber"
-                      placeholder="ContactNumber"
-                    />
-                    <button type="submit" className="btn primary halfwidth">
-                      Submit
-                    </button>
-                  </form>
-                </div>
+                <div
+                  className="column is-7"
+                  dangerouslySetInnerHTML={getFormMarkup()}
+                />
               </div>
             </div>
           </div>
