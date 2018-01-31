@@ -13,21 +13,13 @@ const Join = () => (
           </p>
           <div className="columns">
             <div className="column is-7">
-              <input type="text" className="inp" placeholder="Firstname" />
-              <input type="text" className="inp" placeholder="Lastname" />
+              <input type="text" className="inp" placeholder="First Name" />
+              <input type="text" className="inp" placeholder="Last Name" />
               <input type="text" className="inp" placeholder="Agency Name" />
               <input type="text" className="inp" placeholder="Email" />
               <input type="text" className="inp" placeholder="Contact number" />
 
-              <button className="btn primary halfwidth">Next</button>
-            </div>
-            <div className="column is-5 step-list">
-              <ol>
-                <li className="selected">Contact Details</li>
-                <li>Choose a Plan</li>
-                <li>Payment</li>
-                <li>Agency Details</li>
-              </ol>
+              <button className="btn primary halfwidth">Submit</button>
             </div>
           </div>
         </div>
