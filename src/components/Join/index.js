@@ -13,21 +13,14 @@ const Join = () => (
           </p>
           <div className="columns">
             <div className="column is-7">
-              <input type="text" className="inp" placeholder="Firstname" />
-              <input type="text" className="inp" placeholder="Lastname" />
-              <input type="text" className="inp" placeholder="Agency Name" />
-              <input type="text" className="inp" placeholder="Email" />
-              <input type="text" className="inp" placeholder="Contact number" />
-
-              <button className="btn primary halfwidth">Next</button>
-            </div>
-            <div className="column is-5 step-list">
-              <ol>
-                <li className="selected">Contact Details</li>
-                <li>Choose a Plan</li>
-                <li>Payment</li>
-                <li>Agency Details</li>
-              </ol>
+                <form name="contact" netlify>
+                  <input type="text" className="inp" placeholder="First Name" />
+                  <input type="text" className="inp" placeholder="Last Name" />
+                  <input type="text" className="inp" placeholder="Agency Name" />
+                  <input type="text" className="inp" placeholder="Email" />
+                  <input type="text" className="inp" placeholder="Contact number" />
+                  <button className="btn primary halfwidth">Submit</button>
+              </form>
             </div>
           </div>
         </div>
@@ -38,13 +31,13 @@ const Join = () => (
           <h3>Any Questions?</h3>
           <p>
             Shoot us an email at
-            <Link to="mailto:support@lpma.com.au"> support@lpma.com.au </Link>
+            <Link to="mailto:support@lpma.com"> support@lpma.com </Link>
           </p>
           <p>
             View our Membership
-            <Link to="#"> Terms and Conditions </Link>
+            <Link to="http://www.lpma.com/membership-terms-and-conditions/"> Terms and Conditions </Link>
             or
-            <Link to="#"> Privacy Policy</Link>
+            <Link to="https://www.lpma.com/privacy-policy"> Privacy Policy</Link>
             .
           </p>
         </div>

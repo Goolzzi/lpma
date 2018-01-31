@@ -16,5 +16,11 @@ module.exports = {
     `gatsby-transformer-remark`,
     `gatsby-plugin-react-next`,
     `gatsby-plugin-catch-links`,
+    {
+      resolve: 'gatsby-plugin-segment',
+      options: {
+        writeKey: 'w6pxhKoZujHmKrYKKUnaWeeB1TWOikTI'
+      }
+    }
   ],
 };
