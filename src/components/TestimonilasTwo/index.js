@@ -4,9 +4,11 @@ import "./styles.scss";
 
 const propTypes = {
   testimonial: PropTypes.array.isRequired,
+  forUS: PropTypes.bool.isRequired,
 };
 
-const Testimonials = ({testimonial}) => (
+//FIXME:
+const Testimonials = ({testimonial, forUS}) => (
   <section className="hero exhibits">
     <div className="columns is-gapless">
       {testimonial.map(
@@ -19,12 +21,16 @@ const Testimonials = ({testimonial}) => (
             <div className="image is-3by2">
               <img srcSet={srcSet} src={src} alt="exhibit" />
             </div>
-            <span
-              className="content"
-              dangerouslySetInnerHTML={{
-                __html: childMarkdownRemark.html,
-              }}
-            />
+            {!forUS ? (
+              <span
+                className="content"
+                dangerouslySetInnerHTML={{
+                  __html: childMarkdownRemark.html,
+                }}
+              />
+            ) : (
+              ""
+            )}
           </div>
         ),
       )}

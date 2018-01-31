@@ -12,6 +12,7 @@ const propTypes = {
   data: PropTypes.object.isRequired,
 };
 
+//FIXME:
 const IndexUSPage = ({
   data: {
     contentfulMemberBenefits,
@@ -25,9 +26,12 @@ const IndexUSPage = ({
     <TopJumbotron {...edges[0].node} />
     <TopInfoColumns {...contentfulAcquisitionTopInfoRemark} />
     <MemberBenefits {...contentfulMemberBenefits} />
+    {/* <h3 className="test-header">{contentfulTestimonials.title}</h3> */}
     <LPMATeam {...contentfulAcquisitionLpmaTeam} />
-    <h3 className="test-header">{contentfulTestimonials.title}</h3>
-    <TestimonialsTwo testimonial={contentfulTestimonials.testimonial2} />
+    <TestimonialsTwo
+      testimonial={contentfulTestimonials.testimonial2}
+      forUS={true}
+    />
     <BottomJumbotron {...edges[1].node} />
   </div>
 );

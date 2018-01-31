@@ -14,6 +14,7 @@ const propTypes = {
   socialLinks: PropTypes.array.isRequired,
 };
 
+//FIXME: improve footer for us and defoult view
 const Footer = ({
   title,
   mainLinks,

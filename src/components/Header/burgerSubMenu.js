@@ -1,7 +1,7 @@
 import React from "react";
 import classNames from "classnames";
 
-//todo This is just markup, need to improve!
+//todo FIXME: This is just markup, need to improve!
 const BurgerSubMenu = ({isActiveMenu}) => {
   return (
     <div

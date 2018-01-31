@@ -8,7 +8,7 @@ const propTypes = {
   data: PropTypes.object.isRequired,
 };
 
-//todo need to improve with events page
+//todo FIXME: need to improve with events page
 const EventsUSPage = ({
   data: {
     contentfulUpcomingEvents,
