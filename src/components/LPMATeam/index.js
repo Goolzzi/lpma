@@ -5,8 +5,8 @@ import "./styles.scss";
 const propTypes = {
   title: PropTypes.string.isRequired,
   author: PropTypes.string.isRequired,
-  content: PropTypes.string.isRequired,
-  image: PropTypes.string.isRequired,
+  content: PropTypes.object.isRequired,
+  image: PropTypes.object.isRequired,
 };
 
 const LPMATeam = ({title, author, content, image: {resolutions}}) => (

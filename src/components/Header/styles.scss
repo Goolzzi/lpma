@@ -1,6 +1,8 @@
 .navbar-wrapper {
   background-color: $primary-color;
-
+  .hide-burger {
+    display: none !important;
+  }
   .navbar {
     max-width: 1392px;
     margin: auto;
