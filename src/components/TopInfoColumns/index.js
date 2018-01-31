@@ -9,7 +9,7 @@ const TopInfoColumns = ({info}) => (
   <React.Fragment>
     {/* Columns view: //FIXME:  handle after geting the requierments */}
     {/* temp bad solution */}
-    {location.pathname.indexOf("us") === -1 ? (
+    {location && location.pathname.indexOf("us") === -1 ? (
       <section className="section top-columns">
         <div className="columns is-multiline is-gapless">
           {info.map(
