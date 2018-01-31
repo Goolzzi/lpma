@@ -2,12 +2,36 @@ import React from "react";
 import Link from "gatsby-link";
 import "./styles.scss";
 
+function createMarkup() {
+  return {
+    __html: `
+    <form name="contact" netlify>
+  <p>
+    <label>Your Name: <input type="text" name="name"></label>   
+  </p>
+  <p>
+    <label>Your Email: <input type="email" name="email"></label>
+  </p>
+  <p>
+    <label>Message: <textarea name="message"></textarea></label>
+  </p>
+  <p>
+    <button type="submit">Send</button>
+  </p>
+</form>
+    `,
+  };
+}
+
 const Join = () => (
   <section className="section join">
     <div className="columns is-gapless">
       <div className="column is-8 join-wrapper">
         <div className="join-cont">
           <h2>Join</h2>
+
+          <div dangerouslySetInnerHTML={createMarkup()} />
+
           <p>
             You&apos;re taking your first step towards growing your network.
           </p>
