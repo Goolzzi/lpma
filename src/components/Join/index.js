@@ -30,13 +30,13 @@ const Join = () => (
           <h3>Any Questions?</h3>
           <p>
             Shoot us an email at
-            <Link to="mailto:support@lpma.com.au"> support@lpma.com.au </Link>
+            <Link to="mailto:support@lpma.com"> support@lpma.com </Link>
           </p>
           <p>
             View our Membership
-            <Link to="#"> Terms and Conditions </Link>
+            <Link to="http://www.lpma.com/membership-terms-and-conditions/"> Terms and Conditions </Link>
             or
-            <Link to="#"> Privacy Policy</Link>
+            <Link to="https://www.lpma.com/privacy-policy"> Privacy Policy</Link>
             .
           </p>
         </div>
