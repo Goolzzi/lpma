@@ -34,19 +34,19 @@ class Join extends React.PureComponent {
                     <input
                       type="text"
                       className="inp"
-                      name="First Name"
+                      name="FirstName"
                       placeholder="FirstName"
                     />
                     <input
                       type="text"
                       className="inp"
-                      name="Last Name"
+                      name="LastName"
                       placeholder="LastName"
                     />
                     <input
                       type="text"
                       className="inp"
-                      name="Agency Name"
+                      name="AgencyName"
                       placeholder="AgencyName"
                     />
                     <input
@@ -58,7 +58,7 @@ class Join extends React.PureComponent {
                     <input
                       type="text"
                       className="inp"
-                      name="Contact number"
+                      name="Contactnumber"
                       placeholder="ContactNumber"
                     />
                     <button type="submit" className="btn primary halfwidth">
