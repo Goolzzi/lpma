@@ -5,6 +5,7 @@ import "./styles.scss";
 const propTypes = {
   info: PropTypes.array.isRequired,
 };
+
 const TopInfoColumns = ({info}) => {
   return (
     <React.Fragment>

@@ -22,16 +22,16 @@ const IndexUSPage = ({
     contentfulAcquisitionLpmaTeam,
   },
 }) => (
-  <div>
+  <div className="index-page-us">
     <TopJumbotron {...edges[0].node} />
     <TopInfoColumns {...contentfulAcquisitionTopInfoRemark} />
     <MemberBenefits {...contentfulMemberBenefits} />
     {/* <h3 className="test-header">{contentfulTestimonials.title}</h3> */}
-    <LPMATeam {...contentfulAcquisitionLpmaTeam} />
     <TestimonialsTwo
       testimonial={contentfulTestimonials.testimonial2}
       forUS={true}
     />
+    <LPMATeam {...contentfulAcquisitionLpmaTeam} />
     <BottomJumbotron {...edges[1].node} />
   </div>
 );
