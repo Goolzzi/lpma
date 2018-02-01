@@ -25,7 +25,7 @@ const IndexUSPage = ({
   <div className="index-page-us">
     <TopJumbotron {...edges[0].node} />
     <TopInfoColumns {...contentfulAcquisitionTopInfoRemark} />
-    <MemberBenefits {...contentfulMemberBenefits} />
+    {/* <MemberBenefits {...contentfulMemberBenefits} /> */}
     {/* <h3 className="test-header">{contentfulTestimonials.title}</h3> */}
     <TestimonialsTwo
       testimonial={contentfulTestimonials.testimonial2}
