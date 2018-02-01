@@ -1,3 +1,5 @@
+require("dotenv").config();
+
 module.exports = {
   siteMetadata: {
     title: `lpma`,
@@ -9,18 +11,12 @@ module.exports = {
     {
       resolve: `gatsby-source-contentful`,
       options: {
-        spaceId: `nq4swzsk9dgh`,
-        accessToken: `ba8b8ceb07a42e08499a30361f30517ee29a0fd420aa0371f9ade92a2fd756c0`,
+        spaceId: process.env.CONTENTFUL_SPACE_ID || "",
+        accessToken: process.env.CONTENTFUL_ACCESS_TOKEN || "",
       },
     },
     `gatsby-transformer-remark`,
     `gatsby-plugin-react-next`,
     `gatsby-plugin-catch-links`,
-    // {
-    //   resolve: "gatsby-plugin-segment",
-    //   options: {
-    //     writeKey: "w6pxhKoZujHmKrYKKUnaWeeB1TWOikTI",
-    //   },
-    // },
   ],
 };
