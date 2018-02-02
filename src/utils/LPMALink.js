@@ -1,5 +1,10 @@
 import React from "react";
+import PropTypes from "prop-types";
 import Link from "gatsby-link";
+
+const propTypes = {
+  force: PropTypes.bool,
+};
 
 const LPMALink = props => {
   if (props.force) {
@@ -19,5 +24,7 @@ const LPMALink = props => {
     </Link>
   );
 };
+
+LPMALink.propTypes = propTypes;
 
 export default LPMALink;
