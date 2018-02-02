@@ -74,6 +74,7 @@ export const pageQuery = graphql`
       joinLink {
         name
         to
+        force
       }
       logo {
         file {

@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import Link from "gatsby-link";
+import LPMALink from "../../utils/LPMALink";
 import "./styles.scss";
 
 const ResurceItem = props => {
@@ -29,11 +29,11 @@ const ResurceItem = props => {
       )}
       <div className="button-wrapper">
         {orderLink ? (
-          <Link to={orderLink.to}>
+          <LPMALink to={orderLink.to}>
             <button className="btn secondary halfwidth">
               {orderLink.name}
             </button>
-          </Link>
+          </LPMALink>
         ) : (
           <a href={downloadLink.resourseHref} download>
             <button className="btn secondary halfwidth">

@@ -30,6 +30,7 @@ export const pageQuery = graphql`
             joinLink {
               name
               to
+              force
             }
             title {
               title
