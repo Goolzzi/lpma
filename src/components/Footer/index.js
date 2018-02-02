@@ -83,7 +83,7 @@ const Footer = ({
             <div className="column footer-2 white-links-column">
               {menuItems.map(({id, name, to, force}) => {
                 return (
-                  <LPMALink force={!!force} key={id} to={to}>
+                  <LPMALink force={force} key={id} to={to}>
                     {name}
                   </LPMALink>
                 );
@@ -93,12 +93,12 @@ const Footer = ({
               <div className="vertical-line" />
             </div>
             <div className="column footer-2 white-links-column with-button">
-              {secondaryLinks.map(({id, name, to}) => (
-                <LPMALink key={id} to={to}>
+              {secondaryLinks.map(({id, name, to, force}) => (
+                <LPMALink key={id} to={to} force={force}>
                   {name}
                 </LPMALink>
               ))}
-              <LPMALink to={joinLink.to}>
+              <LPMALink {...joinLink}>
                 <button className="btn primary fullwidth">
                   {joinLink.name}
                 </button>
