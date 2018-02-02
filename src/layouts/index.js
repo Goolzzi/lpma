@@ -9,12 +9,17 @@ import Footer from "../components/Footer";
 
 const propTypes = {
   children: PropTypes.func,
+  location: PropTypes.func,
   data: PropTypes.object.isRequired,
 };
 
 const LayoutTemplate = props => {
-  const {children, data: {contentfulHeader, contentfulFooter}} = props;
-  const forUSA = !!~props.location.pathname.indexOf("us");
+  const {
+    children,
+    location: {pathname},
+    data: {contentfulHeader, contentfulFooter},
+  } = props;
+  const forUSA = !!~pathname.indexOf("/us") || !!~pathname.indexOf("-us");
   return (
     <div>
       <Helmet

@@ -7,5 +7,6 @@
 
 /events/ /events-us/ 302 Country=us
 /events-us/ /events/ 302 Country=au
+/join/ /join-us/ 302 Country=us
 
 /login/* https://halo-identity.lpma.com.au/users/sign_in 301
