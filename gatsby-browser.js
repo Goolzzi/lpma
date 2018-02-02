@@ -7,6 +7,6 @@ module.exports.onClientEntry = () => {
   // callAnalyticsAPI();
 };
 
-exports.onInitialClientRender = () => {
+module.exports.onInitialClientRender = () => {
   //console.log("ReactDOM.render has executed");
 };
