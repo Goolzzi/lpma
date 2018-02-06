@@ -2,26 +2,63 @@ import React from "react";
 import PropTypes from "prop-types";
 import "./styles.scss";
 
-const propTypes = {};
+const propTypes = {
+  data: PropTypes.object.isReqiered,
+};
 
-const FoundrySection = props => (
-  <div className="markdown">
-    {/*<h1>{props.location.pathname}</h1>
-    <code>{JSON.stringify(props)}</code>*/}
-
-    <h3>asdasd</h3>
-    <p>asd sdf sdf s</p>
-    <blockquote>sdf sdf sdf sdfsd fs</blockquote>
-  </div>
-);
+const FoundrySection = ({
+  data: {
+    contentfulFoundrySection: {title, slug, contentPartOne, contentPartTwo},
+  },
+}) => {
+  return (
+  	<section className="section template-page">
+  		<div className="container">
+  			<div className="columns">
+  				<div className="column">
+		    		<h1>{title}</h1>
+		    	</div>
+		  	</div>
+		    <div className="markdown">
+		      <div className="columns">
+			      <div
+			      	className="column is-6"
+			        dangerouslySetInnerHTML={{
+			          __html: contentPartOne.childMarkdownRemark.html,
+			        }}
+			      />
+			      <div
+			      	className="column is-6"
+			        dangerouslySetInnerHTML={{
+			          __html: contentPartTwo.childMarkdownRemark.html,
+			        }}
+			      />
+			    </div>
+		    </div>
+		  </div>
+	  </section>
+  );
+};
 
 FoundrySection.propTypes = propTypes;
 
 export default FoundrySection;
 
-// export const pageQuery = graphql`
-//   query FoundrySectionPageQuery {
-//     allContentfulResoursesJumbotron() {
-//     }
-//   }
-// `;
+export const pageQuery = graphql`
+  query FoundrySectionPageQuery($slug: String) {
+    contentfulFoundrySection(slug: {eq: $slug}) {
+      title
+      slug
+      contentPartOne {
+        childMarkdownRemark {
+          html
+        }
+      }
+      contentPartTwo {
+        childMarkdownRemark {
+          html
+        }
+      }
+    }
+  }
+`;
