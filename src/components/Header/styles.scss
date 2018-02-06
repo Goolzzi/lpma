@@ -35,7 +35,7 @@
       }
     }
 
-    a.navbar-item, a.navbar-link {
+    .navbar-item, .navbar-link {
       color: $white;
       background-color: $transparent;
 
@@ -43,13 +43,19 @@
       line-height: 1em;
       letter-spacing: 1px;
       text-transform: uppercase;
+      text-align: left;
 
       &::after {
         border-color: $white;
       }
     }
 
-    a.navbar-link {
+    button.navbar-item {
+      border: none;
+      outline: none;
+    }
+
+    .navbar-link {
       background-color: $transparent !important;
     }
 
