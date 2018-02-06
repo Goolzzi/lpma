@@ -35,14 +35,28 @@
       }
     }
 
-    a.navbar-item {
+    a.navbar-item, a.navbar-link {
       color: $white;
-      background-color: $transparent;
+      background-color: $transparent !important;
 
       font-size: 1em;
       line-height: 1em;
       letter-spacing: 1px;
       text-transform: uppercase;
+
+      &::after {
+        border-color: $white;
+      }
+    }
+
+    .navbar-item.has-dropdown {
+      .navbar-dropdown {
+        min-width: 10rem;
+
+        a.navbar-item {
+          color: $gray-dark;
+        }
+      }
     }
   }
 

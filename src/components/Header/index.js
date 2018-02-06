@@ -58,6 +58,18 @@ class Header extends React.Component {
               "is-active": isActive,
             })}>
             <div className="navbar-end">
+              <div className="navbar-item has-dropdown is-active">
+                <a class="navbar-link">
+                  fff
+                </a>
+                <div className="navbar-dropdown">
+                  <a class="navbar-item">aaa</a>
+                  <a class="navbar-item">bbb</a>
+                  <a class="navbar-item">ccc</a>
+                  <a class="navbar-item">ddd</a>
+                  <a class="navbar-item">eee</a>
+                </div>
+              </div>
               {menuItems.map(({id, to, name, force}) => {
                 return (
                   <LPMALink
