@@ -51,16 +51,22 @@ const Foundry = () => (
       </div>
       <div className="columns">
         <div className="column is-4">
-          <h3>asdasd</h3>
-          <p>asd sdf dfg df askd bas bsdjfsjd fjsdjbf sjd fsdf jsdf sjbdf</p>
+          <div className="column-item">
+            <h3>asdasd</h3>
+            <p>asd sdf dfg df askd bas bsdjfsjd fjsdjbf sjd fsdf jsdf sjbdf</p>
+          </div>
         </div>
         <div className="column is-4">
-          <h3>asdasd</h3>
-          <p>asd sdf dfg df askd bas bsdjfsjd fjsdjbf sjd fsdf jsdf sjbdf</p>
+          <div className="column-item">
+            <h3>asdasd</h3>
+            <p>asd sdf dfg df askd bas bsdjfsjd fjsdjbf sjd fsdf jsdf sjbdf</p>
+          </div>
         </div>
         <div className="column is-4">
-          <h3>asdasd</h3>
-          <p>asd sdf dfg df askd bas bsdjfsjd fjsdjbf sjd fsdf jsdf sjbdf</p>
+          <div className="column-item">
+            <h3>asdasd</h3>
+            <p>asd sdf dfg df askd bas bsdjfsjd fjsdjbf sjd fsdf jsdf sjbdf</p>
+          </div>
         </div>
       </div>
     </section>

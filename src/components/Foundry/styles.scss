@@ -6,6 +6,7 @@
     color: $gray-dark;
     margin: 0px;
     font-family: "DomaineSans", Helvetica, Arial, sans-serif;
+    font-weight: normal;
   }
 }
 
@@ -32,9 +33,11 @@
       .top-text {
         & > h2 {
           color: $white;
+          font-weight: normal;
         }
         & > p {
           text-transform: uppercase;
+          font-weight: normal;
         }
       }
       .text {
@@ -44,9 +47,11 @@
 
         & > h3 {
           color: $primary-color;
+          font-weight: normal;
         }
         & > p {
           color: $gray-dark;
+          font-weight: normal;
         }
       }
     }
@@ -82,12 +87,21 @@
       h2 {
         color: $gray-dark;
         text-transform: uppercase;
+        font-weight: 500;
       }
-      h3 {
-        color: $primary-color;
-      }
-      p {
-        color: $gray-dark;
+
+      .column-item {
+        background-color: $white;
+        padding: 2.25rem 1.75rem;
+
+        h3 {
+          color: $primary-color;
+          font-weight: normal;
+        }
+        p {
+          color: $gray-dark;
+          font-weight: normal;
+        }
       }
     }
   }
