@@ -3,13 +3,20 @@ import PropTypes from "prop-types";
 
 const propTypes = {};
 
-const Section = props => (
+const FoundrySection = props => (
   <div>
     <h1>{props.location.pathname}</h1>
     <code>{JSON.stringify(props)}</code>
   </div>
 );
 
-Section.propTypes = propTypes;
+FoundrySection.propTypes = propTypes;
 
-export default Section;
+export default FoundrySection;
+
+// export const pageQuery = graphql`
+//   query FoundrySectionPageQuery {
+//     allContentfulResoursesJumbotron() {
+//     }
+//   }
+// `;

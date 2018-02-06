@@ -8,6 +8,7 @@ import "./styles.scss";
 const propTypes = {
   topmenu: PropTypes.array.isRequired,
   logo: PropTypes.object.isRequired,
+  foundryLinks: PropTypes.array.isRequired,
   forUSA: PropTypes.bool.isRequired,
 };
 

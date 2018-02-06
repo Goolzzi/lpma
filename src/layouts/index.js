@@ -17,7 +17,7 @@ const LayoutTemplate = props => {
   const {
     children,
     location: {pathname},
-    data: {contentfulHeader, contentfulFooter},
+    data: {contentfulHeader, contentfulFooter, allContentfulFoundrySection},
   } = props;
   const forUSA = !!~pathname.indexOf("/us") || !!~pathname.indexOf("-us");
   return (
@@ -29,7 +29,11 @@ const LayoutTemplate = props => {
           {name: "keywords", content: "lpma, lpma2018"},
         ]}
       />
-      <Header {...contentfulHeader} forUSA={forUSA} />
+      <Header
+        {...contentfulHeader}
+        forUSA={forUSA}
+        foundryLinks={allContentfulFoundrySection}
+      />
       <div className="page-container">{children()}</div>
       <Footer {...contentfulFooter} forUSA={forUSA} />
     </div>
@@ -38,6 +42,14 @@ const LayoutTemplate = props => {
 
 export const pageQuery = graphql`
   query LayoutQuery {
+    allContentfulFoundrySection(filter: {node_locale: {eq: "en-US"}}) {
+      edges {
+        node {
+          title
+          slug
+        }
+      }
+    }
     contentfulHeader {
       logo {
         file {
