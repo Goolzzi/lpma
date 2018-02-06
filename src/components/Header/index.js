@@ -31,7 +31,7 @@ class Header extends React.Component {
 
   render() {
     const {topmenu, logo: {file}, foundryLinks, forUSA} = this.props;
-    const {isActive, isActiveMenu} = this.state;
+    const {isActive, isActiveMenu, isFoundryOpen} = this.state;
     const menuItems = forUSA
       ? topmenu.filter(({country}) => country === "us")
       : topmenu;
@@ -61,8 +61,18 @@ class Header extends React.Component {
             <div className="navbar-end">
               {menuItems.map(({id, to, name, force, slug}) => {
                 return slug === "foundry" ? (
-                  <div className="navbar-item has-dropdown is-active">
-                    <LPMALink cssClass={"navbar-link"}>{name}</LPMALink>
+                  <button
+                    onClick={() =>
+                      this.setState(prevState => ({
+                        isFoundryOpen: !prevState.isFoundryOpen,
+                      }))
+                    }
+                    className={classNames("navbar-item has-dropdown", {
+                      "is-active": isFoundryOpen,
+                    })}>
+                    <LPMALink to={"#"} cssClass={"navbar-link"}>
+                      {name}
+                    </LPMALink>
                     <div className="navbar-dropdown">
                       {foundryLinks.edges.map(({node: {title, slug}}) => (
                         <LPMALink key={slug} to={slug} cssClass={"navbar-item"}>
@@ -70,7 +80,7 @@ class Header extends React.Component {
                         </LPMALink>
                       ))}
                     </div>
-                  </div>
+                  </button>
                 ) : (
                   <LPMALink
                     cssClass={"navbar-item"}
