@@ -62,6 +62,7 @@ export const pageQuery = graphql`
         name
         country
         force
+        slug
         to
       }
     }
@@ -77,6 +78,7 @@ export const pageQuery = graphql`
         to
         country
         force
+        slug
       }
       secondaryLinks {
         id
@@ -92,6 +94,7 @@ export const pageQuery = graphql`
         name
         to
         force
+        slug
       }
       logo {
         file {
