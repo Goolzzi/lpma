@@ -37,7 +37,7 @@
 
     a.navbar-item, a.navbar-link {
       color: $white;
-      background-color: $transparent !important;
+      background-color: $transparent;
 
       font-size: 1em;
       line-height: 1em;
@@ -49,12 +49,23 @@
       }
     }
 
+    a.navbar-link {
+      background-color: $transparent !important;
+    }
+
     .navbar-item.has-dropdown {
       .navbar-dropdown {
         min-width: 10rem;
+        margin-top: -1rem;
+        border: 1px solid $gray-lighter;
+        border-radius: 0.25rem;
 
         a.navbar-item {
           color: $gray-dark;
+
+          &:hover {
+            background-color: $gray-lighter;
+          }
         }
       }
     }

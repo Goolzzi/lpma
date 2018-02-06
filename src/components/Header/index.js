@@ -61,7 +61,7 @@ class Header extends React.Component {
             <div className="navbar-end">
               {menuItems.map(({id, to, name, force, slug}) => {
                 return slug === "foundry" ? (
-                  <div className="navbar-item has-dropdown is-active">
+                  <div className="navbar-item has-dropdown is-hoverable is-active">
                     <LPMALink cssClass={"navbar-link"}>{name}</LPMALink>
                     <div className="navbar-dropdown">
                       {foundryLinks.edges.map(({node: {title, slug}}) => (
