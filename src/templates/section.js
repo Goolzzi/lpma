@@ -7,36 +7,34 @@ const propTypes = {
 };
 
 const FoundrySection = ({
-  data: {
-    contentfulFoundrySection: {title, slug, contentPartOne, contentPartTwo},
-  },
+  data: {contentfulFoundrySection: {title, contentPartOne, contentPartTwo}},
 }) => {
   return (
-  	<section className="section template-page">
-  		<div className="container">
-  			<div className="columns">
-  				<div className="column">
-		    		<h1>{title}</h1>
-		    	</div>
-		  	</div>
-		    <div className="markdown">
-		      <div className="columns">
-			      <div
-			      	className="column is-6"
-			        dangerouslySetInnerHTML={{
-			          __html: contentPartOne.childMarkdownRemark.html,
-			        }}
-			      />
-			      <div
-			      	className="column is-6"
-			        dangerouslySetInnerHTML={{
-			          __html: contentPartTwo.childMarkdownRemark.html,
-			        }}
-			      />
-			    </div>
-		    </div>
-		  </div>
-	  </section>
+    <section className="section template-page">
+      <div className="container">
+        <div className="columns">
+          <div className="column">
+            <h1>{title}</h1>
+          </div>
+        </div>
+        <div className="markdown">
+          <div className="columns">
+            <div
+              className="column is-6"
+              dangerouslySetInnerHTML={{
+                __html: contentPartOne.childMarkdownRemark.html,
+              }}
+            />
+            <div
+              className="column is-6"
+              dangerouslySetInnerHTML={{
+                __html: contentPartTwo.childMarkdownRemark.html,
+              }}
+            />
+          </div>
+        </div>
+      </div>
+    </section>
   );
 };
 
