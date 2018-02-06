@@ -1,3 +1,4 @@
+/* eslint jsx-a11y/anchor-is-valid : 0 */
 import React from "react";
 import PropTypes from "prop-types";
 import BurgerSubMenu from "./burgerSubMenu";
@@ -70,9 +71,9 @@ class Header extends React.Component {
                     className={classNames("navbar-item has-dropdown", {
                       "is-active": isFoundryOpen,
                     })}>
-                    <LPMALink to={"#"} cssClass={"navbar-link"}>
+                    <a href={"javascript:;"} className="navbar-link">
                       {name}
-                    </LPMALink>
+                    </a>
 
                     <div className="navbar-dropdown">
                       {foundryLinks.edges.map(({node: {title, slug}}) => (
