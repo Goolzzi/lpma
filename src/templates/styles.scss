@@ -1,0 +1,30 @@
+.markdown {
+  border-top: 1px solid $gray-border;
+  padding-top: 3rem;
+
+  h1, h2, h3, h4, h5, h6, h7 {
+    color: $gray-dark;
+    font-weight: 500;
+    padding: 0rem 1rem 0rem 0rem;
+  }
+  p {
+    color: $gray-dark;
+    padding: 0rem 1rem 0rem 0rem;
+  }
+
+  blockquote {
+    color: $gray-dark;
+    border-left: 3px solid $primary-color;
+    margin-left: 0px;
+    padding: 0.5rem 1rem 0.5rem 1rem;
+    line-height: 1.75;
+    font-size: 1.25em;
+  }
+}
+
+.template-page {
+  h1 {
+    color: $gray-dark;
+    font-weight: 500;
+  }
+}

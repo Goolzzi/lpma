@@ -1,3 +1,4 @@
+/* eslint jsx-a11y/anchor-is-valid : 0 */
 import React from "react";
 import PropTypes from "prop-types";
 import BurgerSubMenu from "./burgerSubMenu";
@@ -8,6 +9,7 @@ import "./styles.scss";
 const propTypes = {
   topmenu: PropTypes.array.isRequired,
   logo: PropTypes.object.isRequired,
+  foundryLinks: PropTypes.array.isRequired,
   forUSA: PropTypes.bool.isRequired,
 };
 
@@ -17,6 +19,7 @@ class Header extends React.Component {
     this.state = {
       isActive: false,
       isActiveMenu: false,
+      isFoundryOpen: false,
     };
   }
 
@@ -28,8 +31,8 @@ class Header extends React.Component {
   };
 
   render() {
-    const {topmenu, logo: {file}, forUSA} = this.props;
-    const {isActive, isActiveMenu} = this.state;
+    const {topmenu, logo: {file}, foundryLinks, forUSA} = this.props;
+    const {isActive, isActiveMenu, isFoundryOpen} = this.state;
     const menuItems = forUSA
       ? topmenu.filter(({country}) => country === "us")
       : topmenu;
@@ -57,8 +60,30 @@ class Header extends React.Component {
               "is-active": isActive,
             })}>
             <div className="navbar-end">
-              {menuItems.map(({id, to, name, force}) => {
-                return (
+              {menuItems.map(({id, to, name, force, slug}) => {
+                return slug === "foundry" ? (
+                  <button
+                    onClick={() =>
+                      this.setState(prevState => ({
+                        isFoundryOpen: !prevState.isFoundryOpen,
+                      }))
+                    }
+                    className={classNames("navbar-item has-dropdown", {
+                      "is-active": isFoundryOpen,
+                    })}>
+                    <a href={"javascript:;"} className="navbar-link">
+                      {name}
+                    </a>
+
+                    <div className="navbar-dropdown">
+                      {foundryLinks.edges.map(({node: {title, slug}}) => (
+                        <LPMALink key={slug} to={slug} cssClass={"navbar-item"}>
+                          {title}
+                        </LPMALink>
+                      ))}
+                    </div>
+                  </button>
+                ) : (
                   <LPMALink
                     cssClass={"navbar-item"}
                     force={!!force}

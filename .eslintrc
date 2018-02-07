@@ -10,7 +10,8 @@
     "strict": 0,
     "prettier/prettier": "error",
     "react/prop-types": [1],
-    "no-debugger": 1
+    "no-debugger": 1,
+    "jsx-a11y/no-static-element-interactions": 0
   },
   "parserOptions": {
     "ecmaVersion": 6,
