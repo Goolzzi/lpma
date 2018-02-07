@@ -16,7 +16,6 @@ const FoundrySection = ({
     contentfulFoundrySection: {title, contentPartOne, contentPartTwo, subjects},
   },
 }) => {
-  console.log("--", pathContext);
   return (
     <section className="section template-page">
       <BreadCrumb />
