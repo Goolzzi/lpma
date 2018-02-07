@@ -1,5 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
+import FondryCard from "../components/FondryCard";
+import _first from "lodash/first";
 import "./styles.scss";
 
 const propTypes = {
@@ -7,7 +9,9 @@ const propTypes = {
 };
 
 const FoundrySection = ({
-  data: {contentfulFoundrySection: {title, contentPartOne, contentPartTwo}},
+  data: {
+    contentfulFoundrySection: {title, contentPartOne, contentPartTwo, subjects},
+  },
 }) => {
   return (
     <section className="section template-page">
@@ -56,41 +60,15 @@ const FoundrySection = ({
         </div>
 
         <div className="columns is-multiline">
-          <div className="column is-6">
-            <a className="subject-card-item">
-              <h3>asd</h3>
-              <p className="truncate-3">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-                enim ad minim veniam, quis nostrud exercitation ullamco laboris
-                nisi ut aliquip ex ea commodo consequat
-              </p>
-            </a>
-          </div>
-          <div className="column is-6">
-            <a className="subject-card-item">
-              <h3>asd</h3>
-              <p className="truncate-3">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-                enim ad minim veniam, quis nostrud exercitation ullamco laboris
-                nisi ut aliquip ex ea commodo consequat
-              </p>
-            </a>
-          </div>
-          <div className="column is-6">
-            <a className="subject-card-item">
-              <h3>asd</h3>
-              <p className="truncate-3">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-                enim ad minim veniam, quis nostrud exercitation ullamco laboris
-                nisi ut aliquip ex ea commodo consequat
-              </p>
-            </a>
-          </div>
+          {subjects.map(({id, title, slug, content}) => (
+            <FondryCard
+              key={id}
+              title={_first(title.split(" "))}
+              href={`/subjects/${slug}`}
+              content={content.childMarkdownRemark.excerpt}
+            />
+          ))}
         </div>
-
         <div className="tabs is-boxed">
           <ul>
             <li>
@@ -105,7 +83,6 @@ const FoundrySection = ({
             </li>
             <li>
               <a>
-                տեռ
                 <span>Videos</span>
               </a>
             </li>
@@ -138,6 +115,16 @@ export const pageQuery = graphql`
       contentPartTwo {
         childMarkdownRemark {
           html
+        }
+      }
+      subjects {
+        id
+        title
+        slug
+        content {
+          childMarkdownRemark {
+            excerpt
+          }
         }
       }
     }
