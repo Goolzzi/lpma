@@ -2,7 +2,6 @@ import React from "react";
 import PropTypes from "prop-types";
 import FondryCard from "../components/FondryCard";
 import BreadCrumb from "../components/BreadCrumb";
-import _first from "lodash/first";
 
 const propTypes = {
   data: PropTypes.object.isReqiered,
