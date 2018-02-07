@@ -3,13 +3,14 @@ import PropTypes from "prop-types";
 import FondryCard from "../components/FondryCard";
 import BreadCrumb from "../components/BreadCrumb";
 import _first from "lodash/first";
-import "./styles.scss";
 
 const propTypes = {
   data: PropTypes.object.isReqiered,
 };
 
-const FoundrySubject = ({data: {title}}) => {
+const FoundrySubject = ({
+  data: {contentfulFoundrySubject: {title, content}},
+}) => {
   return (
     <section className="section template-page">
       <BreadCrumb />
@@ -20,7 +21,10 @@ const FoundrySubject = ({data: {title}}) => {
           </div>
         </div>
 
-        <div className="markdown" />
+        <div
+          className="markdown"
+          dangerouslySetInnerHTML={{__html: content.childMarkdownRemark.html}}
+        />
 
         <div className="custom-tabs">
           <ul>
@@ -99,6 +103,12 @@ export const pageQuery = graphql`
     contentfulFoundrySubject(slug: {eq: $slug}) {
       title
       slug
+      id
+      content {
+        childMarkdownRemark {
+          html
+        }
+      }
     }
   }
 `;
