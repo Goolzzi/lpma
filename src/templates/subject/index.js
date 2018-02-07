@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
-import FondryCard from "../components/FondryCard";
-import BreadCrumb from "../components/BreadCrumb";
+// import FondryCard from "../components/FondryCard";
+// import BreadCrumb from "../components/BreadCrumb";
 
 const propTypes = {
   data: PropTypes.object.isReqiered,
@@ -12,7 +12,7 @@ const FoundrySubject = ({
 }) => {
   return (
     <section className="section template-page">
-      <BreadCrumb />
+      {/* <BreadCrumb /> */}
       <div className="container wrapper-cont">
         <div className="columns">
           <div className="column">
