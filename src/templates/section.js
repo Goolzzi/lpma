@@ -11,7 +11,18 @@ const FoundrySection = ({
 }) => {
   return (
     <section className="section template-page">
-      <div className="container">
+      <div className="container breadcrumb-wrapper">
+        <nav className="breadcrumb" aria-label="breadcrumbs">
+          <ul>
+            <li><a href="#">Bulma</a></li>
+            <li><a href="#">Documentation</a></li>
+            <li><a href="#">Components</a></li>
+            <li className="is-active"><a href="#" aria-current="page">Breadcrumb</a></li>
+          </ul>
+        </nav>
+      </div>
+
+      <div className="container wrapper-cont">
         <div className="columns">
           <div className="column">
             <h1>{title}</h1>
@@ -31,6 +42,27 @@ const FoundrySection = ({
                 __html: contentPartTwo.childMarkdownRemark.html,
               }}
             />
+          </div>
+        </div>
+
+        <div className="columns is-multiline">
+          <div className="column is-6">
+            <div className="subject-card-item">
+              <h3>asd</h3>
+              <p className="truncate-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat</p>
+            </div>
+          </div>
+          <div className="column is-6">
+            <div className="subject-card-item">
+              <h3>asd</h3>
+              <p className="truncate-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat</p>
+            </div>
+          </div>
+          <div className="column is-6">
+            <div className="subject-card-item">
+              <h3>asd</h3>
+              <p className="truncate-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat</p>
+            </div>
           </div>
         </div>
       </div>

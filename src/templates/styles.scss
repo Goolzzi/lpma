@@ -23,8 +23,61 @@
 }
 
 .template-page {
+  padding-top: 1.5rem;
+
+  .container.wrapper-cont {
+    background-color: $white;
+    padding: 4rem;
+  }
+
   h1 {
     color: $gray-dark;
     font-weight: 500;
+  }
+
+  .markdown {
+    margin-bottom: 4rem;
+  }
+
+  .subject-card-item {
+    background-color: $gray-lighter;
+    padding: 2rem 1.75rem;
+
+    h3 {
+      color: $primary-color;
+      font-weight: 500;
+    }
+
+    p {
+      color: $gray-dark;
+      font-weight: normal;
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .template-page {
+    .container.wrapper-cont {
+      padding: 3rem 1.5rem;
+    }
+  }
+}
+
+
+.breadcrumb-wrapper {
+  .breadcrumb {
+    ul > li a {
+      color: $gray-dark;
+      font-weight: 500;
+    }
+
+    ul > li + li::before {
+      color: $gray;
+      content: ">";
+    }
+  }
+
+  &.container {
+    margin-bottom: 1.5rem;
   }
 }
