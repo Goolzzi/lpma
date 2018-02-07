@@ -14,10 +14,20 @@ const FoundrySection = ({
       <div className="container breadcrumb-wrapper">
         <nav className="breadcrumb" aria-label="breadcrumbs">
           <ul>
-            <li><a href="#">Bulma</a></li>
-            <li><a href="#">Documentation</a></li>
-            <li><a href="#">Components</a></li>
-            <li className="is-active"><a href="#" aria-current="page">Breadcrumb</a></li>
+            <li>
+              <a href="#">Bulma</a>
+            </li>
+            <li>
+              <a href="#">Documentation</a>
+            </li>
+            <li>
+              <a href="#">Components</a>
+            </li>
+            <li className="is-active">
+              <a href="#" aria-current="page">
+                Breadcrumb
+              </a>
+            </li>
           </ul>
         </nav>
       </div>
@@ -49,19 +59,34 @@ const FoundrySection = ({
           <div className="column is-6">
             <a className="subject-card-item">
               <h3>asd</h3>
-              <p className="truncate-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat</p>
+              <p className="truncate-3">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+                enim ad minim veniam, quis nostrud exercitation ullamco laboris
+                nisi ut aliquip ex ea commodo consequat
+              </p>
             </a>
           </div>
           <div className="column is-6">
             <a className="subject-card-item">
               <h3>asd</h3>
-              <p className="truncate-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat</p>
+              <p className="truncate-3">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+                enim ad minim veniam, quis nostrud exercitation ullamco laboris
+                nisi ut aliquip ex ea commodo consequat
+              </p>
             </a>
           </div>
           <div className="column is-6">
             <a className="subject-card-item">
               <h3>asd</h3>
-              <p className="truncate-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat</p>
+              <p className="truncate-3">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+                enim ad minim veniam, quis nostrud exercitation ullamco laboris
+                nisi ut aliquip ex ea commodo consequat
+              </p>
             </a>
           </div>
         </div>
@@ -80,6 +105,7 @@ const FoundrySection = ({
             </li>
             <li>
               <a>
+                տեռ
                 <span>Videos</span>
               </a>
             </li>
