@@ -24,7 +24,7 @@ module.exports = ({graphql, boundActionCreators}) => {
         }
         result.data.allContentfulFoundrySection.edges.forEach(({node}) => {
           createPage({
-            path: node.slug,
+            path: `section/${node.slug}`,
             component: sectionTemplate,
             context: {
               slug: node.slug,

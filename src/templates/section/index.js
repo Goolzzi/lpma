@@ -41,78 +41,15 @@ const FoundrySection = ({
         </div>
 
         <div className="columns is-multiline">
-          {subjects.map(({id, title, slug, content}) => (
-            <FondryCard
-              key={id}
-              title={_first(title.split(" "))}
-              href={`/subjects/${slug}`}
-              content={content.childMarkdownRemark.excerpt}
-            />
-          ))}
-        </div>
-
-        <div className="custom-tabs">
-          <ul>
-            <li>
-              <span>Pictures</span>
-            </li>
-            <li className="active">
-              <span>Music</span>
-            </li>
-            <li>
-              <span>Videos</span>
-            </li>
-            <li>
-              <span>Documents</span>
-            </li>
-          </ul>
-        </div>
-
-        <div className="columns is-multiline">
-          <div className="column is-6">
-            <a className="subject-card-item">
-              <h3>asd</h3>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-                enim ad minim veniam, quis nostrud exercitation ullamco laboris
-                nisi ut aliquip ex ea commodo consequat
-              </p>
-            </a>
-          </div>
-          <div className="column is-6">
-            <a className="subject-card-item">
-              <h3>asd</h3>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-                enim ad minim veniam, quis nostrud exercitation ullamco laboris
-                nisi ut aliquip ex ea commodo consequat
-              </p>
-            </a>
-          </div>
-          <div className="column is-6">
-            <a className="subject-card-item">
-              <h3>asd</h3>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-                enim ad minim veniam, quis nostrud exercitation ullamco laboris
-                nisi ut aliquip ex ea commodo consequat
-              </p>
-            </a>
-          </div>
-          <div className="column is-6">
-            <a className="subject-card-item">
-              <h3>asd</h3>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-                enim ad minim veniam, quis nostrud exercitation ullamco laboris
-                nisi ut aliquip ex ea commodo consequat
-              </p>
-            </a>
-          </div>
+          {subjects &&
+            subjects.map(({id, title, slug, content}) => (
+              <FondryCard
+                key={id}
+                title={_first(title.split(" "))}
+                href={`/subjects/${slug}`}
+                content={content.childMarkdownRemark.excerpt}
+              />
+            ))}
         </div>
       </div>
     </section>
