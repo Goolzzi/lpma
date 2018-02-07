@@ -91,30 +91,68 @@ const FoundrySection = ({
           </div>
         </div>
 
-        <div className="tabs is-boxed">
+        <div className="custom-tabs">
           <ul>
             <li>
-              <a>
-                <span>Pictures</span>
-              </a>
+              <span>Pictures</span>
             </li>
-            <li className="is-active">
-              <a>
-                <span>Music</span>
-              </a>
+            <li className="active">
+              <span>Music</span>
             </li>
             <li>
-              <a>
-                տեռ
-                <span>Videos</span>
-              </a>
+              <span>Videos</span>
             </li>
             <li>
-              <a>
-                <span>Documents</span>
-              </a>
+              <span>Documents</span>
             </li>
           </ul>
+        </div>
+
+        <div className="columns is-multiline">
+          <div className="column is-6">
+            <a className="subject-card-item">
+              <h3>asd</h3>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+                enim ad minim veniam, quis nostrud exercitation ullamco laboris
+                nisi ut aliquip ex ea commodo consequat
+              </p>
+            </a>
+          </div>
+          <div className="column is-6">
+            <a className="subject-card-item">
+              <h3>asd</h3>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+                enim ad minim veniam, quis nostrud exercitation ullamco laboris
+                nisi ut aliquip ex ea commodo consequat
+              </p>
+            </a>
+          </div>
+          <div className="column is-6">
+            <a className="subject-card-item">
+              <h3>asd</h3>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+                enim ad minim veniam, quis nostrud exercitation ullamco laboris
+                nisi ut aliquip ex ea commodo consequat
+              </p>
+            </a>
+          </div>
+          <div className="column is-6">
+            <a className="subject-card-item">
+              <h3>asd</h3>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+                enim ad minim veniam, quis nostrud exercitation ullamco laboris
+                nisi ut aliquip ex ea commodo consequat
+              </p>
+            </a>
+          </div>
         </div>
       </div>
     </section>
