@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import FondryCard from "../components/FondryCard";
+import BreadCrumb from "../components/BreadCrumb";
 import _first from "lodash/first";
 import "./styles.scss";
 
@@ -15,27 +16,7 @@ const FoundrySection = ({
 }) => {
   return (
     <section className="section template-page">
-      <div className="container breadcrumb-wrapper">
-        <nav className="breadcrumb" aria-label="breadcrumbs">
-          <ul>
-            <li>
-              <a href="#">Bulma</a>
-            </li>
-            <li>
-              <a href="#">Documentation</a>
-            </li>
-            <li>
-              <a href="#">Components</a>
-            </li>
-            <li className="is-active">
-              <a href="#" aria-current="page">
-                Breadcrumb
-              </a>
-            </li>
-          </ul>
-        </nav>
-      </div>
-
+      <BreadCrumb />
       <div className="container wrapper-cont">
         <div className="columns">
           <div className="column">
