@@ -39,7 +39,7 @@ module.exports = ({graphql, boundActionCreators}) => {
             context: {
               slug: node.slug,
               id: node.slug,
-              link: `section/${node.slug}`,
+              subjectPath: `/subjects/`,
             },
           });
         });
@@ -50,7 +50,7 @@ module.exports = ({graphql, boundActionCreators}) => {
             context: {
               slug: node.slug,
               id: node.slug,
-              link: `subjects/${node.slug}`,
+              pathContext: `/./`,
             },
           });
         });

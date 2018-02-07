@@ -7,13 +7,16 @@ import "./styles.scss";
 
 const propTypes = {
   data: PropTypes.object.isReqiered,
+  pathContext: PropTypes.object.isReqiered,
 };
 
 const FoundrySection = ({
+  pathContext,
   data: {
     contentfulFoundrySection: {title, contentPartOne, contentPartTwo, subjects},
   },
 }) => {
+  console.log("--", pathContext);
   return (
     <section className="section template-page">
       <BreadCrumb />
@@ -46,7 +49,7 @@ const FoundrySection = ({
               <FondryCard
                 key={id}
                 title={_first(title.split(" "))}
-                href={`/subjects/${slug}`}
+                href={`${pathContext.subjectPath}${slug}`}
                 content={content.childMarkdownRemark.excerpt}
               />
             ))}
