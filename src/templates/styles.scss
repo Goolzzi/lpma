@@ -39,7 +39,8 @@
     margin-bottom: 4rem;
   }
 
-  .subject-card-item {
+  a.subject-card-item {
+    display: block;
     background-color: $gray-lighter;
     padding: 2rem 1.75rem;
 
@@ -64,6 +65,19 @@
 }
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
 .breadcrumb-wrapper {
   .breadcrumb {
     ul > li a {
@@ -79,5 +93,41 @@
 
   &.container {
     margin-bottom: 1.5rem;
+  }
+}
+
+.tabs.is-boxed {
+  ul {
+    li {
+      margin-bottom: 0px;
+
+      a {
+        color: $gray-dark;
+
+        border-radius: 0px;
+        border-top: 1px solid $gray-border-darker;
+        border-right: 1px solid $gray-border-darker;
+        border-left: none;
+        border-bottom: none;
+
+        span {
+          display: inline;
+        }
+      }
+    
+      &.is-active {
+        margin-bottom: -1px;
+        //padding-bottom: 1px;
+        background-color: $white;
+
+        & a {
+          border-bottom: 1px solid $transparent !important;
+        }
+      }
+    }
+
+    &:first-child {
+      border-left: 1px solid $gray-border-darker !important;
+    }
   }
 }

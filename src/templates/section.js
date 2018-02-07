@@ -47,23 +47,48 @@ const FoundrySection = ({
 
         <div className="columns is-multiline">
           <div className="column is-6">
-            <div className="subject-card-item">
+            <a className="subject-card-item">
               <h3>asd</h3>
               <p className="truncate-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat</p>
-            </div>
+            </a>
           </div>
           <div className="column is-6">
-            <div className="subject-card-item">
+            <a className="subject-card-item">
               <h3>asd</h3>
               <p className="truncate-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat</p>
-            </div>
+            </a>
           </div>
           <div className="column is-6">
-            <div className="subject-card-item">
+            <a className="subject-card-item">
               <h3>asd</h3>
               <p className="truncate-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat</p>
-            </div>
+            </a>
           </div>
+        </div>
+
+        <div className="tabs is-boxed">
+          <ul>
+            <li>
+              <a>
+                <span>Pictures</span>
+              </a>
+            </li>
+            <li className="is-active">
+              <a>
+                <span>Music</span>
+              </a>
+            </li>
+            <li>
+              <a>
+                <span>Videos</span>
+              </a>
+            </li>
+            <li>
+              <a>
+                <span>Documents</span>
+              </a>
+            </li>
+          </ul>
         </div>
       </div>
     </section>
