@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import classNames from "classnames";
-import BreadCrumb from "../components/BreadCrumb";
+// import BreadCrumb from "../components/BreadCrumb";
 import FoundryCard from "../components/FondryCard";
 import "./styles.scss";
 import index from "../section/index";
@@ -36,7 +36,27 @@ class FoundrySubject extends React.Component {
 
     return (
       <section className="section template-page">
-        <BreadCrumb />
+        {/* <BreadCrumb /> */}
+        <div className="container breadcrumb-wrapper">
+          <nav className="breadcrumb" aria-label="breadcrumbs">
+            <ul>
+              <li>
+                <a href="#">Bulma Test</a>
+              </li>
+              <li>
+                <a href="#">Documentation test</a>
+              </li>
+              <li>
+                <a href="#">Components test</a>
+              </li>
+              <li className="is-active">
+                <a href="#" aria-current="page">
+                  Breadcrumb
+                </a>
+              </li>
+            </ul>
+          </nav>
+        </div>
         <div className="container wrapper-cont">
           <div className="columns">
             <div className="column">
