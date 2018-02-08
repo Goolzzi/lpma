@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import FondryCard from "../components/FondryCard";
-import _first from "lodash/first";
+import BreadCrumb from "../components/BreadCrumb";
 import "./styles.scss";
 
 const propTypes = {
@@ -17,7 +17,7 @@ const FoundrySection = ({
 }) => {
   return (
     <section className="section template-page">
-      {/* <BreadCrumb /> */}
+      <BreadCrumb />
       <div className="container wrapper-cont">
         <div className="columns">
           <div className="column">
@@ -46,7 +46,7 @@ const FoundrySection = ({
             subjects.map(({id, title, slug, content}) => (
               <FondryCard
                 key={id}
-                title={_first(title.split(" "))}
+                title={title}
                 href={`${pathContext.subjectPath}${slug}`}
                 content={content.childMarkdownRemark.excerpt}
               />
