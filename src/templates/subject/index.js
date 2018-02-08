@@ -44,7 +44,7 @@ const FoundrySubject = ({
 
         <div className="columns is-multiline">
           <div className="column is-6">
-            <a className="subject-card-item">
+            <a className="foundry-card-item">
               <h3>asd</h3>
               <p>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
@@ -55,7 +55,7 @@ const FoundrySubject = ({
             </a>
           </div>
           <div className="column is-6">
-            <a className="subject-card-item">
+            <a className="foundry-card-item">
               <h3>asd</h3>
               <p>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
@@ -66,7 +66,7 @@ const FoundrySubject = ({
             </a>
           </div>
           <div className="column is-6">
-            <a className="subject-card-item">
+            <a className="foundry-card-item">
               <h3>asd</h3>
               <p>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
@@ -77,7 +77,7 @@ const FoundrySubject = ({
             </a>
           </div>
           <div className="column is-6">
-            <a className="subject-card-item">
+            <a className="foundry-card-item">
               <h3>asd</h3>
               <p>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do

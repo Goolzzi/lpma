@@ -1,27 +1,3 @@
-.markdown {
-  border-top: 1px solid $gray-border;
-  padding-top: 3rem;
-
-  h1, h2, h3, h4, h5, h6, h7 {
-    color: $gray-dark;
-    font-weight: 500;
-    padding: 0rem 1rem 0rem 0rem;
-  }
-  p {
-    color: $gray-dark;
-    padding: 0rem 1rem 0rem 0rem;
-  }
-
-  blockquote {
-    color: $gray-dark;
-    border-left: 3px solid $primary-color;
-    margin-left: 0px;
-    padding: 0.5rem 1rem 0.5rem 1rem;
-    line-height: 1.75;
-    font-size: 1.25em;
-  }
-}
-
 .template-page {
   padding-top: 1.5rem;
 
@@ -38,102 +14,12 @@
   .markdown {
     margin-bottom: 4rem;
   }
-
-  a.subject-card-item {
-    display: block;
-    background-color: $gray-lighter;
-    padding: 2rem 1.75rem;
-
-    h3 {
-      color: $primary-color;
-      font-weight: 500;
-    }
-
-    p {
-      color: $gray-dark;
-      font-weight: normal;
-    }
-  }
 }
 
 @media screen and (max-width: 768px) {
   .template-page {
     .container.wrapper-cont {
       padding: 3rem 1.5rem;
-    }
-  }
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-.breadcrumb-wrapper {
-  .breadcrumb {
-    ul > li a {
-      color: $gray-dark;
-      font-weight: 500;
-    }
-
-    ul > li + li::before {
-      color: $gray;
-      content: ">";
-    }
-  }
-
-  &.container {
-    margin-bottom: 1.5rem;
-  }
-}
-
-.custom-tabs {
-  ul {
-    border-bottom: 2px solid $gray-border-darker;
-    padding-left: 1rem;
-    margin-left: 0px;
-
-    li {
-      cursor: pointer;
-      display: inline-block;
-      padding: 0.5rem 0.75rem;
-      margin-bottom: 0px;
-
-      border-top: 2px solid $gray-border-darker;
-      border-right: 2px solid $gray-border-darker;
-
-      span {
-        color: $gray-dark;
-        font-weight: 500;
-        display: inline-block;
-        margin-bottom: 0px;
-      }
-
-      &:first-child {
-        border-left: 2px solid $gray-border-darker !important;
-      }
-
-      &:hover {
-        background-color: $gray-lighter;
-      }
-
-      &.active {
-        background-color: $white;
-        margin-bottom: -2px;
-
-        span {
-          margin-bottom: 2px;
-        }
-      }
     }
   }
 }

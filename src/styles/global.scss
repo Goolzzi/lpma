@@ -626,26 +626,3 @@ pre tt:after {
 body {
   background-color: #f8f8f8;
 }
-
-
-@mixin truncate($lines) {
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-  line-height: 1.5;
-
-  -webkit-line-clamp: $lines;
-  height: $lines * 1.5rem;
-}
-
-.truncate-2 {
-  @include truncate(2);
-}
-
-.truncate-3 {
-  @include truncate(3);
-}
-
-.truncate-4 {
-  @include truncate(4);
-}

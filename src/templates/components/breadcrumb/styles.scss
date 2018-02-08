@@ -1,0 +1,17 @@
+.breadcrumb-wrapper {
+  .breadcrumb {
+    ul > li a {
+      color: $gray-dark;
+      font-weight: 500;
+    }
+
+    ul > li + li::before {
+      color: $gray;
+      content: ">";
+    }
+  }
+
+  &.container {
+    margin-bottom: 1.5rem;
+  }
+}
