@@ -1,5 +1,6 @@
 import React from "react";
 import LPMALink from "../../../utils/LPMALink";
+import "./styles.scss";
 
 const FoundryCard = ({title, content, href}) => {
   return (
