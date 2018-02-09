@@ -22,13 +22,7 @@ const LayoutTemplate = props => {
   const forUSA = !!~pathname.indexOf("/us") || !!~pathname.indexOf("-us");
   return (
     <div>
-      <Helmet
-        title="lpma"
-        meta={[
-          {name: "description", content: "lpma"},
-          {name: "keywords", content: "lpma, lpma2018"},
-        ]}
-      />
+      <Helmet />
       <Header
         {...contentfulHeader}
         forUSA={forUSA}
