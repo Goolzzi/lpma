@@ -51,8 +51,6 @@ const meta = [
   <meta name="og:site_name" content="Leading Property Managers Association" />,
   <meta name="fb:admins" content="100010256862926" />,
   <meta name="og:type" content="website" />,
-  <link rel="alternate" hrefLang="us" href="https://lpma.netlify.com/us/" />,
-  <link rel="alternate" hrefLang="au" href="https://lpma.com/" />,
   <link rel="alternate" href="https://lpma.netlify.com/us/" hrefLang="en-US" />,
   <link rel="alternate" href="https://lpma.com/" hrefLang="en-AU" />,
   <link rel="alternate" href="https://lpma.com/" hrefLang="en" />,
