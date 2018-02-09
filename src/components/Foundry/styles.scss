@@ -33,11 +33,15 @@
       .top-text {
         & > h2 {
           color: $white;
-          font-weight: normal;
+          font-weight: 500;
+          font-size: 2.5rem;
+          margin-bottom: 4rem;
         }
         & > p {
+          color: $gray-dark;
           text-transform: uppercase;
-          font-weight: normal;
+          font-weight: 500;
+          font-size: 1.25rem;
         }
       }
       .text {
@@ -91,8 +95,11 @@
       }
 
       .column-item {
-        background-color: $white;
+        background-color: $gray-lighterer;
+        border: 1px solid $gray-border-dark;
+        border-radius: 0.5rem;
         padding: 2.25rem 1.75rem;
+        display: block;
 
         h3 {
           color: $primary-color;
