@@ -16,47 +16,55 @@
   line-height: 30px;
   font-size: 1.3333rem;
   text-align: left;
-}
 
-@media screen and (max-width: 768px) {
-  .btn {
-    height: 40px;
+  vertical-align: middle;
+
+  &.primary {
+    border-color: $primary-color;
+    background-color: $primary-color;
+    color: $primary-color;
+  }
+
+  &.secondary {
+    border-color: $secondary-color;
+    background-color: $secondary-color;
+    color: $secondary-color;
+  }
+
+  &.outlined {
+    background-color: $white;
+    border-width: 2px;
+  }
+
+  &:not(.outlined) {
+    color: $white;
+  }
+
+  &.fullwidth {
+    min-width: 100%;
+  }
+
+  &.threequarterwidth {
+    min-width: 75%;
+  }
+
+  &.halfwidth {
+    min-width: 50%;
+  }
+
+  &.with-radius-5 {
+    border-radius: 5px;
+  }
+
+  &.smaller {
+    height: 50px;
+    font-size: 1rem;
+  }
+
+  &.transparent {
+    background-color: $transparent;
   }
 }
-
-.btn.primary {
-  border-color: $primary-color;
-  background-color: $primary-color;
-  color: $primary-color;
-}
-
-.btn.secondary {
-  border-color: $secondary-color;
-  background-color: $secondary-color;
-  color: $secondary-color;
-}
-
-.btn.outlined {
-  background-color: $white;
-  border-width: 2px;
-}
-
-.btn:not(.outlined) {
-  color: $white;
-}
-
-.btn.fullwidth {
-  min-width: 100%;
-}
-
-.btn.threequarterwidth {
-  min-width: 75%;
-}
-
-.btn.halfwidth {
-  min-width: 50%;
-}
-
 
 .inp {
   background-color: $gray-lighter;
@@ -78,8 +86,22 @@
   font-size: 1.3333rem;
   text-align: left;
 
+  vertical-align: middle;
+
   &::placeholder {
     color: #c3c0c0;
     opacity: 1;
+  }
+}
+
+
+@media screen and (max-width: 768px) {
+  .btn, .inp {
+    height: 40px;
+
+    &.smaller {
+      height: 30px;
+      line-height: 20px;
+    }
   }
 }

@@ -1,17 +1,26 @@
 .breadcrumb-wrapper {
   .breadcrumb {
-    ul > li a {
-      color: $gray-dark;
-      font-weight: 500;
-    }
+    ul {
+      margin: 0px;
 
-    ul > li + li::before {
-      color: $gray;
-      content: ">";
+      & > li {
+        margin: 0px;
+
+        & > a {
+          color: $gray-dark;
+          font-weight: 500;
+        }
+
+        & + li::before {
+          color: $gray;
+          content: ">";
+        }
+      }
     }
   }
 
   &.container {
-    margin-bottom: 1.5rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
   }
 }
