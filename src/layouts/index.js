@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import Helmet from "react-helmet";
+import MetaHead from "./MetaHead";
 import "bulma";
 import "../styles/global.scss";
 import "../styles/fonts";
@@ -22,7 +22,7 @@ const LayoutTemplate = props => {
   const forUSA = !!~pathname.indexOf("/us") || !!~pathname.indexOf("-us");
   return (
     <div>
-      <Helmet title="Leading Property Managers Association" />
+      <MetaHead />
       <Header
         {...contentfulHeader}
         forUSA={forUSA}
