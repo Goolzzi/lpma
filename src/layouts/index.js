@@ -22,7 +22,7 @@ const LayoutTemplate = props => {
   const forUSA = !!~pathname.indexOf("/us") || !!~pathname.indexOf("-us");
   return (
     <div>
-      <Helmet />
+      <Helmet title="Leading Property Managers Association" />
       <Header
         {...contentfulHeader}
         forUSA={forUSA}
