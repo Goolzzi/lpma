@@ -17,12 +17,21 @@ const LayoutTemplate = props => {
   const {
     children,
     location: {pathname},
-    data: {contentfulHeader, contentfulFooter, allContentfulFoundrySection},
+    data: {
+      allContentfulAsset: {edges: metaImges},
+      contentfulHeader,
+      contentfulFooter,
+      allContentfulFoundrySection,
+    },
   } = props;
+  const protocol = "https:";
   const forUSA = !!~pathname.indexOf("/us") || !!~pathname.indexOf("-us");
   return (
     <div>
-      <MetaHead />
+      <MetaHead
+        metaImage1200x630={`${protocol}${metaImges[1].node.file.url}`}
+        metaImage1024x512={`${protocol}${metaImges[0].node.file.url}`}
+      />
       <Header
         {...contentfulHeader}
         forUSA={forUSA}
@@ -36,6 +45,19 @@ const LayoutTemplate = props => {
 
 export const pageQuery = graphql`
   query LayoutQuery {
+    allContentfulAsset(
+      filter: {title: {regex: "/LPMA-Meta/"}}
+      sort: {fields: [description], order: ASC}
+    ) {
+      edges {
+        node {
+          title
+          file {
+            url
+          }
+        }
+      }
+    }
     allContentfulFoundrySection(filter: {node_locale: {eq: "en-US"}}) {
       edges {
         node {

@@ -76,7 +76,7 @@ export const pageQuery = graphql`
       testimonial2 {
         id
         image {
-          responsiveResolution {
+          responsiveResolution(width: 100) {
             src
             srcSet
           }
