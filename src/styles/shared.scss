@@ -1,0 +1,87 @@
+@mixin truncate($lines) {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  line-height: 1.5;
+
+  -webkit-line-clamp: $lines;
+  height: $lines * 1.5rem;
+}
+
+.truncate-2 {
+  @include truncate(2);
+}
+
+.truncate-3 {
+  @include truncate(3);
+}
+
+.truncate-4 {
+  @include truncate(4);
+}
+
+.custom-tabs {
+  ul {
+    border-bottom: 2px solid $gray-border-darker;
+    padding-left: 1rem;
+    margin-left: 0px;
+
+    li {
+      cursor: pointer;
+      display: inline-block;
+      padding: 0.5rem 0.75rem;
+      margin-bottom: 0px;
+
+      border-top: 2px solid $gray-border-darker;
+      border-right: 2px solid $gray-border-darker;
+
+      span {
+        color: $gray-dark;
+        font-weight: 500;
+        display: inline-block;
+        margin-bottom: 0px;
+      }
+
+      &:first-child {
+        border-left: 2px solid $gray-border-darker !important;
+      }
+
+      &:hover {
+        background-color: $gray-lighter;
+      }
+
+      &.active {
+        background-color: $white;
+        margin-bottom: -2px;
+
+        span {
+          margin-bottom: 2px;
+        }
+      }
+    }
+  }
+}
+
+
+.markdown {
+  border-top: 1px solid $gray-border;
+
+  h1, h2, h3, h4, h5, h6, h7 {
+    color: $gray-dark;
+    font-weight: 500;
+    padding: 0rem 1rem 0rem 0rem;
+  }
+  p {
+    color: $gray-dark;
+    padding: 0rem 1rem 0rem 0rem;
+  }
+
+  blockquote {
+    color: $gray-dark;
+    border-left: 3px solid $primary-color;
+    margin-left: 0px;
+    padding: 0.5rem 1rem 0.5rem 1rem;
+    line-height: 1.75;
+    font-size: 1.25em;
+  }
+}

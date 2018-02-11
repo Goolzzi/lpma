@@ -67,7 +67,7 @@ export const pageQuery = graphql`
             }
             background {
               id
-              resolutions {
+              resolutions(quality: 100) {
                 src
                 srcSet
               }

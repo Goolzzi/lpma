@@ -67,7 +67,7 @@ export const pageQuery = graphql`
         }
       }
       image {
-        resolutions {
+        resolutions(quality: 100) {
           src
           srcSet
         }
@@ -78,7 +78,7 @@ export const pageQuery = graphql`
       testimonial2 {
         id
         image {
-          responsiveResolution {
+          responsiveResolution(quality: 100) {
             src
             srcSet
           }
@@ -104,7 +104,7 @@ export const pageQuery = graphql`
             }
             background {
               id
-              resolutions {
+              resolutions(quality: 100) {
                 src
                 srcSet
               }

@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import Helmet from "react-helmet";
+import MetaHead from "./MetaHead";
 import "bulma";
 import "../styles/global.scss";
 import "../styles/fonts";
@@ -17,17 +17,20 @@ const LayoutTemplate = props => {
   const {
     children,
     location: {pathname},
-    data: {contentfulHeader, contentfulFooter, allContentfulFoundrySection},
+    data: {
+      allContentfulAsset: {edges: metaImges},
+      contentfulHeader,
+      contentfulFooter,
+      allContentfulFoundrySection,
+    },
   } = props;
+  const protocol = "https:";
   const forUSA = !!~pathname.indexOf("/us") || !!~pathname.indexOf("-us");
   return (
     <div>
-      <Helmet
-        title="lpma"
-        meta={[
-          {name: "description", content: "lpma"},
-          {name: "keywords", content: "lpma, lpma2018"},
-        ]}
+      <MetaHead
+        metaImage1200x630={`${protocol}${metaImges[1].node.file.url}`}
+        metaImage1024x512={`${protocol}${metaImges[0].node.file.url}`}
       />
       <Header
         {...contentfulHeader}
@@ -42,6 +45,19 @@ const LayoutTemplate = props => {
 
 export const pageQuery = graphql`
   query LayoutQuery {
+    allContentfulAsset(
+      filter: {title: {regex: "/LPMA-Meta/"}}
+      sort: {fields: [description], order: ASC}
+    ) {
+      edges {
+        node {
+          title
+          file {
+            url
+          }
+        }
+      }
+    }
     allContentfulFoundrySection(filter: {node_locale: {eq: "en-US"}}) {
       edges {
         node {
