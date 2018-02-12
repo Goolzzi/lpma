@@ -10,7 +10,7 @@ const meta = [
   />,
   <meta httpEquiv="x-ua-compatible" content="ie=edge" />,
   <link rel="alternate" href="https://lpma.netlify.com/us/" hrefLang="en-US" />,
-  <link rel="alternate" href="https://lpma.com/" hrefLang="en-AU" />,
+  <link rel="alternate" href="https://lpma.netlify.com/" hrefLang="en-AU" />,
   <link rel="alternate" href="https://lpma.com/" hrefLang="en" />,
 ];
 
