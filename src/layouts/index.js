@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import MetaHead from "./MetaHead";
+import locationToTitleMap from "./locationTitlesMap";
 import "bulma";
 import "../styles/global.scss";
 import "../styles/fonts";
@@ -26,9 +27,15 @@ const LayoutTemplate = props => {
   } = props;
   const protocol = "https:";
   const forUSA = !!~pathname.indexOf("/us") || !!~pathname.indexOf("-us");
+
+  const title = locationToTitleMap[pathname]
+    ? locationToTitleMap[pathname]
+    : locationToTitleMap["/"];
+
   return (
     <div>
       <MetaHead
+        title={title}
         metaImage1200x630={`${protocol}${metaImges[1].node.file.url}`}
         metaImage1024x512={`${protocol}${metaImges[0].node.file.url}`}
       />
