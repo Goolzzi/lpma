@@ -63,6 +63,12 @@
         color: $gray-dark;
       }
 
+      .icon-style {
+        color: $gray-dark;
+        font-size: 4rem;
+        margin-bottom: 1.5rem;
+      }
+
       p {
         color: $gray-dark;
       }
@@ -82,9 +88,36 @@
         border-left: none;
       }
 
-      span {
+      & > span {
+        color: $gray-dark;
         display: inline-block;
         padding: 1.25rem 2.25rem;
+      }
+
+      button {
+        color: $gray-dark;
+        display: inline-block;
+        padding: 1.25rem 2.25rem;
+        background-color: $transparent;
+        border: none;
+        outline: none;
+        cursor: pointer;
+
+        span {
+          color: $gray-dark;
+        }
+
+        .icon-style {
+          font-size: 1em;
+          margin-right: 0.25rem;
+
+          &.thumbs-up {
+            color: $success-green;
+          }
+          &.thumbs-down {
+            color: $danger-red;
+          }
+        }
       }
     }
   }

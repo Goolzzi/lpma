@@ -55,7 +55,6 @@
   &.with-radius-5 {
     border-radius: 5px;
   }
-
   &.smaller {
     height: 50px;
     font-size: 1rem;
@@ -63,6 +62,14 @@
 
   &.transparent {
     background-color: $transparent;
+  }
+
+  &.smaller-text {
+    font-size: 1rem;
+
+    &.smaller {
+      font-size: 0.75rem;
+    }
   }
 }
 

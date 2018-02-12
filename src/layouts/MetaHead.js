@@ -5,11 +5,12 @@ import Helmet from "react-helmet";
 const propTypes = {
   metaImage1200x630: PropTypes.string.isReqiered,
   metaImage1024x512: PropTypes.string.isReqiered,
+  title: PropTypes.string.isReqiered,
 };
 
-const MetaHead = ({metaImage1200x630, metaImage1024x512}) => {
+const MetaHead = ({metaImage1200x630, metaImage1024x512, title}) => {
   return (
-    <Helmet title="Leading Property Managers Association">
+    <Helmet title={title}>
       <meta
         name="description"
         content="Leading Property Managers Association is a community of real estate professionals who seek to be extraordinary."
