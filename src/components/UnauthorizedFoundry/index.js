@@ -1,4 +1,8 @@
 import React from "react";
+import EntypoTools from "react-entypo/lib/entypo/Tools";
+import EntypoUser from "react-entypo/lib/entypo/User";
+import EntypoThumbsUp from "react-entypo/lib/entypo/ThumbsUp";
+import EntypoThumbsDown from "react-entypo/lib/entypo/ThumbsDown";
 import Link from "gatsby-link";
 import Breadcrumb from "../../templates/components/breadcrumb"; // Imported for styles yet
 import "./styles.scss";
@@ -29,10 +33,10 @@ const UnauthorizedFoundry = () => (
               strategy and growth, to profitability and high performing teams.
             </p>
 
-            <button className="btn secondary with-radius-5 smaller">
+            <button className="btn secondary with-radius-5 smaller smaller-text">
               Login
             </button>
-            <button className="btn secondary with-radius-5 smaller outlined transparent">
+            <button className="btn secondary with-radius-5 smaller smaller-text outlined transparent">
               Signup to LPMA
             </button>
           </div>
@@ -62,6 +66,7 @@ const UnauthorizedFoundry = () => (
 
       <div className="columns cont-columns">
         <div className="column is-6 cont-columns-item">
+          <EntypoTools className="icon-style" />
           <h3>Building your Business</h3>
           <p>
             It’s clear that effective strategy is at the heart of any successful
@@ -70,6 +75,7 @@ const UnauthorizedFoundry = () => (
           </p>
         </div>
         <div className="column is-6 cont-columns-item">
+          <EntypoUser className="icon-style" />
           <h3>Building your Career</h3>
           <p>
             Every person has a set of ambitions for their own career. Building
@@ -84,7 +90,9 @@ const UnauthorizedFoundry = () => (
           <h3>
             Join LPMA today to unlock access to this comprehensive resource.
           </h3>
-          <button className="btn secondary with-radius-5">Join LPMA</button>
+          <button className="btn secondary with-radius-5 smaller-text">
+            Join LPMA
+          </button>
         </div>
       </div>
 
@@ -93,10 +101,16 @@ const UnauthorizedFoundry = () => (
           <span>Was this Helpful ?</span>
         </div>
         <div className="column">
-          <span>Yes</span>
+          <button>
+            <EntypoThumbsUp className="icon-style thumbs-up" />
+            <span>Yes</span>
+          </button>
         </div>
         <div className="column">
-          <span>No</span>
+          <button>
+            <EntypoThumbsDown className="icon-style thumbs-down" />
+            <span>No</span>
+          </button>
         </div>
       </div>
     </div>

@@ -64,6 +64,14 @@
   &.transparent {
     background-color: $transparent;
   }
+
+  &.smaller-text {
+    font-size: 1rem;
+
+    &.smaller {
+      font-size: 0.75rem;
+    }
+  }
 }
 
 .inp {
