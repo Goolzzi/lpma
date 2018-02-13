@@ -85,3 +85,24 @@
     font-size: 1.25em;
   }
 }
+
+
+@media screen and (max-width: 768px) {
+  button.navbar-item.has-dropdown {
+    width: 100%;
+
+    a.navbar-link {
+      margin-bottom: 0.5rem;
+    }
+
+    .navbar-dropdown {
+      border: none !important;
+      width: 100%;
+
+      a.navbar-item {
+        font-size: 1rem;
+        padding-left: 3rem !important;
+      }
+    }
+  }
+}
