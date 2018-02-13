@@ -4,7 +4,7 @@ import "./styles.scss";
 
 function getFormMarkup() {
   return {
-    __html: ` <form id = "join-form"  onsubmit="onsubmit" netlify name="joinForm">
+    __html: ` <form id = "join-form" netlify name="joinForm">
   <input
    required
     type="text"
