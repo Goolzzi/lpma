@@ -92,12 +92,12 @@ class FoundrySubject extends React.Component {
                   <div className="columns is-multiline">
                     {tabCount !== 0 &&
                       contentfulFoundrySubject[tab].map(
-                        ({id, title, excrept}) => {
+                        ({id, title, excerpt}) => {
                           return (
                             <FoundryCard
                               key={id}
                               title={title}
-                              content={excrept.childMarkdownRemark.excerpt}
+                              content={excerpt.childMarkdownRemark.excerpt}
                               href={"/#"}
                             />
                           );
@@ -133,7 +133,7 @@ export const pageQuery = graphql`
         id
         title
         type
-        excrept {
+        excerpt {
           childMarkdownRemark {
             excerpt
           }
@@ -143,7 +143,7 @@ export const pageQuery = graphql`
         id
         title
         type
-        excrept {
+        excerpt {
           childMarkdownRemark {
             excerpt
           }
