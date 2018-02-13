@@ -122,3 +122,16 @@
     }
   }
 }
+
+
+@media screen and (max-width: 768px) {
+  .unauthorized-foundry-content {
+    .cont-columns {
+      .cont-columns-item {
+        .icon-style {
+          font-size: 6rem;
+        }
+      }
+    }
+  }
+}

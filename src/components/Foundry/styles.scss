@@ -109,6 +109,10 @@
         font-weight: normal;
       }
 
+      button {
+        margin-bottom: 0.25rem;
+      }
+      
       button:not(:last-child) {
         margin-right: 0.25rem;
       }
@@ -135,6 +139,10 @@
       margin: 0rem auto 2rem;
     }
 
+    button {
+      margin-bottom: 0.25rem;
+    }
+    
     button:not(:last-child) {
       margin-right: 0.25rem;
     }
