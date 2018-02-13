@@ -4,7 +4,6 @@ import classNames from "classnames";
 // import BreadCrumb from "../components/BreadCrumb";
 import FoundryCard from "../components/FondryCard";
 import "./styles.scss";
-import index from "../section/index";
 
 const TabItem = ({tab, isActive, onClick, index}) => (
   <li onClick={() => onClick(index)} className={classNames({active: isActive})}>

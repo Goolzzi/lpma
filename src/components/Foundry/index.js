@@ -1,5 +1,4 @@
 import React from "react";
-import Link from "gatsby-link";
 import {Icon} from "react-fa";
 import EntypoThumbsUp from "react-entypo/lib/entypo/ThumbsUp";
 import EntypoThumbsDown from "react-entypo/lib/entypo/ThumbsDown";

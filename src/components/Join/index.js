@@ -50,6 +50,14 @@ class Join extends React.PureComponent {
     this.formRef = null;
   }
 
+  componentDidMount() {
+    // analytics init snippet injected via Netlify Snippet Injection
+    // eslint-disable-next-line no-undef
+    analytics &&
+      // eslint-disable-next-line no-undef
+      analytics.trackForm(document.getElementById("join-form"), "Join");
+  }
+
   render() {
     return (
       <section className="section join">
