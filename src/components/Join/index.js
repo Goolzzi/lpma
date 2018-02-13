@@ -4,7 +4,7 @@ import "./styles.scss";
 
 function getFormMarkup() {
   return {
-    __html: ` <form id = "join-form"  onsubmit="onsubmit" netlify name="joinForm">
+    __html: ` <form id = "join-form" netlify name="joinForm">
   <input
    required
     type="text"
@@ -50,10 +50,12 @@ class Join extends React.PureComponent {
     this.formRef = null;
   }
 
-  componentDidMound() {
+  componentDidMount() {
     // analytics init snippet injected via Netlify Snippet Injection
     // eslint-disable-next-line no-undef
-    analytics.trackForm(document.getElementById("join-form"), "Join");
+    analytics &&
+      // eslint-disable-next-line no-undef
+      analytics.trackForm(document.getElementById("join-form"), "Join");
   }
 
   render() {
