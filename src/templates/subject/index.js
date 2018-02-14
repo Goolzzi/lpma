@@ -33,6 +33,8 @@ class FoundrySubject extends React.Component {
     const {title, content, guideTypes} = contentfulFoundrySubject;
     const tabCount = guideTypes ? guideTypes.tabs.length : 0;
 
+    // console.log(contentfulFoundrySubject);
+
     return (
       <section className="section template-page">
         {/* <BreadCrumb /> */}
@@ -92,13 +94,16 @@ class FoundrySubject extends React.Component {
                   <div className="columns is-multiline">
                     {tabCount !== 0 &&
                       contentfulFoundrySubject[tab].map(
-                        ({id, title, excerpt}) => {
+                        ({id, title, slug, excerpt, steps}) => {
+                          const href = steps
+                            ? "foundry/" + slug + "/" + steps[0].slug
+                            : "javascript;";
                           return (
                             <FoundryCard
                               key={id}
                               title={title}
                               content={excerpt.childMarkdownRemark.excerpt}
-                              href={"/#"}
+                              href={href}
                             />
                           );
                         },
@@ -132,7 +137,10 @@ export const pageQuery = graphql`
       guides {
         id
         title
-        type
+        slug
+        steps {
+          slug
+        }
         excerpt {
           childMarkdownRemark {
             excerpt
@@ -142,7 +150,6 @@ export const pageQuery = graphql`
       documents {
         id
         title
-        type
         excerpt {
           childMarkdownRemark {
             excerpt
