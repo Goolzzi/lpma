@@ -1,9 +1,14 @@
 import React from "react";
+import LPMALink from "../../utils/LPMALink";
+import classNames from "classnames";
 import "./styles.scss";
 
-//className="active"
+const Step = props => {
+  const {
+    pathContext: {parentSlug},
+    data: {contentfulFoundryGude, contentfulFoundryStep},
+  } = props;
 
-const Step = ({data: {contentfulFoundryGude, contentfulFoundryStep}}) => {
   return (
     <section className="section guides">
       <div className="container">
@@ -12,8 +17,14 @@ const Step = ({data: {contentfulFoundryGude, contentfulFoundryStep}}) => {
             <h3>Steps:</h3>
             <ul className="steps-menu">
               {contentfulFoundryGude.steps.map(({title, slug}) => (
-                <li key={slug}>
-                  <span>{title}</span>
+                <li
+                  className={classNames({
+                    active: slug === contentfulFoundryStep.slug,
+                  })}
+                  key={slug}>
+                  <LPMALink to={"foundry/" + parentSlug + "/" + slug}>
+                    <span>{title}</span>
+                  </LPMALink>
                 </li>
               ))}
             </ul>
@@ -45,6 +56,7 @@ export const pageQuery = graphql`
     }
     contentfulFoundryStep(slug: {eq: $slug}) {
       title
+      slug
       content {
         childMarkdownRemark {
           html
