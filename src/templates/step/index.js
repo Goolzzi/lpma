@@ -19,8 +19,13 @@ const Step = ({data: {contentfulFoundryGude, contentfulFoundryStep}}) => {
             </ul>
           </div>
           <div className="column is-9 guide-content">
-            <h1>Asd dfg fgh ghj</h1>
-            <div className="markdown">Markdown here</div>
+            <h1>{contentfulFoundryStep.title}</h1>
+            <div
+              className="markdown"
+              dangerouslySetInnerHTML={{
+                __html: contentfulFoundryStep.content.childMarkdownRemark.html,
+              }}
+            />
           </div>
         </div>
       </div>
