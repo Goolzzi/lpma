@@ -4,7 +4,7 @@ import EntypoUser from "react-entypo/lib/entypo/User";
 import EntypoThumbsUp from "react-entypo/lib/entypo/ThumbsUp";
 import EntypoThumbsDown from "react-entypo/lib/entypo/ThumbsDown";
 import Link from "gatsby-link";
-import Breadcrumb from "../../templates/components/breadcrumb"; // Imported for styles yet
+import Breadcrumb from "../../templates/components/BreadCrumb"; // Imported for styles yet
 import "./styles.scss";
 
 const UnauthorizedFoundry = () => (

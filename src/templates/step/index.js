@@ -1,5 +1,6 @@
 import React from "react";
 import LPMALink from "../../utils/LPMALink";
+import BreadCrumb from "../components/BreadCrumb";
 import classNames from "classnames";
 import "./styles.scss";
 
@@ -11,6 +12,7 @@ const Step = props => {
 
   return (
     <section className="section guides">
+      <BreadCrumb />
       <div className="container">
         <div className="columns">
           <div className="column is-3 steps-menu-wrapper">
