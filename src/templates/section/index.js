@@ -17,7 +17,7 @@ const FoundrySection = ({
 }) => {
   return (
     <section className="section template-page">
-      <BreadCrumb />
+      <BreadCrumb crumbs={pathContext.breadCrumbs} />
       <div className="container wrapper-cont">
         <div className="columns">
           <div className="column">

@@ -16,6 +16,7 @@ module.exports = ({graphql, boundActionCreators}) => {
             edges {
               node {
                 id
+                title
                 slug
               }
             }
@@ -24,6 +25,7 @@ module.exports = ({graphql, boundActionCreators}) => {
             edges {
               node {
                 id
+                title
                 slug
               }
             }
@@ -46,6 +48,11 @@ module.exports = ({graphql, boundActionCreators}) => {
         }
 
         result.data.allContentfulFoundrySection.edges.forEach(({node}) => {
+          const crumb = {
+            path: `foundry/${node.slug}`,
+            title: node.title,
+          };
+
           createPage({
             path: `foundry/${node.slug}`,
             component: sectionTemplate,
@@ -53,16 +60,23 @@ module.exports = ({graphql, boundActionCreators}) => {
               slug: node.slug,
               id: node.slug,
               subjectPath: `/foundry/`,
+              breadCrumbs: [crumb],
             },
           });
         });
+
         result.data.allContentfulFoundrySubject.edges.forEach(({node}) => {
+          const crumb = {
+            path: `foundry/${node.slug}`,
+            title: node.title,
+          };
           createPage({
             path: `foundry/${node.slug}`,
             component: subjectTemplate,
             context: {
               slug: node.slug,
               id: node.slug,
+              breadCrumbs: [crumb],
             },
           });
         });

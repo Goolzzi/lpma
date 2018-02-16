@@ -1,27 +1,31 @@
 import React from "react";
+import PropTypes from "prop-types";
+import LPMALnk from "../../../utils/LPMALink";
 import "./styles.scss";
 
-const BreadCrumb = () => (
-  <div className="container breadcrumb-wrapper">
-    <nav className="breadcrumb" aria-label="breadcrumbs">
-      <ul>
-        <li>
-          <a href="#">Bulma Test</a>
-        </li>
-        <li>
-          <a href="#">Documentation test</a>
-        </li>
-        <li>
-          <a href="#">Components test</a>
-        </li>
-        <li className="is-active">
-          <a href="#" aria-current="page">
-            Breadcrumb
-          </a>
-        </li>
-      </ul>
-    </nav>
-  </div>
-);
+const propTypes = {
+  crumbs: PropTypes.array.isRequred,
+};
+
+const BreadCrumb = ({crumbs}) => {
+  if (!crumbs) {
+    return null;
+  }
+  return (
+    <div className="container breadcrumb-wrapper">
+      <nav className="breadcrumb" aria-label="breadcrumbs">
+        <ul>
+          {crumbs.map(({path, title}) => (
+            <li key={path}>
+              <LPMALnk to={path}>{title}</LPMALnk>
+            </li>
+          ))}
+        </ul>
+      </nav>
+    </div>
+  );
+};
+
+BreadCrumb.propTypes = propTypes;
 
 export default BreadCrumb;

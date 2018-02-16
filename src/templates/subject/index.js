@@ -14,6 +14,7 @@ const TabItem = ({tab, isActive, onClick, index}) => (
 class FoundrySubject extends React.Component {
   static propTypes = {
     data: PropTypes.object.isReqiered,
+    pathContext: PropTypes.object.isReqiered,
   };
 
   constructor(props) {
@@ -28,13 +29,14 @@ class FoundrySubject extends React.Component {
   };
 
   render() {
-    const {data: {contentfulFoundrySubject}} = this.props;
+    const {pathContext, data: {contentfulFoundrySubject}} = this.props;
     const {activeTabIndex} = this.state;
     const {title, content, guideTypes} = contentfulFoundrySubject;
     const tabCount = guideTypes ? guideTypes.tabs.length : 0;
+
     return (
       <section className="section template-page">
-        <BreadCrumb />
+        <BreadCrumb crumbs={pathContext.breadCrumbs} />
         <div className="container wrapper-cont">
           <div className="columns">
             <div className="column">
