@@ -13,7 +13,7 @@ const Step = props => {
   return (
     <section className="section guides">
       <BreadCrumb />
-      <div className="container">
+      <div className="container guides-wrapper">
         <div className="columns">
           <div className="column is-3 steps-menu-wrapper">
             <h3>Steps:</h3>
