@@ -34,7 +34,7 @@ class FoundrySubject extends React.Component {
     const tabCount = guideTypes ? guideTypes.tabs.length : 0;
     return (
       <section className="section template-page">
-         <BreadCrumb />
+        <BreadCrumb />
         <div className="container wrapper-cont">
           <div className="columns">
             <div className="column">
@@ -70,6 +70,7 @@ class FoundrySubject extends React.Component {
                   })}>
                   <div className="columns is-multiline">
                     {tabCount !== 0 &&
+                      contentfulFoundrySubject[tab] &&
                       contentfulFoundrySubject[tab].map(
                         ({id, title, slug, excerpt, steps}) => {
                           const href = steps
@@ -121,6 +122,7 @@ export const pageQuery = graphql`
         excerpt {
           childMarkdownRemark {
             excerpt
+            html
           }
         }
       }
@@ -130,6 +132,7 @@ export const pageQuery = graphql`
         excerpt {
           childMarkdownRemark {
             excerpt
+            html
           }
         }
       }
