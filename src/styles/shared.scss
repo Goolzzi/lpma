@@ -77,6 +77,23 @@
     padding: 0rem 1rem 0rem 0rem;
   }
 
+  ul {
+    list-style: initial;
+    margin-left: 2.25rem;
+
+    li {
+      margin-bottom: 0px;
+    }
+  }
+
+  ol {
+    margin-left: 2.25rem;
+
+    li {
+      margin-bottom: 0px;
+    }
+  }
+
   blockquote {
     color: $gray-dark;
     border-left: 3px solid $primary-color;
@@ -86,11 +103,18 @@
     font-size: 1.25em;
   }
 
-  iframe {
+  iframe[title="Embedded Document"] {
     width: 100% !important;
     position: static !important;
-    height: 800px !important;
+    height: 600px !important;
+    height: 80vh !important;
     border: none !important;
+  }
+
+  .youtube-embed {
+    iframe {
+      width: 100%;
+    }
   }
 }
 
