@@ -49,6 +49,28 @@
         border-top: 2px solid $gray-border-darker;
         padding-top: 1rem;
       }
+
+      .steps-navigation {
+        margin-top: 3rem;
+        
+        a {
+          span:first-child {
+            color: #A5CED2;
+            font-size: 0.75rem;
+          }
+
+          span:last-child {
+            color: $gray-dark;
+            font-size: 1rem;
+          }
+
+          &:hover {
+            span {
+              text-decoration: underline;
+            }
+          }
+        }
+      }
     }
   }
 }

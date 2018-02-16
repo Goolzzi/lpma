@@ -39,6 +39,26 @@ const Step = props => {
                 __html: contentfulFoundryStep.content.childMarkdownRemark.html,
               }}
             />
+            <div className="level steps-navigation">
+              <div className="level-left">
+                <div className="level-item">
+                  <LPMALink>
+                    <span>Previous</span>
+                    <br />
+                    <span>Step name</span>
+                  </LPMALink>
+                </div>
+              </div>
+              <div className="level-right">
+                <div className="level-item">
+                  <LPMALink>
+                    <span>Next</span>
+                    <br />
+                    <span>Step name</span>
+                  </LPMALink>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
