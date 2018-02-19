@@ -90,7 +90,20 @@ const Step = props => {
                   dispalyName={steps[stepIndex + 1].title}
                 />
               ) : (
-                <div>test test to subject</div>
+                <div className="level-right">
+                  <div className="level-item">
+                    <LPMALink>
+                      <span>Return to Subject</span>
+                      <br />
+                      <span>
+                        <img
+                          src={require("../../assets/images/icons/ReturnIcon.svg")}
+                        />
+                        Subject name
+                      </span>
+                    </LPMALink>
+                  </div>
+                </div>
               )}
             </div>
           </div>

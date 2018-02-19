@@ -67,6 +67,12 @@
         span:last-child {
           color: $gray-dark;
           font-size: 1rem;
+
+          img {
+            display: inline-block;
+            height: 1em;
+            margin: 0.25em;
+          }
         }
 
         &:hover {
