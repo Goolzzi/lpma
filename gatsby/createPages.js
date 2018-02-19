@@ -83,11 +83,12 @@ module.exports = ({graphql, boundActionCreators}) => {
         result.data.allContentfulFoundryGude.edges.forEach(
           ({node: {slug: parentSlug, steps}}) => {
             steps &&
-              steps.forEach(({slug: childSlug}) => {
+              steps.forEach(({slug: childSlug}, stepIndex) => {
                 createPage({
                   path: `foundry/${parentSlug}/${childSlug}`,
                   component: stepTemplate,
                   context: {
+                    stepIndex,
                     slug: childSlug,
                     parentSlug,
                   },
