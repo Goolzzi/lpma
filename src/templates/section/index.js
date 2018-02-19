@@ -10,14 +10,14 @@ const propTypes = {
 };
 
 const FoundrySection = ({
-  pathContext,
+  pathContext: {parentPath, breadCrumbs},
   data: {
     contentfulFoundrySection: {title, contentPartOne, contentPartTwo, subjects},
   },
 }) => {
   return (
     <section className="section template-page">
-      <BreadCrumb crumbs={pathContext.breadCrumbs} />
+      <BreadCrumb parentPath={parentPath} crumbs={breadCrumbs} />
       <div className="container wrapper-cont">
         <div className="columns">
           <div className="column">
@@ -47,7 +47,7 @@ const FoundrySection = ({
               <FondryCard
                 key={id}
                 title={title}
-                href={`${pathContext.subjectPath}${slug}`}
+                href={`${parentPath}${slug}`}
                 content={content.childMarkdownRemark.excerpt}
               />
             ))}

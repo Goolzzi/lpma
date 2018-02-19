@@ -6,9 +6,12 @@
       & > li {
         margin: 0px;
 
-        & > a {
+        & > a , & > span   {
           color: $gray-dark;
           font-weight: 500;
+        }
+        & > span {
+          padding-left: 8px;
         }
 
         & + li::before {

@@ -29,14 +29,17 @@ class FoundrySubject extends React.Component {
   };
 
   render() {
-    const {pathContext, data: {contentfulFoundrySubject}} = this.props;
+    const {
+      pathContext: {parentPath, breadCrumbs},
+      data: {contentfulFoundrySubject},
+    } = this.props;
     const {activeTabIndex} = this.state;
     const {title, content, guideTypes} = contentfulFoundrySubject;
     const tabCount = guideTypes ? guideTypes.tabs.length : 0;
 
     return (
       <section className="section template-page">
-        <BreadCrumb crumbs={pathContext.breadCrumbs} />
+        <BreadCrumb parentPath={parentPath} crumbs={breadCrumbs} />
         <div className="container wrapper-cont">
           <div className="columns">
             <div className="column">

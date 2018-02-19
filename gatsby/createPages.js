@@ -1,18 +1,19 @@
 "use strict";
 const path = require("path");
+const _isEqual = require("lodash").isEqual;
 
 module.exports = ({graphql, boundActionCreators}) => {
   const {createPage} = boundActionCreators;
-
-  const foundryCrumb = {
-    title: "My Foundry",
-    to: "/",
-  };
 
   return new Promise((resolve, reject) => {
     const sectionTemplate = path.resolve("src/templates/section/index.js");
     const subjectTemplate = path.resolve("src/templates/subject/index.js");
     const stepTemplate = path.resolve("src/templates/step/index.js");
+
+    const foundryCrumb = {
+      title: "My Foundry",
+      path: "",
+    };
 
     resolve(
       graphql(`
@@ -23,6 +24,10 @@ module.exports = ({graphql, boundActionCreators}) => {
                 id
                 title
                 slug
+                subjects {
+                  title
+                  slug
+                }
               }
             }
           }
@@ -52,13 +57,14 @@ module.exports = ({graphql, boundActionCreators}) => {
           reject(result.errors);
         }
 
-        const sectionBreadCrumbs = [foundryCrumb];
-
+        const subjectsMap = new Map();
         result.data.allContentfulFoundrySection.edges.forEach(({node}) => {
-          sectionBreadCrumbs[1] = {
-            path: `foundry/${node.slug}`,
-            title: node.title,
-          };
+          node.subjects.forEach(subj => {
+            subjectsMap.set(subj, {
+              title: node.title,
+              path: node.slug,
+            });
+          });
 
           createPage({
             path: `foundry/${node.slug}`,
@@ -66,24 +72,38 @@ module.exports = ({graphql, boundActionCreators}) => {
             context: {
               slug: node.slug,
               id: node.slug,
-              subjectPath: `/foundry/`,
-              breadCrumbs: [sectionBreadCrumbs[1]],
+              parentPath: `/foundry/`,
+              breadCrumbs: [
+                foundryCrumb,
+                {
+                  path: node.slug,
+                  title: node.title,
+                },
+              ],
             },
           });
         });
 
         result.data.allContentfulFoundrySubject.edges.forEach(({node}) => {
           const crumb = {
-            path: `foundry/${node.slug}`,
+            path: node.slug,
             title: node.title,
           };
+
+          let parentCrumb;
+          subjectsMap.forEach((val, key) => {
+            if (_isEqual(key, {title: node.title, slug: node.slug})) {
+              parentCrumb = val;
+            }
+          });
           createPage({
             path: `foundry/${node.slug}`,
             component: subjectTemplate,
             context: {
+              parentPath: `/foundry/`,
               slug: node.slug,
               id: node.slug,
-              breadCrumbs: [crumb],
+              breadCrumbs: [foundryCrumb, parentCrumb, crumb],
             },
           });
         });

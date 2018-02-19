@@ -5,9 +5,10 @@ import "./styles.scss";
 
 const propTypes = {
   crumbs: PropTypes.array.isRequred,
+  parentPath: PropTypes.string.isRequred,
 };
 
-const BreadCrumb = ({crumbs}) => {
+const BreadCrumb = ({crumbs, parentPath}) => {
   if (!crumbs) {
     return null;
   }
@@ -15,11 +16,17 @@ const BreadCrumb = ({crumbs}) => {
     <div className="container breadcrumb-wrapper">
       <nav className="breadcrumb" aria-label="breadcrumbs">
         <ul>
-          {crumbs.map(({path, title}) => (
-            <li key={path}>
-              <LPMALnk to={path}>{title}</LPMALnk>
-            </li>
-          ))}
+          {crumbs.map(({path, title}, index) => {
+            return index === crumbs.length - 1 ? (
+              <li key={path}>
+                <span>{title}</span>
+              </li>
+            ) : (
+              <li key={path}>
+                <LPMALnk to={`${parentPath}${path}`}>{title}</LPMALnk>
+              </li>
+            );
+          })}
         </ul>
       </nav>
     </div>
