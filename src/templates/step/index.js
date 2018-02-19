@@ -98,6 +98,7 @@ const Step = props => {
                         <br />
                         <span>
                           <img
+                            alt="back to subject"
                             src={require("../../assets/images/icons/ReturnIcon.svg")}
                           />
                           Subject name
