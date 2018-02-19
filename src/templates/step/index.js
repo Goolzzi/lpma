@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import LPMALink from "../../utils/LPMALink";
 import BreadCrumb from "../components/BreadCrumb";
 import classNames from "classnames";
+import Helmet from "react-helmet";
 import "./styles.scss";
 
 const StepLink = ({wrapperClassName, stepType, dispalyName, href}) => {
@@ -36,6 +37,11 @@ const Step = props => {
 
   return (
     <section className="section guides">
+      <Helmet
+        htmlAttributes={{
+          class: "step-page",
+        }}
+      />
       <BreadCrumb />
       <div className="container guides-wrapper">
         <div className="columns">

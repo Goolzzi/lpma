@@ -4,6 +4,11 @@ const path = require("path");
 module.exports = ({graphql, boundActionCreators}) => {
   const {createPage} = boundActionCreators;
 
+  const foundryCrumb = {
+    title: "My Foundry",
+    to: "/",
+  };
+
   return new Promise((resolve, reject) => {
     const sectionTemplate = path.resolve("src/templates/section/index.js");
     const subjectTemplate = path.resolve("src/templates/subject/index.js");
@@ -47,8 +52,10 @@ module.exports = ({graphql, boundActionCreators}) => {
           reject(result.errors);
         }
 
+        const sectionBreadCrumbs = [foundryCrumb];
+
         result.data.allContentfulFoundrySection.edges.forEach(({node}) => {
-          const crumb = {
+          sectionBreadCrumbs[1] = {
             path: `foundry/${node.slug}`,
             title: node.title,
           };
@@ -60,7 +67,7 @@ module.exports = ({graphql, boundActionCreators}) => {
               slug: node.slug,
               id: node.slug,
               subjectPath: `/foundry/`,
-              breadCrumbs: [crumb],
+              breadCrumbs: [sectionBreadCrumbs[1]],
             },
           });
         });
