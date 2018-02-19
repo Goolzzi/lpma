@@ -40,12 +40,16 @@ module.exports = ({graphql, boundActionCreators}) => {
               }
             }
           }
-          allContentfulFoundryGude {
+          allContentfulFoundryGuide {
             edges {
               node {
                 title
                 slug
                 steps {
+                  slug
+                }
+                foundrysubject {
+                  title
                   slug
                 }
               }
@@ -107,14 +111,18 @@ module.exports = ({graphql, boundActionCreators}) => {
             },
           });
         });
-        result.data.allContentfulFoundryGude.edges.forEach(
-          ({node: {slug: parentSlug, steps}}) => {
+        result.data.allContentfulFoundryGuide.edges.forEach(
+          ({node: {slug: parentSlug, steps, foundrysubject}}) => {
+            const subjectTitle = foundrysubject[0].title;
+            const subjectSlug = foundrysubject[0].slug;
             steps &&
               steps.forEach(({slug: childSlug}, stepIndex) => {
                 createPage({
                   path: `foundry/${parentSlug}/${childSlug}`,
                   component: stepTemplate,
                   context: {
+                    subjectTitle,
+                    subjectPath: `/foundry/${subjectSlug}`,
                     stepIndex,
                     slug: childSlug,
                     parentSlug,

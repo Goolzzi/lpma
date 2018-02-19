@@ -29,8 +29,8 @@ StepLink.propTypes = {
 
 const Step = props => {
   const {
-    pathContext: {parentSlug, stepIndex},
-    data: {contentfulFoundryGude: {steps}, contentfulFoundryStep},
+    pathContext: {parentSlug, stepIndex, subjectTitle, subjectPath},
+    data: {contentfulFoundryGuide: {steps}, contentfulFoundryStep},
   } = props;
 
   const basePathName = `foundry/${parentSlug}/`;
@@ -93,7 +93,7 @@ const Step = props => {
                 ) : (
                   <div className="level-right">
                     <div className="level-item">
-                      <LPMALink>
+                      <LPMALink to={subjectPath}>
                         <span>Return to Subject</span>
                         <br />
                         <span>
@@ -101,7 +101,7 @@ const Step = props => {
                             alt="back to subject"
                             src={require("../../assets/images/icons/ReturnIcon.svg")}
                           />
-                          Subject name
+                          {subjectTitle}
                         </span>
                       </LPMALink>
                     </div>
@@ -125,7 +125,7 @@ export default Step;
 
 export const pageQuery = graphql`
   query StepsPageQuery($slug: String, $parentSlug: String) {
-    contentfulFoundryGude(slug: {eq: $parentSlug}) {
+    contentfulFoundryGuide(slug: {eq: $parentSlug}) {
       steps {
         title
         slug
