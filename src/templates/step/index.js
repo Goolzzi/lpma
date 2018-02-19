@@ -69,48 +69,44 @@ const Step = props => {
                 __html: contentfulFoundryStep.content.childMarkdownRemark.html,
               }}
             />
-          </div>
-        </div>
-      </div>
 
-      <div className="container steps-navigation">
-        <div className="columns">
-          <div className="column is-9 is-offset-3">
-            <div className="level">
-              {typeof steps[stepIndex - 1] !== "undefined" ? (
-                <StepLink
-                  wrapperClassName="level-left"
-                  stepType="Previous"
-                  href={basePathName + steps[stepIndex - 1].slug}
-                  dispalyName={steps[stepIndex - 1].title}
-                />
-              ) : (
-                <div className="level-left" />
-              )}
+            <div className="steps-navigation">
+              <div className="level is-mobile">
+                {typeof steps[stepIndex - 1] !== "undefined" ? (
+                  <StepLink
+                    wrapperClassName="level-left"
+                    stepType="Previous"
+                    href={basePathName + steps[stepIndex - 1].slug}
+                    dispalyName={steps[stepIndex - 1].title}
+                  />
+                ) : (
+                  <div className="level-left" />
+                )}
 
-              {typeof steps[stepIndex + 1] !== "undefined" ? (
-                <StepLink
-                  wrapperClassName="level-right"
-                  stepType="Next"
-                  href={basePathName + steps[stepIndex + 1].slug}
-                  dispalyName={steps[stepIndex + 1].title}
-                />
-              ) : (
-                <div className="level-right">
-                  <div className="level-item">
-                    <LPMALink>
-                      <span>Return to Subject</span>
-                      <br />
-                      <span>
-                        <img
-                          src={require("../../assets/images/icons/ReturnIcon.svg")}
-                        />
-                        Subject name
-                      </span>
-                    </LPMALink>
+                {typeof steps[stepIndex + 1] !== "undefined" ? (
+                  <StepLink
+                    wrapperClassName="level-right"
+                    stepType="Next"
+                    href={basePathName + steps[stepIndex + 1].slug}
+                    dispalyName={steps[stepIndex + 1].title}
+                  />
+                ) : (
+                  <div className="level-right">
+                    <div className="level-item">
+                      <LPMALink>
+                        <span>Return to Subject</span>
+                        <br />
+                        <span>
+                          <img
+                            src={require("../../assets/images/icons/ReturnIcon.svg")}
+                          />
+                          Subject name
+                        </span>
+                      </LPMALink>
+                    </div>
                   </div>
-                </div>
-              )}
+                )}
+              </div>
             </div>
           </div>
         </div>
