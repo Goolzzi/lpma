@@ -46,6 +46,7 @@ module.exports = ({graphql, boundActionCreators}) => {
                 title
                 slug
                 steps {
+                  title
                   slug
                 }
                 foundrysubject {
@@ -88,18 +89,25 @@ module.exports = ({graphql, boundActionCreators}) => {
           });
         });
 
+        const test = {};
         result.data.allContentfulFoundrySubject.edges.forEach(({node}) => {
           const crumb = {
             path: node.slug,
             title: node.title,
           };
+          let breadCrumbs;
 
-          let parentCrumb;
+          let parentCrumb = null;
           subjectsMap.forEach((val, key) => {
             if (_isEqual(key, {title: node.title, slug: node.slug})) {
               parentCrumb = val;
             }
           });
+
+          breadCrumbs = [foundryCrumb, parentCrumb, crumb];
+
+          test[crumb.slug] = breadCrumbs;
+
           createPage({
             path: `foundry/${node.slug}`,
             component: subjectTemplate,
@@ -107,7 +115,7 @@ module.exports = ({graphql, boundActionCreators}) => {
               parentPath: `/foundry/`,
               slug: node.slug,
               id: node.slug,
-              breadCrumbs: [foundryCrumb, parentCrumb, crumb],
+              breadCrumbs,
             },
           });
         });
@@ -116,7 +124,7 @@ module.exports = ({graphql, boundActionCreators}) => {
             const subjectTitle = foundrysubject[0].title;
             const subjectSlug = foundrysubject[0].slug;
             steps &&
-              steps.forEach(({slug: childSlug}, stepIndex) => {
+              steps.forEach(({slug: childSlug, title}, stepIndex) => {
                 createPage({
                   path: `foundry/${parentSlug}/${childSlug}`,
                   component: stepTemplate,
@@ -126,6 +134,11 @@ module.exports = ({graphql, boundActionCreators}) => {
                     stepIndex,
                     slug: childSlug,
                     parentSlug,
+                    parentPath: `/foundry/`,
+                    breadCrumbs: [
+                      ...test[foundrysubject.slug],
+                      {title, path: ""},
+                    ],
                   },
                 });
               });

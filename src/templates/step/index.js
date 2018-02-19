@@ -29,7 +29,14 @@ StepLink.propTypes = {
 
 const Step = props => {
   const {
-    pathContext: {parentSlug, stepIndex, subjectTitle, subjectPath},
+    pathContext: {
+      parentSlug,
+      stepIndex,
+      subjectTitle,
+      subjectPath,
+      breadCrumbs,
+      parentPath,
+    },
     data: {contentfulFoundryGuide: {steps}, contentfulFoundryStep},
   } = props;
 
@@ -42,7 +49,7 @@ const Step = props => {
           class: "step-page",
         }}
       />
-      <BreadCrumb />
+      <BreadCrumb parentPath={parentPath} crumbs={breadCrumbs} />
       <div className="container guides-wrapper">
         <div className="columns">
           <div className="column is-3 steps-menu-wrapper">
