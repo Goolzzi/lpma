@@ -5,6 +5,7 @@ import BreadCrumb from "../components/BreadCrumb";
 import classNames from "classnames";
 import Helmet from "react-helmet";
 import "./styles.scss";
+import FeedbackForm from "../../components/FeedbackForm";
 
 const StepLink = ({wrapperClassName, stepType, dispalyName, href}) => {
   return (
@@ -83,6 +84,7 @@ const Step = props => {
       <div className="container">
         <div className="columns">
           <div className="column is-9 is-offset-3">
+            <FeedbackForm />
             <div className="steps-navigation">
               <div className="level is-mobile">
                 {typeof steps[stepIndex - 1] !== "undefined" ? (
