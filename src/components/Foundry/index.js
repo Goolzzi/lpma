@@ -109,7 +109,13 @@ const Foundry = () => (
         </div>
       </div>
 
-      <FeedbackForm />
+      <FeedbackForm
+        feedbackParams={{
+          type: "fondry",
+          title: "My Foundry",
+          slug: "foundry",
+        }}
+      />
     </section>
   </React.Fragment>
 );

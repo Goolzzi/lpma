@@ -13,7 +13,13 @@ const propTypes = {
 const FoundrySection = ({
   pathContext: {parentPath, breadCrumbs},
   data: {
-    contentfulFoundrySection: {title, contentPartOne, contentPartTwo, subjects},
+    contentfulFoundrySection: {
+      title,
+      slug,
+      contentPartOne,
+      contentPartTwo,
+      subjects,
+    },
   },
 }) => {
   return (
@@ -55,7 +61,13 @@ const FoundrySection = ({
         </div>
       </div>
       <div className="container">
-        <FeedbackForm />
+        <FeedbackForm
+          feedbackParams={{
+            type: "section",
+            title,
+            slug,
+          }}
+        />
       </div>
     </section>
   );
