@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import classNames from "classnames";
+import store from "store";
 import "./styles.scss";
 import {EntypoThumbsDown, EntypoThumbsUp} from "react-entypo";
 
@@ -28,6 +29,7 @@ class FeedbackForm extends React.Component {
       analytics.on("track", event => {
         if (event === this.segemetEevent) {
           this.setState({emitted: true});
+          store.set(`${this.props.feedbackParams.slug}`, true);
         }
       });
   }
@@ -35,6 +37,11 @@ class FeedbackForm extends React.Component {
   render() {
     const {feedbackParams} = this.props;
     const {formClicked, emitted} = this.state;
+
+    if (store.get(`${feedbackParams.slug}`)) {
+      return null;
+    }
+
     if (!emitted) {
       return (
         <div className="columns helpful is-gapless">
@@ -77,7 +84,10 @@ class FeedbackForm extends React.Component {
 }
 
 FeedbackForm.propTypes = {
-  feedbackParams: PropTypes.object,
+  feedbackParams: PropTypes.shape({
+    slug: PropTypes.string,
+    title: PropTypes.number,
+  }).isRquired,
 };
 
 export default FeedbackForm;
