@@ -41,7 +41,6 @@ class FoundrySubject extends React.Component {
       content,
       guideTypes,
       feedbackForm,
-      documents,
     } = contentfulFoundrySubject;
     const tabCount = guideTypes ? guideTypes.tabs.length : 0;
 
@@ -58,7 +57,7 @@ class FoundrySubject extends React.Component {
             className="markdown"
             dangerouslySetInnerHTML={{__html: content.childMarkdownRemark.html}}
           />
-          {documents !== null && (
+          {tabCount > 1 && (
             <div className="custom-tabs">
               <ul>
                 {tabCount !== 0 &&
