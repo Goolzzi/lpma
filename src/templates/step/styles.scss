@@ -1,11 +1,6 @@
 @media screen and (max-width: 768px) {
   html.step-page {
     body {
-      .page-container {
-        .guides {
-        }
-      }
-
       .footer {
         display: none;
       }
@@ -33,8 +28,13 @@
           overflow: hidden;
           padding: 0px;
 
+          .breadcrumb-wrapper {
+            margin-top: 0.5rem;
+            margin-bottom: 0.5rem;
+          }
+
           .container.guides-wrapper {
-            height: calc(100% - 300px);
+            height: calc(100% - 12rem);
             padding: 0px;
 
             .guide-columns {
@@ -119,47 +119,56 @@
     }
   }
 
-  .steps-navigation {
-    padding: 4rem 0px 1rem 0px;
+  .bottom-container {
+    .helpful {
+      margin-top: 0.75rem !important;
+      margin-bottom: 0.5rem !important;
 
-    .level-left {
-      max-width: 50%;
-      padding-right: 3rem;
-
-      .level-item {
-        max-width: 100%;
+      span, button {
+        padding-top: 0.75rem;
+        padding-bottom: 0.75rem;
       }
     }
+    .steps-navigation {
+      .level-left {
+        max-width: 50%;
+        padding-right: 3rem;
 
-    .level-right {
-      max-width: 50%;
-      padding-left: 3rem;
-
-      .level-item {
-        max-width: 100%;
-      }
-    }
-
-    a {
-      span:first-child {
-        color: #A5CED2;
-        font-size: 0.75rem;
-      }
-
-      span:last-child {
-        color: $gray-dark;
-        font-size: 1rem;
-
-        img {
-          display: inline-block;
-          height: 1em;
-          margin: 0.25em;
+        .level-item {
+          max-width: 100%;
         }
       }
 
-      &:hover {
-        span {
-          text-decoration: underline;
+      .level-right {
+        max-width: 50%;
+        padding-left: 3rem;
+
+        .level-item {
+          max-width: 100%;
+        }
+      }
+
+      a {
+        span:first-child {
+          color: #A5CED2;
+          font-size: 0.75rem;
+        }
+
+        span:last-child {
+          color: $gray-dark;
+          font-size: 1rem;
+
+          img {
+            display: inline-block;
+            height: 1em;
+            margin: 0.25em;
+          }
+        }
+
+        &:hover {
+          span {
+            text-decoration: underline;
+          }
         }
       }
     }

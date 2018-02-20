@@ -97,13 +97,15 @@ class FoundrySubject extends React.Component {
               );
             })}
         </div>
-        <FeedbackForm
-          feedbackParams={{
-            type: "subject",
-            title,
-            slug,
-          }}
-        />
+        <div className="container">
+          <FeedbackForm
+            feedbackParams={{
+              type: "subject",
+              title,
+              slug,
+            }}
+          />
+        </div>
       </section>
     );
   }

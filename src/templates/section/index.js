@@ -60,13 +60,15 @@ const FoundrySection = ({
             ))}
         </div>
       </div>
-      <FeedbackForm
-        feedbackParams={{
-          type: "section",
-          title,
-          slug,
-        }}
-      />
+      <div className="container">
+        <FeedbackForm
+          feedbackParams={{
+            type: "section",
+            title,
+            slug,
+          }}
+        />
+      </div>
     </section>
   );
 };
