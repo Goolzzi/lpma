@@ -12,6 +12,7 @@ class FeedbackForm extends React.Component {
     this.state = {
       formClicked: false,
       emitted: false,
+      userSumbmitted: store.get(`${this.props.feedbackParams.slug}`),
     };
   }
 
@@ -36,9 +37,9 @@ class FeedbackForm extends React.Component {
 
   render() {
     const {feedbackParams} = this.props;
-    const {formClicked, emitted} = this.state;
+    const {formClicked, emitted, userSumbmitted} = this.state;
 
-    if (store.get(`${feedbackParams.slug}`)) {
+    if (userSumbmitted) {
       return null;
     }
 
@@ -50,8 +51,9 @@ class FeedbackForm extends React.Component {
           </div>
           <div className="column">
             <button
-              className={classNames({"feedback-btn-disabled": formClicked})}
-              disabled={formClicked}
+              className={classNames({
+                "feedback-btn-disabled": formClicked,
+              })}
               onClick={() => {
                 this.submitFeedback("Yes", feedbackParams);
               }}>
@@ -62,7 +64,6 @@ class FeedbackForm extends React.Component {
           <div className="column">
             <button
               className={classNames({"feedback-btn-disabled": formClicked})}
-              disabled={formClicked}
               onClick={() => {
                 this.submitFeedback("No", feedbackParams);
               }}>
