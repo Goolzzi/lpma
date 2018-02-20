@@ -84,7 +84,13 @@ const Step = props => {
       <div className="container">
         <div className="columns">
           <div className="column is-9 is-offset-3">
-            <FeedbackForm />
+            <FeedbackForm
+              feedbackParams={{
+                type: "step",
+                title: steps[stepIndex].title,
+                slug: steps[stepIndex].slug,
+              }}
+            />
             <div className="steps-navigation">
               <div className="level is-mobile">
                 {typeof steps[stepIndex - 1] !== "undefined" ? (

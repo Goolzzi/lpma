@@ -35,7 +35,7 @@ class FoundrySubject extends React.Component {
       data: {contentfulFoundrySubject},
     } = this.props;
     const {activeTabIndex} = this.state;
-    const {title, content, guideTypes} = contentfulFoundrySubject;
+    const {title, slug, content, guideTypes} = contentfulFoundrySubject;
     const tabCount = guideTypes ? guideTypes.tabs.length : 0;
 
     return (
@@ -97,7 +97,13 @@ class FoundrySubject extends React.Component {
               );
             })}
         </div>
-        <FeedbackForm />
+        <FeedbackForm
+          feedbackParams={{
+            type: "subject",
+            title,
+            slug,
+          }}
+        />
       </section>
     );
   }
