@@ -84,13 +84,15 @@ const Step = props => {
       <div className="container bottom-container">
         <div className="columns">
           <div className="column is-9 is-offset-3">
-            <FeedbackForm
-              feedbackParams={{
-                type: "step",
-                title: steps[stepIndex].title,
-                slug: steps[stepIndex].slug,
-              }}
-            />
+            {contentfulFoundryStep.feedbackForm !== false && (
+              <FeedbackForm
+                feedbackParams={{
+                  type: "step",
+                  title: steps[stepIndex].title,
+                  slug: steps[stepIndex].slug,
+                }}
+              />
+            )}
             <div className="steps-navigation">
               <div className="level is-mobile">
                 {typeof steps[stepIndex - 1] !== "undefined" ? (
@@ -155,6 +157,7 @@ export const pageQuery = graphql`
     contentfulFoundryStep(slug: {eq: $slug}) {
       title
       slug
+      feedbackForm
       content {
         childMarkdownRemark {
           html

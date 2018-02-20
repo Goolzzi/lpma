@@ -35,7 +35,13 @@ class FoundrySubject extends React.Component {
       data: {contentfulFoundrySubject},
     } = this.props;
     const {activeTabIndex} = this.state;
-    const {title, slug, content, guideTypes} = contentfulFoundrySubject;
+    const {
+      title,
+      slug,
+      content,
+      guideTypes,
+      feedbackForm,
+    } = contentfulFoundrySubject;
     const tabCount = guideTypes ? guideTypes.tabs.length : 0;
 
     return (
@@ -98,13 +104,15 @@ class FoundrySubject extends React.Component {
             })}
         </div>
         <div className="container">
-          <FeedbackForm
-            feedbackParams={{
-              type: "subject",
-              title,
-              slug,
-            }}
-          />
+          {feedbackForm !== false && (
+            <FeedbackForm
+              feedbackParams={{
+                type: "subject",
+                title,
+                slug,
+              }}
+            />
+          )}
         </div>
       </section>
     );
@@ -118,6 +126,7 @@ export const pageQuery = graphql`
     contentfulFoundrySubject(slug: {eq: $slug}) {
       title
       slug
+      feedbackForm
       id
       content {
         childMarkdownRemark {
