@@ -51,7 +51,7 @@ const Step = props => {
       />
       <BreadCrumb parentPath={parentPath} crumbs={breadCrumbs} />
       <div className="container guides-wrapper">
-        <div className="columns">
+        <div className="columns guide-columns">
           <div className="column is-3 steps-menu-wrapper">
             <h3>Steps:</h3>
             <ul className="steps-menu">
@@ -76,7 +76,13 @@ const Step = props => {
                 __html: contentfulFoundryStep.content.childMarkdownRemark.html,
               }}
             />
+          </div>
+        </div>
+      </div>
 
+      <div className="container">
+        <div className="columns">
+          <div className="column is-9 is-offset-3">
             <div className="steps-navigation">
               <div className="level is-mobile">
                 {typeof steps[stepIndex - 1] !== "undefined" ? (

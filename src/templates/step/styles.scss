@@ -34,10 +34,10 @@
           padding: 0px;
 
           .container.guides-wrapper {
-            height: 100%;
+            height: calc(100% - 300px);
             padding: 0px;
 
-            .columns {
+            .guide-columns {
               height: 100%;
               margin-top: 0px;
 
@@ -68,7 +68,7 @@
 
 .guides {
   .container.guides-wrapper {
-    .columns {
+    .guide-columns {
       .steps-menu-wrapper {
         background-color: $white;
 
@@ -120,7 +120,26 @@
   }
 
   .steps-navigation {
-    padding: 4rem 0px 2rem 0px;
+    padding: 4rem 0px 1rem 0px;
+
+    .level-left {
+      max-width: 50%;
+      padding-right: 3rem;
+
+      .level-item {
+        max-width: 100%;
+      }
+    }
+
+    .level-right {
+      max-width: 50%;
+      padding-left: 3rem;
+
+      .level-item {
+        max-width: 100%;
+      }
+    }
+
     a {
       span:first-child {
         color: #A5CED2;
