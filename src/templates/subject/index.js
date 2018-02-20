@@ -41,6 +41,7 @@ class FoundrySubject extends React.Component {
       content,
       guideTypes,
       feedbackForm,
+      documents,
     } = contentfulFoundrySubject;
     const tabCount = guideTypes ? guideTypes.tabs.length : 0;
 
@@ -57,20 +58,22 @@ class FoundrySubject extends React.Component {
             className="markdown"
             dangerouslySetInnerHTML={{__html: content.childMarkdownRemark.html}}
           />
-          <div className="custom-tabs">
-            <ul>
-              {tabCount !== 0 &&
-                guideTypes.tabs.map((tab, index) => (
-                  <TabItem
-                    onClick={this.handleTabClick}
-                    key={index}
-                    tab={tab}
-                    index={index}
-                    isActive={activeTabIndex === index}
-                  />
-                ))}
-            </ul>
-          </div>
+          {documents !== null && (
+            <div className="custom-tabs">
+              <ul>
+                {tabCount !== 0 &&
+                  guideTypes.tabs.map((tab, index) => (
+                    <TabItem
+                      onClick={this.handleTabClick}
+                      key={index}
+                      tab={tab}
+                      index={index}
+                      isActive={activeTabIndex === index}
+                    />
+                  ))}
+              </ul>
+            </div>
+          )}
 
           {tabCount !== 0 &&
             guideTypes.tabs.map((tab, i) => {
