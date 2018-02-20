@@ -197,26 +197,3 @@
     }
   }
 }
-
-@media screen and (max-width: 768px) {
-  .foundry-columns {
-    .helpful {
-      .column {
-        text-align: center;
-
-        border-top: none !important;
-        border-right: 1px solid $gray-border-darker !important;
-        border-bottom: 1px solid $gray-border-darker !important;
-        border-left: 1px solid $gray-border-darker !important;
-
-        &:first-child {
-          border-top: 1px solid $gray-border-darker !important;
-        }
-
-        button {
-          width: 100%;
-        }
-      }
-    }
-  }
-}

@@ -2,6 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import BreadCrumb from "../components/BreadCrumb";
 import FondryCard from "../components/FondryCard";
+import FeedbackForm from "../../components/FeedbackForm";
 import "./styles.scss";
 
 const propTypes = {
@@ -53,6 +54,7 @@ const FoundrySection = ({
             ))}
         </div>
       </div>
+      <FeedbackForm />
     </section>
   );
 };

@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import classNames from "classnames";
 import BreadCrumb from "../components/BreadCrumb";
 import FoundryCard from "../components/FondryCard";
+import FeedbackForm from "../../components/FeedbackForm";
 import "./styles.scss";
 
 const TabItem = ({tab, isActive, onClick, index}) => (
@@ -96,6 +97,7 @@ class FoundrySubject extends React.Component {
               );
             })}
         </div>
+        <FeedbackForm />
       </section>
     );
   }

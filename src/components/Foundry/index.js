@@ -1,8 +1,7 @@
 import React from "react";
 import {Icon} from "react-fa";
-import EntypoThumbsUp from "react-entypo/lib/entypo/ThumbsUp";
-import EntypoThumbsDown from "react-entypo/lib/entypo/ThumbsDown";
 import "./styles.scss";
+import FeedbackForm from "../FeedbackForm";
 
 const Foundry = () => (
   <React.Fragment>
@@ -110,23 +109,7 @@ const Foundry = () => (
         </div>
       </div>
 
-      <div className="columns helpful is-gapless">
-        <div className="column is-9">
-          <span>Was this Helpful ?</span>
-        </div>
-        <div className="column">
-          <button>
-            <EntypoThumbsUp className="icon-style thumbs-up" />
-            <span>Yes</span>
-          </button>
-        </div>
-        <div className="column">
-          <button>
-            <EntypoThumbsDown className="icon-style thumbs-down" />
-            <span>No</span>
-          </button>
-        </div>
-      </div>
+      <FeedbackForm />
     </section>
   </React.Fragment>
 );
