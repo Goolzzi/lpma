@@ -38,7 +38,7 @@ class FeedbackForm extends React.Component {
     if (!emitted) {
       return (
         <div className="columns helpful is-gapless">
-          <div className="column is-9">
+          <div className="column is-8">
             <span>Was this Helpful ?</span>
           </div>
           <div className="column">

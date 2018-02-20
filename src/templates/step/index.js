@@ -81,7 +81,7 @@ const Step = props => {
         </div>
       </div>
 
-      <div className="container">
+      <div className="container bottom-container">
         <div className="columns">
           <div className="column is-9 is-offset-3">
             <FeedbackForm />

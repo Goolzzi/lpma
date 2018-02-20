@@ -97,7 +97,9 @@ class FoundrySubject extends React.Component {
               );
             })}
         </div>
-        <FeedbackForm />
+        <div className="container">
+          <FeedbackForm />
+        </div>
       </section>
     );
   }

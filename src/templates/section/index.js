@@ -54,7 +54,9 @@ const FoundrySection = ({
             ))}
         </div>
       </div>
-      <FeedbackForm />
+      <div className="container">
+        <FeedbackForm />
+      </div>
     </section>
   );
 };

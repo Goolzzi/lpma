@@ -8,7 +8,7 @@ const propTypes = {
 
 const LPMA2018Page = () => (
   <div>
-    <LPMA2018/>
+    <LPMA2018 />
   </div>
 );
 

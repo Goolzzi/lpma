@@ -12,11 +12,11 @@ const opts = {
     fs: 0,
     iv_load_policy: 3,
     loop: 1,
-    playlist: 'pZ_tHrWzdT4',
+    playlist: "pZ_tHrWzdT4",
     modestbranding: 1,
     showinfo: 0,
-    enablejsapi: 1
-  }
+    enablejsapi: 1,
+  },
 };
 
 const LPMA2018 = () => (
