@@ -26,6 +26,7 @@
     "graphql": true,
     "require" : true,
      "module": true,
-     "process" : true
+     "process" : true,
+     "analytics" : true
   }
 }

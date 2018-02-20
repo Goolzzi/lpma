@@ -45,6 +45,15 @@
   }
 }
 
+.feedback-received {
+  color: $success-green !important;
+}
+
+.feedback-btn-disabled {
+    cursor: not-allowed;
+    opacity: 0.1;
+}
+
 @media screen and (max-width: 768px) {
  .foundry-columns {
     .helpful {
