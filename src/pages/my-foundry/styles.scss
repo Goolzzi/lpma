@@ -89,110 +89,20 @@
 
   .foundry-columns {
     .columns {
-      .column.column-item {
-        padding: 2.25rem 1.75rem;
-        display: block;
-        text-align: center;
-        margin-bottom: 2rem;
-  
-        .icon-style {
-          font-size: 4rem;
-          color: $gray-dark;
-          margin-bottom: 2rem;
-        }
-  
+      .column-item {
+        padding: 2rem 1.5rem;
+        background-color: $white;
+
         h3 {
           color: $primary-color;
           font-weight: 500;
+          font-size: 1.25rem;
         }
         
         p {
           color: $gray-dark;
           font-weight: normal;
-        }
-  
-        button {
-          margin-bottom: 0.25rem;
-        }
-  
-        button:not(:last-child) {
-          margin-right: 0.25rem;
-        }
-      }
-    }
-  
-    .thinking-of-joining {
-      background-color: $white;
-      text-align: center;
-      padding: 2rem;
-      margin-bottom: 4rem;
-  
-      h3 {
-        color: $primary-color;
-        font-weight: 500;
-        max-width: 50%;
-        margin: 0rem auto 2rem;
-      }
-      
-      p {
-        color: $gray-dark;
-        font-weight: normal;
-        max-width: 50%;
-        margin: 0rem auto 2rem;
-      }
-  
-      button {
-        margin-bottom: 0.25rem;
-      }
-  
-      button:not(:last-child) {
-        margin-right: 0.25rem;
-      }
-    }
-  
-    .helpful {
-      margin-top: 2rem !important;
-      margin-bottom: 2rem !important;
-  
-      .column {
-        border-top: 1px solid $gray-border-darker;
-        border-bottom: 1px solid $gray-border-darker;
-        border-left: 1px solid $gray-border-darker;
-  
-        &:first-child {
-          border-left: none;
-        }
-  
-        & > span {
-          color: $gray-dark;
-          display: inline-block;
-          padding: 1.25rem 2.25rem;
-        }
-  
-        button {
-          color: $gray-dark;
-          display: inline-block;
-          padding: 1.25rem 2.25rem;
-          background-color: $transparent;
-          border: none;
-          outline: none;
-          cursor: pointer;
-  
-          span {
-            color: $gray-dark;
-          }
-  
-          .icon-style {
-            font-size: 1em;
-            margin-right: 0.25rem;
-  
-            &.thumbs-up {
-              color: $success-green;
-            }
-            &.thumbs-down {
-              color: $danger-red;
-            }
-          }
+          font-size: 1rem;
         }
       }
     }

@@ -74,53 +74,6 @@
       }
     }
   }
-
-  .helpful {
-    margin-top: 2rem !important;
-    margin-bottom: 2rem !important;
-
-    .column {
-      border-top: 1px solid $gray-border-darker;
-      border-bottom: 1px solid $gray-border-darker;
-      border-left: 1px solid $gray-border-darker;
-
-      &:first-child {
-        border-left: none;
-      }
-
-      & > span {
-        color: $gray-dark;
-        display: inline-block;
-        padding: 1.25rem 2.25rem;
-      }
-
-      button {
-        color: $gray-dark;
-        display: inline-block;
-        padding: 1.25rem 2.25rem;
-        background-color: $transparent;
-        border: none;
-        outline: none;
-        cursor: pointer;
-
-        span {
-          color: $gray-dark;
-        }
-
-        .icon-style {
-          font-size: 1em;
-          margin-right: 0.25rem;
-
-          &.thumbs-up {
-            color: $success-green;
-          }
-          &.thumbs-down {
-            color: $danger-red;
-          }
-        }
-      }
-    }
-  }
 }
 
 
