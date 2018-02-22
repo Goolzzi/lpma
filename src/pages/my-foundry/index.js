@@ -2,9 +2,14 @@ import React from "react";
 import PropTypes from "prop-types";
 import "./styles.scss";
 import FeedbackForm from "../../components/FeedbackForm";
+import {fisherYates} from "../../utils";
+import LPMALink from "../../utils/LPMALink";
 
 const MyFoundryPage = ({
-  data: {contentfulMyFoundryHeading: {title, greeting, background, cards}},
+  data: {
+    contentfulMyFoundryHeading: {title, greeting, background, cards},
+    allContentfulFoundryGuide: {edges},
+  },
 }) => (
   <div>
     <section className="section container foundry-heading" />
@@ -47,36 +52,23 @@ const MyFoundryPage = ({
     </section>
     <section className="section container foundry-columns">
       <div className="columns">
-        <div className="column is-4">
-          <div className="column-item">
-            <h3>Title asd sdf</h3>
-            <p>
-              Paragraph sdkjf skd fksdnf sjdfj sjd fjs dfsdf s djbfsbd fbs
-              dfsdfjsdfbsdb sdbf sdjff jj ssdf sj jj sjdf js djjs fjs dsf s sj
-              df
-            </p>
-          </div>
-        </div>
-        <div className="column is-4">
-          <div className="column-item">
-            <h3>Title asd sdf</h3>
-            <p>
-              Paragraph sdkjf skd fksdnf sjdfj sjd fjs dfsdf s djbfsbd fbs
-              dfsdfjsdfbsdb sdbf sdjff jj ssdf sj jj sjdf js djjs fjs dsf s sj
-              df
-            </p>
-          </div>
-        </div>
-        <div className="column is-4">
-          <div className="column-item">
-            <h3>Title asd sdf</h3>
-            <p>
-              Paragraph sdkjf skd fksdnf sjdfj sjd fjs dfsdf s djbfsbd fbs
-              dfsdfjsdfbsdb sdbf sdjff jj ssdf sj jj sjdf js djjs fjs dsf s sj
-              df
-            </p>
-          </div>
-        </div>
+        {fisherYates(edges, 3).map(
+          ({node: {id, title, slug, excerpt, foundrystep}}) => (
+            <div key={id} className="column is-4">
+              <LPMALink
+                to={`foundry/${slug}/${fisherYates(foundrystep, 1)[0].slug}`}>
+                <div className="column-item">
+                  <h3>{title}</h3>
+                  <p
+                    dangerouslySetInnerHTML={{
+                      __html: excerpt.childMarkdownRemark.excerpt,
+                    }}
+                  />
+                </div>
+              </LPMALink>
+            </div>
+          ),
+        )}
       </div>
 
       <FeedbackForm
@@ -120,6 +112,23 @@ export const pageQuery = graphql`
           id
           childMarkdownRemark {
             html
+          }
+        }
+      }
+    }
+    allContentfulFoundryGuide {
+      edges {
+        node {
+          title
+          slug
+          foundrystep {
+            slug
+          }
+          excerpt {
+            id
+            childMarkdownRemark {
+              excerpt
+            }
           }
         }
       }
