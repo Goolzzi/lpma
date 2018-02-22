@@ -529,7 +529,7 @@ const LPMA2018Page = () => (
             <div className="has-text-centered">
               <img
                 src={venueImg}
-                srcset={`${venueImg} 723w, ${venueImgSmall} 300w`}
+                srcSet={`${venueImg} 723w, ${venueImgSmall} 300w`}
               />
             </div>
           </div>

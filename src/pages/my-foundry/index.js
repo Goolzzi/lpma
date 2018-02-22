@@ -1,23 +1,16 @@
 import React from "react";
 import {Icon} from "react-fa";
 import "./styles.scss";
-import FeedbackForm from "../FeedbackForm";
+import FeedbackForm from "../../components/FeedbackForm";
 
-const Foundry = () => (
-  <React.Fragment>
-    <section className="section container foundry-heading">
-      <div className="columns is-gapless">
-        <div className="column is-12">
-          <h4>LPMA Foundry</h4>
-        </div>
-      </div>
-    </section>
+const MyFoundryPage = () => (
+  <div>
+    <section className="section container foundry-heading" />
     <section className="section foundry">
       <img
         src={require("../../assets/images/home-bg-v3.png")}
         alt="acquisition Jumbotron"
       />
-
       <section className="section cont">
         <div className="container">
           <div className="columns">
@@ -48,6 +41,13 @@ const Foundry = () => (
         </div>
       </section>
     </section>
+    <FeedbackForm
+      feedbackParams={{
+        type: "fondry",
+        title: "My Foundry",
+        slug: "foundry",
+      }}
+    />
     <section className="section container foundry-columns">
       <div className="columns">
         <div className="column is-4 column-item">
@@ -108,16 +108,8 @@ const Foundry = () => (
           </div>
         </div>
       </div>
-
-      <FeedbackForm
-        feedbackParams={{
-          type: "fondry",
-          title: "My Foundry",
-          slug: "foundry",
-        }}
-      />
     </section>
-  </React.Fragment>
+  </div>
 );
 
-export default Foundry;
+export default MyFoundryPage;
