@@ -35,7 +35,13 @@ class FoundrySubject extends React.Component {
       data: {contentfulFoundrySubject},
     } = this.props;
     const {activeTabIndex} = this.state;
-    const {title, slug, content, guideTypes} = contentfulFoundrySubject;
+    const {
+      title,
+      slug,
+      content,
+      guideTypes,
+      feedbackForm,
+    } = contentfulFoundrySubject;
     const tabCount = guideTypes ? guideTypes.tabs.length : 0;
 
     return (
@@ -51,20 +57,22 @@ class FoundrySubject extends React.Component {
             className="markdown"
             dangerouslySetInnerHTML={{__html: content.childMarkdownRemark.html}}
           />
-          <div className="custom-tabs">
-            <ul>
-              {tabCount !== 0 &&
-                guideTypes.tabs.map((tab, index) => (
-                  <TabItem
-                    onClick={this.handleTabClick}
-                    key={index}
-                    tab={tab}
-                    index={index}
-                    isActive={activeTabIndex === index}
-                  />
-                ))}
-            </ul>
-          </div>
+          {tabCount > 1 && (
+            <div className="custom-tabs">
+              <ul>
+                {tabCount !== 0 &&
+                  guideTypes.tabs.map((tab, index) => (
+                    <TabItem
+                      onClick={this.handleTabClick}
+                      key={index}
+                      tab={tab}
+                      index={index}
+                      isActive={activeTabIndex === index}
+                    />
+                  ))}
+              </ul>
+            </div>
+          )}
 
           {tabCount !== 0 &&
             guideTypes.tabs.map((tab, i) => {
@@ -98,13 +106,15 @@ class FoundrySubject extends React.Component {
             })}
         </div>
         <div className="container">
-          <FeedbackForm
-            feedbackParams={{
-              type: "subject",
-              title,
-              slug,
-            }}
-          />
+          {feedbackForm !== false && (
+            <FeedbackForm
+              feedbackParams={{
+                type: "subject",
+                title,
+                slug,
+              }}
+            />
+          )}
         </div>
       </section>
     );
@@ -118,6 +128,7 @@ export const pageQuery = graphql`
     contentfulFoundrySubject(slug: {eq: $slug}) {
       title
       slug
+      feedbackForm
       id
       content {
         childMarkdownRemark {

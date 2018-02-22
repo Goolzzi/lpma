@@ -16,6 +16,7 @@ const FoundrySection = ({
     contentfulFoundrySection: {
       title,
       slug,
+      feedbackForm,
       contentPartOne,
       contentPartTwo,
       subjects,
@@ -61,13 +62,15 @@ const FoundrySection = ({
         </div>
       </div>
       <div className="container">
-        <FeedbackForm
-          feedbackParams={{
-            type: "section",
-            title,
-            slug,
-          }}
-        />
+        {feedbackForm !== false && (
+          <FeedbackForm
+            feedbackParams={{
+              type: "section",
+              title,
+              slug,
+            }}
+          />
+        )}
       </div>
     </section>
   );
@@ -92,6 +95,7 @@ export const pageQuery = graphql`
           html
         }
       }
+      feedbackForm
       subjects {
         id
         title

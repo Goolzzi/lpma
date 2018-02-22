@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import classNames from "classnames";
+import store from "store";
 import "./styles.scss";
 import {EntypoThumbsDown, EntypoThumbsUp} from "react-entypo";
 
@@ -11,6 +12,7 @@ class FeedbackForm extends React.Component {
     this.state = {
       formClicked: false,
       emitted: false,
+      userSumbmitted: store.get(`${this.props.feedbackParams.slug}`),
     };
   }
 
@@ -28,13 +30,19 @@ class FeedbackForm extends React.Component {
       analytics.on("track", event => {
         if (event === this.segemetEevent) {
           this.setState({emitted: true});
+          store.set(`${this.props.feedbackParams.slug}`, true);
         }
       });
   }
 
   render() {
     const {feedbackParams} = this.props;
-    const {formClicked, emitted} = this.state;
+    const {formClicked, emitted, userSumbmitted} = this.state;
+
+    if (userSumbmitted) {
+      return null;
+    }
+
     if (!emitted) {
       return (
         <div className="columns helpful is-gapless">
@@ -43,8 +51,9 @@ class FeedbackForm extends React.Component {
           </div>
           <div className="column">
             <button
-              className={classNames({"feedback-btn-disabled": formClicked})}
-              disabled={formClicked}
+              className={classNames({
+                "feedback-btn-disabled": formClicked,
+              })}
               onClick={() => {
                 this.submitFeedback("Yes", feedbackParams);
               }}>
@@ -55,7 +64,6 @@ class FeedbackForm extends React.Component {
           <div className="column">
             <button
               className={classNames({"feedback-btn-disabled": formClicked})}
-              disabled={formClicked}
               onClick={() => {
                 this.submitFeedback("No", feedbackParams);
               }}>
@@ -77,7 +85,10 @@ class FeedbackForm extends React.Component {
 }
 
 FeedbackForm.propTypes = {
-  feedbackParams: PropTypes.object,
+  feedbackParams: PropTypes.shape({
+    slug: PropTypes.string,
+    title: PropTypes.number,
+  }).isRquired,
 };
 
 export default FeedbackForm;

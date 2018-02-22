@@ -121,8 +121,8 @@ module.exports = ({graphql, boundActionCreators}) => {
         });
         result.data.allContentfulFoundryGuide.edges.forEach(
           ({node: {slug: parentSlug, steps, foundrysubject}}) => {
-            const subjectTitle = foundrysubject[0].title;
-            const subjectSlug = foundrysubject[0].slug;
+            const subjectTitle = foundrysubject ? foundrysubject[0].title : "";
+            const subjectSlug = foundrysubject ? foundrysubject[0].slug : "";
             steps &&
               steps.forEach(({slug: childSlug, title}, stepIndex) => {
                 createPage({
