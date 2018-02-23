@@ -5,8 +5,5 @@ export function fisherYates(arr, nb_picks) {
     arr[i] = arr[r];
     arr[r] = t;
   }
-
-  var test = arr.slice(0, nb_picks);
-  console.log(test);
-  return test;
+  return arr.slice(0, nb_picks);
 }
