@@ -1,38 +1,23 @@
 import React from "react";
+import PropTypes from "prop-types";
 import EntypoTools from "react-entypo/lib/entypo/Tools";
 import EntypoUser from "react-entypo/lib/entypo/User";
 import EntypoThumbsUp from "react-entypo/lib/entypo/ThumbsUp";
 import EntypoThumbsDown from "react-entypo/lib/entypo/ThumbsDown";
-import Link from "gatsby-link";
-import Breadcrumb from "../../templates/components/BreadCrumb"; // Imported for styles yet
 import "./styles.scss";
 
-const UnauthorizedFoundry = () => (
+const FoundryPage = () => (
   <React.Fragment>
-    <div className="container breadcrumb-wrapper">
-      <nav className="breadcrumb" aria-label="breadcrumbs">
-        <ul>
-          <li className="is-active">
-            <a href="#" aria-current="page">
-              Foundry
-            </a>
-          </li>
-        </ul>
-      </nav>
-    </div>
-
     <section className="section unauthorized-foundry-heading">
       <div className="container">
         <div className="columns">
           <div className="column is-7">
             <h1>Foundry</h1>
-
             <p>
               LPMA Foundry is a self-directed, online learning tool with guides,
               case studies and blogs covering a broad range of topics from
               strategy and growth, to profitability and high performing teams.
             </p>
-
             <button className="btn secondary with-radius-5 smaller smaller-text">
               Login
             </button>
@@ -117,4 +102,6 @@ const UnauthorizedFoundry = () => (
   </React.Fragment>
 );
 
-export default UnauthorizedFoundry;
+FoundryPage.propTypes = {};
+
+export default FoundryPage;
