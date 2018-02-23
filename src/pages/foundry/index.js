@@ -2,12 +2,20 @@ import React from "react";
 import PropTypes from "prop-types";
 import LPMALink from "../../utils/LPMALink";
 import {EntypoTools, EntypoUser} from "react-entypo";
-import EntypoThumbsUp from "react-entypo/lib/entypo/ThumbsUp";
-import EntypoThumbsDown from "react-entypo/lib/entypo/ThumbsDown";
+import FeedbackForm from "../../components/FeedbackForm";
 import "./styles.scss";
 
 const FoundryPage = ({
-  data: {contentfulFoundryHeading: {title, login, joinLink, content}},
+  data: {
+    contentfulFoundryHeading: {title, login, joinLink, content},
+    contentfulFoundryPageConetnt: {
+      instructionsTitle,
+      instructionsContent,
+      instructionsImage,
+      cards,
+      messageToJoin,
+    },
+  },
 }) => (
   <React.Fragment>
     <section className="section unauthorized-foundry-heading">
@@ -43,14 +51,19 @@ const FoundryPage = ({
           <div className="home-feature">
             <div className="level">
               <div className="level-item has-text-centered is-block left-item">
-                <h3>How does Foundry work?</h3>
-                <p>
-                  LPMA Foundry is divided into two key sections; Building Your
-                  Business and Building your career.
-                </p>
+                <h3>{instructionsTitle}</h3>
+                <div
+                  dangerouslySetInnerHTML={{
+                    __html: instructionsContent.childMarkdownRemark.html,
+                  }}
+                />
               </div>
               <div className="level-item has-text-centered is-block right-item">
-                <img src={require("../../assets/images/foundry.png")} />
+                <img
+                  src={instructionsImage.resolutions.src}
+                  srcSet={instructionsImage.resolutions.srcSet}
+                  alt="instructionsImage"
+                />
               </div>
             </div>
           </div>
@@ -60,55 +73,42 @@ const FoundryPage = ({
       <div className="columns cont-columns">
         <div className="column is-6 cont-columns-item">
           <EntypoTools className="icon-style" />
-          <h3>Building your Business</h3>
-          <p>
-            It’s clear that effective strategy is at the heart of any successful
-            business. Building your Business is a strategic resource drawn on
-            years of research and case studies.
-          </p>
+          <h3>{cards[0].title}</h3>
+          <div
+            dangerouslySetInnerHTML={{
+              __html: cards[0].content.childMarkdownRemark.html,
+            }}
+          />
         </div>
         <div className="column is-6 cont-columns-item">
           <EntypoUser className="icon-style" />
-          <h3>Building your Career</h3>
-          <p>
-            Every person has a set of ambitions for their own career. Building
-            your Career offers step-by-step guides to help you in every stage of
-            your Property Management career.
-          </p>
+          <h3>{cards[1].title}</h3>
+          <div
+            dangerouslySetInnerHTML={{
+              __html: cards[1].content.childMarkdownRemark.html,
+            }}
+          />
         </div>
       </div>
 
       <div className="columns cont-columns">
         <div className="column is-12 cont-columns-item">
-          <h3>
-            Join LPMA today to unlock access to this comprehensive resource.
-          </h3>
+          <h3>{messageToJoin}</h3>
           <LPMALink
-            to={"login.to"}
-            force={true}
+            to={joinLink.to}
+            force={joinLink.force}
             cssClass="btn secondary with-radius-5 smaller smaller-text">
-            {"Join LPMA"}
+            {joinLink.name}
           </LPMALink>
         </div>
       </div>
-
-      <div className="columns helpful is-gapless">
-        <div className="column is-9">
-          <span>Was this Helpful ?</span>
-        </div>
-        <div className="column">
-          <button>
-            <EntypoThumbsUp className="icon-style thumbs-up" />
-            <span>Yes</span>
-          </button>
-        </div>
-        <div className="column">
-          <button>
-            <EntypoThumbsDown className="icon-style thumbs-down" />
-            <span>No</span>
-          </button>
-        </div>
-      </div>
+      <FeedbackForm
+        feedbackParams={{
+          type: "fondry",
+          title: "Foundry",
+          slug: "fondry",
+        }}
+      />
     </div>
   </React.Fragment>
 );
@@ -136,6 +136,30 @@ export const pageQuery = graphql`
       content {
         childMarkdownRemark {
           html
+        }
+      }
+    }
+    contentfulFoundryPageConetnt {
+      instructionsTitle
+      instructionsContent {
+        childMarkdownRemark {
+          html
+        }
+      }
+      instructionsImage {
+        resolutions(quality: 100) {
+          src
+          srcSet
+        }
+      }
+      messageToJoin
+      cards {
+        id
+        title
+        content {
+          childMarkdownRemark {
+            html
+          }
         }
       }
     }
