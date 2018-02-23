@@ -1,29 +1,37 @@
 import React from "react";
 import PropTypes from "prop-types";
-import EntypoTools from "react-entypo/lib/entypo/Tools";
-import EntypoUser from "react-entypo/lib/entypo/User";
+import LPMALink from "../../utils/LPMALink";
+import {EntypoTools, EntypoUser} from "react-entypo";
 import EntypoThumbsUp from "react-entypo/lib/entypo/ThumbsUp";
 import EntypoThumbsDown from "react-entypo/lib/entypo/ThumbsDown";
 import "./styles.scss";
 
-const FoundryPage = () => (
+const FoundryPage = ({
+  data: {contentfulFoundryHeading: {title, login, joinLink, content}},
+}) => (
   <React.Fragment>
     <section className="section unauthorized-foundry-heading">
       <div className="container">
         <div className="columns">
           <div className="column is-7">
-            <h1>Foundry</h1>
-            <p>
-              LPMA Foundry is a self-directed, online learning tool with guides,
-              case studies and blogs covering a broad range of topics from
-              strategy and growth, to profitability and high performing teams.
-            </p>
-            <button className="btn secondary with-radius-5 smaller smaller-text">
-              Login
-            </button>
-            <button className="btn secondary with-radius-5 smaller smaller-text outlined transparent">
-              Signup to LPMA
-            </button>
+            <h1>{title}</h1>
+            <div
+              dangerouslySetInnerHTML={{
+                __html: content.childMarkdownRemark.html,
+              }}
+            />
+            <LPMALink
+              to={login.to}
+              force={login.force}
+              cssClass="btn secondary with-radius-5 smaller smaller-text">
+              {login.name}
+            </LPMALink>
+            <LPMALink
+              to={joinLink.to}
+              force={joinLink.force}
+              cssClass="btn secondary with-radius-5 smaller smaller-text outlined transparent">
+              {joinLink.name}
+            </LPMALink>
           </div>
         </div>
       </div>
@@ -75,9 +83,12 @@ const FoundryPage = () => (
           <h3>
             Join LPMA today to unlock access to this comprehensive resource.
           </h3>
-          <button className="btn secondary with-radius-5 smaller-text">
-            Join LPMA
-          </button>
+          <LPMALink
+            to={"login.to"}
+            force={true}
+            cssClass="btn secondary with-radius-5 smaller smaller-text">
+            {"Join LPMA"}
+          </LPMALink>
         </div>
       </div>
 
@@ -102,6 +113,31 @@ const FoundryPage = () => (
   </React.Fragment>
 );
 
-FoundryPage.propTypes = {};
+FoundryPage.propTypes = {
+  data: PropTypes.object.isRequered,
+};
 
 export default FoundryPage;
+
+export const pageQuery = graphql`
+  query foundryPageQuery {
+    contentfulFoundryHeading {
+      title
+      login {
+        to
+        name
+        force
+      }
+      joinLink {
+        to
+        name
+        force
+      }
+      content {
+        childMarkdownRemark {
+          html
+        }
+      }
+    }
+  }
+`;
