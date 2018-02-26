@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import classNames from "classnames";
-import BreadCrumb from "../components/BreadCrumb";
+import BreadCrumb from "../components/BreadCrumb/index";
 import FoundryCard from "../components/FondryCard";
 import FeedbackForm from "../../components/FeedbackForm";
 import "./styles.scss";
