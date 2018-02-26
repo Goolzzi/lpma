@@ -1,4 +1,7 @@
 export function fisherYates(arr, nb_picks) {
+  if (!arr || !arr.length) {
+    return arr;
+  }
   for (let i = arr.length - 1; i > 1; i--) {
     var r = Math.floor(Math.random() * i);
     var t = arr[i];
