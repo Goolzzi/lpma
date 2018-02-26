@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import LPMALnk from "../../../utils/LPMALink";
+import LPMALnk from "../../utils/LPMALink";
 import "./styles.scss";
 
 const propTypes = {

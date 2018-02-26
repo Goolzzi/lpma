@@ -1,9 +1,9 @@
 import React from "react";
 import PropTypes from "prop-types";
 import FondryCard from "../components/FondryCard";
+import BreadCrumb from "../../components/BreadCrumb";
 import FeedbackForm from "../../components/FeedbackForm";
 import "./styles.scss";
-import BreadCrumb from "../components/BreadCrumb/index";
 
 const propTypes = {
   data: PropTypes.object.isReqiered,

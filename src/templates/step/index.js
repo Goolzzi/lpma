@@ -1,11 +1,11 @@
 import React from "react";
 import PropTypes from "prop-types";
+import BreadCrumb from "../../components/BreadCrumb";
+import FeedbackForm from "../../components/FeedbackForm";
 import LPMALink from "../../utils/LPMALink";
 import classNames from "classnames";
 import Helmet from "react-helmet";
 import "./styles.scss";
-import FeedbackForm from "../../components/FeedbackForm";
-import BreadCrumb from "../components/BreadCrumb/index";
 
 const StepLink = ({wrapperClassName, stepType, dispalyName, href}) => {
   return (

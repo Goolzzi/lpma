@@ -53,21 +53,23 @@ const MyFoundryPage = ({
     <section className="section container foundry-columns">
       <div className="columns">
         {fisherYates(edges, 3).map(
-          ({node: {id, title, slug, excerpt, foundrystep}}) => (
-            <div key={id} className="column is-4">
-              <LPMALink
-                to={`foundry/${slug}/${fisherYates(foundrystep, 1)[0].slug}`}>
-                <div className="column-item">
-                  <h3>{title}</h3>
-                  <p
-                    dangerouslySetInnerHTML={{
-                      __html: excerpt.childMarkdownRemark.excerpt,
-                    }}
-                  />
-                </div>
-              </LPMALink>
-            </div>
-          ),
+          ({node: {id, title, slug, excerpt, foundrystep}}) => {
+            return (
+              <div key={id} className="column is-4">
+                <LPMALink
+                  to={`foundry/${slug}/${fisherYates(foundrystep, 1)[0].slug}`}>
+                  <div className="column-item">
+                    <h3>{title}</h3>
+                    <p
+                      dangerouslySetInnerHTML={{
+                        __html: excerpt.childMarkdownRemark.excerpt,
+                      }}
+                    />
+                  </div>
+                </LPMALink>
+              </div>
+            );
+          },
         )}
       </div>
 
@@ -116,7 +118,7 @@ export const pageQuery = graphql`
         }
       }
     }
-    allContentfulFoundryGuide {
+    allContentfulFoundryGuide(filter: {type: {eq: "guide"}}) {
       edges {
         node {
           title

@@ -2,9 +2,9 @@ import React from "react";
 import PropTypes from "prop-types";
 import classNames from "classnames";
 import FoundryCard from "../components/FondryCard";
+import BreadCrumb from "../../components/BreadCrumb";
 import FeedbackForm from "../../components/FeedbackForm";
 import "./styles.scss";
-import BreadCrumb from "../components/BreadCrumb/index";
 
 const TabItem = ({tab, isActive, onClick, index}) => (
   <li onClick={() => onClick(index)} className={classNames({active: isActive})}>
