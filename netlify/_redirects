@@ -1,6 +1,5 @@
-#/events/* 200! Role=admin
-#/events/* /resources/ 404!
-#test
+/my-foundry/* 200! Role=admin
+/my-foundry/* /foundry/ 302
 
 /  /us/   302  Country=us
 /us/*  / 302 Country=au
