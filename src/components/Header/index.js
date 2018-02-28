@@ -77,6 +77,7 @@ class Header extends React.Component {
                     <div className="navbar-dropdown">
                       <LPMALink
                         key={slug}
+                        force={true}
                         to={`/my-foundry/`}
                         cssClass={"navbar-item"}>
                         {"My Fondry"}

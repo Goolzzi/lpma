@@ -1,26 +1,25 @@
-import auth0 from "auth0-js";
+// import "auth0-js/build/auth0.min";
 import {AUTH_CONFIG} from "./auth0-variables";
-// import history from "./history";
 
-export default class Auth {
-  auth0 = new auth0.WebAuth({
-    domain: AUTH_CONFIG.domain,
-    clientID: AUTH_CONFIG.clientId,
-    redirectUri: AUTH_CONFIG.callbackUrl,
-    audience: `https://${AUTH_CONFIG.domain}/userinfo`,
-    responseType: "token id_token",
-    scope: "openid profile",
-  });
-
-  userProfile;
-
+class Auth {
   constructor() {
+    this.auth0 =
+      typeof auth0 !== "undefined" &&
+      new auth0.WebAuth({
+        domain: AUTH_CONFIG.domain,
+        clientID: AUTH_CONFIG.clientId,
+        redirectUri: AUTH_CONFIG.callbackUrl,
+        audience: `https://${AUTH_CONFIG.domain}/userinfo`,
+        responseType: "token id_token",
+        scope: "openid profile",
+      });
     this.login = this.login.bind(this);
     this.logout = this.logout.bind(this);
     this.handleAuthentication = this.handleAuthentication.bind(this);
     this.isAuthenticated = this.isAuthenticated.bind(this);
     this.getAccessToken = this.getAccessToken.bind(this);
     this.getProfile = this.getProfile.bind(this);
+    this.userProfile = null;
   }
 
   login() {
@@ -47,6 +46,7 @@ export default class Auth {
     localStorage.setItem("expires_at", expiresAt);
     // document.cookie = `nf_jwt=${authResult.idToken}`;
     document.cookie = `nf_jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBfbWV0YWRhdGEiOnsiYXV0aG9yaXphdGlvbiI6eyJyb2xlcyI6WyJhZG1pbiIsImVkaXRvciJdfX19.4IKFHH33EXWseNjNIRO4-u5IlSlJOLyibG20qPA4Djs`;
+    console.log(document.cookie);
     h.replace("/my-foundry");
   }
 
@@ -85,3 +85,6 @@ export default class Auth {
     return new Date().getTime() < expiresAt;
   }
 }
+
+const auth = new Auth();
+export default auth;

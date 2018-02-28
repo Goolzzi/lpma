@@ -3,10 +3,8 @@ import PropTypes from "prop-types";
 import LPMALink from "../../utils/LPMALink";
 import {EntypoTools, EntypoUser} from "react-entypo";
 import FeedbackForm from "../../components/FeedbackForm";
-import Auth from "../../Auth/Auth";
+import auth from "../../Auth/Auth";
 import "./styles.scss";
-
-const auth = new Auth();
 
 const FoundryPage = props => {
   const {

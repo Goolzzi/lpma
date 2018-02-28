@@ -10,3 +10,8 @@ module.exports.onClientEntry = () => {
 module.exports.onInitialClientRender = () => {
   //console.log("ReactDOM.render has executed");
 };
+
+// import createHistory from "history/createBrowserHistory";
+// const history = createHistory({forceRefresh: true});
+
+// module.exports.replaceHistory = () => history;

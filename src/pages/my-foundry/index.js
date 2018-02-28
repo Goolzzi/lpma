@@ -4,9 +4,7 @@ import "./styles.scss";
 import FeedbackForm from "../../components/FeedbackForm";
 import {fisherYates} from "../../utils";
 import LPMALink from "../../utils/LPMALink";
-import Auth from "../../Auth/Auth";
-
-const auth = new Auth();
+import auth from "../../Auth/Auth";
 
 const MyFoundryPage = props => {
   const {

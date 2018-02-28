@@ -1,8 +1,6 @@
 import React, {Component} from "react";
 import loading from "./loading.svg";
-import Auth from "../../Auth/Auth";
-
-const auth = new Auth();
+import auth from "../../Auth/Auth";
 
 const handleAuthentication = ({location, history}) => {
   if (/access_token|id_token|error/.test(location.hash)) {

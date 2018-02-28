@@ -47,5 +47,3 @@ typings/
 
 # dotenv environment variables file
 .env
-
-auth0-variables.js
