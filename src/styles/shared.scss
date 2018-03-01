@@ -138,3 +138,46 @@
     }
   }
 }
+
+
+
+
+
+
+
+
+@mixin cover-image($width: 100%, $height: auto, $vPos: center) {
+  width: $width;
+  height: $height;
+  overflow: hidden;
+
+  img {
+    margin: 0rem;
+    object-fit: cover;
+    object-position: $vPos;
+
+    height: $height;
+    width: $width;
+  }
+
+  @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+    overflow: hidden;
+    display: flex;
+    align-items: $vPos;
+
+    @if $vPos == top {
+      align-items: flex-start;
+    }
+
+    @if $vPos == bottom {
+      align-items: flex-end;
+    }
+    
+
+    img {
+      height: auto;
+      min-width: 100%;
+      min-height: 100%;
+    }
+  }
+}

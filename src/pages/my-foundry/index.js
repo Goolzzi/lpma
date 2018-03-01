@@ -14,11 +14,13 @@ const MyFoundryPage = ({
   <div>
     <section className="section container foundry-heading" />
     <section className="section foundry">
-      <img
-        src={background.resolutions.src}
-        srcSet={background.resolutions.srcSet}
-        alt="my foundry heading"
-      />
+      <div className="image-wrapper">
+        <img
+          src={background.resolutions.src}
+          srcSet={background.resolutions.srcSet}
+          alt="my foundry heading"
+        />
+      </div>
       <section className="section cont">
         <div className="container">
           <div className="columns">
