@@ -1,3 +1,3 @@
 /events/* 200! Role=admin
-/events/* /resources/:splat 302
+/events/* /resources/index.html 302
 #test2
