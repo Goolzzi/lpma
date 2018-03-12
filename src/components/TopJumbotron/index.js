@@ -8,6 +8,7 @@ const propTypes = {
 };
 
 const TopJumbotron = ({jumbotron}) => {
+  console.log(jumbotron);
   const {
     background: {resolutions: {src, srcSet}},
     title,

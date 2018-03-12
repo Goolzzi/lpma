@@ -11,7 +11,11 @@ const Audience = ({edges}) => (
     {edges.map(({node: {id, image: {resolutions}}}) => (
       <section key={id} className="hero audience">
         <div className="image-wrapper">
-          <img src={resolutions.src} srcSet={resolutions.srcSet} alt="audience" />
+          <img
+            src={resolutions.src}
+            srcSet={resolutions.srcSet}
+            alt="audience"
+          />
         </div>
       </section>
     ))}
