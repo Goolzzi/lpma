@@ -1,15 +1,11 @@
 .audience {
   margin-bottom: 0.75rem;
 
-  img {
-    margin: 0rem;
-    object-fit: cover;
-    height: 546px;
-  }
+  .image-wrapper {
+    @include cover-image(100%, 546px);
 
-  @media screen and (max-width: 768px) {
-    img {
-      height: 273px;
+    @media screen and (max-width: 768px) {
+      @include cover-image(100%, 273px);
     }
   }
 }

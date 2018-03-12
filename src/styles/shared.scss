@@ -71,9 +71,27 @@
     font-weight: 500;
     padding: 0rem 1rem 0rem 0rem;
   }
+  
   p {
     color: $gray-dark;
     padding: 0rem 1rem 0rem 0rem;
+  }
+
+  ul {
+    list-style: initial;
+    margin-left: 2.25rem;
+
+    li {
+      margin-bottom: 0px;
+    }
+  }
+
+  ol {
+    margin-left: 2.25rem;
+
+    li {
+      margin-bottom: 0px;
+    }
   }
 
   blockquote {
@@ -83,5 +101,83 @@
     padding: 0.5rem 1rem 0.5rem 1rem;
     line-height: 1.75;
     font-size: 1.25em;
+  }
+
+  iframe[title="Embedded Document"] {
+    width: 100% !important;
+    position: static !important;
+    height: 600px !important;
+    height: 80vh !important;
+    border: none !important;
+  }
+
+  .youtube-embed {
+    iframe {
+      width: 100%;
+    }
+  }
+}
+
+
+@media screen and (max-width: 768px) {
+  button.navbar-item.has-dropdown {
+    width: 100%;
+
+    a.navbar-link {
+      margin-bottom: 0.5rem;
+    }
+
+    .navbar-dropdown {
+      border: none !important;
+      width: 100%;
+
+      a.navbar-item {
+        font-size: 1rem;
+        padding-left: 3rem !important;
+      }
+    }
+  }
+}
+
+
+
+
+
+
+
+
+@mixin cover-image($width: 100%, $height: auto, $vPos: center) {
+  width: $width;
+  height: $height;
+  overflow: hidden;
+
+  img {
+    margin: 0rem;
+    object-fit: cover;
+    object-position: $vPos;
+
+    height: $height;
+    width: $width;
+  }
+
+  @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+    overflow: hidden;
+    display: flex;
+    align-items: $vPos;
+
+    @if $vPos == top {
+      align-items: flex-start;
+    }
+
+    @if $vPos == bottom {
+      align-items: flex-end;
+    }
+    
+
+    img {
+      height: auto;
+      min-width: 100%;
+      min-height: 100%;
+    }
   }
 }

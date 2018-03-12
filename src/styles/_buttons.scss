@@ -1,9 +1,33 @@
 .btn {
+  //FROM BULMA
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-pack: start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
+  position: relative;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  ////////////
+
+
   background-color: $gray-lighter;
 
   cursor: pointer;
   outline: none;
-  height: 60px;
+  height: 3.3333rem;
   padding-left: 1.2rem;
   padding-right: 1.2rem;
 
@@ -13,11 +37,14 @@
 
   white-space: nowrap;
 
-  line-height: 30px;
+  line-height: 1.6666rem;
   font-size: 1.3333rem;
   text-align: left;
 
   vertical-align: middle;
+
+  -webkit-transition: all 100ms ease-out;
+  transition: all 100ms ease-out;
 
   &.primary {
     border-color: $primary-color;
@@ -29,6 +56,10 @@
     border-color: $secondary-color;
     background-color: $secondary-color;
     color: $secondary-color;
+
+    &:hover {
+      background-color: $primary-color;
+    }
   }
 
   &.outlined {
@@ -52,13 +83,22 @@
     min-width: 50%;
   }
 
+  &.onequarterwidth {
+    min-width: 25%;
+  }
+
   &.with-radius-5 {
     border-radius: 5px;
   }
 
   &.smaller {
-    height: 50px;
+    height: 2.7777rem;
     font-size: 1rem;
+  }
+
+  &.smallest {
+    height: 2rem;
+    font-size: 0.75rem;
   }
 
   &.transparent {
@@ -72,6 +112,10 @@
       font-size: 0.75rem;
     }
   }
+
+  &.centered {
+    text-align: center;
+  }
 }
 
 .inp {
@@ -80,7 +124,7 @@
 
   cursor: pointer;
   outline: none;
-  height: 60px;
+  height: 3.3333rem;
   padding-left: 1.2rem;
   padding-right: 1.2rem;
 
@@ -90,7 +134,7 @@
 
   white-space: nowrap;
 
-  line-height: 30px;
+  line-height: 1.6666rem;
   font-size: 1.3333rem;
   text-align: left;
 
@@ -99,17 +143,5 @@
   &::placeholder {
     color: #c3c0c0;
     opacity: 1;
-  }
-}
-
-
-@media screen and (max-width: 768px) {
-  .btn, .inp {
-    height: 40px;
-
-    &.smaller {
-      height: 30px;
-      line-height: 20px;
-    }
   }
 }

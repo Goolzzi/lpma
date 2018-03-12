@@ -1,7 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
-// import BreadCrumb from "../components/BreadCrumb";
 import FondryCard from "../components/FondryCard";
+import BreadCrumb from "../../components/BreadCrumb";
+import FeedbackForm from "../../components/FeedbackForm";
 import "./styles.scss";
 
 const propTypes = {
@@ -10,34 +11,21 @@ const propTypes = {
 };
 
 const FoundrySection = ({
-  pathContext,
+  pathContext: {parentPath, breadCrumbs},
   data: {
-    contentfulFoundrySection: {title, contentPartOne, contentPartTwo, subjects},
+    contentfulFoundrySection: {
+      title,
+      slug,
+      feedbackForm,
+      contentPartOne,
+      contentPartTwo,
+      subjects,
+    },
   },
 }) => {
   return (
     <section className="section template-page">
-      {/* <BreadCrumb /> */}
-      <div className="container breadcrumb-wrapper">
-        <nav className="breadcrumb" aria-label="breadcrumbs">
-          <ul>
-            <li>
-              <a href="#">Bulma Test</a>
-            </li>
-            <li>
-              <a href="#">Documentation test</a>
-            </li>
-            <li>
-              <a href="#">Components test</a>
-            </li>
-            <li className="is-active">
-              <a href="#" aria-current="page">
-                Breadcrumb
-              </a>
-            </li>
-          </ul>
-        </nav>
-      </div>
+      <BreadCrumb parentPath={parentPath} crumbs={breadCrumbs} />
       <div className="container wrapper-cont">
         <div className="columns">
           <div className="column">
@@ -67,11 +55,22 @@ const FoundrySection = ({
               <FondryCard
                 key={id}
                 title={title}
-                href={`${pathContext.subjectPath}${slug}`}
+                href={`${parentPath}${slug}`}
                 content={content.childMarkdownRemark.excerpt}
               />
             ))}
         </div>
+      </div>
+      <div className="container">
+        {feedbackForm !== false && (
+          <FeedbackForm
+            feedbackParams={{
+              type: "section",
+              title,
+              slug,
+            }}
+          />
+        )}
       </div>
     </section>
   );
@@ -96,6 +95,7 @@ export const pageQuery = graphql`
           html
         }
       }
+      feedbackForm
       subjects {
         id
         title

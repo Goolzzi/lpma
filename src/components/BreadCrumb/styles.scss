@@ -1,0 +1,29 @@
+.breadcrumb-wrapper {
+  .breadcrumb {
+    ul {
+      margin: 0px;
+
+      & > li {
+        margin: 0px;
+
+        & > a , & > span   {
+          color: $gray-dark;
+          font-weight: 500;
+        }
+        & > span {
+          padding-left: 8px;
+        }
+
+        & + li::before {
+          color: $gray;
+          content: ">";
+        }
+      }
+    }
+  }
+
+  &.container {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+  }
+}

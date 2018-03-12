@@ -53,7 +53,7 @@ class Join extends React.PureComponent {
   componentDidMount() {
     // analytics init snippet injected via Netlify Snippet Injection
     // eslint-disable-next-line no-undef
-    analytics &&
+    typeof analytics !== "undefined" &&
       // eslint-disable-next-line no-undef
       analytics.trackForm(document.getElementById("join-form"), "Join");
   }

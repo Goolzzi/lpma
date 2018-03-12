@@ -15,7 +15,9 @@ const TopJumbotron = ({jumbotron}) => {
   } = jumbotron[0];
   return (
     <section className="hero top">
-      <img src={src} srcSet={srcSet} alt="acquisition Jumbotron" />
+      <div className="image-wrapper">
+        <img src={src} srcSet={srcSet} alt="acquisition Jumbotron" />
+      </div>
       <div className="cont-wrapper">
         <div className="cont">
           {title ? <p>{title.title}</p> : <React.Fragment />}
