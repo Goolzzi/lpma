@@ -75,17 +75,22 @@ class Header extends React.Component {
                       {name}
                     </a>
                     <div className="navbar-dropdown">
-                      <LPMALink
+                      <a
+                        href="https://foundry.lpma.com/foundry"
+                        className="navbar-item">
+                        {"My Fondry"}
+                      </a>
+                      {/* <LPMALink
                         key={slug}
                         force={true}
                         to={`/my-foundry/`}
                         cssClass={"navbar-item"}>
                         {"My Fondry"}
-                      </LPMALink>
+                      </LPMALink> */}
                       {foundryLinks.edges.map(({node: {title, slug}}) => (
                         <LPMALink
                           key={slug}
-                          to={`foundry/${slug}`}
+                          to={`https://foundry.lpma.com/foundry/${slug}`}
                           cssClass={"navbar-item"}>
                           {title}
                         </LPMALink>

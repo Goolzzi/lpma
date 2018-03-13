@@ -6,7 +6,7 @@ import FeedbackForm from "../../components/FeedbackForm";
 import auth from "../../Auth/Auth";
 import "./styles.scss";
 
-const FoundryPage = props => {
+const FoundryLogInPage = props => {
   const {
     data: {
       contentfulFoundryHeading: {title, login, joinLink, content},
@@ -123,11 +123,13 @@ const FoundryPage = props => {
   );
 };
 
-FoundryPage.propTypes = {
+FoundryLogInPage.propTypes = {
   data: PropTypes.object.isRequered,
 };
 
-const FoundryPagePageWithAuth = props => <FoundryPage auth={auth} {...props} />;
+const FoundryPagePageWithAuth = props => (
+  <FoundryLogInPage auth={auth} {...props} />
+);
 
 export default FoundryPagePageWithAuth;
 

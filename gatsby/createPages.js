@@ -2,13 +2,22 @@
 const path = require("path");
 const _isEqual = require("lodash").isEqual;
 
+const buildFoundry = process.argv[3] === "foundry";
+if (buildFoundry) console.log(" - - - building foundry");
+
 module.exports = ({graphql, boundActionCreators}) => {
   const {createPage} = boundActionCreators;
+
+  if (buildFoundry) {
+    return Promise.resolve();
+  }
 
   return new Promise((resolve, reject) => {
     const sectionTemplate = path.resolve("src/templates/section/index.js");
     const subjectTemplate = path.resolve("src/templates/subject/index.js");
     const stepTemplate = path.resolve("src/templates/step/index.js");
+
+    const foundryPageTemplate = path.resolve("src/templates/foundry/index.js");
 
     const foundryCrumb = {
       title: "My Foundry",
@@ -61,6 +70,11 @@ module.exports = ({graphql, boundActionCreators}) => {
         if (result.errors) {
           reject(result.errors);
         }
+
+        createPage({
+          path: `foundry/`,
+          component: foundryPageTemplate,
+        });
 
         const subjectsMap = new Map();
         result.data.allContentfulFoundrySection.edges.forEach(({node}) => {
