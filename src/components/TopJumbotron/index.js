@@ -42,7 +42,7 @@ const TopJumbotron = ({jumbotron}) => {
 
           {centerCont && centerCont.authorName && centerCont.authorAvatarSrc ? (
             <div className="author">
-              <div className="image author-avatar is-48x48">
+              <div className="image author-avatar is-64x64">
                 <img src={centerCont.authorAvatarSrc} />
               </div>
               <span className="author-name">{centerCont.authorName}</span>
