@@ -16,11 +16,12 @@
     padding-right: 0px;
     padding-top: 0px;
   
-    img {
-      margin: 0rem;
-      object-fit: cover;
-      height: 750px;
-      width: 100%;
+    .image-wrapper {
+      @include cover-image(100%, 750px);
+
+      @media screen and (max-width: 768px) {
+        @include cover-image(100%, 375px);
+      }
     }
   
     section.cont {
@@ -65,10 +66,6 @@
   
   @media screen and (max-width: 768px) {
     .foundry {
-      img {
-        height: 375px;
-      }
-  
       section.cont {
         position: static;
   

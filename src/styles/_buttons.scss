@@ -71,31 +71,6 @@
     color: $white;
   }
 
-  &.fullwidth {
-    min-width: 100%;
-  }
-
-  &.threequarterwidth {
-    min-width: 75%;
-  }
-
-  &.halfwidth {
-    min-width: 50%;
-  }
-
-  &.onequarterwidth {
-    min-width: 25%;
-  }
-
-  &.with-radius-5 {
-    border-radius: 5px;
-  }
-
-  &.smaller {
-    height: 2.7777rem;
-    font-size: 1rem;
-  }
-
   &.smallest {
     height: 2rem;
     font-size: 0.75rem;
@@ -103,18 +78,6 @@
 
   &.transparent {
     background-color: $transparent;
-  }
-
-  &.smaller-text {
-    font-size: 1rem;
-
-    &.smaller {
-      font-size: 0.75rem;
-    }
-  }
-
-  &.centered {
-    text-align: center;
   }
 }
 
@@ -143,5 +106,48 @@
   &::placeholder {
     color: #c3c0c0;
     opacity: 1;
+  }
+
+  &.bordered {
+    border: 1px solid $gray-border-darkerer;
+  }
+}
+
+.btn, .inp {
+  &.smaller {
+    height: 2.7777rem;
+    font-size: 1rem;
+  }
+
+  &.with-radius-5 {
+    border-radius: 5px;
+  }
+
+  &.halfwidth {
+    min-width: 50%;
+  }
+
+  &.fullwidth {
+    min-width: 100%;
+  }
+
+  &.threequarterwidth {
+    min-width: 75%;
+  }
+
+  &.onequarterwidth {
+    min-width: 25%;
+  }
+
+  &.centered {
+    text-align: center;
+  }
+
+  &.smaller-text {
+    font-size: 1rem;
+
+    &.smaller {
+      font-size: 0.75rem;
+    }
   }
 }

@@ -14,7 +14,7 @@ const LPMATeam = ({title, author, content, image: {resolutions}}) => (
     <h3>{title}</h3>
     <div className="columns is-multiline out-team-item">
       <div className="column img-col is-3">
-        <div className="img-wrapper">
+        <div className="img-wrapper image-wrapper">
           <img
             src={resolutions.src}
             srcSet={resolutions.srcSet}

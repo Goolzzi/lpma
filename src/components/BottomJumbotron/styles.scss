@@ -1,15 +1,11 @@
 .bottom {
   position: relative;
 
-  img {
-    margin: 0rem;
-    object-fit: cover;
-    height: 316px;
-  }
+  .image-wrapper {
+    @include cover-image(100%, 316px);
 
-  @media screen and (max-width: 768px) {
-    img {
-      height: 158px;
+    @media screen and (max-width: 768px) {
+      @include cover-image(100%, 158px);
     }
   }
 

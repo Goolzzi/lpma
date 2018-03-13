@@ -8,6 +8,7 @@ const propTypes = {
 };
 
 const TopJumbotron = ({jumbotron}) => {
+  console.log(jumbotron);
   const {
     background: {resolutions: {src, srcSet}},
     title,
@@ -15,19 +16,27 @@ const TopJumbotron = ({jumbotron}) => {
   } = jumbotron[0];
   return (
     <section className="hero top">
-      <img src={src} srcSet={srcSet} alt="acquisition Jumbotron" />
-      <div className="cont-wrapper">
-        <div className="cont">
-          {title ? <p>{title.title}</p> : <React.Fragment />}
-          {joinLink ? (
-            <LPMALink {...joinLink}>
-              <button className="btn primary halfwidth">{joinLink.name}</button>
-            </LPMALink>
-          ) : (
-            <React.Fragment />
-          )}
-        </div>
+      <div className="image-wrapper">
+        <img src={src} srcSet={srcSet} alt="acquisition Jumbotron" />
       </div>
+      {title || joinLink ? (
+        <div className="cont-wrapper">
+          <div className="cont">
+            {title ? <p>{title.title}</p> : <React.Fragment />}
+            {joinLink ? (
+              <LPMALink {...joinLink}>
+                <button className="btn primary halfwidth">
+                  {joinLink.name}
+                </button>
+              </LPMALink>
+            ) : (
+              <React.Fragment />
+            )}
+          </div>
+        </div>
+      ) : (
+        <React.Fragment />
+      )}
     </section>
   );
 };
