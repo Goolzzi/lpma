@@ -31,6 +31,50 @@
     }
   }
 
+  .center-cont {
+    left: 25%;
+    text-align: center;
+
+    .cont {
+      border: none;
+      padding: 0px;
+    }
+
+    .category-and-date {
+      color: #9b9b9b;
+
+      span:first-child {
+        color: $primary-color;
+      }
+
+      span:last-child {
+        color: $white;
+      }
+    }
+
+    .author {
+      margin: 2rem 0px 1rem 0px;
+
+      .image.author-avatar {
+        border-radius: 50%;
+        margin: 0px 0.5rem 0px 0px !important;
+        vertical-align: middle;
+        display: inline-block;
+
+        img {
+          border-radius: 50%;
+        }
+      }
+
+      .author-name {
+        color: $gray-light;
+        line-height: 48px;
+        vertical-align: middle;
+        display: inline-block;
+      }
+    }
+  }
+
   @media screen and (max-width: 768px) {
     .cont-wrapper {
       background-color: $secondary-color;
