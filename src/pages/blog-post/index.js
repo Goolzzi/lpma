@@ -16,15 +16,6 @@ const tempData = {
             "https://ipfs.io/ipfs/QmZuXwCEy5A3vgqJZqf4dHntNzS656bpnJxFkD67vvwExQ",
         },
       },
-      title: {
-        title: "The Top 5 Events Every PM MUST Attend This Year",
-      },
-      centerCont: {
-        category: "CATEGORY 1",
-        date: "January 29, 2018",
-        authorName: "Adam Hooley",
-        authorAvatarSrc: "http://hanassets.nd.gov/images/product/test.png",
-      },
     },
   ],
 };
@@ -33,8 +24,32 @@ const BlogPostPage = () => (
   <React.Fragment>
     <TopJumbotron {...tempData} />
 
+    <section className="section blog-page-top">
+      <div className="container narrow">
+        <div className="wrapper">
+          <div className="cont">
+            <h2 className="title is-2">
+              The Top 5 Events Every PM MUST Attend This Year
+            </h2>
+            <span className="category-and-date">
+              <span>CATEGORY 1</span>
+              <span> | </span>
+              <span>January 29, 2018</span>
+            </span>
+
+            <div className="author">
+              <div className="image author-avatar is-64x64">
+                <img src="http://hanassets.nd.gov/images/product/test.png" />
+              </div>
+              <span className="author-name">Adam Hooley</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <section className="section blog-social-icons">
-      <div className="container">
+      <div className="container narrow">
         <div className="wrapper">
           <div className="blog-social-icon twitter">
             <Icon name="twitter" />
@@ -56,13 +71,13 @@ const BlogPostPage = () => (
     </section>
 
     <section className="section blog-content">
-      <div className="container">
+      <div className="container narrow">
         <div className="wrapper">TEMP</div>
       </div>
     </section>
 
     <section className="section blog-post-more">
-      <div className="container">
+      <div className="container narrow">
         <div className="has-text-centered">
           <h2 className="title is-2">More Blog Posts</h2>
           <div className="under-title" />
