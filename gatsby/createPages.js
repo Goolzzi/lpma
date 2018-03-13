@@ -8,7 +8,7 @@ if (buildFoundry) console.log(" - - - building foundry");
 module.exports = ({graphql, boundActionCreators}) => {
   const {createPage} = boundActionCreators;
 
-  if (buildFoundry) {
+  if (!buildFoundry) {
     return Promise.resolve();
   }
 
