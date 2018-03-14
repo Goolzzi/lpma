@@ -103,7 +103,7 @@ module.exports = ({graphql, boundActionCreators}) => {
           });
         });
 
-        const test = {};
+        const obj = {};
         result.data.allContentfulFoundrySubject.edges.forEach(({node}) => {
           const crumb = {
             path: node.slug,
@@ -120,7 +120,7 @@ module.exports = ({graphql, boundActionCreators}) => {
 
           breadCrumbs = [foundryCrumb, parentCrumb, crumb];
 
-          test[crumb.slug] = breadCrumbs;
+          obj[crumb.slug] = breadCrumbs;
 
           createPage({
             path: `foundry/${node.slug}`,
@@ -150,7 +150,7 @@ module.exports = ({graphql, boundActionCreators}) => {
                     parentSlug,
                     parentPath: `/foundry/`,
                     breadCrumbs: [
-                      ...test[foundrysubject.slug],
+                      ...obj[foundrysubject.slug],
                       {title, path: ""},
                     ],
                   },
