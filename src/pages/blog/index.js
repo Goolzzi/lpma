@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import LPMALink from "../../utils/LPMALink";
 import TopJumbotron from "../../components/TopJumbotron";
 import "./styles.scss";
@@ -22,10 +23,13 @@ const tempData = {
   ],
 };
 
-const BlogPage = () => (
-  <React.Fragment>
-    <TopJumbotron {...tempData} />
+const propTypes = {
+  data: PropTypes.object.isRequired,
+};
 
+const BlogPage = ({data: {allContentfulBlogJumbotron: {edges}}}) => (
+  <React.Fragment>
+    <TopJumbotron {...edges[0].node} />
     <section className="section blog-featured">
       <div className="container">
         <div className="has-text-centered">
@@ -204,4 +208,30 @@ const BlogPage = () => (
   </React.Fragment>
 );
 
+BlogPage.propTypes = propTypes;
+
 export default BlogPage;
+
+export const pageQuery = graphql`
+  query BlogPageQuery {
+    allContentfulBlogJumbotron(sort: {fields: [pageLocation], order: DESC}) {
+      edges {
+        node {
+          pageLocation
+          jumbotron {
+            background {
+              id
+              resolutions(quality: 100) {
+                src
+                srcSet
+              }
+            }
+            title {
+              title
+            }
+          }
+        }
+      }
+    }
+  }
+`;
