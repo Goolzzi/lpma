@@ -2,6 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import LPMALink from "../../utils/LPMALink";
 import TopJumbotron from "../../components/TopJumbotron";
+import BlogPostCard from "../../components/BlogPostCard";
 import "./styles.scss";
 
 //TEMP
