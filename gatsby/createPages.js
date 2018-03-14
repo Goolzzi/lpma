@@ -156,9 +156,9 @@ module.exports = ({graphql, boundActionCreators}) => {
                   },
                 });
               });
-          },
+          }
         );
-      }),
+      })
     );
   });
 };
