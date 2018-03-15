@@ -15,7 +15,12 @@ const LPMALink = props => {
       <a
         className={props.cssClass}
         onClick={() => {
-          window.location = window.location.origin + props.to;
+          if(props.handler){
+            props.handler();
+          }
+          else {
+            window.location = window.location.origin + props.to;
+          }
         }}>
         {props.children}
       </a>
