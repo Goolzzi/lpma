@@ -5,25 +5,6 @@ import TopJumbotron from "../../components/TopJumbotron";
 import BlogPostSection from "../../components/BlogPostSection";
 import "./styles.scss";
 
-//TEMP
-const tempData = {
-  jumbotron: [
-    {
-      background: {
-        resolutions: {
-          src:
-            "https://ipfs.io/ipfs/QmZuXwCEy5A3vgqJZqf4dHntNzS656bpnJxFkD67vvwExQ",
-          srcSet:
-            "https://ipfs.io/ipfs/QmZuXwCEy5A3vgqJZqf4dHntNzS656bpnJxFkD67vvwExQ",
-        },
-      },
-      title: {
-        title: "The Leading Property Managers Association Blog",
-      },
-    },
-  ],
-};
-
 const propTypes = {
   data: PropTypes.object.isRequired,
 };
