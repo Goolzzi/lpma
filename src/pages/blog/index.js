@@ -2,6 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import LPMALink from "../../utils/LPMALink";
 import TopJumbotron from "../../components/TopJumbotron";
+import BottomJumbotron from "../../components/BottomJumbotron";
 import BlogPostSection from "../../components/BlogPostSection";
 import "./styles.scss";
 
@@ -44,6 +45,7 @@ const BlogPage = ({
         </div>
       </div>
     </section>
+    <BottomJumbotron {...edges[1].node} />
   </React.Fragment>
 );
 
