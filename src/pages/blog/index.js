@@ -60,6 +60,11 @@ export const pageQuery = graphql`
         node {
           pageLocation
           jumbotron {
+            joinLink {
+              name
+              to
+              force
+            }
             background {
               id
               resolutions(quality: 100) {
