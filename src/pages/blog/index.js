@@ -107,7 +107,9 @@ export const pageQuery = graphql`
           }
           author
           slug
-          content
+          content {
+            content
+          }
         }
       }
     }
