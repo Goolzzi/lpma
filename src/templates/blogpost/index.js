@@ -28,18 +28,24 @@ export const pageQuery = graphql`
       slug
       date
       image {
-        src
-        srcSet
+        resolutions(quality: 100) {
+          src
+          srcSet
+        }
       }
       category
       content {
         id
         content
       }
-      author
-      authorImage {
-        src
-        srcSet
+      author {
+        name
+        image {
+          resolutions(quality: 100) {
+            src
+            srcSet
+          }
+        }
       }
     }
   }

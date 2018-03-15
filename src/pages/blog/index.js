@@ -95,17 +95,23 @@ export const pageQuery = graphql`
       edges {
         node {
           image {
-            src
-            srcSet
+            resolutions(quality: 100) {
+              src
+              srcSet
+            }
           }
           category
           date
           title
-          authorImage {
-            src
-            srcSet
+          author {
+            name
+            image {
+              resolutions(quality: 100) {
+                src
+                srcSet
+              }
+            }
           }
-          author
           slug
           content {
             content

@@ -11,12 +11,19 @@ const propTypes = {
 
 // NODE: THIS HAS NOT BEEN TESTED!
 const BlogPostCard = ({
-  node: {title, image, authorImage, category, date, author, slug},
+  node: {
+    title,
+    image: {resolutions: imageResolutions},
+    author: {image: {resolutions}, name},
+    category,
+    date,
+    slug,
+  },
 }) => (
   <LinkToBlog slug={slug}>
     <div className="blog-post-card">
       <div className="image is-4by3">
-        <img src={image.src} srcSet={image.srcSet} />
+        <img src={imageResolutions.src} srcSet={imageResolutions.srcSet} />
       </div>
 
       <span className="category-and-date">
@@ -27,9 +34,9 @@ const BlogPostCard = ({
       <h4 className="title is-4">{title}</h4>
 
       <div className="image avatar is-48x48">
-        <img src={authorImage.src} srcSet={authorImage.srcSet} />
+        <img src={resolutions.src} srcSet={resolutions.srcSet} />
       </div>
-      <span className="author-name">{author}</span>
+      <span className="author-name">{name}</span>
     </div>
   </LinkToBlog>
 );

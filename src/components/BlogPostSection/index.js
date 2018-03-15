@@ -16,7 +16,7 @@ const BlogPostSection = ({heading, blogs}) => (
         <div className="under-title" />
       </div>
       <div className="columns is-multiline">
-        {blogs.map(node => (
+        {blogs.map(({node}) => (
           <div key={node.id} className="column is-4">
             <BlogPostCard node={node} />
           </div>
