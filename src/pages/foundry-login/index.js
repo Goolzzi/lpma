@@ -32,16 +32,12 @@ const FoundryLogInPage = props => {
                   __html: content.childMarkdownRemark.html,
                 }}
               />
-              {/* <LPMALink
-                to={login.to}
-                force={login.force}
-                cssClass="btn secondary with-radius-5 smaller smaller-text">
+              <LPMALink
+                handler={props.auth.login}
+                force={true}
+                cssClass="btn secondary with-radius-5 smaller smaller-text outlined transparent">
                 {login.name}
-              </LPMALink> */}
-
-              <a style={{cursor: "pointer"}} onClick={props.auth.login}>
-                login
-              </a>
+              </LPMALink>
 
               <LPMALink
                 to={joinLink.to}

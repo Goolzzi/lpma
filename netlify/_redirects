@@ -1,8 +1,11 @@
 #/secret/* /secret/index.html 200! Role=admin
 #/secret /test1/ 401
 
-/my-foundry/* /my-foundry/index.html 200! Role=admin
-/my-foundry /foundry/ 401
+#/my-foundry/* /my-foundry/index.html 200! Role=admin
+#/my-foundry /foundry/ 401
+
+/foundry/* https://foundry.lpma.com/foundry/:splat 200! Role=admin
+/foundry/* /foundry-login/ 302
 
 /  /us/   302  Country=us
 /us/*  / 302 Country=au

@@ -8,7 +8,7 @@ if (buildFoundry) console.log(" - - - building foundry");
 module.exports = ({graphql, boundActionCreators}) => {
   const {createPage} = boundActionCreators;
 
-  if (!buildFoundry) {
+  if (!buildFoundry && process.env.NODE_ENV !== "development") {
     return Promise.resolve();
   }
 
@@ -121,7 +121,7 @@ module.exports = ({graphql, boundActionCreators}) => {
           });
         });
 
-        const test = {};
+        const obj = {};
         result.data.allContentfulFoundrySubject.edges.forEach(({node}) => {
           const crumb = {
             path: node.slug,
@@ -138,7 +138,7 @@ module.exports = ({graphql, boundActionCreators}) => {
 
           breadCrumbs = [foundryCrumb, parentCrumb, crumb];
 
-          test[crumb.slug] = breadCrumbs;
+          obj[crumb.slug] = breadCrumbs;
 
           createPage({
             path: `foundry/${node.slug}`,
@@ -168,7 +168,7 @@ module.exports = ({graphql, boundActionCreators}) => {
                     parentSlug,
                     parentPath: `/foundry/`,
                     breadCrumbs: [
-                      ...test[foundrysubject.slug],
+                      ...obj[foundrysubject.slug],
                       {title, path: ""},
                     ],
                   },

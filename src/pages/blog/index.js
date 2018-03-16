@@ -34,7 +34,7 @@ const BlogPage = ({
               </h2>
               <p>
                 Each email will feature articles and advice on how to grow your
-                business, improve your skills, tips & tricks and much, much
+                business, improve your skills, tips &amp; tricks and much, much
                 more.
               </p>
 
