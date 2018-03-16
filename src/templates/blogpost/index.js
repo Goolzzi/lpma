@@ -2,6 +2,9 @@ import React from "react";
 import PropTypes from "prop-types";
 import {Icon} from "react-fa";
 import TopJumbotron from "../../components/TopJumbotron";
+import BlogPostSection from "../../components/BlogPostSection";
+import BlogPageHeading from "../../components/BlogPageHeading";
+import {fisherYates} from "../../utils/index";
 import "./styles.scss";
 
 const generateBlogJumbotron = node => ({
@@ -23,32 +26,13 @@ const propTypes = {
 
 const BlogPost = ({data}) => {
   const {title, category, date, author, content} = data.contentfulBlogPost;
+  const {edges} = data.allContentfulBlogPost;
   const jumbotronData = generateBlogJumbotron(data.contentfulBlogPost);
+  const otherBlogs = fisherYates(edges, 3);
   return (
     <React.Fragment>
       <TopJumbotron {...jumbotronData} />
-      <section className="section blog-page-top">
-        <div className="container narrow">
-          <div className="wrapper">
-            <div className="cont">
-              <h2 className="title is-2">{title}</h2>
-              <span className="category-and-date">
-                <span>{category}</span>
-                <span> | </span>
-                <span>{date}</span>
-              </span>
-
-              <div className="author">
-                <div className="image author-avatar is-64x64">
-                  <img src="http://hanassets.nd.gov/images/product/test.png" />
-                </div>
-                <span className="author-name">{author.name}</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
+      <BlogPageHeading blog={data.contentfulBlogPost} />
       <section className="section blog-social-icons">
         <div className="container narrow">
           <div className="wrapper">
@@ -76,83 +60,7 @@ const BlogPost = ({data}) => {
           <div className="wrapper">{content.content}</div>
         </div>
       </section>
-
-      <section className="section blog-post-more">
-        <div className="container narrow">
-          <div className="has-text-centered">
-            <h2 className="title is-2">More Blog Posts</h2>
-            <div className="under-title" />
-          </div>
-          <div className="columns">
-            <div className="column is-4">
-              <div className="blog-post-card">
-                <div className="image is-4by3">
-                  <img src="https://ipfs.io/ipfs/QmZuXwCEy5A3vgqJZqf4dHntNzS656bpnJxFkD67vvwExQ" />
-                </div>
-
-                <span className="category-and-date">
-                  <span>CATEGORY 1</span>
-                  <span> | January 19, 2018</span>
-                </span>
-
-                <h4 className="title is-4">
-                  The Top 5 Events Every PM MUST Attend This Year
-                </h4>
-
-                <div className="image avatar is-48x48">
-                  <img src="http://hanassets.nd.gov/images/product/test.png" />
-                </div>
-                <span className="author-name">Adam Hooley</span>
-              </div>
-            </div>
-            <div className="column is-4">
-              <div className="blog-post-card">
-                <div className="image is-4by3">
-                  <img src="https://ipfs.io/ipfs/QmZuXwCEy5A3vgqJZqf4dHntNzS656bpnJxFkD67vvwExQ" />
-                </div>
-
-                <span className="category-and-date">
-                  <span>CATEGORY 1</span>
-                  <span> | January 19, 2018</span>
-                </span>
-
-                <h4 className="title is-4">
-                  The Top 5 Events Every PM MUST Attend This Year
-                </h4>
-
-                <div className="image avatar is-48x48">
-                  <img src="http://hanassets.nd.gov/images/product/test.png" />
-                </div>
-                <span className="author-name">Adam Hooley</span>
-              </div>
-            </div>
-            <div className="column is-4">
-              <div className="blog-post-card">
-                <div className="image is-4by3">
-                  <img src="https://ipfs.io/ipfs/QmZuXwCEy5A3vgqJZqf4dHntNzS656bpnJxFkD67vvwExQ" />
-                </div>
-
-                <span className="category-and-date">
-                  <span>CATEGORY 1</span>
-                  <span> | January 19, 2018</span>
-                </span>
-
-                <h4 className="title is-4">
-                  The Top 5 Events Every PM MUST Attend This Year
-                </h4>
-
-                <div className="image avatar is-48x48">
-                  <img src="http://hanassets.nd.gov/images/product/test.png" />
-                </div>
-                <span className="author-name">Adam Hooley</span>
-              </div>
-            </div>
-          </div>
-          <div className="has-text-centered">
-            <button className="btn primary smaller-text">Load More</button>
-          </div>
-        </div>
-      </section>
+      <BlogPostSection heading="More Blog Posts" blogs={otherBlogs} />
     </React.Fragment>
   );
 };
