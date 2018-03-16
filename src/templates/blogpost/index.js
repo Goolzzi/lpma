@@ -2,6 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import {Icon} from "react-fa";
 import TopJumbotron from "../../components/TopJumbotron";
+import BottomJumbotron from "../../components/BottomJumbotron";
 import BlogPostSection from "../../components/BlogPostSection";
 import BlogPageHeading from "../../components/BlogPageHeading";
 import {fisherYates} from "../../utils/index";
@@ -27,11 +28,12 @@ const propTypes = {
 const BlogPost = ({data}) => {
   const {title, category, date, author, content} = data.contentfulBlogPost;
   const {edges} = data.allContentfulBlogPost;
-  const jumbotronData = generateBlogJumbotron(data.contentfulBlogPost);
+  const {contentfulBlogJumbotron: bottomJumbotron} = data;
+  const topJumbotron = generateBlogJumbotron(data.contentfulBlogPost);
   const otherBlogs = fisherYates(edges, 3);
   return (
     <React.Fragment>
-      <TopJumbotron {...jumbotronData} />
+      <TopJumbotron {...topJumbotron} />
       <BlogPageHeading blog={data.contentfulBlogPost} />
       <section className="section blog-social-icons">
         <div className="container narrow">
@@ -60,7 +62,12 @@ const BlogPost = ({data}) => {
           <div className="wrapper">{content.content}</div>
         </div>
       </section>
-      <BlogPostSection heading="More Blog Posts" blogs={otherBlogs} />
+      <BlogPostSection
+        heading="More Blog Posts"
+        blogs={otherBlogs}
+        hasLoadMore={true}
+      />
+      <BottomJumbotron {...bottomJumbotron} />
     </React.Fragment>
   );
 };
@@ -119,6 +126,25 @@ export const pageQuery = graphql`
           }
           slug
           featured
+        }
+      }
+    }
+    contentfulBlogJumbotron(pageLocation: {eq: "bottom"}) {
+      jumbotron {
+        joinLink {
+          name
+          to
+          force
+        }
+        background {
+          id
+          resolutions(quality: 100) {
+            src
+            srcSet
+          }
+        }
+        title {
+          title
         }
       }
     }
