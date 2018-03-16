@@ -3,7 +3,9 @@ import Link from "gatsby-link";
 import PropTypes from "prop-types";
 import "./styles.scss";
 
-const LinkToBlog = ({slug, children}) => <Link to={slug}>{children}</Link>;
+const LinkToBlog = ({slug, children}) => (
+  <Link to={`/blog/${slug}`}>{children}</Link>
+);
 
 const propTypes = {
   node: PropTypes.object.isRequired,

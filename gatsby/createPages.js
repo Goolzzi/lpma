@@ -17,7 +17,6 @@ module.exports = ({graphql, boundActionCreators}) => {
     const subjectTemplate = path.resolve("src/templates/subject/index.js");
     const stepTemplate = path.resolve("src/templates/step/index.js");
     const blogPostTemplate = path.resolve("src/templates/blogpost/index.js");
-
     const foundryPageTemplate = path.resolve("src/templates/foundry/index.js");
 
     const foundryCrumb = {
@@ -86,7 +85,7 @@ module.exports = ({graphql, boundActionCreators}) => {
 
         result.data.allContentfulBlogPost.edges.forEach(({node}) => {
           createPage({
-            path: node.slug,
+            path: `blog/${node.slug}`,
             component: blogPostTemplate,
             context: {
               slug: node.slug,
