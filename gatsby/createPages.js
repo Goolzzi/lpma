@@ -8,7 +8,7 @@ if (buildFoundry) console.log(" - - - building foundry");
 module.exports = ({graphql, boundActionCreators}) => {
   const {createPage} = boundActionCreators;
 
-  if (!buildFoundry) {
+  if (!buildFoundry && process.env.NODE_ENV !== "development") {
     return Promise.resolve();
   }
 
@@ -16,6 +16,7 @@ module.exports = ({graphql, boundActionCreators}) => {
     const sectionTemplate = path.resolve("src/templates/section/index.js");
     const subjectTemplate = path.resolve("src/templates/subject/index.js");
     const stepTemplate = path.resolve("src/templates/step/index.js");
+    const blogPostTemplate = path.resolve("src/templates/blogpost/index.js");
 
     const foundryPageTemplate = path.resolve("src/templates/foundry/index.js");
 
@@ -49,6 +50,13 @@ module.exports = ({graphql, boundActionCreators}) => {
               }
             }
           }
+          allContentfulBlogPost {
+            edges {
+              node {
+                slug
+              }
+            }
+          }
           allContentfulFoundryGuide {
             edges {
               node {
@@ -76,7 +84,18 @@ module.exports = ({graphql, boundActionCreators}) => {
           component: foundryPageTemplate,
         });
 
+        result.data.allContentfulBlogPost.edges.forEach(({node}) => {
+          createPage({
+            path: node.slug,
+            component: blogPostTemplate,
+            context: {
+              slug: node.slug,
+            },
+          });
+        });
+
         const subjectsMap = new Map();
+
         result.data.allContentfulFoundrySection.edges.forEach(({node}) => {
           node.subjects.forEach(subj => {
             subjectsMap.set(subj, {
@@ -103,7 +122,7 @@ module.exports = ({graphql, boundActionCreators}) => {
           });
         });
 
-        const test = {};
+        const obj = {};
         result.data.allContentfulFoundrySubject.edges.forEach(({node}) => {
           const crumb = {
             path: node.slug,
@@ -120,7 +139,7 @@ module.exports = ({graphql, boundActionCreators}) => {
 
           breadCrumbs = [foundryCrumb, parentCrumb, crumb];
 
-          test[crumb.slug] = breadCrumbs;
+          obj[crumb.slug] = breadCrumbs;
 
           createPage({
             path: `foundry/${node.slug}`,
@@ -150,15 +169,15 @@ module.exports = ({graphql, boundActionCreators}) => {
                     parentSlug,
                     parentPath: `/foundry/`,
                     breadCrumbs: [
-                      ...test[foundrysubject.slug],
+                      ...obj[foundrysubject.slug],
                       {title, path: ""},
                     ],
                   },
                 });
               });
-          },
+          }
         );
-      }),
+      })
     );
   });
 };

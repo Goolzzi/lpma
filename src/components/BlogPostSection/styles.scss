@@ -1,0 +1,16 @@
+.blog-featured, .blog-latest, .blog-post-more {
+    h2.title {
+      text-transform: uppercase;
+      color: $gray-dark;
+      font-weight: 500;
+      margin-bottom: 1.5rem;
+    }
+  
+    .under-title {
+      height: 3px;
+      width: 100px;
+      background-color: $primary-color;
+      display: inline-block;
+      margin-bottom: 2rem;
+    }
+  }
