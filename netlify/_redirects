@@ -5,7 +5,7 @@
 #/my-foundry /foundry/ 401
 
 #/foundry/* https://foundry.lpma.com/foundry/:splat 200! Role=admin
-/foundry/* /foundry-login/ 301
+/foundry/* https://halo-identity.lpma.com.au/users/sign_in 301
 
 /  /us/   302  Country=us
 /us/*  / 302 Country=au
