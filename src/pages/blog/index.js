@@ -18,8 +18,12 @@ const BlogPage = ({
 }) => (
   <React.Fragment>
     <TopJumbotron {...edges[0].node} />
-    <BlogPostSection heading="Featured Posts" blogs={blogEdges} />
-    <BlogPostSection heading="Latest Posts" blogs={blogEdges} />
+    <BlogPostSection
+      heading="Featured Posts"
+      blogs={blogEdges}
+      featured={true}
+    />
+    <BlogPostSection heading="Latest Posts" blogs={blogEdges} latest={true} />
     <section className="section blog-subscribe">
       <div className="container">
         <div className="columns">
@@ -79,7 +83,7 @@ export const pageQuery = graphql`
         }
       }
     }
-    allContentfulBlogPost(sort: {fields: [date], order: DESC}, limit: 3) {
+    allContentfulBlogPost(sort: {fields: [date], order: ASC}) {
       edges {
         node {
           image {
@@ -104,6 +108,7 @@ export const pageQuery = graphql`
           content {
             content
           }
+          featured
         }
       }
     }
