@@ -1,6 +1,13 @@
 import React from "react";
 import PropTypes from "prop-types";
 import {Icon} from "react-fa";
+import {
+  FacebookShareButton,
+  LinkedinShareButton,
+  TwitterShareButton,
+  FacebookShareCount,
+  LinkedinShareCount,
+} from "react-share";
 import TopJumbotron from "../../components/TopJumbotron";
 import BottomJumbotron from "../../components/BottomJumbotron";
 import BlogPostSection from "../../components/BlogPostSection";
@@ -21,6 +28,8 @@ const generateBlogJumbotron = node => ({
   ],
 });
 
+const shareCount = count => <div className="text">{count}</div>;
+
 const propTypes = {
   data: PropTypes.object.isRequired,
 };
@@ -31,6 +40,7 @@ const BlogPost = ({data}) => {
   const {contentfulBlogJumbotron: bottomJumbotron} = data;
   const topJumbotron = generateBlogJumbotron(data.contentfulBlogPost);
   const otherBlogs = fisherYates(edges, 3);
+  const blogUrl = window.location.href;
   return (
     <React.Fragment>
       <TopJumbotron {...topJumbotron} />
@@ -39,27 +49,39 @@ const BlogPost = ({data}) => {
         <div className="container narrow">
           <div className="wrapper">
             <div className="blog-social-icon twitter">
-              <Icon name="twitter" />
-              <div className="text">123</div>
+              <TwitterShareButton url={blogUrl}>
+                <Icon name="twitter" />
+              </TwitterShareButton>
             </div>
             <div className="blog-social-icon facebook">
-              <Icon name="facebook" />
-              <div className="text">456</div>
+              <FacebookShareButton url={blogUrl}>
+                <Icon name="facebook" />
+                <FacebookShareCount url={blogUrl}>
+                  {shareCount}
+                </FacebookShareCount>
+              </FacebookShareButton>
             </div>
             <div className="blog-social-icon linkedin">
-              <Icon name="linkedin" />
+              <LinkedinShareButton url={blogUrl}>
+                <Icon name="linkedin" />
+                <LinkedinShareCount url={blogUrl}>
+                  {shareCount}
+                </LinkedinShareCount>
+              </LinkedinShareButton>
             </div>
-            <div className="blog-social-icon envelope">
-              <Icon name="envelope" />
-            </div>
-            <span className="shares-count">668 Shares</span>
           </div>
         </div>
       </section>
 
       <section className="section blog-content">
         <div className="container narrow">
-          <div className="wrapper">{content.content}</div>
+          <div
+            className="wrapper"
+            dangerouslySetInnerHTML={{
+              __html: content.childMarkdownRemark.html,
+            }}>
+            {content.content}
+          </div>
         </div>
       </section>
       <BlogPostSection
@@ -90,8 +112,9 @@ export const pageQuery = graphql`
       }
       category
       content {
-        id
-        content
+        childMarkdownRemark {
+          html
+        }
       }
       author {
         name
