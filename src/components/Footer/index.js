@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import LPMALink from "../../utils/LPMALink";
+import LoginLogout from "../../components/LoginLogout";
 import "./styles.scss";
 
 const propTypes = {
@@ -88,6 +89,7 @@ const Footer = ({
                   </LPMALink>
                 );
               })}
+              <LoginLogout />
             </div>
             <div className="column footer-1">
               <div className="vertical-line" />

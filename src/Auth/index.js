@@ -1,8 +1,9 @@
 import {AUTH_CONFIG} from "./auth0-variables";
+import {navigateTo} from "gatsby-link";
+
 class Auth {
   constructor() {
     this.auth0 = null;
-    this.history = null;
     if (typeof auth0 !== "undefined") {
       this.auth0 = new auth0.WebAuth({
         domain: AUTH_CONFIG.domain,
@@ -18,14 +19,12 @@ class Auth {
     this.auth0.authorize();
   };
 
-  handleAuthentication = history => {
-    this.history = history;
+  handleAuthentication = () => {
     this.auth0.parseHash((err, authResult) => {
       if (authResult && authResult.accessToken && authResult.idToken) {
         this.setSession(authResult);
       } else if (err) {
-        this.history.replace("/");
-        alert(`Error: ${err.error}. Check the console for further details.`);
+        alert(`Error: ${err.error}. Check the console for further details.`); //eslint-disable-line
       }
     });
   };
@@ -37,7 +36,7 @@ class Auth {
     localStorage.setItem("access_token", authResult.accessToken);
     localStorage.setItem("id_token", authResult.idToken);
     localStorage.setItem("expires_at", expiresAt);
-    this.history.replace("/foundry");
+    navigateTo("/foundry");
   };
 
   getAccessToken = () => {
@@ -64,8 +63,7 @@ class Auth {
     localStorage.removeItem("id_token");
     localStorage.removeItem("expires_at");
     this.userProfile = null;
-    // navigate to the home route
-    this.history.replace("/");
+    navigateTo("/");
   };
 
   isAuthenticated = () => {

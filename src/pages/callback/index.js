@@ -2,9 +2,9 @@ import React, {Component} from "react";
 import loading from "./loading.svg";
 import auth from "../../Auth";
 
-const handleAuthentication = ({location, history}) => {
+const handleAuthentication = ({location}) => {
   if (/access_token|id_token|error/.test(location.hash)) {
-    auth.handleAuthentication(history);
+    auth.handleAuthentication();
   }
 };
 
