@@ -11,7 +11,15 @@ module.exports.onInitialClientRender = () => {
   //console.log("ReactDOM.render has executed");
 };
 
-// import createHistory from "history/createBrowserHistory";
-// const history = createHistory({forceRefresh: true});
+import createHistory from "history/createBrowserHistory";
 
-// module.exports.replaceHistory = () => history;
+const history = createHistory();
+
+history.listen((location, action) => {
+  console.log(
+    `The current URL is ${location.pathname}${location.search}${location.hash}`,
+  );
+  console.log(`The last navigation action was ${action}`);
+});
+
+module.exports.replaceHistory = () => history;
