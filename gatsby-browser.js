@@ -1,13 +1,22 @@
-/**
- * Gatsby's Browser APIs in this file.
- * */
-
 import createHistory from "history/createBrowserHistory";
 import auth from "./src/Auth";
 
-let history = createHistory();
+//force full page refreshes for Netlify redirects
+const pathsToforceRefresh = [
+  "/us",
+  "/join/",
+  "/join-us",
+  "/events",
+  "/events-us",
+];
 
-const handleRedirects = location => {
+const history = createHistory();
+
+const handleForceRefresh = (action, pathname) => {
+  //todo implement
+};
+
+const handleRedirects = (location, action) => {
   const {pathname} = location;
   const isAuthCheckRequiered =
     pathname.indexOf("/foundry") !== -1 ||
@@ -19,14 +28,16 @@ const handleRedirects = location => {
   if (pathname.indexOf("/login-foundry") !== -1 && auth.isAuthenticated()) {
     history.replace("/foundry");
   }
+
+  //handleForceRefresh(action, pathname);
 };
 
 module.exports.onClientEntry = () => {
-  handleRedirects(history.location);
+  handleRedirects(history.location, history.action);
 };
 
-history.listen(location => {
-  handleRedirects(location);
+history.listen((location, action) => {
+  handleRedirects(location, action);
 });
 
 module.exports.replaceHistory = () => history;
