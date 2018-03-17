@@ -1,8 +1,14 @@
+const localDevCallback = "http://localhost:8000/callback";
+const stagingCallback = "https://dev-lpma.netlify.com/callback";
+const liveCallBack = "https://lpma.netlify.com/callback";
+
+const callbackUrl =
+  process.env.NODE_ENV === "development"
+    ? localDevCallback
+    : process.argv[3] === "live" ? liveCallBack : stagingCallback;
+
 export const AUTH_CONFIG = {
-  domain: "gnun-lpma.au.auth0.com",
-  clientId: "5Q7FQOsBFf0dXRv2Rn6G8uiuWDVdpmCv",
-  callbackUrl:
-    process.env.NODE_ENV === "production"
-      ? "https://dev-lpma.netlify.com/callback"
-      : "http://localhost:8000/callback",
+  domain: "lpma.au.auth0.com",
+  clientId: "Ar64ayX3B-EHquC4oU80AsPe17i_EEt3",
+  callbackUrl,
 };

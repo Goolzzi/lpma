@@ -2,18 +2,16 @@
  * Gatsby's Browser APIs in this file.
  * */
 
-module.exports.onClientEntry = () => {
-  //console.log("onClientEntry");
-  // callAnalyticsAPI();
-};
-
-module.exports.onInitialClientRender = () => {
-  //console.log("ReactDOM.render has executed");
-};
-
 import createHistory from "history/createBrowserHistory";
+let history = createHistory();
 
-const history = createHistory();
+module.exports.onClientEntry = () => {
+  //enter initilal route!
+  (() => {
+    //debugger // eslint-disable-line
+    const {action, location} = history;
+  })();
+};
 
 history.listen((location, action) => {
   console.log(
@@ -23,3 +21,4 @@ history.listen((location, action) => {
 });
 
 module.exports.replaceHistory = () => history;
+module.exports.onInitialClientRender = () => {};

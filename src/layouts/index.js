@@ -25,6 +25,11 @@ const LayoutTemplate = props => {
       allContentfulFoundrySection,
     },
   } = props;
+
+  if (pathname === "/callback") {
+    return <div className="page-container">{children()}</div>;
+  }
+
   const protocol = "https:";
   const forUSA = !!~pathname.indexOf("/us") || !!~pathname.indexOf("-us");
 

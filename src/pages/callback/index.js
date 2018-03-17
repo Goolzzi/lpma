@@ -30,9 +30,9 @@ class Callback extends Component {
   }
 }
 
-const CallbackWithChecks = props => {
+const CallbackWithAuthChecks = props => {
   handleAuthentication(props);
   return <Callback {...props} />;
 };
 
-export default CallbackWithChecks;
+export default CallbackWithAuthChecks;
