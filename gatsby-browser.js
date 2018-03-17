@@ -9,8 +9,11 @@ let history = createHistory();
 
 const handleRedirects = location => {
   const {pathname} = location;
+  const isAuthCheckRequiered =
+    pathname.indexOf("/foundry") !== -1 ||
+    pathname.indexOf("/resources") !== -1;
 
-  if (pathname.indexOf("/foundry") !== -1 && !auth.isAuthenticated()) {
+  if (isAuthCheckRequiered && !auth.isAuthenticated()) {
     history.replace("/login-foundry");
   }
   if (pathname.indexOf("/login-foundry") !== -1 && auth.isAuthenticated()) {

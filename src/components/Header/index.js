@@ -2,7 +2,9 @@
 import React from "react";
 import PropTypes from "prop-types";
 import BurgerSubMenu from "./burgerSubMenu";
+import auth from "../../Auth";
 import LPMALink from "../../utils/LPMALink";
+import LoginLogout from "../LoginLogout";
 import classNames from "classnames";
 import "./styles.scss";
 
@@ -61,38 +63,41 @@ class Header extends React.Component {
             })}>
             <div className="navbar-end">
               {menuItems.map(({id, to, name, force, slug}) => {
-                return slug === "foundry" ? (
-                  <button
-                    onClick={() =>
-                      this.setState(prevState => ({
-                        isFoundryOpen: !prevState.isFoundryOpen,
-                      }))
-                    }
-                    className={classNames("navbar-item has-dropdown", {
-                      "is-active": isFoundryOpen,
-                    })}>
-                    <a href={"javascript:;"} className="navbar-link">
-                      {name}
-                    </a>
-                    <div className="navbar-dropdown">
-                      <LPMALink
-                        key={slug}
-                        force={true}
-                        to={`/foundry/`}
-                        cssClass={"navbar-item"}>
-                        {"My Fondry"}
-                      </LPMALink>
-                      {foundryLinks.edges.map(({node: {title, slug}}) => (
+                if (slug === "foundry" && auth.isAuthenticated()) {
+                  return (
+                    <button
+                      onClick={() =>
+                        this.setState(prevState => ({
+                          isFoundryOpen: !prevState.isFoundryOpen,
+                        }))
+                      }
+                      className={classNames("navbar-item has-dropdown", {
+                        "is-active": isFoundryOpen,
+                      })}>
+                      <a href={"javascript:;"} className="navbar-link">
+                        {name}
+                      </a>
+                      <div className="navbar-dropdown">
                         <LPMALink
                           key={slug}
-                          to={`/foundry/${slug}`}
+                          force={true}
+                          to={`/foundry/`}
                           cssClass={"navbar-item"}>
-                          {title}
+                          {"My Fondry"}
                         </LPMALink>
-                      ))}
-                    </div>
-                  </button>
-                ) : (
+                        {foundryLinks.edges.map(({node: {title, slug}}) => (
+                          <LPMALink
+                            key={slug}
+                            to={`/foundry/${slug}`}
+                            cssClass={"navbar-item"}>
+                            {title}
+                          </LPMALink>
+                        ))}
+                      </div>
+                    </button>
+                  );
+                }
+                return (
                   <LPMALink
                     cssClass={"navbar-item"}
                     force={!!force}
@@ -103,6 +108,7 @@ class Header extends React.Component {
                   </LPMALink>
                 );
               })}
+              <LoginLogout cssClass={"navbar-item"} />
             </div>
           </div>
           <button

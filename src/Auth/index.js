@@ -1,5 +1,4 @@
 import {AUTH_CONFIG} from "./auth0-variables";
-
 class Auth {
   constructor() {
     this.auth0 = null;
