@@ -1,5 +1,5 @@
 import React from "react";
-import LPMALink from "../../utils/LPMALink";
+import Link from "gatsby-link";
 import TopJumbotron from "../../components/TopJumbotron";
 import "./styles.scss";
 import {Icon} from "react-fa";

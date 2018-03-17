@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import LPMALnk from "../../utils/LPMALink";
+import Link from "gatsby-link";
 import "./styles.scss";
 
 const propTypes = {
@@ -23,7 +23,7 @@ const BreadCrumb = ({crumbs, parentPath}) => {
               </li>
             ) : (
               <li key={path}>
-                <LPMALnk to={`${parentPath}${path}`}>{title}</LPMALnk>
+                <Link to={`${parentPath}${path}`}>{title}</Link>
               </li>
             );
           })}

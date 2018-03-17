@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import BreadCrumb from "../../components/BreadCrumb";
 import FeedbackForm from "../../components/FeedbackForm";
-import LPMALink from "../../utils/LPMALink";
+import Link from "gatsby-link";
 import classNames from "classnames";
 import Helmet from "react-helmet";
 import "./styles.scss";
@@ -11,11 +11,11 @@ const StepLink = ({wrapperClassName, stepType, dispalyName, href}) => {
   return (
     <div className={wrapperClassName}>
       <div className="level-item">
-        <LPMALink to={href}>
+        <Link to={href}>
           <span>{stepType}</span>
           <br />
           <span>{dispalyName}</span>
-        </LPMALink>
+        </Link>
       </div>
     </div>
   );
@@ -62,9 +62,9 @@ const Step = props => {
                     active: slug === contentfulFoundryStep.slug,
                   })}
                   key={slug}>
-                  <LPMALink to={basePathName + slug}>
+                  <Link to={basePathName + slug}>
                     <span>{title}</span>
-                  </LPMALink>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -116,7 +116,7 @@ const Step = props => {
                 ) : (
                   <div className="level-right">
                     <div className="level-item">
-                      <LPMALink to={subjectPath}>
+                      <Link to={subjectPath}>
                         <span>Return to Subject</span>
                         <br />
                         <span>
@@ -126,7 +126,7 @@ const Step = props => {
                           />
                           {subjectTitle}
                         </span>
-                      </LPMALink>
+                      </Link>
                     </div>
                   </div>
                 )}

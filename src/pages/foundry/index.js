@@ -1,9 +1,9 @@
 import React from "react";
 import PropTypes from "prop-types";
+import Link from "gatsby-link";
 import "./styles.scss";
 import FeedbackForm from "../../components/FeedbackForm";
 import {fisherYates} from "../../utils";
-import LPMALink from "../../utils/LPMALink";
 import auth from "../../Auth";
 
 class MyFoundryPage extends React.Component {
@@ -90,7 +90,7 @@ class MyFoundryPage extends React.Component {
               ({node: {id, title, slug, excerpt, foundrystep}}) => {
                 return (
                   <div key={id} className="column is-4">
-                    <LPMALink
+                    <Link
                       to={`foundry/${slug}/${
                         fisherYates(foundrystep, 1)[0].slug
                       }`}>
@@ -102,7 +102,7 @@ class MyFoundryPage extends React.Component {
                           }}
                         />
                       </div>
-                    </LPMALink>
+                    </Link>
                   </div>
                 );
               },

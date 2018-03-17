@@ -1,9 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
-import LPMALink from "../../utils/LPMALink";
+import Link from "gatsby-link";
 import {EntypoTools, EntypoUser} from "react-entypo";
 import FeedbackForm from "../../components/FeedbackForm";
-import auth from "../../Auth";
 import "./styles.scss";
 
 const FoundryLogInPage = props => {
@@ -32,19 +31,14 @@ const FoundryLogInPage = props => {
                   __html: content.childMarkdownRemark.html,
                 }}
               />
-              <LPMALink
-                handler={auth.login}
-                force={true}
-                cssClass="btn secondary with-radius-5 smaller smaller-text outlined transparent">
+              <Link className="btn secondary with-radius-5 smaller smaller-text outlined transparent">
                 {login.name}
-              </LPMALink>
-
-              <LPMALink
+              </Link>
+              <Link
                 to={joinLink.to}
-                force={joinLink.force}
-                cssClass="btn secondary with-radius-5 smaller smaller-text outlined transparent">
+                className="btn secondary with-radius-5 smaller smaller-text outlined transparent">
                 {joinLink.name}
-              </LPMALink>
+              </Link>
             </div>
           </div>
         </div>
@@ -99,12 +93,11 @@ const FoundryLogInPage = props => {
         <div className="columns cont-columns">
           <div className="column is-12 cont-columns-item">
             <h3>{messageToJoin}</h3>
-            <LPMALink
+            <Link
               to={joinLink.to}
-              force={joinLink.force}
-              cssClass="btn secondary with-radius-5 smaller smaller-text">
+              className="btn secondary with-radius-5 smaller smaller-text">
               {joinLink.name}
-            </LPMALink>
+            </Link>
           </div>
         </div>
         <FeedbackForm

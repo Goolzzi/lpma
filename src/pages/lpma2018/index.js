@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import LPMALink from "../../utils/LPMALink";
+import Link from "gatsby-link";
 import YouTube from "react-youtube";
 import {Icon} from "react-fa";
 import "./styles.scss";
@@ -169,7 +169,7 @@ const LPMA2018Page = () => (
             </p>
             <p>
               Learn more about the benefits of an LPMA membership today on:
-              <LPMALink>www.lpma.com/why-join</LPMALink>
+              <Link>www.lpma.com/why-join</Link>
             </p>
           </div>
           <div className="column is-4">
@@ -254,7 +254,7 @@ const LPMA2018Page = () => (
               <span className="green">Principal Breakout</span>
               &nbsp;–&nbsp;
               <span className="bold">Building a Business Worth Owning</span>
-              &nbsp; Manos & Maria Findikakis
+              &nbsp; Manos &amp; Maria Findikakis
             </p>
           </div>
         </div>
@@ -410,7 +410,7 @@ const LPMA2018Page = () => (
               </p>
               <p>
                 Find out more about a membership here:{" "}
-                <LPMALink>lpma.com/why-join/</LPMALink>
+                <Link>lpma.com/why-join/</Link>
               </p>
               <br />
               <br />
@@ -536,7 +536,7 @@ const LPMA2018Page = () => (
           <div className="column is-6">
             <h4>LPMA 2018 will be held at:</h4>
             <p>
-              <LPMALink>The Star</LPMALink>, Gold Coast, Broadbeach, Queensland
+              <Link>The Star</Link>, Gold Coast, Broadbeach, Queensland
             </p>
             <p>
               We are pleased to announce The Star Gold Coast has discounted
@@ -545,7 +545,7 @@ const LPMA2018Page = () => (
             </p>
             <p>
               Either book with reservation code: LPM030518 on{" "}
-              <LPMALink>www.star.com.au/goldcoast/booking</LPMALink> or contact
+              <Link>www.star.com.au/goldcoast/booking</Link> or contact
               reservations direct on (07) 5592 8130 or 1800 074 344 and state
               that you are attending the LPMA 2018 Conference.
             </p>

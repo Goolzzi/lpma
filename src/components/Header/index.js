@@ -3,7 +3,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import BurgerSubMenu from "./burgerSubMenu";
 import auth from "../../Auth";
-import LPMALink from "../../utils/LPMALink";
+import Link from "gatsby-link";
 import LoginLogout from "../LoginLogout";
 import classNames from "classnames";
 import "./styles.scss";
@@ -42,9 +42,9 @@ class Header extends React.Component {
       <div className="navbar-wrapper">
         <nav className="navbar">
           <div className="navbar-brand">
-            <LPMALink cssClass={"navbar-item"} force={true} to={"/"}>
+            <Link className="navbar-item" to={"/"}>
               <img src={file.url} alt={file.fileName} />
-            </LPMALink>
+            </Link>
             <button
               onClick={() =>
                 this.setState(prevState => ({isActive: !prevState.isActive}))
@@ -78,40 +78,41 @@ class Header extends React.Component {
                         {name}
                       </a>
                       <div className="navbar-dropdown">
-                        <LPMALink
+                        <Link
                           key={slug}
                           force={true}
                           to={`/foundry/`}
-                          cssClass={"navbar-item"}>
+                          className={"navbar-item"}>
                           {"My Fondry"}
-                        </LPMALink>
+                        </Link>
                         {foundryLinks.edges.map(({node: {title, slug}}) => (
-                          <LPMALink
+                          <Link
                             key={slug}
                             to={`/foundry/${slug}`}
-                            cssClass={"navbar-item"}>
+                            className={"navbar-item"}>
                             {title}
-                          </LPMALink>
+                          </Link>
                         ))}
                       </div>
                     </button>
                   );
                 }
                 return (
-                  <LPMALink
-                    cssClass={"navbar-item"}
+                  <Link
+                    className={"navbar-item"}
                     force={!!force}
                     onClick={this.handleClick}
                     key={id}
                     to={to}>
                     {name}
-                  </LPMALink>
+                  </Link>
                 );
               })}
               <LoginLogout cssClass={"navbar-item"} />
             </div>
           </div>
           <button
+            style={{display: "none"}}
             onClick={() =>
               this.setState(prevState => ({
                 isActiveMenu: !prevState.isActiveMenu,
@@ -126,7 +127,7 @@ class Header extends React.Component {
             <span />
           </button>
         </nav>
-        <BurgerSubMenu isActiveMenu={isActiveMenu} />
+        {/* <BurgerSubMenu isActiveMenu={isActiveMenu} /> */}
       </div>
     );
   }

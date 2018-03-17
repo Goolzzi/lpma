@@ -1,6 +1,5 @@
 import React from "react";
 import PropTypes from "prop-types";
-import LPMALink from "../../utils/LPMALink";
 import TopJumbotron from "../../components/TopJumbotron";
 import BottomJumbotron from "../../components/BottomJumbotron";
 import BlogPostSection from "../../components/BlogPostSection";
