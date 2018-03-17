@@ -4,7 +4,7 @@ import "./styles.scss";
 import FeedbackForm from "../../components/FeedbackForm";
 import {fisherYates} from "../../utils";
 import LPMALink from "../../utils/LPMALink";
-import auth from "../../Auth/Auth";
+import auth from "../../Auth";
 
 class MyFoundryPage extends React.Component {
   constructor(props) {
@@ -25,6 +25,13 @@ class MyFoundryPage extends React.Component {
       });
     }
   }
+
+  getNickName = () => {
+    if (this.state.userProfile && this.state.userProfile.nickname) {
+      return this.state.userProfile.nickname;
+    }
+    return "";
+  };
 
   render() {
     const {
@@ -52,9 +59,9 @@ class MyFoundryPage extends React.Component {
                     <p>{title}</p>
                     <h2
                       dangerouslySetInnerHTML={{
-                        __html: `${greeting.childMarkdownRemark.html} ${this
-                          .state.userProfile &&
-                          this.state.userProfile.nickname}`,
+                        __html: `${
+                          greeting.childMarkdownRemark.html
+                        } ${this.getNickName()}`,
                       }}
                     />
                   </div>

@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import LPMALink from "../../utils/LPMALink";
 import {EntypoTools, EntypoUser} from "react-entypo";
 import FeedbackForm from "../../components/FeedbackForm";
-import auth from "../../Auth/Auth";
+import auth from "../../Auth";
 import "./styles.scss";
 
 const FoundryLogInPage = props => {
@@ -33,7 +33,7 @@ const FoundryLogInPage = props => {
                 }}
               />
               <LPMALink
-                handler={props.auth.login}
+                handler={auth.login}
                 force={true}
                 cssClass="btn secondary with-radius-5 smaller smaller-text outlined transparent">
                 {login.name}
@@ -123,11 +123,7 @@ FoundryLogInPage.propTypes = {
   data: PropTypes.object.isRequered,
 };
 
-const FoundryPagePageWithAuth = props => (
-  <FoundryLogInPage auth={auth} {...props} />
-);
-
-export default FoundryPagePageWithAuth;
+export default FoundryLogInPage;
 
 export const pageQuery = graphql`
   query foundryPageQuery {

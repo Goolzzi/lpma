@@ -23,6 +23,7 @@
     }
   },
   "globals": {
+    "console" : true,
     "localStorage" : true,
     "auth0" : true,
     "graphql": true,

@@ -3,21 +3,27 @@
  * */
 
 import createHistory from "history/createBrowserHistory";
+import auth from "./src/Auth";
+
 let history = createHistory();
 
-module.exports.onClientEntry = () => {
-  //enter initilal route!
-  (() => {
-    //debugger // eslint-disable-line
-    const {action, location} = history;
-  })();
+const handleRedirects = location => {
+  const {pathname} = location;
+
+  if (pathname.indexOf("/foundry") !== -1 && !auth.isAuthenticated()) {
+    history.replace("/login-foundry");
+  }
+  if (pathname.indexOf("/login-foundry") !== -1 && auth.isAuthenticated()) {
+    history.replace("/foundry");
+  }
 };
 
-history.listen((location, action) => {
-  console.log(
-    `The current URL is ${location.pathname}${location.search}${location.hash}`,
-  );
-  console.log(`The last navigation action was ${action}`);
+module.exports.onClientEntry = () => {
+  handleRedirects(history.location);
+};
+
+history.listen(location => {
+  handleRedirects(location);
 });
 
 module.exports.replaceHistory = () => history;
