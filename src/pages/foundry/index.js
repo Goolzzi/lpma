@@ -27,7 +27,7 @@ class MyFoundryPage extends React.Component {
   }
 
   getNickName = () => {
-    const userProfile = this.state;
+    const {userProfile} = this.state;
     if (userProfile && userProfile.nickname) {
       return userProfile.nickname;
     }

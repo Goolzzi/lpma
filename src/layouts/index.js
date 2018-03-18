@@ -26,7 +26,7 @@ const LayoutTemplate = props => {
     },
   } = props;
 
-  if (pathname === "/callback") {
+  if (pathname.split("/")[1] === "callback") {
     return <div className="page-container">{children()}</div>;
   }
 
