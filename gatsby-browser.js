@@ -2,18 +2,21 @@ import createHistory from "history/createBrowserHistory";
 import auth from "./src/Auth";
 
 //force full page refreshes for Netlify redirects
-const pathsToforceRefresh = [
-  "/us",
-  "/join/",
-  "/join-us",
-  "/events",
-  "/events-us",
-];
+const pathsToforceRefresh = ["us", "join", "join-us", "events", "events-us"];
 
 const history = createHistory();
 
 const handleForceRefresh = (action, pathname) => {
-  //todo implement
+  if (action === "POP") {
+    return;
+  }
+  if (
+    pathname === "/" ||
+    pathsToforceRefresh.indexOf(pathname.split("/")[1]) !== -1
+  ) {
+    // Reload the current page, without using the cache
+    window.location.reload(true);
+  }
 };
 
 const handleRedirects = (location, action) => {
@@ -29,7 +32,7 @@ const handleRedirects = (location, action) => {
     history.replace("/foundry");
   }
 
-  //handleForceRefresh(action, pathname);
+  handleForceRefresh(action, pathname);
 };
 
 module.exports.onClientEntry = () => {
