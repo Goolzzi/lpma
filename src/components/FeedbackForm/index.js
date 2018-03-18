@@ -87,8 +87,8 @@ class FeedbackForm extends React.Component {
 FeedbackForm.propTypes = {
   feedbackParams: PropTypes.shape({
     slug: PropTypes.string,
-    title: PropTypes.number,
-  }).isRquired,
+    title: PropTypes.string,
+  }).isRequired,
 };
 
 export default FeedbackForm;

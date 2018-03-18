@@ -125,12 +125,10 @@ export const pageQuery = graphql`
       login {
         to
         name
-        force
       }
       joinLink {
         to
         name
-        force
       }
       content {
         childMarkdownRemark {

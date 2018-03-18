@@ -6,8 +6,8 @@ import FeedbackForm from "../../components/FeedbackForm";
 import "./styles.scss";
 
 const propTypes = {
-  data: PropTypes.object.isReqiered,
-  pathContext: PropTypes.object.isReqiered,
+  data: PropTypes.object.isRequired,
+  pathContext: PropTypes.object.isRequired,
 };
 
 const FoundrySection = ({

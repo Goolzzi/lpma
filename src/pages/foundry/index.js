@@ -18,7 +18,7 @@ class MyFoundryPage extends React.Component {
     if (auth.isAuthenticated()) {
       auth.getProfile((error, profile) => {
         if (error) {
-          console.log("User Profile Error! ", error);
+          console.log("User Profile Error! ", error); //eslint-disable-line
         } else {
           this.setState({userProfile: profile});
         }
@@ -27,8 +27,9 @@ class MyFoundryPage extends React.Component {
   }
 
   getNickName = () => {
-    if (this.state.userProfile && this.state.userProfile.nickname) {
-      return this.state.userProfile.nickname;
+    const userProfile = this.state;
+    if (userProfile && userProfile.nickname) {
+      return userProfile.nickname;
     }
     return "";
   };
@@ -89,7 +90,7 @@ class MyFoundryPage extends React.Component {
             {fisherYates(edges, 3).map(
               ({node: {id, title, slug, excerpt, foundrystep}}) => {
                 return (
-                  <div key={id} className="column is-4">
+                  <div key={id + slug} className="column is-4">
                     <Link
                       to={`foundry/${slug}/${
                         fisherYates(foundrystep, 1)[0].slug
@@ -123,7 +124,7 @@ class MyFoundryPage extends React.Component {
 }
 
 MyFoundryPage.propTypes = {
-  data: PropTypes.object.isRquiered,
+  data: PropTypes.object.isRequired,
 };
 
 export default MyFoundryPage;

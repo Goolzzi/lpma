@@ -3,11 +3,10 @@ import PropTypes from "prop-types";
 import "./styles.scss";
 
 const propTypes = {
-  title: PropTypes.string.isRequired,
   testimonial: PropTypes.array.isRequired,
 };
 
-const Testimonials = ({title, testimonial}) => (
+const Testimonials = ({testimonial}) => (
   <section className="section testimonials">
     <div className="columns is-gapless is-multiline">
       {testimonial.map(

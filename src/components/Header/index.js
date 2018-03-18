@@ -10,7 +10,7 @@ import "./styles.scss";
 const propTypes = {
   topmenu: PropTypes.array.isRequired,
   logo: PropTypes.object.isRequired,
-  foundryLinks: PropTypes.array.isRequired,
+  foundryLinks: PropTypes.object.isRequired,
   forUSA: PropTypes.bool.isRequired,
 };
 
@@ -62,10 +62,11 @@ class Header extends React.Component {
               "is-active": isActive,
             })}>
             <div className="navbar-end">
-              {menuItems.map(({id, to, name, force, slug}) => {
+              {menuItems.map(({id, to, name, slug}) => {
                 if (slug === "foundry" && auth.isAuthenticated()) {
                   return (
                     <button
+                      key={slug}
                       onClick={() =>
                         this.setState(prevState => ({
                           isFoundryOpen: !prevState.isFoundryOpen,
@@ -80,7 +81,6 @@ class Header extends React.Component {
                       <div className="navbar-dropdown">
                         <Link
                           key={slug}
-                          force={true}
                           to={`/foundry/`}
                           className={"navbar-item"}>
                           {"My Fondry"}
@@ -100,7 +100,6 @@ class Header extends React.Component {
                 return (
                   <Link
                     className={"navbar-item"}
-                    force={!!force}
                     onClick={this.handleClick}
                     key={id}
                     to={to}>

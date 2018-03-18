@@ -10,7 +10,7 @@ import Footer from "../components/Footer";
 
 const propTypes = {
   children: PropTypes.func,
-  location: PropTypes.func,
+  location: PropTypes.object,
   data: PropTypes.object.isRequired,
 };
 
@@ -89,7 +89,6 @@ export const pageQuery = graphql`
         id
         name
         country
-        force
         slug
         to
       }
@@ -105,7 +104,6 @@ export const pageQuery = graphql`
         name
         to
         country
-        force
         slug
       }
       secondaryLinks {
@@ -121,7 +119,6 @@ export const pageQuery = graphql`
       joinLink {
         name
         to
-        force
         slug
       }
       logo {

@@ -61,7 +61,7 @@ const Step = props => {
                   className={classNames({
                     active: slug === contentfulFoundryStep.slug,
                   })}
-                  key={slug}>
+                  key={slug + basePathName}>
                   <Link to={basePathName + slug}>
                     <span>{title}</span>
                   </Link>
@@ -140,8 +140,8 @@ const Step = props => {
 };
 
 Step.propTypes = {
-  pathContext: PropTypes.string.isRequired,
-  data: PropTypes.string.isRequired,
+  pathContext: PropTypes.object.isRequired,
+  data: PropTypes.object.isRequired,
 };
 
 export default Step;
