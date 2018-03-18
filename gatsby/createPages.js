@@ -3,6 +3,7 @@
 const contentfulQuery = require("./contentfulQuery");
 const createFoundryPages = require("./createFoundryPages");
 const creteBlogPages = require("./createBlogPages");
+const createJoinPages = require("./createJoinPages");
 
 module.exports = ({graphql, boundActionCreators}) => {
   const {createPage} = boundActionCreators;
@@ -15,6 +16,7 @@ module.exports = ({graphql, boundActionCreators}) => {
         }
         createFoundryPages(result.data, createPage);
         creteBlogPages(result.data, createPage);
+        createJoinPages(null, createPage);
       }),
     );
   });
