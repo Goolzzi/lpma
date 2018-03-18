@@ -34,6 +34,7 @@ class Header extends React.Component {
   render() {
     const {topmenu, logo: {file}, foundryLinks, forUSA} = this.props;
     const {isActive, isActiveMenu, isFoundryOpen} = this.state;
+    //TODO: imprve contry based component building
     const menuItems = forUSA
       ? topmenu.filter(({country}) => country === "us")
       : topmenu;
