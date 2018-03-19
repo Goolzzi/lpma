@@ -15,7 +15,7 @@ const Event = ({
   <div className="columns is-gapless event-item">
     <div className="column is-7 event-name">
       <h3>{name}</h3>
-      <p
+      <div
         dangerouslySetInnerHTML={{__html: description.childMarkdownRemark.html}}
       />
     </div>
