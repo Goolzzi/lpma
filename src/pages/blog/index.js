@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import TopJumbotron from "../../components/TopJumbotron";
 import BottomJumbotron from "../../components/BottomJumbotron";
 import BlogPostSection from "../../components/BlogPostSection";
+import GetUpdatesForm from "../../components/GetUpdatesForm";
 import "./styles.scss";
 
 const propTypes = {
@@ -17,32 +18,14 @@ const BlogPage = ({
 }) => (
   <React.Fragment>
     <TopJumbotron {...edges[0].node} />
-    <BlogPostSection heading="Featured Posts" blogs={blogEdges} />
-    <BlogPostSection heading="Latest Posts" blogs={blogEdges} />
-    <section className="section blog-subscribe">
-      <div className="container">
-        <div className="columns">
-          <div className="column wrapper is-8 is-offset-2">
-            <div className="cont">
-              <h2 className="title is-2">
-                Get the latest LPMA updates delivered straight to your inbox.
-              </h2>
-              <p>
-                Each email will feature articles and advice on how to grow your
-                business, improve your skills, tips &amp; tricks and much, much
-                more.
-              </p>
-
-              <input
-                type="text"
-                className="inp smaller bordered halfwidth"
-                placeholder="Enter your email address to subscribe"
-              />
-              <button className="btn primary smaller">Sign Up</button>
-            </div>
-          </div>
-        </div>
-      </div>
+    <BlogPostSection
+      heading="Featured Posts"
+      blogs={blogEdges}
+      featured={true}
+    />
+    <BlogPostSection heading="Latest Posts" blogs={blogEdges} latest={true} />
+    <section className="section container form-columns">
+      <GetUpdatesForm />
     </section>
     <BottomJumbotron {...edges[1].node} />
   </React.Fragment>
@@ -77,7 +60,7 @@ export const pageQuery = graphql`
         }
       }
     }
-    allContentfulBlogPost(sort: {fields: [date], order: DESC}, limit: 3) {
+    allContentfulBlogPost(sort: {fields: [date], order: ASC}) {
       edges {
         node {
           image {
@@ -102,6 +85,7 @@ export const pageQuery = graphql`
           content {
             content
           }
+          featured
         }
       }
     }
