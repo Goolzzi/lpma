@@ -1,0 +1,62 @@
+// .transition-in-5 {
+//   -webkit-transition: opacity 1s ease-in;
+//   -moz-transition: opacity 1s ease-in;
+//   -o-transition: opacity 1s ease-in;
+//   -ms-transition: opacity 1s ease-in;
+//   transition: opacity 1s ease-in;
+// }
+
+// .transition-out-5 {
+//   -webkit-transition: opacity 1s ease-out;
+//   -moz-transition: opacity 1s ease-out;
+//   -o-transition: opacity 1s ease-out;
+//   -ms-transition: opacity 1s ease-out;
+//   transition: opacity 1s ease-out;
+// }
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.fadeIn {
+  animation-name: fadeIn;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes fadeOutBottomToTop {
+  from { opacity: 1; transform: translate(0, 0); }
+  to   { opacity: 0; transform: translate(0, -50px); }
+}
+
+.fadeOutBottomToTop {
+  animation-name: fadeOutBottomToTop;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes topBottom {
+  from { transform: translate(0, 0); }
+  to   { transform: translate(0, 50px); }
+}
+
+.topBottom {
+  animation-name: topBottom;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes bottomTop {
+  from { transform: translate(0, 0); }
+  to   { transform: translateY(0, -50px); }
+}
+
+.bottomTop {
+  animation-name: bottomTop;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+}
+
+
+

@@ -1,7 +1,113 @@
+@import "variables";
+@import "typography";
+@import "animations";
+
 ul, li {
   margin: 0;
 }
+.page {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+}
+#page_1 {
+  position: relative;
+  background-color: #464F53;
+  height: 200vh;
 
-@import "./_variables.scss";
+  .overlay-image {
+    position: fixed;
+    top: 50vh;
+    left: 50vw;
+    transform: translate(-50%, -50%);
+    background-image: url(../assets/images/NewDesign/bk-introduction.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    width: 75vw;
+    height: 75vh;
+    mix-blend-mode: screen;
+    opacity: 0.4;
+  }
+  z-index: 0;
+}
+#page_2 {
+  position: absolute;
+  top: 200vh;
+  width: 100vw;
+  height: 100vh;
+  background: #70BF54;
+}
+.position-center {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+.intro-title {
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  margin: 0 20vw;
+  max-width: 60vw;
+  margin-top: calc((100vh - (1.1em *4))/2);
+  opacity: 0;
+  text-align: center;
+  color: #fff;
+  font-size: 3.3em;
+  font-family: "DomaineSansMedium";
+  letter-spacing: -0.03em;
+  text-align: center;
+  &.next {
+    min-width: 100%;
+    margin: 0;
+    margin-top: calc((100vh - (1.2em *2))/2);
+  }
+  span {
+    color: $primary-color;
+  }
+}
+.reason-bar {
+  height: 5px;
+  width: 40vw;
+  margin: 0 30vw;
+  background: transparent;
+  position: fixed;
+  top: 60vh;
+  display: flex;
+  opacity: 0;
+  justify-content: space-between;
+  .bar {
+    align-self: stretch;
+    width: 14vh;
+    
+  }
+  .item-1 {
+    background: #70BF54;
+  }
+  .item-2 {
+    background: #93D6E3;
+  }
+  .item-3 {
+    background: #F0BC69;
+  }
+  .item-4 {
+    background: #E59381;
+  }
+}
+.bottom-text {
+  position: fixed;
+  min-width: 100%;
+  margin: 0;
+  bottom: 10vh;
+  text-align: center;
+  font-size: 18px;
+  font-weight: 26px;
+  color: #fff;
+  font-family: "DomaineSansMedium";
+  opacity: 0;
+
+}
 @import "./components/header.scss";
 

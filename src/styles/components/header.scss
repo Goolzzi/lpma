@@ -7,9 +7,10 @@ img {
   left: 0;
   right: 0;
   height: 50px;
-  background-color: #444444;
+  background-color: transparent;
   display: flex;
   justify-content: space-between;
+  z-index: 1;
 }
 .header-wrapper .img {
    max-height: 1.25em;
@@ -41,17 +42,20 @@ img {
   color: white;
   font-size: 0.6em;
 }
-.header-wrapper .navbar-end .navbar-item .menu-btn {
+.header-wrapper .navbar-btn-group {
+  display: flex;
+}
+.header-wrapper .navbar-btn-group .navbar-item .menu-btn {
   font-size: 1em;
   background: transparent;
   border: none;
   color: $primary-color;
 }
-.header-wrapper .navbar-end .navbar-item:first-of-type {
+.header-wrapper .navbar-btn-group .navbar-item:first-of-type {
   padding-left: 0;
   padding-right: 0;
 }
-.header-wrapper .navbar-end .navbar-item:first-of-type .menu-btn {
+.header-wrapper .navbar-btn-group .navbar-item:first-of-type .menu-btn {
   background: $primary-color;
   color: #fff;
   padding: 0.8rem 1.8rem;
