@@ -75,7 +75,7 @@ class FeedbackForm extends React.Component {
         </div>
       );
     }
-    return <PostSubmitMessage message="Thanks for your feedback." />;
+    return <PostSubmitMessage message="Thanks for your feedback!" />;
   }
 }
 
