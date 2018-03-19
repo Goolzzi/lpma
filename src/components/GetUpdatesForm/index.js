@@ -19,8 +19,8 @@ class GetUpdatesForm extends Component {
 
   submitSubscription = () => {
     const {email} = this.state;
-    typeof analyitcs !== "undefined" &&
-      analyitcs.track(this.segmentEvent, {email});
+    typeof analytics !== "undefined" &&
+      analytics.track(this.segmentEvent, {email});
     this.setState({formClicked: true});
   };
 
@@ -29,8 +29,8 @@ class GetUpdatesForm extends Component {
   };
 
   componentDidMount() {
-    typeof analyitcs !== "undefined" &&
-      analyitcs.on("track", event => {
+    typeof analytics !== "undefined" &&
+      analytics.on("track", event => {
         if (event.this.segmentEvent) {
           this.setState({emitted: true});
           store.set(this.segmentEvent, true);
