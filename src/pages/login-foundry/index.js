@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import Link from "gatsby-link";
 import {EntypoTools, EntypoUser} from "react-entypo";
 import FeedbackForm from "../../components/FeedbackForm";
+import auth from "../../Auth";
 import "./styles.scss";
 
 const FoundryLogInPage = props => {
@@ -31,9 +32,13 @@ const FoundryLogInPage = props => {
                   __html: content.childMarkdownRemark.html,
                 }}
               />
-              <Link className="btn secondary with-radius-5 smaller smaller-text outlined transparent">
+              <button
+                onClick={() => {
+                  auth.login();
+                }}
+                className="btn secondary with-radius-5 smaller smaller-text outlined transparent">
                 {login.name}
-              </Link>
+              </button>
               <Link
                 to={joinLink.to}
                 className="btn secondary with-radius-5 smaller smaller-text outlined transparent">

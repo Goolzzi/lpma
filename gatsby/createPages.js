@@ -2,7 +2,7 @@
 
 const contentfulQuery = require("./contentfulQuery");
 const createFoundryPages = require("./createFoundryPages");
-const creteBlogPages = require("./createBlogPages");
+const createBlogPages = require("./createBlogPages");
 const createJoinPages = require("./createJoinPages");
 
 module.exports = ({graphql, boundActionCreators}) => {
@@ -15,7 +15,7 @@ module.exports = ({graphql, boundActionCreators}) => {
           reject(result.errors);
         }
         createFoundryPages(result.data, createPage);
-        creteBlogPages(result.data, createPage);
+        createBlogPages(result.data, createPage);
         createJoinPages(null, createPage);
       }),
     );
