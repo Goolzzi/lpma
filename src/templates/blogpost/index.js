@@ -28,7 +28,7 @@ const generateBlogJumbotron = node => ({
   ],
 });
 
-const shareCount = count => <div className="text">{count}</div>;
+const shareCount = count => <div className="text">{count || ""}</div>;
 
 const propTypes = {
   data: PropTypes.object.isRequired,
