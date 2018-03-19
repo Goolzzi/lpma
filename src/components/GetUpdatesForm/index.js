@@ -31,7 +31,7 @@ class GetUpdatesForm extends Component {
   componentDidMount() {
     typeof analytics !== "undefined" &&
       analytics.on("track", event => {
-        if (event.this.segmentEvent) {
+        if (event === this.segmentEvent) {
           this.setState({emitted: true});
           store.set(this.segmentEvent, true);
         }
