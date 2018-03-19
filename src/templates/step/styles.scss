@@ -1,0 +1,176 @@
+@media screen and (max-width: 768px) {
+  html.step-page {
+    body {
+      .footer {
+        display: none;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 769px) {
+  html.step-page {
+    overflow: hidden;
+    height: 100%;
+
+    body {
+      height: 100%;
+
+      .page-container {
+        height: 0px;
+
+        .guides {
+          position: absolute;
+          top: 90px;
+          bottom: 0px;
+          left: 0px;
+          right: 0px;
+          overflow: hidden;
+          padding: 0px;
+
+          .breadcrumb-wrapper {
+            margin-top: 0.5rem;
+            margin-bottom: 0.5rem;
+          }
+
+          .container.guides-wrapper {
+            height: calc(100% - 12rem);
+            padding: 0px;
+
+            .guide-columns {
+              height: 100%;
+              margin-top: 0px;
+
+              .steps-menu-wrapper {
+                overflow-y: scroll;
+                height: 100%;
+                padding: 3rem 2rem 3rem 2rem;
+              }
+
+              .guide-content {
+                overflow-y: scroll;
+                height: 100%;
+                padding: 3rem 2rem 3rem 4rem;
+              }
+            }
+          }
+        }
+      }
+
+      .footer {
+        display: none;
+      }
+    }
+  }
+}
+
+
+
+.guides {
+  .container.guides-wrapper {
+    .guide-columns {
+      .steps-menu-wrapper {
+        background-color: $white;
+
+        & > h3 {
+          color: $gray-dark;
+          font-size: 1.25rem;
+          font-weight: normal;
+        }
+
+        ul.steps-menu {
+          margin: 0px;
+
+          li {
+            background-color: $steps-menu-bg;
+            cursor: pointer;
+            margin: 0px;
+            border-top: 1px solid $white;
+            border-bottom: 1px solid $steps-menu-border;
+
+            span {
+              color: $gray-dark;
+              font-size: 0.75rem;
+              font-weight: 500;
+              display: inline-block;
+              padding: 1rem 1.5rem;
+            }
+
+            &.active {
+              border-left: 3px solid $primary-color;
+            }
+          }
+        }
+      }
+
+      .guide-content {
+        background-color: $white;
+
+        & > h1 {
+          color: $gray-dark;
+          font-weight: 500;
+        }
+
+        .markdown {
+          border-top: 2px solid $gray-border-darker;
+          padding-top: 1rem;
+        }
+      }
+    }
+  }
+
+  .bottom-container {
+    .helpful {
+      margin-top: 0.75rem !important;
+      margin-bottom: 0.5rem !important;
+
+      span, button {
+        padding-top: 0.75rem;
+        padding-bottom: 0.75rem;
+      }
+    }
+    .steps-navigation {
+      .level-left {
+        max-width: 50%;
+        padding-right: 3rem;
+
+        .level-item {
+          max-width: 100%;
+        }
+      }
+
+      .level-right {
+        max-width: 50%;
+        padding-left: 3rem;
+
+        .level-item {
+          max-width: 100%;
+        }
+      }
+
+      a {
+        span:first-child {
+          color: #A5CED2;
+          font-size: 0.75rem;
+        }
+
+        span:last-child {
+          color: $gray-dark;
+          font-size: 1rem;
+
+          img {
+            display: inline-block;
+            height: 1em;
+            margin: 0.25em;
+          }
+        }
+
+        &:hover {
+          span {
+            text-decoration: underline;
+          }
+        }
+      }
+    }
+  }
+}

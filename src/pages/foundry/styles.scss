@@ -1,0 +1,90 @@
+.unauthorized-foundry-heading {
+    background-color: $primary-color;
+    padding-bottom: 6rem;
+  
+    .column {
+      h1 {
+        color: $white;
+        font-weight: 500;
+        font-size: 2.75rem;
+        margin-bottom: 2.75rem;
+      }
+  
+      p {
+        color: $white;
+        font-weight: normal;
+        font-size: 1.25rem;
+        margin-bottom: 2.75rem;
+      }
+  
+      .btn {
+        margin-right: 1rem;
+      }
+    }
+  }
+  
+  .unauthorized-foundry-content {
+    margin-top: -3rem;
+  
+    .home-feature {
+      background-color: $white;
+      padding: 4rem 3rem;
+  
+      .left-item {
+        width: 40%;
+        h3 {
+          font-weight: 500;
+          color: $gray-dark;
+          text-align: left;
+          margin-bottom: 2.25rem;
+          max-width: 80%;
+        }
+  
+        p {
+          color: $gray-dark;
+          text-align: left;
+          margin-bottom: 2.25rem;
+          max-width: 80%;
+        }
+      }
+  
+      .right-item {
+        width: 60%;
+      }
+    }
+  
+    .cont-columns {
+      .cont-columns-item {
+        text-align: center;
+        padding: 3rem;
+  
+        h3 {
+          font-weight: 500;
+          color: $gray-dark;
+        }
+  
+        .icon-style {
+          color: $gray-dark;
+          font-size: 4rem;
+          margin-bottom: 1.5rem;
+        }
+  
+        p {
+          color: $gray-dark;
+        }
+      }
+    }
+  }
+  
+  
+  @media screen and (max-width: 768px) {
+    .unauthorized-foundry-content {
+      .cont-columns {
+        .cont-columns-item {
+          .icon-style {
+            font-size: 6rem;
+          }
+        }
+      }
+    }
+  }

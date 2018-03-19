@@ -1,8 +1,9 @@
 import React from "react";
 import PropTypes from "prop-types";
 import classNames from "classnames";
-// import BreadCrumb from "../components/BreadCrumb";
 import FoundryCard from "../components/FondryCard";
+import BreadCrumb from "../../components/BreadCrumb";
+import FeedbackForm from "../../components/FeedbackForm";
 import "./styles.scss";
 
 const TabItem = ({tab, isActive, onClick, index}) => (
@@ -14,6 +15,7 @@ const TabItem = ({tab, isActive, onClick, index}) => (
 class FoundrySubject extends React.Component {
   static propTypes = {
     data: PropTypes.object.isReqiered,
+    pathContext: PropTypes.object.isReqiered,
   };
 
   constructor(props) {
@@ -28,34 +30,23 @@ class FoundrySubject extends React.Component {
   };
 
   render() {
-    const {data: {contentfulFoundrySubject}} = this.props;
+    const {
+      pathContext: {parentPath, breadCrumbs},
+      data: {contentfulFoundrySubject},
+    } = this.props;
     const {activeTabIndex} = this.state;
-    const {title, content, guideTypes} = contentfulFoundrySubject;
+    const {
+      title,
+      slug,
+      content,
+      guideTypes,
+      feedbackForm,
+    } = contentfulFoundrySubject;
     const tabCount = guideTypes ? guideTypes.tabs.length : 0;
 
     return (
       <section className="section template-page">
-        {/* <BreadCrumb /> */}
-        <div className="container breadcrumb-wrapper">
-          <nav className="breadcrumb" aria-label="breadcrumbs">
-            <ul>
-              <li>
-                <a href="#">Bulma Test</a>
-              </li>
-              <li>
-                <a href="#">Documentation test</a>
-              </li>
-              <li>
-                <a href="#">Components test</a>
-              </li>
-              <li className="is-active">
-                <a href="#" aria-current="page">
-                  Breadcrumb
-                </a>
-              </li>
-            </ul>
-          </nav>
-        </div>
+        <BreadCrumb parentPath={parentPath} crumbs={breadCrumbs} />
         <div className="container wrapper-cont">
           <div className="columns">
             <div className="column">
@@ -66,20 +57,22 @@ class FoundrySubject extends React.Component {
             className="markdown"
             dangerouslySetInnerHTML={{__html: content.childMarkdownRemark.html}}
           />
-          <div className="custom-tabs">
-            <ul>
-              {tabCount !== 0 &&
-                guideTypes.tabs.map((tab, index) => (
-                  <TabItem
-                    onClick={this.handleTabClick}
-                    key={index}
-                    tab={tab}
-                    index={index}
-                    isActive={activeTabIndex === index}
-                  />
-                ))}
-            </ul>
-          </div>
+          {tabCount > 1 && (
+            <div className="custom-tabs">
+              <ul>
+                {tabCount !== 0 &&
+                  guideTypes.tabs.map((tab, index) => (
+                    <TabItem
+                      onClick={this.handleTabClick}
+                      key={index}
+                      tab={tab}
+                      index={index}
+                      isActive={activeTabIndex === index}
+                    />
+                  ))}
+              </ul>
+            </div>
+          )}
 
           {tabCount !== 0 &&
             guideTypes.tabs.map((tab, i) => {
@@ -91,14 +84,18 @@ class FoundrySubject extends React.Component {
                   })}>
                   <div className="columns is-multiline">
                     {tabCount !== 0 &&
+                      contentfulFoundrySubject[tab] &&
                       contentfulFoundrySubject[tab].map(
-                        ({id, title, excrept}) => {
+                        ({id, title, slug, excerpt, steps}) => {
+                          const href = steps
+                            ? "foundry/" + slug + "/" + steps[0].slug
+                            : "javascript;";
                           return (
                             <FoundryCard
                               key={id}
                               title={title}
-                              content={excrept.childMarkdownRemark.excerpt}
-                              href={"/#"}
+                              content={excerpt.childMarkdownRemark.excerpt}
+                              href={href}
                             />
                           );
                         },
@@ -107,6 +104,17 @@ class FoundrySubject extends React.Component {
                 </div>
               );
             })}
+        </div>
+        <div className="container">
+          {feedbackForm !== false && (
+            <FeedbackForm
+              feedbackParams={{
+                type: "subject",
+                title,
+                slug,
+              }}
+            />
+          )}
         </div>
       </section>
     );
@@ -120,6 +128,7 @@ export const pageQuery = graphql`
     contentfulFoundrySubject(slug: {eq: $slug}) {
       title
       slug
+      feedbackForm
       id
       content {
         childMarkdownRemark {
@@ -133,9 +142,14 @@ export const pageQuery = graphql`
         id
         title
         type
+        slug
+        steps {
+          slug
+        }
         excerpt {
           childMarkdownRemark {
             excerpt
+            html
           }
         }
       }
@@ -146,6 +160,7 @@ export const pageQuery = graphql`
         excerpt {
           childMarkdownRemark {
             excerpt
+            html
           }
         }
       }
