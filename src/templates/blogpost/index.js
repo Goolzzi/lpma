@@ -37,13 +37,13 @@ const propTypes = {
 
 const BlogPost = ({data, location}) => {
   const baseUrl = "https://lpma.netlify.com";
-  const {pathName} = location;
+  const {pathname} = location;
   const {title, category, date, author, content} = data.contentfulBlogPost;
   const {edges} = data.allContentfulBlogPost;
   const {contentfulBlogJumbotron: bottomJumbotron} = data;
   const topJumbotron = generateBlogJumbotron(data.contentfulBlogPost);
   const otherBlogs = fisherYates(edges, 3);
-  const blogUrl = `${baseUrl}${pathName}`;
+  const blogUrl = `${baseUrl}${pathname}`;
   return (
     <React.Fragment>
       <TopJumbotron {...topJumbotron} />

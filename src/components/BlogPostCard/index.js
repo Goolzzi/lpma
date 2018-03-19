@@ -30,6 +30,7 @@ const BlogPostCard = ({
 
       <span className="category-and-date">
         <span>{category}</span>
+        <span> | </span>
         <span>{date}</span>
       </span>
 
