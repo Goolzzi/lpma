@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import moment from "moment";
 import "./styles.scss";
 
 const propTypes = {
@@ -22,7 +23,7 @@ const BlogPageHeading = ({
           <span className="category-and-date">
             <span>{category}</span>
             <span> | </span>
-            <span>{date}</span>
+            <span>{moment(date).format("MMMM D, YYYY")}</span>
           </span>
 
           <div className="author">

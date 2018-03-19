@@ -1,6 +1,7 @@
 import React from "react";
 import Link from "gatsby-link";
 import PropTypes from "prop-types";
+import moment from "moment";
 import "./styles.scss";
 
 const LinkToBlog = ({slug, children}) => (
@@ -31,7 +32,7 @@ const BlogPostCard = ({
       <span className="category-and-date">
         <span>{category}</span>
         <span> | </span>
-        <span>{date}</span>
+        <span>{moment(date).format("MMMM D, YYYY")}</span>
       </span>
 
       <h4 className="title is-4">{title}</h4>
