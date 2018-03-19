@@ -9,6 +9,7 @@ class GetUpdatesForm extends Component {
   constructor(props) {
     super(props);
     this.segmentEvent = "Get updates";
+    this.emailRegexp = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     this.state = {
       email: "",
       formClicked: false,
@@ -19,6 +20,10 @@ class GetUpdatesForm extends Component {
 
   submitSubscription = () => {
     const {email} = this.state;
+    const isValid = this.emailRegexp.test(String(email).toLowerCase());
+    if (!isValid) {
+      return;
+    }
     typeof analytics !== "undefined" &&
       analytics.track(this.segmentEvent, {email});
     this.setState({formClicked: true});
