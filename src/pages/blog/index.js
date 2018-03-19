@@ -24,7 +24,9 @@ const BlogPage = ({
       featured={true}
     />
     <BlogPostSection heading="Latest Posts" blogs={blogEdges} latest={true} />
-    <GetUpdatesForm />
+    <section className="section container form-columns">
+      <GetUpdatesForm />
+    </section>
     <BottomJumbotron {...edges[1].node} />
   </React.Fragment>
 );
