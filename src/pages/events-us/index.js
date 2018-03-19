@@ -47,10 +47,6 @@ export const pageQuery = graphql`
               html
             }
           }
-          buyTicketsLink {
-            to
-            name
-          }
         }
       }
     }

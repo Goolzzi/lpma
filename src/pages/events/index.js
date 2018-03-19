@@ -1,11 +1,17 @@
 import React from "react";
 import PropTypes from "prop-types";
-import Link from "gatsby-link";
 import TopJumbotron from "../../components/TopJumbotron";
 import BottomJumbotron from "../../components/BottomJumbotron";
 import "./styles.scss";
 
-const Event = ({name, date, location, description, buyTicketsLink}) => (
+const Event = ({
+  name,
+  date,
+  location,
+  description,
+  additionalInfo,
+  buttonLink,
+}) => (
   <div className="columns is-gapless event-item">
     <div className="column is-7 event-name">
       <h3>{name}</h3>
@@ -18,9 +24,19 @@ const Event = ({name, date, location, description, buyTicketsLink}) => (
       <p>{location}</p>
     </div>
     <div className="column is-3 event-button">
-      <Link {...buyTicketsLink}>
-        <button className="btn primary outlined">{buyTicketsLink.name}</button>
-      </Link>
+      {buttonLink && (
+        <a href={buttonLink.href}>
+          <button className="btn primary outlined">{buttonLink.name}</button>
+        </a>
+      )}
+      {additionalInfo && (
+        <div
+          className="add-info"
+          dangerouslySetInnerHTML={{
+            __html: additionalInfo.childMarkdownRemark.html,
+          }}
+        />
+      )}
     </div>
   </div>
 );
@@ -62,7 +78,10 @@ export const pageQuery = graphql`
     contentfulUpcomingEvents {
       title
     }
-    allContentfulEvent(filter: {country: {eq: "au"}}) {
+    allContentfulEvent(
+      filter: {country: {eq: "au"}}
+      sort: {fields: [createdAt], order: ASC}
+    ) {
       edges {
         node {
           id
@@ -77,8 +96,13 @@ export const pageQuery = graphql`
               html
             }
           }
-          buyTicketsLink {
-            to
+          additionalInfo {
+            childMarkdownRemark {
+              html
+            }
+          }
+          buttonLink {
+            href
             name
           }
         }
