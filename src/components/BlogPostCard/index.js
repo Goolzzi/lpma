@@ -16,11 +16,11 @@ const propTypes = {
 const BlogPostCard = ({
   node: {
     title,
-    image: {resolutions: imageResolutions},
     author: {image: {resolutions}, name},
     category,
     date,
     slug,
+    image: {resolutions: imageResolutions},
   },
 }) => (
   <LinkToBlog slug={slug}>

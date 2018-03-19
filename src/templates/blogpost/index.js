@@ -20,8 +20,8 @@ const generateBlogJumbotron = node => ({
     {
       background: {
         resolutions: {
-          src: node.image.resolutions.src,
-          srcSet: node.image.resolutions.srcSet,
+          src: node.largeImage.resolutions.src,
+          srcSet: node.largeImage.resolutions.srcSet,
         },
       },
     },
@@ -133,6 +133,12 @@ export const pageQuery = graphql`
       edges {
         node {
           image {
+            resolutions(quality: 100) {
+              src
+              srcSet
+            }
+          }
+          largeImage {
             resolutions(quality: 100) {
               src
               srcSet
