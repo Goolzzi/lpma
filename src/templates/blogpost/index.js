@@ -32,17 +32,18 @@ const shareCount = count => <div className="text">{count}</div>;
 
 const propTypes = {
   data: PropTypes.object.isRequired,
+  location: PropTypes.object.isRequired,
 };
 
-const BlogPost = ({data, history, location}) => {
-  console.log("HISTORY", history);
-  console.log("LOcATION", location);
+const BlogPost = ({data, location}) => {
+  const baseUrl = "https://lpma.netlify.com";
+  const {pathName} = location;
   const {title, category, date, author, content} = data.contentfulBlogPost;
   const {edges} = data.allContentfulBlogPost;
   const {contentfulBlogJumbotron: bottomJumbotron} = data;
   const topJumbotron = generateBlogJumbotron(data.contentfulBlogPost);
   const otherBlogs = fisherYates(edges, 3);
-  const blogUrl = window.location.href;
+  const blogUrl = `${baseUrl}${pathName}`;
   return (
     <React.Fragment>
       <TopJumbotron {...topJumbotron} />
