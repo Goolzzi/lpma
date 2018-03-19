@@ -87,7 +87,7 @@ class GetUpdatesForm extends Component {
       );
     }
 
-    return <PostSubmitMessage message="Sign-up went successful!" />;
+    return <PostSubmitMessage message="Sign-up went successful." />;
   }
 }
 
