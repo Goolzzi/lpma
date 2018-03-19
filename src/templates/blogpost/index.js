@@ -34,7 +34,9 @@ const propTypes = {
   data: PropTypes.object.isRequired,
 };
 
-const BlogPost = ({data}) => {
+const BlogPost = ({data, history, location}) => {
+  console.log("HISTORY", history);
+  console.log("LOcATION", location);
   const {title, category, date, author, content} = data.contentfulBlogPost;
   const {edges} = data.allContentfulBlogPost;
   const {contentfulBlogJumbotron: bottomJumbotron} = data;
