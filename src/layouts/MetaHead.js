@@ -3,9 +3,9 @@ import PropTypes from "prop-types";
 import Helmet from "react-helmet";
 
 const propTypes = {
-  metaImage1200x630: PropTypes.string.isReqiered,
-  metaImage1024x512: PropTypes.string.isReqiered,
-  title: PropTypes.string.isReqiered,
+  metaImage1200x630: PropTypes.string.isRequired,
+  metaImage1024x512: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
 };
 
 const MetaHead = ({metaImage1200x630, metaImage1024x512, title}) => {

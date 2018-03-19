@@ -14,8 +14,8 @@ const TabItem = ({tab, isActive, onClick, index}) => (
 
 class FoundrySubject extends React.Component {
   static propTypes = {
-    data: PropTypes.object.isReqiered,
-    pathContext: PropTypes.object.isReqiered,
+    data: PropTypes.object.isRequired,
+    pathContext: PropTypes.object.isRequired,
   };
 
   constructor(props) {

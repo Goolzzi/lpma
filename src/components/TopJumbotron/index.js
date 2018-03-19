@@ -1,14 +1,13 @@
 import React from "react";
 import PropTypes from "prop-types";
+import Link from "gatsby-link";
 import "./styles.scss";
-import LPMALink from "../../utils/LPMALink";
 
 const propTypes = {
   jumbotron: PropTypes.array.isRequired,
 };
 
 const TopJumbotron = ({jumbotron}) => {
-  console.log(jumbotron);
   const {
     background: {resolutions: {src, srcSet}},
     title,
@@ -24,11 +23,11 @@ const TopJumbotron = ({jumbotron}) => {
           <div className="cont">
             {title ? <p>{title.title}</p> : <React.Fragment />}
             {joinLink ? (
-              <LPMALink {...joinLink}>
+              <Link {...joinLink}>
                 <button className="btn primary halfwidth">
                   {joinLink.name}
                 </button>
-              </LPMALink>
+              </Link>
             ) : (
               <React.Fragment />
             )}
