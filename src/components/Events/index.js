@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
+import Link from "gatsby-link";
 import "./styles.scss";
-import LPMALink from "../../utils/LPMALink";
 
 const Event = ({name, date, location, description, buyTicketsLink}) => (
   <div className="columns is-gapless event-item">
@@ -16,9 +16,9 @@ const Event = ({name, date, location, description, buyTicketsLink}) => (
       <p>{location}</p>
     </div>
     <div className="column is-3 event-button">
-      <LPMALink {...buyTicketsLink}>
+      <Link {...buyTicketsLink}>
         <button className="btn primary outlined">{buyTicketsLink.name}</button>
-      </LPMALink>
+      </Link>
     </div>
   </div>
 );

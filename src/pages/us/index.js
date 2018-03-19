@@ -1,7 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-import MemberBenefits from "../../components/MemberBenefits";
 import TopJumbotron from "../../components/TopJumbotron";
 import TopInfoColumns from "../../components/TopInfoColumns";
 import BottomJumbotron from "../../components/BottomJumbotron";
@@ -15,7 +14,6 @@ const propTypes = {
 //FIXME:
 const IndexUSPage = ({
   data: {
-    contentfulMemberBenefits,
     contentfulTestimonials,
     allContentfulAcquisitionJumbotron: {edges},
     contentfulAcquisitionTopInfoRemark,
@@ -100,7 +98,6 @@ export const pageQuery = graphql`
             joinLink {
               name
               to
-              force
             }
             background {
               id

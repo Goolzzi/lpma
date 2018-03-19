@@ -63,7 +63,6 @@ export const pageQuery = graphql`
             joinLink {
               name
               to
-              force
             }
             background {
               id

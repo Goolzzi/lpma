@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
-import LPMALink from "../../utils/LPMALink";
+import Link from "gatsby-link";
+import LoginLogout from "../../components/LoginLogout";
 import "./styles.scss";
 
 const propTypes = {
@@ -81,28 +82,29 @@ const Footer = ({
               <div className="vertical-line" />
             </div>
             <div className="column footer-2 white-links-column">
-              {menuItems.map(({id, name, to, force}) => {
+              {menuItems.map(({id, name, to}) => {
                 return (
-                  <LPMALink force={force} key={id} to={to}>
+                  <Link key={id} to={to}>
                     {name}
-                  </LPMALink>
+                  </Link>
                 );
               })}
+              <LoginLogout />
             </div>
             <div className="column footer-1">
               <div className="vertical-line" />
             </div>
             <div className="column footer-2 white-links-column with-button">
-              {secondaryLinks.map(({id, name, to, force}) => (
-                <LPMALink key={id} to={to} force={force}>
+              {secondaryLinks.map(({id, name, to}) => (
+                <Link key={id} to={to}>
                   {name}
-                </LPMALink>
+                </Link>
               ))}
-              <LPMALink {...joinLink}>
+              <Link {...joinLink}>
                 <button className="btn primary fullwidth">
                   {joinLink.name}
                 </button>
-              </LPMALink>
+              </Link>
             </div>
           </div>
         </div>

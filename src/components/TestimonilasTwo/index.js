@@ -4,7 +4,7 @@ import "./styles.scss";
 
 const propTypes = {
   testimonial: PropTypes.array.isRequired,
-  forUS: PropTypes.bool.isRequired,
+  forUS: PropTypes.bool,
 };
 
 //FIXME:
