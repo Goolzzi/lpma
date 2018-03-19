@@ -113,6 +113,12 @@ export const pageQuery = graphql`
           srcSet
         }
       }
+      largeImage {
+        resolutions(quality: 100) {
+          src
+          srcSet
+        }
+      }
       category
       content {
         childMarkdownRemark {
@@ -133,12 +139,6 @@ export const pageQuery = graphql`
       edges {
         node {
           image {
-            resolutions(quality: 100) {
-              src
-              srcSet
-            }
-          }
-          largeImage {
             resolutions(quality: 100) {
               src
               srcSet
