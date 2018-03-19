@@ -133,7 +133,7 @@ export const pageQuery = graphql`
         id
         title
         type
-        excrept {
+        excerpt {
           childMarkdownRemark {
             excerpt
           }
@@ -143,7 +143,7 @@ export const pageQuery = graphql`
         id
         title
         type
-        excrept {
+        excerpt {
           childMarkdownRemark {
             excerpt
           }
