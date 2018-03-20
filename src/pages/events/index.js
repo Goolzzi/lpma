@@ -80,13 +80,14 @@ export const pageQuery = graphql`
     }
     allContentfulEvent(
       filter: {country: {eq: "au"}}
-      sort: {fields: [createdAt], order: ASC}
+      sort: {fields: [orderId], order: ASC}
     ) {
       edges {
         node {
           id
           name
           date
+          orderId
           location
           name
           date
@@ -108,7 +109,6 @@ export const pageQuery = graphql`
         }
       }
     }
-
     allContentfulEventsJumbotron(sort: {fields: [pageLocation], order: DESC}) {
       edges {
         node {
