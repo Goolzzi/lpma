@@ -92,7 +92,7 @@ class MyFoundryPage extends React.Component {
                 return (
                   <div key={id + slug} className="column is-4">
                     <Link
-                      to={`foundry/${slug}/${
+                      to={`/foundry/${slug}/${
                         fisherYates(foundrystep, 1)[0].slug
                       }`}>
                       <div className="column-item">
