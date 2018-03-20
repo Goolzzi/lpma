@@ -45,28 +45,30 @@ ul, li {
   top: 50%;
   transform: translate(-50%, -50%);
 }
+.animating-title {
+  position: fixed;
+  top: 0;
+  left: 0;
+  text-align: center;
+  opacity: 0;
+  color: #fff;
+  font-family: "DomaineSansMedium";
+  font-size: 3.3em;
+  letter-spacing: -0.03em;
+}
 .intro-title {
-  justify-content: center;
-  align-items: center;
   position: fixed;
   margin: 0 20vw;
   max-width: 60vw;
   margin-top: calc((100vh - (1.1em *4))/2);
-  opacity: 0;
-  text-align: center;
-  color: #fff;
-  font-size: 3.3em;
-  font-family: "DomaineSansMedium";
-  letter-spacing: -0.03em;
-  text-align: center;
-  &.next {
-    min-width: 100%;
-    margin: 0;
-    margin-top: calc((100vh - (1.2em *2))/2);
-  }
   span {
     color: $primary-color;
   }
+}
+.intro-title-2 {
+  min-width: 100%;
+  margin: 0;
+  margin-top: calc((100vh - (1.2em *2))/2);
 }
 .reason-bar {
   height: 5px;
@@ -96,24 +98,32 @@ ul, li {
     background: #E59381;
   }
 }
-.bottom-text {
-  position: fixed;
-  min-width: 100%;
-  margin: 0;
-  bottom: 10vh;
+.bottom-instruction {
+  bottom: 5vh;
   text-align: center;
   font-size: 18px;
-  font-weight: 26px;
-  color: #fff;
-  font-family: "DomaineSansMedium";
-  opacity: 0;
+  line-height: 26px;
+  top: auto;
+  width: 100%;
 }
-.section2 {
+.section2-title {
   top: 0;
   left: 0;
   margin-top: calc(50vh - 1.1em);
   width: 100%;
   text-align: center;
+  font-size: 4.8em;
+}
+.section2-text {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  margin-top: 62vh;
+  opacity: 0;
+  font-size: 1em;
+  color: #3B4145;
 }
 @import "./components/header.scss";
 

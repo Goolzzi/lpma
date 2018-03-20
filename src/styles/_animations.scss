@@ -14,14 +14,24 @@
 //   transition: opacity 1s ease-out;
 // }
 
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to   { opacity: 1; }
+@keyframes cFadeIn {
+  from { opacity: 0; transform: translateY(30px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 
-.fadeIn {
-  animation-name: fadeIn;
-  animation-duration: 1s;
+.cFadeIn {
+  animation-name: cFadeIn;
+  animation-duration: 2s;
+  animation-fill-mode: forwards;
+}
+@keyframes cFadeOut {
+  from { opacity: 1; transform: translateY(0); }
+  to   { opacity: 0; transform: translateY(30px); }
+}
+
+.cFadeOut {
+  animation-name: cFadeOut;
+  animation-duration: 2s;
   animation-fill-mode: forwards;
 }
 

@@ -15,7 +15,7 @@ class LandingPage extends React.PureComponent{
     onLand: true,
     animation1: 'enter',
     animation2: '',
-    animation3: 'hidden',
+    animation3: '',
     lastScrollPosition: 0,
     direction: false
   }
@@ -45,20 +45,16 @@ class LandingPage extends React.PureComponent{
       } else {
         this.setState({ direction: true })
       }
-      console.log('^^^^^^^^', this.state.lastScrollPosition, scrollTop);
       this.setState({lastScrollPosition: scrollTop});
       
-      const scrollDown = this.state.prevScrollPosition < scrollTop;
       const animationIndex = this.getAnimationIndex(scrollTop);
       console.log(scrollTop, window.innerHeight);
       
       if (scrollTop > wayPoints[1]) {
-        console.log('%%%%%%%%%%')
-        this.setState({ prevScrollPosition: scrollTop, animation1: 'leave', animation2: 'leave', animation3: 'enter'})
+        this.setState({ prevScrollPosition: scrollTop, animation1: 'leave', animation2: 'leave', animation3: this.state.direction ? 'enter' : 'leave'})
       } else if (scrollTop > wayPoints[0]){
-        this.setState({ prevScrollPosition: scrollTop, animation1: 'leave', animation2: 'enter', animation3: this.state.prevScrollPosition < wayPoints[1] ? 'leave' : 'hidden'})
+        this.setState({ prevScrollPosition: scrollTop, animation1: 'leave', animation2: 'enter', animation3: ''})
       } else if (scrollTop < wayPoints[0]) {
-        console.log('&&&&&&&&&', this.state.direction);
         this.setState({
           prevScrollPosition: scrollTop,
           animation1: 'enter',
@@ -86,11 +82,11 @@ class LandingPage extends React.PureComponent{
       <div>
         <div id="page_1">
           <div className="overlay-image" />
-          <h1 className={`intro-title ${this.getAnimatinoClassName(this.state.animation1, ['fadeInDown animated','', 'fadeOutUp animated', ''])}`}>
+          <h1 className={`animating-title intro-title ${this.getAnimatinoClassName(this.state.animation1, ['fadeInDown animated','', 'fadeOutUp animated', ''])}`}>
             A MEMBERSHIP FOR THE <span>EVOLUTION</span> OF THE PROPERTY MANAGEMENT INDUSTRY
           </h1>
-          <div className="into-title-2">
-            <h1 className={`intro-title next ${this.getAnimatinoClassName(this.state.animation2, ['fadeInUp animated', 'fadeOutUp animated', 'fadeOutDown animated', ''])}`}>
+          <div>
+            <h1 className={`animating-title intro-title-2 ${this.getAnimatinoClassName(this.state.animation2, ['fadeInUp animated', 'fadeOutUp animated', 'fadeOutDown animated', ''])}`}>
               FOUR REASONS<br />TO BE AN LPMA MEMBER
             </h1>
             <div className={`reason-bar ${this.getAnimatinoClassName(this.state.animation2, ['fadeInUp animated', 'fadeOutUp animated', 'fadeOutDown animated', ''])}`}>
@@ -99,7 +95,7 @@ class LandingPage extends React.PureComponent{
               <div className="bar item-3"></div>
               <div className="bar item-4"></div>
             </div>
-            <h4 className={`bottom-text  ${this.getAnimatinoClassName(this.state.animation1, ['fadeInDown animated','', 'fadeOutUp animated', ''])}`}>
+            <h4 className={`animating-title bottom-instruction  ${this.getAnimatinoClassName(this.state.animation1, ['fadeInDown animated','', 'fadeOutUp animated', ''])}`}>
               Let’s evolve the industry together. <br />Scroll to find out how.
             </h4>
           </div>
@@ -108,9 +104,10 @@ class LandingPage extends React.PureComponent{
         <div id="page_2">
           
         </div>
-        <h1 className={`intro-title section2 ${this.state.animation3 === 'enter' ? 'fadeInUp animated' : (this.state.animation3 !== 'hidden' ? 'fadeOutUp animated' : '')}`}>
+        <h1 className={`animating-title section2-title ${this.getAnimatinoClassName(this.state.animation3, ['cFadeIn','', 'cFadeOut', ''])}`}>
           80% OF <br /> BUSINESS OWNERS
         </h1>
+        <h5 className={`animating-title section2-text ${this.getAnimatinoClassName(this.state.animation3, ['cFadeIn','', 'cFadeOut', ''])}`}>BELEIVE THAT WORKING HARDER IS THE ONLY WAY TO GROW THEIR BUSINESS</h5>
       </div>
     );
   }
