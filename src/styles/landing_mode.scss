@@ -107,7 +107,13 @@ ul, li {
   color: #fff;
   font-family: "DomaineSansMedium";
   opacity: 0;
-
+}
+.section2 {
+  top: 0;
+  left: 0;
+  margin-top: calc(50vh - 1.1em);
+  width: 100%;
+  text-align: center;
 }
 @import "./components/header.scss";
 
