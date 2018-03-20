@@ -1,1 +1,1 @@
-Please provide detailed description, Thnaks! 
+Please provide a detailed description, Thanks! 
