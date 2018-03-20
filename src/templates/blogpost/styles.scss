@@ -41,6 +41,10 @@
           color: #8BCEA1;
         }
 
+        &:hover {
+          cursor: pointer;
+        }
+
         .text {
           color: $black;
           font-size: 0.5rem;
