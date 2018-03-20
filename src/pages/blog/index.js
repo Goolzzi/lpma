@@ -64,7 +64,7 @@ export const pageQuery = graphql`
       edges {
         node {
           image {
-            resolutions(quality: 100) {
+            resolutions(quality: 75) {
               src
               srcSet
             }

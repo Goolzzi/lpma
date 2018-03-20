@@ -25,7 +25,7 @@ const BlogPostCard = ({
 }) => (
   <LinkToBlog slug={slug}>
     <div className="blog-post-card">
-      <div className="image is-4by3">
+      <div className="image is-1.7by1">
         <img src={imageResolutions.src} srcSet={imageResolutions.srcSet} />
       </div>
 
