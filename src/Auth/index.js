@@ -13,6 +13,7 @@ class Auth {
         scope: "openid profile",
       });
     }
+    this.userProfile = null;
   }
 
   login = () => {
@@ -24,7 +25,7 @@ class Auth {
       if (authResult && authResult.accessToken && authResult.idToken) {
         this.setSession(authResult);
       } else if (err) {
-        alert(`Error: ${err.error}. Check the console for further details.`); //eslint-disable-line
+        alert(`Error: ${err.error}`); //eslint-disable-line
       }
     });
   };
@@ -47,30 +48,41 @@ class Auth {
     return accessToken;
   };
 
-  getProfile = cb => {
-    let accessToken = this.getAccessToken();
-    this.auth0.client.userInfo(accessToken, (err, profile) => {
-      if (profile) {
-        this.userProfile = profile;
+  getProfile = () => {
+    return new Promise((resolve, reject) => {
+      if (this.userProfile) {
+        resolve(this.userProfile);
+      } else {
+        let accessToken = this.getAccessToken();
+        this.auth0.client.userInfo(accessToken, (err, profile) => {
+          if (profile) {
+            this.userProfile = profile;
+            resolve(profile);
+          }
+          reject(err);
+        });
       }
-      cb(err, profile);
     });
   };
 
-  logout = () => {
-    // Clear access token and ID token from local storage
+  dispose = () => {
     localStorage.removeItem("access_token");
     localStorage.removeItem("id_token");
     localStorage.removeItem("expires_at");
     this.userProfile = null;
+  };
+
+  logout = () => {
+    this.dispose();
     navigateTo("/");
   };
 
   isAuthenticated = () => {
-    // Check whether the current time is past the
-    // access token's expiry time
     if (typeof localStorage !== "undefined") {
       let expiresAt = JSON.parse(localStorage.getItem("expires_at"));
+      if (!expiresAt) {
+        return false;
+      }
       return new Date().getTime() < expiresAt;
     }
   };

@@ -20,8 +20,8 @@ const generateBlogJumbotron = node => ({
     {
       background: {
         resolutions: {
-          src: node.largeImage.resolutions.src,
-          srcSet: node.largeImage.resolutions.srcSet,
+          src: node.image.resolutions.src,
+          srcSet: node.image.resolutions.srcSet,
         },
       },
     },
@@ -79,12 +79,11 @@ const BlogPost = ({data, location}) => {
       <section className="section blog-content">
         <div className="container narrow">
           <div
-            className="wrapper"
+            className="wrapper markdown"
             dangerouslySetInnerHTML={{
               __html: content.childMarkdownRemark.html,
-            }}>
-            {content.content}
-          </div>
+            }}
+          />
         </div>
       </section>
       <BlogPostSection
@@ -108,12 +107,6 @@ export const pageQuery = graphql`
       slug
       date
       image {
-        resolutions(quality: 100) {
-          src
-          srcSet
-        }
-      }
-      largeImage {
         resolutions(quality: 100) {
           src
           srcSet

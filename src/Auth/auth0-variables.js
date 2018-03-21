@@ -8,7 +8,7 @@ const callbackUrl =
     : process.argv[3] === "live" ? liveCallBack : stagingCallback;
 
 export const AUTH_CONFIG = {
-  domain: "lpma.au.auth0.com",
-  clientId: "Ar64ayX3B-EHquC4oU80AsPe17i_EEt3",
+  domain: "ailo-dev.au.auth0.com",
+  clientId: "fSFMLtPrgj41huObssvuyRiYMmTkbXr2",
   callbackUrl,
 };

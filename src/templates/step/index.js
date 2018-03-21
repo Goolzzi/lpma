@@ -41,7 +41,7 @@ const Step = props => {
     data: {contentfulFoundryGuide: {steps}, contentfulFoundryStep},
   } = props;
 
-  const basePathName = `foundry/${parentSlug}/`;
+  const basePathName = `/foundry/${parentSlug}/`;
 
   return (
     <section className="section guides">

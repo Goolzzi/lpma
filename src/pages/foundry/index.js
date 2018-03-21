@@ -10,29 +10,20 @@ class MyFoundryPage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      userProfile: null,
+      nickname: "",
     };
   }
 
   componentDidMount() {
     if (auth.isAuthenticated()) {
-      auth.getProfile((error, profile) => {
-        if (error) {
+      auth
+        .getProfile()
+        .then(profile => this.setState({nickname: profile.nickname}))
+        .catch(error => {
           console.log("User Profile Error! ", error); //eslint-disable-line
-        } else {
-          this.setState({userProfile: profile});
-        }
-      });
+        });
     }
   }
-
-  getNickName = () => {
-    const {userProfile} = this.state;
-    if (userProfile && userProfile.nickname) {
-      return userProfile.nickname;
-    }
-    return "";
-  };
 
   render() {
     const {
@@ -60,9 +51,9 @@ class MyFoundryPage extends React.Component {
                     <p>{title}</p>
                     <h2
                       dangerouslySetInnerHTML={{
-                        __html: `${
-                          greeting.childMarkdownRemark.html
-                        } ${this.getNickName()}`,
+                        __html: `${greeting.childMarkdownRemark.html} ${
+                          this.state.nickname
+                        }`,
                       }}
                     />
                   </div>
@@ -92,7 +83,7 @@ class MyFoundryPage extends React.Component {
                 return (
                   <div key={id + slug} className="column is-4">
                     <Link
-                      to={`foundry/${slug}/${
+                      to={`/foundry/${slug}/${
                         fisherYates(foundrystep, 1)[0].slug
                       }`}>
                       <div className="column-item">
