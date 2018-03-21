@@ -118,7 +118,7 @@ const FoundryLogInPage = props => {
 };
 
 FoundryLogInPage.propTypes = {
-  data: PropTypes.object.isRequered,
+  data: PropTypes.object.isRequired,
 };
 
 export default FoundryLogInPage;
