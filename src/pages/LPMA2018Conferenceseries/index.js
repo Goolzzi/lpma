@@ -7,7 +7,15 @@ import FeedbackForm from "../../components/FeedbackForm";
 
 import jumbotronBg from "../../assets/images/Optimised-Audience-143.jpg";
 
-import eventImg from "../../assets/images/PB308020.jpg";
+import eventImg1 from "../../assets/images/lpma2018conferenceseries/PB308020.jpg";
+import eventImg2 from "../../assets/images/lpma2018conferenceseries/8.png";
+import eventImg3 from "../../assets/images/lpma2018conferenceseries/ben_newlpma.png";
+import eventImg4 from "../../assets/images/lpma2018conferenceseries/image3.jpg";
+import eventImg5 from "../../assets/images/lpma2018conferenceseries/image5.png";
+import eventImg6 from "../../assets/images/lpma2018conferenceseries/image6.png";
+import eventImg7 from "../../assets/images/lpma2018conferenceseries/IMG_0355.jpg";
+import eventImg8 from "../../assets/images/lpma2018conferenceseries/IMG_20171014_143404R-copy.png";
+import eventImg9 from "../../assets/images/lpma2018conferenceseries/Screen-Shot-2018-02-12-at-9.29.06-am.png";
 
 
 const propTypes = {
@@ -76,7 +84,7 @@ const LPMA2018Conferenceseries = () => (
         <div className="columns">
           <div className="column is-6">
             <div className='image'>
-              <img src={eventImg} />
+              <img src={eventImg1} />
             </div>
           </div>
           <div className="column is-6">
@@ -94,7 +102,7 @@ const LPMA2018Conferenceseries = () => (
         <div className="columns">
           <div className="column is-6">
             <div className='image'>
-              <img src={eventImg} />
+              <img src={eventImg2} />
             </div>
           </div>
           <div className="column is-6">
@@ -112,7 +120,115 @@ const LPMA2018Conferenceseries = () => (
         <div className="columns">
           <div className="column is-6">
             <div className='image'>
-              <img src={eventImg} />
+              <img src={eventImg3} />
+            </div>
+          </div>
+          <div className="column is-6">
+            <div>
+              <h3 className='title is-3'>LPMA Meetups</h3>
+            </div>
+            <div>
+              <h4 className='subtitle is-5'>Various Times Across The Year <span>|</span> Major Australian Cities</h4>
+            </div>
+
+            <p>Our newest event offering, the LPMA Meetup series is a string of events which promote industry best practice and learnings. These events are intimate, local meetings which happen in major cities across Australia. We invite local experts and influencers to sit down and discuss relevant issues in the market as well as the industry. Meetups cover a wide range of themes throughout the year, alternating quarterly as we promote and put best practice into action.</p>
+          </div>
+        </div>
+
+        <div className="columns">
+          <div className="column is-6">
+            <div className='image'>
+              <img src={eventImg4} />
+            </div>
+          </div>
+          <div className="column is-6">
+            <div>
+              <h3 className='title is-3'>LPMA Meetups</h3>
+            </div>
+            <div>
+              <h4 className='subtitle is-5'>Various Times Across The Year <span>|</span> Major Australian Cities</h4>
+            </div>
+
+            <p>Our newest event offering, the LPMA Meetup series is a string of events which promote industry best practice and learnings. These events are intimate, local meetings which happen in major cities across Australia. We invite local experts and influencers to sit down and discuss relevant issues in the market as well as the industry. Meetups cover a wide range of themes throughout the year, alternating quarterly as we promote and put best practice into action.</p>
+          </div>
+        </div>
+
+        <div className="columns">
+          <div className="column is-6">
+            <div className='image'>
+              <img src={eventImg5} />
+            </div>
+          </div>
+          <div className="column is-6">
+            <div>
+              <h3 className='title is-3'>LPMA Meetups</h3>
+            </div>
+            <div>
+              <h4 className='subtitle is-5'>Various Times Across The Year <span>|</span> Major Australian Cities</h4>
+            </div>
+
+            <p>Our newest event offering, the LPMA Meetup series is a string of events which promote industry best practice and learnings. These events are intimate, local meetings which happen in major cities across Australia. We invite local experts and influencers to sit down and discuss relevant issues in the market as well as the industry. Meetups cover a wide range of themes throughout the year, alternating quarterly as we promote and put best practice into action.</p>
+          </div>
+        </div>
+
+        <div className="columns">
+          <div className="column is-6">
+            <div className='image'>
+              <img src={eventImg6} />
+            </div>
+          </div>
+          <div className="column is-6">
+            <div>
+              <h3 className='title is-3'>LPMA Meetups</h3>
+            </div>
+            <div>
+              <h4 className='subtitle is-5'>Various Times Across The Year <span>|</span> Major Australian Cities</h4>
+            </div>
+
+            <p>Our newest event offering, the LPMA Meetup series is a string of events which promote industry best practice and learnings. These events are intimate, local meetings which happen in major cities across Australia. We invite local experts and influencers to sit down and discuss relevant issues in the market as well as the industry. Meetups cover a wide range of themes throughout the year, alternating quarterly as we promote and put best practice into action.</p>
+          </div>
+        </div>
+
+        <div className="columns">
+          <div className="column is-6">
+            <div className='image'>
+              <img src={eventImg7} />
+            </div>
+          </div>
+          <div className="column is-6">
+            <div>
+              <h3 className='title is-3'>LPMA Meetups</h3>
+            </div>
+            <div>
+              <h4 className='subtitle is-5'>Various Times Across The Year <span>|</span> Major Australian Cities</h4>
+            </div>
+
+            <p>Our newest event offering, the LPMA Meetup series is a string of events which promote industry best practice and learnings. These events are intimate, local meetings which happen in major cities across Australia. We invite local experts and influencers to sit down and discuss relevant issues in the market as well as the industry. Meetups cover a wide range of themes throughout the year, alternating quarterly as we promote and put best practice into action.</p>
+          </div>
+        </div>
+
+        <div className="columns">
+          <div className="column is-6">
+            <div className='image'>
+              <img src={eventImg8} />
+            </div>
+          </div>
+          <div className="column is-6">
+            <div>
+              <h3 className='title is-3'>LPMA Meetups</h3>
+            </div>
+            <div>
+              <h4 className='subtitle is-5'>Various Times Across The Year <span>|</span> Major Australian Cities</h4>
+            </div>
+
+            <p>Our newest event offering, the LPMA Meetup series is a string of events which promote industry best practice and learnings. These events are intimate, local meetings which happen in major cities across Australia. We invite local experts and influencers to sit down and discuss relevant issues in the market as well as the industry. Meetups cover a wide range of themes throughout the year, alternating quarterly as we promote and put best practice into action.</p>
+          </div>
+        </div>
+
+        <div className="columns">
+          <div className="column is-6">
+            <div className='image'>
+              <img src={eventImg9} />
             </div>
           </div>
           <div className="column is-6">
