@@ -280,13 +280,12 @@ ul, li {
   }
   .overlay-spinner {
     position: absolute;
-    width: 100%;
-    height: 100%;
-    background: #70bf54;
+    width: 120vw;
+    height: 120vw;
+    background: white;
     overflow: hidden;
-    transform-origin: right center;
-    transform: rotate(0deg);
-    opacity: 0;
+    transform-origin: left center;
+    transform: rotate(-180deg);
     &.show {
       opacity: 1;
     }

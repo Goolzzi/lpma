@@ -30,6 +30,9 @@ class LandingPage extends React.PureComponent{
         layer4Inner: '',
         layer5: '',
         chapterTitle: ''
+      },
+      {
+        rightSpinner: ''
       }
     ];
     this.scrollDirection = true;
@@ -61,7 +64,7 @@ class LandingPage extends React.PureComponent{
     }
   }
   scrollWindowDown = () => {
-    if (!this.scrolling && this.state.animationIndex < 10) {
+    if (!this.scrolling && this.state.animationIndex < this.animationClasses.length) {
       this.scrolling = true;
       this.scrollDirection = true;
       this.setState({animationIndex: this.state.animationIndex + 1});
@@ -152,6 +155,7 @@ class LandingPage extends React.PureComponent{
       this.animationClasses[3].layer4Inner = direction? '' : 'spinInnerOut';
       this.animationClasses[3].layer5 = direction? '' : 'hide';
       this.animationClasses[3].chapterTitle = direction ? '' : 'cFadeOutUp'
+      this.animationClasses[4].rightSpinner = '';
     }
     if (index === 4) {
       this.animationClasses[3].layer1 = 'rotateTo180';
@@ -162,9 +166,14 @@ class LandingPage extends React.PureComponent{
       this.animationClasses[3].layer4Inner = 'spinInnerIn';
       this.animationClasses[3].layer5 = 'show';
       this.animationClasses[3].chapterTitle = 'cFadeInUp animation-delay-2';
+      this.animationClasses[4].rightSpinner = direction ? '' : 'spinRightOut';
     }
     if (index === 5) {
-      
+      this.animationClasses[4].rightSpinner = 'spinRightIn animation-delay-1';
+      this.animationClasses[3].chapterTitle = 'cFadeOutDown';
+    }
+    if (index === 6) {
+
     }
     // console.log(animationState)
     // if (animationState === 'enter') {
@@ -232,6 +241,10 @@ class LandingPage extends React.PureComponent{
           <div className={`chapter-text-view ${this.animationClasses[3].chapterTitle}`}>
             <h3>Chapter one:</h3>
             <h1>Facts not<br/>myths</h1>
+          </div>
+          <div className={`overlay-spinner ${this.animationClasses[4].rightSpinner}`} />
+          <div className={`tutor-wrapper`}>
+            
           </div>
         </div>
       </div>

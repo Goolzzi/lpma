@@ -45,7 +45,16 @@
   animation-duration: 1s;
   animation-fill-mode: forwards;
 }
+@keyframes cFadeOutDown {
+  from { opacity: 1; transform: translate(0, -50px); }
+  to   { opacity: 0; transform: translate(0, 0); }
+}
 
+.cFadeOutDown {
+  animation-name: cFadeOutDown;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+}
 // @keyframes fadeOutDown {
 //   from { opacity: 1; transform: translate(0, -50px); }
 //   to   { opacity: 0; transform: translate(0, 0); }
@@ -176,6 +185,28 @@
   animation-fill-mode: forwards;
 }
 
+
+
+@keyframes spinRightIn {
+  0% {transform: rotate(-180deg);}
+  100% {transform: rotate(0deg);}
+}
+.spinRightIn {
+  animation-name: spinRightIn;
+  animation-duration: 0.8s;
+  animation-fill-mode: forwards;
+  animation-timing-function: ease-in-out;
+}
+@keyframes spinRightOut {
+  0% {transform: rotate(0deg);}
+  100% {transform: rotate(-180deg);}
+}
+.spinRightOut {
+  animation-name: spinRightOut;
+  animation-duration: 0.8s;
+  animation-fill-mode: forwards;
+  animation-timing-function: ease-in-out;
+}
 
 .animation-delay-1 {
   animation-delay: 0.5s;
