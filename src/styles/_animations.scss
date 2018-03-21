@@ -45,6 +45,32 @@
   animation-duration: 1s;
   animation-fill-mode: forwards;
 }
+@keyframes fullPageFadeInUp {
+  from { opacity: 0; transform: translate(0, 100%); }
+  to   { opacity: 1; transform: translate(0, 0); }
+}
+.fullPageFadeInUp {
+  animation-timing-function: ease-in-out;
+  animation-name: fullPageFadeInUp;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+}
+
+
+@keyframes fullPageFadeOutDown {
+  from { opacity: 1; transform: translate(0, 0); }
+  to   { opacity: 0; transform: translate(0, 100%); }
+}
+.fullPageFadeOutDown {
+  animation-timing-function: ease-in;
+  animation-name: fullPageFadeOutDown;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+}
+
+
+
+
 
 @keyframes topBottom {
   from { transform: translate(0, 0); }
@@ -67,6 +93,47 @@
   animation-duration: 1s;
   animation-fill-mode: forwards;
 }
+@keyframes rotateTo180 {
+  from { transform: rotate(0); }
+  to { transform: rotate(0.5turn);}
+}
+.rotateTo180 {
+  opacity: 1 !important;
+  animation-name: rotateTo180;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+}
+@keyframes rotateTo0 {
+  from { transform: rotate(0.5turn); }
+  to { transform: rotate(0); background: transparent;}
+}
+.rotateTo0 {
+  opacity: 1 !important;
+  animation-name: rotateTo0;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+}
 
-
-
+@keyframes spinOuterIn {
+  0% {transform: rotate(0deg);}
+  100% {transform: rotate(180deg);}
+}
+.spinOuterIn {
+  animation-name: spinOuterIn;
+  animation-duration: 2s;
+  animation-fill-mode: forwards;
+}
+@keyframes spinInnerIn {
+  0% {transform: rotate(-165deg);}
+  20% {transform: rotate(-80deg);}
+  40% {transform: rotate(-80deg);}
+  60% {transform: rotate(-70deg);}
+  80% {transform: rotate(-135deg);}
+  100% {transform: rotate(-180deg);}
+}
+.spinInnerIn {
+  animation-name: spinInnerIn;
+  animation-duration: 2s;
+  animation-timing-function: cubic-bezier(0.23, 1, 0.320, 1);
+  animation-fill-mode: forwards;
+}
