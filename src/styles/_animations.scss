@@ -119,9 +119,11 @@
   100% {transform: rotate(180deg);}
 }
 .spinOuterIn {
+  animation-delay: 0.7s;
   animation-name: spinOuterIn;
   animation-duration: 2s;
   animation-fill-mode: forwards;
+  animation-timing-function: ease-in-out;
 }
 @keyframes spinInnerIn {
   0% {transform: rotate(-165deg);}
@@ -132,8 +134,9 @@
   100% {transform: rotate(-180deg);}
 }
 .spinInnerIn {
+  animation-delay: 0.7s;
   animation-name: spinInnerIn;
   animation-duration: 2s;
-  animation-timing-function: cubic-bezier(0.23, 1, 0.320, 1);
+  animation-timing-function: ease-out;
   animation-fill-mode: forwards;
 }

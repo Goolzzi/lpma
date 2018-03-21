@@ -14,15 +14,24 @@ class LandingPage extends React.PureComponent{
       lastScrollPosition: 0,
     }
     this.scrolling = false;
-    this.animationClasses = ['fadeInDown animated', '', { page: '', title: ''}];
-    this.scrollDirection = true;
-  }
-  getAnimationIndex(scrollTop) {
-    for(let index = 0; index < wayPoints.length; index++) {
-      if (scrollTop < index * window.innerHeight) {
-        return index;
+    this.animationClasses = [
+      'fadeInDown animated',
+      '',
+      {
+        page: '',
+        title: ''
+      },
+      {
+        layer1: '',
+        layer2: '',
+        layer3: '',
+        layer3Inner: '',
+        layer4: '',
+        layer4Inner: '',
+        layer5: ''
       }
-    }
+    ];
+    this.scrollDirection = true;
   }
 
   componentDidMount() {
@@ -117,14 +126,41 @@ class LandingPage extends React.PureComponent{
     if (index === 1) {
       this.animationClasses[0] = direction ? 'fadeOutUp animated' : '';
       this.animationClasses[1] = 'fadeInUp animated';
-      console.log('%%%%%%%%%%%%%%%%%%%%', direction, this.animationClasses[2])
       this.animationClasses[2].page = direction ? '' : 'fullPageFadeOutDown';
       this.animationClasses[2].title = direction ? '' : 'cFadeOut'; 
     }
     if (index === 2) {
       this.animationClasses[1] = direction ? 'fadeOut animated' : '';
       this.animationClasses[2].page = 'fullPageFadeInUp';
-      this.animationClasses[2].title = 'cFadeIn'; 
+      this.animationClasses[2].title = 'cFadeIn';
+      this.animationClasses[3].layer1 = '';
+      this.animationClasses[3].layer2 = '';
+      this.animationClasses[3].layer3 = '';
+      this.animationClasses[3].layer3Inner = '';
+      this.animationClasses[3].layer4 = '';
+      this.animationClasses[3].layer4Inner = '';
+    }
+    if (index === 3) {
+      this.animationClasses[2].title = 'cFadeOut';
+      this.animationClasses[3].layer1 = direction ? '' : 'rotateTo0';
+      this.animationClasses[3].layer2 = direction ? '' : 'hide';
+      this.animationClasses[3].layer3 = direction ? '' : 'spinOuterOut';
+      this.animationClasses[3].layer3Inner = direction? '' : 'spinInnerOut';
+      this.animationClasses[3].layer4 = direction? '' : 'spinOuterOut';
+      this.animationClasses[3].layer4Inner = direction? '' : 'spinInnerOut';
+      this.animationClasses[3].layer5 = direction? '' : 'hide';
+    }
+    if (index === 4) {
+      this.animationClasses[3].layer1 = 'rotateTo180';
+      this.animationClasses[3].layer2 = 'show';
+      this.animationClasses[3].layer3 = 'spinOuterIn';
+      this.animationClasses[3].layer3Inner = 'spinInnerIn';
+      this.animationClasses[3].layer4 = 'spinOuterIn';
+      this.animationClasses[3].layer4Inner = 'spinInnerIn';
+      this.animationClasses[3].layer5 = 'show';
+    }
+    if (index === 5) {
+      
     }
     // console.log(animationState)
     // if (animationState === 'enter') {
@@ -168,15 +204,22 @@ class LandingPage extends React.PureComponent{
           80% OF <br /> BUSINESS OWNERS
         </h1>
         <h5 className={`animating-title section2-text ${this.animationClasses[2].title}`}>BELEIVE THAT WORKING HARDER IS THE ONLY WAY TO GROW THEIR BUSINESS</h5>
-        {/* <div className="section3-wrapper">
-          <div className={`overlay-1 ${this.getAnimationClassName(this.state.animation4, ['rotateTo180', 'rotateTo0', '', ''])}`}>
+        <div className="section3-wrapper">
+          <div className={`overlay-1 ${this.animationClasses[3].layer1}`}>
           </div>
-          <div className={`overlay-2 ${this.getAnimationClassName(this.state.animation4, ['show', 'hide', '', ''])}`}>
+          <div className={`overlay-5 ${this.animationClasses[3].layer5}`}>
           </div>
-          <div className={`overlay-3 ${this.getAnimationClassName(this.state.animation5, ['spinOuterIn', 'spinOuterOut', '', ''])}`}>
-            <div className={`inner  ${this.getAnimationClassName(this.state.animation5, ['spinInnerIn', 'spinInnerOut', '', ''])}`} />
+          {/* <div className={`overlay-2 ${this.animationClasses[3].layer2}`}>
+          </div> */}
+          <div className={`overlay-3 ${this.animationClasses[3].layer3}`}>
+            <div className={`inner  ${this.animationClasses[3].layer3Inner}`} />
           </div>
-        </div> */}
+          
+          <div className={`overlay-4 ${this.animationClasses[3].layer4}`}>
+            <div className={`inner`} />
+          </div>
+          
+        </div>
       </div>
     );
   }

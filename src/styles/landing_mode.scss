@@ -21,7 +21,7 @@ ul, li {
     top: 50vh;
     left: 50vw;
     transform: translate(-50%, -50%);
-    background-image: url(../assets/images/NewDesign/bk-introduction.png);
+    background-image: url(../assets/images/NewDesign/bk-intro-1.png);
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
@@ -174,6 +174,41 @@ ul, li {
       background:#78CC5A;
       transform-origin: right center;
       transform: rotate(-180deg);
+    }
+  }
+  .overlay-4 {
+    position: absolute;
+    width: 50%;
+    height: 100%;
+    background: #70bf54;
+    overflow: hidden;
+    border-top-left-radius: 50%;
+    border-bottom-left-radius: 50%;
+    transform-origin: right center;
+    transform: rotate(0deg);
+    opacity: 0;
+    .inner {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: transparent;
+      transform-origin: right center;
+      transform: rotate(-180deg);
+    }
+  }
+  .overlay-5 {
+    position: absolute;
+    width: 50%;
+    height: 100%;
+    background-color: transparent;
+    background-size: cover;
+    background-image: url(../assets/images/NewDesign/bk-intro-2.png);
+    opacity: 0;
+    &.show {
+      opacity: 1;
+    }
+    &.hide {
+      opacity: 0;
     }
   }
 }
