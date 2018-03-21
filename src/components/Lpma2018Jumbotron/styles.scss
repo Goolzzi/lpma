@@ -1,63 +1,63 @@
 .lpma2018-top-jumbotron {
-    background-color: $primary-color;
-    overflow: hidden;
-    position: relative;
-    height: 36rem;
-    padding: 0px;
-  
-    .video-cont {
+  background-color: $primary-color;
+  overflow: hidden;
+  position: relative;
+  height: 36rem;
+  padding: 0px;
+
+  .video-cont {
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 10000px;
+    position: absolute;
+
+    span {
+      position: relative;
+      display: block;
       left: 0px;
       top: 0px;
       width: 100%;
       height: 10000px;
-      position: absolute;
-  
-      span {
-        position: relative;
-        display: block;
+
+      .video-frame {
         left: 0px;
-        top: 0px;
+        top: -50%;
         width: 100%;
         height: 10000px;
-  
-        .video-frame {
-          left: 0px;
-          top: -50%;
-          width: 100%;
-          height: 10000px;
-          position: absolute;
-          margin-top: 300px;
-        }
-      }
-    }
-  
-    .video-cont-cover {
-      background-color: $transparent;
-      left: 0px;
-      right: 0px;
-      top: 0px;
-      bottom: 0px;
-      position: absolute;
-    }
-  
-    .video-cont-data {
-      h2 {
-        color: $white;
-        font-size: 1.5rem;
-        font-weight: 500;
-        margin-bottom: 2rem;
-        margin-top: 4rem;
-      }
-  
-      strong {
-        color: $white;
-        font-size: 1rem;
-        display: block;
-        margin-bottom: 2rem;
-      }
-  
-      img {
-        margin-bottom: 2rem;
+        position: absolute;
+        margin-top: 300px;
       }
     }
   }
+
+  .video-cont-cover {
+    background-color: $transparent;
+    left: 0px;
+    right: 0px;
+    top: 0px;
+    bottom: 0px;
+    position: absolute;
+  }
+
+  .video-cont-data {
+    h2 {
+      color: $white;
+      font-size: 1.5rem;
+      font-weight: 500;
+      margin-bottom: 2rem;
+      margin-top: 4rem;
+    }
+
+    strong {
+      color: $white;
+      font-size: 1rem;
+      display: block;
+      margin-bottom: 2rem;
+    }
+
+    img {
+      margin-bottom: 2rem;
+    }
+  }
+}

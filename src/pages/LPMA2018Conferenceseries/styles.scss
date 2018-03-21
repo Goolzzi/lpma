@@ -1,0 +1,118 @@
+.lpma2018-conferences-top-jumbotron {
+  background-color: $primary-color;
+  background-size: cover;
+  background-position: center center;
+
+  @-webkit-keyframes APPEAR_ANIM {
+    0%   { 
+      transform: scale(0);
+      opacity: 0;
+    }
+    100% {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+  @-moz-keyframes APPEAR_ANIM {
+    0%   { 
+      transform: scale(0);
+      opacity: 0;
+    }
+    100% {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+  @-o-keyframes APPEAR_ANIM {
+    0%   { 
+      transform: scale(0);
+      opacity: 0;
+    }
+    100% {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+  @keyframes APPEAR_ANIM {
+    0%   { 
+      transform: scale(0);
+      opacity: 0;
+    }
+    100% {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+
+  .appear-cont {
+    & > div {
+      -webkit-animation: APPEAR_ANIM 1s 1;
+      -moz-animation:    APPEAR_ANIM 1s 1;
+      -o-animation:      APPEAR_ANIM 1s 1;
+      animation:         APPEAR_ANIM 1s 1;
+    }
+  }
+}
+
+.lpma2018-conferences-elevate {
+  background-color: $white;
+
+  .column {
+    @include not-mobile {
+      padding: 3rem;
+    }
+
+    .title {
+      line-height: 2;
+    }
+
+    button {
+      .fa {
+        margin-left: 0.5rem;
+      }
+    }
+  }
+}
+
+.lpma2018-conferences-series-events {
+  .section-title {
+    line-height: 2.5;
+  }
+  .column {
+    background-color: $white;
+    @include not-mobile {
+      padding: 2rem;
+    }
+
+    .subtitle {
+      color: $primary-color;
+
+      span {
+        color: $secondary-color;
+      }
+    }
+  }
+}
+
+.lpma2018-conferences-craft {
+  background-color: $secondary-color;
+
+  .field {
+    margin-bottom: 2rem;
+
+    .label {
+      margin-bottom: 0px;
+    }
+  }
+
+  .checkboxes {
+    background-color: $white;
+    border-radius: 3px;
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+    padding: 0.5rem 0.5rem 0.5rem 2rem;
+  }
+}
+
+.lpma2018-conferences-feedback {
+  background-color: $white;
+}
