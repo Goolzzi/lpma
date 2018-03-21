@@ -204,23 +204,27 @@ class LandingPage extends React.PureComponent{
           80% OF <br /> BUSINESS OWNERS
         </h1>
         <h5 className={`animating-title section2-text ${this.animationClasses[2].title}`}>BELEIVE THAT WORKING HARDER IS THE ONLY WAY TO GROW THEIR BUSINESS</h5>
+
+
+        
         <div className={`section3-background ${this.animationClasses[3].layer5}`} />
+        <div className="full-left">
+          <div className={`overlay-spinner ${this.animationClasses[3].layer4}`}/>
+        </div>
         <div className="section3-wrapper">
           <div className="right">
-            <div className={`overlay-1 ${this.animationClasses[3].layer1}`}>
-            </div>
+            <div className={`overlay-1 ${this.animationClasses[3].layer1}`} />
           </div>
           {/* <div className={`overlay-2 ${this.animationClasses[3].layer2}`}>
           </div> */}
           <div className="left">
-            <div className={`overlay-4 ${this.animationClasses[3].layer4}`}>
-              <div className={`inner`} />
-            </div>
+            <div className={`overlay-4 ${this.animationClasses[3].layer4}`} />
             <div className={`overlay-3 ${this.animationClasses[3].layer3}`}>
               <div className={`inner  ${this.animationClasses[3].layer3Inner}`} />
             </div>
           </div>
         </div>
+        <div cla></div>
       </div>
     );
   }

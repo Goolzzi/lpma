@@ -40,12 +40,6 @@ ul, li {
   background: #70BF54;
   opacity: 0;
 }
-.position-center {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-}
 .animating-title {
   position: fixed;
   top: 0;
@@ -179,8 +173,6 @@ ul, li {
     height: 100%;
     background: transparent;
     overflow: hidden;
-    border-top-left-radius: 50%;
-    border-bottom-left-radius: 50%;
     transform-origin: right center;
     transform: rotate(0deg);
     .inner {
@@ -198,19 +190,9 @@ ul, li {
     height: 100%;
     background: #70bf54;
     overflow: hidden;
-    border-top-left-radius: 50%;
-    border-bottom-left-radius: 50%;
     transform-origin: right center;
     transform: rotate(0deg);
     opacity: 0;
-    .inner {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      background: transparent;
-      transform-origin: right center;
-      transform: rotate(-180deg);
-    }
     &.show {
       opacity: 1;
     }
@@ -235,6 +217,31 @@ ul, li {
   }
   &.hide {
     opacity: 0;
+  }
+}
+
+
+.full-left {
+  width: 50vw;
+  position: fixed;
+  height: 100vh;
+  top: 0;
+  overflow: hidden;
+  .overlay-spinner {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #70bf54;
+    overflow: hidden;
+    transform-origin: right center;
+    transform: rotate(0deg);
+    opacity: 0;
+    &.show {
+      opacity: 1;
+    }
+    &.hide {
+      opacity: 0;
+    }
   }
 }
 @import "./components/header.scss";
