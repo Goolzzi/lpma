@@ -137,7 +137,7 @@ class LandingPage extends React.PureComponent{
       this.animationClasses[3].layer2 = '';
       this.animationClasses[3].layer3 = '';
       this.animationClasses[3].layer3Inner = '';
-      this.animationClasses[3].layer4 = '';
+      this.animationClasses[3].layer4 = 'hide';
       this.animationClasses[3].layer4Inner = '';
     }
     if (index === 3) {
@@ -146,7 +146,7 @@ class LandingPage extends React.PureComponent{
       this.animationClasses[3].layer2 = direction ? '' : 'hide';
       this.animationClasses[3].layer3 = direction ? '' : 'spinOuterOut';
       this.animationClasses[3].layer3Inner = direction? '' : 'spinInnerOut';
-      this.animationClasses[3].layer4 = direction? '' : 'spinOuterOut';
+      this.animationClasses[3].layer4 = direction? 'hide' : 'spinOuterOut';
       this.animationClasses[3].layer4Inner = direction? '' : 'spinInnerOut';
       this.animationClasses[3].layer5 = direction? '' : 'hide';
     }
@@ -155,7 +155,7 @@ class LandingPage extends React.PureComponent{
       this.animationClasses[3].layer2 = 'show';
       this.animationClasses[3].layer3 = 'spinOuterIn';
       this.animationClasses[3].layer3Inner = 'spinInnerIn';
-      this.animationClasses[3].layer4 = 'spinOuterIn';
+      this.animationClasses[3].layer4 = 'spinOuterIn show';
       this.animationClasses[3].layer4Inner = 'spinInnerIn';
       this.animationClasses[3].layer5 = 'show';
     }
@@ -204,21 +204,22 @@ class LandingPage extends React.PureComponent{
           80% OF <br /> BUSINESS OWNERS
         </h1>
         <h5 className={`animating-title section2-text ${this.animationClasses[2].title}`}>BELEIVE THAT WORKING HARDER IS THE ONLY WAY TO GROW THEIR BUSINESS</h5>
+        <div className={`section3-background ${this.animationClasses[3].layer5}`} />
         <div className="section3-wrapper">
-          <div className={`overlay-1 ${this.animationClasses[3].layer1}`}>
-          </div>
-          <div className={`overlay-5 ${this.animationClasses[3].layer5}`}>
+          <div className="right">
+            <div className={`overlay-1 ${this.animationClasses[3].layer1}`}>
+            </div>
           </div>
           {/* <div className={`overlay-2 ${this.animationClasses[3].layer2}`}>
           </div> */}
-          <div className={`overlay-3 ${this.animationClasses[3].layer3}`}>
-            <div className={`inner  ${this.animationClasses[3].layer3Inner}`} />
+          <div className="left">
+            <div className={`overlay-4 ${this.animationClasses[3].layer4}`}>
+              <div className={`inner`} />
+            </div>
+            <div className={`overlay-3 ${this.animationClasses[3].layer3}`}>
+              <div className={`inner  ${this.animationClasses[3].layer3Inner}`} />
+            </div>
           </div>
-          
-          <div className={`overlay-4 ${this.animationClasses[3].layer4}`}>
-            <div className={`inner`} />
-          </div>
-          
         </div>
       </div>
     );

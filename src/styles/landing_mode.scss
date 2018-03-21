@@ -134,13 +134,29 @@ ul, li {
   left: calc(50vw - 40vh);
   border-radius: 50%;
   overflow: hidden;
+  .left {
+    position: absolute;
+    overflow: hidden;
+    width: 50%;
+    height: 100%;
+    background-color: transparent;
+  }
+  .right {
+    position: absolute;
+    overflow: hidden;
+    width: 50%;
+    height: 100%;
+    background-color: transparent;
+    right: 0;
+  }
   .overlay-1 {
     height: 100%;
-    width: 50%;
+    width: 100%;
     display: flex;
     overflow: hidden;
     position: absolute;
-    transform-origin: right center;
+    transform-origin: left center;
+    transform: rotate(-180deg);
     opacity: 0;
     background: #78CC5A;
   }
@@ -159,7 +175,7 @@ ul, li {
   }
   .overlay-3 {
     position: absolute;
-    width: 50%;
+    width: 100%;
     height: 100%;
     background: transparent;
     overflow: hidden;
@@ -178,7 +194,7 @@ ul, li {
   }
   .overlay-4 {
     position: absolute;
-    width: 50%;
+    width: 100%;
     height: 100%;
     background: #70bf54;
     overflow: hidden;
@@ -195,21 +211,30 @@ ul, li {
       transform-origin: right center;
       transform: rotate(-180deg);
     }
-  }
-  .overlay-5 {
-    position: absolute;
-    width: 50%;
-    height: 100%;
-    background-color: transparent;
-    background-size: cover;
-    background-image: url(../assets/images/NewDesign/bk-intro-2.png);
-    opacity: 0;
     &.show {
       opacity: 1;
     }
     &.hide {
       opacity: 0;
     }
+  }
+}
+.section3-background {
+  position: fixed;
+  top: 10vh;
+  left: calc(50vw - 40vh);
+  width: 40vh;
+  height: 80vh;
+  background-color: transparent;
+  background-size: cover;
+  background-image: url(../assets/images/NewDesign/bk-intro-2.png);
+  opacity: 0;
+
+  &.show {
+    opacity: 1;
+  }
+  &.hide {
+    opacity: 0;
   }
 }
 @import "./components/header.scss";
