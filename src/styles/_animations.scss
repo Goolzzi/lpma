@@ -35,16 +35,51 @@
   animation-fill-mode: forwards;
 }
 
-@keyframes fadeOutBottomToTop {
+@keyframes cFadeOutUp {
   from { opacity: 1; transform: translate(0, 0); }
   to   { opacity: 0; transform: translate(0, -50px); }
 }
 
-.fadeOutBottomToTop {
-  animation-name: fadeOutBottomToTop;
+.cFadeOutUp {
+  animation-name: cFadeOutUp;
   animation-duration: 1s;
   animation-fill-mode: forwards;
 }
+
+// @keyframes fadeOutDown {
+//   from { opacity: 1; transform: translate(0, -50px); }
+//   to   { opacity: 0; transform: translate(0, 0); }
+// }
+
+// .fadeOutDown {
+//   animation-name: fadeOutDown;
+//   animation-duration: 1s;
+//   animation-fill-mode: forwards;
+// }
+
+@keyframes cFadeInDown {
+  from { opacity: 0; transform: translate(0, -30px); }
+  to   { opacity: 1; transform: translate(0, 0); }
+}
+
+.cFadeInDown {
+  animation-name: cFadeInDown;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes cFadeInUp {
+  from { opacity: 0; transform: translate(0, 50px); }
+  to   { opacity: 1; transform: translate(0, 0); }
+}
+
+.cFadeInUp {
+  animation-name: cFadeInUp;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+}
+
+
 @keyframes fullPageFadeInUp {
   from { opacity: 0; transform: translate(0, 100%); }
   to   { opacity: 1; transform: translate(0, 0); }
@@ -100,7 +135,7 @@
 .rotateTo180 {
   opacity: 1 !important;
   animation-name: rotateTo180;
-  animation-duration: 1s;
+  animation-duration: 0.5s;
   animation-fill-mode: forwards;
 }
 @keyframes rotateTo0 {
@@ -110,7 +145,7 @@
 .rotateTo0 {
   opacity: 1 !important;
   animation-name: rotateTo0;
-  animation-duration: 1s;
+  animation-duration: 0.5s;
   animation-fill-mode: forwards;
 }
 
@@ -119,9 +154,9 @@
   100% {transform: rotate(180deg);}
 }
 .spinOuterIn {
-  animation-delay: 0.7s;
+  animation-delay: 0.3s;
   animation-name: spinOuterIn;
-  animation-duration: 2s;
+  animation-duration: 0.8s;
   animation-fill-mode: forwards;
   animation-timing-function: ease-in-out;
 }
@@ -134,9 +169,20 @@
   100% {transform: rotate(-180deg);}
 }
 .spinInnerIn {
-  animation-delay: 0.7s;
+  animation-delay: 0.3s;
   animation-name: spinInnerIn;
-  animation-duration: 2s;
+  animation-duration: 0.8s;
   animation-timing-function: ease-out;
   animation-fill-mode: forwards;
+}
+
+
+.animation-delay-1 {
+  animation-delay: 0.5s;
+}
+.animation-delay-2 {
+  animation-delay: 1s;
+}
+.animation-delay-3 {
+  animation-delay: 1.5s;
 }

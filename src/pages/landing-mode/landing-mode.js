@@ -28,7 +28,8 @@ class LandingPage extends React.PureComponent{
         layer3Inner: '',
         layer4: '',
         layer4Inner: '',
-        layer5: ''
+        layer5: '',
+        chapterTitle: ''
       }
     ];
     this.scrollDirection = true;
@@ -139,6 +140,7 @@ class LandingPage extends React.PureComponent{
       this.animationClasses[3].layer3Inner = '';
       this.animationClasses[3].layer4 = 'hide';
       this.animationClasses[3].layer4Inner = '';
+      this.animationClasses[3].chapterTitle = '';
     }
     if (index === 3) {
       this.animationClasses[2].title = 'cFadeOut';
@@ -149,6 +151,7 @@ class LandingPage extends React.PureComponent{
       this.animationClasses[3].layer4 = direction? 'hide' : 'spinOuterOut';
       this.animationClasses[3].layer4Inner = direction? '' : 'spinInnerOut';
       this.animationClasses[3].layer5 = direction? '' : 'hide';
+      this.animationClasses[3].chapterTitle = direction ? '' : 'cFadeOutUp'
     }
     if (index === 4) {
       this.animationClasses[3].layer1 = 'rotateTo180';
@@ -158,6 +161,7 @@ class LandingPage extends React.PureComponent{
       this.animationClasses[3].layer4 = 'spinOuterIn show';
       this.animationClasses[3].layer4Inner = 'spinInnerIn';
       this.animationClasses[3].layer5 = 'show';
+      this.animationClasses[3].chapterTitle = 'cFadeInUp animation-delay-2';
     }
     if (index === 5) {
       
@@ -224,7 +228,12 @@ class LandingPage extends React.PureComponent{
             </div>
           </div>
         </div>
-        <div cla></div>
+        <div className="full-right">
+          <div className={`chapter-text-view ${this.animationClasses[3].chapterTitle}`}>
+            <h3>Chapter one:</h3>
+            <h1>Facts not<br/>myths</h1>
+          </div>
+        </div>
       </div>
     );
   }
