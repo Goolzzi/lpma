@@ -293,6 +293,33 @@ ul, li {
       opacity: 0;
     }
   }
+  .tutor-wrapper {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+  }
+  .topic-1 {
+    padding: 5rem 7em;
+    display: flex;
+    align-items: center;
+    opacity: 0;
+    .wrapper {
+      h5 {
+        text-transform: uppercase;
+        font-family: "DomaineSansMedium";
+        color: $text-secondary;
+      }
+      h1 {
+        font-size: 2.8em;
+        font-family: "DomaineSansMedium";
+        text-transform: uppercase;
+        letter-spacing: -2px;
+        span {
+          color: $text-secondary;
+        }
+      }
+    }
+  }
 }
 @import "./components/header.scss";
 

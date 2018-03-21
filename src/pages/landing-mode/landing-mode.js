@@ -33,7 +33,8 @@ class LandingPage extends React.PureComponent{
       },
       {
         rightSpinner: ''
-      }
+      },
+      ''
     ];
     this.scrollDirection = true;
   }
@@ -156,6 +157,7 @@ class LandingPage extends React.PureComponent{
       this.animationClasses[3].layer5 = direction? '' : 'hide';
       this.animationClasses[3].chapterTitle = direction ? '' : 'cFadeOutUp'
       this.animationClasses[4].rightSpinner = '';
+      this.animationClasses[5] = '';
     }
     if (index === 4) {
       this.animationClasses[3].layer1 = 'rotateTo180';
@@ -167,13 +169,16 @@ class LandingPage extends React.PureComponent{
       this.animationClasses[3].layer5 = 'show';
       this.animationClasses[3].chapterTitle = 'cFadeInUp animation-delay-2';
       this.animationClasses[4].rightSpinner = direction ? '' : 'spinRightOut';
+      this.animationClasses[5] = direction ? '' : 'cFadeOutDown'
+      
     }
     if (index === 5) {
       this.animationClasses[4].rightSpinner = 'spinRightIn animation-delay-1';
       this.animationClasses[3].chapterTitle = 'cFadeOutDown';
+      this.animationClasses[5] = 'cFadeInUp animation-delay-2';
     }
     if (index === 6) {
-
+      
     }
     // console.log(animationState)
     // if (animationState === 'enter') {
@@ -243,8 +248,12 @@ class LandingPage extends React.PureComponent{
             <h1>Facts not<br/>myths</h1>
           </div>
           <div className={`overlay-spinner ${this.animationClasses[4].rightSpinner}`} />
-          <div className={`tutor-wrapper`}>
-            
+          <div className={`tutor-wrapper topic-1 ${this.animationClasses[5]}`}>
+            <div className={`wrapper `}>
+              <h5>01 / facts not myths</h5>
+              <h1>over half of all property management businesses <span>stop growing</span> after five years.</h1>
+              <p>What works in one phase of your business won’t get you to the next phase. Don’t limit your growth by failing to grow your potential.</p>
+            </div>
           </div>
         </div>
       </div>
