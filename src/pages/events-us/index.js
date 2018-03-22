@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import TopJumbotron from "../../components/TopJumbotron";
 import BottomJumbotron from "../../components/BottomJumbotron";
-import Events from "../../components/Events";
+// import Events from "../../components/Events";
 
 const propTypes = {
   data: PropTypes.object.isRequired,
@@ -18,7 +18,7 @@ const EventsUSPage = ({
 }) => (
   <div>
     <TopJumbotron {...edges[0].node} />
-    <Events {...contentfulUpcomingEvents} events={eventEdges} />
+    {/* <Events {...contentfulUpcomingEvents} events={eventEdges} /> */}
     <BottomJumbotron {...edges[1].node} />
   </div>
 );
@@ -47,10 +47,6 @@ export const pageQuery = graphql`
               html
             }
           }
-          buyTicketsLink {
-            to
-            name
-          }
         }
       }
     }
@@ -63,7 +59,6 @@ export const pageQuery = graphql`
             joinLink {
               name
               to
-              force
             }
             background {
               id

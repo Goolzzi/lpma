@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import "./styles.scss";
-import LPMALink from "../../utils/LPMALink";
+import Link from "gatsby-link";
 
 const propTypes = {
   jumbotron: PropTypes.array.isRequired,
@@ -26,11 +26,11 @@ const BottomJumbotron = ({jumbotron}) => {
           <div className="column is-6 is-12-mobile">
             <div className="has-text-right">
               {joinLink ? (
-                <LPMALink {...joinLink}>
+                <Link {...joinLink}>
                   <button className="btn primary halfwidth">
                     {joinLink.name}
                   </button>
-                </LPMALink>
+                </Link>
               ) : (
                 <React.Fragment />
               )}

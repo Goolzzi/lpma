@@ -1,10 +1,10 @@
 import React, {Component} from "react";
 import loading from "./loading.svg";
-import auth from "../../Auth/Auth";
+import auth from "../../Auth";
 
-const handleAuthentication = ({location, history}) => {
+const handleAuthentication = ({location}) => {
   if (/access_token|id_token|error/.test(location.hash)) {
-    auth.handleAuthentication(history);
+    auth.handleAuthentication();
   }
 };
 
@@ -30,9 +30,9 @@ class Callback extends Component {
   }
 }
 
-const CallbackWithChecks = props => {
+const CallbackWithAuthChecks = props => {
   handleAuthentication(props);
   return <Callback {...props} />;
 };
 
-export default CallbackWithChecks;
+export default CallbackWithAuthChecks;

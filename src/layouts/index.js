@@ -10,7 +10,7 @@ import Footer from "../components/Footer";
 
 const propTypes = {
   children: PropTypes.func,
-  location: PropTypes.func,
+  location: PropTypes.object,
   data: PropTypes.object.isRequired,
 };
 
@@ -25,6 +25,11 @@ const LayoutTemplate = props => {
       allContentfulFoundrySection,
     },
   } = props;
+
+  if (pathname.split("/")[1] === "callback") {
+    return <div className="page-container">{children()}</div>;
+  }
+
   const protocol = "https:";
   const forUSA = !!~pathname.indexOf("/us") || !!~pathname.indexOf("-us");
 
@@ -84,7 +89,6 @@ export const pageQuery = graphql`
         id
         name
         country
-        force
         slug
         to
       }
@@ -100,7 +104,6 @@ export const pageQuery = graphql`
         name
         to
         country
-        force
         slug
       }
       secondaryLinks {
@@ -116,7 +119,6 @@ export const pageQuery = graphql`
       joinLink {
         name
         to
-        force
         slug
       }
       logo {

@@ -1,15 +1,16 @@
 /* eslint jsx-a11y/anchor-is-valid : 0 */
 import React from "react";
 import PropTypes from "prop-types";
-import BurgerSubMenu from "./burgerSubMenu";
-import LPMALink from "../../utils/LPMALink";
+import auth from "../../Auth";
+import Link from "gatsby-link";
+import LoginLogout from "../LoginLogout";
 import classNames from "classnames";
 import "./styles.scss";
 
 const propTypes = {
   topmenu: PropTypes.array.isRequired,
   logo: PropTypes.object.isRequired,
-  foundryLinks: PropTypes.array.isRequired,
+  foundryLinks: PropTypes.object.isRequired,
   forUSA: PropTypes.bool.isRequired,
 };
 
@@ -33,6 +34,7 @@ class Header extends React.Component {
   render() {
     const {topmenu, logo: {file}, foundryLinks, forUSA} = this.props;
     const {isActive, isActiveMenu, isFoundryOpen} = this.state;
+    //TODO: imprve contry based component building
     const menuItems = forUSA
       ? topmenu.filter(({country}) => country === "us")
       : topmenu;
@@ -40,9 +42,9 @@ class Header extends React.Component {
       <div className="navbar-wrapper">
         <nav className="navbar">
           <div className="navbar-brand">
-            <LPMALink cssClass={"navbar-item"} force={true} to={"/"}>
+            <Link className="navbar-item" to={"/"}>
               <img src={file.url} alt={file.fileName} />
-            </LPMALink>
+            </Link>
             <button
               onClick={() =>
                 this.setState(prevState => ({isActive: !prevState.isActive}))
@@ -60,52 +62,56 @@ class Header extends React.Component {
               "is-active": isActive,
             })}>
             <div className="navbar-end">
-              {menuItems.map(({id, to, name, force, slug}) => {
-                return slug === "foundry" ? (
-                  <button
-                    onClick={() =>
-                      this.setState(prevState => ({
-                        isFoundryOpen: !prevState.isFoundryOpen,
-                      }))
-                    }
-                    className={classNames("navbar-item has-dropdown", {
-                      "is-active": isFoundryOpen,
-                    })}>
-                    <a href={"javascript:;"} className="navbar-link">
-                      {name}
-                    </a>
-                    <div className="navbar-dropdown">
-                      <LPMALink
-                        key={slug}
-                        force={true}
-                        to={`/foundry/`}
-                        cssClass={"navbar-item"}>
-                        {"My Fondry"}
-                      </LPMALink>
-                      {foundryLinks.edges.map(({node: {title, slug}}) => (
-                        <LPMALink
+              {menuItems.map(({id, to, name, slug}) => {
+                if (slug === "foundry" && auth.isAuthenticated()) {
+                  return (
+                    <button
+                      key={slug}
+                      onClick={() =>
+                        this.setState(prevState => ({
+                          isFoundryOpen: !prevState.isFoundryOpen,
+                        }))
+                      }
+                      className={classNames("navbar-item has-dropdown", {
+                        "is-active": isFoundryOpen,
+                      })}>
+                      <a href={"javascript:;"} className="navbar-link">
+                        {name}
+                      </a>
+                      <div className="navbar-dropdown">
+                        <Link
                           key={slug}
-                          to={`/foundry/${slug}`}
-                          cssClass={"navbar-item"}>
-                          {title}
-                        </LPMALink>
-                      ))}
-                    </div>
-                  </button>
-                ) : (
-                  <LPMALink
-                    cssClass={"navbar-item"}
-                    force={!!force}
+                          to={`/foundry/`}
+                          className={"navbar-item"}>
+                          {"My Fondry"}
+                        </Link>
+                        {foundryLinks.edges.map(({node: {title, slug}}) => (
+                          <Link
+                            key={slug}
+                            to={`/foundry/${slug}`}
+                            className={"navbar-item"}>
+                            {title}
+                          </Link>
+                        ))}
+                      </div>
+                    </button>
+                  );
+                }
+                return (
+                  <Link
+                    className={"navbar-item"}
                     onClick={this.handleClick}
                     key={id}
                     to={to}>
                     {name}
-                  </LPMALink>
+                  </Link>
                 );
               })}
+              <LoginLogout cssClass={"navbar-item"} />
             </div>
           </div>
           <button
+            style={{display: "none"}}
             onClick={() =>
               this.setState(prevState => ({
                 isActiveMenu: !prevState.isActiveMenu,
@@ -120,7 +126,7 @@ class Header extends React.Component {
             <span />
           </button>
         </nav>
-        <BurgerSubMenu isActiveMenu={isActiveMenu} />
+        {/* <BurgerSubMenu isActiveMenu={isActiveMenu} /> */}
       </div>
     );
   }

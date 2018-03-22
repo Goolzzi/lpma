@@ -1,9 +1,12 @@
 import React from "react";
 import Link from "gatsby-link";
 import PropTypes from "prop-types";
+import moment from "moment";
 import "./styles.scss";
 
-const LinkToBlog = ({slug, children}) => <Link to={slug}>{children}</Link>;
+const LinkToBlog = ({slug, children}) => (
+  <Link to={`/blog/${slug}`}>{children}</Link>
+);
 
 const propTypes = {
   node: PropTypes.object.isRequired,
@@ -13,22 +16,23 @@ const propTypes = {
 const BlogPostCard = ({
   node: {
     title,
-    image: {resolutions: imageResolutions},
     author: {image: {resolutions}, name},
     category,
     date,
     slug,
+    image: {resolutions: imageResolutions},
   },
 }) => (
   <LinkToBlog slug={slug}>
     <div className="blog-post-card">
-      <div className="image is-4by3">
+      <div className="image is-1.7by1">
         <img src={imageResolutions.src} srcSet={imageResolutions.srcSet} />
       </div>
 
       <span className="category-and-date">
         <span>{category}</span>
-        <span>{date}</span>
+        <span> | </span>
+        <span>{moment(date).format("MMMM D, YYYY")}</span>
       </span>
 
       <h4 className="title is-4">{title}</h4>

@@ -1,11 +1,11 @@
 import React from "react";
 import PropTypes from "prop-types";
-import LPMALnk from "../../utils/LPMALink";
+import Link from "gatsby-link";
 import "./styles.scss";
 
 const propTypes = {
-  crumbs: PropTypes.array.isRequred,
-  parentPath: PropTypes.string.isRequred,
+  crumbs: PropTypes.array.isRequired,
+  parentPath: PropTypes.string.isRequired,
 };
 
 const BreadCrumb = ({crumbs, parentPath}) => {
@@ -18,12 +18,12 @@ const BreadCrumb = ({crumbs, parentPath}) => {
         <ul>
           {crumbs.map(({path, title}, index) => {
             return index === crumbs.length - 1 ? (
-              <li key={path}>
+              <li key={path + title}>
                 <span>{title}</span>
               </li>
             ) : (
-              <li key={path}>
-                <LPMALnk to={`${parentPath}${path}`}>{title}</LPMALnk>
+              <li key={title + path}>
+                <Link to={`${parentPath}${path}`}>{title}</Link>
               </li>
             );
           })}
