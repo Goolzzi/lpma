@@ -37,7 +37,12 @@ class LandingPage extends React.PureComponent{
       '',
       '',
       '',
-      ''
+      '',
+      {
+        left: '',
+        right: '',
+        pageTitle: ''
+      }
     ];
     this.scrollDirection = true;
   }
@@ -133,7 +138,7 @@ class LandingPage extends React.PureComponent{
         break;
       case 3:
         this.animationClasses[2].title = 'cFadeOut';
-        this.animationClasses[3].layer1 = direction ? '' : 'rotateTo0';
+        this.animationClasses[3].layer1 = direction ? '' : 'rotateTo0 show';
         this.animationClasses[3].layer2 = direction ? '' : 'hide';
         this.animationClasses[3].layer3 = direction ? '' : 'spinOuterOut';
         this.animationClasses[3].layer3Inner = direction? '' : 'spinInnerOut';
@@ -145,7 +150,7 @@ class LandingPage extends React.PureComponent{
         this.animationClasses[5] = '';
         break;
       case 4:
-        this.animationClasses[3].layer1 = 'rotateTo180';
+        this.animationClasses[3].layer1 = 'rotateTo180 show';
         this.animationClasses[3].layer2 = 'show';
         this.animationClasses[3].layer3 = 'spinOuterIn';
         this.animationClasses[3].layer3Inner = 'spinInnerIn';
@@ -174,13 +179,23 @@ class LandingPage extends React.PureComponent{
         this.animationClasses[6] = 'cFadeOutUp';
         this.animationClasses[7] = 'cFadeIn';
         this.animationClasses[8] = direction ? '' : 'cFadeOutDown';
+        this.animationClasses[9].left = '';
+        this.animationClasses[9].right = '';
+        this.animationClasses[9].pageTitle = '';
         break;
       case 8:
         this.animationClasses[7] = 'cFadeOutUp';
-        this.animationClasses[8] = 'cFadeIn';
+        this.animationClasses[8] = direction ? 'cFadeIn' : 'cFadeIn animation-delay-3';
+        this.animationClasses[9].left = direction ? '' : 'rotateTo0 animated animation-delay-3';
+        this.animationClasses[9].right = direction ? '' : 'rotateTo0 animated animation-delay-1';
+        this.animationClasses[9].pageTitle = direction ? '' : 'cFadeOutDown';
         break;
       case 9:
-      this.animationClasses[8] = 'cFadeOutUp';
+      console.log(this.animationClasses.length)
+        this.animationClasses[8] = 'cFadeOutUp';
+        this.animationClasses[9].left = 'rotateTo180 animation-delay-1';
+        this.animationClasses[9].right = 'rotateTo180 animation-delay-2';
+        this.animationClasses[9].pageTitle = 'cFadeInUp animation-delay-3';
         break;
     }
   }
@@ -301,8 +316,23 @@ class LandingPage extends React.PureComponent{
             </div>
           </div>
         </div>
+        <div id="page_3">
+          <div className="left">
+            <div className={`spinner ${this.animationClasses[9].left}`}></div>
+          </div>
+          <div className="right">
+            <div className={`spinner ${this.animationClasses[9].right}`}></div>
+          </div>
+          <div className="page3-wrapper">
+            <div className={`hide ${this.animationClasses[9].pageTitle}`}>
+              <h1>more than 75%</h1>
+              <p>of all property management businesses do not have a growth plan</p>
+            </div>
+          </div>
+        </div>
       </div>
     );
+
   }
 }
 export default LandingPage;
