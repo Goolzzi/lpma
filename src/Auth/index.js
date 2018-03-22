@@ -41,18 +41,26 @@ class Auth {
     return accessToken.split(spv)[1];
   };
 
+  setStoredUserData = () => {
+    const ciphertextString = store.get(this.getKey());
+    const bytes = CryptoJS.AES.decrypt(ciphertextString, this.getAccessToken());
+    var decryptedData = JSON.parse(bytes.toString(CryptoJS.enc.Utf8));
+
+    this.userProfile = decryptedData;
+  };
+
   getUserProfile = () => {
     if (this.userProfile) {
       return this.userProfile;
-    } else {
+    } else if (store.get(this.getKey())) {
       const ciphertextString = store.get(this.getKey());
       const bytes = CryptoJS.AES.decrypt(
         ciphertextString,
         this.getAccessToken(),
       );
       var decryptedData = JSON.parse(bytes.toString(CryptoJS.enc.Utf8));
-
       this.userProfile = decryptedData;
+      return this.userProfile;
     }
 
     return null;
