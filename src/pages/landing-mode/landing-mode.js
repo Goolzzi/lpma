@@ -34,6 +34,7 @@ class LandingPage extends React.PureComponent{
         rightSpinner: ''
       },
       '',
+      '',
       ''
     ];
     this.scrollDirection = true;
@@ -136,16 +137,12 @@ class LandingPage extends React.PureComponent{
     if (index === 6) {
       this.animationClasses[5] = 'cFadeOutUp';
       this.animationClasses[6] = 'cFadeIn';
+      this.animationClasses[7] = direction ? '' : 'cFadeOutDown';
     }
-    // console.log(animationState)
-    // if (animationState === 'enter') {
-    //   return classNames[0];
-    // } else if (animationState === 'hidden') {
-    //   return classNames[1];
-    // } else if (animationState === 'leave') {
-    //   return classNames[2];
-    // }
-    // return classNames[3];
+    if (index === 7) {
+      this.animationClasses[6] = 'cFadeOutUp';
+      this.animationClasses[7] = 'cFadeIn';
+    }
   }
 
   render () {
@@ -218,6 +215,14 @@ class LandingPage extends React.PureComponent{
               <h1><span>78%</span> of investors would swap property managers today if they were confident your company had a better offer.</h1>
               <p>It's not just about how hard you work, it's about how unique your offer is.  Our studies show that Investors are looking for differentiation and are more likely to take their business elsewhere. The landscape is more competitive than ever and now is your chance to better understand the truth about what your clients want.</p>
               <p>Learn how to develop a growth plan that counts, learn how to grow and defend your business.</p>
+              <img src={imgPlaceholder}/>
+            </div>
+          </div>
+          <div className={`tutor-wrapper topic-2 ${this.animationClasses[7]}`}>
+            <div className={`wrapper `}>
+              <h5>01 / facts not myths</h5>
+              <h1><span>25%</span> of industry managed investors don’t think WE DO WHAT WE SAY WE ARE GOING TO DO.</h1>
+              <p>To grow you need to break this perception and regain our clients’ trust. The best businesses need to come together to find a new path forward.</p>
               <img src={imgPlaceholder}/>
             </div>
           </div>
