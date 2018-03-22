@@ -142,19 +142,19 @@
   to { transform: rotate(0);}
 }
 .rotateTo180 {
-  opacity: 1 !important;
   animation-name: rotateTo180;
   animation-duration: 0.5s;
+  animation-timing-function: linear;
   animation-fill-mode: forwards;
 }
 @keyframes rotateTo0 {
-  from { transform: rotate(0.5turn); }
-  to { transform: rotate(0); background: transparent;}
+  from { transform: rotate(0); }
+  to { transform: rotate(-180deg);}
 }
 .rotateTo0 {
-  opacity: 1 !important;
   animation-name: rotateTo0;
   animation-duration: 0.5s;
+  animation-timing-function: linear;
   animation-fill-mode: forwards;
 }
 
@@ -211,9 +211,19 @@
 .animation-delay-1 {
   animation-delay: 0.5s;
 }
+
 .animation-delay-2 {
   animation-delay: 1s;
 }
 .animation-delay-3 {
   animation-delay: 1.5s;
+}
+.animation-delay-4 {
+  animation-delay: 1s;
+}
+.show {
+  opacity: 1 !important;
+}
+.hide {
+  opacity: 0 !important;
 }
