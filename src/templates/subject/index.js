@@ -88,7 +88,7 @@ class FoundrySubject extends React.Component {
                       contentfulFoundrySubject[tab].map(
                         ({id, title, slug, excerpt, steps}) => {
                           const href = steps
-                            ? "foundry/" + slug + "/" + steps[0].slug
+                            ? "/foundry/" + slug + "/" + steps[0].slug
                             : "javascript;";
                           return (
                             <FoundryCard
