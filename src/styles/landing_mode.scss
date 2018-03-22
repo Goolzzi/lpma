@@ -320,6 +320,32 @@ ul, li {
       }
     }
   }
+  .topic-2 {
+    padding: 5rem 4rem;
+    opacity: 0;
+    .wrapper {
+      h5 {
+        text-transform: uppercase;
+        font-family: "DomaineSansMedium";
+        color: rgba(59, 65, 69, 0.3);
+        font-size: 0.6em;
+        padding-left: 1rem;
+      }
+      h1 {
+        font-size: 1.4em;
+        font-family: "DomaineSansMedium";
+        text-transform: uppercase;
+        padding-left: 1rem;
+        span {
+          color: $text-secondary;
+        }
+      }
+      p {
+        padding-left: 1rem;
+        font-size: 0.9em;
+      }
+    }
+  }
 }
 @import "./components/header.scss";
 

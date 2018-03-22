@@ -1,7 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import ScrollAnimation from 'react-animate-on-scroll';
-import Waypoint from 'react-waypoint';
+import imgPlaceholder from '../../assets/images/NewDesign/bk-placeholder.svg';
 
 import "animate.css/animate.min.css";
 
@@ -34,6 +33,7 @@ class LandingPage extends React.PureComponent{
       {
         rightSpinner: ''
       },
+      '',
       ''
     ];
     this.scrollDirection = true;
@@ -74,52 +74,6 @@ class LandingPage extends React.PureComponent{
       }, 1000);
     }
   }
-  // handleScroll = (event) => {
-      
-  //     const scrollTop = window.scrollY;
-  //     if (this.state.lastScrollPosition > scrollTop) {
-  //       this.setState({  direction: false})
-  //     } else {
-  //       this.setState({ direction: true })
-  //     }
-  //     this.setState({lastScrollPosition: scrollTop});
-      
-  //     const animationIndex = this.getAnimationIndex(scrollTop);
-  //     console.log(scrollTop, window.innerHeight);
-  //     if(scrollTop > wayPoints[4]) {
-  //       console.log('%%%%%%')
-  //       this.setState({ animation5: 'enter'})
-  //     } else if(scrollTop > wayPoints[3]) {
-  //       this.setState({
-  //         animation4: 'enter'
-  //       })
-  //     } else if(scrollTop > wayPoints[2]) {
-  //       this.setState({
-  //         animation1: 'leave', 
-  //         animation2: 'leave',
-  //         animation3: 'leave',
-  //       })
-  //     } else if (scrollTop > wayPoints[1]) {
-  //       this.setState({
-  //         animation1: 'leave',
-  //         animation2: 'leave',
-  //         animation3: 'enter',
-  //         animation4: this.state.direction ? '' : 'hidden'
-  //       });
-  //     } else if (scrollTop > wayPoints[0]){
-  //       this.setState({
-  //         animation1: 'leave',
-  //         animation2: 'enter',
-  //         animation3: '',
-  //       })
-  //     } else if (scrollTop < wayPoints[0]) {
-  //       this.setState({
-  //         animation1: 'enter',
-  //         animation2: this.state.direction? '' : 'leave'
-  //       })
-  //     }
-      
-  // }
 
   getAnimationClassName(index, direction) {
     if (index === 0) {
@@ -169,16 +123,19 @@ class LandingPage extends React.PureComponent{
       this.animationClasses[3].layer5 = 'show';
       this.animationClasses[3].chapterTitle = 'cFadeInUp animation-delay-2';
       this.animationClasses[4].rightSpinner = direction ? '' : 'spinRightOut';
-      this.animationClasses[5] = direction ? '' : 'cFadeOutDown'
+      this.animationClasses[5] = direction ? '' : 'cFadeOutDown';
+      this.animationClasses[6] = '';
       
     }
     if (index === 5) {
       this.animationClasses[4].rightSpinner = 'spinRightIn animation-delay-1';
       this.animationClasses[3].chapterTitle = 'cFadeOutDown';
       this.animationClasses[5] = 'cFadeInUp animation-delay-2';
+      this.animationClasses[6] = direction ? '' : 'cFadeOutDown';
     }
     if (index === 6) {
-      
+      this.animationClasses[5] = 'cFadeOutUp';
+      this.animationClasses[6] = 'cFadeIn';
     }
     // console.log(animationState)
     // if (animationState === 'enter') {
@@ -253,6 +210,15 @@ class LandingPage extends React.PureComponent{
               <h5>01 / facts not myths</h5>
               <h1>over half of all property management businesses <span>stop growing</span> after five years.</h1>
               <p>What works in one phase of your business won’t get you to the next phase. Don’t limit your growth by failing to grow your potential.</p>
+            </div>
+          </div>
+          <div className={`tutor-wrapper topic-2 ${this.animationClasses[6]}`}>
+            <div className={`wrapper `}>
+              <h5>01 / facts not myths</h5>
+              <h1><span>78%</span> of investors would swap property managers today if they were confident your company had a better offer.</h1>
+              <p>It's not just about how hard you work, it's about how unique your offer is.  Our studies show that Investors are looking for differentiation and are more likely to take their business elsewhere. The landscape is more competitive than ever and now is your chance to better understand the truth about what your clients want.</p>
+              <p>Learn how to develop a growth plan that counts, learn how to grow and defend your business.</p>
+              <img src={imgPlaceholder}/>
             </div>
           </div>
         </div>
