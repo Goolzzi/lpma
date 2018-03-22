@@ -10,6 +10,7 @@
   "dependencies": {
     "bulma": "^0.6.1",
     "classnames": "^2.2.5",
+    "crypto-js": "^3.1.9-1",
     "fs-extra": "^5.0.0",
     "gatsby": "^1.9.149",
     "gatsby-cli": "^1.1.28",

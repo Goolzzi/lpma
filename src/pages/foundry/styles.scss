@@ -23,6 +23,10 @@
         @include cover-image(100%, 375px);
       }
     }
+
+    .loader-wrapper {
+      margin: 0 auto;
+    }
   
     section.cont {
       position: absolute;
