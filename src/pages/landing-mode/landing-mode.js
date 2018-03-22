@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import imgPlaceholder from '../../assets/images/NewDesign/bk-placeholder.svg';
-
+import imgThumb from '../../assets/images/NewDesign/img-thumb.svg';
 import "animate.css/animate.min.css";
 
 class LandingPage extends React.PureComponent{
@@ -13,6 +13,7 @@ class LandingPage extends React.PureComponent{
       lastScrollPosition: 0,
     }
     this.scrolling = false;
+    this.innerScrolling = false;
     this.animationClasses = [
       'fadeInDown animated',
       '',
@@ -35,6 +36,7 @@ class LandingPage extends React.PureComponent{
       },
       '',
       '',
+      '',
       ''
     ];
     this.scrollDirection = true;
@@ -48,12 +50,39 @@ class LandingPage extends React.PureComponent{
       this.wrapper.removeEventListener("wheel", this.wheelScroll);
   }
   wheelScroll = (event) => {
-    if (event.deltaY < 0) {
-        this.scrollWindowUp();
+    const {top, left, right, bottom, height} = this.tutorWrapper.getBoundingClientRect();
+    if (event.pageX > left && event.pageX < right && event.pageY > top && event.pageY < bottom && this.state.animationIndex == 8) {
+      if(!this.innerScrolling) {
+        if (event.deltaY < 0) {
+          if(this.tutorWrapper.scrollTop === 0) {
+            this.scrollWindowUp();
+          };
+          this.innerScrolling = true;
+          this.tutorWrapper.scrollTo(0, 0);
+          setTimeout(() => {
+            this.innerScrolling = false;
+          }, 300);
+          return false;
+        } else {
+          if(this.tutorWrapper.scrollTop === this.tutorWrapper.scrollHeight - height) {
+            this.scrollWindowDown();
+          };
+          console.log(this.innerScrolling);
+          this.innerScrolling = true;
+          this.tutorWrapper.scrollTo(0, this.tutorWrapper.scrollHeight - height);
+          setTimeout(() => {
+            this.innerScrolling= false;
+          }, 300);
+          return false;
+        }      
+      }
     } else {
+      if (event.deltaY < 0) {
+        this.scrollWindowUp();
+      } else {
         this.scrollWindowDown();
+      }
     }
-
   };
   scrollWindowUp = () => {
     if (!this.scrolling && this.state.animationIndex > 0) {
@@ -77,71 +106,82 @@ class LandingPage extends React.PureComponent{
   }
 
   getAnimationClassName(index, direction) {
-    if (index === 0) {
-      this.animationClasses[0] = 'fadeInDown animated';
-      this.animationClasses[1] = direction ? '' : 'fadeOutDown animated';
-      this.animationClasses[2].page = '';
-      this.animationClasses[2].title = ''; 
-    }
-    if (index === 1) {
-      this.animationClasses[0] = direction ? 'fadeOutUp animated' : '';
-      this.animationClasses[1] = 'fadeInUp animated';
-      this.animationClasses[2].page = direction ? '' : 'fullPageFadeOutDown';
-      this.animationClasses[2].title = direction ? '' : 'cFadeOut'; 
-    }
-    if (index === 2) {
-      this.animationClasses[1] = direction ? 'fadeOut animated' : '';
-      this.animationClasses[2].page = 'fullPageFadeInUp';
-      this.animationClasses[2].title = 'cFadeIn';
-      this.animationClasses[3].layer1 = '';
-      this.animationClasses[3].layer2 = '';
-      this.animationClasses[3].layer3 = '';
-      this.animationClasses[3].layer3Inner = '';
-      this.animationClasses[3].layer4 = 'hide';
-      this.animationClasses[3].layer4Inner = '';
-      this.animationClasses[3].chapterTitle = '';
-    }
-    if (index === 3) {
-      this.animationClasses[2].title = 'cFadeOut';
-      this.animationClasses[3].layer1 = direction ? '' : 'rotateTo0';
-      this.animationClasses[3].layer2 = direction ? '' : 'hide';
-      this.animationClasses[3].layer3 = direction ? '' : 'spinOuterOut';
-      this.animationClasses[3].layer3Inner = direction? '' : 'spinInnerOut';
-      this.animationClasses[3].layer4 = direction? 'hide' : 'spinOuterOut';
-      this.animationClasses[3].layer4Inner = direction? '' : 'spinInnerOut';
-      this.animationClasses[3].layer5 = direction? '' : 'hide';
-      this.animationClasses[3].chapterTitle = direction ? '' : 'cFadeOutUp'
-      this.animationClasses[4].rightSpinner = '';
-      this.animationClasses[5] = '';
-    }
-    if (index === 4) {
-      this.animationClasses[3].layer1 = 'rotateTo180';
-      this.animationClasses[3].layer2 = 'show';
-      this.animationClasses[3].layer3 = 'spinOuterIn';
-      this.animationClasses[3].layer3Inner = 'spinInnerIn';
-      this.animationClasses[3].layer4 = 'spinOuterIn show';
-      this.animationClasses[3].layer4Inner = 'spinInnerIn';
-      this.animationClasses[3].layer5 = 'show';
-      this.animationClasses[3].chapterTitle = 'cFadeInUp animation-delay-2';
-      this.animationClasses[4].rightSpinner = direction ? '' : 'spinRightOut';
-      this.animationClasses[5] = direction ? '' : 'cFadeOutDown';
-      this.animationClasses[6] = '';
-      
-    }
-    if (index === 5) {
-      this.animationClasses[4].rightSpinner = 'spinRightIn animation-delay-1';
-      this.animationClasses[3].chapterTitle = 'cFadeOutDown';
-      this.animationClasses[5] = 'cFadeInUp animation-delay-2';
-      this.animationClasses[6] = direction ? '' : 'cFadeOutDown';
-    }
-    if (index === 6) {
-      this.animationClasses[5] = 'cFadeOutUp';
-      this.animationClasses[6] = 'cFadeIn';
-      this.animationClasses[7] = direction ? '' : 'cFadeOutDown';
-    }
-    if (index === 7) {
-      this.animationClasses[6] = 'cFadeOutUp';
-      this.animationClasses[7] = 'cFadeIn';
+    switch (index) {
+      case 0:
+        this.animationClasses[0] = 'fadeInDown animated';
+        this.animationClasses[1] = direction ? '' : 'fadeOutDown animated';
+        this.animationClasses[2].page = '';
+        this.animationClasses[2].title = ''; 
+        break;
+      case 1:
+        this.animationClasses[0] = direction ? 'fadeOutUp animated' : '';
+        this.animationClasses[1] = 'fadeInUp animated';
+        this.animationClasses[2].page = direction ? '' : 'fullPageFadeOutDown';
+        this.animationClasses[2].title = direction ? '' : 'cFadeOut'; 
+        break;
+      case 2:
+        this.animationClasses[1] = direction ? 'fadeOut animated' : '';
+        this.animationClasses[2].page = 'fullPageFadeInUp';
+        this.animationClasses[2].title = 'cFadeIn';
+        this.animationClasses[3].layer1 = '';
+        this.animationClasses[3].layer2 = '';
+        this.animationClasses[3].layer3 = '';
+        this.animationClasses[3].layer3Inner = '';
+        this.animationClasses[3].layer4 = 'hide';
+        this.animationClasses[3].layer4Inner = '';
+        this.animationClasses[3].chapterTitle = '';
+        break;
+      case 3:
+        this.animationClasses[2].title = 'cFadeOut';
+        this.animationClasses[3].layer1 = direction ? '' : 'rotateTo0';
+        this.animationClasses[3].layer2 = direction ? '' : 'hide';
+        this.animationClasses[3].layer3 = direction ? '' : 'spinOuterOut';
+        this.animationClasses[3].layer3Inner = direction? '' : 'spinInnerOut';
+        this.animationClasses[3].layer4 = direction? 'hide' : 'spinOuterOut';
+        this.animationClasses[3].layer4Inner = direction? '' : 'spinInnerOut';
+        this.animationClasses[3].layer5 = direction? '' : 'hide';
+        this.animationClasses[3].chapterTitle = direction ? '' : 'cFadeOutUp'
+        this.animationClasses[4].rightSpinner = '';
+        this.animationClasses[5] = '';
+        break;
+      case 4:
+        this.animationClasses[3].layer1 = 'rotateTo180';
+        this.animationClasses[3].layer2 = 'show';
+        this.animationClasses[3].layer3 = 'spinOuterIn';
+        this.animationClasses[3].layer3Inner = 'spinInnerIn';
+        this.animationClasses[3].layer4 = 'spinOuterIn show';
+        this.animationClasses[3].layer4Inner = 'spinInnerIn';
+        this.animationClasses[3].layer5 = 'show';
+        this.animationClasses[3].chapterTitle = 'cFadeInUp animation-delay-2';
+        this.animationClasses[4].rightSpinner = direction ? '' : 'spinRightOut';
+        this.animationClasses[5] = direction ? '' : 'cFadeOutDown';
+        this.animationClasses[6] = '';
+        break;
+      case 5:
+        this.animationClasses[4].rightSpinner = 'spinRightIn animation-delay-1';
+        this.animationClasses[3].chapterTitle = 'cFadeOutDown';
+        this.animationClasses[5] = 'cFadeInUp animation-delay-2';
+        this.animationClasses[6] = direction ? '' : 'cFadeOutDown';
+        this.animationClasses[7] = '';
+        break;
+      case 6:
+        this.animationClasses[5] = 'cFadeOutUp';
+        this.animationClasses[6] = 'cFadeIn';
+        this.animationClasses[7] = direction ? '' : 'cFadeOutDown';
+        this.animationClasses[8] = '';
+        break;
+      case 7:
+        this.animationClasses[6] = 'cFadeOutUp';
+        this.animationClasses[7] = 'cFadeIn';
+        this.animationClasses[8] = direction ? '' : 'cFadeOutDown';
+        break;
+      case 8:
+        this.animationClasses[7] = 'cFadeOutUp';
+        this.animationClasses[8] = 'cFadeIn';
+        break;
+      case 9:
+      this.animationClasses[8] = 'cFadeOutUp';
+        break;
     }
   }
 
@@ -224,6 +264,40 @@ class LandingPage extends React.PureComponent{
               <h1><span>25%</span> of industry managed investors don’t think WE DO WHAT WE SAY WE ARE GOING TO DO.</h1>
               <p>To grow you need to break this perception and regain our clients’ trust. The best businesses need to come together to find a new path forward.</p>
               <img src={imgPlaceholder}/>
+            </div>
+          </div>
+          <div ref={c => this.tutor = c} className={`tutor-wrapper topic-3 ${this.animationClasses[8]}`}>
+            <div ref={c => this.tutorWrapper = c} className={`wrapper`}>
+              <h5>01 / facts not myths</h5>
+              <h1>join the <span>largest network</span> of property management thinkers, leaders and practitioners TO BETTER UNDERSTAND THE FACTS.</h1>
+              <div className="blog-card">
+                <img src={imgThumb} />
+                <div className="blog-card-content">
+                  <h6 className="headline-text">Headline lorem ipsum</h6>
+                  <h6 className="desc-text">A focus on data and insights to help drive change in a business.</h6>
+                </div>
+              </div>
+              <div className="blog-card">
+                <img src={imgThumb} />
+                <div className="blog-card-content">
+                  <h6 className="headline-text">Headline lorem ipsum</h6>
+                  <h6 className="desc-text">Integrated growth and business planning tools to help you succeed.</h6>
+                </div>
+              </div>
+              <div className="blog-card">
+                <img src={imgThumb} />
+                <div className="blog-card-content">
+                  <h6 className="headline-text">Headline lorem ipsum</h6>
+                  <h6 className="desc-text">The largest team of property management consultants ready to help.</h6>
+                </div>
+              </div>
+              <div className="blog-card">
+                <img src={imgThumb} />
+                <div className="blog-card-content">
+                  <h6 className="headline-text">Headline lorem ipsum</h6>
+                  <h6 className="desc-text">Large and small format conferences to challenge and support you.</h6>
+                </div>
+              </div>
             </div>
           </div>
         </div>
