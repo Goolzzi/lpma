@@ -318,6 +318,9 @@ ul, li {
           color: $text-secondary;
         }
       }
+      p {
+        font-family: "DomaineSansLight";
+      }
     }
   }
   .topic-2 {
@@ -343,6 +346,7 @@ ul, li {
       p {
         padding-left: 1rem;
         font-size: 0.9em;
+        font-family: "DomaineSansLight";
       }
     }
   }
