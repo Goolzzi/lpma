@@ -1,8 +1,8 @@
-/* eslint-disable jsx-a11y/label-has-for */
 import React from "react";
 import PropTypes from "prop-types";
 import {Icon} from "react-fa";
 import FeedbackForm from "../../components/FeedbackForm";
+import BuildForm from "./BuildForm";
 import "./styles.scss";
 
 import jumbotronBg from "../../assets/images/Optimised-Audience-143.jpg";
@@ -15,6 +15,7 @@ const LPMA2018Conferenceseries = ({
   data: {
     contentfulConferenceserieEventSeries: {title, series},
     contentfulConferenceSeriesIntro,
+    contentfulConferenceSeriesBuildForm,
   },
 }) => {
   return (
@@ -133,135 +134,23 @@ const LPMA2018Conferenceseries = ({
             <div className="column">
               <div className="has-text-centered">
                 <h2 className="title is-2 has-text-white">
-                  CRAFT YOUR LPMA EVENT PACKAGE NOW
+                  {contentfulConferenceSeriesBuildForm.title}
                 </h2>
               </div>
               <div className="has-text-centered">
-                <h4 className="subtitle is-6 has-text-white has-text-weight-semibold">
-                  Select your preferences below and one of our friendly team
-                  members will be in touch to give you<br />the very best deal
-                  on your personalised package.
-                </h4>
+                <h4
+                  className="subtitle is-6 has-text-white has-text-weight-semibold"
+                  dangerouslySetInnerHTML={{
+                    __html: contentfulConferenceSeriesBuildForm.description,
+                  }}
+                />
               </div>
             </div>
           </div>
+
           <div className="columns">
             <div className="column is-4 is-offset-4">
-              <form id="buildLPMAEventPackageForm">
-                <div className="field">
-                  <label className="label has-text-white">
-                    Your Name (required)
-                  </label>
-                  <div className="control">
-                    <input
-                      id="fullName"
-                      className="input"
-                      type="text"
-                      placeholder="Full Name"
-                    />
-                  </div>
-                </div>
-
-                <div className="field">
-                  <label className="label has-text-white">
-                    Your Work Number (required)
-                  </label>
-                  <div className="control">
-                    <input
-                      className="input"
-                      type="text"
-                      placeholder="0000 000 00"
-                    />
-                  </div>
-                </div>
-
-                <div className="field">
-                  <label className="label has-text-white">
-                    Your Email (required)
-                  </label>
-                  <div className="control">
-                    <input
-                      className="input"
-                      type="text"
-                      placeholder="Full Name"
-                    />
-                  </div>
-                </div>
-
-                <div className="field">
-                  <label className="label has-text-white">
-                    Your Email (required)
-                  </label>
-                  <div className="checkboxes">
-                    <div>
-                      <label className="checkbox">
-                        <input type="checkbox" />
-                        LPMNZ Round Table
-                      </label>
-                    </div>
-                    <div>
-                      <label className="checkbox">
-                        <input type="checkbox" />
-                        LPMA Premium Connection Day
-                      </label>
-                    </div>
-                    <div>
-                      <label className="checkbox">
-                        <input type="checkbox" />
-                        LPMA 2018
-                      </label>
-                    </div>
-                    <div>
-                      <label className="checkbox">
-                        <input type="checkbox" />
-                        LPMNZ Premium Connection Day
-                      </label>
-                    </div>
-                    <div>
-                      <label className="checkbox">
-                        <input type="checkbox" />
-                        LPMNZ 2018
-                      </label>
-                    </div>
-                    <div>
-                      <label className="checkbox">
-                        <input type="checkbox" />
-                        PMC 2018
-                      </label>
-                    </div>
-                    <div>
-                      <label className="checkbox">
-                        <input type="checkbox" />
-                        LPMA Round Table
-                      </label>
-                    </div>
-                    <div>
-                      <label className="checkbox">
-                        <input type="checkbox" />
-                        LPMA Meetups
-                      </label>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="field">
-                  <label className="label has-text-white">
-                    Additional Comments
-                  </label>
-                  <div className="control">
-                    <textarea
-                      className="textarea"
-                      placeholder="Let's talk about LPMA events"
-                    />
-                  </div>
-                </div>
-
-                <div className="has-text-centered">
-                  <button className="btn primary with-radius-5 smallest smaller-text">
-                    Send
-                  </button>
-                </div>
-              </form>
+              <BuildForm />
             </div>
           </div>
         </div>
@@ -320,6 +209,10 @@ export const pageQuery = graphql`
           }
         }
       }
+    }
+    contentfulConferenceSeriesBuildForm {
+      title
+      description
     }
   }
 `;
