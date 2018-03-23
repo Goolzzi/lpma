@@ -2,8 +2,8 @@
 import React from "react";
 import PropTypes from "prop-types";
 import {Icon} from "react-fa";
-import "./styles.scss";
 import FeedbackForm from "../../components/FeedbackForm";
+import "./styles.scss";
 
 import jumbotronBg from "../../assets/images/Optimised-Audience-143.jpg";
 
