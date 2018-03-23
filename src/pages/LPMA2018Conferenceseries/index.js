@@ -12,7 +12,10 @@ const propTypes = {
 };
 
 const LPMA2018Conferenceseries = ({
-  data: {contentfulConferenceserieEventSeries: {title, series}},
+  data: {
+    contentfulConferenceserieEventSeries: {title, series},
+    contentfulConferenceSeriesIntro,
+  },
 }) => {
   return (
     <React.Fragment>
@@ -54,37 +57,27 @@ const LPMA2018Conferenceseries = ({
             <div className="column is-8 is-offset-2">
               <div className="has-text-centered">
                 <h3 className="title is-3">
-                  Elevate your career, your business, your team and most
-                  importantly yourself.
+                  {contentfulConferenceSeriesIntro.title}
                 </h3>
               </div>
               <div className="has-text-centered">
-                <p>
-                  LPMA has set out to create a unique and exciting series of
-                  transformative events to help champion property professionals.
-                  Whether you’re a 20-year veteran or have only a few months
-                  under your belt, we have the events and resources that cater
-                  to every property professional.
-                </p>
-
-                <p>
-                  Our series covers the entire 2018 calendar, providing one
-                  central place for the industry’s leading events. The best
-                  part? We can offer unbeatable pricing (up to 15% off our
-                  Pre-Release pricing!) and provide attendees with the
-                  opportunity to hand select which events to attend.
-                </p>
-
-                <p>
-                  2018 is going to be a fantastic year and we hope that you join
-                  us on this journey. Click below to craft your event package
-                  today!
-                </p>
-
-                <button className="btn secondary with-radius-5 smaller-text">
-                  Build your package
-                  <Icon name={"list-alt"} />
-                </button>
+                <div
+                  dangerouslySetInnerHTML={{
+                    __html:
+                      contentfulConferenceSeriesIntro.description
+                        .childMarkdownRemark.html,
+                  }}
+                />
+                <a
+                  href="#buildLPMAEventPackageForm"
+                  className="btn secondary with-radius-5 smaller-text">
+                  {contentfulConferenceSeriesIntro.buildPackageLink.label}
+                  <Icon
+                    name={
+                      contentfulConferenceSeriesIntro.buildPackageLink.iconName
+                    }
+                  />
+                </a>
               </div>
             </div>
           </div>
@@ -154,7 +147,7 @@ const LPMA2018Conferenceseries = ({
           </div>
           <div className="columns">
             <div className="column is-4 is-offset-4">
-              <form>
+              <form id="buildLPMAEventPackageForm">
                 <div className="field">
                   <label className="label has-text-white">
                     Your Name (required)
@@ -294,6 +287,18 @@ export default LPMA2018Conferenceseries;
 
 export const pageQuery = graphql`
   query LPMA2018ConfPageQuery {
+    contentfulConferenceSeriesIntro {
+      title
+      description {
+        childMarkdownRemark {
+          html
+        }
+      }
+      buildPackageLink {
+        iconName
+        label
+      }
+    }
     contentfulConferenceserieEventSeries {
       title
       name
