@@ -31,6 +31,13 @@ class Header extends React.Component {
     }));
   };
 
+  renderLoginLogout = () => {
+    // disable login button fro the use version
+    return this.props.forUSA !== true ? (
+      <LoginLogout cssClass={"navbar-item"} />
+    ) : null;
+  };
+
   render() {
     const {topmenu, logo: {file}, foundryLinks, forUSA} = this.props;
     const {isActive, isActiveMenu, isFoundryOpen} = this.state;
@@ -107,7 +114,7 @@ class Header extends React.Component {
                   </Link>
                 );
               })}
-              <LoginLogout cssClass={"navbar-item"} />
+              {this.renderLoginLogout()}
             </div>
           </div>
           <button
