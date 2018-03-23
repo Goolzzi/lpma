@@ -1,6 +1,6 @@
+/* eslint-disable jsx-a11y/label-has-for */
 import React from "react";
 import PropTypes from "prop-types";
-import Link from "gatsby-link";
 import {Icon} from "react-fa";
 import "./styles.scss";
 import FeedbackForm from "../../components/FeedbackForm";
@@ -154,6 +154,7 @@ const LPMA2018Conferenceseries = ({
                   </label>
                   <div className="control">
                     <input
+                      id="fullName"
                       className="input"
                       type="text"
                       placeholder="Full Name"
@@ -270,9 +271,9 @@ const LPMA2018Conferenceseries = ({
         <div className="container">
           <FeedbackForm
             feedbackParams={{
-              type: "fondry",
-              title: "My Foundry",
-              slug: "foundry",
+              type: "lpma2018conferenceseries",
+              title: "lpma2018Conference",
+              slug: "lpma2018-conference-series",
             }}
           />
         </div>
