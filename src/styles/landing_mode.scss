@@ -8,30 +8,96 @@
 ul, li {
   margin: 0;
 }
-.page {
-  position: absolute;
+#page_1 {
+  position: fixed;
   top: 0;
   right: 0;
   left: 0;
-}
-#page_1 {
-  position: relative;
   background-color: #464F53;
   height: 100vh;
-
   .overlay-image {
-    position: fixed;
-    top: 50vh;
-    left: 50vw;
+    position: absolute;
+    top: 50%;
+    left: 50%;
     transform: translate(-50%, -50%);
     background-image: url(../assets/images/NewDesign/bk-intro-1.png);
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
-    width: 75vw;
+    width: 75vh;
     height: 75vh;
     mix-blend-mode: screen;
     opacity: 0.4;
+  }
+  .slide-1 {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    padding-top: calc(35vh - (1.2em * 2));
+    .banner-title {
+      margin: 0 auto;
+      max-width: 60vw;
+      color: #fff;
+      font-family: "DomaineSansMedium";
+      font-size: 3.3em;
+      text-align: center;
+      letter-spacing: -0.03em;
+      span {
+        color: $primary-color;
+      }
+    }
+    .scroll-instruction {
+      position: absolute;
+      bottom: 5vh;
+      text-align: center;
+      font-size: 18px;
+      line-height: 26px;
+      top: auto;
+      width: 100%;
+      color: #fff;
+      font-family: "DomaineSansMedium";
+    }
+  }
+  .slide-2 {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    top: calc(40vh - 1.2em);
+    .banner-title {
+      width: 100%;
+      text-align: center;
+      color: #fff;
+      font-family: "DomaineSansMedium";
+      font-size: 3.3em;
+      letter-spacing: -0.03em;
+    }
+    .reason-bar {
+      height: 5px;
+      width: 40vw;
+      margin: 0 30vw;
+      background: transparent;
+      display: flex;
+      justify-content: space-between;
+      .bar {
+        align-self: stretch;
+        width: 14vh;
+        
+      }
+      .item-1 {
+        background: #70BF54;
+      }
+      .item-2 {
+        background: #93D6E3;
+      }
+      .item-3 {
+        background: #F0BC69;
+      }
+      .item-4 {
+        background: #E59381;
+      }
+    }
   }
 }
 #page_2 {
@@ -41,88 +107,44 @@ ul, li {
   height: 100%;
   background: #70BF54;
   opacity: 0;
-}
-.animating-title {
-  position: fixed;
-  top: 0;
-  left: 0;
-  text-align: center;
-  opacity: 0;
-  color: #fff;
-  font-family: "DomaineSansMedium";
-  font-size: 3.3em;
-  letter-spacing: -0.03em;
-}
-.intro-title {
-  position: fixed;
-  margin: 0 20vw;
-  max-width: 60vw;
-  margin-top: calc((100vh - (1.1em *4))/2);
-  span {
-    color: $primary-color;
+  .slide-1 {
+    position: fixed;
+    left: 0;
+    top: calc(40vh - 1.1em);
+    width: 100%;
+    opacity: 0;
+    .banner-title {
+      width: 100%;
+      text-align: center;
+      color: #fff;
+      font-family: "DomaineSansMedium";
+      font-size: 4.8em;
+    }
+    .desc {
+      width: 100%;
+      text-align: center;
+      font-size: 1em;
+      font-family: "DomaineSansMedium";
+      color: #3B4145;
+    }
+  }
+  .slide-2 {
+    .background-image {
+      position: fixed;
+      top: 10vh;
+      left: calc(50vw - 40vh);
+      width: 40vh;
+      height: 80vh;
+      background-color: transparent;
+      background-size: cover;
+      background-image: url(../assets/images/NewDesign/bk-intro-2.png);
+      opacity: 0;
+      transition: opacity 1s;
+      transition-delay: 1s;
+    }
   }
 }
-.intro-title-2 {
-  min-width: 100%;
-  margin: 0;
-  margin-top: calc((100vh - (1.2em *2))/2);
-}
-.reason-bar {
-  height: 5px;
-  width: 40vw;
-  margin: 0 30vw;
-  background: transparent;
-  position: fixed;
-  top: 60vh;
-  display: flex;
-  opacity: 0;
-  justify-content: space-between;
-  .bar {
-    align-self: stretch;
-    width: 14vh;
-    
-  }
-  .item-1 {
-    background: #70BF54;
-  }
-  .item-2 {
-    background: #93D6E3;
-  }
-  .item-3 {
-    background: #F0BC69;
-  }
-  .item-4 {
-    background: #E59381;
-  }
-}
-.bottom-instruction {
-  bottom: 5vh;
-  text-align: center;
-  font-size: 18px;
-  line-height: 26px;
-  top: auto;
-  width: 100%;
-}
-.section2-title {
-  top: 0;
-  left: 0;
-  margin-top: calc(50vh - 1.1em);
-  width: 100%;
-  text-align: center;
-  font-size: 4.8em;
-}
-.section2-text {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  text-align: center;
-  margin-top: 62vh;
-  opacity: 0;
-  font-size: 1em;
-  color: #3B4145;
-}
-.section3-wrapper {
+.animating-layer {
   width: 80vh;
   height: 80vh;
   position: fixed;
@@ -203,27 +225,6 @@ ul, li {
     }
   }
 }
-.section3-background {
-  position: fixed;
-  top: 10vh;
-  left: calc(50vw - 40vh);
-  width: 40vh;
-  height: 80vh;
-  background-color: transparent;
-  background-size: cover;
-  background-image: url(../assets/images/NewDesign/bk-intro-2.png);
-  opacity: 0;
-  transition: opacity 1s;
-  transition-delay: 1s;
-  &.show {
-    opacity: 1;
-  }
-  &.hide {
-    opacity: 0;
-  }
-}
-
-
 .full-left {
   width: 50vw;
   position: fixed;
@@ -239,8 +240,7 @@ ul, li {
     transform-origin: right center;
     transform: rotate(0deg);
     opacity: 0;
-    transition: opacity 0.5s;
-    transition-delay: 0.5s;
+    
     &.show {
       opacity: 1;
     }
