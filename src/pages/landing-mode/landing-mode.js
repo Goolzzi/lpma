@@ -15,7 +15,7 @@ class LandingPage extends React.PureComponent{
     this.scrolling = false;
     this.innerScrolling = false;
     this.animationClasses = [
-      'cFadeInDown animated',
+      'cFadeInDown',
       {
         title: '',
         bar: ''
@@ -30,8 +30,6 @@ class LandingPage extends React.PureComponent{
         layer3: '',
         layer3Inner: '',
         layer4: '',
-        layer4Inner: '',
-        layer5: '',
         chapterTitle: ''
       },
       {
@@ -135,55 +133,41 @@ class LandingPage extends React.PureComponent{
         this.animationClasses[1].title = 'cFadeOut';
         this.animationClasses[1].info = 'cFadeOut';
         this.animationClasses[2].page = 'fullPageFadeInUp';
-        this.animationClasses[2].title = 'cFadeIn animation-delay-1';
-        this.animationClasses[3].layer1 = '';
-        this.animationClasses[3].layer2 = '';
+        this.animationClasses[2].title = 'cFadeIn animation-delay-2';
+        this.animationClasses[3].layer1 =  direction ? '' : 'rotateTo0 show';
         this.animationClasses[3].layer3 = '';
         this.animationClasses[3].layer3Inner = '';
         this.animationClasses[3].layer4 = 'hide';
-        this.animationClasses[3].layer4Inner = '';
-        this.animationClasses[3].chapterTitle = '';
+        this.animationClasses[3].chapterTitle = direction ? '' : 'cFadeOutDown';
+        this.animationClasses[3].layer2 = direction? '' : 'hide';
         break;
       case 3:
         this.animationClasses[2].title = 'cFadeOut';
-        this.animationClasses[3].layer1 = direction ? '' : 'rotateTo0 show';
-        this.animationClasses[3].layer2 = direction ? '' : 'hide';
-        this.animationClasses[3].layer3 = direction ? '' : 'spinOuterOut';
-        this.animationClasses[3].layer3Inner = direction? '' : 'spinInnerOut';
-        this.animationClasses[3].layer4 = direction? 'hide' : 'spinOuterOut';
-        this.animationClasses[3].layer4Inner = direction? '' : 'spinInnerOut';
-        this.animationClasses[3].layer5 = direction? '' : 'hide';
-        this.animationClasses[3].chapterTitle = direction ? '' : 'cFadeOutUp'
-        this.animationClasses[4].rightSpinner = '';
-        this.animationClasses[5] = '';
-        break;
-      case 4:
-        this.animationClasses[3].layer1 = 'rotateTo180 show';
-        this.animationClasses[3].layer2 = 'show';
-        this.animationClasses[3].layer3 = 'spinOuterIn';
-        this.animationClasses[3].layer3Inner = 'spinInnerIn';
-        this.animationClasses[3].layer4 = 'spinOuterIn show';
+        this.animationClasses[3].layer1 = 'rotateTo180 show animation-delay-1';
+        this.animationClasses[3].layer3 = 'spinOuterIn animation-delay-2';
+        this.animationClasses[3].layer3Inner = 'spinInnerIn animation-delay-2';
+        this.animationClasses[3].layer4 = 'spinOuterIn show animation-delay-2';
         this.animationClasses[3].layer4Inner = 'spinInnerIn';
-        this.animationClasses[3].layer5 = 'show';
+        this.animationClasses[3].layer2 = 'cFadeIn animation-delay-2';
         this.animationClasses[3].chapterTitle = 'cFadeInUp animation-delay-2';
         this.animationClasses[4].rightSpinner = direction ? '' : 'spinRightOut';
         this.animationClasses[5] = direction ? '' : 'cFadeOutDown';
         this.animationClasses[6] = '';
         break;
-      case 5:
+      case 4:
         this.animationClasses[4].rightSpinner = 'spinRightIn animation-delay-1';
         this.animationClasses[3].chapterTitle = 'cFadeOutDown';
         this.animationClasses[5] = 'cFadeInUp animation-delay-2';
         this.animationClasses[6] = direction ? '' : 'cFadeOutDown';
         this.animationClasses[7] = '';
         break;
-      case 6:
+      case 5:
         this.animationClasses[5] = 'cFadeOutUp';
         this.animationClasses[6] = 'cFadeIn';
         this.animationClasses[7] = direction ? '' : 'cFadeOutDown';
         this.animationClasses[8] = '';
         break;
-      case 7:
+      case 6:
         this.animationClasses[6] = 'cFadeOutUp';
         this.animationClasses[7] = 'cFadeIn';
         this.animationClasses[8] = direction ? '' : 'cFadeOutDown';
@@ -191,14 +175,14 @@ class LandingPage extends React.PureComponent{
         this.animationClasses[9].right = '';
         this.animationClasses[9].pageTitle = '';
         break;
-      case 8:
+      case 7:
         this.animationClasses[7] = 'cFadeOutUp';
         this.animationClasses[8] = direction ? 'cFadeIn' : 'cFadeIn animation-delay-3';
         this.animationClasses[9].left = direction ? '' : 'rotateTo0 animated animation-delay-3';
         this.animationClasses[9].right = direction ? '' : 'rotateTo0 animated animation-delay-1';
         this.animationClasses[9].pageTitle = direction ? '' : 'cFadeOutDown';
         break;
-      case 9:
+      case 8:
         this.animationClasses[8] = 'cFadeOutUp';
         this.animationClasses[9].left = 'rotateTo180 animation-delay-1';
         this.animationClasses[9].right = 'rotateTo180 animation-delay-2';
@@ -241,7 +225,7 @@ class LandingPage extends React.PureComponent{
 
 
         
-        <div className={`section3-background ${this.animationClasses[3].layer5}`} />
+        <div className={`section3-background ${this.animationClasses[3].layer2}`} />
         <div className="full-left">
           <div className={`overlay-spinner ${this.animationClasses[3].layer4}`}/>
         </div>
@@ -249,10 +233,7 @@ class LandingPage extends React.PureComponent{
           <div className="right">
             <div className={`overlay-1 ${this.animationClasses[3].layer1}`} />
           </div>
-          {/* <div className={`overlay-2 ${this.animationClasses[3].layer2}`}>
-          </div> */}
           <div className="left">
-            <div className={`overlay-4 ${this.animationClasses[3].layer4}`} />
             <div className={`overlay-3 ${this.animationClasses[3].layer3}`}>
               <div className={`inner  ${this.animationClasses[3].layer3Inner}`} />
             </div>

@@ -5,7 +5,7 @@
 
 .cFadeIn {
   animation-name: cFadeIn;
-  animation-duration: 2s;
+  animation-duration: 1s;
   animation-fill-mode: forwards;
 }
 @keyframes cFadeOut {
@@ -15,7 +15,7 @@
 
 .cFadeOut {
   animation-name: cFadeOut;
-  animation-duration: 2s;
+  animation-duration: 1s;
   animation-fill-mode: forwards;
 }
 
@@ -112,7 +112,7 @@
 }
 @keyframes rotateTo180 {
   from { transform: rotate(-180deg); }
-  to { opacity: 1;transform: rotate(0);}
+  to { transform: rotate(0);}
 }
 .rotateTo180 {
   animation-name: rotateTo180;
@@ -136,8 +136,19 @@
   100% {transform: rotate(180deg);}
 }
 .spinOuterIn {
-  animation-delay: 0.3s;
+  animation-delay: 0.5s;
   animation-name: spinOuterIn;
+  animation-duration: 0.8s;
+  animation-fill-mode: forwards;
+  animation-timing-function: ease-in-out;
+}
+@keyframes spinOuterOut {
+  0% {transform: rotate(180deg);}
+  100% {transform: rotate(0deg);}
+}
+.spinOuterOut {
+  animation-delay: 0.5s;
+  animation-name: spinOuterOut;
   animation-duration: 0.8s;
   animation-fill-mode: forwards;
   animation-timing-function: ease-in-out;
@@ -151,8 +162,23 @@
   100% {transform: rotate(-180deg);}
 }
 .spinInnerIn {
-  animation-delay: 0.3s;
+  animation-delay: 0.5s;
   animation-name: spinInnerIn;
+  animation-duration: 0.8s;
+  animation-timing-function: ease-out;
+  animation-fill-mode: forwards;
+}
+@keyframes spinInnerOut {
+  0% {transform: rotate(-165deg);}
+  20% {transform: rotate(-80deg);}
+  40% {transform: rotate(-80deg);}
+  60% {transform: rotate(-70deg);}
+  80% {transform: rotate(-135deg);}
+  100% {transform: rotate(-180deg);}
+}
+.spinInnerOut {
+  animation-delay: 0.5s;
+  animation-name: spinInnerOut;
   animation-duration: 0.8s;
   animation-timing-function: ease-out;
   animation-fill-mode: forwards;

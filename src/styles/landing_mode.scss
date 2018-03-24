@@ -33,7 +33,6 @@ ul, li {
     mix-blend-mode: screen;
     opacity: 0.4;
   }
-  z-index: 0;
 }
 #page_2 {
   position: fixed;
@@ -214,7 +213,8 @@ ul, li {
   background-size: cover;
   background-image: url(../assets/images/NewDesign/bk-intro-2.png);
   opacity: 0;
-
+  transition: opacity 1s;
+  transition-delay: 1s;
   &.show {
     opacity: 1;
   }
@@ -239,6 +239,8 @@ ul, li {
     transform-origin: right center;
     transform: rotate(0deg);
     opacity: 0;
+    transition: opacity 0.5s;
+    transition-delay: 0.5s;
     &.show {
       opacity: 1;
     }
