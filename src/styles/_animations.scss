@@ -1,21 +1,5 @@
-// .transition-in-5 {
-//   -webkit-transition: opacity 1s ease-in;
-//   -moz-transition: opacity 1s ease-in;
-//   -o-transition: opacity 1s ease-in;
-//   -ms-transition: opacity 1s ease-in;
-//   transition: opacity 1s ease-in;
-// }
-
-// .transition-out-5 {
-//   -webkit-transition: opacity 1s ease-out;
-//   -moz-transition: opacity 1s ease-out;
-//   -o-transition: opacity 1s ease-out;
-//   -ms-transition: opacity 1s ease-out;
-//   transition: opacity 1s ease-out;
-// }
-
 @keyframes cFadeIn {
-  from { opacity: 0; transform: translateY(30px); }
+  from { opacity: 0; transform: translateY(10px); }
   to   { opacity: 1; transform: translateY(0); }
 }
 
@@ -26,7 +10,7 @@
 }
 @keyframes cFadeOut {
   from { opacity: 1; transform: translateY(0); }
-  to   { opacity: 0; transform: translateY(30px); }
+  to   { opacity: 0; transform: translateY(10px); }
 }
 
 .cFadeOut {
@@ -37,7 +21,7 @@
 
 @keyframes cFadeOutUp {
   from { opacity: 1; transform: translate(0, 0); }
-  to   { opacity: 0; transform: translate(0, -50px); }
+  to   { opacity: 0; transform: translate(0, -30px); }
 }
 
 .cFadeOutUp {
@@ -55,17 +39,6 @@
   animation-duration: 1s;
   animation-fill-mode: forwards;
 }
-// @keyframes fadeOutDown {
-//   from { opacity: 1; transform: translate(0, -50px); }
-//   to   { opacity: 0; transform: translate(0, 0); }
-// }
-
-// .fadeOutDown {
-//   animation-name: fadeOutDown;
-//   animation-duration: 1s;
-//   animation-fill-mode: forwards;
-// }
-
 @keyframes cFadeInDown {
   from { opacity: 0; transform: translate(0, -30px); }
   to   { opacity: 1; transform: translate(0, 0); }
@@ -78,7 +51,7 @@
 }
 
 @keyframes cFadeInUp {
-  from { opacity: 0; transform: translate(0, 50px); }
+  from { opacity: 0; transform: translate(0, 30px); }
   to   { opacity: 1; transform: translate(0, 0); }
 }
 
@@ -139,7 +112,7 @@
 }
 @keyframes rotateTo180 {
   from { transform: rotate(-180deg); }
-  to { transform: rotate(0);}
+  to { opacity: 1;transform: rotate(0);}
 }
 .rotateTo180 {
   animation-name: rotateTo180;
@@ -211,7 +184,9 @@
 .animation-delay-1 {
   animation-delay: 0.5s;
 }
-
+.animation-delay-1_1 {
+  animation-delay: 0.8s;
+}
 .animation-delay-2 {
   animation-delay: 1s;
 }

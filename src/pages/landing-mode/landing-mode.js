@@ -15,8 +15,11 @@ class LandingPage extends React.PureComponent{
     this.scrolling = false;
     this.innerScrolling = false;
     this.animationClasses = [
-      'fadeInDown animated',
-      '',
+      'cFadeInDown animated',
+      {
+        title: '',
+        bar: ''
+      },
       {
         page: '',
         title: ''
@@ -97,37 +100,42 @@ class LandingPage extends React.PureComponent{
       setTimeout(() => {
         this.scrolling = false;
       }, 1000);
+      this.props.onPageChange(this.state.animationIndex);
     }
   }
   scrollWindowDown = () => {
-    if (!this.scrolling && this.state.animationIndex < this.animationClasses.length) {
+    if (!this.scrolling && this.state.animationIndex < this.animationClasses.length-1) {
       this.scrolling = true;
       this.scrollDirection = true;
       this.setState({animationIndex: this.state.animationIndex + 1});
       setTimeout(() => {
         this.scrolling = false;
       }, 1000);
+      this.props.onPageChange(this.state.animationIndex);
     }
   }
 
   getAnimationClassName(index, direction) {
     switch (index) {
       case 0:
-        this.animationClasses[0] = 'fadeInDown animated';
-        this.animationClasses[1] = direction ? '' : 'fadeOutDown animated';
+        this.animationClasses[0] = direction ? 'cFadeInDown': 'cFadeInDown animation-delay-1';
+        this.animationClasses[1].title = direction ? '' : 'cFadeOutDown';
+        this.animationClasses[1].bar = direction ? '' : 'cFadeOutDown';
         this.animationClasses[2].page = '';
         this.animationClasses[2].title = ''; 
         break;
       case 1:
-        this.animationClasses[0] = direction ? 'fadeOutUp animated' : '';
-        this.animationClasses[1] = 'fadeInUp animated';
+        this.animationClasses[0] = direction ? 'cFadeOutUp animated' : '';
+        this.animationClasses[1].title = direction ? 'cFadeInUp animation-delay-1_1' : 'cFadeIn';
+        this.animationClasses[1].bar = direction ? 'cFadeIn animation-delay-1_1' : 'cFadeIn';
         this.animationClasses[2].page = direction ? '' : 'fullPageFadeOutDown';
         this.animationClasses[2].title = direction ? '' : 'cFadeOut'; 
         break;
       case 2:
-        this.animationClasses[1] = direction ? 'fadeOut animated' : '';
+        this.animationClasses[1].title = 'cFadeOut';
+        this.animationClasses[1].info = 'cFadeOut';
         this.animationClasses[2].page = 'fullPageFadeInUp';
-        this.animationClasses[2].title = 'cFadeIn';
+        this.animationClasses[2].title = 'cFadeIn animation-delay-1';
         this.animationClasses[3].layer1 = '';
         this.animationClasses[3].layer2 = '';
         this.animationClasses[3].layer3 = '';
@@ -191,7 +199,6 @@ class LandingPage extends React.PureComponent{
         this.animationClasses[9].pageTitle = direction ? '' : 'cFadeOutDown';
         break;
       case 9:
-      console.log(this.animationClasses.length)
         this.animationClasses[8] = 'cFadeOutUp';
         this.animationClasses[9].left = 'rotateTo180 animation-delay-1';
         this.animationClasses[9].right = 'rotateTo180 animation-delay-2';
@@ -210,10 +217,10 @@ class LandingPage extends React.PureComponent{
             A MEMBERSHIP FOR THE <span>EVOLUTION</span> OF THE PROPERTY MANAGEMENT INDUSTRY
           </h1>
           <div>
-            <h1 className={`animating-title intro-title-2 ${this.animationClasses[1]}`}>
+            <h1 className={`animating-title intro-title-2 ${this.animationClasses[1].title}`}>
               FOUR REASONS<br />TO BE AN LPMA MEMBER
             </h1>
-            <div className={`reason-bar ${this.animationClasses[1]}`}>
+            <div className={`reason-bar ${this.animationClasses[1].bar}`}>
               <div className="bar item-1"></div>
               <div className="bar item-2"></div>
               <div className="bar item-3"></div>
@@ -334,5 +341,12 @@ class LandingPage extends React.PureComponent{
     );
 
   }
+}
+
+LandingPage.propTypes = {
+  onPageChange: PropTypes.func
+}
+LandingPage.defaultProps = {
+  onPageChange: (pageNumber) => { console.log(pageNumber) }
 }
 export default LandingPage;
