@@ -3,8 +3,35 @@ import React from "react";
 import PropTypes from "prop-types";
 import {Icon} from "react-fa";
 import FeedbackForm from "../../components/FeedbackForm";
+import ConferencesJumbotron from "../../components/ConferencesJumbotron";
 import "./styles.scss";
 import jumbotronBg from "../../assets/images/Optimised-Audience-143.jpg";
+
+const jumbotronNode = {
+  background: {
+    resolutions: {
+      src: require("../../assets/images/Optimised-Audience-143.jpg"),
+      srcSet: require("../../assets/images/Optimised-Audience-143.jpg"),
+    },
+  },
+  heading: "Leading Property Managers Association Presents:",
+  image: {
+    resolutions: {
+      src: require("../../assets/images/LPMA2018_Conference_Logo_white-600x200.png"),
+      srcSet: require("../../assets/images/LPMA2018_Conference_Logo_white-600x200.png"),
+    },
+  },
+  content: {
+    childMarkdownRemark: {
+      html:
+        "The Ultimate Collection of Transformational Property Management Events",
+    },
+  },
+};
+
+const propTypes = {
+  data: PropTypes.object.isRequired,
+};
 
 class BuildForm extends React.Component {
   constructor(props) {
@@ -130,37 +157,7 @@ const LPMA2018Conferenceseries = ({
 }) => {
   return (
     <React.Fragment>
-      <section
-        className="section lpma2018-conferences-top-jumbotron"
-        style={{"background-image": `url(${jumbotronBg})`}}>
-        <div className="container">
-          <div className="columns">
-            <div className="column">
-              <div className="appear-cont">
-                <div className="has-text-centered">
-                  <h2 className="title is-5 has-text-white">
-                    Leading Property Managers Association Presents:
-                  </h2>
-                </div>
-
-                <div className="has-text-centered">
-                  <img
-                    src={require("../../assets/images/LPMA2018_Conference_Logo_white-600x200.png")}
-                    alt=""
-                  />
-                </div>
-
-                <div className="has-text-centered">
-                  <strong className="is-size-6 has-text-white">
-                    The Ultimate Collection of Transformational Property
-                    Management Events
-                  </strong>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      <ConferencesJumbotron node={jumbotronNode} isVideo={false} />
 
       <section className="section lpma2018-conferences-elevate">
         <div className="container">

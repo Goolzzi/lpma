@@ -1,0 +1,22 @@
+.lpma2018-columns {
+    background-color: $secondary-color;
+  
+    h3 {
+      color: $white;
+      font-size: 1.5555rem;
+      font-family: "DomaineSansMedium",Helvetica, Arial, sans-serif;
+    }
+  
+    p {
+      color: $white;
+  
+      &.meta {
+        font-family: "DomaineSansMedium",Helvetica, Arial, sans-serif;
+      }
+    }
+  
+    a {
+      color: $white;
+      text-decoration: underline;
+    }
+  }

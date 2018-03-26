@@ -1,0 +1,19 @@
+.lpma2018-graph {
+    background-color: $white;
+  
+    .container {
+      max-width: 900px;
+      padding-top: 2rem;
+  
+      h1 {
+        color: $primary-color;
+        font-size: 2.75rem;
+        font-family: "DomaineSansMedium",Helvetica, Arial, sans-serif;
+      }
+  
+      p {
+        color: $gray-dark;
+        font-size: 1rem;
+      }
+    }
+  }
