@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import Link from "gatsby-link";
 import TopJumbotron from "../../components/TopJumbotron";
 import BottomJumbotron from "../../components/BottomJumbotron";
 import "./styles.scss";
@@ -24,11 +25,18 @@ const Event = ({
       <p>{location}</p>
     </div>
     <div className="column is-3 event-button">
-      {buttonLink && (
-        <a href={buttonLink.href}>
-          <button className="btn primary outlined">{buttonLink.name}</button>
-        </a>
-      )}
+      {buttonLink &&
+        buttonLink.href && (
+          <a href={buttonLink.href}>
+            <button className="btn primary outlined">{buttonLink.name}</button>
+          </a>
+        )}
+      {buttonLink &&
+        buttonLink.link && (
+          <Link href={buttonLink.link}>
+            <button className="btn primary outlined">{buttonLink.name}</button>
+          </Link>
+        )}
       {additionalInfo && (
         <div
           className="add-info"
@@ -104,6 +112,7 @@ export const pageQuery = graphql`
           }
           buttonLink {
             href
+            link
             name
           }
         }

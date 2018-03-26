@@ -95,14 +95,11 @@ class JoinPage extends React.PureComponent {
                 </p>
                 <p>
                   View our Membership
-                  <Link to="http://www.lpma.com/membership-terms-and-conditions/">
-                    Terms and Conditions{" "}
+                  <Link to="/membership-terms-and-conditions/">
+                    Terms and Conditions
                   </Link>
                   or
-                  <Link to="https://www.lpma.com/privacy-policy">
-                    Privacy Policy
-                  </Link>
-                  .
+                  <Link to="/privacy-policy">Privacy Policy</Link>
                 </p>
               </div>
             </div>
