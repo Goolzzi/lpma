@@ -150,7 +150,7 @@ const LPMA2018Conferenceseries = ({
 
           <div className="columns">
             <div className="column is-4 is-offset-4">
-              <BuildForm />
+              <BuildForm series={series} />
             </div>
           </div>
         </div>
