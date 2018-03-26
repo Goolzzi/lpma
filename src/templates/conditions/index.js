@@ -28,7 +28,7 @@ const Conditions = ({data: {contentfulConditions: {title, content, slug}}}) => (
           <div className="column">
             <FeedbackForm
               feedbackParams={{
-                type: "section",
+                type: "conditions",
                 title: title,
                 slug: slug,
               }}

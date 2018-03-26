@@ -5,7 +5,6 @@ import {Icon} from "react-fa";
 import FeedbackForm from "../../components/FeedbackForm";
 import ConferencesJumbotron from "../../components/ConferencesJumbotron";
 import "./styles.scss";
-import jumbotronBg from "../../assets/images/Optimised-Audience-143.jpg";
 
 const jumbotronNode = {
   background: {
@@ -27,10 +26,6 @@ const jumbotronNode = {
         "The Ultimate Collection of Transformational Property Management Events",
     },
   },
-};
-
-const propTypes = {
-  data: PropTypes.object.isRequired,
 };
 
 class BuildForm extends React.Component {
