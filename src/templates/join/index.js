@@ -94,11 +94,11 @@ class JoinPage extends React.PureComponent {
                   <Link to="mailto:support@lpma.com"> support@lpma.com </Link>
                 </p>
                 <p>
-                  View our Membership
+                  View our Membership&nbsp;
                   <Link to="/membership-terms-and-conditions/">
                     Terms and Conditions
                   </Link>
-                  or
+                  &nbsp;or&nbsp;
                   <Link to="/privacy-policy">Privacy Policy</Link>
                 </p>
               </div>
