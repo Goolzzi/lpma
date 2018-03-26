@@ -33,7 +33,7 @@ const Event = ({
         )}
       {buttonLink &&
         buttonLink.link && (
-          <Link href={buttonLink.link}>
+          <Link to={buttonLink.link}>
             <button className="btn primary outlined">{buttonLink.name}</button>
           </Link>
         )}
