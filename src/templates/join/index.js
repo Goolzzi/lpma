@@ -5,8 +5,6 @@ import TopJumbotron from "../../components/TopJumbotron";
 import BottomJumbotron from "../../components/BottomJumbotron";
 import "./styles.scss";
 
-//{/* <input type="hidden" name="form-name-2" value="join-form" /> */}
-
 class Form extends React.Component {
   componentDidMount() {
     // analytics init snippet injected via Netlify Snippet Injection
@@ -24,7 +22,7 @@ class Form extends React.Component {
         data-netlify="true"
         method="post"
         data-netlify-honeypot="bot-field">
-        <input type="hidden" name="form-name" value="joinLPMAForm" />
+        <input type="hidden" name="form-name" value="joinForm" />
         <input
           required
           type="text"
