@@ -5,24 +5,26 @@ import TopJumbotron from "../../components/TopJumbotron";
 import BottomJumbotron from "../../components/BottomJumbotron";
 import "./styles.scss";
 
+//{/* <input type="hidden" name="form-name-2" value="join-form" /> */}
+
 class Form extends React.Component {
   componentDidMount() {
     // analytics init snippet injected via Netlify Snippet Injection
     // eslint-disable-next-line no-undef
     typeof analytics !== "undefined" &&
       // eslint-disable-next-line no-undef
-      analytics.trackForm(document.getElementById("join-form"), "Join");
+      analytics.trackForm(document.getElementById("joinLPMAForm"), "Join");
   }
 
   render() {
     return (
       <form
         name="joinForm"
-        id="join-form"
+        id="joinLPMAForm"
         data-netlify="true"
         method="post"
         data-netlify-honeypot="bot-field">
-        <input type="hidden" name="form-name-2" value="join-form" />
+        <input type="hidden" name="form-name" value="joinLPMAForm" />
         <input
           required
           type="text"
