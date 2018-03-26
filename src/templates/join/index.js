@@ -5,52 +5,9 @@ import TopJumbotron from "../../components/TopJumbotron";
 import BottomJumbotron from "../../components/BottomJumbotron";
 import "./styles.scss";
 
-function getFormMarkup() {
-  return {
-    __html: ` <form id = "join-form" netlify name="joinForm">
-    <input
-     required
-      type="text"
-      class="inp"
-      name="FirstName"
-      placeholder="FirstName"
-    />
-    <input
-      type="text"
-      class="inp"
-      name="LastName"
-      placeholder="LastName"
-    />
-    <input
-      type="text"
-      class="inp"
-      name="AgencyName"
-      placeholder="AgencyName"
-    />
-    <input
-      required
-      type="email"
-      class="inp"
-      name="Email"
-      placeholder="Email"
-    />
-    <input
-      type="text"
-      class="inp"
-      name="ContactNumber"
-      placeholder="ContactNumber"
-    />
-    <button type="submit" class="btn primary halfwidth">
-      Submit
-    </button>
-  </form>`,
-  };
-}
-
 class JoinPage extends React.PureComponent {
   constructor(props) {
     super(props);
-    this.formRef = null;
   }
 
   componentDidMount() {
@@ -76,10 +33,51 @@ class JoinPage extends React.PureComponent {
                   network.
                 </p>
                 <div className="columns">
-                  <div
-                    className="column is-7"
-                    dangerouslySetInnerHTML={getFormMarkup()}
-                  />
+                  <div className="column is-7">
+                    <form
+                      name="joinForm"
+                      id="join-form"
+                      data-netlify="true"
+                      method="post"
+                      data-netlify-honeypot="bot-field">
+                      <input type="hidden" name="form-name" value="join-form" />
+                      <input
+                        required
+                        type="text"
+                        className="inp"
+                        name="FirstName"
+                        placeholder="FirstName"
+                      />
+                      <input
+                        type="text"
+                        className="inp"
+                        name="LastName"
+                        placeholder="LastName"
+                      />
+                      <input
+                        type="text"
+                        className="inp"
+                        name="AgencyName"
+                        placeholder="AgencyName"
+                      />
+                      <input
+                        required
+                        type="email"
+                        className="inp"
+                        name="Email"
+                        placeholder="Email"
+                      />
+                      <input
+                        type="text"
+                        className="inp"
+                        name="ContactNumber"
+                        placeholder="ContactNumber"
+                      />
+                      <button type="submit" className="btn primary halfwidth">
+                        Submit
+                      </button>
+                    </form>
+                  </div>
                 </div>
               </div>
             </div>
@@ -94,12 +92,10 @@ class JoinPage extends React.PureComponent {
                 <p>
                   View our Membership
                   <Link to="http://www.lpma.com/membership-terms-and-conditions/">
-                    {" "}
                     Terms and Conditions{" "}
                   </Link>
                   or
                   <Link to="https://www.lpma.com/privacy-policy">
-                    {" "}
                     Privacy Policy
                   </Link>
                   .
