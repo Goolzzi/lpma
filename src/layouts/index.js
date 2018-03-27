@@ -99,27 +99,22 @@ export const pageQuery = graphql`
           html
         }
       }
-      mainLinks {
+      menu {
         id
         name
         to
         country
         slug
       }
-      secondaryLinks {
-        id
-        name
-        to
+      contactInfo {
+        childMarkdownRemark {
+          html
+        }
       }
       privacy {
         childMarkdownRemark {
           html
         }
-      }
-      joinLink {
-        name
-        to
-        slug
       }
       logo {
         file {

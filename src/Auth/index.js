@@ -18,10 +18,6 @@ class Auth {
     this.userProfile = null;
   }
 
-  subscribe = f => {
-    this.list.push(f);
-  };
-
   login = () => {
     this.auth0.authorize();
   };
