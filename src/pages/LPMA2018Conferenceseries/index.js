@@ -90,7 +90,7 @@ class BuildForm extends React.Component {
           <div className="control">
             <input
               className="input"
-              type="text"
+              type="email"
               placeholder="Work@emailaddress.com"
               name="Email"
               required

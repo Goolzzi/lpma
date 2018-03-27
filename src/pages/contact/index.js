@@ -27,7 +27,13 @@ const ContactPage = ({data: {contentfulContactLpma}}) => (
 
         <div className="columns">
           <div className="column is-4">
-            <form>
+            <form
+              name="ContactLPMA"
+              id="conatctLPMAFORM"
+              data-netlify="true"
+              method="post"
+              data-netlify-honeypot="bot-field">
+              <input type="hidden" name="form-name" value="ContactLPMA" />
               <div className="field">
                 <label className="label has-text-white has-text-weight-normal">
                   Your Name (required)
@@ -37,6 +43,8 @@ const ContactPage = ({data: {contentfulContactLpma}}) => (
                     className="input"
                     type="text"
                     placeholder="Full Name"
+                    name="FullName"
+                    required
                   />
                 </div>
               </div>
@@ -50,6 +58,8 @@ const ContactPage = ({data: {contentfulContactLpma}}) => (
                     className="input"
                     type="text"
                     placeholder="Work@emailaddress.com"
+                    name="Email"
+                    required
                   />
                 </div>
               </div>
@@ -62,7 +72,9 @@ const ContactPage = ({data: {contentfulContactLpma}}) => (
                   <input
                     className="input"
                     type="text"
-                    placeholder="0000-000-000"
+                    placeholder="0412 345 678"
+                    required
+                    name="WorkNumber"
                   />
                 </div>
               </div>
@@ -76,6 +88,8 @@ const ContactPage = ({data: {contentfulContactLpma}}) => (
                     className="input"
                     type="text"
                     placeholder="Ultimate Property Management"
+                    name="Company"
+                    required
                   />
                 </div>
               </div>
@@ -85,7 +99,12 @@ const ContactPage = ({data: {contentfulContactLpma}}) => (
                   Subject
                 </label>
                 <div className="control">
-                  <input className="input" type="text" placeholder="Hey LPMA" />
+                  <input
+                    className="input"
+                    type="text"
+                    placeholder="Hey LPMA"
+                    name="Subject"
+                  />
                 </div>
               </div>
 
@@ -97,6 +116,7 @@ const ContactPage = ({data: {contentfulContactLpma}}) => (
                   <textarea
                     className="textarea"
                     placeholder="I have a question"
+                    name="Message"
                   />
                 </div>
               </div>
