@@ -39,7 +39,7 @@ const propTypes = {
     videoLink: PropTypes.string.isRequired,
     heading: PropTypes.string.isRequired,
     image: PropTypes.object.isRequired,
-    background: PropTypes.object.isRequired,
+    cover: PropTypes.object.isRequired,
     content: PropTypes.object.isRequired,
     purchaseButton: PropTypes.object.isRequired,
   }),
@@ -51,7 +51,7 @@ const ConferencesJumbotron = ({
     videoLink,
     heading,
     image: {resolutions: {src, srcSet}},
-    background,
+    cover,
     content,
     purchaseButton,
   },
@@ -59,7 +59,7 @@ const ConferencesJumbotron = ({
 }) => (
   <section
     className="section lpma2018-top-jumbotron"
-    style={getSectionStyles(background)}>
+    style={getSectionStyles(cover)}>
     <Video show={isVideo} videoId={videoLink} />
     <div
       className="video-cont-cover is-hidden-mobile"

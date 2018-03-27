@@ -7,6 +7,47 @@
   height: 36rem;
   padding: 0px;
 
+  @-webkit-keyframes APPEAR_ANIM {
+    0%   { 
+      transform: scale(0);
+      opacity: 0;
+    }
+    100% {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+  @-moz-keyframes APPEAR_ANIM {
+    0%   { 
+      transform: scale(0);
+      opacity: 0;
+    }
+    100% {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+  @-o-keyframes APPEAR_ANIM {
+    0%   { 
+      transform: scale(0);
+      opacity: 0;
+    }
+    100% {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+  @keyframes APPEAR_ANIM {
+    0%   { 
+      transform: scale(0);
+      opacity: 0;
+    }
+    100% {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+
   .video-cont {
     left: 0px;
     top: 0px;
@@ -45,21 +86,31 @@
   .video-cont-data {
     h2 {
       color: $white;
-      font-size: 1.5rem;
       font-weight: 500;
       margin-bottom: 2rem;
       margin-top: 4rem;
+      -webkit-animation: APPEAR_ANIM 1s 1;
+      -moz-animation:    APPEAR_ANIM 1s 1;
+      -o-animation:      APPEAR_ANIM 1s 1;
+      animation:         APPEAR_ANIM 1s 1;
     }
 
     strong {
       color: $white;
-      font-size: 1rem;
       display: block;
       margin-bottom: 2rem;
+      -webkit-animation: APPEAR_ANIM 1s 1;
+      -moz-animation:    APPEAR_ANIM 1s 1;
+      -o-animation:      APPEAR_ANIM 1s 1;
+      animation:         APPEAR_ANIM 1s 1;
     }
 
     img {
       margin-bottom: 2rem;
+      -webkit-animation: APPEAR_ANIM 1s 1;
+      -moz-animation:    APPEAR_ANIM 1s 1;
+      -o-animation:      APPEAR_ANIM 1s 1;
+      animation:         APPEAR_ANIM 1s 1;
     }
   }
 }
