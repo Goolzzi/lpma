@@ -56,7 +56,7 @@ const ContactPage = ({data: {contentfulContactLpma}}) => (
                 <div className="control">
                   <input
                     className="input"
-                    type="text"
+                    type="email"
                     placeholder="Work@emailaddress.com"
                     name="Email"
                     required
@@ -73,8 +73,8 @@ const ContactPage = ({data: {contentfulContactLpma}}) => (
                     className="input"
                     type="text"
                     placeholder="0412 345 678"
-                    required
                     name="WorkNumber"
+                    required
                   />
                 </div>
               </div>
