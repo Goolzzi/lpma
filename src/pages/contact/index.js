@@ -1,9 +1,10 @@
 /* eslint-disable jsx-a11y/label-has-for */
 import React from "react";
+import PropTypes from "prop-types";
 import "./styles.scss";
 import FeedbackForm from "../../components/FeedbackForm";
 
-const ContactPage = () => (
+const ContactPage = ({data: {contentfulContactLpma}}) => (
   <React.Fragment>
     <section className="section contact-cont">
       <div className="container">
@@ -11,16 +12,16 @@ const ContactPage = () => (
           <div className="column is-10">
             <div>
               <h1 className="title top-title is-1 has-text-white">
-                Contact LPMA
+                {contentfulContactLpma.title}
               </h1>
             </div>
-            <p className="has-text-white">
-              Have a question about LPMA, how to join, or how to make the most
-              of the member benefits?
-              <br />
-              Send us a message below and a member of our team will reach out
-              shortly.
-            </p>
+            <div
+              className="has-text-white"
+              dangerouslySetInnerHTML={{
+                __html:
+                  contentfulContactLpma.description.childMarkdownRemark.html,
+              }}
+            />
           </div>
         </div>
 
@@ -118,7 +119,7 @@ const ContactPage = () => (
               feedbackParams={{
                 type: "contact",
                 title: "Contact",
-                slug: "contact-us",
+                slug: "contact-lpma",
               }}
             />
           </div>
@@ -128,4 +129,22 @@ const ContactPage = () => (
   </React.Fragment>
 );
 
+ContactPage.propTypes = {
+  data: PropTypes.object.isRequired,
+};
+
 export default ContactPage;
+
+export const pageQuery = graphql`
+  query ContactLPMAPAgeQuery {
+    contentfulContactLpma {
+      id
+      title
+      description {
+        childMarkdownRemark {
+          html
+        }
+      }
+    }
+  }
+`;
