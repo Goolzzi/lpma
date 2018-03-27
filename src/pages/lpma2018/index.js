@@ -16,7 +16,7 @@ class LPMA2018Page extends Component {
   render() {
     const {
       data: {
-        contentfulYearlyEventJumbotron,
+        contentfulYearlyEventJumbotron: {conferencesJumbotron},
         contentfulYearlyEventStats,
         contentfulYearlyEventPurpose,
         contentfulYearlyEventPlan,
@@ -30,7 +30,7 @@ class LPMA2018Page extends Component {
     } = this.props;
     return (
       <React.Fragment>
-        <ConferencesJumbotron isVideo node={contentfulYearlyEventJumbotron} />
+        <ConferencesJumbotron isVideo node={conferencesJumbotron} />
         <YearlyEventStats node={contentfulYearlyEventStats} />
         <YearlyEventPurpose node={contentfulYearlyEventPurpose} />
         <YearlyEventPlan node={contentfulYearlyEventPlan} />
@@ -54,22 +54,24 @@ export default LPMA2018Page;
 export const pageQuery = graphql`
   query LPMA2018PageQuery {
     contentfulYearlyEventJumbotron {
-      videoLink
-      heading
-      image {
-        resolutions(width: 600, quality: 100) {
-          src
-          srcSet
+      conferencesJumbotron {
+        videoLink
+        heading
+        image {
+          resolutions(width: 600, quality: 100) {
+            src
+            srcSet
+          }
         }
-      }
-      content {
-        childMarkdownRemark {
-          html
+        content {
+          childMarkdownRemark {
+            html
+          }
         }
-      }
-      purchaseButton {
-        label
-        iconName
+        purchaseButton {
+          label
+          iconName
+        }
       }
     }
     contentfulYearlyEventStats {

@@ -6,28 +6,6 @@ import FeedbackForm from "../../components/FeedbackForm";
 import ConferencesJumbotron from "../../components/ConferencesJumbotron";
 import "./styles.scss";
 
-const jumbotronNode = {
-  background: {
-    resolutions: {
-      src: require("../../assets/images/Optimised-Audience-143.jpg"),
-      srcSet: require("../../assets/images/Optimised-Audience-143.jpg"),
-    },
-  },
-  heading: "Leading Property Managers Association Presents:",
-  image: {
-    resolutions: {
-      src: require("../../assets/images/LPMA2018_Conference_Logo_white-600x200.png"),
-      srcSet: require("../../assets/images/LPMA2018_Conference_Logo_white-600x200.png"),
-    },
-  },
-  content: {
-    childMarkdownRemark: {
-      html:
-        "The Ultimate Collection of Transformational Property Management Events",
-    },
-  },
-};
-
 class BuildForm extends React.Component {
   constructor(props) {
     super(props);
@@ -145,6 +123,7 @@ BuildForm.propTypes = {
 
 const LPMA2018Conferenceseries = ({
   data: {
+    contentfulConferenceSeriesJumbotron: {conferencesJumbotron},
     contentfulConferenceserieEventSeries: {title, series},
     contentfulConferenceSeriesIntro,
     contentfulConferenceSeriesBuildForm,
@@ -152,7 +131,7 @@ const LPMA2018Conferenceseries = ({
 }) => {
   return (
     <React.Fragment>
-      <ConferencesJumbotron node={jumbotronNode} isVideo={false} />
+      <ConferencesJumbotron node={conferencesJumbotron} isVideo={false} />
 
       <section className="section lpma2018-conferences-elevate">
         <div className="container">
@@ -281,6 +260,28 @@ export default LPMA2018Conferenceseries;
 
 export const pageQuery = graphql`
   query LPMA2018ConfPageQuery {
+    contentfulConferenceSeriesJumbotron {
+      conferencesJumbotron {
+        heading
+        image {
+          resolutions(width: 800, quality: 100) {
+            src
+            srcSet
+          }
+        }
+        cover {
+          resolutions(width: 800, quality: 100) {
+            src
+            srcSet
+          }
+        }
+        content {
+          childMarkdownRemark {
+            html
+          }
+        }
+      }
+    }
     contentfulConferenceSeriesIntro {
       title
       description {
