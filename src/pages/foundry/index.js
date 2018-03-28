@@ -16,12 +16,8 @@ class MyFoundryPage extends React.Component {
 
   componentDidMount() {
     if (auth.isAuthenticated()) {
-      auth
-        .getProfile()
-        .then(profile => this.setState({nickname: profile.nickname}))
-        .catch(error => {
-          console.log("User Profile Error! ", error); //eslint-disable-line
-        });
+      const user = auth.getUserProfile();
+      this.setState({nickname: user.username});
     }
   }
 

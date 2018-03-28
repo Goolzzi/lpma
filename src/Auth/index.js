@@ -2,6 +2,7 @@ import {AUTH_CONFIG} from "./auth0-variables";
 import {navigateTo} from "gatsby-link";
 import store from "store";
 import CryptoJS from "crypto-js";
+import irisauth from "../IrisAuth";
 
 class Auth {
   constructor() {
@@ -41,7 +42,6 @@ class Auth {
     const ciphertextString = store.get(this.getKey());
     const bytes = CryptoJS.AES.decrypt(ciphertextString, this.getAccessToken());
     var decryptedData = JSON.parse(bytes.toString(CryptoJS.enc.Utf8));
-
     this.userProfile = decryptedData;
   };
 
@@ -145,4 +145,4 @@ class Auth {
 }
 
 const auth = new Auth();
-export default auth;
+export default irisauth;

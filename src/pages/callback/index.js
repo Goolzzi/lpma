@@ -1,14 +1,14 @@
 import React, {Component} from "react";
-import auth from "../../Auth";
+import authIRIS from "../../IrisAuth";
 import Loader from "../../components/Loader";
 
 const handleAuthentication = ({location}) => {
   if (/access_token|id_token|error/.test(location.hash)) {
-    auth.handleAuthentication();
+    authIRIS.handleAuthentication();
   }
 };
 
-class Callback extends Component {
+class IrisCallback extends Component {
   render() {
     return (
       <div className="loader-wrapper">
@@ -20,7 +20,7 @@ class Callback extends Component {
 
 const CallbackWithAuthChecks = props => {
   handleAuthentication(props);
-  return <Callback {...props} />;
+  return <IrisCallback {...props} />;
 };
 
 export default CallbackWithAuthChecks;
