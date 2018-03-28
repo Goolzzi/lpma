@@ -364,18 +364,6 @@ class LandingPage extends React.PureComponent{
         this.animationClasses[30].right = direction ? '' : 'rotateTo0 animated animation-delay-1';
         this.animationClasses[30].pageTitle = direction ? '' : 'cFadeOutDown';
         break;
-      // case 14:
-      //   this.animationClasses[8] = 'cFadeOutUp';
-      //   this.animationClasses[9].left = 'rotateTo180 animation-delay-1';
-      //   this.animationClasses[9].right = 'rotateTo180 animation-delay-2';
-      //   this.animationClasses[9].pageTitle = 'cFadeInUp animation-delay-3';
-      //   this.animationClasses[10].rightSpinner =  direction ? '' : 'rotateTo0 show';
-      //   this.animationClasses[10].leftSpinner = '';
-      //   this.animationClasses[10].leftInnerSpinner = '';
-      //   this.animationClasses[10].fullLeftSpinner = 'hide';
-      //   this.animationClasses[10].chapterTitle = direction ? '' : 'cFadeOutDown';
-      //   this.animationClasses[10].background = direction? '' : 'hide';
-      //   break;
     }
   }
 
