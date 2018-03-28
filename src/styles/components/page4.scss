@@ -1,4 +1,4 @@
-#page_3 {
+#page_4 {
   position: fixed;
   top: 0;
   width: 100%;
@@ -17,7 +17,7 @@
       width: 200vw;
       height: 200vh;
       right: 0;
-      background-color: $page3-primary;
+      background-color: $page4-primary;
       transform-origin: right center;
       transform: rotate(-180deg);
     }
@@ -39,7 +39,7 @@
       width: 200vw;
       height: 200vh;
       transform-origin: left center;
-      background-color: $page3-primary;
+      background-color: $page4-primary;
       transform: rotate(-180deg);
     }
     // right: 0;
@@ -72,8 +72,8 @@
     .background-image {
       position: fixed;
       top: 10vh;
-      left: calc(50vw - 43vh);
-      width: 43vh;
+      left: calc(50vw - 45vh);
+      width: 45vh;
       height: 80vh;
       opacity: 0;
       transition: opacity 1s;
@@ -81,31 +81,31 @@
     }
     .full-left {
       .overlay-spinner {
-        background: $page3-primary;
+        background: $page4-primary;
       }
     }
     .animating-layer {
       .right {
         .overlay-1 {
-          background: $page3-primary-light; 
+          background: $page4-primary-light; 
         }
       }
       .left {
         .overlay-3 {
           .inner {
-            background: $page3-primary-light;
+            background: $page4-primary-light;
           }
         }
       }
     }
-    .topic-1 {
+    .topic-1 {    
       .wrapper {
         h5 {
-          color: $page3-primary;
+          color: $page4-primary;
         }
         h1 {
           span {
-            color: $page3-primary;
+            color: $page4-primary;
           }
         }
       }
@@ -114,7 +114,7 @@
       .wrapper {
         h1 {
           span {
-            color: $page3-primary;
+            color: $page4-primary;
           }
         }
       }
@@ -123,7 +123,7 @@
       .wrapper {
         h1 {
           span {
-            color: $page3-primary;
+            color: $page4-primary;
           }
         }
       }
@@ -137,13 +137,8 @@
         overflow: hidden;
         transform-origin: left center;
         transform: rotate(-180deg);
-        &.show {
-          opacity: 1;
-        }
-        &.hide {
-          opacity: 0;
-        }
       }
     }
   }
+  
 }

@@ -4,6 +4,10 @@ import imgPlaceholder from '../../assets/images/NewDesign/bk-placeholder.svg';
 import imgThumb from '../../assets/images/NewDesign/img-thumb.svg';
 import bkIntro2 from '../../assets/images/NewDesign/bk-intro-2.png';
 import bkIntro3 from '../../assets/images/NewDesign/bk-intro-3.png';
+import bkIntro4 from '../../assets/images/NewDesign/bk-intro-4.png';
+import imgIntro4_1 from '../../assets/images/NewDesign/img-intro-4_1.png';
+import imgIntro4_2 from '../../assets/images/NewDesign/img-intro-4_2.png';
+import bkIntro5 from '../../assets/images/NewDesign/bk-intro-5.png';
 import "animate.css/animate.min.css";
 
 class LandingPage extends React.PureComponent{
@@ -16,53 +20,47 @@ class LandingPage extends React.PureComponent{
     }
     this.scrolling = false;
     this.innerScrolling = false;
-    this.animationClasses = ['',
-      {
-        title: '',
-        bar: ''
-      },
-      {
-        page: '',
-        title: ''
-      },
-      {
-        layer1: '',
-        layer2: '',
-        layer3: '',
-        layer3Inner: '',
-        layer4: '',
-        chapterTitle: ''
-      },
-      {
-        rightSpinner: ''
-      },
+    this.animationClasses = [
       '',
-      '',
-      '',
-      '',
-      {
-        left: '',
-        right: '',
-        pageTitle: ''
-      },
-      {
-        background: '',
-        rightSpinner: '',
-        leftInnerSpinner: '',
-        leftSpinner: '',
-        chapterTitle: '',
-        fullLeftSpinner: ''
-      },
+      { title: '', bar: '' },
+      { page: '', title: '' },
+      { layer1: '', layer2: '', layer3: '', layer3Inner: '', layer4: '', chapterTitle: '' },
       { rightSpinner: '' },
       '',
       '',
       '',
       '',
-      {
-        left: '',
-        right: '',
-        pageTitle: ''
-      },
+      /**
+       * Page 3 className starting Index 9
+       */
+      { left: '', right: '', pageTitle: '' },
+      { background: '', rightSpinner: '', leftInnerSpinner: '', leftSpinner: '', chapterTitle: '', fullLeftSpinner: '' },
+      { rightSpinner: '' },
+      '',
+      '',
+      '',
+      '',
+      /**
+       * Page 4 className starting Index 16
+       */
+      { left: '', right: '', pageTitle: '' },
+      { background: '', rightSpinner: '', leftInnerSpinner: '', leftSpinner: '', chapterTitle: '', fullLeftSpinner: '' },
+      { rightSpinner: '' },
+      '',
+      '',
+      '',
+      '',
+      /**
+       * Page 5 className starting with Index 23
+       */
+      { left: '', right: '', pageTitle: '' },
+      { background: '', rightSpinner: '', leftInnerSpinner: '', leftSpinner: '', chapterTitle: '', fullLeftSpinner: '' },
+      { rightSpinner: '' },
+      '',
+      '',
+      '',
+      '',
+      { left: '', right: '', pageTitle: '' },
     ];
     this.scrollDirection = true;
   }
@@ -166,7 +164,6 @@ class LandingPage extends React.PureComponent{
         this.animationClasses[3].layer3 = 'spinOuterIn animation-delay-2';
         this.animationClasses[3].layer3Inner = 'spinInnerIn animation-delay-2';
         this.animationClasses[3].layer4 = 'spinOuterIn show animation-delay-2';
-        this.animationClasses[3].layer4Inner = 'spinInnerIn';
         this.animationClasses[3].layer2 = 'cFadeIn animation-delay-2';
         this.animationClasses[3].chapterTitle = 'cFadeInUp animation-delay-2';
         this.animationClasses[4].rightSpinner = direction ? '' : 'spinRightOut';
@@ -201,6 +198,10 @@ class LandingPage extends React.PureComponent{
         this.animationClasses[9].right = direction ? '' : 'rotateTo0 animated animation-delay-1';
         this.animationClasses[9].pageTitle = direction ? '' : 'cFadeOutDown';
         break;
+
+      /**
+       * Page 3
+       */
       case 8:
         this.animationClasses[8] = 'cFadeOutUp';
         this.animationClasses[9].left = 'rotateTo180 animation-delay-1';
@@ -252,6 +253,116 @@ class LandingPage extends React.PureComponent{
         this.animationClasses[16].left = direction ? '' : 'rotateTo0 animated animation-delay-3';
         this.animationClasses[16].right = direction ? '' : 'rotateTo0 animated animation-delay-1';
         this.animationClasses[16].pageTitle = direction ? '' : 'cFadeOutDown';
+        break;
+      /**
+       * Page 4
+       */
+      case 14:
+        this.animationClasses[15] = 'cFadeOutUp';
+        this.animationClasses[16].left = 'rotateTo180 animation-delay-1';
+        this.animationClasses[16].right = 'rotateTo180 animation-delay-2';
+        this.animationClasses[16].pageTitle = 'cFadeInUp animation-delay-2';
+        this.animationClasses[17].rightSpinner =  direction ? '' : 'rotateTo0 show';
+        this.animationClasses[17].leftSpinner = '';
+        this.animationClasses[17].leftInnerSpinner = '';
+        this.animationClasses[17].fullLeftSpinner = 'hide';
+        this.animationClasses[17].chapterTitle = direction ? '' : 'cFadeOutDown';
+        this.animationClasses[17].background = direction? '' : 'hide';
+        break;
+      case 15:
+        this.animationClasses[16].pageTitle = 'cFadeOutDown';
+        this.animationClasses[17].background = 'cFadeIn animation-delay-2';
+        this.animationClasses[17].fullLeftSpinner = 'spinOuterIn show animation-delay-2';
+        this.animationClasses[17].rightSpinner = 'rotateTo180 show animation-delay-1';
+        this.animationClasses[17].leftSpinner = 'spinOuterIn animation-delay-2';
+        this.animationClasses[17].leftInnerSpinner = 'spinInnerIn animation-delay-2';
+        this.animationClasses[17].chapterTitle = 'cFadeInUp animation-delay-2';
+        this.animationClasses[18].rightSpinner = direction ? '' : 'spinRightOut';
+        this.animationClasses[19] = direction ? '' : 'cFadeOutDown';
+        this.animationClasses[20] = '';
+        break;
+      case 16:
+        this.animationClasses[18].rightSpinner = 'spinRightIn animation-delay-1';
+        this.animationClasses[17].chapterTitle = 'cFadeOutDown';
+        this.animationClasses[19] = 'cFadeInUp animation-delay-2';
+        this.animationClasses[20] = direction ? '' : 'cFadeOutDown';
+        this.animationClasses[21] = '';
+        break;
+      case 17:
+        this.animationClasses[19] = 'cFadeOutUp';
+        this.animationClasses[20] = 'cFadeIn';
+        this.animationClasses[21] = direction ? '' : 'cFadeOutDown';
+        this.animationClasses[22] = '';
+        break;
+      case 18:
+        this.animationClasses[20] = 'cFadeOutUp';
+        this.animationClasses[21] = 'cFadeIn';
+        this.animationClasses[22] = direction ? '' : 'cFadeOutDown';
+        this.animationClasses[23].left = '';
+        this.animationClasses[23].right = '';
+        this.animationClasses[23].pageTitle = '';
+        break;
+      case 19:
+        this.animationClasses[21] = 'cFadeOutUp';
+        this.animationClasses[22] = direction ? 'cFadeIn' : 'cFadeIn animation-delay-3';
+        this.animationClasses[23].left = direction ? '' : 'rotateTo0 animated animation-delay-3';
+        this.animationClasses[23].right = direction ? '' : 'rotateTo0 animated animation-delay-1';
+        this.animationClasses[23].pageTitle = direction ? '' : 'cFadeOutDown';
+        break;
+      /**
+       * Page 5
+       */
+      case 20:
+        this.animationClasses[22] = 'cFadeOutUp';
+        this.animationClasses[23].left = 'rotateTo180 animation-delay-1';
+        this.animationClasses[23].right = 'rotateTo180 animation-delay-2';
+        this.animationClasses[23].pageTitle = 'cFadeInUp animation-delay-2';
+        this.animationClasses[24].rightSpinner =  direction ? '' : 'rotateTo0 show';
+        this.animationClasses[24].leftSpinner = '';
+        this.animationClasses[24].leftInnerSpinner = '';
+        this.animationClasses[24].fullLeftSpinner = 'hide';
+        this.animationClasses[24].chapterTitle = direction ? '' : 'cFadeOutDown';
+        this.animationClasses[24].background = direction? '' : 'hide';
+        break;
+      case 21:
+        this.animationClasses[23].pageTitle = 'cFadeOutDown';
+        this.animationClasses[24].background = 'cFadeIn animation-delay-2';
+        this.animationClasses[24].fullLeftSpinner = 'spinOuterIn show animation-delay-2';
+        this.animationClasses[24].rightSpinner = 'rotateTo180 show animation-delay-1';
+        this.animationClasses[24].leftSpinner = 'spinOuterIn animation-delay-2';
+        this.animationClasses[24].leftInnerSpinner = 'spinInnerIn animation-delay-2';
+        this.animationClasses[24].chapterTitle = 'cFadeInUp animation-delay-2';
+        this.animationClasses[25].rightSpinner = direction ? '' : 'spinRightOut';
+        this.animationClasses[26] = direction ? '' : 'cFadeOutDown';
+        this.animationClasses[27] = '';
+        break;
+      case 22:
+        this.animationClasses[25].rightSpinner = 'spinRightIn animation-delay-1';
+        this.animationClasses[24].chapterTitle = 'cFadeOutDown';
+        this.animationClasses[26] = 'cFadeInUp animation-delay-2';
+        this.animationClasses[27] = direction ? '' : 'cFadeOutDown';
+        this.animationClasses[28] = '';
+        break;
+      case 23:
+        this.animationClasses[26] = 'cFadeOutUp';
+        this.animationClasses[27] = 'cFadeIn';
+        this.animationClasses[28] = direction ? '' : 'cFadeOutDown';
+        this.animationClasses[29] = '';
+        break;
+      case 24:
+        this.animationClasses[27] = 'cFadeOutUp';
+        this.animationClasses[28] = 'cFadeIn';
+        this.animationClasses[29] = direction ? '' : 'cFadeOutDown';
+        this.animationClasses[30].left = '';
+        this.animationClasses[30].right = '';
+        this.animationClasses[30].pageTitle = '';
+        break;
+      case 25:
+        this.animationClasses[28] = 'cFadeOutUp';
+        this.animationClasses[29] = direction ? 'cFadeIn' : 'cFadeIn animation-delay-3';
+        this.animationClasses[30].left = direction ? '' : 'rotateTo0 animated animation-delay-3';
+        this.animationClasses[30].right = direction ? '' : 'rotateTo0 animated animation-delay-1';
+        this.animationClasses[30].pageTitle = direction ? '' : 'cFadeOutDown';
         break;
       // case 14:
       //   this.animationClasses[8] = 'cFadeOutUp';
@@ -448,6 +559,147 @@ class LandingPage extends React.PureComponent{
                   <p>Without planning, every staff turnover will cost you 40 investors.</p>
                   <p>Developing and supporting your team to both drive performance and increase staff retention is key to any growth strategy.</p>
                   <img src={imgPlaceholder}/>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div id="page_4">
+          <div className="left">
+            <div className={`spinner ${this.animationClasses[16].left}`}></div>
+          </div>
+          <div className="right">
+            <div className={`spinner ${this.animationClasses[16].right}`}></div>
+          </div>
+          <div className="slide-1">
+            <div className={`hide ${this.animationClasses[16].pageTitle}`}>
+              <h1>89% OF INDUSTRY <br />PROFESSIONALS</h1>
+              <p>THINK THAT DOOR COUNT IS THE ONLY WAY TO GROW</p>
+            </div>
+          </div>
+          <div className="slide-2">
+            <img src={bkIntro4} className={`background-image ${this.animationClasses[17].background}`} />
+            <div className="full-left">
+              <div className={`overlay-spinner ${this.animationClasses[17].fullLeftSpinner}`}/>
+            </div>
+            <div className="animating-layer">
+              <div className="right">
+                <div className={`overlay-1 ${this.animationClasses[17].rightSpinner}`} />
+              </div>
+              <div className="left">
+                <div className={`overlay-3 ${this.animationClasses[17].leftSpinner}`}>
+                  <div className={`inner  ${this.animationClasses[17].leftInnerSpinner}`} />
+                </div>
+              </div>
+            </div>
+            <div className="full-right">
+              <div className={`chapter-text-view ${this.animationClasses[17].chapterTitle}`}>
+                <h3>Chapter three:</h3>
+                <h1>grow more <br/>than your<br/>doors</h1>
+              </div>
+              <div className={`overlay-spinner ${this.animationClasses[18].rightSpinner}`} />
+              <div className={`tutor-wrapper topic-1 ${this.animationClasses[19]}`}>
+                <div className="wrapper">
+                  <h5>03 / grow more than your doors</h5>
+                  <h1>Profit comes from <span>excellence, not doors</span>. Culture comes from leadership, not contracts.</h1>
+                </div>
+              </div>
+              <div className={`tutor-wrapper topic-2 ${this.animationClasses[20]}`}>
+                <div className="wrapper">
+                  <h5>03 / grow more than your doors</h5>
+                  <h1>ACCESS TO AILO INSIGHTS WILL HELP YOU <span>TRACK YOUR PERFORMANCE</span> IN REAL TIME.</h1>
+                  <img src={imgIntro4_1}/>
+                  <img src={imgIntro4_2}/>
+                </div>
+              </div>
+              <div className={`tutor-wrapper topic-2 ${this.animationClasses[21]}`}>
+                <div className="wrapper">
+                  <h5>03 / grow more than your doors</h5>
+                  <h1>SUCCESS IS NOT POSSIBLE WITHOUT THE <span>RIGHT TEAM</span></h1>
+                  <p>The right team has a high-performing culture and is supported by the best resources.</p>
+                  <p>LPMA membership gives you and your team the tools to track and improve your team’s performance, and support the winning culture. </p>
+                  <img src={imgPlaceholder}/>
+                  <img src={imgPlaceholder}/>
+                </div>
+              </div>
+              <div ref={c => this.tutor = c} className={`tutor-wrapper topic-3 ${this.animationClasses[22]}`}>
+                <div ref={c => this.tutorWrapper = c} className="wrapper">
+                  <h5>03 / grow more than your doors</h5>
+                  <h1>we’ll support YOU IN DEVELOPING KEY MULTIPLE <span>CHANNELS OF GROWTH</span></h1>
+                  <p>LPMA members are supported in building a full business plan, covering growth goals, team design, culture and financial benchmarking.</p>
+                  <img src={imgPlaceholder}/>
+                  <img src={imgPlaceholder}/> 
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div id="page_5">
+          <div className="left">
+            <div className={`spinner ${this.animationClasses[23].left}`}></div>
+          </div>
+          <div className="right">
+            <div className={`spinner ${this.animationClasses[23].right}`}></div>
+          </div>
+          <div className="slide-1">
+            <div className={`hide ${this.animationClasses[23].pageTitle}`}>
+              <h1>8/10 professionals<br/>feel isolated</h1>
+              <p>AND HAVE EXPRESSED A DEEP DESIRE TO BE ABLE TO CONENCT WITH LIKE-MINDED PROFESSIONALS IN THEIR INDUSTRY</p>
+            </div>
+          </div>
+          <div className="slide-2">
+            <img src={bkIntro5} className={`background-image ${this.animationClasses[24].background}`} />
+            <div className="full-left">
+              <div className={`overlay-spinner ${this.animationClasses[24].fullLeftSpinner}`}/>
+            </div>
+            <div className="animating-layer">
+              <div className="right">
+                <div className={`overlay-1 ${this.animationClasses[24].rightSpinner}`} />
+              </div>
+              <div className="left">
+                <div className={`overlay-3 ${this.animationClasses[24].leftSpinner}`}>
+                  <div className={`inner  ${this.animationClasses[24].leftInnerSpinner}`} />
+                </div>
+              </div>
+            </div>
+            <div className="full-right">
+              <div className={`chapter-text-view ${this.animationClasses[24].chapterTitle}`}>
+                <h3>Chapter four:</h3>
+                <h1>find<br />strength<br />in our<br />community</h1>
+              </div>
+              <div className={`overlay-spinner ${this.animationClasses[25].rightSpinner}`} />
+              <div className={`tutor-wrapper topic-1 ${this.animationClasses[26]}`}>
+                <div className="wrapper">
+                  <h5>04 / find strength in our community</h5>
+                  <h1>you <span>don’t</span> have to do this alone</h1>
+                  <p>LPMA is the largest global network of property management leaders and professionals. Join the community to share ideas and experiences and learn from each other.</p>
+                </div>
+              </div>
+              <div className={`tutor-wrapper topic-2 ${this.animationClasses[27]}`}>
+                <div className="wrapper">
+                  <h5>04 / find strength in our community</h5>
+                  <h1>LPMA operates the <span>largest</span> series of networking events in the industry.</h1>
+                  <p>At the local level we facilitate regular industry meetups, all the way through to large industry conferences with leading speakers and networking functions. All of this is supported by a large online community of professionals all seeking to learn from and support each other.</p>
+                  <img src={imgPlaceholder}/>
+                  <img src={imgPlaceholder}/>
+                </div>
+              </div>
+              <div className={`tutor-wrapper topic-2 ${this.animationClasses[28]}`}>
+                <div className="wrapper">
+                  <h5>04 / find strength in our community</h5>
+                  <h1>everyone needs a little help from time to time to drive <span>real change</span> in a business.</h1>
+                  <p>LPMA works with some of the best consultants in our industry. They are fully trained on our frameworks and resources and are ready to help.</p>
+                  <img src={imgPlaceholder}/>
+                  <img src={imgPlaceholder}/>
+                </div>
+              </div>
+              <div ref={c => this.tutor = c} className={`tutor-wrapper topic-3 ${this.animationClasses[29]}`}>
+                <div ref={c => this.tutorWrapper = c} className="wrapper">
+                  <h5>04 / find strength in our community</h5>
+                  <h1><span>recognition</span> is good NOT JUST because you deserve it — IT ALSO helps you grow your business.</h1>
+                  <p>recognition is good NOT JUST because you deserve it — IT ALSO helps you grow your business.</p>
+                  <img src={imgPlaceholder}/>
+                  <img src={imgPlaceholder}/> 
                 </div>
               </div>
             </div>
