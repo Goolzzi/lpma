@@ -8,6 +8,7 @@ import bkIntro4 from '../../assets/images/NewDesign/bk-intro-4.png';
 import imgIntro4_1 from '../../assets/images/NewDesign/img-intro-4_1.png';
 import imgIntro4_2 from '../../assets/images/NewDesign/img-intro-4_2.png';
 import bkIntro5 from '../../assets/images/NewDesign/bk-intro-5.png';
+import icTick from '../../assets/images/NewDesign/ic-tick.png';
 import "animate.css/animate.min.css";
 
 class LandingPage extends React.PureComponent{
@@ -60,7 +61,7 @@ class LandingPage extends React.PureComponent{
       '',
       '',
       '',
-      { left: '', right: '', pageTitle: '' },
+      { page: '' },
     ];
     this.scrollDirection = true;
   }
@@ -359,9 +360,7 @@ class LandingPage extends React.PureComponent{
       case 25:
         this.animationClasses[28] = 'cFadeOutUp';
         this.animationClasses[29] = direction ? 'cFadeIn animation-delay-1_1' : 'cFadeIn animation-delay-3';
-        this.animationClasses[30].left = direction ? '' : 'rotateTo0 animated animation-delay-3';
-        this.animationClasses[30].right = direction ? '' : 'rotateTo0 animated animation-delay-1';
-        this.animationClasses[30].pageTitle = direction ? '' : 'cFadeOutDown';
+        this.animationClasses[30].page = direction ? '' : 'fullPageFadeInUp animation-delay-3';
         break;
     }
   }
@@ -692,12 +691,50 @@ class LandingPage extends React.PureComponent{
             </div>
           </div>
         </div>
-        {/* <div id="page_6">
-          <div className="overlay-image" />
-          <div>
-            
+        <div id="page_6">
+          {/* <div className="overlay-image" /> */}
+
+          <div className={`slide-1 ${this.animationClasses[30].page}`}>
+            <h1>Flat Monthly Pricing</h1>
+            <div className="pricing-box">
+              <div className="pricing-text">
+                <div className="price"><span>$</span>249</div>
+                <div className="desc">
+                  <span>AUD</span>
+                  <span>Per month</span>
+                </div>
+              </div>
+              <p>For those who are looking for the full suite of tools to grow and evolve their business</p>
+              <div className="terms-container">
+                <div className="terms-item">
+                  <img src={icTick} /><p>Unlimited access to letters, checklists, forms and procedure templates</p>
+                </div>
+                <div className="terms-item">
+                  <img src={icTick} /><p>Access to LPMA Foundry, our information hub comprised of resources, articles and case studies</p>
+                </div>
+                <div className="terms-item">
+                  <img src={icTick} /><p>Free copies of Building Blocks, Connecting the Dots and Numbers Game </p>
+                </div>
+                <div className="terms-item">
+                  <img src={icTick} /><p>Invitiation to the LPMA Group Forum</p>
+                </div>
+                <div className="terms-item">
+                  <img src={icTick} /><p>Free tickets to the LPMA Premium Connection Day and LPMA Round Table</p>
+                </div>
+                <div className="terms-item">
+                  <img src={icTick} /><p>A 40% discount to all LPMA Events</p>
+                </div>
+                <div className="terms-item">
+                  <img src={icTick} /><p>Access to the LPMA Research Lab</p>
+                </div>
+                <div className="terms-item">
+                <img src={icTick} /><p>Access to our digital consulting tools and frameworks</p>
+                </div>
+              </div>
+              <div className="submit-btn">JOIN LPMA</div>
+            </div>
           </div>
-        </div> */}
+        </div>
       </div>
     );
   }
