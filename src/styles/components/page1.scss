@@ -1,0 +1,92 @@
+#page_1 {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  background-color: #464F53;
+  height: 100vh;
+  .overlay-image {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-image: url(../assets/images/NewDesign/bk-intro-1.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    width: 75vh;
+    height: 75vh;
+    mix-blend-mode: screen;
+    opacity: 0.4;
+  }
+  .slide-1 {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    padding-top: calc(35vh - (1.2em * 2));
+    .banner-title {
+      margin: 0 auto;
+      max-width: 60vw;
+      color: #fff;
+      font-family: "DomaineSansMedium";
+      font-size: 3.3em;
+      text-align: center;
+      letter-spacing: -0.03em;
+      span {
+        color: $primary-color;
+      }
+    }
+    .scroll-instruction {
+      position: absolute;
+      bottom: 5vh;
+      text-align: center;
+      font-size: 18px;
+      line-height: 26px;
+      top: auto;
+      width: 100%;
+      color: #fff;
+      font-family: "DomaineSansMedium";
+    }
+  }
+  .slide-2 {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    top: calc(40vh - 1.2em);
+    .banner-title {
+      width: 100%;
+      text-align: center;
+      color: #fff;
+      font-family: "DomaineSansMedium";
+      font-size: 3.3em;
+      letter-spacing: -0.03em;
+    }
+    .reason-bar {
+      height: 5px;
+      width: 40vw;
+      margin: 0 30vw;
+      background: transparent;
+      display: flex;
+      justify-content: space-between;
+      .bar {
+        align-self: stretch;
+        width: 14vh;
+        
+      }
+      .item-1 {
+        background: #70BF54;
+      }
+      .item-2 {
+        background: #93D6E3;
+      }
+      .item-3 {
+        background: #F0BC69;
+      }
+      .item-4 {
+        background: #E59381;
+      }
+    }
+  }
+}

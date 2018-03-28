@@ -1,0 +1,146 @@
+#page_3 {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  .left {
+    position: absolute;
+    overflow: hidden;
+    width: 50%;
+    height: 100%;
+    background-color: transparent;
+    display: flex;
+    align-items: center;
+    .spinner {
+      position: absolute;
+      width: 200vw;
+      height: 200vh;
+      right: 0;
+      background-color: $page3-primary;
+      transform-origin: right center;
+      transform: rotate(-180deg);
+    }
+    .animated {
+      transform: rotate(0deg);
+    }
+  }
+  .right {
+    position: absolute;
+    overflow: hidden;
+    width: 50%;
+    height: 100%;
+    left: 50%;
+    background-color: transparent;
+    display: flex;
+    align-items: center;
+    .spinner {
+      position: absolute;
+      width: 200vw;
+      height: 200vh;
+      transform-origin: left center;
+      background-color: $page3-primary;
+      transform: rotate(-180deg);
+    }
+    // right: 0;
+  }
+  .slide-1 {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    h1 {
+      text-align: center;
+      text-transform: uppercase;
+      color: $white;
+      font-family: "DomaineSansMedium";
+      font-size: 4.5em;
+    }
+    p {
+      text-align: center;
+      text-transform: uppercase;
+      color: $text-primary;
+      font-size: 1em;
+    }
+  }
+  .slide-2 {
+    .background-image {
+      position: fixed;
+      top: 10vh;
+      left: calc(50vw - 40vh);
+      width: 40vh;
+      height: 80vh;
+      opacity: 0;
+      transition: opacity 1s;
+      transition-delay: 1s;
+    }
+    .full-left {
+      .overlay-spinner {
+        background: $page3-primary;
+      }
+    }
+    .animating-layer {
+      .right {
+        .overlay-1 {
+          background: $page3-primary-light; 
+        }
+      }
+      .left {
+        .overlay-3 {
+          .inner {
+            background: $page3-primary-light;
+          }
+        }
+      }
+    }
+    .topic-1 {
+      .wrapper {
+        h5 {
+          color: $page3-primary;
+        }
+        h1 {
+          span {
+            color: $page3-primary;
+          }
+        }
+      }
+    }
+    .topic-2 {
+      .wrapper {
+        h1 {
+          span {
+            color: $page3-primary;
+          }
+        }
+      }
+    }
+    .topic-3 {
+      .wrapper {
+        h1 {
+          span {
+            color: $page3-primary;
+          }
+        }
+      }
+    }
+  }
+  .overlay-spinner {
+    position: absolute;
+    width: 2000vw;
+    height: 200vw;
+    background: white;
+    overflow: hidden;
+    transform-origin: left center;
+    transform: rotate(-180deg);
+    &.show {
+      opacity: 1;
+    }
+    &.hide {
+      opacity: 0;
+    }
+  }
+}

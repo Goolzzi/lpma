@@ -1,148 +1,15 @@
 @import "variables";
 @import "typography";
 @import "animations";
+@import "./components/page1.scss";
+@import "./components/page2.scss";
+@import "./components/page3.scss";
 
 ::-webkit-scrollbar { 
   display: none; 
 }
 ul, li {
   margin: 0;
-}
-#page_1 {
-  position: fixed;
-  top: 0;
-  right: 0;
-  left: 0;
-  background-color: #464F53;
-  height: 100vh;
-  .overlay-image {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-image: url(../assets/images/NewDesign/bk-intro-1.png);
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: contain;
-    width: 75vh;
-    height: 75vh;
-    mix-blend-mode: screen;
-    opacity: 0.4;
-  }
-  .slide-1 {
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    opacity: 0;
-    padding-top: calc(35vh - (1.2em * 2));
-    .banner-title {
-      margin: 0 auto;
-      max-width: 60vw;
-      color: #fff;
-      font-family: "DomaineSansMedium";
-      font-size: 3.3em;
-      text-align: center;
-      letter-spacing: -0.03em;
-      span {
-        color: $primary-color;
-      }
-    }
-    .scroll-instruction {
-      position: absolute;
-      bottom: 5vh;
-      text-align: center;
-      font-size: 18px;
-      line-height: 26px;
-      top: auto;
-      width: 100%;
-      color: #fff;
-      font-family: "DomaineSansMedium";
-    }
-  }
-  .slide-2 {
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    opacity: 0;
-    top: calc(40vh - 1.2em);
-    .banner-title {
-      width: 100%;
-      text-align: center;
-      color: #fff;
-      font-family: "DomaineSansMedium";
-      font-size: 3.3em;
-      letter-spacing: -0.03em;
-    }
-    .reason-bar {
-      height: 5px;
-      width: 40vw;
-      margin: 0 30vw;
-      background: transparent;
-      display: flex;
-      justify-content: space-between;
-      .bar {
-        align-self: stretch;
-        width: 14vh;
-        
-      }
-      .item-1 {
-        background: #70BF54;
-      }
-      .item-2 {
-        background: #93D6E3;
-      }
-      .item-3 {
-        background: #F0BC69;
-      }
-      .item-4 {
-        background: #E59381;
-      }
-    }
-  }
-}
-#page_2 {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  background: #70BF54;
-  opacity: 0;
-  .slide-1 {
-    position: fixed;
-    left: 0;
-    top: calc(40vh - 1.1em);
-    width: 100%;
-    opacity: 0;
-    .banner-title {
-      width: 100%;
-      text-align: center;
-      color: #fff;
-      font-family: "DomaineSansMedium";
-      font-size: 4.8em;
-    }
-    .desc {
-      width: 100%;
-      text-align: center;
-      font-size: 1em;
-      font-family: "DomaineSansMedium";
-      color: #3B4145;
-    }
-  }
-  .slide-2 {
-    .background-image {
-      position: fixed;
-      top: 10vh;
-      left: calc(50vw - 40vh);
-      width: 40vh;
-      height: 80vh;
-      background-color: transparent;
-      background-size: cover;
-      background-image: url(../assets/images/NewDesign/bk-intro-2.png);
-      opacity: 0;
-      transition: opacity 1s;
-      transition-delay: 1s;
-    }
-  }
 }
 .animating-layer {
   width: 80vh;
@@ -178,19 +45,6 @@ ul, li {
     opacity: 0;
     background: #78CC5A;
   }
-  .overlay-2 {
-    width: 50%;
-    position: absolute;
-    height: 100%;
-    background: #70bf54;
-    opacity: 0;
-    &.show {
-      opacity: 1;
-    }
-    &.hide {
-      opacity: 0;
-    }
-  }
   .overlay-3 {
     position: absolute;
     width: 100%;
@@ -206,22 +60,6 @@ ul, li {
       background:#78CC5A;
       transform-origin: right center;
       transform: rotate(-180deg);
-    }
-  }
-  .overlay-4 {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background: #70bf54;
-    overflow: hidden;
-    transform-origin: right center;
-    transform: rotate(0deg);
-    opacity: 0;
-    &.show {
-      opacity: 1;
-    }
-    &.hide {
-      opacity: 0;
     }
   }
 }
@@ -240,13 +78,6 @@ ul, li {
     transform-origin: right center;
     transform: rotate(0deg);
     opacity: 0;
-    
-    &.show {
-      opacity: 1;
-    }
-    &.hide {
-      opacity: 0;
-    }
   }
 }
 .full-right {
@@ -374,6 +205,11 @@ ul, li {
           color: $text-secondary;
         }
       }
+      p {
+        padding-left: 1rem;
+        font-size: 0.9em;
+        font-family: "DomaineSansLight";
+      }
       .blog-card {
         display: flex;
         align-items: flex-start;
@@ -397,91 +233,6 @@ ul, li {
     }
   }
 }
-#page_3 {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  background: transparent;
-  .left {
-    position: absolute;
-    overflow: hidden;
-    width: 50%;
-    height: 100%;
-    background-color: transparent;
-    display: flex;
-    align-items: center;
-    .spinner {
-      position: absolute;
-      width: 200vw;
-      height: 200vh;
-      right: 0;
-      background-color: $background_page3;
-      transform-origin: right center;
-      transform: rotate(-180deg);
-    }
-    .animated {
-      transform: rotate(0deg);
-    }
-  }
-  .right {
-    position: absolute;
-    overflow: hidden;
-    width: 50%;
-    height: 100%;
-    left: 50%;
-    background-color: transparent;
-    display: flex;
-    align-items: center;
-    .spinner {
-      position: absolute;
-      width: 200vw;
-      height: 200vh;
-      transform-origin: left center;
-      background-color: $background_page3;
-      transform: rotate(-180deg);
-    }
-    // right: 0;
-  }
-  .page3-wrapper {
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    h1 {
-      text-align: center;
-      text-transform: uppercase;
-      color: $white;
-      font-family: "DomaineSansMedium";
-      font-size: 4.5em;
-    }
-    p {
-      text-align: center;
-      text-transform: uppercase;
-      color: $text-primary;
-      font-size: 1em;
-    }
-  }
-  .overlay-spinner {
-    position: absolute;
-    width: 2000vw;
-    height: 200vw;
-    background: white;
-    overflow: hidden;
-    transform-origin: left center;
-    transform: rotate(-180deg);
-    background-color: $background_page3;
-    &.show {
-      opacity: 1;
-    }
-    &.hide {
-      opacity: 0;
-    }
-  }
-}
+
 @import "./components/header.scss";
 
