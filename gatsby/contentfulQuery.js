@@ -45,5 +45,18 @@ module.exports = `
       }
     }
   }
+  allContentfulConditions {
+    edges {
+      node {
+        title
+        slug
+        content {
+          childMarkdownRemark {
+            html
+          }
+        }
+      }
+    }
+  }
 }
 `;

@@ -6,29 +6,27 @@ import "./styles.scss";
 
 const propTypes = {
   title: PropTypes.object.isRequired,
-  mainLinks: PropTypes.array.isRequired,
-  secondaryLinks: PropTypes.array.isRequired,
+  menu: PropTypes.array.isRequired,
   privacy: PropTypes.object.isRequired,
   logo: PropTypes.object.isRequired,
   forUSA: PropTypes.bool.isRequired,
-  joinLink: PropTypes.object,
   socialLinks: PropTypes.array.isRequired,
+  contactInfo: PropTypes.object.isRequired,
 };
 
 //FIXME: improve footer for us and defoult view
 const Footer = ({
   title,
-  mainLinks,
-  secondaryLinks,
+  menu,
   privacy,
+  contactInfo,
   logo,
-  joinLink,
   socialLinks,
   forUSA,
 }) => {
   const menuItems = forUSA
-    ? mainLinks.filter(({country}) => country === "us")
-    : mainLinks;
+    ? menu.filter(({country}) => country === "us")
+    : menu;
   return (
     <div className="footer">
       {forUSA ? (
@@ -95,16 +93,12 @@ const Footer = ({
               <div className="vertical-line" />
             </div>
             <div className="column footer-2 white-links-column with-button">
-              {secondaryLinks.map(({id, name, to}) => (
-                <Link key={id} to={to}>
-                  {name}
-                </Link>
-              ))}
-              <Link {...joinLink}>
-                <button className="btn primary fullwidth">
-                  {joinLink.name}
-                </button>
-              </Link>
+              <div
+                className="contact-info-wrapper"
+                dangerouslySetInnerHTML={{
+                  __html: contactInfo.childMarkdownRemark.html,
+                }}
+              />
             </div>
           </div>
         </div>
