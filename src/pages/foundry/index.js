@@ -1,23 +1,23 @@
 import React from "react";
 import PropTypes from "prop-types";
 import Link from "gatsby-link";
-import "./styles.scss";
-import FeedbackForm from "../../components/FeedbackForm";
+import withAuth from "../../Auth/withAuth";
 import {fisherYates} from "../../utils";
-import auth from "../../Auth";
+import "./styles.scss";
 
 class MyFoundryPage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      nickname: "",
+      username: "",
     };
   }
 
   componentDidMount() {
-    if (auth.isAuthenticated()) {
-      const user = auth.getUserProfile();
-      this.setState({nickname: user.username});
+    const {isAuthenticated, getUserData} = this.props.auth;
+    if (isAuthenticated()) {
+      const user = getUserData();
+      this.setState({username: user.username});
     }
   }
 
@@ -48,7 +48,7 @@ class MyFoundryPage extends React.Component {
                     <h2
                       dangerouslySetInnerHTML={{
                         __html: `${greeting.childMarkdownRemark.html} ${
-                          this.state.nickname
+                          this.state.username
                         }`,
                       }}
                     />
@@ -57,8 +57,8 @@ class MyFoundryPage extends React.Component {
               </div>
               <div className="columns">
                 {allContentfulFoundrySection.edges.map(
-                  ({node: {id, title, slug, excerpt}}) => (
-                    <div key={id} className="column is-6">
+                  ({node: {title, slug, excerpt}}) => (
+                    <div key={slug} className="column is-6">
                       <Link to={`/foundry/${slug}`}>
                         <div className="text">
                           <h3>{title}</h3>
@@ -108,9 +108,10 @@ class MyFoundryPage extends React.Component {
 
 MyFoundryPage.propTypes = {
   data: PropTypes.object.isRequired,
+  auth: PropTypes.object.isRequired,
 };
 
-export default MyFoundryPage;
+export default withAuth(MyFoundryPage);
 
 export const pageQuery = graphql`
   query MyFoundryPageQuery {

@@ -1,8 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
+import withAuth from "../../Auth/withAuth";
 import Link from "gatsby-link";
 import {EntypoTools, EntypoUser} from "react-entypo";
-import auth from "../../Auth";
 import "./styles.scss";
 
 const FoundryLogInPage = props => {
@@ -33,7 +33,7 @@ const FoundryLogInPage = props => {
               />
               <button
                 onClick={() => {
-                  auth.login();
+                  props.auth.login();
                 }}
                 className="btn secondary with-radius-5 smaller smaller-text outlined transparent">
                 {login.name}
@@ -111,9 +111,10 @@ const FoundryLogInPage = props => {
 
 FoundryLogInPage.propTypes = {
   data: PropTypes.object.isRequired,
+  auth: PropTypes.object.isRequired,
 };
 
-export default FoundryLogInPage;
+export default withAuth(FoundryLogInPage);
 
 export const pageQuery = graphql`
   query foundryPageQuery {

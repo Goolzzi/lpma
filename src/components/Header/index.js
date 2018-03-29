@@ -1,19 +1,11 @@
 /* eslint jsx-a11y/anchor-is-valid : 0 */
 import React from "react";
 import PropTypes from "prop-types";
-import auth from "../../Auth";
 import Link from "gatsby-link";
 import LoginLogout from "../LoginLogout";
-import Auth from "../../Auth";
+import withAuth from "../../Auth/withAuth";
 import classNames from "classnames";
 import "./styles.scss";
-
-const propTypes = {
-  topmenu: PropTypes.array.isRequired,
-  logo: PropTypes.object.isRequired,
-  foundryLinks: PropTypes.object.isRequired,
-  forUSA: PropTypes.bool.isRequired,
-};
 
 class Header extends React.Component {
   constructor(props) {
@@ -33,16 +25,21 @@ class Header extends React.Component {
   };
 
   renderLoginLogout = () => {
-    // disable login button fro the use version
+    const {login, logout, isAuthenticated} = this.props.auth;
     return this.props.forUSA !== true ? (
-      <LoginLogout cssClass={"navbar-item"} />
+      <LoginLogout
+        isAuthenticated={isAuthenticated()}
+        login={login}
+        logout={logout}
+        cssClass={"navbar-item"}
+      />
     ) : null;
   };
 
   render() {
-    const {topmenu, logo: {file}, foundryLinks, forUSA} = this.props;
+    const {auth, topmenu, logo: {file}, foundryLinks, forUSA} = this.props;
     const {isActive, isActiveMenu, isFoundryOpen} = this.state;
-    const isAuthenticated = Auth.isAuthenticated();
+    const isAuthenticated = auth.isAuthenticated();
     //TODO: imprve contry based component building
     const menuItems = forUSA
       ? topmenu.filter(({country}) => country === "us")
@@ -143,6 +140,12 @@ class Header extends React.Component {
   }
 }
 
-Header.propTypes = propTypes;
+Header.propTypes = {
+  topmenu: PropTypes.array.isRequired,
+  logo: PropTypes.object.isRequired,
+  auth: PropTypes.object.isRequired,
+  foundryLinks: PropTypes.object.isRequired,
+  forUSA: PropTypes.bool.isRequired,
+};
 
-export default Header;
+export default withAuth(Header);
