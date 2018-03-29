@@ -24,13 +24,13 @@ class MyFoundryPage extends React.Component {
   render() {
     const {
       data: {
-        contentfulMyFoundryHeading: {title, greeting, background, cards},
+        contentfulMyFoundryHeading: {title, greeting, background},
         allContentfulFoundryGuide: {edges},
+        allContentfulFoundrySection,
       },
     } = this.props;
     return (
       <div>
-        <section className="section container foundry-heading" />
         <section className="section foundry">
           <div className="image-wrapper">
             <img
@@ -56,18 +56,22 @@ class MyFoundryPage extends React.Component {
                 </div>
               </div>
               <div className="columns">
-                {cards.map(({id, title, content}) => (
-                  <div key={id} className="column is-6">
-                    <div className="text">
-                      <h3>{title}</h3>
-                      <div
-                        dangerouslySetInnerHTML={{
-                          __html: content.childMarkdownRemark.html,
-                        }}
-                      />
+                {allContentfulFoundrySection.edges.map(
+                  ({node: {id, title, slug, excerpt}}) => (
+                    <div key={id} className="column is-6">
+                      <Link to={`/foundry/${slug}`}>
+                        <div className="text">
+                          <h3>{title}</h3>
+                          <div
+                            dangerouslySetInnerHTML={{
+                              __html: excerpt.childMarkdownRemark.html,
+                            }}
+                          />
+                        </div>
+                      </Link>
                     </div>
-                  </div>
-                ))}
+                  ),
+                )}
               </div>
             </div>
           </section>
@@ -96,14 +100,6 @@ class MyFoundryPage extends React.Component {
               },
             )}
           </div>
-
-          <FeedbackForm
-            feedbackParams={{
-              type: "fondry",
-              title: "My Foundry",
-              slug: "foundry",
-            }}
-          />
         </section>
       </div>
     );
@@ -156,6 +152,19 @@ export const pageQuery = graphql`
             id
             childMarkdownRemark {
               excerpt
+            }
+          }
+        }
+      }
+    }
+    allContentfulFoundrySection(filter: {node_locale: {eq: "en-US"}}) {
+      edges {
+        node {
+          title
+          slug
+          excerpt {
+            childMarkdownRemark {
+              html
             }
           }
         }

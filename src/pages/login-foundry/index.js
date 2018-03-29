@@ -2,7 +2,6 @@ import React from "react";
 import PropTypes from "prop-types";
 import Link from "gatsby-link";
 import {EntypoTools, EntypoUser} from "react-entypo";
-import FeedbackForm from "../../components/FeedbackForm";
 import auth from "../../Auth";
 import "./styles.scss";
 
@@ -105,13 +104,6 @@ const FoundryLogInPage = props => {
             </Link>
           </div>
         </div>
-        <FeedbackForm
-          feedbackParams={{
-            type: "fondry",
-            title: "Foundry",
-            slug: "fondry",
-          }}
-        />
       </div>
     </React.Fragment>
   );

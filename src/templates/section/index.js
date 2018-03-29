@@ -61,17 +61,6 @@ const FoundrySection = ({
             ))}
         </div>
       </div>
-      <div className="container">
-        {feedbackForm !== false && (
-          <FeedbackForm
-            feedbackParams={{
-              type: "section",
-              title,
-              slug,
-            }}
-          />
-        )}
-      </div>
     </section>
   );
 };
