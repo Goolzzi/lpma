@@ -28,19 +28,19 @@ class Form extends React.Component {
           type="text"
           className="inp"
           name="FirstName"
-          placeholder="FirstName"
+          placeholder="First Name"
         />
         <input
           type="text"
           className="inp"
           name="LastName"
-          placeholder="LastName"
+          placeholder="Last Name"
         />
         <input
           type="text"
           className="inp"
           name="AgencyName"
-          placeholder="AgencyName"
+          placeholder="Agency Name"
         />
         <input
           required
@@ -53,7 +53,7 @@ class Form extends React.Component {
           type="text"
           className="inp"
           name="ContactNumber"
-          placeholder="ContactNumber"
+          placeholder="Contact Number"
         />
         <button type="submit" className="btn primary halfwidth">
           Submit
@@ -105,7 +105,6 @@ class JoinPage extends React.PureComponent {
             </div>
           </div>
         </section>
-        <BottomJumbotron {...edges[1].node} />
       </div>
     );
   }

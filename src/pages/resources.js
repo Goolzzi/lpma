@@ -85,7 +85,7 @@ export const pageQuery = graphql`
             }
           }
           image {
-            resolutions(quality: 100) {
+            resolutions(width: 1245, quality: 100) {
               src
               srcSet
             }

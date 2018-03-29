@@ -236,18 +236,6 @@ const LPMA2018Conferenceseries = ({
           </div>
         </div>
       </section>
-
-      <section className="section lpma2018-conferences-feedback">
-        <div className="container">
-          <FeedbackForm
-            feedbackParams={{
-              type: "lpma2018conferenceseries",
-              title: "lpma2018Conference",
-              slug: "lpma2018-conference-series",
-            }}
-          />
-        </div>
-      </section>
     </React.Fragment>
   );
 };

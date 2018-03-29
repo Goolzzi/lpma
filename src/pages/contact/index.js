@@ -148,21 +148,6 @@ class ContactPage extends React.Component {
             </div>
           </div>
         </section>
-        <section className="section">
-          <div className="container">
-            <div className="columns">
-              <div className="column">
-                <FeedbackForm
-                  feedbackParams={{
-                    type: "contact",
-                    title: "Contact",
-                    slug: "contact-lpma",
-                  }}
-                />
-              </div>
-            </div>
-          </div>
-        </section>
       </React.Fragment>
     );
   }

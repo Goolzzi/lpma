@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 import auth from "../../Auth";
 import Link from "gatsby-link";
 import LoginLogout from "../LoginLogout";
+import Auth from "../../Auth";
 import classNames from "classnames";
 import "./styles.scss";
 
@@ -41,6 +42,7 @@ class Header extends React.Component {
   render() {
     const {topmenu, logo: {file}, foundryLinks, forUSA} = this.props;
     const {isActive, isActiveMenu, isFoundryOpen} = this.state;
+    const isAuthenticated = Auth.isAuthenticated();
     //TODO: imprve contry based component building
     const menuItems = forUSA
       ? topmenu.filter(({country}) => country === "us")
@@ -69,51 +71,53 @@ class Header extends React.Component {
               "is-active": isActive,
             })}>
             <div className="navbar-end">
-              {menuItems.map(({id, to, name, slug}) => {
-                if (slug === "foundry" && auth.isAuthenticated()) {
-                  return (
-                    <button
-                      key={slug}
-                      onClick={() =>
-                        this.setState(prevState => ({
-                          isFoundryOpen: !prevState.isFoundryOpen,
-                        }))
-                      }
-                      className={classNames("navbar-item has-dropdown", {
-                        "is-active": isFoundryOpen,
-                      })}>
-                      <a href={"javascript:;"} className="navbar-link">
-                        {name}
-                      </a>
-                      <div className="navbar-dropdown">
-                        <Link
-                          key={slug}
-                          to={`/foundry/`}
-                          className={"navbar-item"}>
-                          {"My Fondry"}
-                        </Link>
-                        {foundryLinks.edges.map(({node: {title, slug}}) => (
+              {menuItems
+                .filter(({name}) => name !== "Resources" || isAuthenticated)
+                .map(({id, to, name, slug}) => {
+                  if (slug === "foundry" && auth.isAuthenticated()) {
+                    return (
+                      <button
+                        key={slug}
+                        onClick={() =>
+                          this.setState(prevState => ({
+                            isFoundryOpen: !prevState.isFoundryOpen,
+                          }))
+                        }
+                        className={classNames("navbar-item has-dropdown", {
+                          "is-active": isFoundryOpen,
+                        })}>
+                        <a href={"javascript:;"} className="navbar-link">
+                          {name}
+                        </a>
+                        <div className="navbar-dropdown">
                           <Link
                             key={slug}
-                            to={`/foundry/${slug}`}
+                            to={`/foundry/`}
                             className={"navbar-item"}>
-                            {title}
+                            {"My Fondry"}
                           </Link>
-                        ))}
-                      </div>
-                    </button>
+                          {foundryLinks.edges.map(({node: {title, slug}}) => (
+                            <Link
+                              key={slug}
+                              to={`/foundry/${slug}`}
+                              className={"navbar-item"}>
+                              {title}
+                            </Link>
+                          ))}
+                        </div>
+                      </button>
+                    );
+                  }
+                  return (
+                    <Link
+                      className={"navbar-item"}
+                      onClick={this.handleClick}
+                      key={id}
+                      to={to}>
+                      {name}
+                    </Link>
                   );
-                }
-                return (
-                  <Link
-                    className={"navbar-item"}
-                    onClick={this.handleClick}
-                    key={id}
-                    to={to}>
-                    {name}
-                  </Link>
-                );
-              })}
+                })}
               {this.renderLoginLogout()}
             </div>
           </div>
