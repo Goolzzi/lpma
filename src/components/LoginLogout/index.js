@@ -2,8 +2,6 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-
-//todo fix props undef values case!
 const LoginLogout = ({logout, login, isAuthenticated, cssClass}) => {
   if (isAuthenticated) {
     return (
@@ -23,7 +21,7 @@ LoginLogout.propTypes = {
   logout: PropTypes.func.isRequired,
   login: PropTypes.func.isRequired,
   isAuthenticated: PropTypes.bool.isRequired,
-  cssClass: PropTypes.string.isRequired,
+  cssClass: PropTypes.string,
 };
 
 export default LoginLogout;

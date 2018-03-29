@@ -1,17 +1,19 @@
 import React from "react";
 import PropTypes from "prop-types";
 import Link from "gatsby-link";
+import withAuth from "../../Auth/withAuth";
 import LoginLogout from "../../components/LoginLogout";
 import "./styles.scss";
 
-const propTypes = {
-  title: PropTypes.object.isRequired,
-  menu: PropTypes.array.isRequired,
-  privacy: PropTypes.object.isRequired,
-  logo: PropTypes.object.isRequired,
-  forUSA: PropTypes.bool.isRequired,
-  socialLinks: PropTypes.array.isRequired,
-  contactInfo: PropTypes.object.isRequired,
+const renderLoginLogout = (auth, forUSA) => {
+  const {login, logout, isAuthenticated} = auth;
+  return forUSA !== true ? (
+    <LoginLogout
+      isAuthenticated={isAuthenticated()}
+      login={login}
+      logout={logout}
+    />
+  ) : null;
 };
 
 //FIXME: improve footer for us and defoult view
@@ -23,10 +25,12 @@ const Footer = ({
   logo,
   socialLinks,
   forUSA,
+  auth,
 }) => {
   const menuItems = forUSA
     ? menu.filter(({country}) => country === "us")
     : menu;
+
   return (
     <div className="footer">
       {forUSA ? (
@@ -87,7 +91,7 @@ const Footer = ({
                   </Link>
                 );
               })}
-              <LoginLogout />
+              {renderLoginLogout(auth, forUSA)}
             </div>
             <div className="column footer-1">
               <div className="vertical-line" />
@@ -122,6 +126,15 @@ const Footer = ({
   );
 };
 
-Footer.propTypes = propTypes;
+Footer.propTypes = {
+  title: PropTypes.object.isRequired,
+  menu: PropTypes.array.isRequired,
+  privacy: PropTypes.object.isRequired,
+  logo: PropTypes.object.isRequired,
+  forUSA: PropTypes.bool.isRequired,
+  socialLinks: PropTypes.array.isRequired,
+  contactInfo: PropTypes.object.isRequired,
+  auth: PropTypes.object.isRequired,
+};
 
-export default Footer;
+export default withAuth(Footer);
