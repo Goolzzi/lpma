@@ -61,6 +61,9 @@ class LandingPage extends React.PureComponent{
       '',
       '',
       '',
+      /**
+       *  last pricing form
+       */
       { page: '' },
     ];
     this.scrollDirection = true;
@@ -353,14 +356,15 @@ class LandingPage extends React.PureComponent{
         this.animationClasses[27] = 'cFadeOutUp';
         this.animationClasses[28] = 'cFadeIn animation-delay-1_1';
         this.animationClasses[29] = direction ? '' : 'cFadeOutDown';
-        this.animationClasses[30].left = '';
-        this.animationClasses[30].right = '';
-        this.animationClasses[30].pageTitle = '';
+        
         break;
       case 25:
         this.animationClasses[28] = 'cFadeOutUp';
         this.animationClasses[29] = direction ? 'cFadeIn animation-delay-1_1' : 'cFadeIn animation-delay-3';
-        this.animationClasses[30].page = direction ? '' : 'fullPageFadeInUp animation-delay-3';
+        this.animationClasses[30].page = direction ? '' : 'fullPageFadeOutDown';
+        break;
+      case 26:
+        this.animationClasses[30].page = 'fullPageFadeInUp';
         break;
     }
   }
@@ -691,10 +695,10 @@ class LandingPage extends React.PureComponent{
             </div>
           </div>
         </div>
-        <div id="page_6">
+        <div id={`page_6`} className={`${this.animationClasses[30].page}`}>
           {/* <div className="overlay-image" /> */}
 
-          <div className={`slide-1 ${this.animationClasses[30].page}`}>
+          <div className="slide-1">
             <h1>Flat Monthly Pricing</h1>
             <div className="pricing-box">
               <div className="pricing-text">
