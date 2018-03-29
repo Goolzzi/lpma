@@ -18,6 +18,7 @@ class LandingPage extends React.PureComponent{
     this.state =  {
       animationIndex: 0,
       lastScrollPosition: 0,
+      contactForm: false
     }
     this.scrolling = false;
     this.innerScrolling = false;
@@ -65,6 +66,7 @@ class LandingPage extends React.PureComponent{
        *  last pricing form
        */
       { page: '' },
+      { form: ''}
     ];
     this.scrollDirection = true;
   }
@@ -368,7 +370,11 @@ class LandingPage extends React.PureComponent{
         break;
     }
   }
-
+  joinUs = () => {
+    console.log('%%%%%%%%%%')
+    this.setState({ contactForm: true});
+    this.animationClasses[31].form = 'cFadeIn';
+  }
   render () {
     this.getAnimationClassName(this.state.animationIndex, this.scrollDirection)
     return (
@@ -732,16 +738,55 @@ class LandingPage extends React.PureComponent{
                   <img src={icTick} /><p>Access to our digital consulting tools and frameworks</p>
                   </div>
                 </div>
-                <div className="submit-btn">JOIN LPMA</div>
+                <div className="submit-btn" onClick={() => this.joinUs()}>JOIN LPMA</div>
               </div>
             </div>
           </div>
         </div>
-        <div id="page_6">
-          {/* <div className="overlay-image" /> */}
-
+        {
+          this.state.contactForm && <div id="page_6">
+            <div className="overlay-image" />
+            <div className="join-form">
+              <h1>Join the property MANAGEMENT industry evolution. <span>Join LPMA</span>.</h1>
+              <div className="field">
+                <div className="control">
+                  <input className="input is-small" type="text" placeholder="Full name*" />
+                </div>
+              </div>
+              <div className="field">
+                <div className="control">
+                  <input className="input is-small" type="text" placeholder="Email Address*" />
+                </div>
+              </div>
+              <div className="field">
+                <div className="control">
+                  <input className="input is-small" type="text" placeholder="Your work phone*" />
+                </div>
+              </div>
+              <div className="field">
+                <div className="control">
+                  <input className="input is-small" type="text" placeholder="Your company*" />
+                </div>
+              </div>
+              <div className="field">
+                <div className="control">
+                  <div className="select is-small">
+                    <select>
+                      <option>Your region*</option>
+                      <option>With options</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+              <div className="field">
+                <div className="control">
+                  <a className="button">JOIN LPMA</a>
+                </div>
+              </div>
+            </div>
           
-        </div>
+          </div>
+        }
 
       </div>
     );
