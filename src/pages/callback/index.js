@@ -1,28 +1,33 @@
 import React, {Component} from "react";
 import PropTypes from "prop-types";
-import withAuth from "../../Auth/withAuth";
+import IRISAuth from "../../Auth/IRISAuth";
 import Loader from "../../components/Loader";
 
 class Callback extends Component {
-  handleAuthentication = () => {
+  handleAuthentication = auth => {
     if (/access_token|id_token|error/.test(this.props.location.hash)) {
-      this.props.auth.handleAuthentication();
+      auth.handleAuthentication();
     }
   };
 
   render() {
-    this.handleAuthentication();
     return (
-      <div className="loader-wrapper">
-        <Loader />
-      </div>
+      <IRISAuth
+        render={auth => {
+          this.handleAuthentication(auth);
+          return (
+            <div className="loader-wrapper">
+              <Loader />
+            </div>
+          );
+        }}
+      />
     );
   }
 }
 
 Callback.propTypes = {
   location: PropTypes.object.isRequired,
-  auth: PropTypes.object.isRequired,
 };
 
-export default withAuth(Callback);
+export default Callback;

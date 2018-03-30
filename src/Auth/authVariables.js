@@ -14,11 +14,6 @@ const authConfig_dev = {
   },
 };
 
-const callbackUrl =
-  process.env.NODE_ENV === "development"
-    ? localDevCallback
-    : process.argv[3] === "live" ? liveCallBack : stagingCallback;
-
 const authConfig_prod = {
   clientId: "38b44d670f8b0344568227702f59d20c7e88609c9f7f9cdffda6ac5324d1ce35",
   iris: "https://halo-identity.lpma.com.au",

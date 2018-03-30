@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import Link from "gatsby-link";
-import withAuth from "../../Auth/withAuth";
+import IRISAuth from "../../Auth/IRISAuth";
 import {fisherYates} from "../../utils";
 import "./styles.scss";
 
@@ -14,7 +14,7 @@ class MyFoundryPage extends React.Component {
   }
 
   componentDidMount() {
-    const {isAuthenticated, getUserData} = this.props.auth;
+    const {isAuthenticated, getUserData} = this.auth;
     if (isAuthenticated()) {
       const user = getUserData();
       this.setState({username: user.username});
@@ -30,88 +30,94 @@ class MyFoundryPage extends React.Component {
       },
     } = this.props;
     return (
-      <div>
-        <section className="section foundry">
-          <div className="image-wrapper">
-            <img
-              src={background.resolutions.src}
-              srcSet={background.resolutions.srcSet}
-              alt="my foundry heading"
-            />
-          </div>
-          <section className="section cont">
-            <div className="container">
-              <div className="columns">
-                <div className="column is-4">
-                  <div className="top-text">
-                    <p>{title}</p>
-                    <h2
-                      dangerouslySetInnerHTML={{
-                        __html: `${greeting.childMarkdownRemark.html} ${
-                          this.state.username
-                        }`,
-                      }}
-                    />
-                  </div>
+      <IRISAuth
+        render={auth => {
+          this.auth = auth;
+          return (
+            <div>
+              <section className="section foundry">
+                <div className="image-wrapper">
+                  <img
+                    src={background.resolutions.src}
+                    srcSet={background.resolutions.srcSet}
+                    alt="my foundry heading"
+                  />
                 </div>
-              </div>
-              <div className="columns">
-                {allContentfulFoundrySection.edges.map(
-                  ({node: {title, slug, excerpt}}) => (
-                    <div key={slug} className="column is-6">
-                      <Link to={`/foundry/${slug}`}>
-                        <div className="text">
-                          <h3>{title}</h3>
-                          <div
+                <section className="section cont">
+                  <div className="container">
+                    <div className="columns">
+                      <div className="column is-4">
+                        <div className="top-text">
+                          <p>{title}</p>
+                          <h2
                             dangerouslySetInnerHTML={{
-                              __html: excerpt.childMarkdownRemark.html,
+                              __html: `${greeting.childMarkdownRemark.html} ${
+                                this.state.username
+                              }`,
                             }}
                           />
                         </div>
-                      </Link>
-                    </div>
-                  ),
-                )}
-              </div>
-            </div>
-          </section>
-        </section>
-        <section className="section container foundry-columns">
-          <div className="columns">
-            {fisherYates(edges, 3).map(
-              ({node: {id, title, slug, excerpt, foundrystep}}) => {
-                return (
-                  <div key={id + slug} className="column is-4">
-                    <Link
-                      to={`/foundry/${slug}/${
-                        fisherYates(foundrystep, 1)[0].slug
-                      }`}>
-                      <div className="column-item">
-                        <h3>{title}</h3>
-                        <p
-                          dangerouslySetInnerHTML={{
-                            __html: excerpt.childMarkdownRemark.excerpt,
-                          }}
-                        />
                       </div>
-                    </Link>
+                    </div>
+                    <div className="columns">
+                      {allContentfulFoundrySection.edges.map(
+                        ({node: {title, slug, excerpt}}) => (
+                          <div key={slug} className="column is-6">
+                            <Link to={`/foundry/${slug}`}>
+                              <div className="text">
+                                <h3>{title}</h3>
+                                <div
+                                  dangerouslySetInnerHTML={{
+                                    __html: excerpt.childMarkdownRemark.html,
+                                  }}
+                                />
+                              </div>
+                            </Link>
+                          </div>
+                        ),
+                      )}
+                    </div>
                   </div>
-                );
-              },
-            )}
-          </div>
-        </section>
-      </div>
+                </section>
+              </section>
+              <section className="section container foundry-columns">
+                <div className="columns">
+                  {fisherYates(edges, 3).map(
+                    ({node: {id, title, slug, excerpt, foundrystep}}) => {
+                      return (
+                        <div key={id + slug} className="column is-4">
+                          <Link
+                            to={`/foundry/${slug}/${
+                              fisherYates(foundrystep, 1)[0].slug
+                            }`}>
+                            <div className="column-item">
+                              <h3>{title}</h3>
+                              <p
+                                dangerouslySetInnerHTML={{
+                                  __html: excerpt.childMarkdownRemark.excerpt,
+                                }}
+                              />
+                            </div>
+                          </Link>
+                        </div>
+                      );
+                    },
+                  )}
+                </div>
+              </section>
+            </div>
+          );
+        }}
+      />
     );
   }
 }
 
 MyFoundryPage.propTypes = {
   data: PropTypes.object.isRequired,
-  auth: PropTypes.object.isRequired,
 };
 
-export default withAuth(MyFoundryPage);
+export default MyFoundryPage;
 
 export const pageQuery = graphql`
   query MyFoundryPageQuery {
