@@ -16,8 +16,13 @@ class Auth {
       this.fetchTokenInfo()
         .then(resoult => resoult.json())
         .then(info => {
-          this.setUserData(info);
-          navigateTo("/foundry");
+          if (!~info.group_ids.indexOf(authConfig.lpmaGroupID)) {
+            //todo open popup!
+            this.logout();
+          } else {
+            this.setUserData(info);
+            navigateTo("/foundry");
+          }
         })
         .catch(err => console.log("user profile error", err)); //eslint-disable-line
     }
