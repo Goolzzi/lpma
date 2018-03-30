@@ -186,3 +186,56 @@
     }
   }
 }
+
+.custom-modal-wrapper {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+  background-color: rgba(63, 63, 63, 0.75);
+
+  @include mobile {
+    padding: 1rem;
+  }
+
+  .custom-modal {
+    border: 1px solid rgb(204, 204, 204);
+    background: $white;
+    overflow: auto;
+    border-radius: 4px;
+    outline: none;
+
+    @include not-mobile {
+      top: 50%;
+      left: 50%;
+      right: auto;
+      bottom: auto;
+      max-width: 50%;
+      margin-right: -50%;
+      transform: translate(-50%, -50%);
+      position: absolute;
+    }
+
+    @include mobile {
+      max-width: 100%;
+      width: 100%;
+    }
+
+    .custom-modal-top {
+      padding: 1rem 1rem 0px 1rem;
+
+      .title {
+        margin: 0px;
+      }
+    }
+
+    .custom-modal-content {
+      padding: 1rem 1rem 0px 1rem;
+    }
+
+    .custom-modal-bottom {
+      padding: 1rem;
+    }
+  }
+}

@@ -15,17 +15,6 @@ const propTypes = {
   location: PropTypes.object.isRequired,
 };
 
-const customStyles = {
-  content: {
-    top: "50%",
-    left: "50%",
-    right: "auto",
-    bottom: "auto",
-    marginRight: "-50%",
-    transform: "translate(-50%, -50%)",
-  },
-};
-
 class IndexPage extends React.Component {
   constructor(props) {
     super(props);
@@ -48,24 +37,30 @@ class IndexPage extends React.Component {
     return (
       <React.Fragment>
         <Modal
-          style={customStyles}
           isOpen={this.state.showModal}
+          className='custom-modal'
+          overlayClassName='custom-modal-wrapper'
           ariaHideApp={false}
           contentLabel="Modal">
-          <div>
+          <div className='custom-modal-top has-text-centered'>
+            <h2 className='title is-4'>Warning!</h2>
+          </div>
+          <div className='custom-modal-content'>
             We've detected a problem with your account. It might be that you
             aren't a current LPMA member, or it may be an error on our end. If
             you need some help resolving this get in touch with us using the
             speech bubble at the bottom right of the page.
           </div>
-          <button
-            className="button is-success"
-            onClick={() => {
-              window.location.hash = "";
-              this.setState({showModal: false});
-            }}>
-            OK
-          </button>
+          <div className='custom-modal-bottom has-text-centered'>
+            <button
+              className="btn primary smaller onequarterwidth"
+              onClick={() => {
+                window.location.hash = "";
+                this.setState({showModal: false});
+              }}>
+              OK
+            </button>
+          </div>
         </Modal>
         <div>
           <TopJumbotron {...edges[0].node} />
