@@ -5,13 +5,13 @@ import PropTypes from "prop-types";
 const LoginLogout = ({logout, login, isAuthenticated, cssClass}) => {
   if (isAuthenticated) {
     return (
-      <a className={cssClass} onClick={logout}>
+      <a className={cssClass} onClick={()=>logout()}>
         Logout
       </a>
     );
   }
   return (
-    <a className={cssClass} onClick={login}>
+    <a className={cssClass} onClick={()=>login()}>
       Login
     </a>
   );

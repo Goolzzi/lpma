@@ -16,9 +16,8 @@ class Auth {
       this.fetchTokenInfo()
         .then(resoult => resoult.json())
         .then(info => {
-          if (!~info.group_ids.indexOf(authConfig.lpmaGroupID)) {
-            //todo open popup!
-            this.logout();
+          if (~info.group_ids.indexOf(authConfig.lpmaGroupID)) {
+            this.logout("isNotMember=1");
           } else {
             this.setUserData(info);
             navigateTo("/foundry");
@@ -58,9 +57,12 @@ class Auth {
     }
   };
 
-  logout = () => {
+  logout = data => {
     this.dispose();
-    navigateTo("/");
+    navigateTo({
+      pathname: "/",
+      hash: data,
+    });
   };
 
   getKey = () => {
