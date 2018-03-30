@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import {parseHash} from "../utils";
+import Modal from "react-modal";
 import MemberBenefits from "../components/MemberBenefits";
 import Audience from "../components/Audience";
 import TopJumbotron from "../components/TopJumbotron";
@@ -8,7 +9,6 @@ import TopInfoColumns from "../components/TopInfoColumns";
 import BottomJumbotron from "../components/BottomJumbotron";
 import TestimonialsOne from "../components/TestimonialsOne";
 import TestimonialsTwo from "../components/TestimonilasTwo";
-import Modal from "react-modal";
 
 const propTypes = {
   data: PropTypes.object.isRequired,
@@ -38,20 +38,20 @@ class IndexPage extends React.Component {
       <React.Fragment>
         <Modal
           isOpen={this.state.showModal}
-          className='custom-modal'
-          overlayClassName='custom-modal-wrapper'
+          className="custom-modal"
+          overlayClassName="custom-modal-wrapper"
           ariaHideApp={false}
           contentLabel="Modal">
-          <div className='custom-modal-top has-text-centered'>
-            <h2 className='title is-4'>Warning!</h2>
+          <div className="custom-modal-top has-text-centered">
+            <h2 className="title is-4">Warning!</h2>
           </div>
-          <div className='custom-modal-content'>
-            We've detected a problem with your account. It might be that you
-            aren't a current LPMA member, or it may be an error on our end. If
-            you need some help resolving this get in touch with us using the
-            speech bubble at the bottom right of the page.
+          <div className="custom-modal-content">
+            We&apos;ve detected a problem with your account. It might be that
+            you aren&apos; t a current LPMA member, or it may be an error on our
+            end. If you need some help resolving this get in touch with us using
+            the speech bubble at the bottom right of the page.
           </div>
-          <div className='custom-modal-bottom has-text-centered'>
+          <div className="custom-modal-bottom has-text-centered">
             <button
               className="btn primary smaller onequarterwidth"
               onClick={() => {
