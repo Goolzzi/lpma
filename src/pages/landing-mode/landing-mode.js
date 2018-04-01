@@ -187,29 +187,23 @@ class LandingPage extends React.PureComponent{
         this.animationClasses[5] = 'cFadeOutUp';
         this.animationClasses[6] = 'cFadeIn animation-delay-1_1';
         this.animationClasses[7] = direction ? '' : 'cFadeOutDown';
-        this.animationClasses[8] = '';
-        break;
-      case 6:
-        this.animationClasses[6] = 'cFadeOutUp';
-        this.animationClasses[7] = 'cFadeIn animation-delay-1_1';
-        this.animationClasses[8] = direction ? '' : 'cFadeOutDown';
         this.animationClasses[9].left = '';
         this.animationClasses[9].right = '';
         this.animationClasses[9].pageTitle = '';
         break;
-      case 7:
-        this.animationClasses[7] = 'cFadeOutUp';
-        this.animationClasses[8] = direction ? 'cFadeIn animation-delay-1_1' : 'cFadeIn animation-delay-3';
+      case 6:
+        this.animationClasses[6] = 'cFadeOutUp';
+        this.animationClasses[7] = direction ? 'cFadeIn animation-delay-1_1' :  'cFadeIn animation-delay-3';
         this.animationClasses[9].left = direction ? '' : 'rotateTo0 animated animation-delay-3';
         this.animationClasses[9].right = direction ? '' : 'rotateTo0 animated animation-delay-1';
         this.animationClasses[9].pageTitle = direction ? '' : 'cFadeOutDown';
         break;
-
+        break;
       /**
        * Page 3
        */
-      case 8:
-        this.animationClasses[8] = 'cFadeOutUp';
+      case 7:
+        this.animationClasses[7] = 'cFadeOutUp';
         this.animationClasses[9].left = 'rotateTo180 animation-delay-1';
         this.animationClasses[9].right = 'rotateTo180 animation-delay-2';
         this.animationClasses[9].pageTitle = 'cFadeInUp animation-delay-2';
@@ -220,7 +214,7 @@ class LandingPage extends React.PureComponent{
         this.animationClasses[10].chapterTitle = direction ? '' : 'cFadeOutDown';
         this.animationClasses[10].background = direction? '' : 'hide';
         break;
-      case 9:
+      case 8:
         this.animationClasses[9].pageTitle = 'cFadeOutDown';
         this.animationClasses[10].background = 'cFadeIn animation-delay-2';
         this.animationClasses[10].fullLeftSpinner = 'spinOuterIn show animation-delay-2';
@@ -232,20 +226,20 @@ class LandingPage extends React.PureComponent{
         this.animationClasses[12] = direction ? '' : 'cFadeOutDown';
         this.animationClasses[13] = '';
         break;
-      case 10:
+      case 9:
         this.animationClasses[11].rightSpinner = 'spinRightIn animation-delay-1';
         this.animationClasses[10].chapterTitle = 'cFadeOutDown';
         this.animationClasses[12] = 'cFadeInUp animation-delay-2';
         this.animationClasses[13] = direction ? '' : 'cFadeOutDown';
         this.animationClasses[14] = '';
         break;
-      case 11:
+      case 10:
         this.animationClasses[12] = 'cFadeOutUp';
         this.animationClasses[13] = 'cFadeIn animation-delay-1_1';
         this.animationClasses[14] = direction ? '' : 'cFadeOutDown';
         this.animationClasses[15] = '';
         break;
-      case 12:
+      case 11:
         this.animationClasses[13] = 'cFadeOutUp';
         this.animationClasses[14] = 'cFadeIn animation-delay-1_1';
         this.animationClasses[15] = direction ? '' : 'cFadeOutDown';
@@ -253,7 +247,7 @@ class LandingPage extends React.PureComponent{
         this.animationClasses[16].right = '';
         this.animationClasses[16].pageTitle = '';
         break;
-      case 13:
+      case 12:
         this.animationClasses[14] = 'cFadeOutUp';
         this.animationClasses[15] = direction ? 'cFadeIn animation-delay-1_1' : 'cFadeIn animation-delay-3';
         this.animationClasses[16].left = direction ? '' : 'rotateTo0 animated animation-delay-3';
@@ -263,7 +257,7 @@ class LandingPage extends React.PureComponent{
       /**
        * Page 4
        */
-      case 14:
+      case 13:
         this.animationClasses[15] = 'cFadeOutUp';
         this.animationClasses[16].left = 'rotateTo180 animation-delay-1';
         this.animationClasses[16].right = 'rotateTo180 animation-delay-2';
@@ -445,15 +439,7 @@ class LandingPage extends React.PureComponent{
                   <img src={imgIntro2_1}/>
                 </div>
               </div>
-              <div className={`tutor-wrapper topic-2 ${this.animationClasses[7]}`}>
-                <div className="wrapper">
-                  <h5>01 / facts not myths</h5>
-                  <h1><span>25%</span> of industry managed investors don’t think WE DO WHAT WE SAY WE ARE GOING TO DO.</h1>
-                  <p>To grow you need to break this perception and regain our clients’ trust. The best businesses need to come together to find a new path forward.</p>
-                  <img src={imgPlaceholder}/>
-                </div>
-              </div>
-              <div ref={c => this.tutor = c} className={`tutor-wrapper topic-3 ${this.animationClasses[8]}`}>
+              <div ref={c => this.tutor = c} className={`tutor-wrapper topic-3 ${this.animationClasses[7]}`}>
                 <div ref={c => this.tutorWrapper = c} className={`wrapper`}>
                   <h5>01 / facts not myths</h5>
                   <h1>join the <span>largest network</span> of property management thinkers, leaders and practitioners TO BETTER UNDERSTAND THE FACTS.</h1>
