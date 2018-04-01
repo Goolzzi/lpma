@@ -21,8 +21,10 @@ import imgIntro4_2 from '../../assets/images/NewDesign/img-intro-4_2.svg';
 import imgIntro4_3 from '../../assets/images/NewDesign/img-intro-4_3.svg';
 import imgIntro4_4 from '../../assets/images/NewDesign/img-intro-4_4.svg';
 
+
 import bkIntro5 from '../../assets/images/NewDesign/bk-intro-5.png';
 import icTick from '../../assets/images/NewDesign/ic-tick.png';
+import icArrowDown from '../../assets/images/NewDesign/ic-arrow-down.svg';
 import "animate.css/animate.min.css";
 
 class LandingPage extends React.PureComponent{
@@ -99,15 +101,14 @@ class LandingPage extends React.PureComponent{
     this.wrapper.removeEventListener("touchmove", this.touchMove);
   }
   touchStart = ( event ) => {
-    console.log('touch start--', event)
     this.startY = event.changedTouches[0].clientY;
   }
   touchMove = ( event ) => {
     this.moveY = event.changedTouches[0].clientY;
     if (this.moveY > this.startY) {
-      this.scrollWindowDown();
-    } else {
       this.scrollWindowUp();
+    } else {
+      this.scrollWindowDown();
     }
   }
   wheelScroll = (event) => {
@@ -342,7 +343,7 @@ class LandingPage extends React.PureComponent{
         this.animationClasses[24].chapterTitle = direction ? '' : 'cFadeOutDown';
         this.animationClasses[24].background = direction? '' : 'hide';
         break;
-      case 21:
+      case 18:
         this.animationClasses[23].pageTitle = 'cFadeOutDown';
         this.animationClasses[24].background = 'cFadeIn animation-delay-2';
         this.animationClasses[24].fullLeftSpinner = 'spinOuterIn show animation-delay-2';
@@ -354,31 +355,31 @@ class LandingPage extends React.PureComponent{
         this.animationClasses[26] = direction ? '' : 'cFadeOutDown';
         this.animationClasses[27] = '';
         break;
-      case 22:
+      case 19:
         this.animationClasses[25].rightSpinner = 'spinRightIn animation-delay-1';
         this.animationClasses[24].chapterTitle = 'cFadeOutDown';
         this.animationClasses[26] = 'cFadeInUp animation-delay-2';
         this.animationClasses[27] = direction ? '' : 'cFadeOutDown';
         this.animationClasses[28] = '';
         break;
-      case 23:
+      case 20:
         this.animationClasses[26] = 'cFadeOutUp';
         this.animationClasses[27] = 'cFadeIn animation-delay-1_1';
         this.animationClasses[28] = direction ? '' : 'cFadeOutDown';
         this.animationClasses[29] = '';
         break;
-      case 24:
+      case 21:
         this.animationClasses[27] = 'cFadeOutUp';
         this.animationClasses[28] = 'cFadeIn animation-delay-1_1';
         this.animationClasses[29] = direction ? '' : 'cFadeOutDown';
         
         break;
-      case 25:
+      case 22:
         this.animationClasses[28] = 'cFadeOutUp';
         this.animationClasses[29] = direction ? 'cFadeIn animation-delay-1_1' : 'cFadeIn animation-delay-3';
         this.animationClasses[30].page = direction ? '' : 'fullPageFadeOutDown';
         break;
-      case 26:
+      case 23:
         this.animationClasses[30].page = 'fullPageFadeInUp';
         break;
     }
@@ -405,13 +406,14 @@ class LandingPage extends React.PureComponent{
             <h1 className="banner-title">
               FOUR REASONS<br />TO BE AN LPMA MEMBER
             </h1>
-            <div className={`reason-bar`}>
+            <div className="reason-bar">
               <div className="bar item-1"></div>
               <div className="bar item-2"></div>
               <div className="bar item-3"></div>
               <div className="bar item-4"></div>
             </div>
           </div>
+          <img className="scroll-instruction-arrow" src={icArrowDown} />
         </div>
         <div id="page_2" className={`${this.animationClasses[2].page}`}>
           <div className={`slide-1 ${this.animationClasses[2].title}`}>
