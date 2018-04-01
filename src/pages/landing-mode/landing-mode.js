@@ -13,9 +13,14 @@ import imgIntro2_4 from '../../assets/images/NewDesign/img-intro-1_4.svg';
 
 import imgIntro3_1 from '../../assets/images/NewDesign/img-intro-3_1.svg';
 import imgIntro3_2 from '../../assets/images/NewDesign/img-intro-3_2.svg';
+import imgIntro3_3 from '../../assets/images/NewDesign/img-intro-3_3.png';
+import imgIntro3_4 from '../../assets/images/NewDesign/img-intro-3_4.png';
 
-import imgIntro4_1 from '../../assets/images/NewDesign/img-intro-4_1.png';
-import imgIntro4_2 from '../../assets/images/NewDesign/img-intro-4_2.png';
+import imgIntro4_1 from '../../assets/images/NewDesign/img-intro-4_1.svg';
+import imgIntro4_2 from '../../assets/images/NewDesign/img-intro-4_2.svg';
+import imgIntro4_3 from '../../assets/images/NewDesign/img-intro-4_3.svg';
+import imgIntro4_4 from '../../assets/images/NewDesign/img-intro-4_4.svg';
+
 import bkIntro5 from '../../assets/images/NewDesign/bk-intro-5.png';
 import icTick from '../../assets/images/NewDesign/ic-tick.png';
 import "animate.css/animate.min.css";
@@ -576,8 +581,8 @@ class LandingPage extends React.PureComponent{
                 <div className="wrapper">
                   <h5>03 / grow more than your doors</h5>
                   <h1>ACCESS TO AILO INSIGHTS WILL HELP YOU <span>TRACK YOUR PERFORMANCE</span> IN REAL TIME.</h1>
-                  <img src={imgIntro4_1}/>
-                  <img src={imgIntro4_2}/>
+                  <img src={imgIntro3_4}/>
+                  <img src={imgIntro3_4}/>
                 </div>
               </div>
             </div>
@@ -629,8 +634,8 @@ class LandingPage extends React.PureComponent{
                   <h5>04 / find strength in our community</h5>
                   <h1>LPMA operates the <span>largest</span> series of networking events in the industry.</h1>
                   <p>At the local level we facilitate regular industry meetups, all the way through to large industry conferences with leading speakers and networking functions. All of this is supported by a large online community of professionals all seeking to learn from and support each other.</p>
-                  <img src={imgPlaceholder}/>
-                  <img src={imgPlaceholder}/>
+                  <img src={imgIntro4_1}/>
+                  <img src={imgIntro4_2}/>
                 </div>
               </div>
               <div className={`tutor-wrapper topic-2 ${this.animationClasses[28]}`}>
@@ -639,7 +644,6 @@ class LandingPage extends React.PureComponent{
                   <h1>everyone needs a little help from time to time to drive <span>real change</span> in a business.</h1>
                   <p>LPMA works with some of the best consultants in our industry. They are fully trained on our frameworks and resources and are ready to help.</p>
                   <img src={imgPlaceholder}/>
-                  <img src={imgPlaceholder}/>
                 </div>
               </div>
               <div ref={c => this.tutor = c} className={`tutor-wrapper topic-3 ${this.animationClasses[29]}`}>
@@ -647,8 +651,8 @@ class LandingPage extends React.PureComponent{
                   <h5>04 / find strength in our community</h5>
                   <h1><span>recognition</span> is good NOT JUST because you deserve it — IT ALSO helps you grow your business.</h1>
                   <p>recognition is good NOT JUST because you deserve it — IT ALSO helps you grow your business.</p>
-                  <img src={imgPlaceholder}/>
-                  {/* <img src={imgPlaceholder}/>  */}
+                  <img src={imgIntro4_3}/>
+                  <img src={imgIntro4_4}/>
                 </div>
               </div>
             </div>
