@@ -5,7 +5,12 @@ import imgThumb from '../../assets/images/NewDesign/img-thumb.svg';
 import bkIntro2 from '../../assets/images/NewDesign/bk-intro-2.png';
 import bkIntro3 from '../../assets/images/NewDesign/bk-intro-3.png';
 import bkIntro4 from '../../assets/images/NewDesign/bk-intro-4.png';
+
 import imgIntro2_1 from '../../assets/images/NewDesign/img-intro-1_1.svg';
+import imgIntro2_2 from '../../assets/images/NewDesign/img-intro-1_2.svg';
+import imgIntro2_3 from '../../assets/images/NewDesign/img-intro-1_3.svg';
+import imgIntro2_4 from '../../assets/images/NewDesign/img-intro-1_4.svg';
+
 import imgIntro4_1 from '../../assets/images/NewDesign/img-intro-4_1.png';
 import imgIntro4_2 from '../../assets/images/NewDesign/img-intro-4_2.png';
 import bkIntro5 from '../../assets/images/NewDesign/bk-intro-5.png';
@@ -426,36 +431,20 @@ class LandingPage extends React.PureComponent{
                   <img src={imgIntro2_1}/>
                 </div>
               </div>
-              <div ref={c => this.tutor = c} className={`tutor-wrapper topic-3 ${this.animationClasses[7]}`}>
-                <div ref={c => this.tutorWrapper = c} className={`wrapper`}>
+              <div className={`tutor-wrapper topic-3 ${this.animationClasses[7]}`}>
+                <div className="wrapper">
                   <h5>01 / facts not myths</h5>
                   <h1>join the <span>largest network</span> of property management thinkers, leaders and practitioners TO BETTER UNDERSTAND THE FACTS.</h1>
-                  <div className="blog-card">
-                    <img src={imgThumb} />
-                    <div className="blog-card-content">
-                      <h6 className="headline-text">Headline lorem ipsum</h6>
-                      <h6 className="desc-text">A focus on data and insights to help drive change in a business.</h6>
+                  <span>LPMA Evolution Book Series</span>
+                  <img src={imgIntro2_2}/>
+                  <div className="img-wrapper">
+                    <div className="left-side">
+                      <span>LPMA Industry Research Hub</span>
+                      <img src={imgIntro2_3}/>
                     </div>
-                  </div>
-                  <div className="blog-card">
-                    <img src={imgThumb} />
-                    <div className="blog-card-content">
-                      <h6 className="headline-text">Headline lorem ipsum</h6>
-                      <h6 className="desc-text">Integrated growth and business planning tools to help you succeed.</h6>
-                    </div>
-                  </div>
-                  <div className="blog-card">
-                    <img src={imgThumb} />
-                    <div className="blog-card-content">
-                      <h6 className="headline-text">Headline lorem ipsum</h6>
-                      <h6 className="desc-text">The largest team of property management consultants ready to help.</h6>
-                    </div>
-                  </div>
-                  <div className="blog-card">
-                    <img src={imgThumb} />
-                    <div className="blog-card-content">
-                      <h6 className="headline-text">Headline lorem ipsum</h6>
-                      <h6 className="desc-text">Large and small format conferences to challenge and support you.</h6>
+                    <div className="right-side">
+                      <span>INSIGHTFUL BLOG</span>
+                      <img src={imgIntro2_4}/>
                     </div>
                   </div>
                 </div>

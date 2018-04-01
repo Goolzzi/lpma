@@ -38,5 +38,27 @@
       transition: opacity 1s;
       transition-delay: 1s;
     }
+    .topic-3 {
+      span {
+        font-size: 0.6em;
+      }
+      img {
+        margin: 0;
+      }
+      .img-wrapper {
+        display: flex;
+        justify-content: space-between;
+        
+        .left-side {
+
+        }
+        .right-side {
+          padding-top: 3rem;
+          img {
+            padding-top: 1em;
+          }
+        }
+      }
+    }
   }
 }
