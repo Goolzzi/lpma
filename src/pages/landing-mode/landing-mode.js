@@ -11,6 +11,9 @@ import imgIntro2_2 from '../../assets/images/NewDesign/img-intro-1_2.svg';
 import imgIntro2_3 from '../../assets/images/NewDesign/img-intro-1_3.svg';
 import imgIntro2_4 from '../../assets/images/NewDesign/img-intro-1_4.svg';
 
+import imgIntro3_1 from '../../assets/images/NewDesign/img-intro-3_1.svg';
+import imgIntro3_2 from '../../assets/images/NewDesign/img-intro-3_2.svg';
+
 import imgIntro4_1 from '../../assets/images/NewDesign/img-intro-4_1.png';
 import imgIntro4_2 from '../../assets/images/NewDesign/img-intro-4_2.png';
 import bkIntro5 from '../../assets/images/NewDesign/bk-intro-5.png';
@@ -539,7 +542,7 @@ class LandingPage extends React.PureComponent{
               </div>
               <div className="left">
                 <div className={`overlay-3 ${this.animationClasses[17].leftSpinner}`}>
-                  <div className={`inner  ${this.animationClasses[17].leftInnerSpinner}`} />
+                  <div className={`inner ${this.animationClasses[17].leftInnerSpinner}`} />
                 </div>
               </div>
             </div>
@@ -561,8 +564,12 @@ class LandingPage extends React.PureComponent{
                   <h1>SUCCESS IS NOT POSSIBLE WITHOUT THE <span>RIGHT TEAM</span></h1>
                   <p>The right team has a high-performing culture and is supported by the best resources.</p>
                   <p>LPMA membership gives you and your team the tools to track and improve your team’s performance, and support the winning culture. </p>
-                  <img src={imgPlaceholder}/>
-                  <img src={imgPlaceholder}/>
+                  <div className="img-wrapper">
+                    <img src={imgThumb}/>
+                    <img src={imgIntro3_1}/>
+                    <img src={imgIntro3_2}/>
+                    <img src={imgThumb}/>
+                  </div>
                 </div>
               </div>
               <div className={`tutor-wrapper topic-3 ${this.animationClasses[21]}`}>
