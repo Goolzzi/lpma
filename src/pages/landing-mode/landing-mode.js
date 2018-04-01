@@ -498,6 +498,8 @@ class LandingPage extends React.PureComponent{
                   <h5>02 / build a growth plan</h5>
                   <h1>a growth plan starts with <span>understanding</span> your market.</h1>
                   <p>Each market has its own dynamics and own potential. No two markets are alike. Data can help you understand yours. </p>
+                  <p>The LPMA growth model identifies the opportunities in your market and helps identify areas where you can focus on for maximum growth.</p>
+                  <p>Use your growth plan to direct your team and define financial strategies to make sure your growth ambitions are supported.</p>
                   <img src={imgPlaceholder}/>
                 </div>
               </div>
