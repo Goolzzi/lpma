@@ -82,15 +82,33 @@ class LandingPage extends React.PureComponent{
       { page: '' },
       { form: ''}
     ];
+    this.startY = 0;
+    this.moveY = 0;
     this.scrollDirection = true;
   }
 
   componentDidMount() {
     this.wrapper.addEventListener("wheel", this.wheelScroll);
+    this.wrapper.addEventListener("touchstart", this.touchStart);
+    this.wrapper.addEventListener("touchmove", this.touchMove);
   }
 
   componentWillUnmount() {
-      this.wrapper.removeEventListener("wheel", this.wheelScroll);
+    this.wrapper.removeEventListener("wheel", this.wheelScroll);
+    this.wrapper.removeEventListener("touchstart", this.touchStart);
+    this.wrapper.removeEventListener("touchmove", this.touchMove);
+  }
+  touchStart = ( event ) => {
+    console.log('touch start--', event)
+    this.startY = event.changedTouches[0].clientY;
+  }
+  touchMove = ( event ) => {
+    this.moveY = event.changedTouches[0].clientY;
+    if (this.moveY > this.startY) {
+      this.scrollWindowDown();
+    } else {
+      this.scrollWindowUp();
+    }
   }
   wheelScroll = (event) => {
     const {top, left, right, bottom, height} = this.tutorWrapper.getBoundingClientRect();
