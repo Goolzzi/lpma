@@ -5,6 +5,7 @@ import imgThumb from '../../assets/images/NewDesign/img-thumb.svg';
 import bkIntro2 from '../../assets/images/NewDesign/bk-intro-2.png';
 import bkIntro3 from '../../assets/images/NewDesign/bk-intro-3.png';
 import bkIntro4 from '../../assets/images/NewDesign/bk-intro-4.png';
+import imgIntro2_1 from '../../assets/images/NewDesign/img-intro-1_1.svg';
 import imgIntro4_1 from '../../assets/images/NewDesign/img-intro-4_1.png';
 import imgIntro4_2 from '../../assets/images/NewDesign/img-intro-4_2.png';
 import bkIntro5 from '../../assets/images/NewDesign/bk-intro-5.png';
@@ -371,7 +372,6 @@ class LandingPage extends React.PureComponent{
     }
   }
   joinUs = () => {
-    console.log('%%%%%%%%%%')
     this.setState({ contactForm: true});
     this.animationClasses[31].form = 'cFadeIn';
   }
@@ -442,7 +442,7 @@ class LandingPage extends React.PureComponent{
                   <h1><span>78%</span> of investors would swap property managers today if they were confident your company had a better offer.</h1>
                   <p>It's not just about how hard you work, it's about how unique your offer is.  Our studies show that Investors are looking for differentiation and are more likely to take their business elsewhere. The landscape is more competitive than ever and now is your chance to better understand the truth about what your clients want.</p>
                   <p>Learn how to develop a growth plan that counts, learn how to grow and defend your business.</p>
-                  <img src={imgPlaceholder}/>
+                  <img src={imgIntro2_1}/>
                 </div>
               </div>
               <div className={`tutor-wrapper topic-2 ${this.animationClasses[7]}`}>
