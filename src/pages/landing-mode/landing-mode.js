@@ -198,7 +198,6 @@ class LandingPage extends React.PureComponent{
         this.animationClasses[9].right = direction ? '' : 'rotateTo0 animated animation-delay-1';
         this.animationClasses[9].pageTitle = direction ? '' : 'cFadeOutDown';
         break;
-        break;
       /**
        * Page 3
        */
@@ -237,19 +236,13 @@ class LandingPage extends React.PureComponent{
         this.animationClasses[12] = 'cFadeOutUp';
         this.animationClasses[13] = 'cFadeIn animation-delay-1_1';
         this.animationClasses[14] = direction ? '' : 'cFadeOutDown';
-        this.animationClasses[15] = '';
-        break;
-      case 11:
-        this.animationClasses[13] = 'cFadeOutUp';
-        this.animationClasses[14] = 'cFadeIn animation-delay-1_1';
-        this.animationClasses[15] = direction ? '' : 'cFadeOutDown';
         this.animationClasses[16].left = '';
         this.animationClasses[16].right = '';
         this.animationClasses[16].pageTitle = '';
         break;
-      case 12:
-        this.animationClasses[14] = 'cFadeOutUp';
-        this.animationClasses[15] = direction ? 'cFadeIn animation-delay-1_1' : 'cFadeIn animation-delay-3';
+      case 11:
+        this.animationClasses[13] = 'cFadeOutUp';
+        this.animationClasses[14] = direction ? 'cFadeIn animation-delay-1_1' : 'cFadeIn animation-delay-3';
         this.animationClasses[16].left = direction ? '' : 'rotateTo0 animated animation-delay-3';
         this.animationClasses[16].right = direction ? '' : 'rotateTo0 animated animation-delay-1';
         this.animationClasses[16].pageTitle = direction ? '' : 'cFadeOutDown';
@@ -257,7 +250,7 @@ class LandingPage extends React.PureComponent{
       /**
        * Page 4
        */
-      case 13:
+      case 12:
         this.animationClasses[15] = 'cFadeOutUp';
         this.animationClasses[16].left = 'rotateTo180 animation-delay-1';
         this.animationClasses[16].right = 'rotateTo180 animation-delay-2';
@@ -525,16 +518,7 @@ class LandingPage extends React.PureComponent{
                   <img src={imgPlaceholder}/>
                 </div>
               </div>
-              <div className={`tutor-wrapper topic-2 ${this.animationClasses[14]}`}>
-                <div className="wrapper">
-                  <h5>02 / build a growth plan</h5>
-                  <h1>the lpma growth model</h1>
-                  <p>The LPMA growth model identifies the opportunities in your market and helps identify areas where you can focus on for maximum growth.</p>
-                  <p>Use your growth plan to direct your team and define financial strategies to make sure your growth ambitions are supported. </p>
-                  <img src={imgPlaceholder}/>
-                </div>
-              </div>
-              <div ref={c => this.tutor = c} className={`tutor-wrapper topic-3 ${this.animationClasses[15]}`}>
+              <div ref={c => this.tutor = c} className={`tutor-wrapper topic-3 ${this.animationClasses[14]}`}>
                 <div ref={c => this.tutorWrapper = c} className="wrapper">
                   <h5>02 / build a growth plan</h5>
                   <h1>any growth strategy needs a retention strategy. INCLUDING THIS IN YOUR <span>GROWTH PLAN</span> WILL GIVE YOU THE BEST OPPORTUNITY TO SUCCEED.</h1>
