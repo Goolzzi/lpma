@@ -262,7 +262,7 @@ class LandingPage extends React.PureComponent{
         this.animationClasses[17].chapterTitle = direction ? '' : 'cFadeOutDown';
         this.animationClasses[17].background = direction? '' : 'hide';
         break;
-      case 15:
+      case 13:
         this.animationClasses[16].pageTitle = 'cFadeOutDown';
         this.animationClasses[17].background = 'cFadeIn animation-delay-2';
         this.animationClasses[17].fullLeftSpinner = 'spinOuterIn show animation-delay-2';
@@ -274,38 +274,32 @@ class LandingPage extends React.PureComponent{
         this.animationClasses[19] = direction ? '' : 'cFadeOutDown';
         this.animationClasses[20] = '';
         break;
-      case 16:
+      case 14:
         this.animationClasses[18].rightSpinner = 'spinRightIn animation-delay-1';
         this.animationClasses[17].chapterTitle = 'cFadeOutDown';
         this.animationClasses[19] = 'cFadeInUp animation-delay-2';
         this.animationClasses[20] = direction ? '' : 'cFadeOutDown';
         this.animationClasses[21] = '';
         break;
-      case 17:
+      case 15:
         this.animationClasses[19] = 'cFadeOutUp';
         this.animationClasses[20] = 'cFadeIn animation-delay-1_1';
         this.animationClasses[21] = direction ? '' : 'cFadeOutDown';
-        this.animationClasses[22] = '';
-        break;
-      case 18:
-        this.animationClasses[20] = 'cFadeOutUp';
-        this.animationClasses[21] = 'cFadeIn animation-delay-1_1';
-        this.animationClasses[22] = direction ? '' : 'cFadeOutDown';
         this.animationClasses[23].left = '';
         this.animationClasses[23].right = '';
         this.animationClasses[23].pageTitle = '';
         break;
-      case 19:
-        this.animationClasses[21] = 'cFadeOutUp';
-        this.animationClasses[22] = direction ? 'cFadeIn animation-delay-1_1' : 'cFadeIn animation-delay-3';
+      case 16:
+        this.animationClasses[20] = 'cFadeOutUp';
+        this.animationClasses[21] = direction ? 'cFadeIn animation-delay-1_1' : 'cFadeIn animation-delay-3';
         this.animationClasses[23].left = direction ? '' : 'rotateTo0 animated animation-delay-3';
         this.animationClasses[23].right = direction ? '' : 'rotateTo0 animated animation-delay-1';
-        this.animationClasses[23].pageTitle = direction ? '' : 'cFadeOutDown';
+        this.animationClasses[23].pageTitle = direction ? '' : 'cFadeOutDown';  
         break;
       /**
        * Page 5
        */
-      case 20:
+      case 17:
         this.animationClasses[22] = 'cFadeOutUp';
         this.animationClasses[23].left = 'rotateTo180 animation-delay-1';
         this.animationClasses[23].right = 'rotateTo180 animation-delay-2';
@@ -573,14 +567,6 @@ class LandingPage extends React.PureComponent{
               <div className={`tutor-wrapper topic-2 ${this.animationClasses[20]}`}>
                 <div className="wrapper">
                   <h5>03 / grow more than your doors</h5>
-                  <h1>ACCESS TO AILO INSIGHTS WILL HELP YOU <span>TRACK YOUR PERFORMANCE</span> IN REAL TIME.</h1>
-                  <img src={imgIntro4_1}/>
-                  <img src={imgIntro4_2}/>
-                </div>
-              </div>
-              <div className={`tutor-wrapper topic-2 ${this.animationClasses[21]}`}>
-                <div className="wrapper">
-                  <h5>03 / grow more than your doors</h5>
                   <h1>SUCCESS IS NOT POSSIBLE WITHOUT THE <span>RIGHT TEAM</span></h1>
                   <p>The right team has a high-performing culture and is supported by the best resources.</p>
                   <p>LPMA membership gives you and your team the tools to track and improve your team’s performance, and support the winning culture. </p>
@@ -588,13 +574,12 @@ class LandingPage extends React.PureComponent{
                   <img src={imgPlaceholder}/>
                 </div>
               </div>
-              <div ref={c => this.tutor = c} className={`tutor-wrapper topic-3 ${this.animationClasses[22]}`}>
-                <div ref={c => this.tutorWrapper = c} className="wrapper">
+              <div className={`tutor-wrapper topic-3 ${this.animationClasses[21]}`}>
+                <div className="wrapper">
                   <h5>03 / grow more than your doors</h5>
-                  <h1>we’ll support YOU IN DEVELOPING KEY MULTIPLE <span>CHANNELS OF GROWTH</span></h1>
-                  <p>LPMA members are supported in building a full business plan, covering growth goals, team design, culture and financial benchmarking.</p>
-                  <img src={imgPlaceholder}/>
-                  <img src={imgPlaceholder}/> 
+                  <h1>ACCESS TO AILO INSIGHTS WILL HELP YOU <span>TRACK YOUR PERFORMANCE</span> IN REAL TIME.</h1>
+                  <img src={imgIntro4_1}/>
+                  <img src={imgIntro4_2}/>
                 </div>
               </div>
             </div>
