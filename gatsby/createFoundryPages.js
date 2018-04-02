@@ -14,29 +14,31 @@ module.exports = function(data, createPage) {
   const subjectsMap = new Map();
 
   data.allContentfulFoundrySection.edges.forEach(({node}) => {
-    node.subjects.forEach(subj => {
-      subjectsMap.set(subj, {
-        title: node.title,
-        path: node.slug,
+    if (node.subjects) {
+      node.subjects.forEach(subj => {
+        subjectsMap.set(subj, {
+          title: node.title,
+          path: node.slug,
+        });
       });
-    });
 
-    createPage({
-      path: `foundry/${node.slug}`,
-      component: sectionTemplate,
-      context: {
-        slug: node.slug,
-        id: node.slug,
-        parentPath: `/foundry/`,
-        breadCrumbs: [
-          foundryCrumb,
-          {
-            path: node.slug,
-            title: node.title,
-          },
-        ],
-      },
-    });
+      createPage({
+        path: `foundry/${node.slug}`,
+        component: sectionTemplate,
+        context: {
+          slug: node.slug,
+          id: node.slug,
+          parentPath: `/foundry/`,
+          breadCrumbs: [
+            foundryCrumb,
+            {
+              path: node.slug,
+              title: node.title,
+            },
+          ],
+        },
+      });
+    }
   });
 
   const obj = {};
