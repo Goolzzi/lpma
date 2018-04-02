@@ -1,4 +1,6 @@
 import React from "react";
+import Link from "gatsby-link";
+import PropTypes from "prop-types";
 import imgLogo from "../../assets/images/NewDesign/Header/logo.svg";
 var menuClass = '';
 var lightBtnClass = '';
@@ -31,17 +33,23 @@ const Header = (props) => {
       </div>
       <div className={`menu ${menuClass}`}>
         <ul>
-          <li><a>Home</a></li>
-          <li><a>Pricing</a></li>
-          <li><a>Blog</a></li>
-          <li><a>Events</a></li>
+          <li><Link to="/" onClick={() => props.selectPage('Home')}>Home</Link></li>
+          <li><Link to="/" onClick={() => props.selectPage('Pricing')}>Pricing</Link></li>
+          <li><Link to="/blog">Blog</Link></li>
+          <li><Link to="/events">Events</Link></li>
         </ul>
       </div>
       <div className="navbar-btn-group">
-        <div className="navbar-item"><a className="button menu-btn">JOIN LPMA</a></div>
-        <div className="navbar-item"><a className="button menu-btn">Sign in</a></div>
+        <div className="navbar-item"><a className="button menu-btn" onClick={() => props.selectPage('Join')}>JOIN LPMA</a></div>
+        <div className="navbar-item"><a className="button menu-btn" onClick={() => window.location.href = 'https://lpma-identity-dev.trunkplatform.com.au/users/sign_in'}>Sign in</a></div>
       </div>
     </nav>
   )
 };
+Header.propTypes = {
+  selectPage: PropTypes.func
+}
+Header.defaultProps = {
+  selectPage: () => console.log('on pricing')
+}
 export default Header;

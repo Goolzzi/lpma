@@ -9,15 +9,27 @@ class NewLayoutTemplate extends React.PureComponent {
     super()
 
     this.state = {
-      number: 0
+      number: 0,
+      showPage: ''
     }
   }
   render() {
     const { children } = this.props;
     return (
       <div>
-        <Header pageNumber={this.state.number}/>
-        <div>{children({ ...this.props, onPageChange: (number) => this.setState({number})})}</div>
+        <Header
+          pageNumber={this.state.number}
+          selectPage={(page) => this.setState({ showPage: page})}
+        />
+        <div>
+          {
+            children({
+              ...this.props,
+              onPageChange: (number) => this.setState({number}),
+              showPage: this.state.showPage
+            })
+          }
+        </div>
       </div>
     )
   }
