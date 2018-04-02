@@ -5,14 +5,9 @@ import Footer from "../components/Footer";
 import MetaHead from "./MetaHead";
 import locationToTitleMap from "./locationTitlesMap";
 import "bulma";
-import "../styles/global.scss";
 import "../styles/fonts";
-
-const propTypes = {
-  children: PropTypes.func,
-  location: PropTypes.object,
-  data: PropTypes.object.isRequired,
-};
+import "../styles/global.scss";
+import "../styles/main.scss";
 
 const LayoutTemplate = props => {
   const {
@@ -55,6 +50,14 @@ const LayoutTemplate = props => {
   );
 };
 
+LayoutTemplate.propTypes = {
+  children: PropTypes.func,
+  location: PropTypes.object,
+  data: PropTypes.object.isRequired,
+};
+
+export default LayoutTemplate;
+
 export const pageQuery = graphql`
   query LayoutQuery {
     allContentfulAsset(
@@ -88,6 +91,7 @@ export const pageQuery = graphql`
       topmenu {
         id
         name
+        authRequired
         country
         slug
         to
@@ -105,6 +109,7 @@ export const pageQuery = graphql`
         to
         country
         slug
+        authRequired
       }
       contactInfo {
         childMarkdownRemark {
@@ -135,7 +140,3 @@ export const pageQuery = graphql`
     }
   }
 `;
-
-LayoutTemplate.propTypes = propTypes;
-
-export default LayoutTemplate;

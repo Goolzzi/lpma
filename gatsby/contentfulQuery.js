@@ -58,5 +58,26 @@ module.exports = `
       }
     }
   }
+  allContentfulDocumentsCountry {
+    edges {
+      node {
+          slug
+      }
+    }
+  }
+  allContentfulDocumentsRegion {
+    edges {
+      node {
+        slug
+        downloads {
+          ... on ContentfulDocumentList {
+            id
+            title
+            slug
+          }
+        }
+      }
+    }
+  }
 }
 `;

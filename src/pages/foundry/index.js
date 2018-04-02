@@ -59,7 +59,7 @@ class MyFoundryPage extends React.Component {
                         </div>
                       </div>
                     </div>
-                    <div className="columns">
+                    <div className="columns is-multiline">
                       {allContentfulFoundrySection.edges.map(
                         ({node: {title, slug, excerpt}}) => (
                           <div key={slug} className="column is-6">
