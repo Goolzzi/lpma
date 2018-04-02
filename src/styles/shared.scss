@@ -1,12 +1,3 @@
-@mixin truncate($lines) {
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-  line-height: 1.5;
-
-  -webkit-line-clamp: $lines;
-  height: $lines * 1.5rem;
-}
 
 .truncate-2 {
   @include truncate(2);
@@ -151,41 +142,7 @@
   right: 0;
 } 
 
-@mixin cover-image($width: 100%, $height: auto, $vPos: center) {
-  width: $width;
-  height: $height;
-  overflow: hidden;
 
-  img {
-    margin: 0rem;
-    object-fit: cover;
-    object-position: $vPos;
-
-    height: $height;
-    width: $width;
-  }
-
-  @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
-    overflow: hidden;
-    display: flex;
-    align-items: $vPos;
-
-    @if $vPos == top {
-      align-items: flex-start;
-    }
-
-    @if $vPos == bottom {
-      align-items: flex-end;
-    }
-    
-
-    img {
-      height: auto;
-      min-width: 100%;
-      min-height: 100%;
-    }
-  }
-}
 
 .custom-modal-wrapper {
   position: fixed;

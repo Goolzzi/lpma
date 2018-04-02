@@ -5,8 +5,9 @@ import Footer from "../components/Footer";
 import MetaHead from "./MetaHead";
 import locationToTitleMap from "./locationTitlesMap";
 import "bulma";
-import "../styles/global.scss";
 import "../styles/fonts";
+import "../styles/global.scss";
+import "../styles/main.scss";
 
 const propTypes = {
   children: PropTypes.func,

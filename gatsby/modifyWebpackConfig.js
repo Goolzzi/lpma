@@ -2,7 +2,7 @@ const path = require("path");
 
 module.exports = function({config}) {
   config.preLoader(`sass`, {
-    test: /styles.scss$/,
+    test: /styles.scss|main.scss$/,
     exclude: /node_modules/,
     loader: path.resolve("gatsby/inject-scss-webpack-loader"),
   });
