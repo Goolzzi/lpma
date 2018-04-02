@@ -2,9 +2,9 @@
 import React from "react";
 import PropTypes from "prop-types";
 import Link from "gatsby-link";
+import classNames from "classnames";
 import LoginLogout from "../LoginLogout";
 import IRISAuth from "../../Auth/IRISAuth";
-import classNames from "classnames";
 import "./styles.scss";
 
 class Header extends React.Component {
@@ -36,6 +36,35 @@ class Header extends React.Component {
     ) : null;
   };
 
+  renderFoundrNavItems = (slug, name, isFoundryOpen, foundryLinks) => {
+    return (
+      <button
+        key={slug}
+        onClick={() =>
+          this.setState(prevState => ({
+            isFoundryOpen: !prevState.isFoundryOpen,
+          }))
+        }
+        className={classNames("navbar-item has-dropdown", {
+          "is-active": isFoundryOpen,
+        })}>
+        <a href={"javascript:;"} className="navbar-link">
+          {name}
+        </a>
+        <div className="navbar-dropdown">
+          <Link key={slug} to={`/foundry/`} className={"navbar-item"}>
+            {"My Fondry"}
+          </Link>
+          {foundryLinks.edges.map(({node: {title, slug}}) => (
+            <Link key={slug} to={`/foundry/${slug}`} className={"navbar-item"}>
+              {title}
+            </Link>
+          ))}
+        </div>
+      </button>
+    );
+  };
+
   render() {
     const {topmenu, logo: {file}, foundryLinks, forUSA} = this.props;
     const {isActive, isActiveMenu, isFoundryOpen} = this.state;
@@ -43,10 +72,12 @@ class Header extends React.Component {
     const menuItems = forUSA
       ? topmenu.filter(({country}) => country === "us")
       : topmenu;
+
     return (
       <IRISAuth
         render={auth => {
           this.auth = auth;
+          const isAuthenticated = auth.isAuthenticated();
           return (
             <div className="navbar-wrapper">
               <nav className="navbar">
@@ -73,51 +104,26 @@ class Header extends React.Component {
                     "is-active": isActive,
                   })}>
                   <div className="navbar-end">
-                    {menuItems
-                      .filter(
-                        ({name}) =>
-                          name !== "Resources" || auth.isAuthenticated(),
-                      )
-                      .map(({id, to, name, slug}) => {
-                        if (slug === "foundry" && auth.isAuthenticated()) {
-                          return (
-                            <button
-                              key={slug}
-                              onClick={() =>
-                                this.setState(prevState => ({
-                                  isFoundryOpen: !prevState.isFoundryOpen,
-                                }))
-                              }
-                              className={classNames(
-                                "navbar-item has-dropdown",
-                                {
-                                  "is-active": isFoundryOpen,
-                                },
-                              )}>
-                              <a href={"javascript:;"} className="navbar-link">
-                                {name}
-                              </a>
-                              <div className="navbar-dropdown">
-                                <Link
-                                  key={slug}
-                                  to={`/foundry/`}
-                                  className={"navbar-item"}>
-                                  {"My Fondry"}
-                                </Link>
-                                {foundryLinks.edges.map(
-                                  ({node: {title, slug}}) => (
-                                    <Link
-                                      key={slug}
-                                      to={`/foundry/${slug}`}
-                                      className={"navbar-item"}>
-                                      {title}
-                                    </Link>
-                                  ),
-                                )}
-                              </div>
-                            </button>
-                          );
-                        }
+                    {menuItems.map(({id, to, name, authRequired, slug}) => {
+                      if (slug === "foundry") {
+                        return isAuthenticated ? (
+                          this.renderFoundrNavItems(
+                            slug,
+                            name,
+                            isFoundryOpen,
+                            foundryLinks,
+                          )
+                        ) : (
+                          <Link
+                            className={"navbar-item"}
+                            onClick={this.handleClick}
+                            key={id}
+                            to={to}>
+                            {name}
+                          </Link>
+                        );
+                      }
+                      if (!authRequired || isAuthenticated) {
                         return (
                           <Link
                             className={"navbar-item"}
@@ -127,7 +133,8 @@ class Header extends React.Component {
                             {name}
                           </Link>
                         );
-                      })}
+                      }
+                    })}
                     {this.renderLoginLogout()}
                   </div>
                 </div>

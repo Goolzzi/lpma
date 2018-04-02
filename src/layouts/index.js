@@ -9,12 +9,6 @@ import "../styles/fonts";
 import "../styles/global.scss";
 import "../styles/main.scss";
 
-const propTypes = {
-  children: PropTypes.func,
-  location: PropTypes.object,
-  data: PropTypes.object.isRequired,
-};
-
 const LayoutTemplate = props => {
   const {
     children,
@@ -56,6 +50,14 @@ const LayoutTemplate = props => {
   );
 };
 
+LayoutTemplate.propTypes = {
+  children: PropTypes.func,
+  location: PropTypes.object,
+  data: PropTypes.object.isRequired,
+};
+
+export default LayoutTemplate;
+
 export const pageQuery = graphql`
   query LayoutQuery {
     allContentfulAsset(
@@ -89,6 +91,7 @@ export const pageQuery = graphql`
       topmenu {
         id
         name
+        authRequired
         country
         slug
         to
@@ -106,6 +109,7 @@ export const pageQuery = graphql`
         to
         country
         slug
+        authRequired
       }
       contactInfo {
         childMarkdownRemark {
@@ -136,7 +140,3 @@ export const pageQuery = graphql`
     }
   }
 `;
-
-LayoutTemplate.propTypes = propTypes;
-
-export default LayoutTemplate;
