@@ -65,6 +65,9 @@ ul, li {
       transform: rotate(-180deg);
     }
   }
+  @media screen and (max-width: $mobile-width) {
+    display: none;
+  }
 }
 .full-left {
   width: 50vw;
@@ -81,6 +84,12 @@ ul, li {
     transform-origin: right center;
     transform: rotate(0deg);
     opacity: 0;
+    @media screen and (max-width: $mobile-width) {
+      display: none;
+    }
+  }
+  @media screen and (max-width: $mobile-width) {
+    display: none;
   }
 }
 .full-right {
@@ -92,6 +101,7 @@ ul, li {
   overflow: hidden;
   display: flex;
   align-items: center;
+
   .chapter-text-view {
     position: fixed;
     display: flex;
@@ -128,11 +138,17 @@ ul, li {
     &.hide {
       opacity: 0;
     }
+    @media screen and (max-width: $mobile-width) {
+      display: none;
+    }
   }
   .tutor-wrapper {
     position: absolute;
     height: 100%;
     width: 100%;
+    @media screen and (max-width: $mobile-width) {
+      background: $white;
+    }
   }
   .topic-1 {
     padding: 5rem 7em;
@@ -234,6 +250,52 @@ ul, li {
         }
       }
     }
+  }
+  @media screen and (max-width: $mobile-width) {
+    width: 100vw;
+  }
+}
+.mobile-left {
+  display: none;
+  position: fixed;
+  width: 50vw;
+  height: 100vh;
+  background-color: transparent;
+  overflow: hidden;
+  align-items: center;
+  .overlay-spinner {
+    position: absolute;
+    width: 200vh;
+    height: 200vh;
+    right: 0;
+    background-color: $page2-primary;
+    transform-origin: right center;
+    opacity: 0;
+  }
+  @media screen and (max-width: $mobile-width) {
+    display: flex;
+  }
+}
+.mobile-right {
+  display: none;
+  position: fixed;
+  width: 50vw;
+  height: 100vh;
+  right: 0;
+  background-color: transparent;
+  overflow: hidden;
+  align-items: center;
+  .overlay-spinner {
+    position: absolute;
+    width: 200vh;
+    height: 200vh;
+    left: 0;
+    background-color: $page2-primary;
+    transform-origin: left center;
+    opacity: 0;
+  }
+  @media screen and (max-width: $mobile-width) {
+    display: flex;
   }
 }
 

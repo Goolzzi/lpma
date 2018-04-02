@@ -2,9 +2,16 @@ import React from "react";
 import PropTypes from "prop-types";
 import imgPlaceholder from '../../assets/images/NewDesign/bk-placeholder.svg';
 import imgThumb from '../../assets/images/NewDesign/img-thumb.svg';
+
 import bkIntro2 from '../../assets/images/NewDesign/bk-intro-2.png';
 import bkIntro3 from '../../assets/images/NewDesign/bk-intro-3.png';
 import bkIntro4 from '../../assets/images/NewDesign/bk-intro-4.png';
+import bkIntro5 from '../../assets/images/NewDesign/bk-intro-5.png';
+
+import bkIntro2Mobile from '../../assets/images/NewDesign/bk-intro-2-mobile.jpeg';
+import bkIntro3Mobile from '../../assets/images/NewDesign/bk-intro-3-mobile.jpeg';
+import bkIntro4Mobile from '../../assets/images/NewDesign/bk-intro-4-mobile.jpeg';
+import bkIntro5Mobile from '../../assets/images/NewDesign/bk-intro-5-mobile.jpeg';
 
 import imgIntro2_1 from '../../assets/images/NewDesign/img-intro-1_1.svg';
 import imgIntro2_2 from '../../assets/images/NewDesign/img-intro-1_2.svg';
@@ -22,7 +29,7 @@ import imgIntro4_3 from '../../assets/images/NewDesign/img-intro-4_3.svg';
 import imgIntro4_4 from '../../assets/images/NewDesign/img-intro-4_4.svg';
 
 
-import bkIntro5 from '../../assets/images/NewDesign/bk-intro-5.png';
+
 import icTick from '../../assets/images/NewDesign/ic-tick.png';
 import icArrowDown from '../../assets/images/NewDesign/ic-arrow-down.svg';
 import "animate.css/animate.min.css";
@@ -42,7 +49,7 @@ class LandingPage extends React.PureComponent{
       '',
       { title: '', bar: '' },
       { page: '', title: '' },
-      { background: '', rightSpinner: '', leftInnerSpinner: '', leftSpinner: '', chapterTitle: '', fullLeftSpinner: '' },
+      { background: '', rightSpinner: '', leftInnerSpinner: '', leftSpinner: '', chapterTitle: '', fullLeftSpinner: '', mobileLeftSpinner: '', mobileRightSpinner: '' },
       { rightSpinner: '' },
       '',
       '',
@@ -52,7 +59,7 @@ class LandingPage extends React.PureComponent{
        * Page 3 className starting Index 9
        */
       { left: '', right: '', pageTitle: '' },
-      { background: '', rightSpinner: '', leftInnerSpinner: '', leftSpinner: '', chapterTitle: '', fullLeftSpinner: '' },
+      { background: '', rightSpinner: '', leftInnerSpinner: '', leftSpinner: '', chapterTitle: '', fullLeftSpinner: '', mobileLeftSpinner: '', mobileRightSpinner: '' },
       { rightSpinner: '' },
       '',
       '',
@@ -62,7 +69,7 @@ class LandingPage extends React.PureComponent{
        * Page 4 className starting Index 16
        */
       { left: '', right: '', pageTitle: '' },
-      { background: '', rightSpinner: '', leftInnerSpinner: '', leftSpinner: '', chapterTitle: '', fullLeftSpinner: '' },
+      { background: '', rightSpinner: '', leftInnerSpinner: '', leftSpinner: '', chapterTitle: '', fullLeftSpinner: '', mobileLeftSpinner: '', mobileRightSpinner: '' },
       { rightSpinner: '' },
       '',
       '',
@@ -72,7 +79,7 @@ class LandingPage extends React.PureComponent{
        * Page 5 className starting with Index 23
        */
       { left: '', right: '', pageTitle: '' },
-      { background: '', rightSpinner: '', leftInnerSpinner: '', leftSpinner: '', chapterTitle: '', fullLeftSpinner: '' },
+      { background: '', rightSpinner: '', leftInnerSpinner: '', leftSpinner: '', chapterTitle: '', fullLeftSpinner: '', mobileLeftSpinner: '', mobileRightSpinner: '' },
       { rightSpinner: '' },
       '',
       '',
@@ -195,6 +202,9 @@ class LandingPage extends React.PureComponent{
         this.animationClasses[3].fullLeftSpinner = 'hide';
         this.animationClasses[3].chapterTitle = direction ? '' : 'cFadeOutDown';
         this.animationClasses[3].background = direction? '' : 'hide';
+
+        this.animationClasses[3].mobileLeftSpinner = '';
+        this.animationClasses[3].mobileRightSpinner = '';
         break;
       case 3:
         this.animationClasses[2].title = 'cFadeOut';
@@ -203,10 +213,13 @@ class LandingPage extends React.PureComponent{
         this.animationClasses[3].leftInnerSpinner = 'spinInnerIn animation-delay-2';
         this.animationClasses[3].fullLeftSpinner = 'spinOuterIn show animation-delay-2';
         this.animationClasses[3].background = 'cFadeIn animation-delay-2';
-        this.animationClasses[3].chapterTitle = 'cFadeInUp animation-delay-2';
+        this.animationClasses[3].chapterTitle = 'cFadeInUp animation-delay-4';
         this.animationClasses[4].rightSpinner = direction ? '' : 'spinRightOut';
         this.animationClasses[5] = direction ? '' : 'cFadeOutDown';
         this.animationClasses[6] = '';
+
+        this.animationClasses[3].mobileLeftSpinner = 'rotateTo360 show animation-delay-3';
+        this.animationClasses[3].mobileRightSpinner = 'rotateTo360 show animation-delay-2';
         break;
       case 4:
         this.animationClasses[4].rightSpinner = 'spinRightIn animation-delay-1';
@@ -244,6 +257,9 @@ class LandingPage extends React.PureComponent{
         this.animationClasses[10].fullLeftSpinner = 'hide';
         this.animationClasses[10].chapterTitle = direction ? '' : 'cFadeOutDown';
         this.animationClasses[10].background = direction? '' : 'hide';
+
+        this.animationClasses[10].mobileLeftSpinner = '';
+        this.animationClasses[10].mobileRightSpinner = '';
         break;
       case 8:
         this.animationClasses[9].pageTitle = 'cFadeOutDown';
@@ -252,10 +268,13 @@ class LandingPage extends React.PureComponent{
         this.animationClasses[10].rightSpinner = 'rotateTo180 show animation-delay-1';
         this.animationClasses[10].leftSpinner = 'spinOuterIn animation-delay-2';
         this.animationClasses[10].leftInnerSpinner = 'spinInnerIn animation-delay-2';
-        this.animationClasses[10].chapterTitle = 'cFadeInUp animation-delay-2';
+        this.animationClasses[10].chapterTitle = 'cFadeInUp animation-delay-4';
         this.animationClasses[11].rightSpinner = direction ? '' : 'spinRightOut';
         this.animationClasses[12] = direction ? '' : 'cFadeOutDown';
         this.animationClasses[13] = '';
+
+        this.animationClasses[10].mobileLeftSpinner = 'rotateTo360 show animation-delay-3';
+        this.animationClasses[10].mobileRightSpinner = 'rotateTo360 show animation-delay-2';
         break;
       case 9:
         this.animationClasses[11].rightSpinner = 'spinRightIn animation-delay-1';
@@ -293,6 +312,9 @@ class LandingPage extends React.PureComponent{
         this.animationClasses[17].fullLeftSpinner = 'hide';
         this.animationClasses[17].chapterTitle = direction ? '' : 'cFadeOutDown';
         this.animationClasses[17].background = direction? '' : 'hide';
+
+        this.animationClasses[17].mobileLeftSpinner = '';
+        this.animationClasses[17].mobileRightSpinner = '';
         break;
       case 13:
         this.animationClasses[16].pageTitle = 'cFadeOutDown';
@@ -301,10 +323,13 @@ class LandingPage extends React.PureComponent{
         this.animationClasses[17].rightSpinner = 'rotateTo180 show animation-delay-1';
         this.animationClasses[17].leftSpinner = 'spinOuterIn animation-delay-2';
         this.animationClasses[17].leftInnerSpinner = 'spinInnerIn animation-delay-2';
-        this.animationClasses[17].chapterTitle = 'cFadeInUp animation-delay-2';
+        this.animationClasses[17].chapterTitle = 'cFadeInUp animation-delay-4';
         this.animationClasses[18].rightSpinner = direction ? '' : 'spinRightOut';
         this.animationClasses[19] = direction ? '' : 'cFadeOutDown';
         this.animationClasses[20] = '';
+
+        this.animationClasses[17].mobileLeftSpinner = 'rotateTo360 show animation-delay-3';
+        this.animationClasses[17].mobileRightSpinner = 'rotateTo360 show animation-delay-2';
         break;
       case 14:
         this.animationClasses[18].rightSpinner = 'spinRightIn animation-delay-1';
@@ -342,6 +367,9 @@ class LandingPage extends React.PureComponent{
         this.animationClasses[24].fullLeftSpinner = 'hide';
         this.animationClasses[24].chapterTitle = direction ? '' : 'cFadeOutDown';
         this.animationClasses[24].background = direction? '' : 'hide';
+
+        this.animationClasses[24].mobileLeftSpinner = '';
+        this.animationClasses[24].mobileRightSpinner = '';
         break;
       case 18:
         this.animationClasses[23].pageTitle = 'cFadeOutDown';
@@ -350,10 +378,13 @@ class LandingPage extends React.PureComponent{
         this.animationClasses[24].rightSpinner = 'rotateTo180 show animation-delay-1';
         this.animationClasses[24].leftSpinner = 'spinOuterIn animation-delay-2';
         this.animationClasses[24].leftInnerSpinner = 'spinInnerIn animation-delay-2';
-        this.animationClasses[24].chapterTitle = 'cFadeInUp animation-delay-2';
+        this.animationClasses[24].chapterTitle = 'cFadeInUp animation-delay-4';
         this.animationClasses[25].rightSpinner = direction ? '' : 'spinRightOut';
         this.animationClasses[26] = direction ? '' : 'cFadeOutDown';
         this.animationClasses[27] = '';
+
+        this.animationClasses[24].mobileLeftSpinner = 'rotateTo360 show animation-delay-3';
+        this.animationClasses[24].mobileRightSpinner = 'rotateTo360 show animation-delay-2';
         break;
       case 19:
         this.animationClasses[25].rightSpinner = 'spinRightIn animation-delay-1';
@@ -417,15 +448,23 @@ class LandingPage extends React.PureComponent{
         </div>
         <div id="page_2" className={`${this.animationClasses[2].page}`}>
           <div className={`slide-1 ${this.animationClasses[2].title}`}>
-            <h1 className="banner-title">
-              80% OF <br /> BUSINESS OWNERS
-            </h1>
-            <h5 className="desc">BELEIVE THAT WORKING HARDER IS THE ONLY WAY TO GROW THEIR BUSINESS</h5>
+            <div>
+              <h1 className="banner-title">
+                80% OF <br /> BUSINESS OWNERS
+              </h1>
+              <h5 className="desc">BELEIVE THAT WORKING HARDER IS THE ONLY WAY TO GROW THEIR BUSINESS</h5>
+            </div>
           </div>
           <div className="slide-2">
-            <img src={bkIntro2} className={`background-image ${this.animationClasses[3].background}`} />
+            <div className={`background-image ${this.animationClasses[3].background}`} />
             <div className="full-left">
               <div className={`overlay-spinner ${this.animationClasses[3].fullLeftSpinner}`}/>
+            </div>
+            <div className="mobile-left">
+              <div className={`overlay-spinner ${this.animationClasses[3].mobileLeftSpinner}`}></div>
+            </div>
+            <div className="mobile-right">
+              <div className={`overlay-spinner ${this.animationClasses[3].mobileRightSpinner}`}></div>
             </div>
             <div className="animating-layer">
               <div className="right">
@@ -494,9 +533,15 @@ class LandingPage extends React.PureComponent{
             </div>
           </div>
           <div className="slide-2">
-            <img src={bkIntro3} className={`background-image ${this.animationClasses[10].background}`} />
+            <div className={`background-image ${this.animationClasses[10].background}`} />
             <div className="full-left">
               <div className={`overlay-spinner ${this.animationClasses[10].fullLeftSpinner}`}/>
+            </div>
+            <div className="mobile-left">
+              <div className={`overlay-spinner ${this.animationClasses[10].mobileLeftSpinner}`}></div>
+            </div>
+            <div className="mobile-right">
+              <div className={`overlay-spinner ${this.animationClasses[10].mobileRightSpinner}`}></div>
             </div>
             <div className="animating-layer">
               <div className="right">
@@ -557,9 +602,15 @@ class LandingPage extends React.PureComponent{
             </div>
           </div>
           <div className="slide-2">
-            <img src={bkIntro4} className={`background-image ${this.animationClasses[17].background}`} />
+            <div className={`background-image ${this.animationClasses[17].background}`} />
             <div className="full-left">
               <div className={`overlay-spinner ${this.animationClasses[17].fullLeftSpinner}`}/>
+            </div>
+            <div className="mobile-left">
+              <div className={`overlay-spinner ${this.animationClasses[17].mobileLeftSpinner}`}></div>
+            </div>
+            <div className="mobile-right">
+              <div className={`overlay-spinner ${this.animationClasses[17].mobileRightSpinner}`}></div>
             </div>
             <div className="animating-layer">
               <div className="right">
@@ -622,9 +673,15 @@ class LandingPage extends React.PureComponent{
             </div>
           </div>
           <div className="slide-2">
-            <img src={bkIntro5} className={`background-image ${this.animationClasses[24].background}`} />
+            <div className={`background-image ${this.animationClasses[24].background}`} />
             <div className="full-left">
               <div className={`overlay-spinner ${this.animationClasses[24].fullLeftSpinner}`}/>
+            </div>
+            <div className="mobile-left">
+              <div className={`overlay-spinner ${this.animationClasses[24].mobileLeftSpinner}`}></div>
+            </div>
+            <div className="mobile-right">
+              <div className={`overlay-spinner ${this.animationClasses[24].mobileRightSpinner}`}></div>
             </div>
             <div className="animating-layer">
               <div className="right">

@@ -59,7 +59,12 @@
       text-transform: uppercase;
       color: $white;
       font-family: "DomaineSansMedium";
-      font-size: 4.5em;
+      font-size: 4em;
+      @media screen and (max-width: $mobile-width){
+        font-size: 3em;
+        text-align: left;
+        padding-left: 2rem;
+      }
     }
     p {
       text-align: center;
@@ -67,6 +72,13 @@
       color: $text-primary;
       font-size: 1em;
       max-width: 60vw;
+      @media screen and (max-width: $mobile-width){
+        text-align: left;
+        padding-left: 2rem;
+        padding-right: 4rem;
+        font-size: 2em;
+        max-width: 100vw;
+      }
     }
   }
   .slide-2 {
@@ -79,10 +91,32 @@
       opacity: 0;
       transition: opacity 1s;
       transition-delay: 1s;
+      background-image: url(../assets/images/NewDesign/bk-intro-5.png);
+      background-size: cover;
+      @media screen and (max-width: $mobile-width) {
+        background-image: url(../assets/images/NewDesign/bk-intro-5-mobile.jpeg);
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background-size: 350%;
+        background-position: 60% 35%;
+        transition: none;
+      }
     }
     .full-left {
       .overlay-spinner {
         background: $page5-primary;
+      }
+    }
+    .mobile-left {
+      .overlay-spinner {
+        background-color: $page5-primary;
+      }
+    }
+    .mobile-right {
+      .overlay-spinner {
+        background-color: $page5-primary;
       }
     }
     .animating-layer {
@@ -176,6 +210,10 @@
       align-items: center;
       max-width: 40vw;
       padding: 1em;
+      @media screen and (max-width: $mobile-width) {
+        max-width: 90vw;
+        
+      }
       .pricing-text {
         display: flex;
         align-items: center;

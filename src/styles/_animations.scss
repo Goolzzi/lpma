@@ -131,6 +131,32 @@
   animation-fill-mode: forwards;
 }
 
+@keyframes rotateTo360 {
+  0% { transform: rotate(0); }
+  33% { transform: rotate(180deg);}
+  67% { transform: rotate(180deg);}
+  100% { transform: rotate(360deg);}
+}
+.rotateTo360 {
+  animation-name: rotateTo360;
+  animation-duration: 1.5s;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
+}
+
+@keyframes rotateTo360Reverse {
+  0% { transform: rotate(360deg); }
+  33% { transform: rotate(180deg);}
+  67% { transform: rotate(180deg);}
+  100% { transform: rotate(0deg);}
+}
+.rotateTo360Reverse {
+  animation-name: rotateTo360Reverse;
+  animation-duration: 1.5s;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
+}
+
 @keyframes spinOuterIn {
   0% {transform: rotate(0deg);}
   100% {transform: rotate(180deg);}
@@ -220,7 +246,7 @@
   animation-delay: 1.5s;
 }
 .animation-delay-4 {
-  animation-delay: 1s;
+  animation-delay: 2s;
 }
 .show {
   opacity: 1 !important;
