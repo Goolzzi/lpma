@@ -1,115 +1,114 @@
 import React from "react";
 import PropTypes from "prop-types";
 import Link from "gatsby-link";
-import "./styles.scss";
-import FeedbackForm from "../../components/FeedbackForm";
+import IRISAuth from "../../Auth/IRISAuth";
 import {fisherYates} from "../../utils";
-import auth from "../../Auth";
+import "./styles.scss";
 
 class MyFoundryPage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      nickname: "",
+      username: "",
     };
   }
 
   componentDidMount() {
-    if (auth.isAuthenticated()) {
-      auth
-        .getProfile()
-        .then(profile => this.setState({nickname: profile.nickname}))
-        .catch(error => {
-          console.log("User Profile Error! ", error); //eslint-disable-line
-        });
+    const {isAuthenticated, getUserData} = this.auth;
+    if (isAuthenticated()) {
+      const user = getUserData();
+      this.setState({username: user.username});
     }
   }
 
   render() {
     const {
       data: {
-        contentfulMyFoundryHeading: {title, greeting, background, cards},
+        contentfulMyFoundryHeading: {title, greeting, background},
         allContentfulFoundryGuide: {edges},
+        allContentfulFoundrySection,
       },
     } = this.props;
     return (
-      <div>
-        <section className="section container foundry-heading" />
-        <section className="section foundry">
-          <div className="image-wrapper">
-            <img
-              src={background.resolutions.src}
-              srcSet={background.resolutions.srcSet}
-              alt="my foundry heading"
-            />
-          </div>
-          <section className="section cont">
-            <div className="container">
-              <div className="columns">
-                <div className="column is-4">
-                  <div className="top-text">
-                    <p>{title}</p>
-                    <h2
-                      dangerouslySetInnerHTML={{
-                        __html: `${greeting.childMarkdownRemark.html} ${
-                          this.state.nickname
-                        }`,
-                      }}
-                    />
-                  </div>
+      <IRISAuth
+        render={auth => {
+          this.auth = auth;
+          return (
+            <div>
+              <section className="section foundry">
+                <div className="image-wrapper">
+                  <img
+                    src={background.resolutions.src}
+                    srcSet={background.resolutions.srcSet}
+                    alt="my foundry heading"
+                  />
                 </div>
-              </div>
-              <div className="columns">
-                {cards.map(({id, title, content}) => (
-                  <div key={id} className="column is-6">
-                    <div className="text">
-                      <h3>{title}</h3>
-                      <div
-                        dangerouslySetInnerHTML={{
-                          __html: content.childMarkdownRemark.html,
-                        }}
-                      />
+                <section className="section cont">
+                  <div className="container">
+                    <div className="columns">
+                      <div className="column is-4">
+                        <div className="top-text">
+                          <p>{title}</p>
+                          <h2
+                            dangerouslySetInnerHTML={{
+                              __html: `${greeting.childMarkdownRemark.html} ${
+                                this.state.username
+                              }`,
+                            }}
+                          />
+                        </div>
+                      </div>
+                    </div>
+                    <div className="columns">
+                      {allContentfulFoundrySection.edges.map(
+                        ({node: {title, slug, excerpt}}) => (
+                          <div key={slug} className="column is-6">
+                            <Link to={`/foundry/${slug}`}>
+                              <div className="text">
+                                <h3>{title}</h3>
+                                <div
+                                  dangerouslySetInnerHTML={{
+                                    __html: excerpt.childMarkdownRemark.html,
+                                  }}
+                                />
+                              </div>
+                            </Link>
+                          </div>
+                        ),
+                      )}
                     </div>
                   </div>
-                ))}
-              </div>
+                </section>
+              </section>
+              <section className="section container foundry-columns">
+                <div className="columns">
+                  {fisherYates(edges, 3).map(
+                    ({node: {id, title, slug, excerpt, foundrystep}}) => {
+                      return (
+                        <div key={id + slug} className="column is-4">
+                          <Link
+                            to={`/foundry/${slug}/${
+                              fisherYates(foundrystep, 1)[0].slug
+                            }`}>
+                            <div className="column-item">
+                              <h3>{title}</h3>
+                              <p
+                                dangerouslySetInnerHTML={{
+                                  __html: excerpt.childMarkdownRemark.excerpt,
+                                }}
+                              />
+                            </div>
+                          </Link>
+                        </div>
+                      );
+                    },
+                  )}
+                </div>
+              </section>
             </div>
-          </section>
-        </section>
-        <section className="section container foundry-columns">
-          <div className="columns">
-            {fisherYates(edges, 3).map(
-              ({node: {id, title, slug, excerpt, foundrystep}}) => {
-                return (
-                  <div key={id + slug} className="column is-4">
-                    <Link
-                      to={`/foundry/${slug}/${
-                        fisherYates(foundrystep, 1)[0].slug
-                      }`}>
-                      <div className="column-item">
-                        <h3>{title}</h3>
-                        <p
-                          dangerouslySetInnerHTML={{
-                            __html: excerpt.childMarkdownRemark.excerpt,
-                          }}
-                        />
-                      </div>
-                    </Link>
-                  </div>
-                );
-              },
-            )}
-          </div>
-
-          <FeedbackForm
-            feedbackParams={{
-              type: "fondry",
-              title: "My Foundry",
-              slug: "foundry",
-            }}
-          />
-        </section>
-      </div>
+          );
+        }}
+      />
     );
   }
 }
@@ -160,6 +159,19 @@ export const pageQuery = graphql`
             id
             childMarkdownRemark {
               excerpt
+            }
+          }
+        }
+      }
+    }
+    allContentfulFoundrySection(filter: {node_locale: {eq: "en-US"}}) {
+      edges {
+        node {
+          title
+          slug
+          excerpt {
+            childMarkdownRemark {
+              html
             }
           }
         }

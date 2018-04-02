@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import Link from "gatsby-link";
+import classNames from "classnames";
 import "./styles.scss";
 
 const ResurceItem = props => {
@@ -17,7 +18,7 @@ const ResurceItem = props => {
       <h3>{title}</h3>
       <p dangerouslySetInnerHTML={{__html: childMarkdownRemark.html}} />
       {image ? (
-        <div className="image is-16by9">
+        <div className="image is-1.5by1">
           <img
             src={image.resolutions.src}
             srcSet={image.resolutions.srcSet}
@@ -27,7 +28,11 @@ const ResurceItem = props => {
       ) : (
         <React.Fragment />
       )}
-      <div className="button-wrapper">
+      <div
+        className={classNames({
+          "button-wrapper": true,
+          static: !image,
+        })}>
         {orderLink ? (
           <Link to={orderLink.to}>
             <button className="btn secondary halfwidth">

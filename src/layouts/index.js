@@ -1,12 +1,12 @@
 import React from "react";
 import PropTypes from "prop-types";
+import Header from "../components/Header";
+import Footer from "../components/Footer";
 import MetaHead from "./MetaHead";
 import locationToTitleMap from "./locationTitlesMap";
 import "bulma";
 import "../styles/global.scss";
 import "../styles/fonts";
-import Header from "../components/Header";
-import Footer from "../components/Footer";
 
 const propTypes = {
   children: PropTypes.func,

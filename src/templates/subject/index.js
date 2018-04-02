@@ -105,17 +105,6 @@ class FoundrySubject extends React.Component {
               );
             })}
         </div>
-        <div className="container">
-          {feedbackForm !== false && (
-            <FeedbackForm
-              feedbackParams={{
-                type: "subject",
-                title,
-                slug,
-              }}
-            />
-          )}
-        </div>
       </section>
     );
   }

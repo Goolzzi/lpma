@@ -24,17 +24,6 @@ const Conditions = ({data: {contentfulConditions: {title, content, slug}}}) => (
             />
           </div>
         </div>
-        <div className="columns">
-          <div className="column">
-            <FeedbackForm
-              feedbackParams={{
-                type: "conditions",
-                title: title,
-                slug: slug,
-              }}
-            />
-          </div>
-        </div>
       </div>
     </section>
   </React.Fragment>
