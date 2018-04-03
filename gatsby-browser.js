@@ -1,5 +1,5 @@
 import createHistory from "history/createBrowserHistory";
-import auth from "./src/Auth";
+import auth from "./src/Auth/auth";
 
 //force full page refreshes for Netlify redirects
 const pathsToforceRefresh = ["us", "join", "join-us"];
