@@ -71,6 +71,11 @@
       img {
         margin: 0;
       }
+      .wrapper {
+        h1 span {
+          font-size: 1em;
+        }
+      }
       .img-wrapper {
         display: flex;
         justify-content: space-between;
