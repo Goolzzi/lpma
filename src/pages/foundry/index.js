@@ -6,23 +6,7 @@ import {fisherYates} from "../../utils";
 import YouTube from "react-youtube";
 import "./styles.scss";
 
-const videoId = "EOdATLzRGHc";
-const videoOptions = {
-  //height: "10000",
-  //width: "100%",
-  /*playerVars: {
-    autoplay: 1,
-    controls: 0,
-    disablekb: 0,
-    fs: 0,
-    iv_load_policy: 3,
-    loop: 1,
-    playlist: "pZ_tHrWzdT4",
-    modestbranding: 1,
-    showinfo: 0,
-    enablejsapi: 1,
-  },*/
-};
+const videoOptions = {};
 
 class MyFoundryPage extends React.Component {
   constructor(props) {
@@ -43,9 +27,15 @@ class MyFoundryPage extends React.Component {
   render() {
     const {
       data: {
-        contentfulMyFoundryHeading: {title, greeting, background},
+        contentfulMyFoundryHeading: {greeting, background},
         allContentfulFoundryGuide: {edges},
         allContentfulFoundrySection,
+        contentfulFoundryVideo: {
+          title: videoTitle,
+          description: {childMarkdownRemark: {html: videoDescription}},
+          signupLink,
+          videoLink,
+        },
       },
     } = this.props;
     return (
@@ -123,30 +113,28 @@ class MyFoundryPage extends React.Component {
                   )}
                 </div>
               </section>
-              {/* <section className="section container foundry-video">
+              <section className="section container foundry-video">
                 <div className="columns">
                   <div className="column is-4">
-                    <h3 className="title is-3">
-                      Missed this weeks webinar? Watch it here:
-                    </h3>
-                    <p>
-                      Signup for the webinar series here to never miss another
-                      live session and to get access to our back catelogue of
-                      webinars.
-                    </p>
+                    <h3 className="title is-3">{videoTitle}</h3>
+                    <p
+                      dangerouslySetInnerHTML={{
+                        __html: videoDescription,
+                      }}
+                    />
                     <div className="has-text-centered-mobile">
                       <Link
-                        to="/"
+                        to={signupLink}
                         className="btn secondary with-radius-half-rem half-width smaller threequarterwidth">
                         Sign Up
                       </Link>
                     </div>
                   </div>
                   <div className="column is-7 is-offset-1">
-                    <YouTube videoId={videoId} opts={videoOptions} />
+                    <YouTube videoId={videoLink} opts={videoOptions} />
                   </div>
                 </div>
-              </section> */}
+              </section>
             </div>
           );
         }}
@@ -218,6 +206,16 @@ export const pageQuery = graphql`
           }
         }
       }
+    }
+    contentfulFoundryVideo {
+      title
+      description {
+        childMarkdownRemark {
+          html
+        }
+      }
+      signupLink
+      videoLink
     }
   }
 `;
