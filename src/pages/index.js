@@ -34,6 +34,53 @@ import icTick from '../assets/images/NewDesign/ic-tick.png';
 import icArrowDown from '../assets/images/NewDesign/ic-arrow-down.svg';
 import "animate.css/animate.min.css";
 
+const initalAnimationClasses = [
+  'fadeInDown',
+  { title: '', bar: '' },
+  { page: '', title: '' },
+  { background: '', rightSpinner: '', leftInnerSpinner: '', leftSpinner: '', chapterTitle: '', fullLeftSpinner: '', mobileLeftSpinner: '', mobileRightSpinner: '' },
+  { rightSpinner: '' },
+  '',
+  '',
+  '',
+  '',
+  /**
+   * Page 3 className starting Index 9
+   */
+  { left: '', right: '', pageTitle: '' },
+  { background: '', rightSpinner: '', leftInnerSpinner: '', leftSpinner: '', chapterTitle: '', fullLeftSpinner: '', mobileLeftSpinner: '', mobileRightSpinner: '' },
+  { rightSpinner: '' },
+  '',
+  '',
+  '',
+  '',
+  /**
+   * Page 4 className starting Index 16
+   */
+  { left: '', right: '', pageTitle: '' },
+  { background: '', rightSpinner: '', leftInnerSpinner: '', leftSpinner: '', chapterTitle: '', fullLeftSpinner: '', mobileLeftSpinner: '', mobileRightSpinner: '' },
+  { rightSpinner: '' },
+  '',
+  '',
+  '',
+  '',
+  /**
+   * Page 5 className starting with Index 23
+   */
+  { left: '', right: '', pageTitle: '' },
+  { background: '', rightSpinner: '', leftInnerSpinner: '', leftSpinner: '', chapterTitle: '', fullLeftSpinner: '', mobileLeftSpinner: '', mobileRightSpinner: '' },
+  { rightSpinner: '' },
+  '',
+  '',
+  '',
+  '',
+  /**
+   *  last pricing form
+   */
+  { page: '' },
+  { form: ''}
+];
+
 class LandingPage extends React.PureComponent{
   constructor(props) {
     super(props);
@@ -46,52 +93,7 @@ class LandingPage extends React.PureComponent{
     }
     this.scrolling = false;
     this.innerScrolling = false;
-    this.animationClasses = [
-      '',
-      { title: '', bar: '' },
-      { page: '', title: '' },
-      { background: '', rightSpinner: '', leftInnerSpinner: '', leftSpinner: '', chapterTitle: '', fullLeftSpinner: '', mobileLeftSpinner: '', mobileRightSpinner: '' },
-      { rightSpinner: '' },
-      '',
-      '',
-      '',
-      '',
-      /**
-       * Page 3 className starting Index 9
-       */
-      { left: '', right: '', pageTitle: '' },
-      { background: '', rightSpinner: '', leftInnerSpinner: '', leftSpinner: '', chapterTitle: '', fullLeftSpinner: '', mobileLeftSpinner: '', mobileRightSpinner: '' },
-      { rightSpinner: '' },
-      '',
-      '',
-      '',
-      '',
-      /**
-       * Page 4 className starting Index 16
-       */
-      { left: '', right: '', pageTitle: '' },
-      { background: '', rightSpinner: '', leftInnerSpinner: '', leftSpinner: '', chapterTitle: '', fullLeftSpinner: '', mobileLeftSpinner: '', mobileRightSpinner: '' },
-      { rightSpinner: '' },
-      '',
-      '',
-      '',
-      '',
-      /**
-       * Page 5 className starting with Index 23
-       */
-      { left: '', right: '', pageTitle: '' },
-      { background: '', rightSpinner: '', leftInnerSpinner: '', leftSpinner: '', chapterTitle: '', fullLeftSpinner: '', mobileLeftSpinner: '', mobileRightSpinner: '' },
-      { rightSpinner: '' },
-      '',
-      '',
-      '',
-      '',
-      /**
-       *  last pricing form
-       */
-      { page: '' },
-      { form: ''}
-    ];
+    this.animationClasses = JSON.parse(JSON.stringify(initalAnimationClasses));
     this.startY = 0;
     this.moveY = 0;
     this.scrollDirection = true;
@@ -110,13 +112,14 @@ class LandingPage extends React.PureComponent{
   }
   componentWillReceiveProps(nextProps) {    
     if (nextProps.showPage === 'Home') {
-      this.animationClasses[30].page = '';
+      this.animationClasses = JSON.parse(JSON.stringify(initalAnimationClasses));
       this.setState({
         animationIndex: 0,
         contactForm: false,
         showPage: ''
       })
       this.props.updateState({showPage: ''})
+      console.log(this.animationClasses);
     }
   }
   touchStart = ( event ) => {
