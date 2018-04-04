@@ -3,7 +3,26 @@ import PropTypes from "prop-types";
 import Link from "gatsby-link";
 import IRISAuth from "../../Auth/IRISAuth";
 import {fisherYates} from "../../utils";
+import YouTube from "react-youtube";
 import "./styles.scss";
+
+const videoId = "EOdATLzRGHc";
+const videoOptions = {
+  //height: "10000",
+  //width: "100%",
+  /*playerVars: {
+    autoplay: 1,
+    controls: 0,
+    disablekb: 0,
+    fs: 0,
+    iv_load_policy: 3,
+    loop: 1,
+    playlist: "pZ_tHrWzdT4",
+    modestbranding: 1,
+    showinfo: 0,
+    enablejsapi: 1,
+  },*/
+};
 
 class MyFoundryPage extends React.Component {
   constructor(props) {
@@ -105,6 +124,30 @@ class MyFoundryPage extends React.Component {
                   )}
                 </div>
               </section>
+              {/* <section className="section container foundry-video">
+                <div className="columns">
+                  <div className="column is-4">
+                    <h3 className="title is-3">
+                      Missed this weeks webinar? Watch it here:
+                    </h3>
+                    <p>
+                      Signup for the webinar series here to never miss another
+                      live session and to get access to our back catelogue of
+                      webinars.
+                    </p>
+                    <div className="has-text-centered-mobile">
+                      <Link
+                        to="/"
+                        className="btn secondary with-radius-half-rem half-width smaller threequarterwidth">
+                        Sign Up
+                      </Link>
+                    </div>
+                  </div>
+                  <div className="column is-7 is-offset-1">
+                    <YouTube videoId={videoId} opts={videoOptions} />
+                  </div>
+                </div>
+              </section> */}
             </div>
           );
         }}
