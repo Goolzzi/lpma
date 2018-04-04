@@ -41,7 +41,8 @@ class LandingPage extends React.PureComponent{
     this.state =  {
       animationIndex: 0,
       lastScrollPosition: 0,
-      contactForm: false
+      contactForm: false,
+      showPage: props.showPage
     }
     this.scrolling = false;
     this.innerScrolling = false;
@@ -106,6 +107,17 @@ class LandingPage extends React.PureComponent{
     this.wrapper.removeEventListener("wheel", this.wheelScroll);
     this.wrapper.removeEventListener("touchstart", this.touchStart);
     this.wrapper.removeEventListener("touchmove", this.touchMove);
+  }
+  componentWillReceiveProps(nextProps) {    
+    if (nextProps.showPage === 'Home') {
+      this.animationClasses[30].page = '';
+      this.setState({
+        animationIndex: 0,
+        contactForm: false,
+        showPage: ''
+      })
+      this.props.updateState({showPage: ''})
+    }
   }
   touchStart = ( event ) => {
     this.startY = event.changedTouches[0].clientY;
@@ -420,13 +432,9 @@ class LandingPage extends React.PureComponent{
     this.animationClasses[31].form = 'cFadeIn';
   }
   render () {
-    console.log(this.props);
     this.getAnimationClassName(this.state.animationIndex, this.scrollDirection)
     if (this.props.showPage === 'Pricing') {
       this.animationClasses[30].page = 'fullPageFadeInUp animation-delay-2';
-    } else if (this.props.showPage === 'Home') {
-      this.animationIndex = 0;
-      this.animationClasses[30].page = '';
     } else if (this.props.showPage === 'Join'){
       this.setState({ contactForm: true })
     }

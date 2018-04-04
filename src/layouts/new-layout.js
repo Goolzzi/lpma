@@ -13,6 +13,9 @@ class NewLayoutTemplate extends React.PureComponent {
       showPage: ''
     }
   }
+  updateState =  (payload) => {
+    this.setState({ ...payload });
+  }
   render() {
     const { children } = this.props;
     return (
@@ -26,7 +29,8 @@ class NewLayoutTemplate extends React.PureComponent {
             children({
               ...this.props,
               onPageChange: (number) => this.setState({number}),
-              showPage: this.state.showPage
+              showPage: this.state.showPage,
+              updateState: this.updateState,
             })
           }
         </div>

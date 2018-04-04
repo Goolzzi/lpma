@@ -8,6 +8,11 @@
   display: flex;
   justify-content: space-between;
   z-index: 1;
+  .navbar-item {
+    &:hover {
+      background-color: transparent;
+    }
+  }
 
   img {
     max-height: 1.25em;
@@ -34,6 +39,9 @@
         }
       }
     }
+    @media screen and (max-width: $mobile-width){
+      display: none;
+    }
   }
   
   .navbar-btn-group {
@@ -41,6 +49,7 @@
     .navbar-item {
       color: white;
       font-size: 0.6em;
+      
       .menu-btn {
         font-size: 1em;
         background: transparent;
@@ -60,35 +69,6 @@
     }
   }
 }
-// .page-2 {
-//   &.header-wrapper {
-//     .menu {
-//       ul {
-//         li {
-//            a {
-//             color: $text-primary;
-//            }
-//         }
-//       }
-//     }
-//     .navbar-btn-group {
-//       .navbar-item {
-//         .menu-btn {
-//           font-size: 1em;
-//           background: transparent;
-//           border: none;
-//           color: $white;
-//         }
-//         &:first-of-type {
-//           .menu-btn {
-//             background: $white;
-//             color: $text-primary;
-//           }
-//         }
-//       }
-//     }
-//   }
-// }
 .transition-down {
   transition-delay: 1s;
   transition: all 0.3s;

@@ -27,7 +27,7 @@ const Header = (props) => {
   return (
     <nav className={`navbar  is-transparent header-wrapper`}>
       <div className="navbar-brand">
-        <a className="navbar-item" href="#">
+        <a className="navbar-item" onClick={() => props.selectPage('Home')}>
           <img src={imgLogo} alt="this is logo" width="112" height="28" />
         </a>
       </div>
