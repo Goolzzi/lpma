@@ -1,15 +1,12 @@
 const path = require("path");
 const _isEqual = require("lodash").isEqual;
+const constants = require("./constants");
+const {foundryCrumb} = constants;
 
 module.exports = function(data, createPage) {
   const sectionTemplate = path.resolve("src/templates/section/index.js");
   const subjectTemplate = path.resolve("src/templates/subject/index.js");
   const stepTemplate = path.resolve("src/templates/step/index.js");
-
-  const foundryCrumb = {
-    title: "My Foundry",
-    path: "",
-  };
 
   const subjectsMap = new Map();
 

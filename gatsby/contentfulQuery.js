@@ -61,13 +61,27 @@ module.exports = `
   allContentfulDocumentsCountry {
     edges {
       node {
-          slug
+        slug
+        name
+        regions {
+            id
+            name
+            slug
+            downloads {
+              ... on ContentfulDocumentList {
+                id
+                title
+                slug
+              }
+            }
+          }
       }
     }
   }
   allContentfulDocumentsRegion {
     edges {
       node {
+        name
         slug
         downloads {
           ... on ContentfulDocumentList {

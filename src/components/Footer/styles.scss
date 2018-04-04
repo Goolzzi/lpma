@@ -130,6 +130,11 @@
         strong {
           color: $white;
         }
+
+        @include mobile {
+          padding-left: 1rem;
+          padding-top: 2rem;
+        }
       }
 
       a {

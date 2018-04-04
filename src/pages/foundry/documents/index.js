@@ -2,7 +2,11 @@ import React, {Component} from "react";
 import PropTypes from "prop-types";
 import Link from "gatsby-link";
 import DocumentCard from "../../../components/DocumentCard";
+import BreadCrumb from "../../../components/BreadCrumb";
+import {foundryCrumb, documentSuiteCrumb} from "../../../../gatsby/constants";
 import "./styles.scss";
+
+const crumbs = [foundryCrumb, documentSuiteCrumb];
 
 const renderRegionLinks = regions => (
   <p>
@@ -35,6 +39,7 @@ class DocumentsPage extends Component {
     const {data} = this.props;
     return (
       <section className="section level-cards">
+        <BreadCrumb parentPath="/foundry" crumbs={crumbs} />
         <div className="container">
           <div className="columns titles-wrapper">
             <div className="column">
@@ -57,11 +62,11 @@ class DocumentsPage extends Component {
             ))}
           </div>
 
-          <Link to="/foundry">
-            <button className="btn default with-radius-5 larger thirdwidth shadow">
-              <span>Back to&nbsp;</span>
-              <span className="has-text-weight-bold">Foundry</span>
-            </button>
+          <Link
+            to="/foundry"
+            className="btn default with-radius-5 larger thirdwidth shadow">
+            <span>Back to&nbsp;</span>
+            <span className="has-text-weight-bold">Foundry</span>
           </Link>
         </div>
       </section>

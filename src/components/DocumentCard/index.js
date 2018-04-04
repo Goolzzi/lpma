@@ -16,7 +16,9 @@ const DocumentCard = ({title, titleLink, isDownloadable, children}) => (
     <div className="level-card-item">
       {isDownloadable ? (
         <a href={titleLink}>
-          <h4 className="title is-5"><Icon name='download' /> {title}</h4>
+          <h4 className="title is-5">
+            <Icon name="download" /> {title}
+          </h4>
         </a>
       ) : (
         <Link to={titleLink}>
