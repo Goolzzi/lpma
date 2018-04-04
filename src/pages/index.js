@@ -15,8 +15,8 @@ import bkIntro5Mobile from '../assets/images/NewDesign/bk-intro-5-mobile.jpeg';
 
 import imgIntro2_1 from '../assets/images/NewDesign/img-intro-1_1.svg';
 import imgIntro2_2 from '../assets/images/NewDesign/img-intro-1_2.svg';
-import imgIntro2_3 from '../assets/images/NewDesign/img-intro-1_3.svg';
-import imgIntro2_4 from '../assets/images/NewDesign/img-intro-1_4.svg';
+import imgIntro2_3 from '../assets/images/NewDesign/img-intro-1_3.png';
+import imgIntro2_4 from '../assets/images/NewDesign/img-intro-1_4.png';
 
 import imgIntro3_1 from '../assets/images/NewDesign/img-intro-3_1.svg';
 import imgIntro3_2 from '../assets/images/NewDesign/img-intro-3_2.svg';
