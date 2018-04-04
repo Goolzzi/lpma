@@ -16,8 +16,7 @@ class Auth {
       this.fetchTokenInfo()
         .then(resoult => resoult.json())
         .then(info => {
-          // TODO: REVERT NOT!
-          if (~info.group_ids.indexOf(authConfig.lpmaGroupID)) {
+          if (!~info.group_ids.indexOf(authConfig.lpmaGroupID)) {
             this.logout("isNotMember=1");
           } else {
             this.setUserData(info);
@@ -67,7 +66,7 @@ class Auth {
   };
 
   getKey = () => {
-    return CryptoJS.MD5(this.getAccessToken()).toString();
+    return CryptoJS.MD5(authConfig.clientId).toString();
   };
 
   fetchTokenInfo = () => {

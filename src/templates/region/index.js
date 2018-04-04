@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import Link from "gatsby-link";
 import {Icon} from "react-fa";
 import DocumentCard from "../../components/DocumentCard";
+import BreadCrumb from "../../components/BreadCrumb";
 import "./styles.scss";
 
 const renderDocumentsList = documents => (
@@ -40,12 +41,15 @@ const renderDownloads = (downloads, regionSlug) =>
 
 const propTypes = {
   data: PropTypes.object.isRequired,
+  pathContext: PropTypes.object.isRequired,
 };
 
 const Region = ({
+  pathContext: {parentPath, breadCrumbs},
   data: {contentfulDocumentsRegion: {name, slug, downloads}},
 }) => (
   <section className="section level-cards">
+    <BreadCrumb parentPath={parentPath} crumbs={breadCrumbs} />
     <div className="container">
       <div className="columns titles-wrapper">
         <div className="column">
@@ -60,11 +64,11 @@ const Region = ({
       <div className="columns is-multiline">
         {renderDownloads(downloads, slug)}
       </div>
-      <Link to="/foundry">
-        <button className="btn default with-radius-5 larger thirdwidth shadow">
-          <span>Back to&nbsp;</span>
-          <span className="has-text-weight-bold">Foundry</span>
-        </button>
+      <Link
+        to="/foundry"
+        className="btn default with-radius-5 larger thirdwidth shadow">
+        <span>Back to&nbsp;</span>
+        <span className="has-text-weight-bold">Foundry</span>
       </Link>
     </div>
   </section>
