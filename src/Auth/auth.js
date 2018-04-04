@@ -66,7 +66,7 @@ class Auth {
   };
 
   getKey = () => {
-    return CryptoJS.MD5(this.getAccessToken()).toString();
+    return CryptoJS.MD5(authConfig.clientId).toString();
   };
 
   fetchTokenInfo = () => {
