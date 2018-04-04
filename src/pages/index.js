@@ -178,7 +178,7 @@ class LandingPage extends React.PureComponent{
     }
   }
   scrollWindowDown = () => {
-    if (!this.scrolling && this.state.animationIndex < this.animationClasses.length-1) {
+    if (!this.scrolling && this.state.animationIndex < 23) {
       this.scrolling = true;
       this.scrollDirection = true;
       this.setState({animationIndex: this.state.animationIndex + 1});

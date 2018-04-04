@@ -42,6 +42,11 @@
     @media screen and (max-width: $mobile-width){
       display: none;
     }
+    &.secondary {
+      ul li a {
+        color: #000;
+      }
+    }
   }
   
   .navbar-btn-group {
@@ -85,23 +90,6 @@
         }
       }
      } 
-    }
-  }
-}
-.transition-down {
-  transition-delay: 1s;
-  transition: all 0.3s;
-  
-}
-.transition-up {
-  transition: all 0.3s;
-}
-.menu-2 {
-  ul {
-    li {
-      a {
-        color: $text-primary !important;
-      }
     }
   }
 }
