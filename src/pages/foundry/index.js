@@ -67,7 +67,6 @@ class MyFoundryPage extends React.Component {
                     <div className="columns">
                       <div className="column is-4">
                         <div className="top-text">
-                          <p>{title}</p>
                           <h2
                             dangerouslySetInnerHTML={{
                               __html: `${greeting.childMarkdownRemark.html} ${
@@ -174,7 +173,7 @@ export const pageQuery = graphql`
       }
       background {
         id
-        resolutions(quality: 100) {
+        resolutions(quality: 100, width: 1100) {
           src
           srcSet
         }

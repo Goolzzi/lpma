@@ -17,10 +17,10 @@
   padding-top: 0px;
 
   .image-wrapper {
-    @include cover-image(100%, 1000px);
+    @include cover-image(100%, 1000px, right);
 
-    @media screen and (max-width: 768px) {
-      @include cover-image(100%, 375px);
+    @include mobile {
+      @include cover-image(100%, 0px, right);
     }
   }
 
@@ -37,7 +37,7 @@
    .column {
       .top-text {
         & > h2 {
-          color: $white;
+          color: #70BE5B;
           font-weight: 500;
           font-size: 2.5rem;
           margin-bottom: 4rem;

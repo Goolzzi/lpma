@@ -16,7 +16,7 @@ class Auth {
       this.fetchTokenInfo()
         .then(resoult => resoult.json())
         .then(info => {
-          if (!~info.group_ids.indexOf(authConfig.lpmaGroupID)) {
+          if (~info.group_ids.indexOf(authConfig.lpmaGroupID)) {
             this.logout("isNotMember=1");
           } else {
             this.setUserData(info);
