@@ -49,6 +49,7 @@
     .navbar-item {
       color: white;
       font-size: 0.6em;
+      transition: all 1s;
       
       .menu-btn {
         font-size: 1em;
@@ -66,6 +67,24 @@
           border: none;
         }
       }
+    }
+    &.secondary {
+     .navbar-item {
+       .menu-btn {
+          background: transparent;
+          color: $white;
+       }
+       &:first-of-type {
+        padding-left: 0;
+        padding-right: 0;
+        .menu-btn {
+          background: $white;
+          color: #000;
+          padding: 0.8rem 1.8rem;
+          border: none;
+        }
+      }
+     } 
     }
   }
 }

@@ -119,7 +119,6 @@ class LandingPage extends React.PureComponent{
         showPage: ''
       })
       this.props.updateState({showPage: ''})
-      console.log(this.animationClasses);
     }
   }
   touchStart = ( event ) => {
@@ -174,7 +173,7 @@ class LandingPage extends React.PureComponent{
       this.setState({animationIndex: this.state.animationIndex - 1});
       setTimeout(() => {
         this.scrolling = false;
-      }, 1000);
+      }, 2000);
       this.props.onPageChange(this.state.animationIndex);
     }
   }
@@ -185,7 +184,7 @@ class LandingPage extends React.PureComponent{
       this.setState({animationIndex: this.state.animationIndex + 1});
       setTimeout(() => {
         this.scrolling = false;
-      }, 1000);
+      }, 2000);
       this.props.onPageChange(this.state.animationIndex);
     }
   }
@@ -827,7 +826,10 @@ class LandingPage extends React.PureComponent{
                   <div className="select is-small">
                     <select>
                       <option>Your region*</option>
-                      <option>With options</option>
+                      <option>Australia</option>
+                      <option>New Zealand</option>
+                      <option>United States</option>
+                      <option>Other</option>
                     </select>
                   </div>
                 </div>
