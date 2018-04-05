@@ -78,4 +78,43 @@
       margin-bottom: 2.5rem;
     }
   }
+
+  &.level-links {
+    .columns {
+      &.has-space-botton {
+        margin-bottom: 1rem;
+
+        @include mobile {
+          margin-bottom: 1rem;
+        }
+      }
+    }
+
+    .container {
+      & > .columns {
+        margin-top: 0.75rem;
+
+        @include mobile {
+          margin-top: 0.75rem;
+        }
+      }
+
+      .level-link-item {
+        display: block;
+
+        & > .fa {
+          margin-right: 0.5rem;
+        }
+      }
+
+      .see-all {
+        color: $gray;
+        margin-top: 0.75rem;
+
+        &:hover {
+          cursor: pointer;
+        }
+      }
+    }
+  }
 }

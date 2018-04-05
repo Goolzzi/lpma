@@ -1,5 +1,6 @@
 import React, {Component} from "react";
 import PropTypes from "prop-types";
+import {Icon} from "react-fa";
 
 const propTypes = {
   documents: PropTypes.array.isRequired,
@@ -36,14 +37,19 @@ class BCSection extends Component {
       return <React.Fragment />;
     }
     return (
-      <div>
-        <h2>{documentTypeTitle}</h2>
-        <ul>
-          {filteredDocuments
-            .slice(0, this.getSliceIndex())
-            .map(({id, title}) => <li key={id}>{title}</li>)}
-        </ul>
-        <span onClick={this.toggleCollapse}>{toggleText}</span>
+      <div className="column is-12">
+        <h4 className="title is-5">{documentTypeTitle}</h4>
+        {filteredDocuments
+          .slice(0, this.getSliceIndex())
+          .map(({id, title, link}) => (
+            <a key={id} href={link} className="level-link-item">
+              <Icon name="download" />
+              {title}
+            </a>
+          ))}
+        <span className="level-link-item see-all" onClick={this.toggleCollapse}>
+          {toggleText}
+        </span>
       </div>
     );
   };
