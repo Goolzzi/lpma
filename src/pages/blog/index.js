@@ -51,9 +51,8 @@ export const pageQuery = graphql`
       edges {
         node {
           image {
-            resolutions(quality: 75) {
-              src
-              srcSet
+            sizes(quality: 100, maxWidth: 600, toFormat: JPG) {
+              ...GatsbyContentfulSizes
             }
           }
           category
@@ -62,9 +61,8 @@ export const pageQuery = graphql`
           author {
             name
             image {
-              resolutions(quality: 100) {
-                src
-                srcSet
+              sizes(quality: 100, maxWidth: 600, toFormat: JPG) {
+                ...GatsbyContentfulSizes
               }
             }
           }
