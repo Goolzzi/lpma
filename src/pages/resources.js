@@ -34,25 +34,6 @@ ResourcesPage.propTypes = propTypes;
 export default ResourcesPage;
 
 export const pageQuery = graphql`
-  fragment JumbotronItem on ContentfulJumbotron {
-    joinLink {
-      name
-      to
-    }
-    background {
-      id
-      resolutions(quality: 100) {
-        ...GatsbyContentfulResolutions
-      }
-      sizes(quality: 100, maxWidth: 1280, toFormat: JPG) {
-        ...GatsbyContentfulSizes
-      }
-    }
-    title {
-      title
-    }
-  }
-
   query ResourcesPageQuery {
     allContentfulResoursesJumbotron(
       sort: {fields: [pageLocation], order: DESC}

@@ -1,4 +1,5 @@
 import React from "react";
+import Img from "gatsby-image";
 import PropTypes from "prop-types";
 import "./styles.scss";
 
@@ -14,7 +15,7 @@ const Testimonials = ({testimonial}) => (
           id,
           authorName,
           childContentfulTestimonial1ContentTextNode: {childMarkdownRemark},
-          authorPhoto: {responsiveResolution: {src, srcSet}},
+          authorPhoto: {sizes},
         }) => (
           <div key={id} className="column is-6 is-12-mobile testimonial-item">
             <div className="text-cont">
@@ -27,7 +28,7 @@ const Testimonials = ({testimonial}) => (
               <p className="name-p">{authorName}</p>
             </div>
             <div className="img-cont">
-              <img src={src} srcSet={srcSet} alt={authorName} />
+              <Img sizes={sizes} />
             </div>
           </div>
         ),
