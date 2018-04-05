@@ -3,17 +3,9 @@
 
   .image-wrapper {
     @include cover-image(100%, auto);
-    max-height: 750px;
-    img, div {
-      max-height: 750px;
-    }
 
-    @media screen and (max-width: 768px) {
+    @include mobile {
       @include cover-image(100%, auto);
-      max-height: 375px;
-      img, div {
-        max-height: 375px;
-      }
     }
   }
 
@@ -39,7 +31,7 @@
     }
   }
 
-  @media screen and (max-width: 768px) {
+  @include mobile {
     .cont-wrapper {
       background-color: $secondary-color;
       position: static;
