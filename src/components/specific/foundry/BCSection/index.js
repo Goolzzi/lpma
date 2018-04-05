@@ -26,6 +26,9 @@ class BCSection extends Component {
     const {documents, documentTypeTitle, documentType} = this.props;
     const {isCollapsed} = this.state;
     const toggleText = isCollapsed ? "See all" : "Collapse List";
+    if (documents.length === 0) {
+      return <React.Fragment />;
+    }
     return (
       <div>
         <h2>{documentTypeTitle}</h2>
