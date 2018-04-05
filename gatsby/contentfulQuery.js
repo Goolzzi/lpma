@@ -97,6 +97,7 @@ module.exports = `
     edges {
       node {
         slug
+        name
       }
     }
   }

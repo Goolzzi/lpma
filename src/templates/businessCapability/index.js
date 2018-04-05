@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import BCSection from "../../components/specific/foundry/BCSection";
 import BackToButton from "../../components/BackToButton";
 import TopLinks from "../../components/specific/foundry/TopLinks";
+import BreadCrumb from "../../components/BreadCrumb";
 
 const documentTypes = [
   {documentType: "article", documentTypeTitle: "Documents and Articles"},
@@ -11,13 +12,16 @@ const documentTypes = [
 ];
 
 const propTypes = {
+  pathContext: PropTypes.object.isRequired,
   data: PropTypes.object.isRequired,
 };
 
 const BusinessCapability = ({
+  pathContext: {parentPath, breadCrumbs},
   data: {contentfulBusinessCapability: {name, documents}},
 }) => (
   <section className="section level-cards level-links">
+    <BreadCrumb parentPath={parentPath} crumbs={breadCrumbs} />
     <div className="container">
       <TopLinks />
       <div className="columns titles-wrapper">
@@ -29,7 +33,7 @@ const BusinessCapability = ({
       {documentTypes.map((documentType, index) => (
         <BCSection key={index} documents={documents} {...documentType} />
       ))}
-      <BackToButton to="/foundry/documents" prefix="Documents Suite" />
+      <BackToButton link="/foundry/documents" prefix="Building a Business" />
     </div>
   </section>
 );
