@@ -18,21 +18,17 @@ const TopJumbotron = ({jumbotron}) => {
       {title || joinLink ? (
         <div className="cont-wrapper">
           <div className="cont">
-            {title ? <p>{title.title}</p> : <React.Fragment />}
+            {title ? <p>{title.title}</p> : null}
             {joinLink ? (
               <Link {...joinLink}>
                 <button className="btn primary halfwidth">
                   {joinLink.name}
                 </button>
               </Link>
-            ) : (
-              <React.Fragment />
-            )}
+            ) : null}
           </div>
         </div>
-      ) : (
-        <React.Fragment />
-      )}
+      ) : null}
     </section>
   );
 };

@@ -12,17 +12,18 @@ import TopJumbotron from "../../components/TopJumbotron";
 import BottomJumbotron from "../../components/BottomJumbotron";
 import BlogPostSection from "../../components/BlogPostSection";
 import BlogPageHeading from "../../components/BlogPageHeading";
-import {fisherYates} from "../../utils/index";
+import {fisherYates} from "../../utils";
 import "./styles.scss";
+
+const getblogUrl = () => {
+  return window ? window.location.href : "";
+};
 
 const generateBlogJumbotron = node => ({
   jumbotron: [
     {
       background: {
-        resolutions: {
-          src: node.image.resolutions.src,
-          srcSet: node.image.resolutions.srcSet,
-        },
+        sizes: node.image.sizes,
       },
     },
   ],
@@ -35,15 +36,13 @@ const propTypes = {
   location: PropTypes.object.isRequired,
 };
 
-const BlogPost = ({data, location}) => {
-  const baseUrl = "https://lpma.netlify.com";
-  const {pathname} = location;
-  const {title, category, date, author, content} = data.contentfulBlogPost;
+const BlogPost = ({data}) => {
+  const {content} = data.contentfulBlogPost;
   const {edges} = data.allContentfulBlogPost;
   const {contentfulBlogJumbotron: bottomJumbotron} = data;
   const topJumbotron = generateBlogJumbotron(data.contentfulBlogPost);
   const otherBlogs = fisherYates(edges, 3);
-  const blogUrl = `${baseUrl}${pathname}`;
+  const blogUrl = getblogUrl();
   return (
     <React.Fragment>
       <TopJumbotron {...topJumbotron} />
@@ -101,16 +100,19 @@ BlogPost.propTypes = propTypes;
 export default BlogPost;
 
 export const pageQuery = graphql`
+  fragment ImgeSizes on ContentfulAsset {
+    sizes(quality: 100, maxWidth: 1280, toFormat: JPG) {
+      ...GatsbyContentfulSizes
+    }
+  }
+
   query BlogQuery($slug: String!) {
     contentfulBlogPost(slug: {eq: $slug}) {
       title
       slug
       date
       image {
-        resolutions(quality: 100) {
-          src
-          srcSet
-        }
+        ...ImgeSizes
       }
       category
       content {
@@ -121,10 +123,7 @@ export const pageQuery = graphql`
       author {
         name
         image {
-          resolutions(quality: 100) {
-            src
-            srcSet
-          }
+          ...ImgeSizes
         }
       }
     }
@@ -132,10 +131,7 @@ export const pageQuery = graphql`
       edges {
         node {
           image {
-            resolutions(quality: 100) {
-              src
-              srcSet
-            }
+            ...ImgeSizes
           }
           category
           date
@@ -143,10 +139,7 @@ export const pageQuery = graphql`
           author {
             name
             image {
-              resolutions(quality: 100) {
-                src
-                srcSet
-              }
+              ...ImgeSizes
             }
           }
           slug

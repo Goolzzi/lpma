@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import Img from "gatsby-image";
 import moment from "moment";
 import "./styles.scss";
 
@@ -8,12 +9,7 @@ const propTypes = {
 };
 
 const BlogPageHeading = ({
-  blog: {
-    title,
-    category,
-    date,
-    author: {name, image: {resolutions: {src, srcSet}}},
-  },
+  blog: {title, category, date, author: {name, image: {sizes}}},
 }) => (
   <section className="section blog-page-top">
     <div className="container narrow">
@@ -28,7 +24,7 @@ const BlogPageHeading = ({
 
           <div className="author">
             <div className="image author-avatar is-64x64">
-              <img src={src} srcSet={srcSet} />
+              <Img sizes={sizes} />
             </div>
             <span className="author-name">{name}</span>
           </div>
