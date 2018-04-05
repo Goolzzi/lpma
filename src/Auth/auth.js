@@ -79,7 +79,6 @@ class Auth {
   };
 
   getUserData = () => {
-    return { username: 'sergey' };
     if (this.userData) {
       return this.userData;
     }
@@ -97,7 +96,6 @@ class Auth {
   };
 
   isAuthenticated = () => {
-    return true;
     if (typeof localStorage !== "undefined") {
       let expiresAt = store.get("expires_at");
       if (!expiresAt) {
