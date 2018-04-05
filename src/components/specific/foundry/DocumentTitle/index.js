@@ -13,6 +13,7 @@ const DocumentTitle = ({title, subtitle}) => (
       <h2 className="title is-4">{title}</h2>
       <h4 className="subtitle is-6">{subtitle}</h4>
     </div>
+    <div className="column" />
   </div>
 );
 

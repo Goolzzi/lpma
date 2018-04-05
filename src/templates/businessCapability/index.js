@@ -35,7 +35,7 @@ export const pageQuery = graphql`
         id
         type
         title
-        article
+        link
       }
     }
   }
