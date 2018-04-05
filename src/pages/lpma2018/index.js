@@ -1,15 +1,15 @@
 import React, {Component} from "react";
 import PropTypes from "prop-types";
 import ConferencesJumbotron from "../../components/ConferencesJumbotron";
-import YearlyEventStats from "../../components/specific/YearlyEventStats";
-import YearlyEventPurpose from "../../components/specific/YearlyEventPurpose";
-import YearlyEventPlan from "../../components/specific/YearlyEventPlan";
-import YearlyEventAgenda from "../../components/specific/YearlyEventAgenda";
-import YearlyEventSpeakers from "../../components/specific/YearlyEventSpeakers";
-import YearlyEventTickets from "../../components/specific/YearlyEventTickets";
-import YearlyEventAwardsGala from "../../components/specific/YearlyEventAwardsGala";
-import YearlyEventVenue from "../../components/specific/YearlyEventVenue";
-import YearlyEventGallery from "../../components/specific/YearlyEventGallery";
+import YearlyEventStats from "../../components/specific/lpma2018/YearlyEventStats";
+import YearlyEventPurpose from "../../components/specific/lpma2018/YearlyEventPurpose";
+import YearlyEventPlan from "../../components/specific/lpma2018/YearlyEventPlan";
+import YearlyEventAgenda from "../../components/specific/lpma2018/YearlyEventAgenda";
+import YearlyEventSpeakers from "../../components/specific/lpma2018/YearlyEventSpeakers";
+import YearlyEventTickets from "../../components/specific/lpma2018/YearlyEventTickets";
+import YearlyEventAwardsGala from "../../components/specific/lpma2018/YearlyEventAwardsGala";
+import YearlyEventVenue from "../../components/specific/lpma2018/YearlyEventVenue";
+import YearlyEventGallery from "../../components/specific/lpma2018/YearlyEventGallery";
 import "./styles.scss";
 
 class LPMA2018Page extends Component {
