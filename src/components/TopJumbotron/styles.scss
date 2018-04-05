@@ -2,10 +2,18 @@
   position: relative;
 
   .image-wrapper {
-    @include cover-image(100%, 750px, top);
+    @include cover-image(100%, auto);
+    max-height: 750px;
+    img, div {
+      max-height: 750px;
+    }
 
     @media screen and (max-width: 768px) {
-      @include cover-image(100%, 375px, top);
+      @include cover-image(100%, auto);
+      max-height: 375px;
+      img, div {
+        max-height: 375px;
+      }
     }
   }
 
