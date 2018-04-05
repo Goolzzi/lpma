@@ -8,22 +8,26 @@ const propTypes = {
   data: PropTypes.object.isRequired,
 };
 
-const ResourcesPage = ({
-  data: {
-    allContentfulResoursesJumbotron: {edges},
-    contentfulEventsTopInfoRemark,
-    allContentfulLpmaResource,
-  },
-}) => (
-  <div>
-    <TopJumbotron {...edges[0].node} />
-    <Resources
-      {...contentfulEventsTopInfoRemark}
-      {...allContentfulLpmaResource}
-    />
-    <BottomJumbotron {...edges[1].node} />
-  </div>
-);
+const ResourcesPage = props => {
+  const {
+    data: {
+      headerImage,
+      allContentfulResoursesJumbotron: {edges},
+      contentfulEventsTopInfoRemark,
+      allContentfulLpmaResource,
+    },
+  } = props;
+  return (
+    <div>
+      <TopJumbotron {...edges[0].node} headerImage={headerImage} />
+      <Resources
+        {...contentfulEventsTopInfoRemark}
+        {...allContentfulLpmaResource}
+      />
+      <BottomJumbotron {...edges[1].node} />
+    </div>
+  );
+};
 
 ResourcesPage.propTypes = propTypes;
 
@@ -45,8 +49,10 @@ export const pageQuery = graphql`
             background {
               id
               resolutions(quality: 100) {
-                src
-                srcSet
+                ...GatsbyContentfulResolutions
+              }
+              sizes(quality: 100, maxWidth: 1280, toFormat: JPG) {
+                ...GatsbyContentfulSizes
               }
             }
             title {
