@@ -34,6 +34,25 @@ ResourcesPage.propTypes = propTypes;
 export default ResourcesPage;
 
 export const pageQuery = graphql`
+  fragment JumbotronItem on ContentfulJumbotron {
+    joinLink {
+      name
+      to
+    }
+    background {
+      id
+      resolutions(quality: 100) {
+        ...GatsbyContentfulResolutions
+      }
+      sizes(quality: 100, maxWidth: 1280, toFormat: JPG) {
+        ...GatsbyContentfulSizes
+      }
+    }
+    title {
+      title
+    }
+  }
+
   query ResourcesPageQuery {
     allContentfulResoursesJumbotron(
       sort: {fields: [pageLocation], order: DESC}
@@ -42,22 +61,7 @@ export const pageQuery = graphql`
         node {
           pageLocation
           jumbotron {
-            joinLink {
-              name
-              to
-            }
-            background {
-              id
-              resolutions(quality: 100) {
-                ...GatsbyContentfulResolutions
-              }
-              sizes(quality: 100, maxWidth: 1280, toFormat: JPG) {
-                ...GatsbyContentfulSizes
-              }
-            }
-            title {
-              title
-            }
+            ...JumbotronItem
           }
         }
       }
@@ -91,9 +95,8 @@ export const pageQuery = graphql`
             }
           }
           image {
-            resolutions(width: 1245, quality: 100) {
-              src
-              srcSet
+            sizes(quality: 100, maxWidth: 600) {
+              ...GatsbyContentfulSizes
             }
           }
         }

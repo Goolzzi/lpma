@@ -156,20 +156,7 @@ export const pageQuery = graphql`
     }
     contentfulBlogJumbotron(pageLocation: {eq: "bottom"}) {
       jumbotron {
-        joinLink {
-          name
-          to
-        }
-        background {
-          id
-          resolutions(quality: 100) {
-            src
-            srcSet
-          }
-        }
-        title {
-          title
-        }
+        ...JumbotronItem
       }
     }
   }
