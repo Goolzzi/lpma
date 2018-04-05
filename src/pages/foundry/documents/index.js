@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import Link from "gatsby-link";
 import DocumentCard from "../../../components/DocumentCard";
 import BreadCrumb from "../../../components/BreadCrumb";
+import BackToFoundryButton from "../../../components/BackToFoundryButton";
 import {foundryCrumb, documentSuiteCrumb} from "../../../../gatsby/constants";
 import "./styles.scss";
 
@@ -62,12 +63,7 @@ class DocumentsPage extends Component {
             ))}
           </div>
 
-          <Link
-            to="/foundry"
-            className="btn default with-radius-5 larger thirdwidth shadow">
-            <span>Back to&nbsp;</span>
-            <span className="has-text-weight-bold">Foundry</span>
-          </Link>
+          <BackToFoundryButton />
         </div>
       </section>
     );

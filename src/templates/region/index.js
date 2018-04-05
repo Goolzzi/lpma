@@ -4,6 +4,7 @@ import Link from "gatsby-link";
 import {Icon} from "react-fa";
 import DocumentCard from "../../components/DocumentCard";
 import BreadCrumb from "../../components/BreadCrumb";
+import BackToFoundryButton from "../../components/BackToFoundryButton";
 import "./styles.scss";
 
 const renderDocumentsList = documents => (
@@ -64,12 +65,7 @@ const Region = ({
       <div className="columns is-multiline">
         {renderDownloads(downloads, slug)}
       </div>
-      <Link
-        to="/foundry"
-        className="btn default with-radius-5 larger thirdwidth shadow">
-        <span>Back to&nbsp;</span>
-        <span className="has-text-weight-bold">Foundry</span>
-      </Link>
+      <BackToFoundryButton />
     </div>
   </section>
 );
