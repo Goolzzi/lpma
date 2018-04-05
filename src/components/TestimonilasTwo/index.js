@@ -19,7 +19,7 @@ const Testimonials = ({testimonial, forUS}) => (
           childContentfulTestimonial2ContentTextNode: {childMarkdownRemark},
         }) => (
           <div key={id} className="column is-4 is-12-mobile exhibit-item">
-            <div className="image is-3by2">
+            <div className="image">
               <Img sizes={sizes} />
             </div>
             {!forUS ? (
