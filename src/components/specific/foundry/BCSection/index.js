@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 const propTypes = {
   documents: PropTypes.array.isRequired,
   documentType: PropTypes.string.isRequired,
-  documentTitle: PropTypes.string.isRequired,
+  documentTypeTitle: PropTypes.string.isRequired,
 };
 
 class BCSection extends Component {
@@ -23,17 +23,17 @@ class BCSection extends Component {
   };
 
   renderSection = () => {
-    const {documents, documentTitle, documentType} = this.props;
+    const {documents, documentTypeTitle, documentType} = this.props;
     const {isCollapsed} = this.state;
     const toggleText = isCollapsed ? "See all" : "Collapse List";
     return (
       <div>
-        <h2>{documentTitle}</h2>
+        <h2>{documentTypeTitle}</h2>
         <ul>
           {documents
             .filter(document => document.type === documentType)
             .slice(0, this.getSliceIndex())
-            .forEach(({id, title}) => <li key={id}>{title}</li>)}
+            .map(({id, title}) => <li key={id}>{title}</li>)}
         </ul>
         <span onClick={this.toggleCollapse}>{toggleText}</span>
       </div>

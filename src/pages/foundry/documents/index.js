@@ -43,8 +43,8 @@ class DocumentsPage extends Component {
     const {data: {allContentfulBusinessCapability}} = this.props;
     return (
       <div className="columns is-multiline has-space-botton">
-        {allContentfulBusinessCapability.edges.forEach(({node}) => (
-          <BCCard node={node} />
+        {allContentfulBusinessCapability.edges.map(({node}) => (
+          <BCCard key={node.id} node={node} />
         ))}
       </div>
     );
