@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import Img from "gatsby-image";
 import "./styles.scss";
 
 const propTypes = {
@@ -12,13 +13,13 @@ const propTypes = {
 };
 
 const YearlyEventSpeaker = ({
-  speaker: {name, profession, info, image: {resolutions: {src, srcSet}}},
+  speaker: {name, profession, info, image: {sizes}},
 }) => (
   <div className="column is-4 speaker">
     <div className="columns">
       <div className="column is-6">
         <div className="has-text-centered-mobile">
-          <img src={src} srcSet={srcSet} alt="" />
+          <Img sizes={sizes} />
         </div>
       </div>
       <div className="column is-6">

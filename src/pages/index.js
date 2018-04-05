@@ -89,7 +89,7 @@ export const pageQuery = graphql`
     }
     background {
       id
-      sizes(quality: 100, maxWidth: 1280, toFormat: JPG) {
+      sizes(quality: 100, maxWidth: 800, toFormat: JPG) {
         ...GatsbyContentfulSizes
       }
     }
@@ -126,7 +126,7 @@ export const pageQuery = graphql`
           }
         }
         authorPhoto {
-          sizes(quality: 100, maxWidth: 800, toFormat: JPG) {
+          sizes(quality: 100, maxWidth: 600, toFormat: JPG) {
             ...GatsbyContentfulSizes
           }
         }
@@ -134,7 +134,7 @@ export const pageQuery = graphql`
       testimonial2 {
         id
         image {
-          sizes(quality: 100, maxWidth: 800, toFormat: JPG) {
+          sizes(quality: 100, maxWidth: 600, toFormat: JPG) {
             ...GatsbyContentfulSizes
           }
         }
