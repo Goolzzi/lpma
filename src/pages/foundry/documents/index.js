@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import Link from "gatsby-link";
 import DocumentCard from "../../../components/specific/foundry/DocumentCard";
 import BreadCrumb from "../../../components/BreadCrumb";
-import BackToFoundryButton from "../../../components/BackToFoundryButton";
+import BackToButton from "../../../components/BackToButton";
 import BCCard from "../../../components/specific/foundry/BCCard";
 import TopLinks from "../../../components/specific/foundry/TopLinks";
 import DocumentTitle from "../../../components/specific/foundry/DocumentTitle";
@@ -82,7 +82,7 @@ class DocumentsPage extends Component {
             subtitle="Artcles, videos and audio for you to browse."
           />
           {this.renderDocuments()}
-          <BackToFoundryButton />
+          <BackToButton link="/foundry" prefix="Foundry" />
         </div>
       </section>
     );

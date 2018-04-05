@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import Link from "gatsby-link";
 import DocumentCard from "../../components/specific/foundry/DocumentCard";
 import BreadCrumb from "../../components/BreadCrumb";
+import BackToButton from "../../components/BackToButton";
 import "./styles.scss";
 
 const renderDocuments = documents =>
@@ -52,12 +53,7 @@ const DocumentsList = ({
         </div>
       </div>
       <div className="columns is-multiline">{renderDocuments(documents)}</div>
-      <Link
-        to={backPath(pathname)}
-        className="btn default with-radius-5 larger thirdwidth shadow">
-        <span>&lt; Back to&nbsp;</span>
-        <span className="has-text-weight-bold">{parentName}</span>
-      </Link>
+      <BackToButton link={backPath(pathname)} prefix={parentName} />
     </div>
   </section>
 );

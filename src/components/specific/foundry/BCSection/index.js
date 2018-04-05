@@ -22,19 +22,24 @@ class BCSection extends Component {
     this.setState(state => ({isCollapsed: !state.isCollapsed}));
   };
 
+  getFilteredDocuments = () => {
+    const {documents, documentType} = this.props;
+    return documents.filter(document => document.type === documentType);
+  };
+
   renderSection = () => {
-    const {documents, documentTypeTitle, documentType} = this.props;
+    const {documentTypeTitle} = this.props;
     const {isCollapsed} = this.state;
     const toggleText = isCollapsed ? "See all" : "Collapse List";
-    if (documents.length === 0) {
+    const filteredDocuments = this.getFilteredDocuments();
+    if (filteredDocuments.length === 0) {
       return <React.Fragment />;
     }
     return (
       <div>
         <h2>{documentTypeTitle}</h2>
         <ul>
-          {documents
-            .filter(document => document.type === documentType)
+          {filteredDocuments
             .slice(0, this.getSliceIndex())
             .map(({id, title}) => <li key={id}>{title}</li>)}
         </ul>

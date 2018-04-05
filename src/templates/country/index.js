@@ -4,7 +4,7 @@ import Link from "gatsby-link";
 import {Icon} from "react-fa";
 import DocumentCard from "../../components/specific/foundry/DocumentCard";
 import BreadCrumb from "../../components/BreadCrumb";
-import BackToFoundryButton from "../../components/BackToFoundryButton";
+import BackToButton from "../../components/BackToButton";
 import "./styles.scss";
 
 const renderRegions = regions =>
@@ -72,7 +72,7 @@ const CountryTemplate = ({
       <div className="columns is-multiline">
         {hasRegions ? renderRegions(regions) : renderDocuments(documents)}
       </div>
-      <BackToFoundryButton />
+      <BackToButton link="/foundry" prefix="Foundry" />
     </div>
   </section>
 );
