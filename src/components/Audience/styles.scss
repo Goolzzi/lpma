@@ -4,7 +4,7 @@
   .image-wrapper {
     @include cover-image(100%, 546px);
 
-    @media screen and (max-width: 768px) {
+    @include mobile {
       @include cover-image(100%, 273px);
     }
   }

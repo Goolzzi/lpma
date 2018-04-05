@@ -25,13 +25,26 @@
   height: $height;
   overflow: hidden;
 
-  img {
-    margin: 0rem;
-    object-fit: cover;
-    object-position: $vPos;
+  @if $vPos != center {
+    img {
+      margin: 0rem;
+      object-fit: cover;
+      object-position: $vPos;
 
-    height: $height;
-    width: $width;
+      height: $height;
+      width: $width;
+    }
+  }
+
+  @if $vPos == center {
+    img, div {
+      margin: 0rem;
+      object-fit: cover;
+      object-position: $vPos;
+
+      max-height: $height;
+      width: $width;
+    }
   }
 
   @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
