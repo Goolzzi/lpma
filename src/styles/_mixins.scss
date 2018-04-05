@@ -22,10 +22,11 @@
 
 @mixin cover-image($width: 100%, $height: auto, $vPos: center) {
   width: $width;
-  height: $height;
   overflow: hidden;
 
   @if $vPos != center {
+    height: $height;
+
     img {
       margin: 0rem;
       object-fit: cover;
@@ -37,6 +38,8 @@
   }
 
   @if $vPos == center {
+    max-height: $height;
+
     img, div {
       margin: 0rem;
       object-fit: cover;
