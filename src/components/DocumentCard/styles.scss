@@ -10,6 +10,28 @@
       padding: 1.5rem 1rem 1.5rem 1rem;
     }
 
+    &.smaller {
+      padding: 1.75rem;
+    }
+
+    .has-icon {
+      position: relative;
+
+      .fa {
+        color: $gray-dark;
+        position: absolute;
+        right: 100%;
+        margin-right: 0.5rem;
+        top: 0px;
+        line-height: 100%;
+
+        &::before {
+          vertical-align: middle;
+          font-size: 2em;
+        }
+      }
+    }
+
     .title {
       color: $primary-color;
     }
