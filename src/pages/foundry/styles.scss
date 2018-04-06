@@ -18,8 +18,6 @@
 
   .image-wrapper {
     @include cover-image(100%, 1000px, right);
-    height: 1000px;
-
     @include mobile {
       @include cover-image(100%, 0px, right);
     }
