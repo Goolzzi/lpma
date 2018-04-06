@@ -15,7 +15,7 @@
   padding-left: 0px;
   padding-right: 0px;
   padding-top: 0px;
-
+  background: #E3E3E1; 
   .image-wrapper {
     @include cover-image(100%, 1000px, right);
     @include mobile {
