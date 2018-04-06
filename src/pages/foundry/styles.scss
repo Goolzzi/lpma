@@ -17,12 +17,9 @@
   padding-top: 0px;
 
   .image-wrapper {
-    background-color: #E3E3E1;
-    @include cover-image(100%, 1000px);
-    height: 1000px;
-
-    @media screen and (max-width: 768px) {
-      @include cover-image(100%, 375px);
+    @include cover-image(100%, 1000px, right);
+    @include mobile {
+      @include cover-image(100%, 0px, right);
     }
   }
 
@@ -39,7 +36,7 @@
    .column {
       .top-text {
         & > h2 {
-          color: $white;
+          color: #70BE5B;
           font-weight: 500;
           font-size: 2.5rem;
           margin-bottom: 4rem;
@@ -114,5 +111,17 @@
 .foundry-video {
   .title, p {
     color: $gray-dark;
+  }
+  
+  .feedback {
+    .contact {
+      color: #70BE5B;
+    }    
+  }
+
+  .fb-like {
+    img {
+      margin-top: -23px !important;
+    }
   }
 }

@@ -2,8 +2,9 @@ import React from "react";
 import PropTypes from "prop-types";
 import Link from "gatsby-link";
 import {Icon} from "react-fa";
-import DocumentCard from "../../components/DocumentCard";
+import DocumentCard from "../../components/specific/foundry/DocumentCard";
 import BreadCrumb from "../../components/BreadCrumb";
+import BackToButton from "../../components/BackToButton";
 import "./styles.scss";
 
 const renderDocumentsList = documents => (
@@ -11,7 +12,8 @@ const renderDocumentsList = documents => (
     {documents.map(document => (
       <li key={document.id}>
         <a href={document.link}>
-          <Icon name="download" /> {document.linkTitle}
+          {document.noIcon ? null : <Icon name="download" />}{" "}
+          {document.linkTitle}
         </a>
       </li>
     ))}
@@ -32,6 +34,7 @@ const renderDownloads = (downloads, regionSlug) =>
         <DocumentCard
           key={download.id}
           isDownloadable
+          noIcon={download.noIcon}
           title={download.linkTitle}
           titleLink={download.link}>
           <p>{download.description}</p>
@@ -64,12 +67,7 @@ const Region = ({
       <div className="columns is-multiline">
         {renderDownloads(downloads, slug)}
       </div>
-      <Link
-        to="/foundry"
-        className="btn default with-radius-5 larger thirdwidth shadow">
-        <span>Back to&nbsp;</span>
-        <span className="has-text-weight-bold">Foundry</span>
-      </Link>
+      <BackToButton link="/foundry" prefix="Foundry" />
     </div>
   </section>
 );
@@ -88,6 +86,7 @@ export const pageQuery = graphql`
           linkTitle
           link
           description
+          noIcon
         }
         ... on ContentfulDocumentList {
           id
@@ -97,6 +96,7 @@ export const pageQuery = graphql`
             id
             linkTitle
             link
+            noIcon
           }
         }
       }

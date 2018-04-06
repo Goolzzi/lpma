@@ -93,5 +93,13 @@ module.exports = `
       }
     }
   }
+  allContentfulBusinessCapability {
+    edges {
+      node {
+        slug
+        name
+      }
+    }
+  }
 }
 `;

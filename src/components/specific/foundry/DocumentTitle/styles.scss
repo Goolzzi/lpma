@@ -1,0 +1,30 @@
+.titles-wrapper {
+    margin-top: 2.5rem;
+
+    @include mobile {
+      margin-top: 1.5rem;
+    }
+
+    .column {
+      &:last-child {
+        @include not-mobile {
+          text-align: right;
+        }
+      }
+
+      .title {
+        margin-bottom: 0px;
+        color: $gray-dark;
+
+        img {
+          max-height: 0.75em;
+          margin: 0px 0.5rem 0px 0px;
+          vertical-align: baseline;
+        }
+      }
+
+      .subtitle {
+        margin-top: 1.5rem;
+      }
+    }
+}
