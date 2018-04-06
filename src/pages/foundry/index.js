@@ -121,11 +121,11 @@ class MyFoundryPage extends React.Component {
                       }}
                     />
                     <div className="has-text-centered-mobile">
-                      <Link
-                        to={signupLink}
+                      <a
+                        href={signupLink}
                         className="btn secondary with-radius-half-rem half-width smaller threequarterwidth">
                         Sign Up
-                      </Link>
+                      </a>
                     </div>
                   </div>
                   <div className="column is-7 is-offset-1">
