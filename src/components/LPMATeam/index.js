@@ -1,4 +1,5 @@
 import React from "react";
+import Img from "gatsby-image";
 import PropTypes from "prop-types";
 import "./styles.scss";
 
@@ -9,17 +10,13 @@ const propTypes = {
   image: PropTypes.object.isRequired,
 };
 
-const LPMATeam = ({title, author, content, image: {resolutions}}) => (
+const LPMATeam = ({title, author, content, image: {sizes}}) => (
   <section className="section our-team">
     <h3>{title}</h3>
     <div className="columns is-multiline out-team-item">
       <div className="column img-col is-3">
         <div className="img-wrapper image-wrapper">
-          <img
-            src={resolutions.src}
-            srcSet={resolutions.srcSet}
-            alt="prof-pic"
-          />
+          <Img sizes={sizes} />
         </div>
       </div>
       <div className="column is-9">

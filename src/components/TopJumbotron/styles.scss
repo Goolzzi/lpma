@@ -2,10 +2,10 @@
   position: relative;
 
   .image-wrapper {
-    @include cover-image(100%, 750px, top);
+    @include cover-image(100%, 750px, center);
 
-    @media screen and (max-width: 768px) {
-      @include cover-image(100%, 375px, top);
+    @include mobile {
+      @include cover-image(100%, 375px, center);
     }
   }
 
@@ -31,7 +31,7 @@
     }
   }
 
-  @media screen and (max-width: 768px) {
+  @include mobile {
     .cont-wrapper {
       background-color: $secondary-color;
       position: static;

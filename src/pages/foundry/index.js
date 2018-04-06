@@ -1,9 +1,9 @@
 import React from "react";
 import PropTypes from "prop-types";
 import Link from "gatsby-link";
+import Img from "gatsby-image";
 import IRISAuth from "../../Auth/IRISAuth";
 import {fisherYates} from "../../utils";
-import YouTube from "react-youtube";
 import "./styles.scss";
 
 const videoOptions = {};
@@ -47,11 +47,7 @@ class MyFoundryPage extends React.Component {
             <div>
               <section className="section foundry">
                 <div className="image-wrapper">
-                  <img
-                    src={background.resolutions.src}
-                    srcSet={background.resolutions.srcSet}
-                    alt="my foundry heading"
-                  />
+                  <Img sizes={background.sizes} />
                 </div>
                 <section className="section cont">
                   <div className="container">
@@ -175,9 +171,8 @@ export const pageQuery = graphql`
       }
       background {
         id
-        resolutions(quality: 100, width: 1100) {
-          src
-          srcSet
+        sizes(quality: 100, maxWidth: 900) {
+          ...GatsbyContentfulSizes
         }
       }
       cards {

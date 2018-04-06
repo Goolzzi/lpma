@@ -55,23 +55,7 @@ export const pageQuery = graphql`
   query LPMA2018PageQuery {
     contentfulYearlyEventJumbotron {
       conferencesJumbotron {
-        videoLink
-        heading
-        image {
-          resolutions(width: 600, quality: 100) {
-            src
-            srcSet
-          }
-        }
-        content {
-          childMarkdownRemark {
-            html
-          }
-        }
-        purchaseButton {
-          label
-          iconName
-        }
+        ...ConferencesJumbotronItem
       }
     }
     contentfulYearlyEventStats {
@@ -91,9 +75,8 @@ export const pageQuery = graphql`
         iconName
       }
       image {
-        resolutions(width: 2100, quality: 100) {
-          src
-          srcSet
+        sizes(quality: 100, maxWidth: 800) {
+          ...GatsbyContentfulSizes
         }
       }
     }
@@ -121,9 +104,8 @@ export const pageQuery = graphql`
           }
         }
         image {
-          resolutions(width: 250, quality: 100) {
-            src
-            srcSet
+          sizes(quality: 100, maxWidth: 300) {
+            ...GatsbyContentfulSizes_noBase64
           }
         }
       }
@@ -168,18 +150,16 @@ export const pageQuery = graphql`
         }
       }
       image {
-        resolutions(width: 800, quality: 100) {
-          src
-          srcSet
+        sizes(quality: 100, maxWidth: 800) {
+          ...GatsbyContentfulSizes
         }
       }
       learnMoreLink
     }
     contentfulYearlyEventAwardsGala {
       gif {
-        resolutions(width: 1000, quality: 100) {
-          src
-          srcSet
+        sizes(quality: 100, maxWidth: 800) {
+          ...GatsbyContentfulSizes_noBase64
         }
       }
       title
@@ -198,9 +178,8 @@ export const pageQuery = graphql`
       }
       images {
         id
-        resolutions(width: 800, quality: 100) {
-          src
-          srcSet
+        sizes(quality: 100, maxWidth: 800) {
+          ...GatsbyContentfulSizes
         }
       }
     }

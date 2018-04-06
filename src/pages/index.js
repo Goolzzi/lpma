@@ -82,6 +82,22 @@ IndexPage.propTypes = propTypes;
 export default IndexPage;
 
 export const pageQuery = graphql`
+  fragment JumbotronItem on ContentfulJumbotron {
+    joinLink {
+      name
+      to
+    }
+    background {
+      id
+      sizes(quality: 100, maxWidth: 800, toFormat: JPG) {
+        ...GatsbyContentfulSizes
+      }
+    }
+    title {
+      title
+    }
+  }
+
   query IndexPageQuery {
     contentfulMemberBenefits {
       title
@@ -110,18 +126,16 @@ export const pageQuery = graphql`
           }
         }
         authorPhoto {
-          responsiveResolution(quality: 100) {
-            src
-            srcSet
+          sizes(quality: 100, maxWidth: 600, toFormat: JPG) {
+            ...GatsbyContentfulSizes
           }
         }
       }
       testimonial2 {
         id
         image {
-          responsiveResolution(quality: 100) {
-            src
-            srcSet
+          sizes(quality: 100, maxWidth: 600, toFormat: JPG) {
+            ...GatsbyContentfulSizes
           }
         }
         childContentfulTestimonial2ContentTextNode {
@@ -138,20 +152,7 @@ export const pageQuery = graphql`
         node {
           pageLocation
           jumbotron {
-            joinLink {
-              name
-              to
-            }
-            background {
-              id
-              resolutions(quality: 100) {
-                src
-                srcSet
-              }
-            }
-            title {
-              title
-            }
+            ...JumbotronItem
           }
         }
       }
@@ -171,9 +172,8 @@ export const pageQuery = graphql`
         node {
           id
           image {
-            resolutions(quality: 100) {
-              src
-              srcSet
+            sizes(quality: 100, maxWidth: 1280, toFormat: JPG) {
+              ...GatsbyContentfulSizes
             }
           }
         }

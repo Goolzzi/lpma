@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import Img from "gatsby-image";
 import "./styles.scss";
 
 const propTypes = {
@@ -10,9 +11,7 @@ const propTypes = {
   }),
 };
 
-const YearlyEventAwardsGala = ({
-  node: {gif: {resolutions: {src, srcSet}}, title, content},
-}) => (
+const YearlyEventAwardsGala = ({node: {gif: {sizes}, title, content}}) => (
   <section className="section lpma2018-awards">
     <div className="container">
       <div className="columns">
@@ -29,7 +28,7 @@ const YearlyEventAwardsGala = ({
           />
         </div>
         <div className="column is-6">
-          <img src={src} srcSet={srcSet} alt="" />
+          <Img sizes={sizes} />
         </div>
       </div>
     </div>

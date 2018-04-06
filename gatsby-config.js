@@ -18,5 +18,7 @@ module.exports = {
     `gatsby-transformer-remark`,
     `gatsby-plugin-react-next`,
     `gatsby-plugin-catch-links`,
+    `gatsby-transformer-sharp`,
+    `gatsby-plugin-sharp`,
   ],
 };

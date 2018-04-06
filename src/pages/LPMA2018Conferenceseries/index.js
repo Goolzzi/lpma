@@ -1,8 +1,8 @@
 /* eslint-disable jsx-a11y/label-has-for */
 import React from "react";
 import PropTypes from "prop-types";
+import Img from "gatsby-image";
 import {Icon} from "react-fa";
-import FeedbackForm from "../../components/FeedbackForm";
 import ConferencesJumbotron from "../../components/ConferencesJumbotron";
 import "./styles.scss";
 
@@ -172,19 +172,12 @@ const LPMA2018Conferenceseries = ({
             <h2 className="title is-2 section-title">{title}</h2>
           </div>
           {series.map(
-            ({
-              title,
-              id,
-              date,
-              location,
-              description,
-              image: {resolutions: {src, srcSet}},
-            }) => {
+            ({title, id, date, location, description, image: {sizes}}) => {
               return (
                 <div key={id} className="columns">
                   <div className="column is-6">
                     <div className="image">
-                      <img src={src} srcSet={srcSet} alt={title} />
+                      <Img sizes={sizes} />
                     </div>
                   </div>
                   <div className="column is-6">
@@ -247,27 +240,31 @@ LPMA2018Conferenceseries.propTypes = {
 export default LPMA2018Conferenceseries;
 
 export const pageQuery = graphql`
+  fragment ConferencesJumbotronItem on ContentfulConferencesJumbotron {
+    heading
+    videoLink
+    image {
+      id
+      sizes(quality: 100, maxWidth: 800) {
+        ...GatsbyContentfulSizes_noBase64
+      }
+    }
+    cover {
+      sizes(quality: 100, maxWidth: 1280) {
+        ...GatsbyContentfulSizes
+      }
+    }
+    content {
+      childMarkdownRemark {
+        html
+      }
+    }
+  }
+
   query LPMA2018ConfPageQuery {
     contentfulConferenceSeriesJumbotron {
       conferencesJumbotron {
-        heading
-        image {
-          resolutions(width: 800, quality: 100) {
-            src
-            srcSet
-          }
-        }
-        cover {
-          resolutions(width: 800, quality: 100) {
-            src
-            srcSet
-          }
-        }
-        content {
-          childMarkdownRemark {
-            html
-          }
-        }
+        ...ConferencesJumbotronItem
       }
     }
     contentfulConferenceSeriesIntro {
@@ -291,9 +288,8 @@ export const pageQuery = graphql`
         date
         location
         image {
-          resolutions {
-            src
-            srcSet
+          sizes(quality: 100, maxWidth: 800) {
+            ...GatsbyContentfulSizes
           }
         }
         description {
