@@ -10,7 +10,7 @@ const propTypes = {
 
 class BCSection extends Component {
   state = {
-    isCollapsed: false,
+    isCollapsed: true,
   };
 
   getSliceIndex = () => {
@@ -28,34 +28,40 @@ class BCSection extends Component {
     return documents.filter(document => document.type === documentType);
   };
 
-  renderSection = () => {
-    const {documentTypeTitle} = this.props;
+  renderDocumentsList = documents =>
+    documents.slice(0, this.getSliceIndex()).map(({id, title, link}) => (
+      <a key={id} href={link} className="level-link-item">
+        <Icon name="download" />
+        {title}
+      </a>
+    ));
+
+  renderAccordeon = documents => {
     const {isCollapsed} = this.state;
     const toggleText = isCollapsed ? "See all" : "Collapse List";
-    const filteredDocuments = this.getFilteredDocuments();
-    if (filteredDocuments.length === 0) {
-      return <React.Fragment />;
-    }
-    return (
-      <div className="column is-12">
-        <h4 className="title is-5">{documentTypeTitle}</h4>
-        {filteredDocuments
-          .slice(0, this.getSliceIndex())
-          .map(({id, title, link}) => (
-            <a key={id} href={link} className="level-link-item">
-              <Icon name="download" />
-              {title}
-            </a>
-          ))}
-        <span className="level-link-item see-all" onClick={this.toggleCollapse}>
-          {toggleText}
-        </span>
-      </div>
+    return documents.length > 3 ? (
+      <span className="level-link-item see-all" onClick={this.toggleCollapse}>
+        {toggleText}
+      </span>
+    ) : (
+      <React.Fragment />
     );
   };
 
   render() {
-    return <div>{this.renderSection()}</div>;
+    const {documentTypeTitle} = this.props;
+    const filteredDocuments = this.getFilteredDocuments();
+    const documentsLength = filteredDocuments.length;
+    if (documentsLength === 0) {
+      return null;
+    }
+    return (
+      <div className="column is-12">
+        <h4 className="title is-5">{documentTypeTitle}</h4>
+        {this.renderDocumentsList(filteredDocuments)}
+        {this.renderAccordeon(filteredDocuments)}
+      </div>
+    );
   }
 }
 

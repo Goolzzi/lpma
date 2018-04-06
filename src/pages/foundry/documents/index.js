@@ -98,6 +98,7 @@ export const pageQuery = graphql`
     allContentfulDocumentsCountry {
       edges {
         node {
+          id
           slug
           name
           excerpt

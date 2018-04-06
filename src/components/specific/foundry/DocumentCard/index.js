@@ -8,7 +8,7 @@ const propTypes = {
   title: PropTypes.string.isRequired,
   children: PropTypes.object.isRequired,
   titleLink: PropTypes.string.isRequired,
-  isDownloadable: PropTypes.bool.isRequired,
+  isDownloadable: PropTypes.bool,
 };
 
 const DocumentCard = ({title, titleLink, isDownloadable, children}) => (
