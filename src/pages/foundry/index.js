@@ -1,28 +1,10 @@
 import React from "react";
 import PropTypes from "prop-types";
 import Link from "gatsby-link";
+import Img from "gatsby-image";
 import IRISAuth from "../../Auth/IRISAuth";
 import {fisherYates} from "../../utils";
-import YouTube from "react-youtube";
 import "./styles.scss";
-
-const videoId = "EOdATLzRGHc";
-const videoOptions = {
-  //height: "10000",
-  //width: "100%",
-  /*playerVars: {
-    autoplay: 1,
-    controls: 0,
-    disablekb: 0,
-    fs: 0,
-    iv_load_policy: 3,
-    loop: 1,
-    playlist: "pZ_tHrWzdT4",
-    modestbranding: 1,
-    showinfo: 0,
-    enablejsapi: 1,
-  },*/
-};
 
 class MyFoundryPage extends React.Component {
   constructor(props) {
@@ -56,11 +38,7 @@ class MyFoundryPage extends React.Component {
             <div>
               <section className="section foundry">
                 <div className="image-wrapper">
-                  <img
-                    src={background.resolutions.src}
-                    srcSet={background.resolutions.srcSet}
-                    alt="my foundry heading"
-                  />
+                  <Img sizes={background.sizes} />
                 </div>
                 <section className="section cont">
                   <div className="container">
@@ -174,9 +152,8 @@ export const pageQuery = graphql`
       }
       background {
         id
-        resolutions(quality: 100) {
-          src
-          srcSet
+        sizes(quality: 100, maxWidth: 900) {
+          ...GatsbyContentfulSizes
         }
       }
       cards {
