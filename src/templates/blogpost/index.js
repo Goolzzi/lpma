@@ -16,7 +16,7 @@ import {fisherYates} from "../../utils";
 import "./styles.scss";
 
 const getblogUrl = () => {
-  return window ? window.location.href : "";
+  return typeof window !== "undefined" ? window.location.href : "";
 };
 
 const generateBlogJumbotron = node => ({
