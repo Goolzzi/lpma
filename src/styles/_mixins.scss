@@ -62,12 +62,37 @@
     @if $vPos == bottom {
       align-items: flex-end;
     }
-    
 
     img {
       height: auto;
       min-width: 100%;
       min-height: 100%;
+    }
+  }
+
+  @supports (-ms-ime-align: auto) {
+    overflow: hidden;
+    display: flex;
+    align-items: $vPos;
+
+    @if $vPos == top {
+      align-items: flex-start;
+    }
+
+    @if $vPos == bottom {
+      align-items: flex-end;
+    }
+
+    img {
+      height: auto;
+      min-width: 100%;
+      min-height: 100%;
+    }
+    
+    @if $vPos == center {
+      img, div {
+        max-height: none;
+      }
     }
   }
 }
