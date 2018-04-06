@@ -17,6 +17,7 @@
   padding-top: 0px;
 
   .image-wrapper {
+    background-color: #E3E3E1;
     @include cover-image(100%, 1000px);
     height: 1000px;
 
