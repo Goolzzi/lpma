@@ -113,4 +113,16 @@
   .title, p {
     color: $gray-dark;
   }
+  
+  .feedback {
+    .contact {
+      color: #70BE5B;
+    }    
+  }
+
+  .fb-like {
+    img {
+      margin-top: -23px !important;
+    }
+  }
 }

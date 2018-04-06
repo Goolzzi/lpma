@@ -7,6 +7,7 @@ import YouTube from "react-youtube";
 import "./styles.scss";
 
 const videoOptions = {};
+const fbLikeIcon = require("../../assets/images/icons/fblike.png");
 
 class MyFoundryPage extends React.Component {
   constructor(props) {
@@ -132,6 +133,19 @@ class MyFoundryPage extends React.Component {
                   </div>
                   <div className="column is-7 is-offset-1">
                     <YouTube videoId={videoLink} opts={videoOptions} />
+                  </div>
+                </div>
+                <div className="columns">
+                  <div className="column is-4" />
+                  <div className="column is-4 has-text-centered feedback">
+                    <Link to="/contact" className="contact">
+                      Looking for something? Get in touch.
+                    </Link>
+                  </div>
+                  <div className="column is-4 has-text-right fb-like">
+                    <a href="https://www.facebook.com/LPMAssoc/">
+                      <img src={fbLikeIcon} alt="" />
+                    </a>
                   </div>
                 </div>
               </section>
