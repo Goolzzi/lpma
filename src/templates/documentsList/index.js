@@ -11,6 +11,7 @@ const renderDocuments = documents =>
     <DocumentCard
       key={document.id}
       isDownloadable
+      noIcon={document.noIcon}
       title={document.linkTitle}
       titleLink={document.link}>
       <p>{document.description}</p>
@@ -71,6 +72,7 @@ export const pageQuery = graphql`
         linkTitle
         link
         description
+        noIcon
       }
     }
     contentfulDocumentsRegion(slug: {eq: $parentSlug}) {

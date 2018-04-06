@@ -9,15 +9,17 @@ const propTypes = {
   children: PropTypes.object.isRequired,
   titleLink: PropTypes.string.isRequired,
   isDownloadable: PropTypes.bool,
+  noIcon: PropTypes.bool.isRequired,
 };
 
-const DocumentCard = ({title, titleLink, isDownloadable, children}) => (
+const DocumentCard = ({title, titleLink, isDownloadable, noIcon, children}) => (
   <div className="column is-6 level-card-wrapper">
     <div className="level-card-item">
       {isDownloadable ? (
         <a href={titleLink}>
           <h4 className="title is-5">
-            <Icon name="download" /> {title}
+            {noIcon ? null : <Icon name="download" />}
+            {title}
           </h4>
         </a>
       ) : (

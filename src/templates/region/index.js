@@ -12,7 +12,8 @@ const renderDocumentsList = documents => (
     {documents.map(document => (
       <li key={document.id}>
         <a href={document.link}>
-          <Icon name="download" /> {document.linkTitle}
+          {document.noIcon ? null : <Icon name="download" />}{" "}
+          {document.linkTitle}
         </a>
       </li>
     ))}
@@ -33,6 +34,7 @@ const renderDownloads = (downloads, regionSlug) =>
         <DocumentCard
           key={download.id}
           isDownloadable
+          noIcon={download.noIcon}
           title={download.linkTitle}
           titleLink={download.link}>
           <p>{download.description}</p>
@@ -84,6 +86,7 @@ export const pageQuery = graphql`
           linkTitle
           link
           description
+          noIcon
         }
         ... on ContentfulDocumentList {
           id
@@ -93,6 +96,7 @@ export const pageQuery = graphql`
             id
             linkTitle
             link
+            noIcon
           }
         }
       }
