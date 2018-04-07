@@ -17,11 +17,12 @@ class Auth {
         .then(resoult => resoult.json())
         .then(info => {
           if (!~info.group_ids.indexOf(authConfig.lpmaGroupID)) {
-            this.logout("isNotMember=1");
-          } else {
-            this.setUserData(info);
-            navigateTo("/foundry");
+            //eslint-disable-next-line
+            console.log("thes user is not LPMA member");
+            //this.logout("isNotMember=1");
           }
+          this.setUserData(info);
+          navigateTo("/foundry");
         })
         .catch(err => console.log("user profile error", err)); //eslint-disable-line
     }
