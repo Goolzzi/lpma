@@ -38,7 +38,7 @@ const initalAnimationClasses = [
   'fadeInDown',
   { title: '', bar: '' },
   { page: '' },
-  { background: '', rightSpinner: '', leftInnerSpinner: '', leftSpinner: '', chapterTitle: '', fullLeftSpinner: '', mobileLeftSpinner: '', mobileRightSpinner: '' },
+  { background: '', rightSpinner: '', leftInnerSpinner: 'hide', leftSpinner: '', chapterTitle: '', fullLeftSpinner: '', mobileLeftSpinner: '', mobileRightSpinner: '' },
   { rightSpinner: '' },
   '',
   '',
@@ -48,7 +48,7 @@ const initalAnimationClasses = [
    * Page 3 className starting Index 9
    */
   { left: '', right: '', pageTitle: '' },
-  { background: '', rightSpinner: '', leftInnerSpinner: '', leftSpinner: '', chapterTitle: '', fullLeftSpinner: '', mobileLeftSpinner: '', mobileRightSpinner: '' },
+  { background: '', rightSpinner: '', leftInnerSpinner: 'hide', leftSpinner: '', chapterTitle: '', fullLeftSpinner: '', mobileLeftSpinner: '', mobileRightSpinner: '' },
   { rightSpinner: '' },
   '',
   '',
@@ -58,7 +58,7 @@ const initalAnimationClasses = [
    * Page 4 className starting Index 16
    */
   { left: '', right: '', pageTitle: '' },
-  { background: '', rightSpinner: '', leftInnerSpinner: '', leftSpinner: '', chapterTitle: '', fullLeftSpinner: '', mobileLeftSpinner: '', mobileRightSpinner: '' },
+  { background: '', rightSpinner: '', leftInnerSpinner: 'hide', leftSpinner: '', chapterTitle: '', fullLeftSpinner: '', mobileLeftSpinner: '', mobileRightSpinner: '' },
   { rightSpinner: '' },
   '',
   '',
@@ -68,7 +68,7 @@ const initalAnimationClasses = [
    * Page 5 className starting with Index 23
    */
   { left: '', right: '', pageTitle: '' },
-  { background: '', rightSpinner: '', leftInnerSpinner: '', leftSpinner: '', chapterTitle: '', fullLeftSpinner: '', mobileLeftSpinner: '', mobileRightSpinner: '' },
+  { background: '', rightSpinner: '', leftInnerSpinner: 'hide', leftSpinner: '', chapterTitle: '', fullLeftSpinner: '', mobileLeftSpinner: '', mobileRightSpinner: '' },
   { rightSpinner: '' },
   '',
   '',
@@ -459,14 +459,6 @@ class LandingPage extends React.PureComponent{
           <img className="scroll-instruction-arrow" src={icArrowDown} />
         </div>
         <div id="page_2" className={`${this.animationClasses[2].page}`}>
-          {/* <div className={`slide-1 ${this.animationClasses[2].title}`}>
-            <div>
-              <h1 className="banner-title">
-                80% OF <br /> BUSINESS OWNERS
-              </h1>
-              <h5 className="desc">BELEIVE THAT WORKING HARDER IS THE ONLY WAY TO GROW THEIR BUSINESS</h5>
-            </div>
-          </div> */}
           <div className="slide-2">
             <div className={`background-image ${this.animationClasses[3].background}`} />
             <div className="full-left">
@@ -538,12 +530,6 @@ class LandingPage extends React.PureComponent{
           <div className="right">
             <div className={`spinner ${this.animationClasses[9].right}`}></div>
           </div>
-          {/* <div className="slide-1">
-            <div className={`hide ${this.animationClasses[9].pageTitle}`}>
-              <h1>more than 75%</h1>
-              <p>of all property management businesses do not have a growth plan</p>
-            </div>
-          </div> */}
           <div className="slide-2">
             <div className={`background-image ${this.animationClasses[10].background}`} />
             <div className="full-left">
