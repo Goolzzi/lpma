@@ -194,7 +194,7 @@ class LandingPage extends React.PureComponent{
         this.animationClasses[3].leftInnerSpinner = 'spinInnerIn animation-delay-3';
         this.animationClasses[3].fullLeftSpinner = 'spinOuterIn show animation-delay-3';
         this.animationClasses[3].background = 'cFadeIn animation-delay-3';
-        this.animationClasses[3].chapterTitle = 'cFadeInUp animation-delay-4';
+        this.animationClasses[3].chapterTitle = 'cFadeInUp animation-delay-3';
         this.animationClasses[4].rightSpinner = direction ? '' : 'spinRightOut';
         this.animationClasses[5] = direction ? '' : 'cFadeOutDown';
         this.animationClasses[6] = '';
@@ -244,7 +244,7 @@ class LandingPage extends React.PureComponent{
           this.animationClasses[10].rightSpinner = 'rotateTo180 show animation-delay-1';
           this.animationClasses[10].leftSpinner = 'spinOuterIn animation-delay-2';
           this.animationClasses[10].leftInnerSpinner = 'spinInnerIn animation-delay-2';
-          this.animationClasses[10].chapterTitle = 'cFadeInUp animation-delay-4';
+          this.animationClasses[10].chapterTitle = 'cFadeInUp animation-delay-3';
           this.animationClasses[11].rightSpinner = direction ? '' : 'spinRightOut';
           this.animationClasses[12] = direction ? '' : 'cFadeOutDown';
           this.animationClasses[13] = '';
@@ -297,7 +297,7 @@ class LandingPage extends React.PureComponent{
           this.animationClasses[17].rightSpinner = 'rotateTo180 show animation-delay-1';
           this.animationClasses[17].leftSpinner = 'spinOuterIn animation-delay-2';
           this.animationClasses[17].leftInnerSpinner = 'spinInnerIn animation-delay-2';
-          this.animationClasses[17].chapterTitle = 'cFadeInUp animation-delay-4';
+          this.animationClasses[17].chapterTitle = 'cFadeInUp animation-delay-3';
           this.animationClasses[18].rightSpinner = direction ? '' : 'spinRightOut';
           this.animationClasses[19] = direction ? '' : 'cFadeOutDown';
           this.animationClasses[20] = '';
@@ -352,7 +352,7 @@ class LandingPage extends React.PureComponent{
           this.animationClasses[24].rightSpinner = 'rotateTo180 show animation-delay-1';
           this.animationClasses[24].leftSpinner = 'spinOuterIn animation-delay-2';
           this.animationClasses[24].leftInnerSpinner = 'spinInnerIn animation-delay-2';
-          this.animationClasses[24].chapterTitle = 'cFadeInUp animation-delay-4';
+          this.animationClasses[24].chapterTitle = 'cFadeInUp animation-delay-3';
           this.animationClasses[25].rightSpinner = direction ? '' : 'spinRightOut';
           this.animationClasses[26] = direction ? '' : 'cFadeOutDown';
           this.animationClasses[27] = '';
