@@ -577,7 +577,7 @@ class LandingPage extends React.PureComponent{
               <div className={`tutor-wrapper topic-1 ${this.animationClasses[19]}`}>
                 <div className="wrapper">
                   <h5>03 / grow more than your doors</h5>
-                  <h1>Profit comes from <span>excellence, not doors</span>. Culture comes from leadership, not contracts.</h1>
+                  <h1>ACCESS TO AILO INSIGHTS WILL HELP YOU <span>TRACK YOUR PERFORMANCE</span> IN REAL TIME.</h1>
                 </div>
               </div>
               <div className={`tutor-wrapper topic-2 ${this.animationClasses[20]}`}>
@@ -586,20 +586,13 @@ class LandingPage extends React.PureComponent{
                   <h1>SUCCESS IS NOT POSSIBLE WITHOUT THE <span>RIGHT TEAM</span></h1>
                   <p>The right team has a high-performing culture and is supported by the best resources.</p>
                   <p>LPMA membership gives you and your team the tools to track and improve your team’s performance, and support the winning culture. </p>
-                  <div className="img-wrapper">
-                    <img src={imgThumb}/>
-                    <img src={imgIntro3_1}/>
-                    <img src={imgIntro3_2}/>
-                    <img src={imgThumb}/>
-                  </div>
                 </div>
               </div>
               <div className={`tutor-wrapper topic-3 ${this.animationClasses[21]}`}>
                 <div className="wrapper">
                   <h5>03 / grow more than your doors</h5>
-                  <h1>ACCESS TO AILO INSIGHTS WILL HELP YOU <span>TRACK YOUR PERFORMANCE</span> IN REAL TIME.</h1>
-                  <img src={imgIntro3_4}/>
-                  <img src={imgIntro3_4}/>
+                  <h1>we’ll support YOU IN DEVELOPING KEY MULTIPLE <span>CHANNELS OF GROWTH</span></h1>
+                  <p>LPMA members are supported in building a full business plan, covering growth goals, team design, culture and financial benchmarking.</p>
                 </div>
               </div>
             </div>

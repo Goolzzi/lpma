@@ -132,40 +132,10 @@
         }
       }
     }
-    .topic-1 {    
-      .wrapper {
-        h5 {
+    .wrapper {
+      h1 {
+        span {
           color: $page4-primary;
-        }
-        h1 {
-          span {
-            color: $page4-primary;
-          }
-        }
-      }
-    }
-    .topic-2 {
-      .wrapper {
-        h1 {
-          span {
-            color: $page4-primary;
-          }
-        }
-      }
-      .img-wrapper {
-        img {
-          width: 50%;
-          padding: 0 5px;
-          margin-bottom: 10px;
-        }
-      }
-    }
-    .topic-3 {
-      .wrapper {
-        h1 {
-          span {
-            color: $page4-primary;
-          }
         }
       }
     }
