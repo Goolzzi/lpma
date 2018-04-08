@@ -133,37 +133,10 @@ class LandingPage extends React.PureComponent{
     }
   }
   wheelScroll = (event) => {
-    const {top, left, right, bottom, height} = this.tutorWrapper.getBoundingClientRect();
-    if (event.pageX > left && event.pageX < right && event.pageY > top && event.pageY < bottom && this.state.animationIndex == 8) {
-      if(!this.innerScrolling) {
-        if (event.deltaY < 0) {
-          if(this.tutorWrapper.scrollTop === 0) {
-            this.scrollWindowUp();
-          };
-          this.innerScrolling = true;
-          this.tutorWrapper.scrollTo(0, 0);
-          setTimeout(() => {
-            this.innerScrolling = false;
-          }, 300);
-          return false;
-        } else {
-          if(this.tutorWrapper.scrollTop === this.tutorWrapper.scrollHeight - height) {
-            this.scrollWindowDown();
-          };
-          this.innerScrolling = true;
-          this.tutorWrapper.scrollTo(0, this.tutorWrapper.scrollHeight - height);
-          setTimeout(() => {
-            this.innerScrolling= false;
-          }, 300);
-          return false;
-        }      
-      }
+    if (event.deltaY < 0) {
+      this.scrollWindowUp();
     } else {
-      if (event.deltaY < 0) {
-        this.scrollWindowUp();
-      } else {
-        this.scrollWindowDown();
-      }
+      this.scrollWindowDown();
     }
   };
   scrollWindowUp = () => {
@@ -541,30 +514,27 @@ class LandingPage extends React.PureComponent{
                 <h1>Build a<br/>growth plan</h1>
               </div>
               <div className={`overlay-spinner ${this.animationClasses[11].rightSpinner}`} />
-              <div className={`tutor-wrapper topic-1 ${this.animationClasses[12]}`}>
-                <div className="wrapper">
-                  <h5>02 / build a growth plan</h5>
-                  <h1>growth is in the <span>numbers</span>, not in the stars</h1>
-                  <p>Over three quarters of all property managemeent businesses are setting themsleves up to fail because they don’t not have a growth plan.</p>
-                </div>
-              </div>
-              <div className={`tutor-wrapper topic-2 ${this.animationClasses[13]}`}>
+              <div className={`tutor-wrapper ${this.animationClasses[12]}`}>
                 <div className="wrapper">
                   <h5>02 / build a growth plan</h5>
                   <h1>a growth plan starts with <span>understanding</span> your market.</h1>
-                  <p>Each market has its own dynamics and own potential. No two markets are alike. Data can help you understand yours. </p>
-                  <p>The LPMA growth model identifies the opportunities in your market and helps identify areas where you can focus on for maximum growth.</p>
-                  <p>Use your growth plan to direct your team and define financial strategies to make sure your growth ambitions are supported.</p>
-                  <img src={imgPlaceholder}/>
+                  <p>Each market has its own dynamics and own potential. No two markets are alike. Data can help you understand yours.</p>
                 </div>
               </div>
-              <div ref={c => this.tutor = c} className={`tutor-wrapper topic-3 ${this.animationClasses[14]}`}>
-                <div ref={c => this.tutorWrapper = c} className="wrapper">
+              <div className={`tutor-wrapper ${this.animationClasses[13]}`}>
+                <div className="wrapper">
+                  <h5>02 / build a growth plan</h5>
+                  <h1>the lpma growth model</h1>
+                  <p>The LPMA growth model identifies the opportunities in your market and helps identify areas where you can focus on for maximum growth.</p>
+                  <p>Use your growth plan to direct your team and define financial strategies to make sure your growth ambitions are supported.</p>
+                </div>
+              </div>
+              <div className={`tutor-wrapper ${this.animationClasses[14]}`}>
+                <div className="wrapper">
                   <h5>02 / build a growth plan</h5>
                   <h1>any growth strategy needs a retention strategy. INCLUDING THIS IN YOUR <span>GROWTH PLAN</span> WILL GIVE YOU THE BEST OPPORTUNITY TO SUCCEED.</h1>
                   <p>Without planning, every staff turnover will cost you 40 investors.</p>
                   <p>Developing and supporting your team to both drive performance and increase staff retention is key to any growth strategy.</p>
-                  <img src={imgPlaceholder}/>
                 </div>
               </div>
             </div>

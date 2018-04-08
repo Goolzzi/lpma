@@ -42,43 +42,6 @@
       background-color: $page3-primary;
       transform: rotate(-180deg);
     }
-    // right: 0;
-  }
-  .slide-1 {
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 1;
-    h1 {
-      text-align: center;
-      text-transform: uppercase;
-      color: $white;
-      font-family: "DomaineSansMedium";
-      font-size: 4em;
-      @media screen and (max-width: $mobile-width){
-        text-align: left;
-        padding-left: 2rem;
-      }
-    }
-    p {
-      text-align: center;
-      text-transform: uppercase;
-      color: $text-primary;
-      font-size: 1em;
-      max-width: 60vw;
-      @media screen and (max-width: $mobile-width){
-        text-align: left;
-        padding-left: 2rem;
-        padding-right: 4rem;
-        font-size: 2em;
-        max-width: 100vw;
-      }
-    }
   }
   .slide-2 {
     .background-image {
@@ -132,33 +95,10 @@
         }
       }
     }
-    .topic-1 {
-      .wrapper {
-        h5 {
+    .wrapper {
+      h1 {
+        span {
           color: $page3-primary;
-        }
-        h1 {
-          span {
-            color: $page3-primary;
-          }
-        }
-      }
-    }
-    .topic-2 {
-      .wrapper {
-        h1 {
-          span {
-            color: $page3-primary;
-          }
-        }
-      }
-    }
-    .topic-3 {
-      .wrapper {
-        h1 {
-          span {
-            color: $page3-primary;
-          }
         }
       }
     }
