@@ -63,8 +63,8 @@
 
 
 @keyframes fullPageFadeInUp {
-  from { transform: translate(0, 100%); }
-  to   { transform: translate(0, 0); }
+  from { top: 100%; }
+  to   { top: 0; }
 }
 .fullPageFadeInUp {
   animation-name: fullPageFadeInUp;

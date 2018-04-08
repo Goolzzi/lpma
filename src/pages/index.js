@@ -254,7 +254,7 @@ class LandingPage extends React.PureComponent{
           this.animationClasses[10].mobileLeftSpinner = 'rotateTo360 show animation-delay-3';
           this.animationClasses[10].mobileRightSpinner = 'rotateTo360 show animation-delay-2';
           this.forceUpdate();
-        }, 1000);
+        }, 1500);
         break;
       case 7:
         this.animationClasses[11].rightSpinner = 'spinRightIn animation-delay-1';
@@ -308,7 +308,7 @@ class LandingPage extends React.PureComponent{
           this.animationClasses[17].mobileRightSpinner = 'rotateTo360 show animation-delay-2';
 
           this.forceUpdate();
-        }, 1000);
+        }, 1500);
 
         break;
       case 11:
@@ -363,7 +363,7 @@ class LandingPage extends React.PureComponent{
           this.animationClasses[24].mobileRightSpinner = 'rotateTo360 show animation-delay-2';
 
           this.forceUpdate();
-        }, 1000)   
+        }, 1500)   
         break;
       case 15:
         this.animationClasses[25].rightSpinner = 'spinRightIn animation-delay-1';
