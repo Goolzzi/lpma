@@ -47,7 +47,7 @@ const initalAnimationClasses = [
   /**
    * Page 3 className starting Index 9
    */
-  { left: '', right: '', pageTitle: '' },
+  { left: '', right: ''},
   { background: '', rightSpinner: '', leftInnerSpinner: 'hide', leftSpinner: '', chapterTitle: '', fullLeftSpinner: '', mobileLeftSpinner: '', mobileRightSpinner: '' },
   { rightSpinner: '' },
   '',
@@ -57,7 +57,7 @@ const initalAnimationClasses = [
   /**
    * Page 4 className starting Index 16
    */
-  { left: '', right: '', pageTitle: '' },
+  { left: '', right: ''},
   { background: '', rightSpinner: '', leftInnerSpinner: 'hide', leftSpinner: '', chapterTitle: '', fullLeftSpinner: '', mobileLeftSpinner: '', mobileRightSpinner: '' },
   { rightSpinner: '' },
   '',
@@ -67,7 +67,7 @@ const initalAnimationClasses = [
   /**
    * Page 5 className starting with Index 23
    */
-  { left: '', right: '', pageTitle: '' },
+  { left: '', right: '' },
   { background: '', rightSpinner: '', leftInnerSpinner: 'hide', leftSpinner: '', chapterTitle: '', fullLeftSpinner: '', mobileLeftSpinner: '', mobileRightSpinner: '' },
   { rightSpinner: '' },
   '',
@@ -294,7 +294,6 @@ class LandingPage extends React.PureComponent{
         this.animationClasses[14] = direction ? '' : 'cFadeOutDown';
         this.animationClasses[16].left = '';
         this.animationClasses[16].right = '';
-        this.animationClasses[16].pageTitle = '';
         break;
       case 9:
         this.animationClasses[13] = 'cFadeOutUp';
@@ -350,7 +349,6 @@ class LandingPage extends React.PureComponent{
         this.animationClasses[21] = direction ? '' : 'cFadeOutDown';
         this.animationClasses[23].left = '';
         this.animationClasses[23].right = '';
-        this.animationClasses[23].pageTitle = '';
         break;
       case 13:
         this.animationClasses[20] = 'cFadeOutUp';
@@ -376,7 +374,6 @@ class LandingPage extends React.PureComponent{
         this.animationClasses[23].left = 'rotateTo180 animation-delay-1';
         this.animationClasses[23].right = 'rotateTo180 animation-delay-2';     
         setTimeout(() => {
-          this.animationClasses[23].pageTitle = 'cFadeOutDown';
           this.animationClasses[24].background = 'cFadeIn animation-delay-2';
           this.animationClasses[24].fullLeftSpinner = 'spinOuterIn show animation-delay-2';
           this.animationClasses[24].rightSpinner = 'rotateTo180 show animation-delay-1';
@@ -593,12 +590,6 @@ class LandingPage extends React.PureComponent{
           <div className="right">
             <div className={`spinner ${this.animationClasses[16].right}`}></div>
           </div>
-          <div className="slide-1">
-            <div className={`hide ${this.animationClasses[16].pageTitle}`}>
-              <h1>89% OF INDUSTRY <br />PROFESSIONALS</h1>
-              <p>THINK THAT DOOR COUNT IS THE ONLY WAY TO GROW</p>
-            </div>
-          </div>
           <div className="slide-2">
             <div className={`background-image ${this.animationClasses[17].background}`} />
             <div className="full-left">
@@ -663,12 +654,6 @@ class LandingPage extends React.PureComponent{
           </div>
           <div className="right">
             <div className={`spinner ${this.animationClasses[23].right}`}></div>
-          </div>
-          <div className="slide-1">
-            <div className={`hide ${this.animationClasses[23].pageTitle}`}>
-              <h1>8/10 professionals<br/>feel isolated</h1>
-              <p>AND HAVE EXPRESSED A DEEP DESIRE TO BE ABLE TO CONENCT WITH LIKE-MINDED PROFESSIONALS IN THEIR INDUSTRY</p>
-            </div>
           </div>
           <div className="slide-2">
             <div className={`background-image ${this.animationClasses[24].background}`} />
