@@ -632,37 +632,25 @@ class LandingPage extends React.PureComponent{
                 <h1>find<br />strength<br />in our<br />community</h1>
               </div>
               <div className={`overlay-spinner ${this.animationClasses[25].rightSpinner}`} />
-              <div className={`tutor-wrapper topic-1 ${this.animationClasses[26]}`}>
-                <div className="wrapper">
-                  <h5>04 / find strength in our community</h5>
-                  <h1>you <span>don’t</span> have to do this alone</h1>
-                  <p>LPMA is the largest global network of property management leaders and professionals. Join the community to share ideas and experiences and learn from each other.</p>
-                </div>
-              </div>
-              <div className={`tutor-wrapper topic-2 ${this.animationClasses[27]}`}>
+              <div className={`tutor-wrapper ${this.animationClasses[26]}`}>
                 <div className="wrapper">
                   <h5>04 / find strength in our community</h5>
                   <h1>LPMA operates the <span>largest</span> series of networking events in the industry.</h1>
-                  <p>At the local level we facilitate regular industry meetups, all the way through to large industry conferences with leading speakers and networking functions. All of this is supported by a large online community of professionals all seeking to learn from and support each other.</p>
-                  <img src={imgIntro4_1}/>
-                  <img src={imgIntro4_2}/>
+                  <p>At the local level we facilitate regular industry meetups, all the way through to large industry conferences with leading speakers and networking functions. All of this is supported by a large online community of professionals all seeking to learn from and support each other. </p>
                 </div>
               </div>
-              <div className={`tutor-wrapper topic-2 ${this.animationClasses[28]}`}>
+              <div className={`tutor-wrapper ${this.animationClasses[27]}`}>
                 <div className="wrapper">
                   <h5>04 / find strength in our community</h5>
                   <h1>everyone needs a little help from time to time to drive <span>real change</span> in a business.</h1>
                   <p>LPMA works with some of the best consultants in our industry. They are fully trained on our frameworks and resources and are ready to help.</p>
-                  <img src={imgPlaceholder}/>
                 </div>
               </div>
-              <div ref={c => this.tutor = c} className={`tutor-wrapper topic-3 ${this.animationClasses[29]}`}>
-                <div ref={c => this.tutorWrapper = c} className="wrapper">
+              <div className={`tutor-wrapper ${this.animationClasses[28]}`}>
+                <div className="wrapper">
                   <h5>04 / find strength in our community</h5>
                   <h1><span>recognition</span> is good NOT JUST because you deserve it — IT ALSO helps you grow your business.</h1>
-                  <p>recognition is good NOT JUST because you deserve it — IT ALSO helps you grow your business.</p>
-                  <img src={imgIntro4_3}/>
-                  <img src={imgIntro4_4}/>
+                  <p>LPMA runs an industry-leading awards &amp; recognition program that recognises excellence and achievement in executing on your growth and business plans. </p>
                 </div>
               </div>
             </div>
