@@ -2,9 +2,9 @@ import React from "react";
 import Link from "gatsby-link";
 import PropTypes from "prop-types";
 import imgLogo from "../../assets/images/NewDesign/Header/logo.svg";
-const menuPrimaryIndexes = [0, 1, 23]
-const secondaryIndexes = [2, 3, 7, 8, 12, 13, 17, 18]
-const primaryIndexes = [0, 1, 4, 5, 6, 9, 10, 11, 14, 15, 16, 19, 20, 21, 22, 23]
+const menuPrimaryIndexes = [0, 1, 18]
+const secondaryIndexes = [2, 6, 10, 14]
+const primaryIndexes = [0, 1, 3, 4, 5, 7, 8, 9, 11, 12, 13, 15, 16, 17, 18]
 var menuClass = '';
 var lightBtnClass = '';
 var btnClass = '';
