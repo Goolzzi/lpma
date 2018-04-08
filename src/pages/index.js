@@ -417,7 +417,7 @@ class LandingPage extends React.PureComponent{
           </div>
           <div className={`slide-2 ${this.animationClasses[1].title}`}>
             <h1 className="banner-title">
-              FOUR REASONS<br />TO BE AN LPMA MEMBER
+              FOUR STEPS<br />TO BE AN LPMA MEMBER
             </h1>
             <div className="reason-bar">
               <div className="bar item-1"></div>
