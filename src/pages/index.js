@@ -37,7 +37,7 @@ import "animate.css/animate.min.css";
 const initalAnimationClasses = [
   'fadeInDown',
   { title: '', bar: '' },
-  { page: '', title: '' },
+  { page: '' },
   { background: '', rightSpinner: '', leftInnerSpinner: '', leftSpinner: '', chapterTitle: '', fullLeftSpinner: '', mobileLeftSpinner: '', mobileRightSpinner: '' },
   { rightSpinner: '' },
   '',
@@ -196,20 +196,12 @@ class LandingPage extends React.PureComponent{
         this.animationClasses[1].title = direction ? '' : 'cFadeOutDown';
         this.animationClasses[1].bar = direction ? '' : 'cFadeOutDown';
         this.animationClasses[2].page = '';
-        this.animationClasses[2].title = ''; 
         break;
       case 1:
         this.animationClasses[0] = direction ? 'cFadeOutUp animated' : '';
         this.animationClasses[1].title = direction ? 'cFadeInUp animation-delay-1_1' : 'cFadeIn';
         this.animationClasses[1].bar = direction ? 'cFadeIn animation-delay-1_1' : 'cFadeIn';
         this.animationClasses[2].page = direction ? '' : 'fullPageFadeOutDown';
-        this.animationClasses[2].title = direction ? '' : 'cFadeOut'; 
-        break;
-      case 2:
-        this.animationClasses[1].title = 'cFadeOut';
-        this.animationClasses[1].info = 'cFadeOut';
-        this.animationClasses[2].page = 'fullPageFadeInUp';
-        this.animationClasses[2].title = 'cFadeIn animation-delay-2';
         this.animationClasses[3].rightSpinner =  direction ? '' : 'rotateTo0 show';
         this.animationClasses[3].leftSpinner = '';
         this.animationClasses[3].leftInnerSpinner = '';
@@ -220,51 +212,42 @@ class LandingPage extends React.PureComponent{
         this.animationClasses[3].mobileLeftSpinner = '';
         this.animationClasses[3].mobileRightSpinner = '';
         break;
-      case 3:
-        this.animationClasses[2].title = 'cFadeOut';
-        this.animationClasses[3].rightSpinner = 'rotateTo180 show animation-delay-1';
-        this.animationClasses[3].leftSpinner = 'spinOuterIn animation-delay-2';
-        this.animationClasses[3].leftInnerSpinner = 'spinInnerIn animation-delay-2';
-        this.animationClasses[3].fullLeftSpinner = 'spinOuterIn show animation-delay-2';
-        this.animationClasses[3].background = 'cFadeIn animation-delay-2';
+      case 2:
+        this.animationClasses[1].title = 'cFadeOut';
+        this.animationClasses[1].info = 'cFadeOut';
+        this.animationClasses[2].page = 'fullPageFadeInUp';
+        this.animationClasses[3].rightSpinner = 'rotateTo180 show animation-delay-2';
+        this.animationClasses[3].leftSpinner = 'spinOuterIn animation-delay-3';
+        this.animationClasses[3].leftInnerSpinner = 'spinInnerIn animation-delay-3';
+        this.animationClasses[3].fullLeftSpinner = 'spinOuterIn show animation-delay-3';
+        this.animationClasses[3].background = 'cFadeIn animation-delay-3';
         this.animationClasses[3].chapterTitle = 'cFadeInUp animation-delay-4';
         this.animationClasses[4].rightSpinner = direction ? '' : 'spinRightOut';
         this.animationClasses[5] = direction ? '' : 'cFadeOutDown';
         this.animationClasses[6] = '';
-
         this.animationClasses[3].mobileLeftSpinner = 'rotateTo360 show animation-delay-3';
         this.animationClasses[3].mobileRightSpinner = 'rotateTo360 show animation-delay-2';
         break;
-      case 4:
+      case 3:
         this.animationClasses[4].rightSpinner = 'spinRightIn animation-delay-1';
         this.animationClasses[3].chapterTitle = 'cFadeOutDown';
         this.animationClasses[5] = 'cFadeInUp animation-delay-2';
         this.animationClasses[6] = direction ? '' : 'cFadeOutDown';
         this.animationClasses[7] = '';
         break;
-      case 5:
+      case 4:
         this.animationClasses[5] = 'cFadeOutUp';
         this.animationClasses[6] = 'cFadeIn animation-delay-1_1';
         this.animationClasses[7] = direction ? '' : 'cFadeOutDown';
         this.animationClasses[9].left = '';
         this.animationClasses[9].right = '';
-        this.animationClasses[9].pageTitle = '';
         break;
-      case 6:
+      case 5:
         this.animationClasses[6] = 'cFadeOutUp';
         this.animationClasses[7] = direction ? 'cFadeIn animation-delay-1_1' :  'cFadeIn animation-delay-3';
         this.animationClasses[9].left = direction ? '' : 'rotateTo0 animated animation-delay-3';
         this.animationClasses[9].right = direction ? '' : 'rotateTo0 animated animation-delay-1';
-        this.animationClasses[9].pageTitle = direction ? '' : 'cFadeOutDown';
-        break;
-      /**
-       * Page 3
-       */
-      case 7:
-        this.animationClasses[7] = 'cFadeOutUp';
-        this.animationClasses[9].left = 'rotateTo180 animation-delay-1';
-        this.animationClasses[9].right = 'rotateTo180 animation-delay-2';
-        this.animationClasses[9].pageTitle = 'cFadeInUp animation-delay-2';
+
         this.animationClasses[10].rightSpinner =  direction ? '' : 'rotateTo0 show';
         this.animationClasses[10].leftSpinner = '';
         this.animationClasses[10].leftInnerSpinner = '';
@@ -275,29 +258,37 @@ class LandingPage extends React.PureComponent{
         this.animationClasses[10].mobileLeftSpinner = '';
         this.animationClasses[10].mobileRightSpinner = '';
         break;
-      case 8:
-        this.animationClasses[9].pageTitle = 'cFadeOutDown';
-        this.animationClasses[10].background = 'cFadeIn animation-delay-2';
-        this.animationClasses[10].fullLeftSpinner = 'spinOuterIn show animation-delay-2';
-        this.animationClasses[10].rightSpinner = 'rotateTo180 show animation-delay-1';
-        this.animationClasses[10].leftSpinner = 'spinOuterIn animation-delay-2';
-        this.animationClasses[10].leftInnerSpinner = 'spinInnerIn animation-delay-2';
-        this.animationClasses[10].chapterTitle = 'cFadeInUp animation-delay-4';
-        this.animationClasses[11].rightSpinner = direction ? '' : 'spinRightOut';
-        this.animationClasses[12] = direction ? '' : 'cFadeOutDown';
-        this.animationClasses[13] = '';
+      /**
+       * Page 3
+       */
+      case 6:
+        this.animationClasses[7] = 'cFadeOutUp';
+        this.animationClasses[9].left = 'rotateTo180 animation-delay-1';
+        this.animationClasses[9].right = 'rotateTo180 animation-delay-2';
+        setTimeout(() => {
+          this.animationClasses[10].background = 'cFadeIn animation-delay-2';
+          this.animationClasses[10].fullLeftSpinner = 'spinOuterIn show animation-delay-2';
+          this.animationClasses[10].rightSpinner = 'rotateTo180 show animation-delay-1';
+          this.animationClasses[10].leftSpinner = 'spinOuterIn animation-delay-2';
+          this.animationClasses[10].leftInnerSpinner = 'spinInnerIn animation-delay-2';
+          this.animationClasses[10].chapterTitle = 'cFadeInUp animation-delay-4';
+          this.animationClasses[11].rightSpinner = direction ? '' : 'spinRightOut';
+          this.animationClasses[12] = direction ? '' : 'cFadeOutDown';
+          this.animationClasses[13] = '';
 
-        this.animationClasses[10].mobileLeftSpinner = 'rotateTo360 show animation-delay-3';
-        this.animationClasses[10].mobileRightSpinner = 'rotateTo360 show animation-delay-2';
+          this.animationClasses[10].mobileLeftSpinner = 'rotateTo360 show animation-delay-3';
+          this.animationClasses[10].mobileRightSpinner = 'rotateTo360 show animation-delay-2';
+          this.forceUpdate();
+        }, 1000);
         break;
-      case 9:
+      case 7:
         this.animationClasses[11].rightSpinner = 'spinRightIn animation-delay-1';
         this.animationClasses[10].chapterTitle = 'cFadeOutDown';
         this.animationClasses[12] = 'cFadeInUp animation-delay-2';
         this.animationClasses[13] = direction ? '' : 'cFadeOutDown';
         this.animationClasses[14] = '';
         break;
-      case 10:
+      case 8:
         this.animationClasses[12] = 'cFadeOutUp';
         this.animationClasses[13] = 'cFadeIn animation-delay-1_1';
         this.animationClasses[14] = direction ? '' : 'cFadeOutDown';
@@ -305,21 +296,12 @@ class LandingPage extends React.PureComponent{
         this.animationClasses[16].right = '';
         this.animationClasses[16].pageTitle = '';
         break;
-      case 11:
+      case 9:
         this.animationClasses[13] = 'cFadeOutUp';
         this.animationClasses[14] = direction ? 'cFadeIn animation-delay-1_1' : 'cFadeIn animation-delay-3';
         this.animationClasses[16].left = direction ? '' : 'rotateTo0 animated animation-delay-3';
         this.animationClasses[16].right = direction ? '' : 'rotateTo0 animated animation-delay-1';
-        this.animationClasses[16].pageTitle = direction ? '' : 'cFadeOutDown';
-        break;
-      /**
-       * Page 4
-       */
-      case 12:
-        this.animationClasses[15] = 'cFadeOutUp';
-        this.animationClasses[16].left = 'rotateTo180 animation-delay-1';
-        this.animationClasses[16].right = 'rotateTo180 animation-delay-2';
-        this.animationClasses[16].pageTitle = 'cFadeInUp animation-delay-2';
+
         this.animationClasses[17].rightSpinner =  direction ? '' : 'rotateTo0 show';
         this.animationClasses[17].leftSpinner = '';
         this.animationClasses[17].leftInnerSpinner = '';
@@ -330,29 +312,39 @@ class LandingPage extends React.PureComponent{
         this.animationClasses[17].mobileLeftSpinner = '';
         this.animationClasses[17].mobileRightSpinner = '';
         break;
-      case 13:
-        this.animationClasses[16].pageTitle = 'cFadeOutDown';
-        this.animationClasses[17].background = 'cFadeIn animation-delay-2';
-        this.animationClasses[17].fullLeftSpinner = 'spinOuterIn show animation-delay-2';
-        this.animationClasses[17].rightSpinner = 'rotateTo180 show animation-delay-1';
-        this.animationClasses[17].leftSpinner = 'spinOuterIn animation-delay-2';
-        this.animationClasses[17].leftInnerSpinner = 'spinInnerIn animation-delay-2';
-        this.animationClasses[17].chapterTitle = 'cFadeInUp animation-delay-4';
-        this.animationClasses[18].rightSpinner = direction ? '' : 'spinRightOut';
-        this.animationClasses[19] = direction ? '' : 'cFadeOutDown';
-        this.animationClasses[20] = '';
+      /**
+       * Page 4
+       */
+      case 10:
+        this.animationClasses[15] = 'cFadeOutUp';
+        this.animationClasses[16].left = 'rotateTo180 animation-delay-1';
+        this.animationClasses[16].right = 'rotateTo180 animation-delay-2';
+        setTimeout(() => {
+          this.animationClasses[17].background = 'cFadeIn animation-delay-2';
+          this.animationClasses[17].fullLeftSpinner = 'spinOuterIn show animation-delay-2';
+          this.animationClasses[17].rightSpinner = 'rotateTo180 show animation-delay-1';
+          this.animationClasses[17].leftSpinner = 'spinOuterIn animation-delay-2';
+          this.animationClasses[17].leftInnerSpinner = 'spinInnerIn animation-delay-2';
+          this.animationClasses[17].chapterTitle = 'cFadeInUp animation-delay-4';
+          this.animationClasses[18].rightSpinner = direction ? '' : 'spinRightOut';
+          this.animationClasses[19] = direction ? '' : 'cFadeOutDown';
+          this.animationClasses[20] = '';
 
-        this.animationClasses[17].mobileLeftSpinner = 'rotateTo360 show animation-delay-3';
-        this.animationClasses[17].mobileRightSpinner = 'rotateTo360 show animation-delay-2';
+          this.animationClasses[17].mobileLeftSpinner = 'rotateTo360 show animation-delay-3';
+          this.animationClasses[17].mobileRightSpinner = 'rotateTo360 show animation-delay-2';
+
+          this.forceUpdate();
+        }, 1000);
+
         break;
-      case 14:
+      case 11:
         this.animationClasses[18].rightSpinner = 'spinRightIn animation-delay-1';
         this.animationClasses[17].chapterTitle = 'cFadeOutDown';
         this.animationClasses[19] = 'cFadeInUp animation-delay-2';
         this.animationClasses[20] = direction ? '' : 'cFadeOutDown';
         this.animationClasses[21] = '';
         break;
-      case 15:
+      case 12:
         this.animationClasses[19] = 'cFadeOutUp';
         this.animationClasses[20] = 'cFadeIn animation-delay-1_1';
         this.animationClasses[21] = direction ? '' : 'cFadeOutDown';
@@ -360,21 +352,12 @@ class LandingPage extends React.PureComponent{
         this.animationClasses[23].right = '';
         this.animationClasses[23].pageTitle = '';
         break;
-      case 16:
+      case 13:
         this.animationClasses[20] = 'cFadeOutUp';
         this.animationClasses[21] = direction ? 'cFadeIn animation-delay-1_1' : 'cFadeIn animation-delay-3';
         this.animationClasses[23].left = direction ? '' : 'rotateTo0 animated animation-delay-3';
         this.animationClasses[23].right = direction ? '' : 'rotateTo0 animated animation-delay-1';
-        this.animationClasses[23].pageTitle = direction ? '' : 'cFadeOutDown';  
-        break;
-      /**
-       * Page 5
-       */
-      case 17:
-        this.animationClasses[22] = 'cFadeOutUp';
-        this.animationClasses[23].left = 'rotateTo180 animation-delay-1';
-        this.animationClasses[23].right = 'rotateTo180 animation-delay-2';
-        this.animationClasses[23].pageTitle = 'cFadeInUp animation-delay-2';
+
         this.animationClasses[24].rightSpinner =  direction ? '' : 'rotateTo0 show';
         this.animationClasses[24].leftSpinner = '';
         this.animationClasses[24].leftInnerSpinner = '';
@@ -385,46 +368,56 @@ class LandingPage extends React.PureComponent{
         this.animationClasses[24].mobileLeftSpinner = '';
         this.animationClasses[24].mobileRightSpinner = '';
         break;
-      case 18:
-        this.animationClasses[23].pageTitle = 'cFadeOutDown';
-        this.animationClasses[24].background = 'cFadeIn animation-delay-2';
-        this.animationClasses[24].fullLeftSpinner = 'spinOuterIn show animation-delay-2';
-        this.animationClasses[24].rightSpinner = 'rotateTo180 show animation-delay-1';
-        this.animationClasses[24].leftSpinner = 'spinOuterIn animation-delay-2';
-        this.animationClasses[24].leftInnerSpinner = 'spinInnerIn animation-delay-2';
-        this.animationClasses[24].chapterTitle = 'cFadeInUp animation-delay-4';
-        this.animationClasses[25].rightSpinner = direction ? '' : 'spinRightOut';
-        this.animationClasses[26] = direction ? '' : 'cFadeOutDown';
-        this.animationClasses[27] = '';
+      /**
+       * Page 5
+       */
+      case 14:
+        this.animationClasses[22] = 'cFadeOutUp';
+        this.animationClasses[23].left = 'rotateTo180 animation-delay-1';
+        this.animationClasses[23].right = 'rotateTo180 animation-delay-2';     
+        setTimeout(() => {
+          this.animationClasses[23].pageTitle = 'cFadeOutDown';
+          this.animationClasses[24].background = 'cFadeIn animation-delay-2';
+          this.animationClasses[24].fullLeftSpinner = 'spinOuterIn show animation-delay-2';
+          this.animationClasses[24].rightSpinner = 'rotateTo180 show animation-delay-1';
+          this.animationClasses[24].leftSpinner = 'spinOuterIn animation-delay-2';
+          this.animationClasses[24].leftInnerSpinner = 'spinInnerIn animation-delay-2';
+          this.animationClasses[24].chapterTitle = 'cFadeInUp animation-delay-4';
+          this.animationClasses[25].rightSpinner = direction ? '' : 'spinRightOut';
+          this.animationClasses[26] = direction ? '' : 'cFadeOutDown';
+          this.animationClasses[27] = '';
 
-        this.animationClasses[24].mobileLeftSpinner = 'rotateTo360 show animation-delay-3';
-        this.animationClasses[24].mobileRightSpinner = 'rotateTo360 show animation-delay-2';
+          this.animationClasses[24].mobileLeftSpinner = 'rotateTo360 show animation-delay-3';
+          this.animationClasses[24].mobileRightSpinner = 'rotateTo360 show animation-delay-2';
+
+          this.forceUpdate();
+        }, 1000)   
         break;
-      case 19:
+      case 15:
         this.animationClasses[25].rightSpinner = 'spinRightIn animation-delay-1';
         this.animationClasses[24].chapterTitle = 'cFadeOutDown';
         this.animationClasses[26] = 'cFadeInUp animation-delay-2';
         this.animationClasses[27] = direction ? '' : 'cFadeOutDown';
         this.animationClasses[28] = '';
         break;
-      case 20:
+      case 16:
         this.animationClasses[26] = 'cFadeOutUp';
         this.animationClasses[27] = 'cFadeIn animation-delay-1_1';
         this.animationClasses[28] = direction ? '' : 'cFadeOutDown';
         this.animationClasses[29] = '';
         break;
-      case 21:
+      case 17:
         this.animationClasses[27] = 'cFadeOutUp';
         this.animationClasses[28] = 'cFadeIn animation-delay-1_1';
         this.animationClasses[29] = direction ? '' : 'cFadeOutDown';
         
         break;
-      case 22:
+      case 18:
         this.animationClasses[28] = 'cFadeOutUp';
         this.animationClasses[29] = direction ? 'cFadeIn animation-delay-1_1' : 'cFadeIn animation-delay-3';
         this.animationClasses[30].page = direction ? '' : 'fullPageFadeOutDown';
         break;
-      case 23:
+      case 19:
         this.animationClasses[30].page = 'fullPageFadeInUp';
         break;
     }
@@ -466,14 +459,14 @@ class LandingPage extends React.PureComponent{
           <img className="scroll-instruction-arrow" src={icArrowDown} />
         </div>
         <div id="page_2" className={`${this.animationClasses[2].page}`}>
-          <div className={`slide-1 ${this.animationClasses[2].title}`}>
+          {/* <div className={`slide-1 ${this.animationClasses[2].title}`}>
             <div>
               <h1 className="banner-title">
                 80% OF <br /> BUSINESS OWNERS
               </h1>
               <h5 className="desc">BELEIVE THAT WORKING HARDER IS THE ONLY WAY TO GROW THEIR BUSINESS</h5>
             </div>
-          </div>
+          </div> */}
           <div className="slide-2">
             <div className={`background-image ${this.animationClasses[3].background}`} />
             <div className="full-left">
@@ -545,12 +538,12 @@ class LandingPage extends React.PureComponent{
           <div className="right">
             <div className={`spinner ${this.animationClasses[9].right}`}></div>
           </div>
-          <div className="slide-1">
+          {/* <div className="slide-1">
             <div className={`hide ${this.animationClasses[9].pageTitle}`}>
               <h1>more than 75%</h1>
               <p>of all property management businesses do not have a growth plan</p>
             </div>
-          </div>
+          </div> */}
           <div className="slide-2">
             <div className={`background-image ${this.animationClasses[10].background}`} />
             <div className="full-left">
