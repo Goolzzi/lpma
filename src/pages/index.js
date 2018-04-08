@@ -189,6 +189,7 @@ class LandingPage extends React.PureComponent{
         this.animationClasses[1].title = 'cFadeOut';
         this.animationClasses[1].info = 'cFadeOut';
         this.animationClasses[2].page = 'fullPageFadeInUp';
+
         this.animationClasses[3].rightSpinner = 'rotateTo180 show animation-delay-2';
         this.animationClasses[3].leftSpinner = 'spinOuterIn animation-delay-3';
         this.animationClasses[3].leftInnerSpinner = 'spinInnerIn animation-delay-3';
@@ -198,6 +199,7 @@ class LandingPage extends React.PureComponent{
         this.animationClasses[4].rightSpinner = direction ? '' : 'spinRightOut';
         this.animationClasses[5] = direction ? '' : 'cFadeOutDown';
         this.animationClasses[6] = '';
+
         this.animationClasses[3].mobileLeftSpinner = 'rotateTo360 show animation-delay-3';
         this.animationClasses[3].mobileRightSpinner = 'rotateTo360 show animation-delay-2';
         break;
@@ -210,14 +212,14 @@ class LandingPage extends React.PureComponent{
         break;
       case 4:
         this.animationClasses[5] = 'cFadeOutUp';
-        this.animationClasses[6] = 'cFadeIn animation-delay-1_1';
+        this.animationClasses[6] = 'cFadeInUp animation-delay-1_1';
         this.animationClasses[7] = direction ? '' : 'cFadeOutDown';
         this.animationClasses[9].left = '';
         this.animationClasses[9].right = '';
         break;
       case 5:
         this.animationClasses[6] = 'cFadeOutUp';
-        this.animationClasses[7] = direction ? 'cFadeIn animation-delay-1_1' :  'cFadeIn animation-delay-3';
+        this.animationClasses[7] = direction ? 'cFadeInUp animation-delay-1_1' :  'cFadeIn animation-delay-3';
         this.animationClasses[9].left = direction ? '' : 'rotateTo0 animated animation-delay-3';
         this.animationClasses[9].right = direction ? '' : 'rotateTo0 animated animation-delay-1';
 
@@ -263,14 +265,14 @@ class LandingPage extends React.PureComponent{
         break;
       case 8:
         this.animationClasses[12] = 'cFadeOutUp';
-        this.animationClasses[13] = 'cFadeIn animation-delay-1_1';
+        this.animationClasses[13] = 'cFadeInUp animation-delay-1_1';
         this.animationClasses[14] = direction ? '' : 'cFadeOutDown';
         this.animationClasses[16].left = '';
         this.animationClasses[16].right = '';
         break;
       case 9:
         this.animationClasses[13] = 'cFadeOutUp';
-        this.animationClasses[14] = direction ? 'cFadeIn animation-delay-1_1' : 'cFadeIn animation-delay-3';
+        this.animationClasses[14] = direction ? 'cFadeInUp animation-delay-1_1' : 'cFadeIn animation-delay-3';
         this.animationClasses[16].left = direction ? '' : 'rotateTo0 animated animation-delay-3';
         this.animationClasses[16].right = direction ? '' : 'rotateTo0 animated animation-delay-1';
 
