@@ -146,11 +146,6 @@ ul, li {
     position: absolute;
     height: 100%;
     width: 100%;
-    @media screen and (max-width: $mobile-width) {
-      background: $white;
-    }
-  }
-  .topic-1 {
     padding: 5rem 7em;
     display: flex;
     align-items: center;
@@ -159,10 +154,11 @@ ul, li {
       h5 {
         text-transform: uppercase;
         font-family: "DomaineSansMedium";
-        color: $text-secondary;
+        color: rgba(59, 65, 69, 0.3);
+        font-size: 0.7em
       }
       h1 {
-        font-size: 2.8em;
+        font-size: 1.4em;
         font-family: "DomaineSansMedium";
         text-transform: uppercase;
         letter-spacing: -2px;
@@ -172,83 +168,11 @@ ul, li {
       }
       p {
         font-family: "DomaineSansLight";
+        font-size: 0.8em;
       }
     }
-  }
-  .topic-2 {
-    padding: 5rem 4rem;
-    opacity: 0;
-    .wrapper {
-      h5 {
-        text-transform: uppercase;
-        font-family: "DomaineSansMedium";
-        color: rgba(59, 65, 69, 0.3);
-        font-size: 0.6em;
-        padding-left: 1rem;
-      }
-      h1 {
-        font-size: 1.4em;
-        font-family: "DomaineSansMedium";
-        text-transform: uppercase;
-        padding-left: 1rem;
-        span {
-          color: $text-secondary;
-        }
-      }
-      p {
-        padding-left: 1rem;
-        font-size: 0.9em;
-        font-family: "DomaineSansLight";
-      }
-      
-    }
-  }
-  .topic-3 {
-    padding: 5rem 4rem;
-    opacity: 0;
-    .wrapper {
-      width: 100%;
-      height: 100%;
-      overflow: scroll;
-      h5 {
-        text-transform: uppercase;
-        font-family: "DomaineSansMedium";
-        color: rgba(59, 65, 69, 0.3);
-        font-size: 0.6em;
-      }
-      h1 {
-        font-size: 1.4em;
-        font-family: "DomaineSansMedium";
-        text-transform: uppercase;
-        span {
-          color: $text-secondary;
-        }
-      }
-      p {
-        padding-left: 1rem;
-        font-size: 0.9em;
-        font-family: "DomaineSansLight";
-      }
-      .blog-card {
-        display: flex;
-        align-items: flex-start;
-        margin: 1rem 0;
-        img {
-          width: 50%;
-        }
-        .blog-card-content {
-          padding-left: 1rem;
-          .headline-text {
-            font-family: "DomaineSansMedium";
-          }
-          .desc-text {
-            font-family: "DomaineSansLight";
-            max-width: 75%;
-            font-weight: normal;
-            line-height: 1.4em;
-          }
-        }
-      }
+    @media screen and (max-width: $mobile-width) {
+      background: $white;
     }
   }
   @media screen and (max-width: $mobile-width) {

@@ -483,38 +483,25 @@ class LandingPage extends React.PureComponent{
                 <h1>Facts not<br/>myths</h1>
               </div>
               <div className={`overlay-spinner ${this.animationClasses[4].rightSpinner}`} />
-              <div className={`tutor-wrapper topic-1 ${this.animationClasses[5]}`}>
-                <div className="wrapper">
-                  <h5>01 / facts not myths</h5>
-                  <h1>over half of all property management businesses <span>stop growing</span> after five years.</h1>
-                  <p>What works in one phase of your business won’t get you to the next phase. Don’t limit your growth by failing to grow your potential.</p>
-                </div>
-              </div>
-              <div className={`tutor-wrapper topic-2 ${this.animationClasses[6]}`}>
+              <div className={`tutor-wrapper ${this.animationClasses[5]}`}>
                 <div className="wrapper">
                   <h5>01 / facts not myths</h5>
                   <h1><span>78%</span> of investors would swap property managers today if they were confident your company had a better offer.</h1>
                   <p>It's not just about how hard you work, it's about how unique your offer is.  Our studies show that Investors are looking for differentiation and are more likely to take their business elsewhere. The landscape is more competitive than ever and now is your chance to better understand the truth about what your clients want.</p>
                   <p>Learn how to develop a growth plan that counts, learn how to grow and defend your business.</p>
-                  <img src={imgIntro2_1}/>
                 </div>
               </div>
-              <div className={`tutor-wrapper topic-3 ${this.animationClasses[7]}`}>
+              <div className={`tutor-wrapper ${this.animationClasses[6]}`}>
+                <div className="wrapper">
+                  <h5>01 / facts not myths</h5>
+                  <h1><span>25%</span> of industry managed investors don’t think WE DO WHAT WE SAY WE ARE GOING TO DO.</h1>
+                  <p>To grow you need to break this perception and regain our clients’ trust. The best businesses need to come together to find a new path forward.</p>
+                </div>
+              </div>
+              <div className={`tutor-wrapper ${this.animationClasses[7]}`}>
                 <div className="wrapper">
                   <h5>01 / facts not myths</h5>
                   <h1>join the <span>largest network</span> of property management thinkers, leaders and practitioners TO BETTER UNDERSTAND THE FACTS.</h1>
-                  <span>LPMA Evolution Book Series</span>
-                  <img src={imgIntro2_2}/>
-                  <div className="img-wrapper">
-                    <div className="left-side">
-                      <span>LPMA Industry Research Hub</span>
-                      <img src={imgIntro2_3}/>
-                    </div>
-                    <div className="right-side">
-                      <span>INSIGHTFUL BLOG</span>
-                      <img src={imgIntro2_4}/>
-                    </div>
-                  </div>
                 </div>
               </div>
             </div>
