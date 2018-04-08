@@ -190,18 +190,22 @@ class LandingPage extends React.PureComponent{
         this.animationClasses[1].info = 'cFadeOut';
         this.animationClasses[2].page = 'fullPageFadeInUp';
 
-        this.animationClasses[3].rightSpinner = 'rotateTo180 show animation-delay-2';
-        this.animationClasses[3].leftSpinner = 'spinOuterIn animation-delay-3';
-        this.animationClasses[3].leftInnerSpinner = 'spinInnerIn animation-delay-3';
-        this.animationClasses[3].fullLeftSpinner = 'spinOuterIn show animation-delay-3';
-        this.animationClasses[3].background = 'cFadeIn animation-delay-3';
-        this.animationClasses[3].chapterTitle = 'cFadeInUp animation-delay-3';
-        this.animationClasses[4].rightSpinner = direction ? '' : 'spinRightOut';
-        this.animationClasses[5] = direction ? '' : 'cFadeOutDown';
-        this.animationClasses[6] = '';
+        setTimeout(() => {
+          this.animationClasses[3].rightSpinner = 'rotateTo180 show animation-delay-2';
+          this.animationClasses[3].leftSpinner = 'spinOuterIn animation-delay-3';
+          this.animationClasses[3].leftInnerSpinner = 'spinInnerIn animation-delay-3';
+          this.animationClasses[3].fullLeftSpinner = 'spinOuterIn show animation-delay-3';
+          this.animationClasses[3].background = 'cFadeIn animation-delay-3';
+          this.animationClasses[3].chapterTitle = 'cFadeInUp animation-delay-3';
+          this.animationClasses[4].rightSpinner = direction ? '' : 'spinRightOut';
+          this.animationClasses[5] = direction ? '' : 'cFadeOutDown';
+          this.animationClasses[6] = '';
 
-        this.animationClasses[3].mobileLeftSpinner = 'rotateTo360 show animation-delay-3';
-        this.animationClasses[3].mobileRightSpinner = 'rotateTo360 show animation-delay-2';
+          this.animationClasses[3].mobileLeftSpinner = 'rotateTo360 show animation-delay-3';
+          this.animationClasses[3].mobileRightSpinner = 'rotateTo360 show animation-delay-2';
+          this.forceUpdate();
+        }, 1000);
+        
         break;
       case 3:
         this.animationClasses[4].rightSpinner = 'spinRightIn animation-delay-1';
