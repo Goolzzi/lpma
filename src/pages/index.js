@@ -379,15 +379,9 @@ class LandingPage extends React.PureComponent{
       case 17:
         this.animationClasses[27] = 'cFadeOutUp';
         this.animationClasses[28] = 'cFadeIn animation-delay-1_1';
-        this.animationClasses[29] = direction ? '' : 'cFadeOutDown';
-        
-        break;
-      case 18:
-        this.animationClasses[28] = 'cFadeOutUp';
-        this.animationClasses[29] = direction ? 'cFadeIn animation-delay-1_1' : 'cFadeIn animation-delay-3';
         this.animationClasses[30].page = direction ? '' : 'fullPageFadeOutDown';
         break;
-      case 19:
+      case 18:
         this.animationClasses[30].page = 'fullPageFadeInUp';
         break;
     }
