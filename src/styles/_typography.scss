@@ -9,6 +9,10 @@ $font-path:   "/static/";
   font-family: "DomaineSans";
   src: url($font-path + "DomaineSansText-Regular.otf?") format("opentype");
 }
+@font-face {
+  font-family: "DomaineSansLight";
+  src: url($font-path + "DomaineSansText-Light.otf?") format("opentype");
+}
 
 @font-face {
   font-family: "CenturyExpdRoman";

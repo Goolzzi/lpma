@@ -14,8 +14,8 @@ const TabItem = ({tab, isActive, onClick, index}) => (
 
 class FoundrySubject extends React.Component {
   static propTypes = {
-    data: PropTypes.object.isReqiered,
-    pathContext: PropTypes.object.isReqiered,
+    data: PropTypes.object.isRequired,
+    pathContext: PropTypes.object.isRequired,
   };
 
   constructor(props) {
@@ -88,7 +88,7 @@ class FoundrySubject extends React.Component {
                       contentfulFoundrySubject[tab].map(
                         ({id, title, slug, excerpt, steps}) => {
                           const href = steps
-                            ? "foundry/" + slug + "/" + steps[0].slug
+                            ? "/foundry/" + slug + "/" + steps[0].slug
                             : "javascript;";
                           return (
                             <FoundryCard
@@ -141,7 +141,6 @@ export const pageQuery = graphql`
       guides {
         id
         title
-        type
         slug
         steps {
           slug
@@ -156,7 +155,6 @@ export const pageQuery = graphql`
       documents {
         id
         title
-        type
         excerpt {
           childMarkdownRemark {
             excerpt

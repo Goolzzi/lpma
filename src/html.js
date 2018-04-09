@@ -26,6 +26,8 @@ module.exports = class HTML extends React.Component {
     }
     return (
       <html {...this.props.htmlAttributes} lang="en">
+        {/* npm auth0 has node dependency, that's why we are useing auth0 from cdn */}
+        {/* <script src="https://cdn.auth0.com/js/auth0/9.3.0/auth0.min.js" /> */}
         <head>
           {this.props.headComponents}
           {metaAndFavicons}

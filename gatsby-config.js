@@ -3,7 +3,7 @@ require("dotenv").config();
 module.exports = {
   siteMetadata: {
     title: `lpma`,
-    siteUrl: `https://lpma.netlify.com`,
+    siteUrl: `https://lpma.com`,
   },
   plugins: [
     `gatsby-plugin-sass`,
@@ -18,5 +18,7 @@ module.exports = {
     `gatsby-transformer-remark`,
     `gatsby-plugin-react-next`,
     `gatsby-plugin-catch-links`,
+    `gatsby-transformer-sharp`,
+    `gatsby-plugin-sharp`,
   ],
 };

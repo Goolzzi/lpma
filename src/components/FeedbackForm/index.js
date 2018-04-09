@@ -2,8 +2,9 @@ import React from "react";
 import PropTypes from "prop-types";
 import classNames from "classnames";
 import store from "store";
-import "./styles.scss";
 import {EntypoThumbsDown, EntypoThumbsUp} from "react-entypo";
+import PostSubmitMessage from "../PostSubmitMessage";
+import "./styles.scss";
 
 class FeedbackForm extends React.Component {
   constructor(props) {
@@ -74,21 +75,15 @@ class FeedbackForm extends React.Component {
         </div>
       );
     }
-    return (
-      <div className="columns helpful is-gapless">
-        <div className="column is-9">
-          <span className="feedback-received">Thanks for your feedback.</span>
-        </div>
-      </div>
-    );
+    return <PostSubmitMessage message="Thanks for your feedback!" />;
   }
 }
 
 FeedbackForm.propTypes = {
   feedbackParams: PropTypes.shape({
     slug: PropTypes.string,
-    title: PropTypes.number,
-  }).isRquired,
+    title: PropTypes.string,
+  }).isRequired,
 };
 
 export default FeedbackForm;

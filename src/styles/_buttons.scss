@@ -62,6 +62,12 @@
     }
   }
 
+  &.default {
+    border-color: $gray-dark;
+    background-color: $gray-lighter;
+    color: $gray-dark !important;
+  }
+
   &.outlined {
     background-color: $white;
     border-width: 2px;
@@ -71,29 +77,9 @@
     color: $white;
   }
 
-  &.fullwidth {
-    min-width: 100%;
-  }
-
-  &.threequarterwidth {
-    min-width: 75%;
-  }
-
-  &.halfwidth {
-    min-width: 50%;
-  }
-
-  &.onequarterwidth {
-    min-width: 25%;
-  }
-
-  &.with-radius-5 {
-    border-radius: 5px;
-  }
-
-  &.smaller {
-    height: 2.7777rem;
-    font-size: 1rem;
+  &.smallest {
+    height: 2rem;
+    font-size: 0.75rem;
   }
 
   &.smallest {
@@ -103,18 +89,6 @@
 
   &.transparent {
     background-color: $transparent;
-  }
-
-  &.smaller-text {
-    font-size: 1rem;
-
-    &.smaller {
-      font-size: 0.75rem;
-    }
-  }
-
-  &.centered {
-    text-align: center;
   }
 }
 
@@ -143,5 +117,65 @@
   &::placeholder {
     color: #c3c0c0;
     opacity: 1;
+  }
+
+  &.bordered {
+    border: 1px solid $gray-border-darkerer;
+  }
+}
+
+.btn, .inp {
+  &.larger {
+    height: 5rem;
+  }
+
+  &.smaller {
+    height: 2.7777rem;
+    font-size: 1rem;
+  }
+
+  &.shadow {
+    box-shadow: 0px 2px 2px $gray;
+    -webkit-box-shadow: 0px 2px 2px $gray;
+  }
+
+  &.with-radius-5 {
+    border-radius: 5px;
+  }
+
+  &.with-radius-half-rem {
+    border-radius: 0.5rem;
+  }
+
+  &.thirdwidth {
+    min-width: 33.3333%;
+  }
+
+  &.halfwidth {
+    min-width: 50%;
+  }
+
+  &.fullwidth {
+    min-width: 100%;
+  }
+
+  &.threequarterwidth {
+    min-width: 75%;
+  }
+
+  &.onequarterwidth {
+    min-width: 25%;
+  }
+
+  &.centered {
+    text-align: center;
+  }
+
+  &.smaller-text {
+    font-size: 1rem;
+
+    &.smaller {
+      font-size: 0.75rem;
+    }
   }
 }

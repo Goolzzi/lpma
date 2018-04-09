@@ -1,18 +1,13 @@
 import React from "react";
 import PropTypes from "prop-types";
+import Header from "../components/Header";
+import Footer from "../components/Footer";
 import MetaHead from "./MetaHead";
 import locationToTitleMap from "./locationTitlesMap";
 import "bulma";
-import "../styles/global.scss";
 import "../styles/fonts";
-import Header from "../components/Header";
-import Footer from "../components/Footer";
-
-const propTypes = {
-  children: PropTypes.func,
-  location: PropTypes.func,
-  data: PropTypes.object.isRequired,
-};
+import "../styles/global.scss";
+import "../styles/main.scss";
 
 const LayoutTemplate = props => {
   const {
@@ -25,6 +20,11 @@ const LayoutTemplate = props => {
       allContentfulFoundrySection,
     },
   } = props;
+
+  if (pathname.split("/")[1] === "callback") {
+    return <div className="page-container">{children()}</div>;
+  }
+
   const protocol = "https:";
   const forUSA = !!~pathname.indexOf("/us") || !!~pathname.indexOf("-us");
 
@@ -49,6 +49,14 @@ const LayoutTemplate = props => {
     </div>
   );
 };
+
+LayoutTemplate.propTypes = {
+  children: PropTypes.func,
+  location: PropTypes.object,
+  data: PropTypes.object.isRequired,
+};
+
+export default LayoutTemplate;
 
 export const pageQuery = graphql`
   query LayoutQuery {
@@ -83,8 +91,8 @@ export const pageQuery = graphql`
       topmenu {
         id
         name
+        authRequired
         country
-        force
         slug
         to
       }
@@ -95,29 +103,23 @@ export const pageQuery = graphql`
           html
         }
       }
-      mainLinks {
+      menu {
         id
         name
         to
         country
-        force
         slug
+        authRequired
       }
-      secondaryLinks {
-        id
-        name
-        to
+      contactInfo {
+        childMarkdownRemark {
+          html
+        }
       }
       privacy {
         childMarkdownRemark {
           html
         }
-      }
-      joinLink {
-        name
-        to
-        force
-        slug
       }
       logo {
         file {
@@ -138,7 +140,3 @@ export const pageQuery = graphql`
     }
   }
 `;
-
-LayoutTemplate.propTypes = propTypes;
-
-export default LayoutTemplate;

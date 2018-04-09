@@ -1,12 +1,19 @@
-#/events/* 200! Role=admin
-#/events/* /resources/ 404!
-#test
+#/secret/* /secret/index.html 200! Role=admin
+#/secret /test1/ 401
 
-/  /us/   302  Country=us
-/us/*  / 302 Country=au
 
-/events/ /events-us/ 302 Country=us
-/events-us/ /events/ 302 Country=au
-/join/ /join-us/ 302 Country=us
+#/my-foundry/* /my-foundry/index.html 200! Role=admin
+#/my-foundry /foundry/ 401
 
-/login/* https://halo-identity.lpma.com.au/users/sign_in 301
+#/  /us/   302  Country=us
+#/us/*  / 302 Country=au
+
+#/events/ /events-us/ 302 Country=us
+#/events-us/ /events/ 302 Country=au
+#/join/ /join-us/ 302 Country=us
+
+/ctd-tools /foundry 302
+/bb-tools /foundry 302  
+/ng-tools /foundry 302
+
+#/login/* https://halo-identity.lpma.com.au/users/sign_in 301

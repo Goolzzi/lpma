@@ -1,0 +1,75 @@
+.tickets {
+    padding-top: 2rem;
+
+    .ticket-item {
+      @media screen and (min-width: 769px) {
+        padding: 1rem;
+      }
+
+      .ticket-cont {
+        box-shadow: 0 9px 21px 1px rgba(0, 0, 0, 0.23);
+        background-color: $white;
+        padding: 1rem;
+        text-align: center;
+
+        @media screen and (min-width: 769px) {
+          margin-top: 3rem;
+          padding-top: 3rem;
+        }
+
+        span.fa {
+          font-size: 3rem;
+          color: $gray-dark;
+          margin-bottom: 1.5rem;
+        }
+
+        h2 {
+          font-size: 2rem;
+          color: $primary-color;
+        }
+
+        p.price {
+          font-size: 2.5rem;
+          color: $gray-dark;
+        }
+
+        p.text {
+          font-size: 1rem;
+          color: $gray-dark;
+        }
+
+        hr {
+          background-color: #979797;
+          margin: 2rem auto;
+          width: 75%;
+        }
+
+        button {
+          margin: 0.5rem;
+        }
+      }
+
+      &.primary {
+        .ticket-cont {
+          background-color: $primary-color;
+          margin-top: 0rem;
+
+          h2 {
+            color: $white;
+          }
+
+          p.price {
+            color: $white;
+          }
+
+          p.text {
+            color: $white;
+          }
+
+          hr {
+            background-color: $white;
+          }
+        }
+      }
+    }
+  }

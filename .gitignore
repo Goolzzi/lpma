@@ -47,4 +47,5 @@ typings/
 
 # dotenv environment variables file
 .env
+.netlify
 .env.local

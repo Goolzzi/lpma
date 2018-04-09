@@ -1,0 +1,18 @@
+.event-types {
+    margin-bottom: 1.25rem;
+
+    span.event-type {
+      color: $gray-dark;
+      margin: 0px 1.75rem;
+      font-weight: bold;
+      display: inline-block;
+
+      &:hover {
+        cursor: pointer;
+      }
+    }
+
+    span.event-type-selected {
+      color: $primary-color !important
+    }
+  }

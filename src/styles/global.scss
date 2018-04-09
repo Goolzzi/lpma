@@ -626,3 +626,8 @@ pre tt:after {
 body {
   background-color: #f4f4f3;
 }
+
+.container.narrow {
+  max-width: 818px;
+  width: auto;
+}

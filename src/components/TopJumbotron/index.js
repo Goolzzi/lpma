@@ -1,35 +1,34 @@
 import React from "react";
 import PropTypes from "prop-types";
+import Link from "gatsby-link";
+import Img from "gatsby-image";
 import "./styles.scss";
-import LPMALink from "../../utils/LPMALink";
 
 const propTypes = {
   jumbotron: PropTypes.array.isRequired,
 };
 
 const TopJumbotron = ({jumbotron}) => {
-  const {
-    background: {resolutions: {src, srcSet}},
-    title,
-    joinLink,
-  } = jumbotron[0];
+  const {background: {sizes}, title, joinLink} = jumbotron[0];
   return (
     <section className="hero top">
       <div className="image-wrapper">
-        <img src={src} srcSet={srcSet} alt="acquisition Jumbotron" />
+        <Img sizes={sizes} />
       </div>
-      <div className="cont-wrapper">
-        <div className="cont">
-          {title ? <p>{title.title}</p> : <React.Fragment />}
-          {joinLink ? (
-            <LPMALink {...joinLink}>
-              <button className="btn primary halfwidth">{joinLink.name}</button>
-            </LPMALink>
-          ) : (
-            <React.Fragment />
-          )}
+      {title || joinLink ? (
+        <div className="cont-wrapper">
+          <div className="cont">
+            {title ? <p>{title.title}</p> : null}
+            {joinLink ? (
+              <Link {...joinLink}>
+                <button className="btn primary halfwidth">
+                  {joinLink.name}
+                </button>
+              </Link>
+            ) : null}
+          </div>
         </div>
-      </div>
+      ) : null}
     </section>
   );
 };

@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import Img from "gatsby-image";
 import "./styles.scss";
 
 const propTypes = {
@@ -8,16 +9,16 @@ const propTypes = {
 
 const Audience = ({edges}) => (
   <React.Fragment>
-    {edges.map(({node: {id, image: {resolutions}}}) => (
+    {edges.map(({node: {id, image: {sizes}}}) => (
       <section key={id} className="hero audience">
         <div className="image-wrapper">
-          <img src={resolutions.src} srcSet={resolutions.srcSet} alt="audience" />
+          <Img sizes={sizes} />
         </div>
       </section>
     ))}
   </React.Fragment>
 );
 
-Audience.protoTypes = propTypes;
+Audience.propTypes = propTypes;
 
 export default Audience;
