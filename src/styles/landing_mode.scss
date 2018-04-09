@@ -239,6 +239,12 @@ ul, li {
     display: flex;
     justify-content: center;
     align-items: center;
+    &.light {
+      background-color: rgba(0,0,0, 0.1);
+      &:hover {
+        background-color: rgba(0, 0, 0, 0.3);
+      }
+    }
     i {
       font-size: 1.6em;
     }

@@ -89,7 +89,8 @@ class LandingPage extends React.PureComponent{
       animationIndex: 0,
       lastScrollPosition: 0,
       contactForm: false,
-      showPage: props.showPage
+      showPage: props.showPage,
+      scrollHandleClass: ''
     }
     this.scrolling = false;
     this.innerScrolling = false;
@@ -191,6 +192,8 @@ class LandingPage extends React.PureComponent{
         this.animationClasses[2].page = 'fullPageFadeInUp';
 
         setTimeout(() => {
+          
+
           this.animationClasses[3].rightSpinner = 'rotateTo180 show animation-delay-2';
           this.animationClasses[3].leftSpinner = 'spinOuterIn animation-delay-3';
           this.animationClasses[3].leftInnerSpinner = 'spinInnerIn animation-delay-3';
@@ -206,8 +209,10 @@ class LandingPage extends React.PureComponent{
           this.forceUpdate();
         }, 1000);
         
+        this.setState({ scrollHandleClass: direction ? '' : 'scrollCTROut' });
         break;
       case 3:
+        this.setState({ scrollHandleClass: 'light scrollCTRIn' });
         this.animationClasses[4].rightSpinner = 'spinRightIn animation-delay-1';
         this.animationClasses[3].chapterTitle = 'cFadeOutDown';
         this.animationClasses[5] = 'cFadeInUp animation-delay-2';
@@ -236,11 +241,13 @@ class LandingPage extends React.PureComponent{
 
         this.animationClasses[10].mobileLeftSpinner = '';
         this.animationClasses[10].mobileRightSpinner = '';
+        this.setState({ scrollHandleClass: 'light scrollCTRIn'});
         break;
       /**
        * Page 3
        */
       case 6:
+        this.setState({ scrollHandleClass: 'scrollCTROut' });
         this.animationClasses[7] = 'cFadeOutUp';
         this.animationClasses[9].left = 'rotateTo180 animation-delay-1';
         this.animationClasses[9].right = 'rotateTo180 animation-delay-2';
@@ -261,6 +268,7 @@ class LandingPage extends React.PureComponent{
         }, 1500);
         break;
       case 7:
+        this.setState({ scrollHandleClass: 'light scrollCTRIn' });
         this.animationClasses[11].rightSpinner = 'spinRightIn animation-delay-1';
         this.animationClasses[10].chapterTitle = 'cFadeOutDown';
         this.animationClasses[12] = 'cFadeInUp animation-delay-2';
@@ -289,11 +297,14 @@ class LandingPage extends React.PureComponent{
 
         this.animationClasses[17].mobileLeftSpinner = '';
         this.animationClasses[17].mobileRightSpinner = '';
+
+        this.setState({ scrollHandleClass: 'light scrollCTRIn'});
         break;
       /**
        * Page 4
        */
       case 10:
+        this.setState({ scrollHandleClass: 'scrollCTROut' });
         this.animationClasses[15] = 'cFadeOutUp';
         this.animationClasses[16].left = 'rotateTo180 animation-delay-1';
         this.animationClasses[16].right = 'rotateTo180 animation-delay-2';
@@ -316,6 +327,7 @@ class LandingPage extends React.PureComponent{
 
         break;
       case 11:
+        this.setState({ scrollHandleClass: 'light scrollCTRIn' });
         this.animationClasses[18].rightSpinner = 'spinRightIn animation-delay-1';
         this.animationClasses[17].chapterTitle = 'cFadeOutDown';
         this.animationClasses[19] = 'cFadeInUp animation-delay-2';
@@ -344,11 +356,14 @@ class LandingPage extends React.PureComponent{
 
         this.animationClasses[24].mobileLeftSpinner = '';
         this.animationClasses[24].mobileRightSpinner = '';
+
+        this.setState({ scrollHandleClass: 'light scrollCTRIn'});
         break;
       /**
        * Page 5
        */
       case 14:
+        this.setState({ scrollHandleClass: 'scrollCTROut' });
         this.animationClasses[22] = 'cFadeOutUp';
         this.animationClasses[23].left = 'rotateTo180 animation-delay-1';
         this.animationClasses[23].right = 'rotateTo180 animation-delay-2';     
@@ -370,6 +385,7 @@ class LandingPage extends React.PureComponent{
         }, 1500)   
         break;
       case 15:
+        this.setState({ scrollHandleClass: 'light scrollCTRIn'});
         this.animationClasses[25].rightSpinner = 'spinRightIn animation-delay-1';
         this.animationClasses[24].chapterTitle = 'cFadeOutDown';
         this.animationClasses[26] = 'cFadeInUp animation-delay-2';
@@ -386,8 +402,10 @@ class LandingPage extends React.PureComponent{
         this.animationClasses[27] = 'cFadeOutUp';
         this.animationClasses[28] = 'cFadeIn animation-delay-1_1';
         this.animationClasses[30].page = direction ? '' : 'fullPageFadeOutDown';
+        this.setState({ scrollHandleClass: 'light scrollCTRIn show' });
         break;
       case 18:
+        this.setState({ scrollHandleClass: 'hide' });
         this.animationClasses[30].page = 'fullPageFadeInUp';
         break;
     }
@@ -761,7 +779,7 @@ class LandingPage extends React.PureComponent{
           </div>
         }
         <div className="scroll-bar">
-          <div className="scroll-control" onClick={this.scrollWindowDown}>
+          <div className={`scroll-control ${this.state.scrollHandleClass}`} onClick={this.scrollWindowDown}>
             <i className="fa fa-angle-down" />
           </div>
         </div>
