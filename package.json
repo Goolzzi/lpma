@@ -8,6 +8,8 @@
     "url": "https://github.com/SimplyTechnologies/lpma/issues"
   },
   "dependencies": {
+    "animate.css": "^3.6.1",
+    "auth0-js": "^9.3.0",
     "bulma": "^0.6.1",
     "classnames": "^2.2.5",
     "crypto-js": "^3.1.9-1",
@@ -36,7 +38,7 @@
   "engines": {
     "node": ">=8.9.3"
   },
-  "homepage": "https://lpma.netlify.com",
+  "homepage": "https://lpma.com",
   "keywords": [
     "gatsby contentful netlify"
   ],
