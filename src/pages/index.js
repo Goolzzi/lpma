@@ -438,12 +438,13 @@ class LandingPage extends React.PureComponent{
     this.scrollDirection = true;
     this.setState({animationIndex: this.state.animationIndex + 1}, () => {
       this.getAnimationClassName(this.state.animationIndex, true);
+      this.props.onPageChange(this.state.animationIndex);
       this.forceUpdate()
     });
     setTimeout(() => {
       this.scrolling = false;
     }, 2000);
-    this.props.onPageChange(this.state.animationIndex);
+    
   }
   render () {
     return (
