@@ -33,6 +33,8 @@
           color: white;
           font-family: "DomaineSansMedium";
           padding-bottom: 5px;
+          transition: all 1s;
+          transition-delay: 1s;
           &:hover {
             border-bottom: 0.5px solid #fff;
           }
@@ -61,6 +63,9 @@
         background: transparent;
         border: none;
         color: $primary-color;
+        transition: all 1s;
+        transition-delay: 1s;
+
       }
       &:first-of-type {
         padding-left: 0;
