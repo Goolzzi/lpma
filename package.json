@@ -38,7 +38,7 @@
   "engines": {
     "node": ">=8.9.3"
   },
-  "homepage": "https://lpma.netlify.com",
+  "homepage": "https://lpma.com",
   "keywords": [
     "gatsby contentful netlify"
   ],
