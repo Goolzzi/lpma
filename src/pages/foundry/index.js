@@ -53,13 +53,13 @@ class MyFoundryPage extends React.Component {
                 <section className="section cont">
                   <div className="container">
                     <div className="columns">
-                      <div className="column is-4">
+                      <div className="column is-12">
                         <div className="top-text">
                           <h2
                             dangerouslySetInnerHTML={{
-                              __html: `${greeting.childMarkdownRemark.html} ${
-                                this.state.username
-                              }`,
+                              __html: `${
+                                greeting.childMarkdownRemark.html
+                              } <p class='name'>${this.state.username}</p>`,
                             }}
                           />
                         </div>
@@ -121,15 +121,17 @@ class MyFoundryPage extends React.Component {
                       }}
                     />
                     <div className="has-text-centered-mobile">
-                      <Link
-                        to={signupLink}
+                      <a
+                        href={signupLink}
                         className="btn secondary with-radius-half-rem half-width smaller threequarterwidth">
                         Sign Up
-                      </Link>
+                      </a>
                     </div>
                   </div>
                   <div className="column is-7 is-offset-1">
-                    <YouTube videoId={videoLink} opts={videoOptions} />
+                    <div className="video-cont">
+                      <YouTube videoId={videoLink} opts={videoOptions} />
+                    </div>
                   </div>
                 </div>
                 <div className="columns">

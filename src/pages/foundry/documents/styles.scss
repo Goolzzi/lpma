@@ -21,6 +21,7 @@
     }
 
     .top-links {
+      margin-bottom: -2.5rem;
       .column {
         text-align: right;
 
@@ -101,6 +102,7 @@
 
       .level-link-item {
         display: block;
+        line-height: 1.8;
 
         & > .fa {
           margin-right: 0.5rem;
