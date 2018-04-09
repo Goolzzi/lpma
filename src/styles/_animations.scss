@@ -1,0 +1,285 @@
+@keyframes cFadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.cFadeIn {
+  animation-name: cFadeIn;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+}
+@keyframes cFadeOut {
+  from { opacity: 1; transform: translateY(0); }
+  to   { opacity: 0; transform: translateY(10px); }
+}
+
+.cFadeOut {
+  animation-name: cFadeOut;
+  animation-duration: 0.7s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes cFadeOutUp {
+  from { opacity: 1; transform: translate(0, 0); }
+  to   { opacity: 0; transform: translate(0, -30px); }
+}
+
+.cFadeOutUp {
+  animation-name: cFadeOutUp;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+}
+@keyframes cFadeOutDown {
+  from { opacity: 1; transform: translate(0, 0); }
+  to   { opacity: 0; transform: translate(0, 50px); }
+}
+
+.cFadeOutDown {
+  animation-name: cFadeOutDown;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+}
+@keyframes cFadeInDown {
+  from { opacity: 0; transform: translate(0, -30px); }
+  to   { opacity: 1; transform: translate(0, 0); }
+}
+
+.cFadeInDown {
+  animation-name: cFadeInDown;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes cFadeInUp {
+  from { opacity: 0; transform: translate(0, 30px); }
+  to   { opacity: 1; transform: translate(0, 0); }
+}
+
+.cFadeInUp {
+  animation-name: cFadeInUp;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+}
+
+
+@keyframes fullPageFadeInUp {
+  from { top: 100%; }
+  to   { top: 0; }
+}
+.fullPageFadeInUp {
+  animation-name: fullPageFadeInUp;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+}
+
+
+@keyframes fullPageFadeOutDown {
+  from { opacity: 1; transform: translate(0, 0); }
+  to   { opacity: 0; transform: translate(0, 100%); }
+}
+.fullPageFadeOutDown {
+  animation-timing-function: ease-in;
+  animation-name: fullPageFadeOutDown;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+}
+
+
+
+
+
+@keyframes topBottom {
+  from { transform: translate(0, 0); }
+  to   { transform: translate(0, 50px); }
+}
+
+.topBottom {
+  animation-name: topBottom;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes bottomTop {
+  from { transform: translate(0, 0); }
+  to   { transform: translateY(0, -50px); }
+}
+
+.bottomTop {
+  animation-name: bottomTop;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+}
+@keyframes rotateTo180 {
+  from { transform: rotate(-180deg); }
+  to { transform: rotate(0);}
+}
+.rotateTo180 {
+  animation-name: rotateTo180;
+  animation-duration: 0.5s;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
+}
+@keyframes rotateTo0 {
+  from { transform: rotate(0); }
+  to { transform: rotate(-180deg);}
+}
+.rotateTo0 {
+  animation-name: rotateTo0;
+  animation-duration: 0.5s;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
+}
+
+@keyframes rotateTo360 {
+  0% { transform: rotate(0); }
+  33% { transform: rotate(180deg);}
+  67% { transform: rotate(180deg);}
+  100% { transform: rotate(360deg);}
+}
+.rotateTo360 {
+  animation-name: rotateTo360;
+  animation-duration: 1.5s;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
+}
+
+@keyframes rotateTo360Reverse {
+  0% { transform: rotate(360deg); }
+  33% { transform: rotate(180deg);}
+  67% { transform: rotate(180deg);}
+  100% { transform: rotate(0deg);}
+}
+.rotateTo360Reverse {
+  animation-name: rotateTo360Reverse;
+  animation-duration: 1.5s;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
+}
+
+@keyframes spinOuterIn {
+  0% {transform: rotate(0deg);}
+  100% {transform: rotate(180deg);}
+}
+.spinOuterIn {
+  animation-delay: 0.5s;
+  animation-name: spinOuterIn;
+  animation-duration: 0.8s;
+  animation-fill-mode: forwards;
+  animation-timing-function: ease-in-out;
+}
+@keyframes spinOuterOut {
+  0% {transform: rotate(180deg);}
+  100% {transform: rotate(0deg);}
+}
+.spinOuterOut {
+  animation-delay: 0.5s;
+  animation-name: spinOuterOut;
+  animation-duration: 0.8s;
+  animation-fill-mode: forwards;
+  animation-timing-function: ease-in-out;
+}
+@keyframes spinInnerIn {
+  0% {transform: rotate(-165deg);}
+  20% {transform: rotate(-80deg);}
+  40% {transform: rotate(-80deg);}
+  60% {transform: rotate(-70deg);}
+  80% {transform: rotate(-135deg);}
+  100% {transform: rotate(-180deg);}
+}
+.spinInnerIn {
+  animation-delay: 0.5s;
+  animation-name: spinInnerIn;
+  animation-duration: 0.8s;
+  animation-timing-function: ease-out;
+  animation-fill-mode: forwards;
+}
+@keyframes spinInnerOut {
+  0% {transform: rotate(-165deg);}
+  20% {transform: rotate(-80deg);}
+  40% {transform: rotate(-80deg);}
+  60% {transform: rotate(-70deg);}
+  80% {transform: rotate(-135deg);}
+  100% {transform: rotate(-180deg);}
+}
+.spinInnerOut {
+  animation-delay: 0.5s;
+  animation-name: spinInnerOut;
+  animation-duration: 0.8s;
+  animation-timing-function: ease-out;
+  animation-fill-mode: forwards;
+}
+
+
+
+@keyframes spinRightIn {
+  0% {transform: rotate(-180deg);}
+  100% {transform: rotate(0deg);}
+}
+.spinRightIn {
+  animation-name: spinRightIn;
+  animation-duration: 0.8s;
+  animation-fill-mode: forwards;
+  animation-timing-function: ease-in-out;
+}
+@keyframes spinRightOut {
+  0% {transform: rotate(0deg);}
+  100% {transform: rotate(-180deg);}
+}
+.spinRightOut {
+  animation-name: spinRightOut;
+  animation-duration: 0.8s;
+  animation-fill-mode: forwards;
+  animation-timing-function: ease-in-out;
+}
+@keyframes scrollCTRIn {
+  0% { opacity: 1; }
+  50% { opacity: 0; transform: translateX(50px); }
+  100% { opacity: 1; transform: translateX(100px);}
+}
+.scrollCTRIn {
+  animation-name: scrollCTRIn;
+  animation-duration: 2s;
+  animation-fill-mode: forwards;
+  @media screen and (max-width: $mobile-width) {
+    animation-name: scrollCTRMobile;
+  }
+}
+@keyframes scrollCTROut {
+  0% { opacity: 1; transform: translateX(100px);}
+  50% { opacity: 0; transform: translateX(50px); }
+  100% { opacity: 1; transform: translateX(0);}
+}
+@keyframes scrollCTRMobile {
+  0% { opacity: 1; }
+  50% { opacity: 0;  }
+  100% { opacity: 1; }
+}
+.scrollCTROut {
+  animation-name: scrollCTROut;
+  animation-duration: 2s;
+  animation-fill-mode: forwards;
+  @media screen and (max-width: $mobile-width) {
+    animation-name: scrollCTRMobile;
+  }
+}
+.animation-delay-1 {
+  animation-delay: 0.5s;
+}
+.animation-delay-1_1 {
+  animation-delay: 0.8s;
+}
+.animation-delay-2 {
+  animation-delay: 1s;
+}
+.animation-delay-3 {
+  animation-delay: 1.5s;
+}
+.animation-delay-4 {
+  animation-delay: 2s;
+}
+.show {
+  opacity: 1 !important;
+}
+.hide {
+  opacity: 0 !important;
+}

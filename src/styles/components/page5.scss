@@ -1,0 +1,212 @@
+#page_5 {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  
+  .left {
+    position: absolute;
+    overflow: hidden;
+    width: 50%;
+    height: 100%;
+    background-color: transparent;
+    display: flex;
+    align-items: center;
+    .spinner {
+      position: absolute;
+      width: 200vw;
+      height: 200vh;
+      right: 0;
+      background-color: $page5-primary;
+      transform-origin: right center;
+      transform: rotate(-180deg);
+    }
+    .animated {
+      transform: rotate(0deg);
+    }
+  }
+  .right {
+    position: absolute;
+    overflow: hidden;
+    width: 50%;
+    height: 100%;
+    left: 50%;
+    background-color: transparent;
+    display: flex;
+    align-items: center;
+    .spinner {
+      position: absolute;
+      width: 200vw;
+      height: 200vh;
+      transform-origin: left center;
+      background-color: $page5-primary;
+      transform: rotate(-180deg);
+    }
+  }
+  .slide-2 {
+    .background-image {
+      position: fixed;
+      top: 10vh;
+      left: calc(50vw - 40vh);
+      width: 40vh;
+      height: 80vh;
+      opacity: 0;
+      transition: opacity 1s;
+      transition-delay: 1s;
+      background-image: url(../assets/images/NewDesign/bk-intro-5.png);
+      background-size: cover;
+      @media screen and (max-width: $mobile-width) {
+        background-image: url(../assets/images/NewDesign/bk-intro-5-mobile.jpeg);
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background-size: 350%;
+        background-position: 60% 35%;
+        transition: none;
+      }
+    }
+    .full-left {
+      .overlay-spinner {
+        background: $page5-primary;
+      }
+    }
+    .mobile-left {
+      .overlay-spinner {
+        background-color: $page5-primary;
+      }
+    }
+    .mobile-right {
+      .overlay-spinner {
+        background-color: $page5-primary;
+      }
+    }
+    .animating-layer {
+      .right {
+        .overlay-1 {
+          background: $page5-primary-light; 
+        }
+      }
+      .left {
+        .overlay-3 {
+          .inner {
+            background: $page5-primary-light;
+          }
+        }
+      }
+    }
+    .wrapper {
+      h1 {
+        span {
+          color: $page5-primary;
+        }
+      }
+    }
+    .full-right {
+      .overlay-spinner {
+        position: absolute;
+        width: 2000vw;
+        height: 200vw;
+        background: white;
+        overflow: hidden;
+        transform-origin: left center;
+        transform: rotate(-180deg);
+        &.show {
+          opacity: 1;
+        }
+        &.hide {
+          opacity: 0;
+        }
+      }
+    }
+  }
+  .slide-3 {
+    position: fixed;
+    top: 100%;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    background-color: #464F53;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2;
+    h1 {
+      color: $white;
+      font-family: "DomaineSansMedium";
+      text-align: center;
+      text-transform: uppercase;
+      line-height: 0.5em;
+      font-size: 2em;
+      letter-spacing: -0.05em;
+    }
+    .pricing-box {
+      background: rgba(247, 247 ,247, 0.27);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      max-width: 60vw;
+      padding: 1em;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding-left: 10%;
+      @media screen and (max-width: $mobile-width) {
+        max-width: 90vw;
+        
+      }
+      .pricing-text {
+        display: flex;
+        align-items: center;
+        .price {
+          color: #fff;
+          font-size: 4em;
+          span {
+            font-size: 0.7em;
+          }
+        }
+        .desc {
+          display: flex;
+          flex-direction: column;
+          color: #dbdbdb;
+          margin-left: 1em;
+        }
+      }
+      p {
+        padding: 0 6em;
+        text-align: center;
+        color: $white;
+      }
+      .terms-container {
+        width: 80%;
+        .terms-item {
+          display: flex;
+          align-items: center;
+          padding-left: 5%;
+          
+          margin-bottom: 1em;
+          img {
+            margin: 0;
+            width: 0.8em;
+            height: 1em;
+          }
+          p {
+            text-align: left;
+            font-size: 0.6em;
+            margin: 0;
+            padding-left: 1em;
+            max-width: 85%;
+          }
+        }
+      }
+      .submit-btn {
+        margin: 2em 0;
+        padding: 0.5em 6em;
+        background: #78CC5A;
+        color: #fff;
+      }
+    }
+  }
+}
