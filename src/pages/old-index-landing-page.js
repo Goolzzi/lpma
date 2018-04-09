@@ -98,7 +98,7 @@ export const pageQuery = graphql`
     }
   }
 
-  query IndexPageQuery {
+  query IndexPageQueryOLD {
     contentfulMemberBenefits {
       title
       memberBenefitItems {
