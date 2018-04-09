@@ -35,7 +35,7 @@ import icArrowDown from '../assets/images/NewDesign/ic-arrow-down.svg';
 import "animate.css/animate.min.css";
 
 const initalAnimationClasses = [
-  'fadeInDown',
+  'cFadeInDown',
   { title: '', bar: '' },
   { page: '' },
   { background: '', rightSpinner: '', leftInnerSpinner: 'hide', leftSpinner: '', chapterTitle: '', fullLeftSpinner: '', mobileLeftSpinner: '', mobileRightSpinner: '' },
@@ -104,6 +104,7 @@ class LandingPage extends React.PureComponent{
     this.wrapper.addEventListener("wheel", this.wheelScroll);
     this.wrapper.addEventListener("touchstart", this.touchStart);
     this.wrapper.addEventListener("touchmove", this.touchMove);
+    this.setState({ animationIndex: 0});
   }
 
   componentWillUnmount() {
@@ -121,9 +122,14 @@ class LandingPage extends React.PureComponent{
         this.animationClasses = JSON.parse(JSON.stringify(initalAnimationClasses));
         this.props.updateState({showPage: ''})
         this.props.onPageChange(this.state.animationIndex);
-        this.getAnimationClassName(this.state.animationIndex, true)
+        this.getAnimationClassName(this.state.animationIndex, true);
       })
-      
+    } else if (nextProps.showPage === 'Pricing') {
+      this.setState({ animationIndex: 18 }, () => {
+        this.getAnimationClassName(this.state.animationIndex, true);
+      })
+    } else if (nextProps.showPage === 'Join') {
+      this.joinUs();
     }
   }
   touchStart = ( event ) => {
@@ -179,15 +185,7 @@ class LandingPage extends React.PureComponent{
         this.animationClasses[1].bar = direction ? '' : 'cFadeOutDown';
         this.animationClasses[2].page = '';
 
-        this.animationClasses[3].rightSpinner =  direction ? '' : 'rotateTo0 show';
-        this.animationClasses[3].leftSpinner = '';
-        this.animationClasses[3].leftInnerSpinner = '';
-        this.animationClasses[3].fullLeftSpinner = 'hide';
-        this.animationClasses[3].chapterTitle = direction ? '' : 'cFadeOutDown';
-        this.animationClasses[3].background = direction? '' : 'hide';
-
-        this.animationClasses[3].mobileLeftSpinner = '';
-        this.animationClasses[3].mobileRightSpinner = '';
+        this.setState({ scrollHandleClass : 'show'});
         break;
       case 1:
         this.animationClasses[0] = direction ? 'cFadeOutUp animated' : '';
@@ -430,16 +428,10 @@ class LandingPage extends React.PureComponent{
     }
   }
   joinUs = () => {
-    this.setState({ contactForm: true});
+    this.setState({ contactForm: true, scrollHandleClass: 'hide'});
     this.animationClasses[31].form = 'cFadeIn';
   }
   render () {
-    if (this.props.showPage === 'Pricing') {
-      console.log(this.animationClasses)
-      // this.setState({ animationIndex: 18 })
-    } else if (this.props.showPage === 'Join'){
-      this.joinUs();
-    }
     return (
       <div ref={c => this.wrapper = c}>
         <div id="page_1">
