@@ -127,6 +127,7 @@ class LandingPage extends React.PureComponent{
     } else if (nextProps.showPage === 'Pricing') {
       this.setState({ animationIndex: 18 }, () => {
         this.getAnimationClassName(this.state.animationIndex, true);
+        this.props.onPageChange(this.state.animationIndex);
       })
     } else if (nextProps.showPage === 'Join') {
       this.joinUs();
@@ -431,6 +432,7 @@ class LandingPage extends React.PureComponent{
   }
   joinUs = () => {
     this.setState({ contactForm: true, scrollHandleClass: 'hide'});
+    this.props.onPageChange(this.state.animationIndex);
     this.animationClasses[31].form = 'cFadeIn';
   }
   nextPage = () => {
