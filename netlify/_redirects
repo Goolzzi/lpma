@@ -16,4 +16,6 @@
 /bb-tools /foundry 302  
 /ng-tools /foundry 302
 
+/promotools /resources 302
+
 #/login/* https://halo-identity.lpma.com.au/users/sign_in 301
