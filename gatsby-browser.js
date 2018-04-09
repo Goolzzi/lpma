@@ -21,6 +21,11 @@ const handleForceRefresh = (action, pathname) => {
 
 const handleRedirects = (location, action) => {
   const {pathname} = location;
+
+  if (location.pathname === "/" && auth.isAuthenticated()) {
+    history.replace("/foundry");
+  }
+
   const isAuthCheckRequiered =
     pathname.indexOf("/foundry") !== -1 ||
     pathname.indexOf("/resources") !== -1;
