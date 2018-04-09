@@ -1,6 +1,10 @@
 .titles-wrapper {
     margin-top: 2.5rem;
 
+    &.no-spacing-top {
+      margin-top: 0px;
+    }
+
     @include mobile {
       margin-top: 1.5rem;
     }
@@ -15,6 +19,10 @@
       .title {
         margin-bottom: 0px;
         color: $gray-dark;
+        font-size: 2rem;
+        font-size: 0.6666;
+        font-family: Helvetica, Arial, sans-serif;
+        font-weight: bold;
 
         img {
           max-height: 0.75em;

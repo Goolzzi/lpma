@@ -3,11 +3,15 @@
 
   .level-card-item {
     background-color: $site-bg;
-    padding: 2.5rem 1.75rem 2.5rem 1.75rem;
+    padding: 1.75rem 1.75rem 1.75rem 1.75rem;
     border-radius: 0.5rem;
 
     @include mobile {
-      padding: 1.5rem 1rem 1.5rem 1rem;
+      padding: 1.25rem 1.25rem 1.25rem 1.25rem;
+    }
+
+    p:last-child {
+      margin-bottom: 0px;
     }
 
     &.smaller {
