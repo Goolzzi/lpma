@@ -761,7 +761,9 @@ class LandingPage extends React.PureComponent{
           </div>
         }
         <div className="scroll-bar">
-          <div className="scroll-control"></div>
+          <div className="scroll-control" onClick={this.scrollWindowDown}>
+            <i className="fa fa-angle-down" />
+          </div>
         </div>
       </div>
     );
