@@ -52,7 +52,7 @@
     "build": "rm -rf public; gatsby build",
     "develop": "gatsby develop tet",
     "netlify-build": "rm -rf public; gatsby build live && node cp_netlify_public.js",
-    "netlify-build-stage": "rm -rf public; gatsby build live && node cp_netlify_public.js",
+    "netlify-build-stage": "rm -rf public; gatsby build stage && node cp_netlify_public.js",
     "netlify-deploy-stage": "npm run netlify-build-stage && netlify deploy",
     "format": "prettier --config .prettierrc --write \"src/**/*.js\""
   },
