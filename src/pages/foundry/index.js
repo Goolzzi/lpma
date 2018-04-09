@@ -30,11 +30,12 @@ class MyFoundryPage extends React.Component {
     const {
       data: {
         contentfulMyFoundryHeading: {greeting, background},
-        allContentfulFoundryGuide: {edges},
         allContentfulFoundrySection,
         contentfulFoundryVideo: {
           title: videoTitle,
           description: {childMarkdownRemark: {html: videoDescription}},
+          archiveLink,
+          archiveDescription: {childMarkdownRemark: {html: archiveDescription}},
           signupLink,
           videoLink,
         },
@@ -86,31 +87,6 @@ class MyFoundryPage extends React.Component {
                   </div>
                 </section>
               </section>
-              <section className="section container foundry-columns">
-                <div className="columns">
-                  {fisherYates(edges, 3).map(
-                    ({node: {id, title, slug, excerpt, foundrystep}}) => {
-                      return (
-                        <div key={id + slug} className="column is-4">
-                          <Link
-                            to={`/foundry/${slug}/${
-                              fisherYates(foundrystep, 1)[0].slug
-                            }`}>
-                            <div className="column-item">
-                              <h3>{title}</h3>
-                              <p
-                                dangerouslySetInnerHTML={{
-                                  __html: excerpt.childMarkdownRemark.excerpt,
-                                }}
-                              />
-                            </div>
-                          </Link>
-                        </div>
-                      );
-                    },
-                  )}
-                </div>
-              </section>
               <section className="section container foundry-video">
                 <div className="columns">
                   <div className="column is-4">
@@ -120,13 +96,19 @@ class MyFoundryPage extends React.Component {
                         __html: videoDescription,
                       }}
                     />
-                    <div className="has-text-centered-mobile">
+                    <div className="has-text-centered-mobile signup">
                       <a
                         href={signupLink}
                         className="btn secondary with-radius-half-rem half-width smaller threequarterwidth">
                         Sign Up
                       </a>
                     </div>
+                    <p
+                      dangerouslySetInnerHTML={{
+                        __html: archiveDescription,
+                      }}
+                    />
+                    <a href={archiveLink}>View our archive.</a>
                   </div>
                   <div className="column is-7 is-offset-1">
                     <div className="video-cont">
@@ -228,6 +210,12 @@ export const pageQuery = graphql`
       }
       signupLink
       videoLink
+      archiveLink
+      archiveDescription {
+        childMarkdownRemark {
+          html
+        }
+      }
     }
   }
 `;
