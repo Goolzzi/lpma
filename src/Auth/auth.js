@@ -54,6 +54,7 @@ class Auth {
 
   login = () => {
     if (window) {
+      console.log(authConfig.getIrisNavUrl());
       window.location.href = authConfig.getIrisNavUrl();
     }
   };
