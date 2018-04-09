@@ -407,7 +407,7 @@ class LandingPage extends React.PureComponent{
       <div ref={c => this.wrapper = c}>
         <div id="page_1">
           <div className="overlay-image">
-            <div className="video-bk">
+            {/* <div className="video-bk">
               <div className="wrapper">
                 <iframe
                   src="https://player.vimeo.com/video/263280755?autoplay=1&loop=1&&title=0&byline=0&portrait=0"
@@ -418,7 +418,7 @@ class LandingPage extends React.PureComponent{
                   mozallowfullscreen
                   allowfullscreen></iframe>
               </div>
-            </div>
+            </div> */}
           
           </div>
           <div className={`slide-1 ${this.animationClasses[0]}`}>
