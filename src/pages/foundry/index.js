@@ -30,11 +30,12 @@ class MyFoundryPage extends React.Component {
     const {
       data: {
         contentfulMyFoundryHeading: {greeting, background},
-        allContentfulFoundryGuide: {edges},
         allContentfulFoundrySection,
         contentfulFoundryVideo: {
           title: videoTitle,
           description: {childMarkdownRemark: {html: videoDescription}},
+          archiveLink,
+          archiveDescription: {childMarkdownRemark: {html: archiveDescription}},
           signupLink,
           videoLink,
         },
@@ -53,13 +54,13 @@ class MyFoundryPage extends React.Component {
                 <section className="section cont">
                   <div className="container">
                     <div className="columns">
-                      <div className="column is-4">
+                      <div className="column is-12">
                         <div className="top-text">
                           <h2
                             dangerouslySetInnerHTML={{
-                              __html: `${greeting.childMarkdownRemark.html} ${
-                                this.state.username
-                              }`,
+                              __html: `${
+                                greeting.childMarkdownRemark.html
+                              } <p class='name'>${this.state.username}</p>`,
                             }}
                           />
                         </div>
@@ -86,31 +87,6 @@ class MyFoundryPage extends React.Component {
                   </div>
                 </section>
               </section>
-              <section className="section container foundry-columns">
-                <div className="columns">
-                  {fisherYates(edges, 3).map(
-                    ({node: {id, title, slug, excerpt, foundrystep}}) => {
-                      return (
-                        <div key={id + slug} className="column is-4">
-                          <Link
-                            to={`/foundry/${slug}/${
-                              fisherYates(foundrystep, 1)[0].slug
-                            }`}>
-                            <div className="column-item">
-                              <h3>{title}</h3>
-                              <p
-                                dangerouslySetInnerHTML={{
-                                  __html: excerpt.childMarkdownRemark.excerpt,
-                                }}
-                              />
-                            </div>
-                          </Link>
-                        </div>
-                      );
-                    },
-                  )}
-                </div>
-              </section>
               <section className="section container foundry-video">
                 <div className="columns">
                   <div className="column is-4">
@@ -120,16 +96,24 @@ class MyFoundryPage extends React.Component {
                         __html: videoDescription,
                       }}
                     />
-                    <div className="has-text-centered-mobile">
+                    <div className="has-text-centered-mobile signup">
                       <a
                         href={signupLink}
                         className="btn secondary with-radius-half-rem half-width smaller threequarterwidth">
                         Sign Up
                       </a>
                     </div>
+                    <p
+                      dangerouslySetInnerHTML={{
+                        __html: archiveDescription,
+                      }}
+                    />
+                    <a href={archiveLink}>View our archive.</a>
                   </div>
                   <div className="column is-7 is-offset-1">
-                    <YouTube videoId={videoLink} opts={videoOptions} />
+                    <div className="video-cont">
+                      <YouTube videoId={videoLink} opts={videoOptions} />
+                    </div>
                   </div>
                 </div>
                 <div className="columns">
@@ -226,6 +210,12 @@ export const pageQuery = graphql`
       }
       signupLink
       videoLink
+      archiveLink
+      archiveDescription {
+        childMarkdownRemark {
+          html
+        }
+      }
     }
   }
 `;

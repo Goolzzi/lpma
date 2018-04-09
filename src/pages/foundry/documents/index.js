@@ -117,7 +117,12 @@ export const pageQuery = graphql`
           id
           slug
           name
-          iconName
+          icon {
+            resolutions(quality: 100) {
+              src
+              srcSet
+            }
+          }
         }
       }
     }
