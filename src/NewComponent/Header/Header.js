@@ -62,11 +62,15 @@ const Header = props => {
                 JOIN LPMA
               </a>
             </div>
-            <div className="navbar-item">
-              <a className="button menu-btn" onClick={auth.login}>
-                Sign in
-              </a>
-            </div>
+            {!auth.isAuthenticated() ? (
+              <div className="navbar-item">
+                <a className="button menu-btn" onClick={auth.login}>
+                  Sign in
+                </a>
+              </div>
+            ) : (
+              <div className="navbar-item" />
+            )}
           </div>
         </nav>
       )}
