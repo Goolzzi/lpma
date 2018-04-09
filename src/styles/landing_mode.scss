@@ -222,6 +222,21 @@ ul, li {
     display: flex;
   }
 }
+.scroll-bar {
+  position: fixed;
+  bottom: 3vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .scroll-control {
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    background-color: rgba(255,255,255, 0.2);
+    cursor: pointer;
+  }
+}
 
 @import "./components/header.scss";
 

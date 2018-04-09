@@ -399,9 +399,9 @@ class LandingPage extends React.PureComponent{
   render () {
     this.getAnimationClassName(this.state.animationIndex, this.scrollDirection)
     if (this.props.showPage === 'Pricing') {
-      this.animationClasses[30].page = 'fullPageFadeInUp animation-delay-2';
+      this.setState({ animationIndex: 18 })
     } else if (this.props.showPage === 'Join'){
-      this.setState({ contactForm: true })
+      this.joinUs();
     }
     return (
       <div ref={c => this.wrapper = c}>
@@ -431,7 +431,8 @@ class LandingPage extends React.PureComponent{
           </div>
           <div className={`slide-2 ${this.animationClasses[1].title}`}>
             <h1 className="banner-title">
-              FOUR STEPS<br />TO BE AN LPMA MEMBER
+              FOUR STEPS<br />TO LPMA EVOLUTION
+
             </h1>
             <div className="reason-bar">
               <div className="bar item-1"></div>
@@ -759,7 +760,9 @@ class LandingPage extends React.PureComponent{
           
           </div>
         }
-
+        <div className="scroll-bar">
+          <div className="scroll-control"></div>
+        </div>
       </div>
     );
   }
