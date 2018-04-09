@@ -12,8 +12,8 @@
 #/events-us/ /events/ 302 Country=au
 #/join/ /join-us/ 302 Country=us
 
-/ctd-tools /foundry 301
-/bb-tools /foundry 301  
-/ng-tools /foundry 301
+/ctd-tools /foundry 302
+/bb-tools /foundry 302  
+/ng-tools /foundry 302
 
 #/login/* https://halo-identity.lpma.com.au/users/sign_in 301
