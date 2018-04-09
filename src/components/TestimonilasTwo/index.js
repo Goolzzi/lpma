@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import Img from "gatsby-image";
 import "./styles.scss";
 
 const propTypes = {
@@ -14,12 +15,12 @@ const Testimonials = ({testimonial, forUS}) => (
       {testimonial.map(
         ({
           id,
-          image: {responsiveResolution: {src, srcSet}},
+          image: {sizes},
           childContentfulTestimonial2ContentTextNode: {childMarkdownRemark},
         }) => (
           <div key={id} className="column is-4 is-12-mobile exhibit-item">
-            <div className="image is-3by2">
-              <img srcSet={srcSet} src={src} alt="exhibit" />
+            <div className="image">
+              <Img sizes={sizes} />
             </div>
             {!forUS ? (
               <span
@@ -28,9 +29,7 @@ const Testimonials = ({testimonial, forUS}) => (
                   __html: childMarkdownRemark.html,
                 }}
               />
-            ) : (
-              ""
-            )}
+            ) : null}
           </div>
         ),
       )}

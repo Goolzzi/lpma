@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import Img from "gatsby-image";
 import {Icon} from "react-fa";
 import "./styles.scss";
 
@@ -17,7 +18,7 @@ const YearlyEventPurpose = ({
     title,
     content: {content},
     purchaseButton: {label, iconName},
-    image: {resolutions: {src, srcSet}},
+    image: {sizes},
   },
 }) => (
   <section className="section lpma2018-info">
@@ -32,7 +33,7 @@ const YearlyEventPurpose = ({
           </button>
         </div>
         <div className="column is-6 right-side">
-          <img className="left-side-image" src={src} srcSet={srcSet} />
+          <Img className="left-side-image" sizes={sizes} />
         </div>
       </div>
     </div>

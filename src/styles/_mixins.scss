@@ -22,16 +22,32 @@
 
 @mixin cover-image($width: 100%, $height: auto, $vPos: center) {
   width: $width;
-  height: $height;
   overflow: hidden;
 
-  img {
-    margin: 0rem;
-    object-fit: cover;
-    object-position: $vPos;
-
+  @if $vPos != center {
     height: $height;
-    width: $width;
+
+    img {
+      margin: 0rem;
+      object-fit: cover;
+      object-position: $vPos;
+
+      height: $height;
+      width: $width;
+    }
+  }
+
+  @if $vPos == center {
+    max-height: $height;
+
+    img, div {
+      margin: 0rem;
+      object-fit: cover;
+      object-position: $vPos;
+
+      max-height: $height;
+      width: $width;
+    }
   }
 
   @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
@@ -46,12 +62,37 @@
     @if $vPos == bottom {
       align-items: flex-end;
     }
-    
 
     img {
       height: auto;
       min-width: 100%;
       min-height: 100%;
+    }
+  }
+
+  @supports (-ms-ime-align: auto) {
+    overflow: hidden;
+    display: flex;
+    align-items: $vPos;
+
+    @if $vPos == top {
+      align-items: flex-start;
+    }
+
+    @if $vPos == bottom {
+      align-items: flex-end;
+    }
+
+    img {
+      height: auto;
+      min-width: 100%;
+      min-height: 100%;
+    }
+    
+    @if $vPos == center {
+      img, div {
+        max-height: none;
+      }
     }
   }
 }

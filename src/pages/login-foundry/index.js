@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import Img from "gatsby-image";
 import IRISAuth from "../../Auth/IRISAuth";
 import Link from "gatsby-link";
 import {EntypoTools, EntypoUser} from "react-entypo";
@@ -66,11 +67,7 @@ const FoundryLogInPage = props => {
                         />
                       </div>
                       <div className="level-item has-text-centered is-block right-item">
-                        <img
-                          src={instructionsImage.resolutions.src}
-                          srcSet={instructionsImage.resolutions.srcSet}
-                          alt="instructionsImage"
-                        />
+                        <Img sizes={instructionsImage.sizes} />
                       </div>
                     </div>
                   </div>
@@ -148,9 +145,8 @@ export const pageQuery = graphql`
         }
       }
       instructionsImage {
-        resolutions(quality: 100) {
-          src
-          srcSet
+        sizes(quality: 100, maxWidth: 600) {
+          ...GatsbyContentfulSizes
         }
       }
       messageToJoin

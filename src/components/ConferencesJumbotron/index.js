@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import Img from "gatsby-image";
 import YouTube from "react-youtube";
 import {Icon} from "react-fa";
 import "./styles.scss";
@@ -31,30 +32,24 @@ const Video = ({videoId, show}) => (
   </div>
 );
 
-const getSectionStyles = background =>
-  background ? {"background-image": `url(${background.resolutions.src})`} : {};
+const getSectionStyles = background => {
+  return background ? {backgroundImage: `url(${background.sizes.src})`} : {};
+};
 
 const propTypes = {
   node: PropTypes.shape({
-    videoLink: PropTypes.string.isRequired,
+    videoLink: PropTypes.string,
     heading: PropTypes.string.isRequired,
     image: PropTypes.object.isRequired,
-    cover: PropTypes.object.isRequired,
+    cover: PropTypes.object,
     content: PropTypes.object.isRequired,
-    purchaseButton: PropTypes.object.isRequired,
+    purchaseButton: PropTypes.object,
   }),
   isVideo: PropTypes.bool.isRequired,
 };
 
 const ConferencesJumbotron = ({
-  node: {
-    videoLink,
-    heading,
-    image: {resolutions: {src, srcSet}},
-    cover,
-    content,
-    purchaseButton,
-  },
+  node: {videoLink, heading, image: {sizes}, cover, content, purchaseButton},
   isVideo,
 }) => (
   <section
@@ -70,9 +65,7 @@ const ConferencesJumbotron = ({
         <div className="column is-6 is-offset-3">
           <div className="has-text-centered video-cont-data">
             <h2>{heading}</h2>
-
-            <img src={src} srcSet={srcSet} alt="" />
-
+            <Img sizes={sizes} />
             <strong
               dangerouslySetInnerHTML={{
                 __html: content.childMarkdownRemark.html,

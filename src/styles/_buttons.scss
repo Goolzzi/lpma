@@ -138,6 +138,10 @@
     border-radius: 5px;
   }
 
+  &.with-radius-half-rem {
+    border-radius: 0.5rem;
+  }
+
   &.thirdwidth {
     min-width: 33.3333%;
   }

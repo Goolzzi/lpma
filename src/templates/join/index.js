@@ -122,20 +122,7 @@ export const pageQuery = graphql`
       edges {
         node {
           jumbotron {
-            joinLink {
-              name
-              to
-            }
-            title {
-              title
-            }
-            background {
-              id
-              resolutions(quality: 100) {
-                src
-                srcSet
-              }
-            }
+            ...JumbotronItem
           }
         }
       }

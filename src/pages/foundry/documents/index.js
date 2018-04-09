@@ -1,8 +1,16 @@
 import React, {Component} from "react";
 import PropTypes from "prop-types";
 import Link from "gatsby-link";
-import DocumentCard from "../../../components/DocumentCard";
+import DocumentCard from "../../../components/specific/foundry/DocumentCard";
+import BreadCrumb from "../../../components/BreadCrumb";
+import BackToButton from "../../../components/BackToButton";
+import BCCard from "../../../components/specific/foundry/BCCard";
+import TopLinks from "../../../components/specific/foundry/TopLinks";
+import DocumentTitle from "../../../components/specific/foundry/DocumentTitle";
+import {foundryCrumb, documentSuiteCrumb} from "../../../../gatsby/constants";
 import "./styles.scss";
+
+const crumbs = [foundryCrumb, documentSuiteCrumb];
 
 const renderRegionLinks = regions => (
   <p>
@@ -31,38 +39,50 @@ const propTypes = {
 };
 
 class DocumentsPage extends Component {
-  render() {
+  renderBusinessCapabilities = () => {
+    const {data: {allContentfulBusinessCapability}} = this.props;
+    return (
+      <div className="columns is-multiline has-space-botton">
+        {allContentfulBusinessCapability.edges.map(({node}) => (
+          <BCCard key={node.id} node={node} />
+        ))}
+      </div>
+    );
+  };
+
+  renderDocuments = () => {
     const {data} = this.props;
     return (
-      <section className="section level-cards">
-        <div className="container">
-          <div className="columns titles-wrapper">
-            <div className="column">
-              <h2 className="title is-4">Document Suite</h2>
-            </div>
-            <div className="column">
-              <Link to="/contact" className="is-size-5">
-                Feedback
-              </Link>
-            </div>
-          </div>
-          <div className="columns is-multiline">
-            {data.allContentfulDocumentsCountry.edges.map(({node: country}) => (
-              <DocumentCard
-                key={country.id}
-                title={country.name}
-                titleLink={`/foundry/documents/${country.slug}`}>
-                {renderCountryDetails(country)}
-              </DocumentCard>
-            ))}
-          </div>
+      <div className="columns is-multiline">
+        {data.allContentfulDocumentsCountry.edges.map(({node: country}) => (
+          <DocumentCard
+            key={country.id}
+            title={country.name}
+            titleLink={`/foundry/documents/${country.slug}`}>
+            {renderCountryDetails(country)}
+          </DocumentCard>
+        ))}
+      </div>
+    );
+  };
 
-          <Link to="/foundry">
-            <button className="btn default with-radius-5 larger thirdwidth shadow">
-              <span>Back to&nbsp;</span>
-              <span className="has-text-weight-bold">Foundry</span>
-            </button>
-          </Link>
+  render() {
+    return (
+      <section className="section level-cards">
+        <BreadCrumb parentPath="/foundry" crumbs={crumbs} />
+        <div className="container">
+          <TopLinks />
+          <DocumentTitle
+            title="Your business capabilities"
+            subtitle="Artcles, videos and audio for you to browse."
+          />
+          {this.renderBusinessCapabilities()}
+          <DocumentTitle
+            title="Document Suite"
+            subtitle="Artcles, videos and audio for you to browse."
+          />
+          {this.renderDocuments()}
+          <BackToButton link="/foundry" prefix="Foundry" />
         </div>
       </section>
     );
@@ -78,6 +98,7 @@ export const pageQuery = graphql`
     allContentfulDocumentsCountry {
       edges {
         node {
+          id
           slug
           name
           excerpt
@@ -87,6 +108,16 @@ export const pageQuery = graphql`
             abbreviation
             slug
           }
+        }
+      }
+    }
+    allContentfulBusinessCapability {
+      edges {
+        node {
+          id
+          slug
+          name
+          iconName
         }
       }
     }

@@ -1,4 +1,5 @@
 import React from "react";
+import Img from "gatsby-image";
 import PropTypes from "prop-types";
 import "./styles.scss";
 
@@ -12,7 +13,7 @@ const propTypes = {
 };
 
 const YearlyEventVenue = ({
-  node: {title, content, image: {resolutions: {src, srcSet}}, learnMoreLink},
+  node: {title, content, image: {sizes}, learnMoreLink},
 }) => (
   <section className="section lpma2018-venue">
     <div className="container">
@@ -28,7 +29,7 @@ const YearlyEventVenue = ({
       <div className="columns">
         <div className="column is-6">
           <div className="has-text-centered">
-            <img src={src} srcSet={srcSet} />
+            <Img sizes={sizes} />
           </div>
         </div>
         <div className="column is-6">

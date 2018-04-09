@@ -3,46 +3,118 @@
 }
 
 .level-cards {
-    .container {
-      background-color: $white;
-      padding: 0.5rem 2.5rem 0.5rem 2.5rem;
-      @include mobile {
-        padding: 0.5rem 0.75rem 0.5rem 0.75rem;
-      }
-  
-      .titles-wrapper {
-        margin-top: 2.5rem;
-        margin-bottom: 2.5rem;
-  
+  .container {
+    background-color: $white;
+    padding: 0.5rem 2.5rem 0.5rem 2.5rem;
+    @include mobile {
+      padding: 0.5rem 0.75rem 0.5rem 0.75rem;
+    }
+
+    .columns {
+      &.has-space-botton {
+        margin-bottom: 8rem;
+
         @include mobile {
-          margin-top: 1.5rem;
-          margin-bottom: 1.5rem;
-        }
-  
-        .column {
-          &:last-child {
-            @include not-mobile {
-              text-align: right;
-            }
-          }
-  
-          .title {
-            img {
-              max-height: 0.75em;
-              margin: 0px 0.5rem 0px 0px;
-              vertical-align: baseline;
-            }
-          }
-  
-          .subtitle {
-            margin-top: 1.5rem;
-          }
+          margin-bottom: 4rem;
         }
       }
-  
-      & > button {
-        margin-top: 2.5rem;
-        margin-bottom: 2.5rem;
+    }
+
+    .top-links {
+      .column {
+        text-align: right;
+
+        a {
+          margin-left: 2rem;
+        }
+      }
+    }
+
+    .titles-wrapper {
+      margin-top: 2.5rem;
+
+      @include mobile {
+        margin-top: 1.5rem;
+      }
+
+      .column {
+        &:last-child {
+          @include not-mobile {
+            text-align: right;
+          }
+        }
+
+        .title {
+          margin-bottom: 0px;
+          color: $gray-dark;
+
+          img {
+            max-height: 0.75em;
+            margin: 0px 0.5rem 0px 0px;
+            vertical-align: baseline;
+          }
+        }
+
+        .subtitle {
+          margin-top: 1.5rem;
+        }
+      }
+    }
+
+    & > .columns {
+      margin-top: 2.5rem;
+
+      @include mobile {
+        margin-top: 1.5rem;
+      }
+    }
+
+    & > p {
+      color: #616161;
+    }
+
+    & > .btn {
+      margin-top: 2.5rem;
+      margin-bottom: 2.5rem;
+    }
+  }
+
+  &.level-links {
+    .columns {
+      &.has-space-botton {
+        margin-bottom: 1rem;
+
+        @include mobile {
+          margin-bottom: 1rem;
+        }
+      }
+    }
+
+    .container {
+      & > .columns {
+        margin-top: 0.75rem;
+
+        @include mobile {
+          margin-top: 0.75rem;
+        }
+      }
+
+      .level-link-item {
+        display: block;
+
+        & > .fa {
+          margin-right: 0.5rem;
+        }
+      }
+
+      .see-all {
+        color: $gray;
+        margin-top: 0.75rem;
+
+        &:hover {
+          cursor: pointer;
+        }
       }
     }
   }
+}

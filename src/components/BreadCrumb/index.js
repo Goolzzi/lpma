@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import Link from "gatsby-link";
+import pathHelper from "path";
 import "./styles.scss";
 
 const propTypes = {
@@ -23,7 +24,7 @@ const BreadCrumb = ({crumbs, parentPath}) => {
               </li>
             ) : (
               <li key={title + path}>
-                <Link to={`${parentPath}${path}`}>{title}</Link>
+                <Link to={pathHelper.join(parentPath, path)}>{title}</Link>
               </li>
             );
           })}

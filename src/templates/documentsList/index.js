@@ -1,8 +1,9 @@
 import React from "react";
 import PropTypes from "prop-types";
 import Link from "gatsby-link";
-import {Icon} from "react-fa";
-import DocumentCard from "../../components/DocumentCard";
+import DocumentCard from "../../components/specific/foundry/DocumentCard";
+import BreadCrumb from "../../components/BreadCrumb";
+import BackToButton from "../../components/BackToButton";
 import "./styles.scss";
 
 const renderDocuments = documents =>
@@ -10,6 +11,7 @@ const renderDocuments = documents =>
     <DocumentCard
       key={document.id}
       isDownloadable
+      noIcon={document.noIcon}
       title={document.linkTitle}
       titleLink={document.link}>
       <p>{document.description}</p>
@@ -25,9 +27,11 @@ const backPath = pathname => {
 const propTypes = {
   data: PropTypes.object.isRequired,
   history: PropTypes.object.isRequired,
+  pathContext: PropTypes.object.isRequired,
 };
 
 const DocumentsList = ({
+  pathContext: {parentPath, breadCrumbs},
   data: {
     contentfulDocumentsRegion: {name: parentName},
     contentfulDocumentList: {title, documents},
@@ -35,6 +39,7 @@ const DocumentsList = ({
   history: {location: {pathname}},
 }) => (
   <section className="section level-cards">
+    <BreadCrumb parentPath={parentPath} crumbs={breadCrumbs} />
     <div className="container">
       <div className="columns titles-wrapper">
         <div className="column">
@@ -49,12 +54,7 @@ const DocumentsList = ({
         </div>
       </div>
       <div className="columns is-multiline">{renderDocuments(documents)}</div>
-      <Link to={backPath(pathname)}>
-        <button className="btn default with-radius-5 larger thirdwidth shadow">
-          <span>&lt; Back to&nbsp;</span>
-          <span className="has-text-weight-bold">{parentName}</span>
-        </button>
-      </Link>
+      <BackToButton link={backPath(pathname)} prefix={parentName} />
     </div>
   </section>
 );
@@ -72,6 +72,7 @@ export const pageQuery = graphql`
         linkTitle
         link
         description
+        noIcon
       }
     }
     contentfulDocumentsRegion(slug: {eq: $parentSlug}) {

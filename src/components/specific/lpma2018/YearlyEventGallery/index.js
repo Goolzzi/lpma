@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import Img from "gatsby-image";
 import "./styles.scss";
 
 const propTypes = {
@@ -26,9 +27,9 @@ const YearlyEventGallery = ({node: {title, description, images}}) => (
         </div>
       </div>
       <div className="columns is-multiline">
-        {images.map(({id, resolutions}) => (
+        {images.map(({id, sizes}) => (
           <div key={id} className="column is-4">
-            <img src={resolutions.src} srcSet={resolutions.srcSet} alt="" />
+            <Img sizes={sizes} />
           </div>
         ))}
       </div>

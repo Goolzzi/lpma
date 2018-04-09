@@ -23,8 +23,6 @@ const IndexUSPage = ({
   <div className="index-page-us">
     <TopJumbotron {...edges[0].node} />
     <TopInfoColumns {...contentfulAcquisitionTopInfoRemark} />
-    {/* <MemberBenefits {...contentfulMemberBenefits} /> */}
-    {/* <h3 className="test-header">{contentfulTestimonials.title}</h3> */}
     <TestimonialsTwo
       testimonial={contentfulTestimonials.testimonial2}
       forUS={true}
@@ -56,29 +54,27 @@ export const pageQuery = graphql`
         }
       }
     }
-    contentfulAcquisitionLpmaTeam {
-      title
-      author
-      content {
-        childMarkdownRemark {
-          html
-        }
-      }
-      image {
-        resolutions(quality: 100) {
-          src
-          srcSet
-        }
-      }
-    }
     contentfulTestimonials {
       title
+      testimonial1 {
+        id
+        authorName
+        childContentfulTestimonial1ContentTextNode {
+          childMarkdownRemark {
+            html
+          }
+        }
+        authorPhoto {
+          sizes(quality: 100, maxWidth: 600, toFormat: JPG) {
+            ...GatsbyContentfulSizes
+          }
+        }
+      }
       testimonial2 {
         id
         image {
-          responsiveResolution(quality: 100) {
-            src
-            srcSet
+          sizes(quality: 100, maxWidth: 600, toFormat: JPG) {
+            ...GatsbyContentfulSizes
           }
         }
         childContentfulTestimonial2ContentTextNode {
@@ -95,20 +91,7 @@ export const pageQuery = graphql`
         node {
           pageLocation
           jumbotron {
-            joinLink {
-              name
-              to
-            }
-            background {
-              id
-              resolutions(quality: 100) {
-                src
-                srcSet
-              }
-            }
-            title {
-              title
-            }
+            ...JumbotronItem
           }
         }
       }
@@ -120,6 +103,32 @@ export const pageQuery = graphql`
           childMarkdownRemark {
             html
           }
+        }
+      }
+    }
+    allContentfulAcquisitionAudience {
+      edges {
+        node {
+          id
+          image {
+            sizes(quality: 100, maxWidth: 1280, toFormat: JPG) {
+              ...GatsbyContentfulSizes
+            }
+          }
+        }
+      }
+    }
+    contentfulAcquisitionLpmaTeam {
+      title
+      author
+      image {
+        sizes(quality: 100, maxWidth: 800) {
+          ...GatsbyContentfulSizes
+        }
+      }
+      content {
+        childMarkdownRemark {
+          html
         }
       }
     }

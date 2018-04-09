@@ -2,7 +2,9 @@ import React from "react";
 import PropTypes from "prop-types";
 import Link from "gatsby-link";
 import {Icon} from "react-fa";
-import DocumentCard from "../../components/DocumentCard";
+import DocumentCard from "../../components/specific/foundry/DocumentCard";
+import BreadCrumb from "../../components/BreadCrumb";
+import BackToButton from "../../components/BackToButton";
 import "./styles.scss";
 
 const renderRegions = regions =>
@@ -20,6 +22,7 @@ const renderDocuments = documents =>
     <DocumentCard
       key={document.id}
       isDownloadable
+      noIcon={document.noIcon}
       title={document.linkTitle}
       titleLink={document.link}>
       <p>{document.description}</p>
@@ -28,9 +31,11 @@ const renderDocuments = documents =>
 
 const propTypes = {
   data: PropTypes.object.isRequired,
+  pathContext: PropTypes.object.isRequired,
 };
 
 const CountryTemplate = ({
+  pathContext: {parentPath, breadCrumbs},
   data: {
     contentfulDocumentsCountry: {
       name,
@@ -43,6 +48,7 @@ const CountryTemplate = ({
   },
 }) => (
   <section className="section level-cards">
+    <BreadCrumb parentPath={parentPath} crumbs={breadCrumbs} />
     <div className="container">
       <div className="columns titles-wrapper">
         <div className="column">
@@ -67,12 +73,7 @@ const CountryTemplate = ({
       <div className="columns is-multiline">
         {hasRegions ? renderRegions(regions) : renderDocuments(documents)}
       </div>
-      <Link to="/foundry">
-        <button className="btn default with-radius-5 larger thirdwidth shadow">
-          <span>Back to&nbsp;</span>
-          <span className="has-text-weight-bold">Foundry</span>
-        </button>
-      </Link>
+      <BackToButton link="/foundry" prefix="Foundry" />
     </div>
   </section>
 );
@@ -92,6 +93,7 @@ export const pageQuery = graphql`
         link
         linkTitle
         description
+        noIcon
       }
       regions {
         id
