@@ -168,6 +168,7 @@ class LandingPage extends React.PureComponent{
       this.scrolling = true;
       this.scrollDirection = true;
       this.setState({animationIndex: this.state.animationIndex + 1}, () => {
+        console.log(this.state.animationIndex)
         this.getAnimationClassName(this.state.animationIndex, true)
       });
       setTimeout(() => {
@@ -202,6 +203,7 @@ class LandingPage extends React.PureComponent{
 
         this.animationClasses[3].mobileLeftSpinner = '';
         this.animationClasses[3].mobileRightSpinner = '';
+        this.forceUpdate();
         break;
       case 2:
         this.animationClasses[1].title = 'cFadeOut';
@@ -430,6 +432,18 @@ class LandingPage extends React.PureComponent{
   joinUs = () => {
     this.setState({ contactForm: true, scrollHandleClass: 'hide'});
     this.animationClasses[31].form = 'cFadeIn';
+  }
+  nextPage = () => {
+    this.scrolling = true;
+    this.scrollDirection = true;
+    this.setState({animationIndex: this.state.animationIndex + 1}, () => {
+      this.getAnimationClassName(this.state.animationIndex, true);
+      this.forceUpdate()
+    });
+    setTimeout(() => {
+      this.scrolling = false;
+    }, 2000);
+    this.props.onPageChange(this.state.animationIndex);
   }
   render () {
     return (
@@ -790,7 +804,7 @@ class LandingPage extends React.PureComponent{
           </div>
         }
         <div className="scroll-bar">
-          <div className={`scroll-control ${this.state.scrollHandleClass}`} onClick={this.scrollWindowDown}>
+          <div className={`scroll-control ${this.state.scrollHandleClass}`} onClick={this.nextPage}>
             <i className="fa fa-angle-down" />
           </div>
         </div>
