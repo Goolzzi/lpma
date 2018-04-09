@@ -485,7 +485,6 @@ class LandingPage extends React.PureComponent{
               <div className="bar item-4"></div>
             </div>
           </div>
-          <img className="scroll-instruction-arrow" src={icArrowDown} />
         </div>
         <div id="page_2" className={`${this.animationClasses[2].page}`}>
           <div className="slide-2">
@@ -727,29 +726,31 @@ class LandingPage extends React.PureComponent{
                 </div>
                 <p>For those who are looking for the full suite of tools to grow and evolve their business</p>
                 <div className="terms-container">
-                  <div className="terms-item">
-                    <img src={icTick} /><p>Unlimited access to letters, checklists, forms and procedure templates</p>
-                  </div>
-                  <div className="terms-item">
-                    <img src={icTick} /><p>Access to LPMA Foundry, our information hub comprised of resources, articles and case studies</p>
-                  </div>
-                  <div className="terms-item">
-                    <img src={icTick} /><p>Free copies of Building Blocks, Connecting the Dots and Numbers Game </p>
-                  </div>
-                  <div className="terms-item">
-                    <img src={icTick} /><p>Invitiation to the LPMA Group Forum</p>
-                  </div>
-                  <div className="terms-item">
-                    <img src={icTick} /><p>Free tickets to the LPMA Premium Connection Day and LPMA Round Table</p>
-                  </div>
-                  <div className="terms-item">
-                    <img src={icTick} /><p>A 40% discount to all LPMA Events</p>
-                  </div>
-                  <div className="terms-item">
-                    <img src={icTick} /><p>Access to the LPMA Research Lab</p>
-                  </div>
-                  <div className="terms-item">
-                  <img src={icTick} /><p>Access to our digital consulting tools and frameworks</p>
+                  <div>
+                    <div className="terms-item">
+                      <img src={icTick} /><p>Unlimited access to letters, checklists, forms and procedure templates</p>
+                    </div>
+                    <div className="terms-item">
+                      <img src={icTick} /><p>Access to LPMA Foundry, our information hub comprised of resources, articles and case studies</p>
+                    </div>
+                    <div className="terms-item">
+                      <img src={icTick} /><p>Free copies of Building Blocks, Connecting the Dots and Numbers Game </p>
+                    </div>
+                    <div className="terms-item">
+                      <img src={icTick} /><p>Invitiation to the LPMA Group Forum</p>
+                    </div>
+                    <div className="terms-item">
+                      <img src={icTick} /><p>Free tickets to the LPMA Premium Connection Day and LPMA Round Table</p>
+                    </div>
+                    <div className="terms-item">
+                      <img src={icTick} /><p>A 40% discount to all LPMA Events</p>
+                    </div>
+                    <div className="terms-item">
+                      <img src={icTick} /><p>Access to the LPMA Research Lab</p>
+                    </div>
+                    <div className="terms-item">
+                    <img src={icTick} /><p>Access to our digital consulting tools and frameworks</p>
+                    </div>
                   </div>
                 </div>
                 <div className="submit-btn" onClick={() => this.joinUs()}>JOIN LPMA</div>

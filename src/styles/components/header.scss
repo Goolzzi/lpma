@@ -40,9 +40,11 @@
           }
         }
       }
-    }
-    @media screen and (max-width: $mobile-width){
-      display: none;
+      @media screen and (max-width: $mobile-width){
+        li:first-child {
+          display: none;
+        }
+      }
     }
     &.secondary {
       ul li a {
@@ -57,6 +59,8 @@
       color: white;
       font-size: 0.6em;
       transition: all 1s;
+      display: flex;
+      align-items: center;
       
       .menu-btn {
         font-size: 1em;
@@ -75,6 +79,9 @@
           color: #fff;
           padding: 0.8rem 1.8rem;
           border: none;
+          @media screen and (max-width: $mobile-width){
+            padding: 0.8rem 0.8rem;
+          }
         }
       }
     }
@@ -92,6 +99,9 @@
           color: #000;
           padding: 0.8rem 1.8rem;
           border: none;
+          @media screen and (max-width: $mobile-width){
+            padding: 0.8rem 0.8rem;
+          }
         }
       }
      } 

@@ -240,16 +240,27 @@
   animation-name: scrollCTRIn;
   animation-duration: 2s;
   animation-fill-mode: forwards;
+  @media screen and (max-width: $mobile-width) {
+    animation-name: scrollCTRMobile;
+  }
 }
 @keyframes scrollCTROut {
   0% { opacity: 1; transform: translateX(100px);}
   50% { opacity: 0; transform: translateX(50px); }
   100% { opacity: 1; transform: translateX(0);}
 }
+@keyframes scrollCTRMobile {
+  0% { opacity: 1; }
+  50% { opacity: 0;  }
+  100% { opacity: 1; }
+}
 .scrollCTROut {
   animation-name: scrollCTROut;
   animation-duration: 2s;
   animation-fill-mode: forwards;
+  @media screen and (max-width: $mobile-width) {
+    animation-name: scrollCTRMobile;
+  }
 }
 .animation-delay-1 {
   animation-delay: 0.5s;
