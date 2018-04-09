@@ -120,6 +120,7 @@ class LandingPage extends React.PureComponent{
       }, () => {
         this.animationClasses = JSON.parse(JSON.stringify(initalAnimationClasses));
         this.props.updateState({showPage: ''})
+        this.props.onPageChange(this.state.animationIndex);
         this.getAnimationClassName(this.state.animationIndex, true)
       })
       
