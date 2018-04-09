@@ -33,7 +33,24 @@ ResourcesPage.propTypes = propTypes;
 
 export default ResourcesPage;
 
+// mode JumbotronItem fragment to index!
 export const pageQuery = graphql`
+  fragment JumbotronItem on ContentfulJumbotron {
+    joinLink {
+      name
+      to
+    }
+    background {
+      id
+      sizes(quality: 100, maxWidth: 800, toFormat: JPG) {
+        ...GatsbyContentfulSizes
+      }
+    }
+    title {
+      title
+    }
+  }
+
   query ResourcesPageQuery {
     allContentfulResoursesJumbotron(
       sort: {fields: [pageLocation], order: DESC}
