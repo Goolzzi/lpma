@@ -1,6 +1,6 @@
 const localDevCallback = "http://localhost:8000/callback";
 const stagingCallback = "https://dev-lpma.netlify.com/callback";
-const liveCallBack = "https://lpma.netlify.com/callback";
+const liveCallBack = "https://lpma.com/callback";
 
 const authConfig_dev = {
   clientId: "f6e0e5236bca6e168f9f325a86310b60cf56588e37b05f7134f297c2f8e3248a",
