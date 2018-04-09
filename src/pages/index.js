@@ -406,7 +406,21 @@ class LandingPage extends React.PureComponent{
     return (
       <div ref={c => this.wrapper = c}>
         <div id="page_1">
-          <div className="overlay-image" />
+          <div className="overlay-image">
+            <div className="video-bk">
+              <div className="wrapper">
+                <iframe
+                  src="https://player.vimeo.com/video/263280755?autoplay=1&loop=1&&title=0&byline=0&portrait=0"
+                  width="100%"
+                  height="100%"
+                  frameborder="0"
+                  webkitallowfullscreen
+                  mozallowfullscreen
+                  allowfullscreen></iframe>
+              </div>
+            </div>
+          
+          </div>
           <div className={`slide-1 ${this.animationClasses[0]}`}>
             <h1 className="banner-title">
               A MEMBERSHIP FOR THE <span>EVOLUTION</span> OF THE PROPERTY MANAGEMENT INDUSTRY
