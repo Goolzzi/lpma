@@ -196,7 +196,7 @@ class LandingPage extends React.PureComponent{
         this.animationClasses[2].page = direction ? '' : 'fullPageFadeOutDown';
 
         this.animationClasses[3].rightSpinner =  direction ? '' : 'rotateTo0 show';
-        this.animationClasses[3].leftSpinner = '';
+        this.animationClasses[3].leftSpinner = 'hide';
         this.animationClasses[3].leftInnerSpinner = '';
         this.animationClasses[3].fullLeftSpinner = 'hide';
         this.animationClasses[3].chapterTitle = direction ? '' : 'cFadeOutDown';
@@ -253,7 +253,7 @@ class LandingPage extends React.PureComponent{
         this.animationClasses[9].right = direction ? '' : 'rotateTo0 animated animation-delay-1';
 
         this.animationClasses[10].rightSpinner =  direction ? '' : 'rotateTo0 show';
-        this.animationClasses[10].leftSpinner = '';
+        this.animationClasses[10].leftSpinner = 'hide';
         this.animationClasses[10].leftInnerSpinner = '';
         this.animationClasses[10].fullLeftSpinner = 'hide';
         this.animationClasses[10].chapterTitle = direction ? '' : 'cFadeOutDown';
@@ -309,7 +309,7 @@ class LandingPage extends React.PureComponent{
         this.animationClasses[16].right = direction ? '' : 'rotateTo0 animated animation-delay-1';
 
         this.animationClasses[17].rightSpinner =  direction ? '' : 'rotateTo0 show';
-        this.animationClasses[17].leftSpinner = '';
+        this.animationClasses[17].leftSpinner = 'hide';
         this.animationClasses[17].leftInnerSpinner = '';
         this.animationClasses[17].fullLeftSpinner = 'hide';
         this.animationClasses[17].chapterTitle = direction ? '' : 'cFadeOutDown';
@@ -368,7 +368,7 @@ class LandingPage extends React.PureComponent{
         this.animationClasses[23].right = direction ? '' : 'rotateTo0 animated animation-delay-1';
 
         this.animationClasses[24].rightSpinner =  direction ? '' : 'rotateTo0 show';
-        this.animationClasses[24].leftSpinner = '';
+        this.animationClasses[24].leftSpinner = 'hide';
         this.animationClasses[24].leftInnerSpinner = '';
         this.animationClasses[24].fullLeftSpinner = 'hide';
         this.animationClasses[24].chapterTitle = direction ? '' : 'cFadeOutDown';
@@ -426,7 +426,7 @@ class LandingPage extends React.PureComponent{
         break;
       case 18:
         this.setState({ scrollHandleClass: 'hide' });
-        this.animationClasses[30].page = 'fullPageFadeInUp';
+        this.animationClasses[30].page = 'fullPageFadeInUp show';
         break;
     }
   }
