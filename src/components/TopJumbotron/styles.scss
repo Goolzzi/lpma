@@ -2,10 +2,10 @@
   position: relative;
 
   .image-wrapper {
-    @include cover-image(100%, 750px, center);
+    @include wrap-image(100%, 750px, center);
 
     @include mobile {
-      @include cover-image(100%, 375px, center);
+      @include wrap-image(100%, 375px, center);
     }
   }
 
