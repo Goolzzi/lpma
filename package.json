@@ -50,7 +50,7 @@
   "main": "n/a",
   "scripts": {
     "build": "rm -rf public; gatsby build",
-    "develop": "gatsby develop tet",
+    "start": "gatsby develop",
     "netlify-build": "rm -rf public; gatsby build live && node cp_netlify_public.js",
     "netlify-build-stage": "rm -rf public; gatsby build stage && node cp_netlify_public.js",
     "netlify-deploy-stage": "npm run netlify-build-stage && netlify deploy",
