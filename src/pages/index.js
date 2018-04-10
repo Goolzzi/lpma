@@ -1,4 +1,5 @@
 import React from "react";
+import Link from "gatsby-link";
 import PropTypes from "prop-types";
 import imgPlaceholder from '../assets/images/NewDesign/bk-placeholder.svg';
 import imgThumb from '../assets/images/NewDesign/img-thumb.svg';
@@ -755,7 +756,13 @@ class LandingPage extends React.PureComponent{
                     </div>
                   </div>
                 </div>
-                <div className="submit-btn" onClick={() => this.joinUs()}>JOIN LPMA</div>
+                <Link
+                  className="submit-btn"
+                  to="/join"
+                  // onClick={() => this.joinUs()}
+                >
+                  JOIN LPMA
+                </Link>
               </div>
             </div>
           </div>
