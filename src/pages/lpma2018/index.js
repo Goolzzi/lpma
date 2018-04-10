@@ -67,8 +67,9 @@ export const pageQuery = graphql`
     contentfulYearlyEventPurpose {
       title
       content {
-        id
-        content
+        childMarkdownRemark {
+          html
+        }
       }
       purchaseButton {
         label

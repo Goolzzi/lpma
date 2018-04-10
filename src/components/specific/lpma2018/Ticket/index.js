@@ -32,7 +32,7 @@ const renderTicketDate = endDate => {
 };
 
 const renderPrice = (sold, lpmaMember, priceMember, priceNonMember) =>
-  sold ? "SOLD OUT" : lpmaMember ? priceMember : priceNonMember;
+  sold ? "SOLD OUT" : lpmaMember ? `$${priceMember}` : `$${priceNonMember}`;
 
 const propTypes = {
   ticket: PropTypes.object.isRequired,

@@ -51,6 +51,11 @@
         -moz-animation:    RIGHT_SIDE_SHIFT 1500ms 1;
         -o-animation:      RIGHT_SIDE_SHIFT 1500ms 1;
         animation:         RIGHT_SIDE_SHIFT 1500ms 1;
+
+        .purpose-image {
+          width: 77%;
+          height: auto;
+        }
       }
   
       p.header {
