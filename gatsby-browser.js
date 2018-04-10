@@ -30,7 +30,7 @@ const handleForceRefresh = (action, pathname) => {
 const handleRedirects = (location, action) => {
   const {pathname} = location;
 
-  if (location.pathname === "/" && auth.isAuthenticated()) {
+  if (pathname === "/" && auth.isAuthenticated()) {
     history.replace("/foundry");
   }
 
