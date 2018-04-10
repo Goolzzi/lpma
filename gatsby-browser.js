@@ -2,7 +2,15 @@ import createHistory from "history/createBrowserHistory";
 import auth from "./src/Auth/auth";
 
 //force full page refreshes for Netlify redirects
-const pathsToforceRefresh = ["us", "join", "join-us", "lpma2018"];
+const pathsToforceRefresh = [
+  "us",
+  "join",
+  "join-us",
+  "lpma2018",
+  "ctd-tools",
+  "bb-tools",
+  "ng-tools",
+];
 
 const history = createHistory();
 
