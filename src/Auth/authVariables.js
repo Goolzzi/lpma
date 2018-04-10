@@ -30,4 +30,4 @@ const authConfig_dev = {
 export const authConfig =
   process.env.NODE_ENV === "development"
     ? authConfig_dev
-    : process.env.ISDEV === "true" ? authConfig_dev : authConfig_prod;
+    : process.env.IS_DEV ? authConfig_dev : authConfig_prod;
