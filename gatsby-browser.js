@@ -2,7 +2,7 @@ import createHistory from "history/createBrowserHistory";
 import auth from "./src/Auth/auth";
 
 //force full page refreshes for Netlify redirects
-const pathsToforceRefresh = ["us", "join", "join-us"];
+const pathsToforceRefresh = ["us", "join", "join-us", "lpma2018"];
 
 const history = createHistory();
 
@@ -30,9 +30,6 @@ const handleRedirects = (location, action) => {
     pathname.indexOf("/foundry") !== -1 ||
     pathname.indexOf("/resources") !== -1;
 
-  console.log("isAuthCheckRequiered", isAuthCheckRequiered);
-  console.log("auth.isAuthenticated()", auth.isAuthenticated());
-
   if (isAuthCheckRequiered && !auth.isAuthenticated()) {
     history.replace("/login-foundry");
   }
@@ -44,7 +41,6 @@ const handleRedirects = (location, action) => {
 };
 
 module.exports.onClientEntry = () => {
-  console.log("onClientEntry");
   handleRedirects(history.location, history.action);
 };
 
