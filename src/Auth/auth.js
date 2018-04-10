@@ -81,7 +81,7 @@ class Auth {
   };
 
   getUserData = () => {
-    return {username: 'sergey'};
+    return {username: "sergey"};
     if (this.userData) {
       return this.userData;
     }
