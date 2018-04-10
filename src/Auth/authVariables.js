@@ -27,7 +27,7 @@ const authConfig_dev = {
   },
 };
 
-export const authConfig = authConfig_prod;
+export const authConfig = authConfig_dev;
 // process.env.NODE_ENV === "development"
 //   ? authConfig_dev
-//   : process.argv[3] === "live" ? authConfig_prod : authConfig_dev;
+//   : process.env.IS_DEV ? authConfig_dev : authConfig_prod;

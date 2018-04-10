@@ -2,10 +2,10 @@
   position: relative;
 
   .image-wrapper {
-    @include cover-image(100%, 316px);
+    @include wrap-image(100%, 316px);
 
     @media screen and (max-width: 768px) {
-      @include cover-image(100%, 158px);
+      @include wrap-image(100%, 158px);
     }
   }
 
