@@ -44,6 +44,7 @@ const handleRedirects = (location, action) => {
 };
 
 module.exports.onClientEntry = () => {
+  console.log("onClientEntry");
   handleRedirects(history.location, history.action);
 };
 
