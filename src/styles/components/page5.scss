@@ -143,18 +143,20 @@
       letter-spacing: -0.05em;
       margin: 1em 0 0.56em 0;
     }
+    
     .pricing-box {
-      background: rgba(247, 247 ,247, 0.27);
       display: flex;
+      max-width: 60vw;
       flex-direction: column;
       padding: 0 1rem;
-      display: flex;
       align-items: center;
       justify-content: center;
+      background: rgba(247, 247 ,247, 0.27);
+      
       @media screen and (max-width: $mobile-width) {
         max-width: 90vw;
-        
       }
+      
       .pricing-text {
         display: flex;
         align-items: center;
@@ -170,21 +172,25 @@
           flex-direction: column;
           color: #dbdbdb;
           margin-left: 1em;
+          font-size: 1.2em;
         }
       }
       p {
-        padding: 0 1em;
+        padding: 0 5em;
         text-align: center;
         color: $white;
+        font-size: 1.2em;
+        @media screen and (max-width: $mobile-width) {
+          padding: 0 2em;
+        }
       }
       .terms-container {
         width: 80%;
         .terms-item {
           display: flex;
           align-items: center;
-          padding-left: 5%;
-          
-          margin-bottom: 1em;
+          max-width: 90%;
+          margin: 0 auto 1em auto;
           img {
             margin: 0;
             width: 0.8em;
@@ -192,10 +198,12 @@
           }
           p {
             text-align: left;
-            font-size: 0.6em;
+            font-size: 0.9em;
             margin: 0;
-            padding-left: 1em;
-            max-width: 85%;
+            padding: 0 1em;
+          }
+          @media screen and (max-width: $mobile-width) {
+            max-width: 100%;
           }
         }
       }
@@ -204,6 +212,37 @@
         padding: 0.5em 6em;
         background: #78CC5A;
         color: #fff;
+      }
+    }
+    @media screen and (max-height: $mobile-height) and (min-width: $landing-width) {
+      h1 {
+        font-size: 1.6em;
+      }
+      
+      .pricing-box {
+        .pricing-text {
+          .price {
+            font-size: 2.8em;
+          }
+          .desc {
+            font-size: 0.8em;
+          }
+        }
+        p {
+          padding: 0 2em;
+          font-size: 0.8em;
+        }
+        .terms-container {
+          .terms-item {
+            margin: 0 auto 0.5em auto;
+            p {
+              font-size: 0.8em;
+            }
+          }
+        }
+        .submit-btn {
+          margin: 1em 0 2em 0;
+        }
       }
     }
   }

@@ -726,7 +726,7 @@ class LandingPage extends React.PureComponent{
                     <span>Per month</span>
                   </div>
                 </div>
-                <p>For those who are looking for the full suite of tools to <br />grow and evolve their business</p>
+                <p>For those who are looking for the full suite of tools to grow and evolve their business</p>
                 <div className="terms-container">
                   <div>
                     <div className="terms-item">
