@@ -739,7 +739,7 @@ class LandingPage extends React.PureComponent{
                       <img src={icTick} /><p>Free copies of Building Blocks, Connecting the Dots and Numbers Game </p>
                     </div>
                     <div className="terms-item">
-                      <img src={icTick} /><p>Invitiation to the LPMA Group Forum</p>
+                      <img src={icTick} /><p>Invitation to the LPMA Group Forum</p>
                     </div>
                     <div className="terms-item">
                       <img src={icTick} /><p>Free tickets to the LPMA Premium Connection Day and LPMA Round Table</p>
