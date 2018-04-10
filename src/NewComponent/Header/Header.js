@@ -38,14 +38,14 @@ const Header = props => {
           <div className={`menu ${menuClass}`}>
             <ul>
               <li>
-                <Link to="/" onClick={() => props.selectPage("Home")}>
+                <a onClick={() => props.selectPage("Home")}>
                   Home
-                </Link>
+                </a>
               </li>
               <li>
-                <Link to="/" onClick={() => props.selectPage("Pricing")}>
+                <a onClick={() => props.selectPage("Pricing")}>
                   Pricing
-                </Link>
+                </a>
               </li>
               <li>
                 <Link to="/blog">Blog</Link>
