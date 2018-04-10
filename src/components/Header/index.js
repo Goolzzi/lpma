@@ -53,7 +53,7 @@ class Header extends React.Component {
         </a>
         <div className="navbar-dropdown">
           <Link key={slug} to={`/foundry/`} className={"navbar-item"}>
-            {"My Fondry"}
+            {"My Foundry"}
           </Link>
           {foundryLinks.edges.map(({node: {title, slug}}) => (
             <Link key={slug} to={`/foundry/${slug}`} className={"navbar-item"}>
