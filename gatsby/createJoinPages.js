@@ -9,9 +9,9 @@ module.exports = function(data, createPage) {
     context: {},
   });
 
-  createPage({
-    path: "join-us",
-    component: joinPageTemplate,
-    context: {},
-  });
+  // createPage({
+  //   path: "join-us",
+  //   component: joinPageTemplate,
+  //   context: {},
+  // });
 };

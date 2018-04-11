@@ -16,7 +16,7 @@ const propTypes = {
 const YearlyEventPurpose = ({
   node: {
     title,
-    content: {content},
+    content: {childMarkdownRemark: {html: content}},
     purchaseButton: {label, iconName},
     image: {sizes},
   },
@@ -26,14 +26,14 @@ const YearlyEventPurpose = ({
       <div className="columns">
         <div className="column is-6 left-side">
           <p className="header">{title}</p>
-          <p className="text">{content}</p>
+          <div className="text" dangerouslySetInnerHTML={{__html: content}} />
           <button className="btn secondary with-radius-5 smaller-text">
             {label} &nbsp;
             <Icon name={iconName} />
           </button>
         </div>
         <div className="column is-6 right-side">
-          <Img className="left-side-image" sizes={sizes} />
+          <Img className="left-side-image purpose-image" sizes={sizes} />
         </div>
       </div>
     </div>

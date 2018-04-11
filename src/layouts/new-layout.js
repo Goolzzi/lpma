@@ -10,27 +10,25 @@ import "../styles/landing_mode.scss";
 
 class NewLayoutTemplate extends React.PureComponent {
   constructor(props) {
-    super()
+    super();
 
     this.state = {
       number: 0,
-      showPage: ''
-    }
+      showPage: "",
+    };
   }
-  updateState =  (payload) => {
-    this.setState({ ...payload });
-  }
+  updateState = payload => {
+    this.setState({...payload});
+  };
   render() {
     const {
       children,
       location: {pathname},
-      data: { 
-        allContentfulAsset: { edges: metaImges }
-      }
+      data: {allContentfulAsset: {edges: metaImges}},
     } = this.props;
     const title = locationToTitleMap[pathname]
-    ? locationToTitleMap[pathname]
-    : locationToTitleMap["/"];
+      ? locationToTitleMap[pathname]
+      : locationToTitleMap["/"];
 
     const protocol = "https:";
     return (
@@ -42,22 +40,19 @@ class NewLayoutTemplate extends React.PureComponent {
         />
         <Header
           pageNumber={this.state.number}
-          selectPage={(page) => this.setState({ showPage: page})}
+          selectPage={page => this.setState({showPage: page})}
         />
         <div>
-          {
-            children({
-              ...this.props,
-              onPageChange: (number) => this.setState({number}),
-              showPage: this.state.showPage,
-              updateState: this.updateState,
-            })
-          }
+          {children({
+            ...this.props,
+            onPageChange: number => this.setState({number}),
+            showPage: this.state.showPage,
+            updateState: this.updateState,
+          })}
         </div>
       </div>
-    )
+    );
   }
-  
 }
 export default NewLayoutTemplate;
 

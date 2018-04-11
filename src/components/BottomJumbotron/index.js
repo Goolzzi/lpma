@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
-import Link from "gatsby-link";
 import Img from "gatsby-image";
+import JoinLpmaButton from "../JoinLpmaButton";
 import "./styles.scss";
 
 const propTypes = {
@@ -18,19 +18,14 @@ const BottomJumbotron = ({jumbotron}) => {
       <section className="section wrapper">
         <div className="columns is-gapless">
           <div className="column is-6 is-12-mobile">
-            {title ? <p>{title.title}</p> : <React.Fragment />}
+            {title ? <p>{title.title}</p> : null}
           </div>
           <div className="column is-6 is-12-mobile">
             <div className="has-text-right">
-              {joinLink ? (
-                <Link {...joinLink}>
-                  <button className="btn primary halfwidth">
-                    {joinLink.name}
-                  </button>
-                </Link>
-              ) : (
-                <React.Fragment />
-              )}
+              <JoinLpmaButton
+                joinLink={joinLink}
+                btnClassName={"btn primary halfwidth"}
+              />
             </div>
           </div>
         </div>

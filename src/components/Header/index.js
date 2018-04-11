@@ -68,7 +68,7 @@ class Header extends React.Component {
   render() {
     const {topmenu, logo: {file}, foundryLinks, forUSA} = this.props;
     const {isActive, isActiveMenu, isFoundryOpen} = this.state;
-    //TODO: imprve contry based component building
+    //TODO: imprve counry based component building
     const menuItems = forUSA
       ? topmenu.filter(({country}) => country === "us")
       : topmenu;
@@ -122,6 +122,10 @@ class Header extends React.Component {
                             {name}
                           </Link>
                         );
+                      }
+                      //hiding join nav item for logged in users.
+                      if (slug === "join" && isAuthenticated) {
+                        return null;
                       }
                       if (!authRequired || isAuthenticated) {
                         return (
