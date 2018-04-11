@@ -12,7 +12,7 @@ module.exports = {
       resolve: `gatsby-source-contentful`,
       options: {
         spaceId: process.env.CONTENTFUL_SPACE_ID || "",
-        accessToken: process.env.CONTENTFUL_ACCESS_TOKEN || "",
+        accessToken: "0afc8ae9e8ff21692ab7c4eadd546260bcf7f8d32ac2fb060322a09767074768" || "",
       },
     },
     `gatsby-transformer-remark`,

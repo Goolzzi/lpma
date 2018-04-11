@@ -26,6 +26,7 @@ class LPMA2018Page extends Component {
         contentfulYearlyEventAwardsGala,
         contentfulYearlyEventGallery,
         contentfulYearlyEventVenue,
+        allContentfulAgentaType,
       },
     } = this.props;
     return (
@@ -34,7 +35,10 @@ class LPMA2018Page extends Component {
         <YearlyEventStats node={contentfulYearlyEventStats} />
         <YearlyEventPurpose node={contentfulYearlyEventPurpose} />
         <YearlyEventPlan node={contentfulYearlyEventPlan} />
-        <YearlyEventAgenda node={contentfulYearlyEventAgenda} />
+        <YearlyEventAgenda
+          node={contentfulYearlyEventAgenda}
+          types={allContentfulAgentaType.edges}
+        />
         <YearlyEventSpeakers node={contentfulYearlyEventSpeakers} />
         <YearlyEventTickets node={contentfulYearlyEventTickets} />
         <YearlyEventAwardsGala node={contentfulYearlyEventAwardsGala} />
@@ -207,6 +211,15 @@ export const pageQuery = graphql`
           }
         }
         type {
+          id
+          name
+          filterAppearance
+        }
+      }
+    }
+    allContentfulAgentaType {
+      edges {
+        node {
           id
           name
           filterAppearance

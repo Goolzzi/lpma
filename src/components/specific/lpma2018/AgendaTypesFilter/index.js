@@ -4,17 +4,17 @@ import classNames from "classnames";
 import "./styles.scss";
 
 const propTypes = {
-  events: PropTypes.array.isRequired,
-  currentFilter: PropTypes.string,
+  currentFilter: PropTypes.object,
   setTypeFilter: PropTypes.func.isRequired,
+  types: PropTypes.array.isRequired,
 };
 
 class AgendaTypesFilter extends Component {
   renderTypes = () => {
-    const {events, currentFilter} = this.props;
-    const eventNodes = events.map(({id, type}) => (
+    const {currentFilter, types} = this.props;
+    const eventNodes = types.map(({node: type}) => (
       <span
-        key={id}
+        key={type.id}
         onClick={() => this.props.setTypeFilter(type)}
         className={classNames({
           "event-type": true,
@@ -27,7 +27,7 @@ class AgendaTypesFilter extends Component {
     // all events filter
     eventNodes.unshift(
       <span
-        key={0}
+        key={types.length}
         onClick={() => this.props.setTypeFilter(null)}
         className={classNames({
           "event-type": true,
