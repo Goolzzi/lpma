@@ -145,6 +145,7 @@ export const pageQuery = graphql`
         priceMember
         priceNonMember
         sold
+        isPromoted
       }
     }
     contentfulYearlyEventVenue {

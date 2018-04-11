@@ -13,10 +13,10 @@ const PurchaseTicketButton = ({purchaseLink}) => (
   </a>
 );
 
-const renderPurchaseButton = (endDate, sold, purchaseLink) => {
+const renderPurchaseButton = (endDate, sold, isPromoted, purchaseLink) => {
   const now = moment.now();
   const end = moment(endDate);
-  return now <= end && !sold ? (
+  return now <= end && isPromoted ? (
     <PurchaseTicketButton purchaseLink={purchaseLink} />
   ) : (
     <React.Fragment />
@@ -49,11 +49,12 @@ const Ticket = ({
     status,
     iconName,
     sold,
+    isPromoted,
   },
   lpmaMember,
 }) => (
   <div className="column is-4">
-    <div className={classNames({"ticket-item": true, primary: !sold})}>
+    <div className={classNames({"ticket-item": true, primary: isPromoted})}>
       <div className="ticket-cont">
         <Icon name={iconName} />
         <h2>{title}</h2>
@@ -67,7 +68,7 @@ const Ticket = ({
         <hr />
 
         <p className="text">{renderTicketDate(endDate)}</p>
-        {renderPurchaseButton(endDate, sold, purchaseLink)}
+        {renderPurchaseButton(endDate, sold, isPromoted, purchaseLink)}
       </div>
     </div>
   </div>
