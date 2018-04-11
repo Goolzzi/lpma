@@ -1,6 +1,7 @@
 import React from "react";
 import Link from "gatsby-link";
 import PropTypes from "prop-types";
+import Footer from "../NewComponent/Footer";
 
 import icTick from "../assets/images/NewDesign/ic-tick.png";
 import "animate.css/animate.min.css";
@@ -172,6 +173,7 @@ class LandingPage extends React.Component {
       );
     } else if (nextProps.showPage === "Pricing") {
       this.setState({animationIndex: 18}, () => {
+        this.animationClasses[23].pageBackground = "";
         this.getAnimationClassName(this.state.animationIndex, true);
         this.props.onPageChange(this.state.animationIndex);
       });
@@ -1182,6 +1184,7 @@ class LandingPage extends React.Component {
             </div>
           </div>
         </div>
+        {/* <Footer /> */}
         {/* {
           this.state.contactForm && <div id="page_6">
             <div className="overlay-image" />

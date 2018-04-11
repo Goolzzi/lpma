@@ -27,7 +27,7 @@ const Header = props => {
   return (
     <IRISAuth
       render={auth => (
-        <nav className={`navbar  is-transparent header-wrapper`}>
+        <nav className={`navbar is-transparent header-wrapper`}>
           <div className="navbar-brand">
             {
               //eslint-disable-next-line
