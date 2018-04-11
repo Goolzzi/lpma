@@ -26,7 +26,7 @@ const YearlyEventPurpose = ({
       <div className="columns">
         <div className="column is-6 left-side">
           <p className="header">{title}</p>
-          <p className="text" dangerouslySetInnerHTML={{__html: content}} />
+          <div className="text" dangerouslySetInnerHTML={{__html: content}} />
           <button className="btn secondary with-radius-5 smaller-text">
             {label} &nbsp;
             <Icon name={iconName} />
