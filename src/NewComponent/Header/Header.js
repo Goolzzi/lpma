@@ -3,6 +3,7 @@ import Link from "gatsby-link";
 import PropTypes from "prop-types";
 import IRISAuth from "../../Auth/IRISAuth";
 import imgLogo from "../../assets/images/NewDesign/Header/logo.svg";
+
 const menuPrimaryIndexes = [0, 1, 18];
 const secondaryIndexes = [2, 6, 10, 14];
 const primaryIndexes = [0, 1, 3, 4, 5, 7, 8, 9, 11, 12, 13, 15, 16, 17, 18];
@@ -37,14 +38,14 @@ const Header = props => {
           <div className={`menu ${menuClass}`}>
             <ul>
               <li>
-                <Link to="/" onClick={() => props.selectPage("Home")}>
+                <a onClick={() => props.selectPage("Home")}>
                   Home
-                </Link>
+                </a>
               </li>
               <li>
-                <Link to="/" onClick={() => props.selectPage("Pricing")}>
+                <a onClick={() => props.selectPage("Pricing")}>
                   Pricing
-                </Link>
+                </a>
               </li>
               <li>
                 <Link to="/blog">Blog</Link>
@@ -56,11 +57,13 @@ const Header = props => {
           </div>
           <div className={`navbar-btn-group ${btnClass}`}>
             <div className="navbar-item">
-              <a
+              <Link
+                to="/join"
                 className="button menu-btn"
-                onClick={() => props.selectPage("Join")}>
+                // onClick={() => props.selectPage("Join")}
+              >
                 JOIN LPMA
-              </a>
+              </Link>
             </div>
             {!auth.isAuthenticated() ? (
               <div className="navbar-item">

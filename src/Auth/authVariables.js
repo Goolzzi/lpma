@@ -1,3 +1,5 @@
+import buildConfig from "../../build.config.json";
+
 const localDevCallback = "http://localhost:8000/callback";
 const stagingCallback = "https://dev-lpma.netlify.com/callback";
 const liveCallBack = "https://lpma.com/callback";
@@ -27,7 +29,7 @@ const authConfig_dev = {
   },
 };
 
-export const authConfig = authConfig_dev;
-// process.env.NODE_ENV === "development"
-//   ? authConfig_dev
-//   : process.env.IS_DEV ? authConfig_dev : authConfig_prod;
+export const authConfig =
+  process.env.NODE_ENV === "development"
+    ? authConfig_dev
+    : buildConfig.env === "live" ? authConfig_prod : authConfig_dev;

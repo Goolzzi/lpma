@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import Link from "gatsby-link";
+import JoinLpmaButton from "../JoinLpmaButton";
 import Img from "gatsby-image";
 import "./styles.scss";
 
@@ -15,20 +15,16 @@ const TopJumbotron = ({jumbotron}) => {
       <div className="image-wrapper">
         <Img sizes={sizes} />
       </div>
-      {title || joinLink ? (
-        <div className="cont-wrapper">
-          <div className="cont">
-            {title ? <p>{title.title}</p> : null}
-            {joinLink ? (
-              <Link {...joinLink}>
-                <button className="btn primary halfwidth">
-                  {joinLink.name}
-                </button>
-              </Link>
-            ) : null}
-          </div>
+
+      <div className="cont-wrapper">
+        <div className="cont">
+          {title ? <p>{title.title}</p> : null}
+          <JoinLpmaButton
+            joinLink={joinLink}
+            btnClassName={"btn primary halfwidth"}
+          />
         </div>
-      ) : null}
+      </div>
     </section>
   );
 };

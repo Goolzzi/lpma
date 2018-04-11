@@ -1,8 +1,10 @@
 /* eslint-disable */
+
 const fs = require("fs-extra");
 
 console.log('\x1b[40m\x1b[36m', "gatsby build completed!", '\x1b[0m');
 console.log('\x1b[40m\x1b[36m', "Copying netlify content...", '\x1b[0m');
+
 fs
   .copy("./netlify", "./public")
   .then(() => {
