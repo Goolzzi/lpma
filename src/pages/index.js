@@ -1,4 +1,5 @@
 import React from "react";
+import Link from "gatsby-link";
 import PropTypes from "prop-types";
 import imgPlaceholder from '../assets/images/NewDesign/bk-placeholder.svg';
 import imgThumb from '../assets/images/NewDesign/img-thumb.svg';
@@ -196,7 +197,7 @@ class LandingPage extends React.PureComponent{
         this.animationClasses[2].page = direction ? '' : 'fullPageFadeOutDown';
 
         this.animationClasses[3].rightSpinner =  direction ? '' : 'rotateTo0 show';
-        this.animationClasses[3].leftSpinner = '';
+        this.animationClasses[3].leftSpinner = 'hide';
         this.animationClasses[3].leftInnerSpinner = '';
         this.animationClasses[3].fullLeftSpinner = 'hide';
         this.animationClasses[3].chapterTitle = direction ? '' : 'cFadeOutDown';
@@ -253,7 +254,7 @@ class LandingPage extends React.PureComponent{
         this.animationClasses[9].right = direction ? '' : 'rotateTo0 animated animation-delay-1';
 
         this.animationClasses[10].rightSpinner =  direction ? '' : 'rotateTo0 show';
-        this.animationClasses[10].leftSpinner = '';
+        this.animationClasses[10].leftSpinner = 'hide';
         this.animationClasses[10].leftInnerSpinner = '';
         this.animationClasses[10].fullLeftSpinner = 'hide';
         this.animationClasses[10].chapterTitle = direction ? '' : 'cFadeOutDown';
@@ -309,7 +310,7 @@ class LandingPage extends React.PureComponent{
         this.animationClasses[16].right = direction ? '' : 'rotateTo0 animated animation-delay-1';
 
         this.animationClasses[17].rightSpinner =  direction ? '' : 'rotateTo0 show';
-        this.animationClasses[17].leftSpinner = '';
+        this.animationClasses[17].leftSpinner = 'hide';
         this.animationClasses[17].leftInnerSpinner = '';
         this.animationClasses[17].fullLeftSpinner = 'hide';
         this.animationClasses[17].chapterTitle = direction ? '' : 'cFadeOutDown';
@@ -368,7 +369,7 @@ class LandingPage extends React.PureComponent{
         this.animationClasses[23].right = direction ? '' : 'rotateTo0 animated animation-delay-1';
 
         this.animationClasses[24].rightSpinner =  direction ? '' : 'rotateTo0 show';
-        this.animationClasses[24].leftSpinner = '';
+        this.animationClasses[24].leftSpinner = 'hide';
         this.animationClasses[24].leftInnerSpinner = '';
         this.animationClasses[24].fullLeftSpinner = 'hide';
         this.animationClasses[24].chapterTitle = direction ? '' : 'cFadeOutDown';
@@ -426,7 +427,7 @@ class LandingPage extends React.PureComponent{
         break;
       case 18:
         this.setState({ scrollHandleClass: 'hide' });
-        this.animationClasses[30].page = 'fullPageFadeInUp';
+        this.animationClasses[30].page = 'fullPageFadeInUp show';
         break;
     }
   }
@@ -739,7 +740,7 @@ class LandingPage extends React.PureComponent{
                       <img src={icTick} /><p>Free copies of Building Blocks, Connecting the Dots and Numbers Game </p>
                     </div>
                     <div className="terms-item">
-                      <img src={icTick} /><p>Invitiation to the LPMA Group Forum</p>
+                      <img src={icTick} /><p>Invitation to the LPMA Group Forum</p>
                     </div>
                     <div className="terms-item">
                       <img src={icTick} /><p>Free tickets to the LPMA Premium Connection Day and LPMA Round Table</p>
@@ -755,7 +756,13 @@ class LandingPage extends React.PureComponent{
                     </div>
                   </div>
                 </div>
-                <div className="submit-btn" onClick={() => this.joinUs()}>JOIN LPMA</div>
+                <Link
+                  className="submit-btn"
+                  to="/join"
+                  // onClick={() => this.joinUs()}
+                >
+                  JOIN LPMA
+                </Link>
               </div>
             </div>
           </div>
