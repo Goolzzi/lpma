@@ -11,10 +11,21 @@ const propTypes = {
 };
 
 class AgendaDatesFilter extends Component {
+  extractDates = () => {
+    const {events} = this.props;
+    const dates = [];
+    events
+      .filter(event => !!event.startDate)
+      .map(({startDate}) => startDate.substring(0, 10))
+      .forEach(date => !dates.includes(date) && dates.push(date));
+    const sortedDates = dates.sort();
+    return sortedDates;
+  };
+
   renderDates = () =>
-    this.props.events.map(({id, startDate}) => (
+    this.extractDates().map((startDate, index) => (
       <button
-        key={id}
+        key={index}
         onClick={() => this.props.setDateFilter(startDate)}
         className={classNames({
           btn: true,

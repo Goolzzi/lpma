@@ -1,6 +1,5 @@
 import React from "react";
 import PropTypes from "prop-types";
-
 import TopJumbotron from "../../components/TopJumbotron";
 import TopInfoColumns from "../../components/TopInfoColumns";
 import BottomJumbotron from "../../components/BottomJumbotron";

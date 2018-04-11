@@ -2,15 +2,14 @@ import createHistory from "history/createBrowserHistory";
 import auth from "./src/Auth/auth";
 
 //force full page refreshes for Netlify redirects
-const pathsToforceRefresh = [
-  "us",
-  "join",
-  "join-us",
-  "lpma2018",
-  "ctd-tools",
-  "bb-tools",
-  "ng-tools",
-];
+const pathsToforceRefresh = ["us", "join", "ctd-tools", "bb-tools", "ng-tools"];
+
+const getRegExpForPaths = path =>
+  new RegExp(
+    `/${path}(/)?$|/
+  ${path}(/)index.html(/)?$`,
+    "i",
+  );
 
 const history = createHistory();
 
@@ -29,19 +28,30 @@ const handleForceRefresh = (action, pathname) => {
 
 const handleRedirects = (location, action) => {
   const {pathname} = location;
+  const isAuthenticated = auth.isAuthenticated();
 
-  if (pathname === "/" && auth.isAuthenticated()) {
+  //redirect authenticated users form home to foundy page //todo improve with regexp
+  if (isAuthenticated && (pathname === "/" || pathname === "/index.html")) {
     history.replace("/foundry");
+  }
+  //redirect users form `join` to `contact` //todo improve with regexp
+  if (
+    isAuthenticated &&
+    (pathname === "/join" ||
+      pathname === "/join/" ||
+      pathname === "/join/index.html")
+  ) {
+    history.replace("/contact");
   }
 
   const isAuthCheckRequiered =
     pathname.indexOf("/foundry") !== -1 ||
     pathname.indexOf("/resources") !== -1;
 
-  if (isAuthCheckRequiered && !auth.isAuthenticated()) {
+  if (isAuthCheckRequiered && !isAuthenticated) {
     history.replace("/login-foundry");
   }
-  if (pathname.indexOf("/login-foundry") !== -1 && auth.isAuthenticated()) {
+  if (pathname.indexOf("/login-foundry") !== -1 && isAuthenticated) {
     history.replace("/foundry");
   }
 

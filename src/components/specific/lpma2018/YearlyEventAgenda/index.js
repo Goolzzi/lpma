@@ -11,6 +11,7 @@ const propTypes = {
     heading: PropTypes.object.isRequired,
     events: PropTypes.array.isRequired,
   }),
+  types: PropTypes.array.isRequired,
 };
 
 class YearlyEventAgenda extends Component {
@@ -27,7 +28,7 @@ class YearlyEventAgenda extends Component {
     }));
 
   render() {
-    const {node: {title, heading, events}} = this.props;
+    const {node: {title, heading, events}, types} = this.props;
     const {dateFilter, typeFilter} = this.state;
     return (
       <section className="section lpma2018-agenda">
@@ -42,7 +43,7 @@ class YearlyEventAgenda extends Component {
                   }}
                 />
                 <AgendaTypesFilter
-                  events={events}
+                  types={types}
                   currentFilter={typeFilter}
                   setTypeFilter={this.setTypeFilter}
                 />
