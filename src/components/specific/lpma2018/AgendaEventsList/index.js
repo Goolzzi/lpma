@@ -15,7 +15,7 @@ class AgendaEventsList extends Component {
 
   eventDate = (startDate, endDate) => {
     if (startDate === endDate) {
-      return null;
+      return "-";
     }
     const start = this.formatEventDate(startDate);
     const end = this.formatEventDate(endDate);
@@ -56,7 +56,7 @@ class AgendaEventsList extends Component {
               <span className="green">{type && type.name}</span>
               &nbsp;–&nbsp;
               <span className="bold">{title}</span>
-              &nbsp; {speaker && speaker.name}
+              &nbsp; {speaker ? speaker.name : "-"}
             </p>
           </div>
         </div>
