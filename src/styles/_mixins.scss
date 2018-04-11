@@ -20,17 +20,18 @@
   height: $lines * 1.5rem;
 }
 
-@mixin cover-image($width: 100%, $height: auto, $vPos: center) {
+@mixin wrap-image($width: 100%, $height: auto, $vPos: center, $hPos: center, $fit: contain) {
   width: $width;
   overflow: hidden;
 
+  
   @if $vPos != center {
     height: $height;
 
     img {
       margin: 0rem;
-      object-fit: cover;
-      object-position: $vPos;
+      object-fit: $fit;
+      object-position: $vPos $hPos;
 
       height: $height;
       width: $width;
@@ -40,10 +41,14 @@
   @if $vPos == center {
     max-height: $height;
 
+    .gatsby-image-wrapper {
+      height: $height;
+    }
+
     img, div {
       margin: 0rem;
-      object-fit: cover;
-      object-position: $vPos;
+      object-fit: $fit;
+      object-position: $vPos $hPos;
 
       max-height: $height;
       width: $width;
@@ -53,7 +58,7 @@
   @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
     overflow: hidden;
     display: flex;
-    align-items: $vPos;
+    align-items: $vPos $hPos;
 
     @if $vPos == top {
       align-items: flex-start;
@@ -73,7 +78,7 @@
   @supports (-ms-ime-align: auto) {
     overflow: hidden;
     display: flex;
-    align-items: $vPos;
+    align-items: $vPos $hPos;
 
     @if $vPos == top {
       align-items: flex-start;
