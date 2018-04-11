@@ -39,8 +39,8 @@ const initalAnimationClasses = [
   'cFadeInDown',
   { title: '', bar: '' },
   { page: '' },
-  { background: '', rightSpinner: '', leftInnerSpinner: 'hide', leftSpinner: '', chapterTitle: '', fullLeftSpinner: '', mobileLeftSpinner: '', mobileRightSpinner: '' },
-  { rightSpinner: '' },
+  { background: '', rightSpinner: 'hide', leftInnerSpinner: 'hide', leftSpinner: 'hide', chapterTitle: '', fullLeftSpinner: '', mobileLeftSpinner: '', mobileRightSpinner: '', mobileBk: '' },
+  { rightSpinner: 'hide' },
   '',
   '',
   '',
@@ -48,9 +48,9 @@ const initalAnimationClasses = [
   /**
    * Page 3 className starting Index 9
    */
-  { left: '', right: ''},
-  { background: '', rightSpinner: '', leftInnerSpinner: 'hide', leftSpinner: '', chapterTitle: '', fullLeftSpinner: '', mobileLeftSpinner: '', mobileRightSpinner: '' },
-  { rightSpinner: '' },
+  { left: '', right: 'hide', pageBackground: 'hide'},
+  { background: '', rightSpinner: 'hide', leftInnerSpinner: 'hide', leftSpinner: 'hide', chapterTitle: '', fullLeftSpinner: '', mobileLeftSpinner: '', mobileRightSpinner: '', mobileBk: '' },
+  { rightSpinner: 'hide' },
   '',
   '',
   '',
@@ -58,9 +58,9 @@ const initalAnimationClasses = [
   /**
    * Page 4 className starting Index 16
    */
-  { left: '', right: ''},
-  { background: '', rightSpinner: '', leftInnerSpinner: 'hide', leftSpinner: '', chapterTitle: '', fullLeftSpinner: '', mobileLeftSpinner: '', mobileRightSpinner: '' },
-  { rightSpinner: '' },
+  { left: '', right: 'hide', pageBackground: 'hide'},
+  { background: '', rightSpinner: 'hide', leftInnerSpinner: 'hide', leftSpinner: 'hide', chapterTitle: '', fullLeftSpinner: '', mobileLeftSpinner: '', mobileRightSpinner: '', mobileBk: '' },
+  { rightSpinner: 'hide' },
   '',
   '',
   '',
@@ -68,9 +68,9 @@ const initalAnimationClasses = [
   /**
    * Page 5 className starting with Index 23
    */
-  { left: '', right: '' },
-  { background: '', rightSpinner: '', leftInnerSpinner: 'hide', leftSpinner: '', chapterTitle: '', fullLeftSpinner: '', mobileLeftSpinner: '', mobileRightSpinner: '' },
-  { rightSpinner: '' },
+  { left: '', right: 'hide', pageBackground: 'hide'},
+  { background: '', rightSpinner: 'hide', leftInnerSpinner: 'hide', leftSpinner: 'hide', chapterTitle: '', fullLeftSpinner: '', mobileLeftSpinner: '', mobileRightSpinner: '', mobileBk: '' },
+  { rightSpinner: 'hide' },
   '',
   '',
   '',
@@ -196,16 +196,17 @@ class LandingPage extends React.PureComponent{
         this.animationClasses[1].bar = direction ? 'cFadeIn animation-delay-1_1' : 'cFadeIn';
         this.animationClasses[2].page = direction ? '' : 'fullPageFadeOutDown';
 
-        this.animationClasses[3].rightSpinner =  direction ? '' : 'rotateTo0 show';
+        this.animationClasses[3].rightSpinner =  direction ? 'hide' : 'rotateTo0 show';
         this.animationClasses[3].leftSpinner = 'hide';
         this.animationClasses[3].leftInnerSpinner = '';
         this.animationClasses[3].fullLeftSpinner = 'hide';
         this.animationClasses[3].chapterTitle = direction ? '' : 'cFadeOutDown';
         this.animationClasses[3].background = direction? '' : 'hide';
+        this.animationClasses[3].background = direction? '' : 'hide';
 
         this.animationClasses[3].mobileLeftSpinner = '';
-        this.animationClasses[3].mobileRightSpinner = '';
-        this.forceUpdate();
+        this.animationClasses[3].mobileBk = '';
+
         break;
       case 2:
         this.animationClasses[1].title = 'cFadeOut';
@@ -213,15 +214,14 @@ class LandingPage extends React.PureComponent{
         this.animationClasses[2].page = 'fullPageFadeInUp';
 
         setTimeout(() => {
-          
-
-          this.animationClasses[3].rightSpinner = 'rotateTo180 show animation-delay-2';
-          this.animationClasses[3].leftSpinner = 'spinOuterIn animation-delay-3';
-          this.animationClasses[3].leftInnerSpinner = 'spinInnerIn animation-delay-3';
-          this.animationClasses[3].fullLeftSpinner = 'spinOuterIn show animation-delay-3';
-          this.animationClasses[3].background = 'cFadeIn animation-delay-3';
-          this.animationClasses[3].chapterTitle = 'cFadeInUp animation-delay-3';
-          this.animationClasses[4].rightSpinner = direction ? '' : 'spinRightOut';
+          this.animationClasses[3].rightSpinner = 'rotateTo180 show';
+          this.animationClasses[3].leftSpinner = 'spinOuterIn animation-delay-1';
+          this.animationClasses[3].leftInnerSpinner = 'spinInnerIn animation-delay-1';
+          this.animationClasses[3].fullLeftSpinner = 'spinOuterIn show animation-delay-1';
+          this.animationClasses[3].background = 'cFadeIn animation-delay-1';
+          this.animationClasses[3].chapterTitle = 'cFadeInUp animation-delay-1';
+          this.animationClasses[3].mobileBk = 'fill-bk';
+          this.animationClasses[4].rightSpinner = direction ? 'hide' : 'spinRightOut';
           this.animationClasses[5] = direction ? '' : 'cFadeOutDown';
           this.animationClasses[6] = '';
 
@@ -246,14 +246,16 @@ class LandingPage extends React.PureComponent{
         this.animationClasses[7] = direction ? '' : 'cFadeOutDown';
         this.animationClasses[9].left = '';
         this.animationClasses[9].right = '';
+        
         break;
       case 5:
         this.animationClasses[6] = 'cFadeOutUp';
         this.animationClasses[7] = direction ? 'cFadeInUp animation-delay-1_1' :  'cFadeIn animation-delay-3';
         this.animationClasses[9].left = direction ? '' : 'rotateTo0 animated animation-delay-3';
         this.animationClasses[9].right = direction ? '' : 'rotateTo0 animated animation-delay-1';
+        this.animationClasses[9].pageBackground = '';
 
-        this.animationClasses[10].rightSpinner =  direction ? '' : 'rotateTo0 show';
+        this.animationClasses[10].rightSpinner =  direction ? 'hide' : 'rotateTo0 show';
         this.animationClasses[10].leftSpinner = 'hide';
         this.animationClasses[10].leftInnerSpinner = '';
         this.animationClasses[10].fullLeftSpinner = 'hide';
@@ -262,6 +264,8 @@ class LandingPage extends React.PureComponent{
 
         this.animationClasses[10].mobileLeftSpinner = '';
         this.animationClasses[10].mobileRightSpinner = '';
+        this.animationClasses[10].mobileBk = '';
+        this.animationClasses[2].page = 'fullPageFadeInUp';
         this.setState({ scrollHandleClass: 'light scrollCTRIn'});
         break;
       /**
@@ -272,14 +276,18 @@ class LandingPage extends React.PureComponent{
         this.animationClasses[7] = 'cFadeOutUp';
         this.animationClasses[9].left = 'rotateTo180 animation-delay-1';
         this.animationClasses[9].right = 'rotateTo180 animation-delay-2';
+
         setTimeout(() => {
-          this.animationClasses[10].background = 'cFadeIn animation-delay-2';
-          this.animationClasses[10].fullLeftSpinner = 'spinOuterIn show animation-delay-2';
-          this.animationClasses[10].rightSpinner = 'rotateTo180 show animation-delay-1';
-          this.animationClasses[10].leftSpinner = 'spinOuterIn animation-delay-2';
-          this.animationClasses[10].leftInnerSpinner = 'spinInnerIn animation-delay-2';
-          this.animationClasses[10].chapterTitle = 'cFadeInUp animation-delay-3';
-          this.animationClasses[11].rightSpinner = direction ? '' : 'spinRightOut';
+          this.animationClasses[2].page = 'hide';
+          this.animationClasses[9].pageBackground = 'fill-bk';
+          this.animationClasses[10].background = 'cFadeIn animation-delay-1';
+          this.animationClasses[10].fullLeftSpinner = 'spinOuterIn show animation-delay-1';
+          this.animationClasses[10].rightSpinner = 'rotateTo180 show';
+          this.animationClasses[10].leftSpinner = 'spinOuterIn animation-delay-1';
+          this.animationClasses[10].leftInnerSpinner = 'spinInnerIn animation-delay-1';
+          this.animationClasses[10].chapterTitle = 'cFadeInUp animation-delay-2';
+          this.animationClasses[10].mobileBk = 'fill-bk';
+          this.animationClasses[11].rightSpinner = direction ? 'hide' : 'spinRightOut';
           this.animationClasses[12] = direction ? '' : 'cFadeOutDown';
           this.animationClasses[13] = '';
 
@@ -309,15 +317,18 @@ class LandingPage extends React.PureComponent{
         this.animationClasses[16].left = direction ? '' : 'rotateTo0 animated animation-delay-3';
         this.animationClasses[16].right = direction ? '' : 'rotateTo0 animated animation-delay-1';
 
-        this.animationClasses[17].rightSpinner =  direction ? '' : 'rotateTo0 show';
+        this.animationClasses[17].rightSpinner =  direction ? 'hide' : 'rotateTo0 show';
         this.animationClasses[17].leftSpinner = 'hide';
         this.animationClasses[17].leftInnerSpinner = '';
         this.animationClasses[17].fullLeftSpinner = 'hide';
         this.animationClasses[17].chapterTitle = direction ? '' : 'cFadeOutDown';
         this.animationClasses[17].background = direction? '' : 'hide';
+        this.animationClasses[9].pageBackground = '';
+        this.animationClasses[16].pageBackground = '';
 
         this.animationClasses[17].mobileLeftSpinner = '';
         this.animationClasses[17].mobileRightSpinner = '';
+        this.animationClasses[17].mobileBk = '';
 
         this.setState({ scrollHandleClass: 'light scrollCTRIn'});
         break;
@@ -330,13 +341,17 @@ class LandingPage extends React.PureComponent{
         this.animationClasses[16].left = 'rotateTo180 animation-delay-1';
         this.animationClasses[16].right = 'rotateTo180 animation-delay-2';
         setTimeout(() => {
-          this.animationClasses[17].background = 'cFadeIn animation-delay-2';
-          this.animationClasses[17].fullLeftSpinner = 'spinOuterIn show animation-delay-2';
-          this.animationClasses[17].rightSpinner = 'rotateTo180 show animation-delay-1';
-          this.animationClasses[17].leftSpinner = 'spinOuterIn animation-delay-2';
-          this.animationClasses[17].leftInnerSpinner = 'spinInnerIn animation-delay-2';
-          this.animationClasses[17].chapterTitle = 'cFadeInUp animation-delay-3';
-          this.animationClasses[18].rightSpinner = direction ? '' : 'spinRightOut';
+          this.animationClasses[9].pageBackground = 'hide';
+          this.animationClasses[16].pageBackground = 'fill-bk';
+          
+          this.animationClasses[17].background = 'cFadeIn animation-delay-1';
+          this.animationClasses[17].fullLeftSpinner = 'spinOuterIn show animation-delay-1';
+          this.animationClasses[17].rightSpinner = 'rotateTo180 show';
+          this.animationClasses[17].leftSpinner = 'spinOuterIn animation-delay-1';
+          this.animationClasses[17].leftInnerSpinner = 'spinInnerIn animation-delay-1';
+          this.animationClasses[17].chapterTitle = 'cFadeInUp animation-delay-2';
+          this.animationClasses[17].mobileBk = 'fill-bk';
+          this.animationClasses[18].rightSpinner = direction ? 'hide' : 'spinRightOut';
           this.animationClasses[19] = direction ? '' : 'cFadeOutDown';
           this.animationClasses[20] = '';
 
@@ -368,12 +383,15 @@ class LandingPage extends React.PureComponent{
         this.animationClasses[23].left = direction ? '' : 'rotateTo0 animated animation-delay-3';
         this.animationClasses[23].right = direction ? '' : 'rotateTo0 animated animation-delay-1';
 
-        this.animationClasses[24].rightSpinner =  direction ? '' : 'rotateTo0 show';
+        this.animationClasses[24].rightSpinner =  direction ? 'hide' : 'rotateTo0 show';
         this.animationClasses[24].leftSpinner = 'hide';
         this.animationClasses[24].leftInnerSpinner = '';
         this.animationClasses[24].fullLeftSpinner = 'hide';
+        this.animationClasses[24].mobileBk = '';
         this.animationClasses[24].chapterTitle = direction ? '' : 'cFadeOutDown';
         this.animationClasses[24].background = direction? '' : 'hide';
+        this.animationClasses[16].pageBackground = '';
+        this.animationClasses[23].pageBackground = '';
 
         this.animationClasses[24].mobileLeftSpinner = '';
         this.animationClasses[24].mobileRightSpinner = '';
@@ -389,13 +407,16 @@ class LandingPage extends React.PureComponent{
         this.animationClasses[23].left = 'rotateTo180 animation-delay-1';
         this.animationClasses[23].right = 'rotateTo180 animation-delay-2';     
         setTimeout(() => {
-          this.animationClasses[24].background = 'cFadeIn animation-delay-2';
-          this.animationClasses[24].fullLeftSpinner = 'spinOuterIn show animation-delay-2';
-          this.animationClasses[24].rightSpinner = 'rotateTo180 show animation-delay-1';
-          this.animationClasses[24].leftSpinner = 'spinOuterIn animation-delay-2';
-          this.animationClasses[24].leftInnerSpinner = 'spinInnerIn animation-delay-2';
+          this.animationClasses[16].pageBackground = 'hide';
+          this.animationClasses[23].pageBackground = 'fill-bk';
+          this.animationClasses[24].background = 'cFadeIn animation-delay-1';
+          this.animationClasses[24].fullLeftSpinner = 'spinOuterIn show animation-delay-1';
+          this.animationClasses[24].rightSpinner = 'rotateTo180 show';
+          this.animationClasses[24].leftSpinner = 'spinOuterIn animation-delay-1';
+          this.animationClasses[24].leftInnerSpinner = 'spinInnerIn animation-delay-1';
           this.animationClasses[24].chapterTitle = 'cFadeInUp animation-delay-3';
-          this.animationClasses[25].rightSpinner = direction ? '' : 'spinRightOut';
+          this.animationClasses[24].mobileBk = 'fill-bk';
+          this.animationClasses[25].rightSpinner = direction ? 'hide' : 'spinRightOut';
           this.animationClasses[26] = direction ? '' : 'cFadeOutDown';
           this.animationClasses[27] = '';
 
@@ -511,7 +532,7 @@ class LandingPage extends React.PureComponent{
                 </div>
               </div>
             </div>
-            <div className="full-right">
+            <div className={`full-right ${this.animationClasses[3].mobileBk}`}>
               <div className={`chapter-text-view ${this.animationClasses[3].chapterTitle}`}>
                 <h3>Chapter one:</h3>
                 <h1>Facts not<br/>myths</h1>
@@ -541,7 +562,7 @@ class LandingPage extends React.PureComponent{
             </div>
           </div>
         </div>
-        <div id="page_3">
+        <div id="page_3" className={`${this.animationClasses[9].pageBackground}`}>
           <div className="left">
             <div className={`spinner ${this.animationClasses[9].left}`}></div>
           </div>
@@ -569,7 +590,7 @@ class LandingPage extends React.PureComponent{
                 </div>
               </div>
             </div>
-            <div className="full-right">
+            <div className={`full-right ${this.animationClasses[10].mobileBk}`}>
               <div className={`chapter-text-view ${this.animationClasses[10].chapterTitle}`}>
                 <h3>Chapter two:</h3>
                 <h1>Build a<br/>growth plan</h1>
@@ -601,7 +622,7 @@ class LandingPage extends React.PureComponent{
             </div>
           </div>
         </div>
-        <div id="page_4">
+        <div id="page_4" className={`${this.animationClasses[16].pageBackground}`}>
           <div className="left">
             <div className={`spinner ${this.animationClasses[16].left}`}></div>
           </div>
@@ -629,7 +650,7 @@ class LandingPage extends React.PureComponent{
                 </div>
               </div>
             </div>
-            <div className="full-right">
+            <div className={`full-right ${this.animationClasses[17].mobileBk}`}>
               <div className={`chapter-text-view ${this.animationClasses[17].chapterTitle}`}>
                 <h3>Chapter three:</h3>
                 <h1>grow more <br/>than your<br/>doors</h1>
@@ -659,7 +680,7 @@ class LandingPage extends React.PureComponent{
             </div>
           </div>
         </div>
-        <div id="page_5">
+        <div id="page_5" className={`${this.animationClasses[23].pageBackground}`}>
           <div className="left">
             <div className={`spinner ${this.animationClasses[23].left}`}></div>
           </div>
@@ -687,7 +708,7 @@ class LandingPage extends React.PureComponent{
                 </div>
               </div>
             </div>
-            <div className="full-right">
+            <div className={`full-right ${this.animationClasses[24].mobileBk}`}>
               <div className={`chapter-text-view ${this.animationClasses[24].chapterTitle}`}>
                 <h3>Chapter four:</h3>
                 <h1>find<br />strength<br />in our<br />community</h1>
@@ -767,7 +788,7 @@ class LandingPage extends React.PureComponent{
             </div>
           </div>
         </div>
-        {
+        {/* {
           this.state.contactForm && <div id="page_6">
             <div className="overlay-image" />
             <div className="join-form">
@@ -813,7 +834,7 @@ class LandingPage extends React.PureComponent{
             </div>
           
           </div>
-        }
+        } */}
         <div className="scroll-bar">
           <div className={`scroll-control ${this.state.scrollHandleClass}`} onClick={this.nextPage}>
             <i className="fa fa-angle-down" />
