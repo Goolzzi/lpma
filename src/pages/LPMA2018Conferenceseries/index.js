@@ -9,7 +9,31 @@ import "./styles.scss";
 class BuildForm extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      FullName: "",
+      WorkNumber: "",
+      Email: "",
+      AdditionalComments: "",
+      interestedEvents: {},
+    };
   }
+
+  handleSubmit = () => {
+    //TODO: implement
+    // eslint-disable-next-line no-undef
+    if (typeof analytics !== "undefined") {
+      analytics.identify(this.state.Email, {
+        form: "LPMA2018ConferenceForm",
+        ...this.state,
+      });
+    }
+  };
+
+  handleChange = ({target}) => {
+    //TODO: implement
+    const value = target.type === "checkbox" ? target.checked : target.value;
+    this.setState({[target.name]: value});
+  };
 
   componentDidMount() {
     // analytics init snippet injected via Netlify Snippet Injection
@@ -23,6 +47,7 @@ class BuildForm extends React.Component {
   render() {
     return (
       <form
+        onSubmit={this.handleSubmit}
         name="LPMA2018ConferenceSeriesBuildForm"
         id="buildLPMAEventPackageForm"
         data-netlify="true"
@@ -43,6 +68,8 @@ class BuildForm extends React.Component {
               type="text"
               placeholder="Full Name"
               name="FullName"
+              onChange={this.handleChange}
+              value={this.state.FullName}
               required
             />
           </div>
@@ -58,6 +85,8 @@ class BuildForm extends React.Component {
               type="text"
               placeholder="0412 345 678"
               name="WorkNumber"
+              onChange={this.handleChange}
+              value={this.state.WorkNumber}
               required
             />
           </div>
@@ -71,6 +100,8 @@ class BuildForm extends React.Component {
               type="email"
               placeholder="Work@emailaddress.com"
               name="Email"
+              onChange={this.handleChange}
+              value={this.state.Email}
               required
             />
           </div>
@@ -101,6 +132,8 @@ class BuildForm extends React.Component {
               name="AdditionalComments"
               className="textarea"
               placeholder="Let's talk about LPMA events"
+              onChange={this.handleChange}
+              value={this.state.AdditionalComments}
             />
           </div>
         </div>
