@@ -1,8 +1,44 @@
 .footer-wrapper {
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    height: 30px;
-    background: #fff;
+  position: absolute;
+  left: 0;
+  bottom: 5vh;
+  right: 0;
+  width: 880px;
+  height: 30px;
+  display: flex;
+  justify-content: space-around;
+  margin: 0 auto;
+  opacity: 0;
+  span {
+    color: $footer-text;
+    font-size: 0.8em;
+    &.email-label {
+      font-weight: bold;
+    }
+  }
+}
+.footer-enter {
+  opacity: 0.01;
+  transform: scale(0.9) translateY(100px);
+}
+.footer-enter-active {
+  opacity: 1;
+  transform: scale(1) translateY(0);
+  transition: all 1s ease-in;
+}
+.footer-enter-done {
+  opacity: 1;
+}
+.footer-exit {
+  opacity: 1;
+  transform: scale(1) translateY(0);
+}
+.footer-exit-active {
+  opacity: 0.01;
+  transform: scale(0.9) translateY(100px);
+  transition: all 1s ease-out;
+}
+.footer-exit-done {
+  opacity: 0.01;
+  transform: scale(0.9) translateY(100px);
 }

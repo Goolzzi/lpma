@@ -133,6 +133,7 @@ class LandingPage extends React.Component {
       contactForm: false,
       showPage: props.showPage,
       scrollHandleClass: "",
+      footerIn: false,
     };
     this.scrolling = false;
     this.innerScrolling = false;
@@ -161,6 +162,7 @@ class LandingPage extends React.Component {
           animationIndex: 0,
           contactForm: false,
           showPage: "",
+          footerIn: false,
         },
         () => {
           this.animationClasses = JSON.parse(
@@ -172,7 +174,7 @@ class LandingPage extends React.Component {
         },
       );
     } else if (nextProps.showPage === "Pricing") {
-      this.setState({animationIndex: 18}, () => {
+      this.setState({animationIndex: 18, footerIn: true}, () => {
         this.animationClasses[23].pageBackground = "";
         this.getAnimationClassName(this.state.animationIndex, true);
         this.props.onPageChange(this.state.animationIndex);
@@ -1184,7 +1186,8 @@ class LandingPage extends React.Component {
             </div>
           </div>
         </div>
-        {/* <Footer /> */}
+        <Footer footerIn={this.state.footerIn} />
+        
         {/* {
           this.state.contactForm && <div id="page_6">
             <div className="overlay-image" />
