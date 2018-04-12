@@ -1,6 +1,6 @@
 import React, {Component} from "react";
-import PropTypes from "prop-types";
 import classNames from "classnames";
+import IRISAuth from "../../Auth/IRISAuth";
 import store from "store";
 import PostSubmitMessage from "../PostSubmitMessage";
 import "./styles.scss";
@@ -9,6 +9,7 @@ class GetUpdatesForm extends Component {
   constructor(props) {
     super(props);
     this.segmentEvent = "Get updates";
+    //eslint-disable-next-line
     this.emailRegexp = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     this.state = {
       email: "",
@@ -24,8 +25,25 @@ class GetUpdatesForm extends Component {
     if (!isValid) {
       return;
     }
-    typeof analytics !== "undefined" &&
+    if (typeof analytics !== "undefined") {
       analytics.track(this.segmentEvent, {email});
+      if (this.auth.isAuthenticated()) {
+        const user = this.auth.getUserData();
+        analytics.identify(user.username, {
+          from: "Get Blog Update form",
+          email,
+          isAuthenticated: true,
+          ...user,
+        });
+      } else {
+        analytics.identify(email, {
+          from: "Get Blog Update form",
+          email,
+          isAuthenticated: false,
+        });
+      }
+    }
+
     this.setState({formClicked: true});
   };
 
@@ -52,50 +70,55 @@ class GetUpdatesForm extends Component {
 
     if (!emitted) {
       return (
-        <section className="section blog-subscribe">
-          <div className="container">
-            <div className="columns">
-              <div className="column wrapper is-8 is-offset-2">
-                <div className="cont">
-                  <h2 className="title is-2">
-                    Get the latest LPMA updates delivered straight to your
-                    inbox.
-                  </h2>
-                  <p>
-                    Each email will feature articles and advice on how to grow
-                    your business, improve your skills, tips &amp; tricks and
-                    much, much more.
-                  </p>
+        <IRISAuth
+          render={auth => {
+            this.auth = auth;
+            return (
+              <section className="section blog-subscribe">
+                <div className="container">
+                  <div className="columns">
+                    <div className="column wrapper is-8 is-offset-2">
+                      <div className="cont">
+                        <h2 className="title is-2">
+                          Get the latest LPMA updates delivered straight to your
+                          inbox.
+                        </h2>
+                        <p>
+                          Each email will feature articles and advice on how to
+                          grow your business, improve your skills, tips &amp;
+                          tricks and much, much more.
+                        </p>
 
-                  <input
-                    className="inp smaller bordered halfwidth"
-                    onChange={this.emailInputChangedHandler}
-                    value={email}
-                    type="email"
-                    placeholder="Enter your email address to subscribe"
-                  />
-                  <button
-                    className={classNames({
-                      "signup-btn-disabled": formClicked,
-                      btn: true,
-                      primary: true,
-                      smaller: true,
-                    })}
-                    onClick={this.submitSubscription}>
-                    Sign Up
-                  </button>
+                        <input
+                          className="inp smaller bordered halfwidth"
+                          onChange={this.emailInputChangedHandler}
+                          value={email}
+                          type="email"
+                          placeholder="Enter your email address to subscribe"
+                        />
+                        <button
+                          className={classNames({
+                            "signup-btn-disabled": formClicked,
+                            btn: true,
+                            primary: true,
+                            smaller: true,
+                          })}
+                          onClick={this.submitSubscription}>
+                          Sign Up
+                        </button>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-              </div>
-            </div>
-          </div>
-        </section>
+              </section>
+            );
+          }}
+        />
       );
     }
 
     return <PostSubmitMessage message="Sign-up went successful." />;
   }
 }
-
-GetUpdatesForm.propTypes = {};
 
 export default GetUpdatesForm;
