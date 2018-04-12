@@ -82,6 +82,11 @@
     font-size: 0.75rem;
   }
 
+  &.smallest {
+    height: 2rem;
+    font-size: 0.75rem;
+  }
+
   &.transparent {
     background-color: $transparent;
   }
