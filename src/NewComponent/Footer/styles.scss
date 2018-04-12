@@ -3,19 +3,41 @@
   left: 0;
   bottom: 5vh;
   right: 0;
-  width: 880px;
+  width: 75%;
   height: 30px;
+  line-height: 2em;
   display: flex;
   justify-content: space-around;
+  align-items: center;
   margin: 0 auto;
   opacity: 0;
-  span {
-    color: $footer-text;
-    font-size: 0.8em;
-    &.email-label {
-      font-weight: bold;
+  .mobile-column {
+    display: flex;
+    flex: 1;
+    justify-content: space-around;
+    span {
+      color: $footer-text;
+      font-size: 0.8em;
+    }
+    .email-us {
+      font-size: 1em;
+      .email-label {
+        font-weight: bold;
+        margin-right: 2em;
+      }
     }
   }
+  
+  
+  @media screen and (max-width: $mobile-width) {
+    flex-wrap: wrap;
+    .mobile-column {
+      display: flex;
+      flex-direction: column;
+      flex: none;
+    }
+  }
+  
 }
 .footer-enter {
   opacity: 0.01;
