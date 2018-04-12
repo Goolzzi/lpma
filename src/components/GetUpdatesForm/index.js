@@ -1,5 +1,4 @@
 import React, {Component} from "react";
-import PropTypes from "prop-types";
 import classNames from "classnames";
 import store from "store";
 import PostSubmitMessage from "../PostSubmitMessage";
@@ -9,6 +8,7 @@ class GetUpdatesForm extends Component {
   constructor(props) {
     super(props);
     this.segmentEvent = "Get updates";
+    //eslint-disable-next-line
     this.emailRegexp = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     this.state = {
       email: "",
@@ -24,8 +24,25 @@ class GetUpdatesForm extends Component {
     if (!isValid) {
       return;
     }
-    typeof analytics !== "undefined" &&
+    if (typeof analytics !== "undefined") {
       analytics.track(this.segmentEvent, {email});
+      if (this.auth.isAuthenticated()) {
+        const user = this.auth.getUserData();
+        analytics.identify(user.username, {
+          from: "Get Blog Update form",
+          email,
+          isAuthenticated: true,
+          ...user,
+        });
+      } else {
+        analytics.identify(email, {
+          from: "Get Blog Update form",
+          email,
+          isAuthenticated: false,
+        });
+      }
+    }
+
     this.setState({formClicked: true});
   };
 
@@ -95,7 +112,5 @@ class GetUpdatesForm extends Component {
     return <PostSubmitMessage message="Sign-up went successful." />;
   }
 }
-
-GetUpdatesForm.propTypes = {};
 
 export default GetUpdatesForm;
