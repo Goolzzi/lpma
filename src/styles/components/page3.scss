@@ -4,8 +4,13 @@
   width: 100%;
   height: 100%;
   background: transparent;
+  &.fill-bk {
+    background: $page3-primary;
+  }
   .left {
     position: absolute;
+    top: 0;
+    left: 0;
     overflow: hidden;
     width: 50%;
     height: 100%;
@@ -27,10 +32,11 @@
   }
   .right {
     position: absolute;
+    top: 0;
+    right: 0;
     overflow: hidden;
     width: 50%;
     height: 100%;
-    left: 50%;
     background-color: transparent;
     display: flex;
     align-items: center;
@@ -103,6 +109,11 @@
       }
     }
     .full-right {
+      @media screen and (max-width: $mobile-width) {
+        &.fill-bk {
+          background-color: $page3-primary;
+        }
+      }
       .overlay-spinner {
         position: absolute;
         width: 2000vw;

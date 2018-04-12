@@ -2,10 +2,20 @@ import React from "react";
 import PropTypes from "prop-types";
 import Link from "gatsby-link";
 import TopJumbotron from "../../components/TopJumbotron";
-import BottomJumbotron from "../../components/BottomJumbotron";
 import "./styles.scss";
 
-class Form extends React.Component {
+class JoinForm extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      FirstName: "",
+      LastName: "",
+      AgencyName: "",
+      Email: "",
+      ContactNumber: "",
+    };
+  }
+
   componentDidMount() {
     // analytics init snippet injected via Netlify Snippet Injection
     // eslint-disable-next-line no-undef
@@ -14,9 +24,25 @@ class Form extends React.Component {
       analytics.trackForm(document.getElementById("joinLPMAForm"), "Join");
   }
 
+  handleSubmit = () => {
+    // eslint-disable-next-line no-undef
+    if (typeof analytics !== "undefined") {
+      analytics.identify(this.state.Email, {form: "Join", ...this.state});
+      analytics.group(this.state.AgencyName, {
+        from: "Join",
+        ...this.state,
+      });
+    }
+  };
+
+  handleChange = ({target: {name, value}}) => {
+    this.setState({[name]: value});
+  };
+
   render() {
     return (
       <form
+        onSubmit={this.handleSubmit}
         name="joinForm"
         id="joinLPMAForm"
         data-netlify="true"
@@ -29,18 +55,24 @@ class Form extends React.Component {
           className="inp"
           name="FirstName"
           placeholder="First Name"
+          onChange={this.handleChange}
+          value={this.state.FirstName}
         />
         <input
           type="text"
           className="inp"
           name="LastName"
+          onChange={this.handleChange}
           placeholder="Last Name"
+          value={this.state.LastName}
         />
         <input
           type="text"
           className="inp"
           name="AgencyName"
           placeholder="Agency Name"
+          value={this.state.AgencyName}
+          onChange={this.handleChange}
         />
         <input
           required
@@ -48,12 +80,16 @@ class Form extends React.Component {
           className="inp"
           name="Email"
           placeholder="Email"
+          onChange={this.handleChange}
+          value={this.state.Email}
         />
         <input
           type="text"
           className="inp"
           name="ContactNumber"
           placeholder="Contact Number"
+          onChange={this.handleChange}
+          value={this.state.ContactNumber}
         />
         <button type="submit" className="btn primary halfwidth">
           Submit
@@ -80,7 +116,7 @@ class JoinPage extends React.PureComponent {
                 </p>
                 <div className="columns">
                   <div className="column is-7">
-                    <Form />
+                    <JoinForm />
                   </div>
                 </div>
               </div>

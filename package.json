@@ -32,9 +32,11 @@
     "react-fa": "^5.0.0",
     "react-modal": "^3.3.2",
     "react-share": "^2.0.0",
+    "react-transition-group": "^2.3.0",
     "react-youtube": "^7.5.0",
     "sort-by": "^1.2.0",
-    "store": "^2.0.12"
+    "store": "^2.0.12",
+    "uuid": "^3.2.1"
   },
   "engines": {
     "node": ">=8.9.3"
