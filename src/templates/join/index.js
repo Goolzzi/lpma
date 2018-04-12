@@ -27,7 +27,7 @@ class JoinForm extends React.Component {
   handleSubmit = () => {
     // eslint-disable-next-line no-undef
     if (typeof analytics !== "undefined") {
-      analytics.identify(this.state.Email, this.state);
+      analytics.identify(this.state.Email, {form: "Join", ...this.state});
     }
   };
 

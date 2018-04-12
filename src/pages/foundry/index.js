@@ -22,6 +22,7 @@ class MyFoundryPage extends React.Component {
     const {isAuthenticated, getUserData} = this.auth;
     if (isAuthenticated()) {
       const user = getUserData();
+      debugger //eslint-disable-line
       this.setState({username: user.username});
     }
   }
