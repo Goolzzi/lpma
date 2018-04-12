@@ -35,6 +35,9 @@
       display: flex;
       flex-direction: column;
       flex: none;
+      .email-label {
+        display: none;
+      }
     }
   }
   
