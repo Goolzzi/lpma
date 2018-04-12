@@ -27,5 +27,12 @@
         transition: none;
       }
     }
+    @media screen and (max-width: $mobile-width) {
+      .full-right {
+        &.fill-bk {
+          background-color: $page2-primary;
+        }
+      }
+    }
   }
 }

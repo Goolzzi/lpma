@@ -4,6 +4,9 @@
   width: 100%;
   height: 100%;
   background: transparent;
+  &.fill-bk {
+    background: $page5-primary;
+  }
   
   .left {
     position: absolute;
@@ -104,6 +107,11 @@
       }
     }
     .full-right {
+      @media screen and (max-width: $mobile-width) {
+        &.fill-bk {
+          background-color: $page5-primary;
+        }
+      }
       .overlay-spinner {
         position: absolute;
         width: 2000vw;
