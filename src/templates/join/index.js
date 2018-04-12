@@ -28,6 +28,10 @@ class JoinForm extends React.Component {
     // eslint-disable-next-line no-undef
     if (typeof analytics !== "undefined") {
       analytics.identify(this.state.Email, {form: "Join", ...this.state});
+      analytics.group(this.state.AgencyName, {
+        from: "Join",
+        ...this.state,
+      });
     }
   };
 

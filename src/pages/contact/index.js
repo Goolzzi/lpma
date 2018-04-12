@@ -45,6 +45,10 @@ class ContactPage extends React.Component {
         });
       }
     }
+    analytics.group(this.state.Company, {
+      from: "Contact",
+      ...this.state,
+    });
   };
 
   handleChange = ({target: {name, value}}) => {
