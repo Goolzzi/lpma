@@ -11,7 +11,7 @@ import "./styles.scss";
 class FeedbackForm extends React.Component {
   constructor(props) {
     super(props);
-    this.segemetEevent = "Feedback Form";
+    this.segmentEvent = "Feedback Form";
     this.state = {
       formClicked: false,
       emitted: false,
@@ -30,7 +30,7 @@ class FeedbackForm extends React.Component {
 
   componentDidMount() {
     this.props.trackOn(event => {
-      if (event === this.segemetEevent) {
+      if (event === this.segmentEvent) {
         this.setState({emitted: true});
         store.set(`${this.props.feedbackParams.slug}`, true);
       }
