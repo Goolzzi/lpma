@@ -223,7 +223,7 @@
         color: #fff;
       }
     }
-    @media screen and (max-height: $mobile-height) and (min-width: $landing-width) {
+    @media screen and (max-height: $mobile-height) and (min-width: $lg-width) {
       h1 {
         font-size: 1.6em;
       }

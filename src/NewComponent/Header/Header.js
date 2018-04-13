@@ -60,13 +60,12 @@ const Header = props => {
           </div>
           <div className={`navbar-btn-group ${btnClass}`}>
             <div className="navbar-item">
-              <Link
-                to="/join"
-                className="button menu-btn"
-                // onClick={() => props.selectPage("Join")}
-              >
-                JOIN LPMA
-              </Link>
+              {
+                //eslint-disable-next-line
+                <a className="button menu-btn" onClick={() => props.selectPage("Join")}>
+                  JOIN LPMA
+                </a>
+              }
             </div>
             {!auth.isAuthenticated() ? (
               <div className="navbar-item">

@@ -1,0 +1,111 @@
+.join-form {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  background-color: #464F53;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  .overlay-image {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-image: url(../../assets/images/NewDesign/bk-intro-1.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    width: 75vh;
+    height: 75vh;
+    mix-blend-mode: screen;
+    opacity: 0.4;
+    @media screen and (max-width: $mobile-width) {
+      width: 50vh;
+      height: 50vh;
+    }
+  }
+  h1 {
+    text-align: center;
+    font-size: 3.5em;
+    text-transform: uppercase;
+    color: #fff;
+    font-family: "DomaineSansMedium";
+    letter-spacing: -0.03em;
+    max-width: 75%;
+    span {
+      color: #78CC5A;
+    }
+    @media screen and (max-width: $mobile-width) {
+      max-width: 100%;
+      font-size: 2.5em;
+    }
+    @media screen and (max-height: $lg-width ) {
+      font-size: 3em;
+    }
+  }
+  .field {
+    width: 30%;
+    margin-bottom: 1em;
+    @media screen and (max-width: $mobile-width) {
+      width: 75%;
+    }
+    
+    .control {
+      .input {
+        height: 4em;
+        @media screen and (max-height: $lg-width ) {
+          height: 3em;
+        }
+      }
+      .select.is-small {
+        width: 100%;
+        select {
+          width: 100%;
+          height: 4em;
+          @media screen and (max-height: $lg-width ) {
+            height: 3em;
+          }
+        }
+        &::after {
+          top: 85%;
+          @media screen and (max-height: $lg-width ) {
+            top: 65%;
+          }
+        }
+      }
+      .button {
+        cursor: pointer;
+        width: 100%;
+        margin-top: 1.5em;
+        background: #78CC5A;
+        color: $white;
+        height: 3em;
+        border: none;
+      }
+    }
+  }
+}
+.form-enter {
+  transform: translateY(100vh);
+}
+.form-enter-active {
+  transform: translateY(0);
+  transition: all 0.5s ease-in;
+}
+.form-enter-done {
+  transform: translateY(0);
+}
+.form-exit {
+  transform: translateY(0);
+}
+.form-exit-active {
+  transform: translateY(100vh);
+  transition: all 0.5s ease-out;
+}
+.form-exit-done {
+  transform: translateY(100vh);
+}

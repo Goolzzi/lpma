@@ -1,6 +1,7 @@
 import React from "react";
 import Link from "gatsby-link";
 import PropTypes from "prop-types";
+import JoinUsForm from "../NewComponent/JoinUsForm";
 import Footer from "../NewComponent/Footer";
 
 import icTick from "../assets/images/NewDesign/ic-tick.png";
@@ -575,9 +576,7 @@ class LandingPage extends React.Component {
     }
   }
   joinUs = () => {
-    this.setState({contactForm: true, scrollHandleClass: "hide"});
-    this.props.onPageChange(this.state.animationIndex);
-    this.animationClasses[31].form = "cFadeIn";
+    this.setState({contactForm: true, scrollHandleClass: "hide", footerIn: true});
   };
   nextPage = () => {
     this.scrolling = true;
@@ -1175,66 +1174,15 @@ class LandingPage extends React.Component {
                     </div>
                   </div>
                 </div>
-                <Link
-                  className="submit-btn"
-                  to="/join"
-                  // onClick={() => this.joinUs()}
-                >
+                <a className="submit-btn" onClick={() => this.joinUs()}>
                   JOIN LPMA
-                </Link>
+                </a>
               </div>
             </div>
           </div>
         </div>
         <Footer footerIn={this.state.footerIn} />
-        
-        {/* {
-          this.state.contactForm && <div id="page_6">
-            <div className="overlay-image" />
-            <div className="join-form">
-              <h1>Join the property MANAGEMENT industry evolution. <span>Join LPMA</span>.</h1>
-              <div className="field">
-                <div className="control">
-                  <input className="input is-small" type="text" placeholder="Full name*" />
-                </div>
-              </div>
-              <div className="field">
-                <div className="control">
-                  <input className="input is-small" type="text" placeholder="Email Address*" />
-                </div>
-              </div>
-              <div className="field">
-                <div className="control">
-                  <input className="input is-small" type="text" placeholder="Your work phone*" />
-                </div>
-              </div>
-              <div className="field">
-                <div className="control">
-                  <input className="input is-small" type="text" placeholder="Your company*" />
-                </div>
-              </div>
-              <div className="field">
-                <div className="control">
-                  <div className="select is-small">
-                    <select>
-                      <option>Your region*</option>
-                      <option>Australia</option>
-                      <option>New Zealand</option>
-                      <option>United States</option>
-                      <option>Other</option>
-                    </select>
-                  </div>
-                </div>
-              </div>
-              <div className="field">
-                <div className="control">
-                  <a className="button">JOIN LPMA</a>
-                </div>
-              </div>
-            </div>
-          
-          </div>
-        } */}
+        <JoinUsForm formIn={this.state.contactForm} />
         <div className="scroll-bar">
           <div
             className={`scroll-control ${this.state.scrollHandleClass}`}
