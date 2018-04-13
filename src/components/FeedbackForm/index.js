@@ -4,6 +4,7 @@ import classNames from "classnames";
 import store from "store";
 import {EntypoThumbsDown, EntypoThumbsUp} from "react-entypo";
 import PostSubmitMessage from "../PostSubmitMessage";
+import withSegmentTracking from "../../utils/withSegmentTracking";
 import {v4} from "uuid";
 import "./styles.scss";
 
@@ -90,4 +91,4 @@ FeedbackForm.propTypes = {
   track: PropTypes.func.isRequired,
 };
 
-export default FeedbackForm;
+export default withSegmentTracking(FeedbackForm);
