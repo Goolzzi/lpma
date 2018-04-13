@@ -1,5 +1,6 @@
 import React from "react";
 import IRISAuth from "../Auth/IRISAuth";
+import noop from "lodash/noop";
 
 function getDisplayName(WrappedComponent) {
   return WrappedComponent.displayName || WrappedComponent.name || "Component";
@@ -9,11 +10,7 @@ function withSegmentTracking(WrappedComponent) {
   class WithSegment extends React.Component {
     trackForm = (formDomId, eventName) => {
       // analytics init snippet injected via Netlify Snippet Injection
-      typeof analytics !== "undefined" &&
-        analytics.trackForm(
-          document.getElementById(formDomId),//eslint-disable-line
-          eventName,
-        );
+      analytics.trackForm(document.getElementById(formDomId), eventName); //eslint-disable-line
     };
 
     trackGroup = (form, groupId, formData) => {
@@ -23,27 +20,46 @@ function withSegmentTracking(WrappedComponent) {
       });
     };
 
-    trackIdentify = (form, formData, ananimuysId) => {
-      if (typeof analytics !== "undefined") {
-        if (this.auth.isAuthenticated()) {
-          const user = this.auth.getUserData();
-          analytics.identify(user.username, {
-            form,
-            formData,
-            isAuthenticated: true,
-            ...user,
-          });
-        } else {
-          analytics.identify(ananimuysId, {
-            form,
-            formData,
-            isAuthenticated: false,
-          });
-        }
+    trackIdentify = (form, formData, anonymousId) => {
+      if (this.auth.isAuthenticated()) {
+        const user = this.auth.getUserData();
+        analytics.identify(user.username, {
+          form,
+          formData,
+          isAuthenticated: true,
+          ...user,
+        });
+      } else {
+        analytics.identify(anonymousId, {
+          form,
+          formData,
+          isAuthenticated: false,
+        });
       }
     };
 
+    track = (event, properties) => {
+      analytics.track(event, properties);
+    };
+
+    trackOn = callback => {
+      analytics.on("track", callback);
+    };
+
     render() {
+      if (typeof analytics === "undefined") {
+        return (
+          <WrappedComponent
+            {...this.props}
+            trackForm={noop}
+            trackIdentify={noop}
+            trackGroup={noop}
+            trackOn={noop}
+            track={noop}
+          />
+        );
+      }
+
       return (
         <IRISAuth
           render={auth => {
@@ -54,6 +70,8 @@ function withSegmentTracking(WrappedComponent) {
                 trackForm={this.trackForm}
                 trackIdentify={this.trackIdentify}
                 trackGroup={this.trackGroup}
+                trackOn={this.trackOn}
+                track={this.track}
               />
             );
           }}
