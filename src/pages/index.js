@@ -1,5 +1,4 @@
 import React from "react";
-import Link from "gatsby-link";
 import PropTypes from "prop-types";
 import JoinUsForm from "../NewComponent/JoinUsForm";
 import Footer from "../NewComponent/Footer";
@@ -118,9 +117,6 @@ const initalAnimationClasses = [
    */
   {
     page: "",
-  },
-  {
-    form: "",
   },
 ];
 
@@ -576,7 +572,11 @@ class LandingPage extends React.Component {
     }
   }
   joinUs = () => {
-    this.setState({contactForm: true, scrollHandleClass: "hide", footerIn: true});
+    this.setState({
+      contactForm: true,
+      scrollHandleClass: "hide",
+      footerIn: true,
+    });
   };
   nextPage = () => {
     this.scrolling = true;
@@ -1174,9 +1174,12 @@ class LandingPage extends React.Component {
                     </div>
                   </div>
                 </div>
-                <a className="submit-btn" onClick={() => this.joinUs()}>
-                  JOIN LPMA
-                </a>
+                {
+                  // eslint-disable-next-line
+                  <a className="submit-btn" onClick={() => this.joinUs()}>
+                    JOIN LPMA
+                  </a>
+                }
               </div>
             </div>
           </div>
