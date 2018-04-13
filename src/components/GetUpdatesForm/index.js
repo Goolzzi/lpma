@@ -9,14 +9,14 @@ import "./styles.scss";
 class GetUpdatesForm extends Component {
   constructor(props) {
     super(props);
-    this.segmentEvent = "Get updates";
+    this.trackingEventName = "Get blog updates";
     //eslint-disable-next-line
     this.emailRegexp = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     this.state = {
       email: "",
       formClicked: false,
       emitted: false,
-      userSumbmitted: store.get(this.segmentEvent),
+      userSumbmitted: store.get(this.trackingEventName),
     };
   }
 
@@ -27,7 +27,7 @@ class GetUpdatesForm extends Component {
       return;
     }
     this.props.trackIdentify("Get Blog Update form", email, email);
-    this.props.track(this.segmentEvent, {email});
+    this.props.track(this.trackingEventName, {email});
     this.setState({formClicked: true});
   };
 
@@ -37,20 +37,18 @@ class GetUpdatesForm extends Component {
 
   componentDidMount() {
     this.props.trackOn(event => {
-      if (event === this.segmentEvent) {
+      if (event === this.trackingEventName) {
         this.setState({emitted: true});
-        store.set(this.segmentEvent, true);
+        store.set(this.trackingEventName, true);
       }
     });
   }
 
   render() {
     const {email, formClicked, emitted, userSumbmitted} = this.state;
-
     if (userSumbmitted) {
       return null;
     }
-
     if (!emitted) {
       return (
         <section className="section blog-subscribe">
@@ -100,7 +98,6 @@ class GetUpdatesForm extends Component {
 GetUpdatesForm.propTypes = {
   trackIdentify: PropTypes.func.isRequired,
   trackForm: PropTypes.func.isRequired,
-  trackGroup: PropTypes.func.isRequired,
   trackOn: PropTypes.func.isRequired,
   track: PropTypes.func.isRequired,
 };
