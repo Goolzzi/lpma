@@ -1,21 +1,22 @@
 import React, {Component} from "react";
+import PropTypes from "prop-types";
 import classNames from "classnames";
-import IRISAuth from "../../Auth/IRISAuth";
 import store from "store";
 import PostSubmitMessage from "../PostSubmitMessage";
+import withSegmentTracking from "../../utils/withSegmentTracking";
 import "./styles.scss";
 
 class GetUpdatesForm extends Component {
   constructor(props) {
     super(props);
-    this.segmentEvent = "Get updates";
+    this.trackingEventName = "Get blog updates";
     //eslint-disable-next-line
     this.emailRegexp = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     this.state = {
       email: "",
       formClicked: false,
       emitted: false,
-      userSumbmitted: store.get(this.segmentEvent),
+      userSumbmitted: store.get(this.trackingEventName),
     };
   }
 
@@ -25,25 +26,8 @@ class GetUpdatesForm extends Component {
     if (!isValid) {
       return;
     }
-    if (typeof analytics !== "undefined") {
-      analytics.track(this.segmentEvent, {email});
-      if (this.auth.isAuthenticated()) {
-        const user = this.auth.getUserData();
-        analytics.identify(user.username, {
-          from: "Get Blog Update form",
-          email,
-          isAuthenticated: true,
-          ...user,
-        });
-      } else {
-        analytics.identify(email, {
-          from: "Get Blog Update form",
-          email,
-          isAuthenticated: false,
-        });
-      }
-    }
-
+    this.props.trackIdentify("Get Blog Update form", email, email);
+    this.props.track(this.trackingEventName, {email});
     this.setState({formClicked: true});
   };
 
@@ -52,68 +36,58 @@ class GetUpdatesForm extends Component {
   };
 
   componentDidMount() {
-    typeof analytics !== "undefined" &&
-      analytics.on("track", event => {
-        if (event === this.segmentEvent) {
-          this.setState({emitted: true});
-          store.set(this.segmentEvent, true);
-        }
-      });
+    this.props.trackOn(event => {
+      if (event === this.trackingEventName) {
+        this.setState({emitted: true});
+        store.set(this.trackingEventName, true);
+      }
+    });
   }
 
   render() {
     const {email, formClicked, emitted, userSumbmitted} = this.state;
-
     if (userSumbmitted) {
       return null;
     }
-
     if (!emitted) {
       return (
-        <IRISAuth
-          render={auth => {
-            this.auth = auth;
-            return (
-              <section className="section blog-subscribe">
-                <div className="container">
-                  <div className="columns">
-                    <div className="column wrapper is-8 is-offset-2">
-                      <div className="cont">
-                        <h2 className="title is-2">
-                          Get the latest LPMA updates delivered straight to your
-                          inbox.
-                        </h2>
-                        <p>
-                          Each email will feature articles and advice on how to
-                          grow your business, improve your skills, tips &amp;
-                          tricks and much, much more.
-                        </p>
+        <section className="section blog-subscribe">
+          <div className="container">
+            <div className="columns">
+              <div className="column wrapper is-8 is-offset-2">
+                <div className="cont">
+                  <h2 className="title is-2">
+                    Get the latest LPMA updates delivered straight to your
+                    inbox.
+                  </h2>
+                  <p>
+                    Each email will feature articles and advice on how to grow
+                    your business, improve your skills, tips &amp; tricks and
+                    much, much more.
+                  </p>
 
-                        <input
-                          className="inp smaller bordered halfwidth"
-                          onChange={this.emailInputChangedHandler}
-                          value={email}
-                          type="email"
-                          placeholder="Enter your email address to subscribe"
-                        />
-                        <button
-                          className={classNames({
-                            "signup-btn-disabled": formClicked,
-                            btn: true,
-                            primary: true,
-                            smaller: true,
-                          })}
-                          onClick={this.submitSubscription}>
-                          Sign Up
-                        </button>
-                      </div>
-                    </div>
-                  </div>
+                  <input
+                    className="inp smaller bordered halfwidth"
+                    onChange={this.emailInputChangedHandler}
+                    value={email}
+                    type="email"
+                    placeholder="Enter your email address to subscribe"
+                  />
+                  <button
+                    className={classNames({
+                      "signup-btn-disabled": formClicked,
+                      btn: true,
+                      primary: true,
+                      smaller: true,
+                    })}
+                    onClick={this.submitSubscription}>
+                    Sign Up
+                  </button>
                 </div>
-              </section>
-            );
-          }}
-        />
+              </div>
+            </div>
+          </div>
+        </section>
       );
     }
 
@@ -121,4 +95,11 @@ class GetUpdatesForm extends Component {
   }
 }
 
-export default GetUpdatesForm;
+GetUpdatesForm.propTypes = {
+  trackIdentify: PropTypes.func.isRequired,
+  trackForm: PropTypes.func.isRequired,
+  trackOn: PropTypes.func.isRequired,
+  track: PropTypes.func.isRequired,
+};
+
+export default withSegmentTracking(GetUpdatesForm);
