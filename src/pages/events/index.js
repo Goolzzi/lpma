@@ -12,6 +12,7 @@ const Event = ({
   description,
   additionalInfo,
   buttonLink,
+  secondButtonLink,
 }) => (
   <div className="columns is-gapless event-item">
     <div className="column is-7 event-name">
@@ -24,6 +25,7 @@ const Event = ({
       <h4>{date}</h4>
       <p>{location}</p>
     </div>
+
     <div className="column is-3 event-button">
       {buttonLink &&
         buttonLink.href && (
@@ -45,6 +47,16 @@ const Event = ({
           }}
         />
       )}
+      <div>
+        {secondButtonLink &&
+          secondButtonLink.href && (
+            <a href={secondButtonLink.href}>
+              <button className="btn primary outlined">
+                {secondButtonLink.name}
+              </button>
+            </a>
+          )}
+      </div>
     </div>
   </div>
 );
@@ -111,6 +123,11 @@ export const pageQuery = graphql`
             }
           }
           buttonLink {
+            href
+            link
+            name
+          }
+          secondButtonLink {
             href
             link
             name
