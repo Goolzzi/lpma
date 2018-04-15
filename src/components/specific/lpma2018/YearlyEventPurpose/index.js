@@ -17,7 +17,7 @@ const YearlyEventPurpose = ({
   node: {
     title,
     content: {childMarkdownRemark: {html: content}},
-    purchaseButton: {label, iconName},
+    purchaseButton: {label, iconName, href},
     image: {sizes},
   },
 }) => (
@@ -27,10 +27,12 @@ const YearlyEventPurpose = ({
         <div className="column is-6 left-side">
           <p className="header">{title}</p>
           <div className="text" dangerouslySetInnerHTML={{__html: content}} />
-          <button className="btn secondary with-radius-5 smaller-text">
-            {label} &nbsp;
-            <Icon name={iconName} />
-          </button>
+          <a href={href === null ? "#" : href}>
+            <button className="btn secondary with-radius-5 smaller-text">
+              {label} &nbsp;
+              <Icon name={iconName} />
+            </button>
+          </a>
         </div>
         <div className="column is-6 right-side">
           <Img className="left-side-image purpose-image" sizes={sizes} />
