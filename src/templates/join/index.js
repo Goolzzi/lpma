@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import Link from "gatsby-link";
+import withSegmentTracking from "../../utils/withSegmentTracking";
 import TopJumbotron from "../../components/TopJumbotron";
 import "./styles.scss";
 
@@ -17,22 +18,12 @@ class JoinForm extends React.Component {
   }
 
   componentDidMount() {
-    // analytics init snippet injected via Netlify Snippet Injection
-    // eslint-disable-next-line no-undef
-    typeof analytics !== "undefined" &&
-      // eslint-disable-next-line no-undef
-      analytics.trackForm(document.getElementById("joinLPMAForm"), "Join");
+    this.props.trackForm("joinLPMAForm", "Join");
   }
 
   handleSubmit = () => {
-    // eslint-disable-next-line no-undef
-    if (typeof analytics !== "undefined") {
-      analytics.identify(this.state.Email, {form: "Join", ...this.state});
-      analytics.group(this.state.AgencyName, {
-        from: "Join",
-        ...this.state,
-      });
-    }
+    this.props.trackIdentify("Join", this.state, this.state.Email);
+    this.props.trackGroup("Join", this.state.Company, this.state);
   };
 
   handleChange = ({target: {name, value}}) => {
@@ -99,6 +90,14 @@ class JoinForm extends React.Component {
   }
 }
 
+JoinForm.propTypes = {
+  trackIdentify: PropTypes.func.isRequired,
+  trackForm: PropTypes.func.isRequired,
+  trackGroup: PropTypes.func.isRequired,
+};
+
+const JoinFormWithSegmentTracking = withSegmentTracking(JoinForm);
+
 class JoinPage extends React.PureComponent {
   render() {
     const {data: {allContentfulJoinJumotron: {edges}}} = this.props;
@@ -116,7 +115,7 @@ class JoinPage extends React.PureComponent {
                 </p>
                 <div className="columns">
                   <div className="column is-7">
-                    <JoinForm />
+                    <JoinFormWithSegmentTracking />
                   </div>
                 </div>
               </div>

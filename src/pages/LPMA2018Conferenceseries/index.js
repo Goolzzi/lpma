@@ -2,7 +2,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import Img from "gatsby-image";
-import IRISAuth from "../../Auth/IRISAuth";
+import withSegmentTracking from "../../utils/withSegmentTracking";
 import {Icon} from "react-fa";
 import ConferencesJumbotron from "../../components/ConferencesJumbotron";
 import "./styles.scss";
@@ -20,6 +20,7 @@ class BuildForm extends React.Component {
 
     this.state = {
       FullName: "",
+      Company: "",
       WorkNumber: "",
       Email: "",
       AdditionalComments: "",
@@ -28,23 +29,12 @@ class BuildForm extends React.Component {
   }
 
   handleSubmit = () => {
-    if (typeof analytics !== "undefined") {
-      if (this.auth.isAuthenticated()) {
-        const user = this.auth.getUserData();
-        analytics.identify(user.username, {
-          from: "LPMA2018ConferenceForm",
-          formData: this.state,
-          isAuthenticated: true,
-          ...user,
-        });
-      } else {
-        analytics.identify(this.state.Email, {
-          from: "LPMA2018ConferenceForm",
-          formData: this.state,
-          isAuthenticated: false,
-        });
-      }
-    }
+    this.props.trackIdentify(
+      "LPMA2018Conference",
+      this.state,
+      this.state.Email,
+    );
+    this.props.trackGroup("LPMA2018Conference", this.state.Company, this.state);
   };
 
   handleChange = ({target}) => {
@@ -74,140 +64,143 @@ class BuildForm extends React.Component {
   };
 
   componentDidMount() {
-    // analytics init snippet injected via Netlify Snippet Injection
-    typeof analytics !== "undefined" &&
-      analytics.trackForm(
-        document.getElementById("buildLPMAEventPackageForm"), //eslint-disable-line
-        "LPMA2018ConferenceSeriesBuildForm",
-      );
+    this.props.trackForm("buildLPMAEventPackageForm", "LPMA2018Conference");
   }
 
   render() {
     return (
-      <IRISAuth
-        render={auth => {
-          this.auth = auth;
-          return (
-            <form
-              onSubmit={this.handleSubmit}
-              name="LPMA2018ConferenceSeriesBuildForm"
-              id="buildLPMAEventPackageForm"
-              data-netlify="true"
-              method="post"
-              data-netlify-honeypot="bot-field">
-              <input
-                type="hidden"
-                name="form-name"
-                value="LPMA2018ConferenceSeriesBuildForm"
-              />
+      <form
+        onSubmit={this.handleSubmit}
+        name="LPMA2018ConferenceSeriesBuildForm"
+        id="buildLPMAEventPackageForm"
+        data-netlify="true"
+        method="post"
+        data-netlify-honeypot="bot-field">
+        <input
+          type="hidden"
+          name="form-name"
+          value="LPMA2018ConferenceSeriesBuildForm"
+        />
 
-              <div className="field">
-                <label className="label has-text-white">
-                  Your Name (required)
-                </label>
-                <div className="control">
-                  <input
-                    id="fullName"
-                    className="input"
-                    type="text"
-                    placeholder="Full Name"
-                    name="FullName"
-                    onChange={this.handleChange}
-                    value={this.state.FullName}
-                    required
-                  />
+        <div className="field">
+          <label className="label has-text-white">Your Name (required)</label>
+          <div className="control">
+            <input
+              id="fullName"
+              className="input"
+              type="text"
+              placeholder="Full Name"
+              name="FullName"
+              onChange={this.handleChange}
+              value={this.state.FullName}
+              required
+            />
+          </div>
+        </div>
+
+        <div className="field">
+          <label className="label has-text-white">Company (required)</label>
+          <div className="control">
+            <input
+              id="Companynmane"
+              className="input"
+              type="text"
+              placeholder="Company Name"
+              name="Company"
+              onChange={this.handleChange}
+              value={this.state.Company}
+              required
+            />
+          </div>
+        </div>
+
+        <div className="field">
+          <label className="label has-text-white">
+            Your Work Number (required)
+          </label>
+          <div className="control">
+            <input
+              className="input"
+              type="text"
+              placeholder="0412 345 678"
+              name="WorkNumber"
+              onChange={this.handleChange}
+              value={this.state.WorkNumber}
+              required
+            />
+          </div>
+        </div>
+
+        <div className="field">
+          <label className="label has-text-white">Your Email (required)</label>
+          <div className="control">
+            <input
+              className="input"
+              type="email"
+              placeholder="Work@emailaddress.com"
+              name="Email"
+              onChange={this.handleChange}
+              value={this.state.Email}
+              required
+            />
+          </div>
+        </div>
+
+        <div className="field">
+          <label className="label has-text-white">
+            Which events are you interested in?
+          </label>
+          <div className="checkboxes">
+            {this.state.interestedEvents.map(({eventName, checked}) => {
+              return (
+                <div key={eventName}>
+                  <label className="checkbox">
+                    <input
+                      type="checkbox"
+                      name={eventName}
+                      checked={checked}
+                      onChange={this.handleChange}
+                    />
+                    {eventName}
+                  </label>
                 </div>
-              </div>
+              );
+            })}
+          </div>
+        </div>
 
-              <div className="field">
-                <label className="label has-text-white">
-                  Your Work Number (required)
-                </label>
-                <div className="control">
-                  <input
-                    className="input"
-                    type="text"
-                    placeholder="0412 345 678"
-                    name="WorkNumber"
-                    onChange={this.handleChange}
-                    value={this.state.WorkNumber}
-                    required
-                  />
-                </div>
-              </div>
+        <div className="field">
+          <label className="label has-text-white">Additional Comments</label>
+          <div className="control">
+            <textarea
+              name="AdditionalComments"
+              className="textarea"
+              placeholder="Let's talk about LPMA events"
+              onChange={this.handleChange}
+              value={this.state.AdditionalComments}
+            />
+          </div>
+        </div>
 
-              <div className="field">
-                <label className="label has-text-white">
-                  Your Email (required)
-                </label>
-                <div className="control">
-                  <input
-                    className="input"
-                    type="email"
-                    placeholder="Work@emailaddress.com"
-                    name="Email"
-                    onChange={this.handleChange}
-                    value={this.state.Email}
-                    required
-                  />
-                </div>
-              </div>
-
-              <div className="field">
-                <label className="label has-text-white">
-                  Which events are you interested in?
-                </label>
-                <div className="checkboxes">
-                  {this.state.interestedEvents.map(({eventName, checked}) => {
-                    return (
-                      <div key={eventName}>
-                        <label className="checkbox">
-                          <input
-                            type="checkbox"
-                            name={eventName}
-                            checked={checked}
-                            onChange={this.handleChange}
-                          />
-                          {eventName}
-                        </label>
-                      </div>
-                    );
-                  })}
-                </div>
-              </div>
-
-              <div className="field">
-                <label className="label has-text-white">
-                  Additional Comments
-                </label>
-                <div className="control">
-                  <textarea
-                    name="AdditionalComments"
-                    className="textarea"
-                    placeholder="Let's talk about LPMA events"
-                    onChange={this.handleChange}
-                    value={this.state.AdditionalComments}
-                  />
-                </div>
-              </div>
-
-              <div className="has-text-centered">
-                <button
-                  type="submit"
-                  className="btn primary with-radius-5 smallest smaller-text">
-                  Send
-                </button>
-              </div>
-            </form>
-          );
-        }}
-      />
+        <div className="has-text-centered">
+          <button
+            type="submit"
+            className="btn primary with-radius-5 smallest smaller-text">
+            Send
+          </button>
+        </div>
+      </form>
     );
   }
 }
 
+const BuildFormWithSegmentTracking = withSegmentTracking(BuildForm);
+
 BuildForm.propTypes = {
   series: PropTypes.array.isRequired,
+  trackIdentify: PropTypes.func.isRequired,
+  trackForm: PropTypes.func.isRequired,
+  trackGroup: PropTypes.func.isRequired,
 };
 
 const LPMA2018Conferenceseries = ({
@@ -313,7 +306,7 @@ const LPMA2018Conferenceseries = ({
 
           <div className="columns">
             <div className="column is-4 is-offset-4">
-              <BuildForm series={series} />
+              <BuildFormWithSegmentTracking series={series} />
             </div>
           </div>
         </div>

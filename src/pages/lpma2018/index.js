@@ -78,6 +78,7 @@ export const pageQuery = graphql`
       purchaseButton {
         label
         iconName
+        href
       }
       image {
         sizes(quality: 100, maxWidth: 800) {
