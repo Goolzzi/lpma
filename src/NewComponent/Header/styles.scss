@@ -3,7 +3,7 @@
   top: 0;
   left: 0;
   right: 0;
-  height: 50px;
+  height: 5em;
   background-color: transparent;
   display: flex;
   justify-content: space-between;
@@ -15,7 +15,7 @@
   }
 
   img {
-    max-height: 1.25em;
+    max-height: 2.25em;
     margin-bottom : 0;
   }
   .menu {
@@ -33,6 +33,7 @@
           color: white;
           font-family: "DomaineSansMedium";
           padding-bottom: 5px;
+          font-size: 1.5em;
           transition: all 1s;
           transition-delay: 1s;
           &:hover {
@@ -57,7 +58,7 @@
     display: flex;
     .navbar-item {
       color: white;
-      font-size: 0.6em;
+      font-size: 0.8em;
       transition: all 1s;
       display: flex;
       align-items: center;
@@ -77,7 +78,7 @@
         .menu-btn {
           background: $primary-color;
           color: #fff;
-          padding: 0.8rem 1.8rem;
+          padding: 1.5rem 3.5rem;
           border: none;
           @media screen and (max-width: $mobile-width){
             padding: 0.8rem 0.8rem;
@@ -86,12 +87,12 @@
       }
     }
     &.secondary {
-     .navbar-item {
-       .menu-btn {
+      .navbar-item {
+        .menu-btn {
           background: transparent;
           color: $white;
-       }
-       &:first-of-type {
+        }
+        &:first-of-type {
         padding-left: 0;
         padding-right: 0;
         .menu-btn {
@@ -104,7 +105,7 @@
           }
         }
       }
-     } 
+      } 
     }
   }
 }

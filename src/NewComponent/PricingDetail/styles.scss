@@ -14,8 +14,8 @@
     font-family: "DomaineSansMedium";
     text-align: center;
     text-transform: uppercase;
-    line-height: 0.5em;
-    font-size: 2em;
+    line-height: 1em;
+    font-size: 3em;
     letter-spacing: -0.05em;
     margin: 1em 0 0.56em 0;
   }
@@ -28,9 +28,6 @@
     align-items: center;
     justify-content: center;
     background: rgba(247, 247 ,247, 0.27);
-    @media screen and (max-width: $mobile-width) {
-      max-width: 90vw;
-    }
     
     .pricing-text {
       display: flex;
@@ -84,16 +81,21 @@
     }
     .submit-btn {
       margin: 2em 0;
-      padding: 0.5em 6em;
+      padding: 1em 6em;
       background: #78CC5A;
       color: #fff;
     }
   }
-  @media screen and (max-height: $mobile-height) and (min-width: $lg-width) {
+  @media screen and (max-width: $xl-width) {
+    .pricing-detail {
+      max-width: 60vw;
+    }
+  }
+  @media screen and (max-height: $lg-height) {
     h1 {
       font-size: 1.6em;
     }
-    .pricing-box {
+    .pricing-detail {
       .pricing-text {
         .price {
           font-size: 2.8em;
@@ -117,6 +119,11 @@
       .submit-btn {
         margin: 1em 0 2em 0;
       }
+    }
+  }
+  @media screen and (max-width: $mobile-width) {
+    .pricing-detail {
+      max-width: 90vw;
     }
   }
 }
