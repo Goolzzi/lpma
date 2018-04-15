@@ -1,32 +1,43 @@
 import React from "react";
 import PropTypes from "prop-types";
+import withSegmentTracking from "../../utils/withSegmentTracking";
 import {CountryDropdown} from "react-country-region-selector";
 import {CSSTransition} from "react-transition-group";
 const COUNTRY_WHITELIST = ["AU", "NZ", "US"];
 
-export default class JoinUsForm extends React.Component {
+class JoinUsForm extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      country: "",
+      FullName: "",
+      Email: "",
+      WorkPhone: "",
+      CompanyName: "",
+      CountryName: "",
     };
   }
   componentDidMount() {
-    // analytics init snippet injected via Netlify Snippet Injection
-    // eslint-disable-next-line no-undef
-    typeof analytics !== "undefined" &&
-      // eslint-disable-next-line no-undef
-      analytics.trackForm(document.getElementById("joinLPMAForm"), "Join");
+    this.props.trackForm("joinusForm", "JoinUs");
   }
+
+  handleSubmit = () => {
+    this.props.trackIdentify("JoinUs", this.state, this.state.Email);
+    this.props.trackGroup("JoinUs", this.state.Company, this.state);
+  };
+
+  handleChange = ({target: {name, value}}) => {
+    this.setState({[name]: value});
+  };
+
   render() {
-    const {country} = this.state;
     const {formIn} = this.props;
     return (
       <CSSTransition in={formIn} timeout={1000} classNames="form" unmountOnExit>
         <form
-          id="joinLPMAForm"
-          name="joinForm"
+          onSubmit={this.handleSubmit}
+          id="joinusForm"
+          name="joinusForm"
           data-netlify="true"
           method="post"
           data-netlify-honeypot="bot-field"
@@ -44,6 +55,8 @@ export default class JoinUsForm extends React.Component {
                 type="text"
                 name="FullName"
                 placeholder="Full name*"
+                value={this.state.FullName}
+                onChange={this.handleChange}
                 required
               />
             </div>
@@ -55,6 +68,8 @@ export default class JoinUsForm extends React.Component {
                 type="email"
                 name="Email"
                 placeholder="Email Address*"
+                onChange={this.handleChange}
+                value={this.state.Email}
                 required
               />
             </div>
@@ -65,7 +80,9 @@ export default class JoinUsForm extends React.Component {
                 className="input is-small"
                 type="text"
                 name="WorkPhone"
+                onChange={this.handleChange}
                 placeholder="Your work phone*"
+                value={this.state.WorkPhone}
                 required
               />
             </div>
@@ -76,7 +93,9 @@ export default class JoinUsForm extends React.Component {
                 className="input is-small"
                 type="text"
                 name="CompanyName"
+                onChange={this.handleChange}
                 placeholder="Your company*"
+                value={this.state.CompanyName}
                 required
               />
             </div>
@@ -85,10 +104,10 @@ export default class JoinUsForm extends React.Component {
             <div className="control">
               <div className="select is-small">
                 <CountryDropdown
-                  value={country}
+                  value={this.state.CountryName}
                   name="CountryName"
                   form="joinLPMAForm"
-                  onChange={val => this.setState({country: val})}
+                  onChange={val => this.setState({CountryName: val})}
                   whitelist={COUNTRY_WHITELIST}
                   customOptions={["Other"]}
                 />
@@ -109,7 +128,11 @@ export default class JoinUsForm extends React.Component {
 }
 JoinUsForm.propTypes = {
   formIn: PropTypes.bool,
+  trackIdentify: PropTypes.func.isRequired,
+  trackForm: PropTypes.func.isRequired,
+  trackGroup: PropTypes.func.isRequired,
 };
 JoinUsForm.defaultProps = {
   formIn: false,
 };
+export default withSegmentTracking(JoinUsForm);
