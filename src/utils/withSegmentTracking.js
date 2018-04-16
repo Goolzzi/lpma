@@ -9,7 +9,6 @@ function getDisplayName(WrappedComponent) {
 function withSegmentTracking(WrappedComponent) {
   class WithSegment extends React.Component {
     trackForm = (formDomId, eventName) => {
-      // analytics init snippet injected via Netlify Snippet Injection
       analytics.trackForm(document.getElementById(formDomId), eventName); //eslint-disable-line
     };
 

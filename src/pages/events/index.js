@@ -61,6 +61,16 @@ const Event = ({
   </div>
 );
 
+Event.propTypes = {
+  name: PropTypes.string.propTypes,
+  date: PropTypes.string.propTypes,
+  location: PropTypes.string.propTypes,
+  description: PropTypes.string.propTypes,
+  additionalInfo: PropTypes.string,
+  buttonLink: PropTypes.string,
+  secondButtonLink: PropTypes.string,
+};
+
 const Events = ({title, events}) => (
   <section className="section upcoming-events">
     <h3>{title}</h3>
@@ -108,9 +118,7 @@ export const pageQuery = graphql`
           name
           date
           orderId
-          location
           name
-          date
           location
           description {
             childMarkdownRemark {
