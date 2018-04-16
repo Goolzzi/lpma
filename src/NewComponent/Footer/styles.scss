@@ -31,6 +31,7 @@
   
   
   @media screen and (max-width: $mobile-width) {
+    bottom: 3em;
     flex-wrap: wrap;
     .mobile-column {
       display: flex;
