@@ -1,6 +1,6 @@
 const path = require("path");
 const constants = require("./constants");
-const {foundryCrumb} = constants;
+const {foundryCrumb, documentSuiteCrumb} = constants;
 
 module.exports = function(data, createPage) {
   const bcTemplate = path.resolve("src/templates/businessCapability/index.js");
@@ -11,13 +11,7 @@ module.exports = function(data, createPage) {
       context: {
         slug: node.slug,
         parentPath: `/foundry/`,
-        breadCrumbs: [
-          foundryCrumb,
-          {
-            path: node.slug,
-            title: node.name,
-          },
-        ],
+        breadCrumbs: [foundryCrumb, documentSuiteCrumb],
       },
     });
   });
