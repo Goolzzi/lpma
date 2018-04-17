@@ -139,9 +139,11 @@ class Header extends React.Component {
                   <li>
                     <Link to="/events">Events</Link>
                   </li>
-                  <li>
-                    <a onClick={auth.login}>Sign in</a> {/*eslint-disable-line*/}
-                  </li>
+                  {!auth.isAuthenticated() ? (
+                    <li>
+                      <a onClick={auth.login}>Sign in</a> {/*eslint-disable-line*/}
+                    </li>
+                  ) : null}
                 </ul>
               </div>
             </CSSTransition>
