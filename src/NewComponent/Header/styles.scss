@@ -88,14 +88,10 @@
           display: none;
         }
       }
-      &:nth-last-of-type {
-        display: none;
-
-      }
-      .collapse-btn {
+      &:last-of-type {
         display: none;
         @media screen and (max-width: $mobile-width){
-          display: inline;
+          display: flex;
         }
       }
     }
