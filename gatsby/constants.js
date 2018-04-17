@@ -5,7 +5,7 @@ module.exports = {
     path: "",
   },
   documentSuiteCrumb: {
-    title: "Document Suite",
+    title: "Business Resources",
     path: "/documents",
   },
 };
