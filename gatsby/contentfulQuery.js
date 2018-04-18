@@ -102,5 +102,12 @@ module.exports = `
       }
     }
   }
+  allContentfulBooksSeriesSection {
+    edges {
+      node {
+        slug
+      }
+    }
+  }
 }
 `;
