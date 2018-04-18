@@ -7,7 +7,7 @@ import "./styles.scss";
 
 // setting root app element for react-modal accessibility
 const ROOT_EL_ID = "#___gatsby";
-Modal.setAppElement(ROOT_EL_ID);
+typeof document !== "undefined" && Modal.setAppElement(ROOT_EL_ID);
 
 const propTypes = {
   book: PropTypes.object,
@@ -23,6 +23,7 @@ class BookDownload extends Component {
     super(props);
     this.state = {email: "", errorMessage: ""};
     this.trackingEventName = "Get book series.";
+    //eslint-disable-next-line
     this.emailRegexp = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     this.modalStyles = {
       content: {
