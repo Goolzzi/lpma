@@ -17,11 +17,7 @@ module.exports = function(data, createPage) {
               foundryCrumb,
               documentSuiteCrumb,
               {
-                title: country.name,
-                path: `${DOCUMENTS_PATH}/${country.slug}`,
-              },
-              {
-                title: region.name,
+                title: region.abbreviation,
                 path: `${DOCUMENTS_PATH}/${region.slug}`,
               },
             ],

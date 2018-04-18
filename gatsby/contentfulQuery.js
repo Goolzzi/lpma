@@ -67,6 +67,7 @@ module.exports = `
             id
             name
             slug
+            abbreviation
             downloads {
               ... on ContentfulDocumentList {
                 id
