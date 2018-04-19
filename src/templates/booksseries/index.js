@@ -60,6 +60,7 @@ class BooksSeries extends Component {
           resourcesZip={resourcesZip}
           isOpen={isModalOpen}
           onRequestClose={this.closeBookModal}
+          closeModal={this.closeBookModal}
         />
       </React.Fragment>
     );

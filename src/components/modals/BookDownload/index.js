@@ -16,6 +16,7 @@ const propTypes = {
   track: PropTypes.func.isRequired,
   trackIdentify: PropTypes.func.isRequired,
   resourcesZip: PropTypes.object.isRequired,
+  closeModal: PropTypes.func.isRequired,
 };
 
 class BookDownload extends Component {
@@ -44,6 +45,7 @@ class BookDownload extends Component {
     this.setState({email});
 
   submitButtonClickedHandler = event => {
+    const {track, trackIdentify, closeModal} = this.props;
     const {email} = this.state;
     const isValid = this.emailRegexp.test(String(email).toLowerCase());
     if (!isValid) {
@@ -52,12 +54,13 @@ class BookDownload extends Component {
       return;
     }
     this.setState({errorMessage: ""});
-    this.props.trackIdentify("Get Book Series Form.", email, email);
-    this.props.track(this.trackingEventName, {email});
+    trackIdentify("Get Book Series Form.", email, email);
+    track(this.trackingEventName, {email});
+    closeModal();
   };
 
   render() {
-    const {isOpen, onRequestClose, book, resourcesZip} = this.props;
+    const {isOpen, onRequestClose, book, resourcesZip, closeModal} = this.props;
     const {email, errorMessage} = this.state;
     const bookLink = book ? `https:${resourcesZip.file.url}` : "";
     return (
@@ -67,6 +70,9 @@ class BookDownload extends Component {
         contentLabel=""
         style={this.modalStyles}>
         <div className="book-modal has-text-centered">
+          <div className="cross" onClick={closeModal}>
+            +
+          </div>
           <h3 className="title">
             Enter your email address below to download the LPMA tools:
           </h3>
