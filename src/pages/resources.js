@@ -62,13 +62,17 @@ export const pageQuery = graphql`
         node {
           id
           title
-          downloadLink {
-            name
-            resourseHref
-          }
           orderLink {
             to
             name
+          }
+          downloadableResources {
+            id
+            file {
+              url
+              fileName
+              contentType
+            }
           }
           description {
             childMarkdownRemark {

@@ -13,6 +13,7 @@
     "bulma": "^0.6.1",
     "classnames": "^2.2.5",
     "crypto-js": "^3.1.9-1",
+    "downloadjs": "^1.4.7",
     "fs-extra": "^5.0.0",
     "gatsby": "^1.9.149",
     "gatsby-cli": "^1.1.28",
@@ -58,6 +59,7 @@
     "netlify-build": "node ./scripts/build_config.js live && rm -rf public; gatsby build && node ./scripts/cp_netlify_public.js",
     "netlify-build-stage": "node ./scripts/build_config.js stage && rm -rf public; gatsby build && node ./scripts/cp_netlify_public.js",
     "netlify-deploy-stage": "npm run netlify-build-stage && netlify deploy",
+    "netlify-deploy-prod": "npm run netlify-build && netlify deploy",
     "format": "prettier --config .prettierrc --write \"src/**/*.js\""
   },
   "devDependencies": {

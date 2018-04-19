@@ -10,6 +10,7 @@ const ResurceItem = props => {
     title,
     downloadLink,
     orderLink,
+    downloadableResources,
     description: {childMarkdownRemark},
     image,
   } = props;
@@ -28,17 +29,16 @@ const ResurceItem = props => {
           "button-wrapper": true,
           static: !image,
         })}>
-        {orderLink ? (
+        {orderLink && (
           <Link to={orderLink.to}>
             <button className="btn secondary halfwidth">
               {orderLink.name}
             </button>
           </Link>
-        ) : (
-          <a href={downloadLink.resourseHref} download>
-            <button className="btn secondary halfwidth">
-              {downloadLink.name}
-            </button>
+        )}
+        {downloadableResources && (
+          <a href={downloadableResources.file.url} download>
+            <button className="btn secondary halfwidth">Download</button>
           </a>
         )}
       </div>
