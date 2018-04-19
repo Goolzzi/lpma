@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import Modal from "react-modal";
 import classNames from "classnames";
 import withSegmentTracking from "../../../utils/withSegmentTracking";
+import withFormValidations from "../../../utils/withFormValidations";
 import "./styles.scss";
 
 // setting root app element for react-modal accessibility
@@ -17,6 +18,7 @@ const propTypes = {
   trackIdentify: PropTypes.func.isRequired,
   resourcesZip: PropTypes.object.isRequired,
   closeModal: PropTypes.func.isRequired,
+  isEmailValid: PropTypes.func.isRequired,
 };
 
 class BookDownload extends Component {
@@ -24,8 +26,6 @@ class BookDownload extends Component {
     super(props);
     this.state = {email: "", errorMessage: ""};
     this.trackingEventName = "Get book series.";
-    //eslint-disable-next-line
-    this.emailRegexp = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     this.modalStyles = {
       content: {
         top: "50%",
@@ -44,19 +44,26 @@ class BookDownload extends Component {
   emailInputChangedHandler = ({target: {value: email}}) =>
     this.setState({email});
 
-  submitButtonClickedHandler = event => {
+  submitSuccessHandler = () => {
     const {track, trackIdentify, closeModal} = this.props;
     const {email} = this.state;
-    const isValid = this.emailRegexp.test(String(email).toLowerCase());
-    if (!isValid) {
-      event.preventDefault();
-      this.setState({errorMessage: "Please provide a valid email address."});
-      return;
-    }
     this.setState({errorMessage: ""});
     trackIdentify("Get Book Series Form.", email, email);
     track(this.trackingEventName, {email});
     closeModal();
+  };
+
+  submitFailHandler = event => {
+    event.preventDefault();
+    this.setState({errorMessage: "Please provide a valid email address."});
+  };
+
+  submitButtonClickedHandler = event => {
+    const {isEmailValid} = this.props;
+    const {email} = this.state;
+    isEmailValid(email)
+      .then(this.submitSuccessHandler)
+      .catch(() => this.submitFailHandler(event));
   };
 
   render() {
@@ -96,4 +103,4 @@ class BookDownload extends Component {
 
 BookDownload.propTypes = propTypes;
 
-export default withSegmentTracking(BookDownload);
+export default withFormValidations(withSegmentTracking(BookDownload));

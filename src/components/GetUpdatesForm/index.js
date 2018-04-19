@@ -4,31 +4,48 @@ import classNames from "classnames";
 import store from "store";
 import PostSubmitMessage from "../PostSubmitMessage";
 import withSegmentTracking from "../../utils/withSegmentTracking";
+import withFormValidations from "../../utils/withFormValidations";
 import "./styles.scss";
+
+const propTypes = {
+  isEmailValid: PropTypes.func.isRequired,
+  trackIdentify: PropTypes.func.isRequired,
+  trackForm: PropTypes.func.isRequired,
+  trackOn: PropTypes.func.isRequired,
+  track: PropTypes.func.isRequired,
+};
 
 class GetUpdatesForm extends Component {
   constructor(props) {
     super(props);
     this.trackingEventName = "Get blog updates";
-    //eslint-disable-next-line
-    this.emailRegexp = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     this.state = {
       email: "",
+      errorMessage: "",
       formClicked: false,
       emitted: false,
       userSumbmitted: store.get(this.trackingEventName),
     };
   }
 
-  submitSubscription = () => {
+  submitSuccessHandler = () => {
+    const {trackIdentify, track} = this.props;
     const {email} = this.state;
-    const isValid = this.emailRegexp.test(String(email).toLowerCase());
-    if (!isValid) {
-      return;
-    }
-    this.props.trackIdentify("Get Blog Update form", email, email);
-    this.props.track(this.trackingEventName, {email});
-    this.setState({formClicked: true});
+    trackIdentify("Get Blog Update form", email, email);
+    track(this.trackingEventName, {email});
+    this.setState({formClicked: true, errorMessage: ""});
+  };
+
+  submitFailHandler = () => {
+    this.setState({errorMessage: "Please provide a valid email address."});
+  };
+
+  submitSubscription = () => {
+    const {isEmailValid} = this.props;
+    const {email} = this.state;
+    isEmailValid(email)
+      .then(this.submitSuccessHandler)
+      .catch(this.submitFailHandler);
   };
 
   emailInputChangedHandler = ({target}) => {
@@ -45,7 +62,13 @@ class GetUpdatesForm extends Component {
   }
 
   render() {
-    const {email, formClicked, emitted, userSumbmitted} = this.state;
+    const {
+      email,
+      errorMessage,
+      formClicked,
+      emitted,
+      userSumbmitted,
+    } = this.state;
     if (userSumbmitted) {
       return null;
     }
@@ -67,7 +90,13 @@ class GetUpdatesForm extends Component {
                   </p>
 
                   <input
-                    className="inp smaller bordered halfwidth"
+                    className={classNames({
+                      inp: true,
+                      smaller: true,
+                      bordered: true,
+                      halfwidth: true,
+                      warning: errorMessage.length !== 0,
+                    })}
                     onChange={this.emailInputChangedHandler}
                     value={email}
                     type="email"
@@ -95,11 +124,6 @@ class GetUpdatesForm extends Component {
   }
 }
 
-GetUpdatesForm.propTypes = {
-  trackIdentify: PropTypes.func.isRequired,
-  trackForm: PropTypes.func.isRequired,
-  trackOn: PropTypes.func.isRequired,
-  track: PropTypes.func.isRequired,
-};
+GetUpdatesForm.propTypes = propTypes;
 
-export default withSegmentTracking(GetUpdatesForm);
+export default withFormValidations(withSegmentTracking(GetUpdatesForm));

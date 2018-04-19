@@ -50,6 +50,7 @@ export const pageQuery = graphql`
     allContentfulBlogPost(sort: {fields: [date], order: ASC}) {
       edges {
         node {
+          id
           image {
             sizes(quality: 100, maxWidth: 600, toFormat: JPG) {
               ...GatsbyContentfulSizes
