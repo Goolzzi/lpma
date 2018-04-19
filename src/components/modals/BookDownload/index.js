@@ -2,6 +2,7 @@ import React, {Component} from "react";
 import PropTypes from "prop-types";
 import Modal from "react-modal";
 import classNames from "classnames";
+import download from "downloadjs";
 import withSegmentTracking from "../../../utils/withSegmentTracking";
 import withFormValidations from "../../../utils/withFormValidations";
 import "./styles.scss";
@@ -45,31 +46,31 @@ class BookDownload extends Component {
     this.setState({email});
 
   submitSuccessHandler = () => {
-    const {track, trackIdentify, closeModal} = this.props;
+    const {track, trackIdentify, closeModal, resourcesZip} = this.props;
     const {email} = this.state;
+    const bookLink = `https:${resourcesZip.file.url}`;
     this.setState({errorMessage: ""});
     trackIdentify("Get Book Series Form.", email, email);
     track(this.trackingEventName, {email});
+    download(bookLink);
     closeModal();
   };
 
-  submitFailHandler = event => {
-    event.preventDefault();
+  submitFailHandler = () => {
     this.setState({errorMessage: "Please provide a valid email address."});
   };
 
-  submitButtonClickedHandler = event => {
+  submitButtonClickedHandler = () => {
     const {isEmailValid} = this.props;
     const {email} = this.state;
     isEmailValid(email)
       .then(this.submitSuccessHandler)
-      .catch(() => this.submitFailHandler(event));
+      .catch(this.submitFailHandler);
   };
 
   render() {
-    const {isOpen, onRequestClose, book, resourcesZip, closeModal} = this.props;
+    const {isOpen, onRequestClose, closeModal} = this.props;
     const {email, errorMessage} = this.state;
-    const bookLink = book ? `https:${resourcesZip.file.url}` : "";
     return (
       <Modal
         isOpen={isOpen}
@@ -92,9 +93,9 @@ class BookDownload extends Component {
             onChange={this.emailInputChangedHandler}
             placeholder="Email address"
           />
-          <a download href={bookLink} onClick={this.submitButtonClickedHandler}>
+          <div className="download" onClick={this.submitButtonClickedHandler}>
             Get books
-          </a>
+          </div>
         </div>
       </Modal>
     );
