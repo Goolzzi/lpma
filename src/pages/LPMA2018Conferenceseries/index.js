@@ -336,6 +336,11 @@ export const pageQuery = graphql`
         ...GatsbyContentfulSizes
       }
     }
+    purchaseButton {
+      label
+      iconName
+      href
+    }
     content {
       childMarkdownRemark {
         html

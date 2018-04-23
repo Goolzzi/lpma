@@ -51,41 +51,43 @@ const propTypes = {
 const ConferencesJumbotron = ({
   node: {videoLink, heading, image: {sizes}, cover, content, purchaseButton},
   isVideo,
-}) => (
-  <section
-    className="section lpma2018-top-jumbotron"
-    style={getSectionStyles(cover)}>
-    <Video show={isVideo} videoId={videoLink} />
-    <div
-      className="video-cont-cover is-hidden-mobile"
-      onClick={event => event.stopPropagation()}
-    />
-    <div className="container">
-      <div className="columns">
-        <div className="column is-6 is-offset-3">
-          <div className="has-text-centered video-cont-data">
-            <h2>{heading}</h2>
-            <Img sizes={sizes} />
-            <strong
-              dangerouslySetInnerHTML={{
-                __html: content.childMarkdownRemark.html,
-              }}
-            />
+}) => {
+  return (
+    <section
+      className="section lpma2018-top-jumbotron"
+      style={getSectionStyles(cover)}>
+      <Video show={isVideo} videoId={videoLink} />
+      <div
+        className="video-cont-cover is-hidden-mobile"
+        onClick={event => event.stopPropagation()}
+      />
+      <div className="container">
+        <div className="columns">
+          <div className="column is-6 is-offset-3">
+            <div className="has-text-centered video-cont-data">
+              <h2>{heading}</h2>
+              <Img sizes={sizes} />
+              <strong
+                dangerouslySetInnerHTML={{
+                  __html: content.childMarkdownRemark.html,
+                }}
+              />
 
-            {purchaseButton ? (
-              <button className="btn secondary with-radius-5 smaller-text">
-                {purchaseButton.label} &nbsp;
-                <Icon name={purchaseButton.iconName} />
-              </button>
-            ) : (
-              <React.Fragment />
-            )}
+              {purchaseButton ? (
+                <a
+                  href={purchaseButton.href}
+                  className="btn secondary with-radius-5 smaller-text">
+                  {purchaseButton.label} &nbsp;
+                  <Icon name={purchaseButton.iconName} />
+                </a>
+              ) : null}
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  </section>
-);
+    </section>
+  );
+};
 
 ConferencesJumbotron.propTypes = propTypes;
 
