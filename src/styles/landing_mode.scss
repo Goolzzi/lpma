@@ -1,7 +1,6 @@
 @import "variables";
 @import "typography";
 @import "animations";
-@import "./components/page1.scss";
 @import "./components/page2.scss";
 @import "./components/page3.scss";
 @import "./components/page4.scss";
@@ -12,6 +11,13 @@
 }
 ul, li {
   margin: 0;
+}
+.landing-page {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
 }
 .animating-layer {
   width: 80vh;
@@ -96,40 +102,7 @@ ul, li {
   }
 }
 .full-right {
-  position: fixed;
-  width: 50vw;
-  height: 100vh;
-  top: 0;
-  right: 0;
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-  background-color: transparent;
-  transition: background-color 0.5s;
-  transition-delay: 3s;
 
-  .chapter-text-view {
-    position: fixed;
-    display: flex;
-    justify-content: center;
-    text-transform: uppercase;
-    flex-direction: column;
-    padding-left: 3.5rem;
-    opacity: 0;
-    h3 {
-      font-family: "DomaineSansMedium";
-      font-size: 1.2em;
-      color: $text-primary;
-      letter-spacing: -1px;
-      margin: 0;
-    }
-    h1 {
-      font-family: "DomaineSansMedium";
-      font-size: 3.6em;
-      color: $white;
-      letter-spacing: -0.02em;
-    }
-  }
   .overlay-spinner {
     position: absolute;
     left: 0;

@@ -1,8 +1,13 @@
 import React from "react";
 import PropTypes from "prop-types";
+import LandingSection from "../NewComponent/LandingSection";
+import ChapterSection from "../NewComponent/ChapterSection";
+import ArticleContent from "../NewComponent/ArticleConent";
 import JoinUsForm from "../NewComponent/JoinUsForm";
 import Footer from "../NewComponent/Footer";
 import PricingDetail from "../NewComponent/PricingDetail";
+
+import CHAPTER_DESKTOP_IMG1 from "../assets/images/NewDesign/bk-intro-2.png";
 import "animate.css/animate.min.css";
 
 /*eslint-env browser*/
@@ -143,7 +148,6 @@ class LandingPage extends React.Component {
     this.wrapper.addEventListener("wheel", this.wheelScroll);
     this.wrapper.addEventListener("touchstart", this.touchStart);
     this.wrapper.addEventListener("touchmove", this.touchMove);
-    this.setState({animationIndex: 0});
   }
 
   componentWillUnmount() {
@@ -236,7 +240,7 @@ class LandingPage extends React.Component {
         this.animationClasses[1].bar = direction ? "" : "cFadeOutDown";
         this.animationClasses[2].page = "";
 
-        this.setState({scrollHandleClass: "show"});
+        // this.setState({scrollHandleClass: "show"});
         break;
       case 1:
         this.animationClasses[0] = direction ? "cFadeOutUp animated" : "";
@@ -590,45 +594,20 @@ class LandingPage extends React.Component {
     }, 2000);
   };
   render() {
+    const {animationIndex} = this.state;
     return (
-      <div ref={c => (this.wrapper = c)}>
-        <div id="page_1">
-          <div className="overlay-image">
-            {/* <div className="video-bk">
-              <div className="wrapper">
-                <iframe
-                  src="https://player.vimeo.com/video/263280755?autoplay=1&loop=1&&title=0&byline=0&portrait=0"
-                  width="100%"
-                  height="100%"
-                  frameborder="0"
-                  webkitallowfullscreen
-                  mozallowfullscreen
-                  allowfullscreen></iframe>
-              </div>
-            </div> */}
-          </div>
-          <div className={`slide-1 ${this.animationClasses[0]}`}>
-            <h1 className="banner-title">
-              A MEMBERSHIP FOR THE <span>EVOLUTION</span> OF THE PROPERTY
-              MANAGEMENT INDUSTRY
-            </h1>
-            <h4 className="scroll-instruction">
-              Let’s evolve the industry together. <br />Scroll to find out how.
-            </h4>
-          </div>
-          <div className={`slide-2 ${this.animationClasses[1].title}`}>
-            <h1 className="banner-title">
-              FOUR STEPS<br />TO LPMA EVOLUTION
-            </h1>
-            <div className="reason-bar">
-              <div className="bar item-1" />
-              <div className="bar item-2" />
-              <div className="bar item-3" />
-              <div className="bar item-4" />
-            </div>
-          </div>
-        </div>
-        <div id="page_2" className={`${this.animationClasses[2].page}`}>
+      <div ref={c => (this.wrapper = c)} className="landing-page">
+        <LandingSection animationIndex={animationIndex} />
+        <ChapterSection
+          animationIndex={animationIndex}
+          desktopUrl={CHAPTER_DESKTOP_IMG1}
+          minIndex={2}
+          maxIndex={7}>
+          <ArticleContent start={animationIndex == 3} key={3} />
+          <ArticleContent start={animationIndex == 4} key={4} />
+          <ArticleContent start={animationIndex == 5} key={5} />
+        </ChapterSection>
+        {/* <div id="page_2" className={`${this.animationClasses[2].page}`}>
           <div className="slide-2">
             <div
               className={`background-image ${
@@ -740,8 +719,8 @@ class LandingPage extends React.Component {
               </div>
             </div>
           </div>
-        </div>
-        <div
+        </div> */}
+        {/* <div
           id="page_3"
           className={`${this.animationClasses[9].pageBackground}`}>
           <div className="left">
@@ -1106,7 +1085,7 @@ class LandingPage extends React.Component {
               </div>
             </div>
           </div>
-        </div>
+        </div> */}
         <PricingDetail
           startAni={this.state.animationIndex === 18}
           onSubmit={this.joinUs}

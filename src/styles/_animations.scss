@@ -156,61 +156,6 @@
   animation-fill-mode: forwards;
 }
 
-@keyframes spinOuterIn {
-  0% {transform: rotate(0deg);}
-  100% {transform: rotate(180deg);}
-}
-.spinOuterIn {
-  animation-delay: 0.5s;
-  animation-name: spinOuterIn;
-  animation-duration: 0.8s;
-  animation-fill-mode: forwards;
-  animation-timing-function: ease-in-out;
-}
-@keyframes spinOuterOut {
-  0% {transform: rotate(180deg);}
-  100% {transform: rotate(0deg);}
-}
-.spinOuterOut {
-  animation-delay: 0.5s;
-  animation-name: spinOuterOut;
-  animation-duration: 0.8s;
-  animation-fill-mode: forwards;
-  animation-timing-function: ease-in-out;
-}
-@keyframes spinInnerIn {
-  0% {transform: rotate(-165deg);}
-  20% {transform: rotate(-80deg);}
-  40% {transform: rotate(-80deg);}
-  60% {transform: rotate(-70deg);}
-  80% {transform: rotate(-135deg);}
-  100% {transform: rotate(-180deg);}
-}
-.spinInnerIn {
-  animation-delay: 0.5s;
-  animation-name: spinInnerIn;
-  animation-duration: 0.8s;
-  animation-timing-function: ease-out;
-  animation-fill-mode: forwards;
-}
-@keyframes spinInnerOut {
-  0% {transform: rotate(-165deg);}
-  20% {transform: rotate(-80deg);}
-  40% {transform: rotate(-80deg);}
-  60% {transform: rotate(-70deg);}
-  80% {transform: rotate(-135deg);}
-  100% {transform: rotate(-180deg);}
-}
-.spinInnerOut {
-  animation-delay: 0.5s;
-  animation-name: spinInnerOut;
-  animation-duration: 0.8s;
-  animation-timing-function: ease-out;
-  animation-fill-mode: forwards;
-}
-
-
-
 @keyframes spinRightIn {
   0% {transform: rotate(-180deg);}
   100% {transform: rotate(0deg);}
@@ -282,4 +227,89 @@
 }
 .hide {
   opacity: 0 !important;
+}
+
+.fade-up-enter {
+  opacity: 0;
+  transform: translateY(30px);
+}
+.fade-up-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition: all 1s;
+  transition-delay: 1s;
+}
+.fade-up-enter-done {
+  opacity: 1;
+  transform: translateY(0);
+}
+.fade-up-exit {
+  opacity: 1;
+  transform: translateY(0);
+}
+.fade-up-exit-active {
+  opacity: 0;
+  transform: translateY(-30px);
+  transition: all 1s;
+}
+.fade-up-exit-done {
+  opacity: 0;
+  transform: translateY(-30px);
+}
+
+.clockwise-left-enter {
+  transform: rotate(0);
+}
+.clockwise-left-enter-active {
+  transform: rotate(180deg);
+  transition: transform 0.5s linear;
+}
+.clockwise-left-enter-done {
+  transform: rotate(180deg);
+}
+.clockwise-left-exit {
+  transform: rotate(180deg);
+}
+.clockwise-left-exit-active {
+  transform: rotate(0);
+  transition: transform 0.5s linear;
+}
+.clockwise-left-exit-done {
+  transform: rotate(0);
+}
+
+.clockwise-right-enter {
+  transform: rotate(-180deg);
+}
+.clockwise-right-enter-active {
+  transform: rotate(0);
+  transition: transform 0.5s linear;
+}
+.clockwise-right-enter-done {
+  transform: rotate(0);
+}
+.clockwise-right-exit {
+  transform: rotate(0);
+}
+.clockwise-right-exit-active {
+  transform: rotate(-180deg);
+  transition: transform 0.5s linear;
+}
+.clockwise-right-exit-done {
+  transform: rotate(-180deg);
+}
+
+@keyframes spinInnerIn {
+  0% {transform: rotate(-165deg);}
+  20% {transform: rotate(-80deg);}
+  40% {transform: rotate(-80deg);}
+  60% {transform: rotate(-70deg);}
+  80% {transform: rotate(-135deg);}
+  100% {transform: rotate(-180deg);}
+}
+.spinInnerIn {
+  animation-name: spinInnerIn;
+  animation-duration: 0.8s;
+  animation-timing-function: ease-out;
+  animation-fill-mode: forwards;
 }

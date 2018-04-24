@@ -1,0 +1,48 @@
+.full-right {
+  position: fixed;
+  width: 50vw;
+  height: 100vh;
+  top: 0;
+  right: 0;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  background-color: transparent;
+  transform-origin: left center;
+  .full-right-spin {
+    position: absolute;
+    width: 300vh;
+    height: 300vh;
+    left: 0;
+    display: flex;
+    align-items: center;
+    background-color: white;
+    transform-origin: left center;
+  }
+}
+.chapter-wrapper {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background: #70BF54;
+}
+.chapter-enter {
+  transform: translateY(100vh)
+}
+.chapter-enter-active {
+  transform: translateY(0);
+  transition: transform 1s;
+}
+.chapter-enter-done {
+  transform: translateY(0);
+}
+.chapter-exit {
+  transform: translateY(0);
+}
+.chapter-exit-active {
+  transform: translateY(100vh);
+  transition: transform 1s;
+}
+.chapter-exit-done {
+  transform: translateY(100vh);
+}

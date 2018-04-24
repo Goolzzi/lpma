@@ -1,0 +1,32 @@
+.article-content {
+  position: absolute;
+  height: 100%;
+  width: 50vw;
+  padding: 0 5em;
+  .wrapper {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    h5 {
+      text-transform: uppercase;
+      font-family: "DomaineSansMedium";
+      color: rgba(59, 65, 69, 0.3);
+      font-size: 0.7em;
+    }
+    h1 {
+      font-size: 1.4em;
+      font-family: "DomaineSansMedium";
+      text-transform: uppercase;
+      letter-spacing: -0.6px;
+      span {
+        color: $text-secondary;
+      }
+    }
+    p {
+      font-family: "DomaineSansLight";
+      font-size: 0.8em;
+    }
+  }
+}

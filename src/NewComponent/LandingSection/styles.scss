@@ -1,4 +1,4 @@
-#page_1 {
+#landing-section {
   position: fixed;
   top: 0;
   right: 0;
@@ -15,25 +15,7 @@
     background-size: cover;
     width: 75vh;
     height: 75vh;
-    background-image: url(../assets/images/NewDesign/bk-intro-1.png);
-
-    // mix-blend-mode: screen;
-    .video-bk {
-      padding-bottom: 80%;
-      height: 0;
-      overflow: hidden;
-      position: relative;
-      .wrapper {
-        position: relative;
-        padding-bottom: 100%;
-        transform: translateY(-5%);
-        iframe {
-          position: absolute;
-          left: 0;
-          top: 0;
-        }
-      }
-    }
+    background-image: url(../../assets/images/NewDesign/bk-intro-1.png);
     @media screen and (max-width: $mobile-width) {
       width: 50vh;
       height: 50vh;
@@ -43,7 +25,6 @@
     position: fixed;
     width: 100%;
     height: 100%;
-    opacity: 0;
     padding-top: calc(50vh - (3em * 2));
     .banner-title {
       margin: 0 auto;
@@ -81,7 +62,6 @@
     position: fixed;
     width: 100%;
     height: 100%;
-    opacity: 0;
     top: calc(50vh - 3em);
     .banner-title {
       width: 100%;
@@ -123,4 +103,24 @@
       }
     }
   }
+}
+.full-page-enter {
+  transform: translateY(-100vh)
+}
+.full-page-enter-active {
+  transform: translateY(0);
+  transition: transform 1s;
+}
+.full-page-enter-done {
+  transform: translateY(0);
+}
+.full-page-exit {
+  transform: translateY(0);
+}
+.full-page-exit-active {
+  transform: translateY(-100vh);
+  transition: transform 1s;
+}
+.full-page-exit-done {
+  transform: translateY(-100vh);
 }
