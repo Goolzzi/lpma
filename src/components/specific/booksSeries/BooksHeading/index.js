@@ -26,7 +26,9 @@ class BooksHeading extends Component {
                 const isNotLast = index !== sections.length - 2;
                 return (
                   <React.Fragment key={section.id}>
-                    <Link to={`/${section.slug}`} className="has-text-white">
+                    <Link
+                      to={`/tools/${section.slug}`}
+                      className="has-text-white">
                       {section.title}
                     </Link>
                     {isNotLast ? <span> | </span> : null}
