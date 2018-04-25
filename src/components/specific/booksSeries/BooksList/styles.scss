@@ -19,27 +19,4 @@
     .title-cont {
       margin-bottom: 2rem;
     }
-  
-    .tool-item {
-      background-color: $white;
-      border-radius: 5px;
-      cursor: pointer;
-      display: block;
-      color: #4A4F53;
-      padding: 1rem;
-  
-      &:hover {
-        color: $primary-color;
-      }
-  
-      span {
-        svg {
-          @include wrap-image(100%, 100%)
-       }
-      }
-  
-      p {
-        text-align: center;
-      }
-    }
   }
