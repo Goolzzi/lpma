@@ -1,5 +1,6 @@
-.building-blocks, .building-blocks-login {
+.building-blocks {
     .title-cont {
+      margin-bottom: 2rem;
       h2 {
         line-height: 3rem;
         color: $primary-color;
@@ -12,11 +13,5 @@
         line-height: 3rem;
         vertical-align: middle;
       }
-    }
-  }
-  
-  .building-blocks {
-    .title-cont {
-      margin-bottom: 2rem;
     }
   }
