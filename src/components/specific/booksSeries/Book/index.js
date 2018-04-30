@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import BookItemWrapper from "../BookItemWrapper";
+import "./styles.scss";
 
 const propTypes = {
   book: PropTypes.object.isRequired,

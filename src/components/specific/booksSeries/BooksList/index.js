@@ -2,6 +2,7 @@ import React, {Component} from "react";
 import PropTypes from "prop-types";
 import Link from "gatsby-link";
 import Book from "../Book";
+import "./styles.scss";
 
 const propTypes = {
   books: PropTypes.array.isRequired,

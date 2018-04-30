@@ -2,6 +2,7 @@ import React, {Component} from "react";
 import PropTypes from "prop-types";
 import Link from "gatsby-link";
 import LPMALogo from "../../../../assets/images/NewDesign/Header/logo.svg";
+import "./styles.scss";
 
 const propTypes = {
   currentSectionId: PropTypes.string.isRequired,
@@ -26,7 +27,7 @@ class BooksHeading extends Component {
                 return (
                   <React.Fragment key={section.id}>
                     <Link
-                      to={`/books-series/${section.slug}`}
+                      to={`/tools/${section.slug}`}
                       className="has-text-white">
                       {section.title}
                     </Link>

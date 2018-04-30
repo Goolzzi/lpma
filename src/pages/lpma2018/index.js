@@ -29,6 +29,7 @@ class LPMA2018Page extends Component {
         allContentfulAgentaType,
       },
     } = this.props;
+
     return (
       <React.Fragment>
         <ConferencesJumbotron isVideo node={conferencesJumbotron} />

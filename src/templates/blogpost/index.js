@@ -130,6 +130,7 @@ export const pageQuery = graphql`
     allContentfulBlogPost(limit: 3) {
       edges {
         node {
+          id
           image {
             ...ImgeSizes
           }

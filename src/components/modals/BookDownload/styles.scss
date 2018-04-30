@@ -1,4 +1,17 @@
 .book-modal {
+    .cross {
+        position: absolute;
+        font-weight: bold;
+        font-size: 25px;
+        color: #C4C4C4C4;
+        top: 20px;
+        left: 886px;
+        transform: rotate(45deg) !important;
+        &:hover {
+            cursor: pointer;
+        }
+    }
+
     .title {
         position: absolute;
         top: 102px;
@@ -25,7 +38,7 @@
         border: 0.5px solid salmon;
     }
     
-    a {
+    .download {
         position: absolute;
         top: 311px;
         bottom: 48px;
@@ -40,5 +53,8 @@
         width: 219px;
         height: 50px;
         border: none;
+        &:hover {
+            cursor: pointer;
+        }
     }
 }

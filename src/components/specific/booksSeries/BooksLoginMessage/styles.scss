@@ -1,0 +1,19 @@
+.building-blocks-login {
+    .title-cont {
+      h2 {
+        line-height: 3rem;
+        color: $primary-color;
+        vertical-align: middle;
+        margin-right: 2rem;
+        margin-bottom: 0px;
+        display: inline-block;
+      }
+      span {
+        line-height: 3rem;
+        vertical-align: middle;
+      }
+    }
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    background-color: $white;
+  }

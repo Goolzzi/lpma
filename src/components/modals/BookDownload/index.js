@@ -2,7 +2,9 @@ import React, {Component} from "react";
 import PropTypes from "prop-types";
 import Modal from "react-modal";
 import classNames from "classnames";
+import download from "downloadjs";
 import withSegmentTracking from "../../../utils/withSegmentTracking";
+import withFormValidations from "../../../utils/withFormValidations";
 import "./styles.scss";
 
 // setting root app element for react-modal accessibility
@@ -16,6 +18,8 @@ const propTypes = {
   track: PropTypes.func.isRequired,
   trackIdentify: PropTypes.func.isRequired,
   resourcesZip: PropTypes.object.isRequired,
+  closeModal: PropTypes.func.isRequired,
+  isEmailValid: PropTypes.func.isRequired,
 };
 
 class BookDownload extends Component {
@@ -23,8 +27,6 @@ class BookDownload extends Component {
     super(props);
     this.state = {email: "", errorMessage: ""};
     this.trackingEventName = "Get book series.";
-    //eslint-disable-next-line
-    this.emailRegexp = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     this.modalStyles = {
       content: {
         top: "50%",
@@ -43,23 +45,32 @@ class BookDownload extends Component {
   emailInputChangedHandler = ({target: {value: email}}) =>
     this.setState({email});
 
-  submitButtonClickedHandler = event => {
+  submitSuccessHandler = () => {
+    const {track, trackIdentify, closeModal, resourcesZip} = this.props;
     const {email} = this.state;
-    const isValid = this.emailRegexp.test(String(email).toLowerCase());
-    if (!isValid) {
-      event.preventDefault();
-      this.setState({errorMessage: "Please provide a valid email address."});
-      return;
-    }
+    const bookLink = `https:${resourcesZip.file.url}`;
     this.setState({errorMessage: ""});
-    this.props.trackIdentify("Get Book Series Form.", email, email);
-    this.props.track(this.trackingEventName, {email});
+    trackIdentify("Get Book Series Form.", email, email);
+    track(this.trackingEventName, {email});
+    download(bookLink);
+    closeModal();
+  };
+
+  submitFailHandler = () => {
+    this.setState({errorMessage: "Please provide a valid email address."});
+  };
+
+  submitButtonClickedHandler = () => {
+    const {isEmailValid} = this.props;
+    const {email} = this.state;
+    isEmailValid(email)
+      .then(this.submitSuccessHandler)
+      .catch(this.submitFailHandler);
   };
 
   render() {
-    const {isOpen, onRequestClose, book, resourcesZip} = this.props;
+    const {isOpen, onRequestClose, closeModal} = this.props;
     const {email, errorMessage} = this.state;
-    const bookLink = book ? `https:${resourcesZip.file.url}` : "";
     return (
       <Modal
         isOpen={isOpen}
@@ -67,6 +78,9 @@ class BookDownload extends Component {
         contentLabel=""
         style={this.modalStyles}>
         <div className="book-modal has-text-centered">
+          <div className="cross" onClick={closeModal}>
+            +
+          </div>
           <h3 className="title">
             Enter your email address below to download the LPMA tools:
           </h3>
@@ -79,9 +93,9 @@ class BookDownload extends Component {
             onChange={this.emailInputChangedHandler}
             placeholder="Email address"
           />
-          <a download href={bookLink} onClick={this.submitButtonClickedHandler}>
+          <div className="download" onClick={this.submitButtonClickedHandler}>
             Get books
-          </a>
+          </div>
         </div>
       </Modal>
     );
@@ -90,4 +104,4 @@ class BookDownload extends Component {
 
 BookDownload.propTypes = propTypes;
 
-export default withSegmentTracking(BookDownload);
+export default withFormValidations(withSegmentTracking(BookDownload));
