@@ -14,13 +14,15 @@
       font-family: "DomaineSansMedium";
       color: rgba(59, 65, 69, 0.3);
       font-size: 0.7em;
+      margin-bottom: 1em;
     }
-    h1 {
+    .article-title p {
       font-size: 1.4em;
       font-family: "DomaineSansMedium";
       text-transform: uppercase;
-      letter-spacing: -0.6px;
-      span {
+      letter-spacing: -1px;
+      line-height: 1.2em;
+      strong {
         color: $text-secondary;
       }
     }
@@ -28,5 +30,8 @@
       font-family: "DomaineSansLight";
       font-size: 0.8em;
     }
+  }
+  @media screen and (max-width: $mobile-width) {
+    width: 100vw;
   }
 }

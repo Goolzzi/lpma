@@ -21,7 +21,6 @@
       overflow: hidden;
       position: absolute;
       transform-origin: left center;
-      background: #78CC5A;
     }
   }
   .left-overlay {
@@ -43,31 +42,36 @@
         position: absolute;
         width: 100%;
         height: 100%;
-        background:#78CC5A;
         transform-origin: right center;
         transform: rotate(-180deg);
       }
     }
   }
 }
-.img-bk {
+.img-bg {
   position: fixed;
   top: 10vh;
   left: calc(50vw - 40vh);
   width: 40vh;
   height: 80vh;
-  background-size: cover;
   opacity: 0;
   transition: opacity 0.5s;
   @media screen and (max-width: $mobile-width) {
-    background-image: url(../../assets/images/NewDesign/bk-intro-2-mobile.jpeg);
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background-size: 350%;
-    background-position: 60% 35%;
-    transition: none;
+    display: none;
+  }
+}
+.mobile-img-bg {
+  position: fixed;  
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  opacity: 0;
+  transition: opacity 0.5s;
+  display: none;
+  transform: scale(1.8) translate(-6rem, 4.5rem);
+  @media screen and (max-width: $mobile-width) {
+    display: block;
   }
 }
 .circle-full-left {
@@ -81,11 +85,46 @@
     position: absolute;
     width: 100%;
     height: 100%;
-    background: #70bf54;
     overflow: hidden;
     transform-origin: right center;
     @media screen and (max-width: $mobile-width) {
       display: none;
     }
+  }
+}
+.mobile-left {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 50vw;
+  height: 100vh;
+  display: flex;
+  background-color: transparent;
+  overflow: hidden;
+  align-items: center;
+  .overlay-spinner {
+    position: absolute;
+    width: 200vh;
+    height: 200vh;
+    right: 0;
+    transform-origin: right center;
+  }
+}
+.mobile-right {
+  position: fixed;
+  width: 50vw;
+  height: 100vh;
+  top: 0;
+  right: 0;
+  display: flex;
+  background-color: transparent;
+  overflow: hidden;
+  align-items: center;
+  .overlay-spinner {
+    position: absolute;
+    width: 200vh;
+    height: 200vh;
+    left: 0;
+    transform-origin: left center;
   }
 }

@@ -26,6 +26,7 @@
     width: 100%;
     height: 100%;
     padding-top: calc(50vh - (3em * 2));
+    opacity: 0;
     .banner-title {
       margin: 0 auto;
       max-width: 60vw;
@@ -63,6 +64,7 @@
     width: 100%;
     height: 100%;
     top: calc(50vh - 3em);
+    opacity: 0;
     .banner-title {
       width: 100%;
       text-align: center;
@@ -105,22 +107,22 @@
   }
 }
 .full-page-enter {
-  transform: translateY(-100vh)
+  background-color: #464F53;
 }
 .full-page-enter-active {
-  transform: translateY(0);
-  transition: transform 1s;
+  background-color: #70BF54;
+  transition: background-color 0.5s ease-in;
 }
 .full-page-enter-done {
-  transform: translateY(0);
+  background-color: #70BF54;
 }
 .full-page-exit {
-  transform: translateY(0);
+  background-color: #70BF54;
 }
 .full-page-exit-active {
-  transform: translateY(-100vh);
-  transition: transform 1s;
+  background-color: #464F53;
+  transition: background-color 0.5s ease-out;
 }
 .full-page-exit-done {
-  transform: translateY(-100vh);
+  background-color: #464F53;
 }
