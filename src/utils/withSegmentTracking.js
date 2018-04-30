@@ -1,10 +1,7 @@
 import React from "react";
-import IRISAuth from "../Auth/IRISAuth";
 import noop from "lodash/noop";
-
-function getDisplayName(WrappedComponent) {
-  return WrappedComponent.displayName || WrappedComponent.name || "Component";
-}
+import getComponentDisplayName from "../utils";
+import IRISAuth from "../Auth/IRISAuth";
 
 function withSegmentTracking(WrappedComponent) {
   class WithSegment extends React.Component {
@@ -78,7 +75,7 @@ function withSegmentTracking(WrappedComponent) {
       );
     }
   }
-  WithSegment.displayName = `WithSegmentTracking(${getDisplayName(
+  WithSegment.displayName = `WithSegmentTracking(${getComponentDisplayName(
     WrappedComponent,
   )})`;
 
