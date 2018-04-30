@@ -2,6 +2,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import withSegmentTracking from "../../utils/withSegmentTracking";
+import withIntercom from "../../utils/withIntercom";
 import "./styles.scss";
 
 class ContactPage extends React.Component {
@@ -187,7 +188,7 @@ ContactPage.propTypes = {
   trackGroup: PropTypes.func.isRequired,
 };
 
-export default withSegmentTracking(ContactPage);
+export default withSegmentTracking(withIntercom(ContactPage));
 
 export const pageQuery = graphql`
   query ContactLPMAPAgeQuery {

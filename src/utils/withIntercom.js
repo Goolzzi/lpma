@@ -1,6 +1,6 @@
 import React from "react";
 import noop from "lodash/noop";
-import getComponentDisplayName from "../utils";
+import {getComponentDisplayName} from "../utils";
 
 function withIntercom(WrappedComponent) {
   class WithIntercom extends React.Component {
