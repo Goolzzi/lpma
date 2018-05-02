@@ -26,7 +26,7 @@ class Header extends React.Component {
   };
 
   renderAddMember = () => {
-    const isAuthenticated = true; //this.auth.isAuthenticated();
+    const isAuthenticated = this.auth.isAuthenticated();
     if (isAuthenticated) {
       return (
         <a
@@ -142,9 +142,9 @@ class Header extends React.Component {
                         );
                       }
                       //hiding join nav item for logged in users.
-                      if (slug === "join" && isAuthenticated) {
-                        return null;
-                      }
+                      // if (slug === "join" && isAuthenticated) {
+                      //   return null;
+                      // }
                       if (!authRequired || isAuthenticated) {
                         return (
                           <Link
@@ -157,8 +157,8 @@ class Header extends React.Component {
                         );
                       }
                     })}
-                    {this.renderLoginLogout()}
                     {this.renderAddMember()}
+                    {this.renderLoginLogout()}
                   </div>
                 </div>
                 <button
