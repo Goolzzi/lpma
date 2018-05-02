@@ -1,17 +1,15 @@
 import {authConfig} from "./authVariables";
-import {parseHash} from "../utils";
 import {navigateTo} from "gatsby-link";
 import store from "store";
-import isEmpty from "lodash/isEmpty";
 import CryptoJS from "crypto-js";
 
 class Auth {
   constructor() {
     this.userData = null;
-    this.auth0 = new auth0.WebAuth(authConfig);
+    this.auth0 = typeof auth0 !== "undefined" && new auth0.WebAuth(authConfig);
   }
 
-  handleAuthentication = history => {
+  handleAuthentication = () => {
     this.auth0.parseHash((err, authResult) => {
       if (authResult && authResult.accessToken && authResult.idToken) {
         this.setSession(authResult);
@@ -22,8 +20,8 @@ class Auth {
           })
           .catch(err => console.log("user profile error", err)); //eslint-disable-line
       } else if (err) {
-        navigateTo.replace("/");
         console.log(err); //eslint-disable-line
+        navigateTo("/");
       }
     });
   };
@@ -71,15 +69,6 @@ class Auth {
   getKey = () => {
     return CryptoJS.MD5(authConfig.clientId).toString();
   };
-
-  // fetchTokenInfo = () => {
-  //   //eslint-disable-next-line
-  //   return fetch(
-  //     `${
-  //       authConfig.iris
-  //     }/oauth/token/info?access_token=${this.getAccessToken()}`,
-  //   );
-  // };
 
   fetchProfileInfo = () => {
     return new Promise((resolve, rejcet) => {

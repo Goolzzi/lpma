@@ -30,10 +30,10 @@ const authConfig_dev = {
 };
 
 export const authConfig = {
-  domain: "ailo-lpma.au.auth0.com",
-  clientID: "BaFQeV3SZrF1CcRL8Q4DxIjy6e2Dl4Of",
+  domain: "ailo-dev.au.auth0.com",
+  clientID: "fSFMLtPrgj41huObssvuyRiYMmTkbXr2",
   redirectUri: "http://localhost:8000/callback",
-  audience: "https://ailo-lpma.au.auth0.com/userinfo",
+  audience: "https://ailo-dev.au.auth0.com/userinfo",
   responseType: "token id_token",
   scope: "openid",
 };
