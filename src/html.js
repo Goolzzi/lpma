@@ -62,6 +62,7 @@ module.exports = class HTML extends React.Component {
             dangerouslySetInnerHTML={{__html: this.props.body}}
           />
           {this.props.postBodyComponents}
+          {/* Testing snippets */}
           {/* <script dangerouslySetInnerHTML={{__html: SEGMENT_SNIPPET}} />
           <script dangerouslySetInnerHTML={{__html: INTERCOM_SNIPPET}} />
           <script dangerouslySetInnerHTML={{__html: INTERCOM_BOOT_SNIPPET}} /> */}
