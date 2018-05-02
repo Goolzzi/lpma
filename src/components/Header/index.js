@@ -139,6 +139,13 @@ class Header extends React.Component {
                         );
                       }
                     })}
+                    {isAuthenticated && (
+                      <a
+                        className="navbar-item"
+                        href="https://form.jotform.co/81208927601859">
+                        Add a team member
+                      </a>
+                    )}
                     {this.renderLoginLogout()}
                   </div>
                 </div>
