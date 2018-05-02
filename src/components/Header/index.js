@@ -26,12 +26,12 @@ class Header extends React.Component {
   };
 
   renderAddMember = () => {
-    const {isAuthenticated} = this.auth;
-    if (isAuthenticated()) {
+    const isAuthenticated = this.auth.isAuthenticated();
+    if (isAuthenticated) {
       return (
         <a
           key={v4()}
-          className="navbar-item"
+          className="navbar-item add-member"
           href="https://form.jotform.co/81208927601859"
           rel="noopener noreferrer"
           target="_blank">
@@ -157,8 +157,8 @@ class Header extends React.Component {
                         );
                       }
                     })}
-                    {this.renderAddMember()}
                     {this.renderLoginLogout()}
+                    {this.renderAddMember()}
                   </div>
                 </div>
                 <button
