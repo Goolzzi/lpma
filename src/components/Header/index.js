@@ -1,4 +1,4 @@
-/* eslint jsx-a11y/anchor-is-valid : 0 */
+// /* eslint jsx-a11y/anchor-is-valid : 0 */
 import React from "react";
 import PropTypes from "prop-types";
 import Link from "gatsby-link";
@@ -30,9 +30,9 @@ class Header extends React.Component {
     if (isAuthenticated) {
       return (
         <a
+          href={"https://form.jotform.co/81208927601859"}
           key={v4()}
           className="navbar-item add-member"
-          href="https://form.jotform.co/81208927601859"
           rel="noopener noreferrer"
           target="_blank">
           Add a team member
@@ -142,9 +142,9 @@ class Header extends React.Component {
                         );
                       }
                       //hiding join nav item for logged in users.
-                      // if (slug === "join" && isAuthenticated) {
-                      //   return null;
-                      // }
+                      if (slug === "join" && isAuthenticated) {
+                        return null;
+                      }
                       if (!authRequired || isAuthenticated) {
                         return (
                           <Link
@@ -157,6 +157,7 @@ class Header extends React.Component {
                         );
                       }
                     })}
+                    <span />
                     {this.renderAddMember()}
                     {this.renderLoginLogout()}
                   </div>
