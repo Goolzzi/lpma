@@ -156,13 +156,6 @@ class Header extends React.Component {
                         );
                       }
                     })}
-                    <a
-                      href={"https://form.jotform.co/81208927601859"}
-                      className="navbar-item add-member"
-                      rel="noopener noreferrer"
-                      target="_blank">
-                      Add a team member
-                    </a>
                     {this.renderLoginLogout()}
                   </div>
                 </div>
