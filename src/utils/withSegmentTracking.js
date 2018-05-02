@@ -1,6 +1,6 @@
 import React from "react";
 import noop from "lodash/noop";
-import getComponentDisplayName from "../utils";
+import {getComponentDisplayName} from "../utils";
 import IRISAuth from "../Auth/IRISAuth";
 
 function withSegmentTracking(WrappedComponent) {

@@ -8,6 +8,7 @@ function withIntercom(WrappedComponent) {
 
     render() {
       if (typeof Intercom === "undefined") {
+        console.log("INTERCOM IS NOT DEFINED");
         return <WrappedComponent {...this.props} getVisitorId={noop} />;
       }
 

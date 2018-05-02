@@ -19,6 +19,8 @@ class ContactPage extends React.Component {
   }
 
   componentDidMount() {
+    const visitorId = this.props.getVisitorId();
+    console.log("ID", visitorId);
     this.props.trackForm("conatctLPMAForm", "Contact LPMA");
   }
 
