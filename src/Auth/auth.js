@@ -8,24 +8,24 @@ import CryptoJS from "crypto-js";
 class Auth {
   constructor() {
     this.userData = null;
+    this.auth0 = new auth0.WebAuth(authConfig);
   }
-  handleAuthentication = () => {
-    const params = parseHash(window.location.hash.substring(1));
-    if (!isEmpty(params)) {
-      this.setSession(params);
-      this.fetchTokenInfo()
-        .then(resoult => resoult.json())
-        .then(info => {
-          if (!~info.group_ids.indexOf(authConfig.lpmaGroupID)) {
-            //eslint-disable-next-line
-            console.log("thes user is not LPMA member");
-            //this.logout("isNotMember=1");
-          }
-          this.setUserData(info);
-          navigateTo("/foundry");
-        })
-        .catch(err => console.log("user profile error", err)); //eslint-disable-line
-    }
+
+  handleAuthentication = history => {
+    this.auth0.parseHash((err, authResult) => {
+      if (authResult && authResult.accessToken && authResult.idToken) {
+        this.setSession(authResult);
+        this.fetchProfileInfo()
+          .then(profile => {
+            this.setUserData(profile);
+            navigateTo("/foundry");
+          })
+          .catch(err => console.log("user profile error", err)); //eslint-disable-line
+      } else if (err) {
+        navigateTo.replace("/");
+        console.log(err); //eslint-disable-line
+      }
+    });
   };
 
   setUserData = userData => {
@@ -39,9 +39,9 @@ class Auth {
 
   setSession = authData => {
     let expiresAt = JSON.stringify(
-      authData.expires_in * 1000 + new Date().getTime(),
+      authData.expiresIn * 1000 + new Date().getTime(),
     );
-    store.set("access_token", authData.access_token);
+    store.set("access_token", authData.accessToken);
     store.set("expires_at", expiresAt);
   };
 
@@ -53,9 +53,11 @@ class Auth {
   };
 
   login = () => {
-    if (window) {
-      window.location.href = authConfig.getIrisNavUrl();
-    }
+    // if (window) {
+    //   window.location.href = authConfig.getIrisNavUrl();
+    // }
+
+    this.auth0.authorize();
   };
 
   logout = data => {
@@ -70,13 +72,25 @@ class Auth {
     return CryptoJS.MD5(authConfig.clientId).toString();
   };
 
-  fetchTokenInfo = () => {
-    //eslint-disable-next-line
-    return fetch(
-      `${
-        authConfig.iris
-      }/oauth/token/info?access_token=${this.getAccessToken()}`,
-    );
+  // fetchTokenInfo = () => {
+  //   //eslint-disable-next-line
+  //   return fetch(
+  //     `${
+  //       authConfig.iris
+  //     }/oauth/token/info?access_token=${this.getAccessToken()}`,
+  //   );
+  // };
+
+  fetchProfileInfo = () => {
+    return new Promise((resolve, rejcet) => {
+      let accessToken = this.getAccessToken();
+      this.auth0.client.userInfo(accessToken, (err, profile) => {
+        if (profile) {
+          resolve(profile);
+        }
+        rejcet(err);
+      });
+    });
   };
 
   getUserData = () => {

@@ -29,7 +29,16 @@ const authConfig_dev = {
   },
 };
 
-export const authConfig =
-  process.env.NODE_ENV === "development"
-    ? authConfig_dev
-    : buildConfig.env === "live" ? authConfig_prod : authConfig_dev;
+export const authConfig = {
+  domain: "ailo-lpma.au.auth0.com",
+  clientID: "BaFQeV3SZrF1CcRL8Q4DxIjy6e2Dl4Of",
+  redirectUri: "http://localhost:8000/callback",
+  audience: "https://ailo-lpma.au.auth0.com/userinfo",
+  responseType: "token id_token",
+  scope: "openid",
+};
+
+// export const authConfig =
+//   process.env.NODE_ENV === "development"
+//     ? authConfig_dev
+//     : buildConfig.env === "live" ? authConfig_prod : authConfig_dev;
