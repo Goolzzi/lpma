@@ -1,4 +1,4 @@
-// /* eslint jsx-a11y/anchor-is-valid : 0 */
+/* eslint jsx-a11y/anchor-is-valid : 0 */
 import React from "react";
 import PropTypes from "prop-types";
 import Link from "gatsby-link";
@@ -31,7 +31,6 @@ class Header extends React.Component {
       return (
         <a
           href={"https://form.jotform.co/81208927601859"}
-          key={v4()}
           className="navbar-item add-member"
           rel="noopener noreferrer"
           target="_blank">
@@ -148,17 +147,22 @@ class Header extends React.Component {
                       if (!authRequired || isAuthenticated) {
                         return (
                           <Link
+                            key={v4()}
                             className={"navbar-item"}
                             onClick={this.handleClick}
-                            key={id}
                             to={to}>
                             {name}
                           </Link>
                         );
                       }
                     })}
-                    <span />
-                    {this.renderAddMember()}
+                    <a
+                      href={"https://form.jotform.co/81208927601859"}
+                      className="navbar-item add-member"
+                      rel="noopener noreferrer"
+                      target="_blank">
+                      Add a team member
+                    </a>
                     {this.renderLoginLogout()}
                   </div>
                 </div>
