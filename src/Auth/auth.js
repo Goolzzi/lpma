@@ -13,12 +13,8 @@ class Auth {
     this.auth0.parseHash((err, authResult) => {
       if (authResult && authResult.accessToken && authResult.idToken) {
         this.setSession(authResult);
-        this.fetchProfileInfo()
-          .then(profile => {
-            this.setUserData(profile);
-            navigateTo("/foundry");
-          })
-          .catch(err => console.log("user profile error", err)); //eslint-disable-line
+        this.setUserData(authResult.idTokenPayload);
+        navigateTo("/foundry");
       } else if (err) {
         console.log(err); //eslint-disable-line
         navigateTo("/");
@@ -51,10 +47,6 @@ class Auth {
   };
 
   login = () => {
-    // if (window) {
-    //   window.location.href = authConfig.getIrisNavUrl();
-    // }
-
     this.auth0.authorize();
   };
 
