@@ -13,8 +13,14 @@ class Auth {
     this.auth0.parseHash((err, authResult) => {
       if (authResult && authResult.accessToken && authResult.idToken) {
         this.setSession(authResult);
-        this.setUserData(authResult.idTokenPayload);
-        navigateTo("/foundry");
+        if (authResult.scope.indexOf("lpma_membership") === -1) {
+          //eslint-disable-next-line
+          console.log("thes user is not LPMA member");
+          this.logout("isNotMember=1");
+        } else {
+          this.setUserData(authResult.idTokenPayload);
+          navigateTo("/foundry");
+        }
       } else if (err) {
         console.log(err); //eslint-disable-line
         navigateTo("/");
@@ -53,7 +59,7 @@ class Auth {
   logout = data => {
     this.dispose();
     navigateTo({
-      pathname: "/",
+      pathname: "/contact",
       hash: data,
     });
   };
