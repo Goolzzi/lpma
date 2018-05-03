@@ -1,14 +1,8 @@
 {
   "name": "functions",
-  "version": "1.0.0",
-  "description": "",
-  "main": "visitorToLead.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
+  "description": "netlify functions",
   "dependencies": {
     "intercom-client": "^2.9.4"
   },
-  "author": "",
-  "license": "ISC"
+  "private": true
 }
