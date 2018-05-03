@@ -1,4 +1,0 @@
-[build]
-  publish = "src/"
-  functions = "netlify/functions/"
-  command = "cd netlify/functions && npm install && cd .. && netlify-lambda build functions"
