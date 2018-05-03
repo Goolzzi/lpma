@@ -32,8 +32,8 @@ const iris_authConfig_dev = {
 const authConfig_dev = {
   domain: "ailo-dev.au.auth0.com",
   clientID: "fSFMLtPrgj41huObssvuyRiYMmTkbXr2",
-  redirectUri: "https://dev.ailo.io/",
-  audience: "https://ailo-dev.au.auth0.com/userinfo",
+  redirectUri: "http://localhost:8000/callback",
+  audience: "https://dev.ailo.io/",
   responseType: "token id_token",
   scope: "openid email profile",
 };
