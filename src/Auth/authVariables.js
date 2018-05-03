@@ -33,9 +33,9 @@ export const authConfig = {
   domain: "ailo-dev.au.auth0.com",
   clientID: "fSFMLtPrgj41huObssvuyRiYMmTkbXr2",
   redirectUri: "http://localhost:8000/callback",
-  audience: "https://ailo-dev.au.auth0.com/userinfo",
-  responseType: "token id_token",
-  scope: "openid",
+  audience: "https://dev.ailo.io/",
+  responseType: "code",
+  scope: "openid email profile",
 };
 
 // export const authConfig =

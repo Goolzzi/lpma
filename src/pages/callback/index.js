@@ -7,6 +7,8 @@ class Callback extends Component {
   handleAuthentication = auth => {
     if (/access_token|id_token|error/.test(this.props.location.hash)) {
       auth.handleAuthentication();
+    } else {
+      debugger //eslint-disable-line
     }
   };
 
