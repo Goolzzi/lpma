@@ -4,5 +4,8 @@
   "dependencies": {
     "intercom-client": "^2.9.4"
   },
+  "devDependencies": {
+    "intercom-client": "^2.9.4"
+  },
   "private": true
 }
