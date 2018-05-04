@@ -1,4 +1,4 @@
-const Intercom = require("intercom-client");
+const Intercom = require("./node_modules/intercom-client");
 
 exports.handler = function(event, context, callback) {
   const accessToken = process.env.INTERCOM_ACCESS_TOKEN;
