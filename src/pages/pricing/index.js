@@ -5,6 +5,9 @@ import { grey, green } from '../../styles/colors'
 import { media } from '../../styles/utils'
 import { data } from './data/data'
 
+import Slider from '../../components/Slider'
+import Switch from '../../components/Switch'
+
 class Pricing extends Component {
 
     state = {
