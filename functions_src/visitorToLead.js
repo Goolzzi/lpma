@@ -4,6 +4,7 @@ exports.handler = function(event, context, callback) {
   const accessToken = process.env.INTERCOM_ACCESS_TOKEN;
   const client = new Intercom.Client({token: accessToken});
   const data = JSON.parse(event.body);
+  console.log("DATA", data);
   const {visitorId} = data;
   const conversion = {
     visitor: {user_id: visitorId},

@@ -15,7 +15,12 @@ function withIntercom(WrappedComponent) {
     getVisitorId = () => Intercom("getVisitorId"); // eslint-disable-line
 
     convertVisitorToLead = () => {
-      const visitorId = this.getVisitorId();
+      const visitorId = this.getVisitorId() || "asdas";
+      visitorToLead(visitorId);
+    };
+
+    test = () => {
+      const visitorId = "asd";
       visitorToLead(visitorId);
     };
 
@@ -26,7 +31,7 @@ function withIntercom(WrappedComponent) {
           <WrappedComponent
             {...this.props}
             getVisitorId={noop}
-            convertVisitorToLead={noop}
+            convertVisitorToLead={this.test}
           />
         );
       }
