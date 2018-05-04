@@ -5,6 +5,7 @@ import Link from "gatsby-link";
 import classNames from "classnames";
 import LoginLogout from "../LoginLogout";
 import IRISAuth from "../../Auth/IRISAuth";
+import {v4} from "uuid";
 import "./styles.scss";
 
 class Header extends React.Component {
@@ -22,6 +23,22 @@ class Header extends React.Component {
       isActive: !prevState.isActive,
       isActiveMenu: !prevState.isActiveMenu,
     }));
+  };
+
+  renderAddMember = () => {
+    const isAuthenticated = this.auth.isAuthenticated();
+    if (isAuthenticated) {
+      return (
+        <a
+          href={"https://form.jotform.co/81208927601859"}
+          className="navbar-item add-member"
+          rel="noopener noreferrer"
+          target="_blank">
+          Add a team member
+        </a>
+      );
+    }
+    return null;
   };
 
   renderLoginLogout = () => {
@@ -130,9 +147,9 @@ class Header extends React.Component {
                       if (!authRequired || isAuthenticated) {
                         return (
                           <Link
+                            key={v4()}
                             className={"navbar-item"}
                             onClick={this.handleClick}
-                            key={id}
                             to={to}>
                             {name}
                           </Link>
