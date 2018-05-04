@@ -1,5 +1,6 @@
 import React from "react";
 import noop from "lodash/noop";
+import {visitorToLead} from "../netlifyFunctions";
 import {getComponentDisplayName} from "../utils";
 
 // constants
@@ -13,16 +14,29 @@ function withIntercom(WrappedComponent) {
 
     getVisitorId = () => Intercom("getVisitorId"); // eslint-disable-line
 
-    convertVisitorToLead = () => {};
+    convertVisitorToLead = () => {
+      const visitorId = this.getVisitorId();
+      visitorToLead(visitorId);
+    };
 
     render() {
       if (typeof Intercom === "undefined") {
         console.log("INTERCOM IS NOT DEFINED");
-        return <WrappedComponent {...this.props} getVisitorId={noop} />;
+        return (
+          <WrappedComponent
+            {...this.props}
+            getVisitorId={noop}
+            convertVisitorToLead={noop}
+          />
+        );
       }
 
       return (
-        <WrappedComponent {...this.props} getVisitorId={this.getVisitorId} />
+        <WrappedComponent
+          {...this.props}
+          getVisitorId={this.getVisitorId}
+          convertVisitorToLead={this.convertVisitorToLead}
+        />
       );
     }
   }
