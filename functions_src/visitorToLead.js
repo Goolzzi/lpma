@@ -9,11 +9,8 @@ exports.handler = function(event, context, callback) {
     visitor: {user_id: visitorId},
     type: "lead",
   };
-  console.log("TOKEN", accessToken);
-  console.log("CLIENT", client);
-  console.log("VISITORID", visitorId);
   client.visitors.convert(conversion, response => {
-    console.log("RESPONSE", response);
+    console.log("RESPONSE", response.body);
   });
   callback(null, {
     statusCode: 200,
