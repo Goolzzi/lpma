@@ -21,7 +21,7 @@ class MyFoundryPage extends React.Component {
     const {isAuthenticated, getUserData} = this.auth;
     if (isAuthenticated()) {
       const user = getUserData();
-      this.setState({username: user.nickname});
+      this.setState({username: user.nickname ? user.nickname : user.username});
     }
   }
 
