@@ -23,6 +23,7 @@ class FetchUtils {
     const queryString = this.objectToQueryString(query || {});
     const requestUrl = `${url}?${queryString}`;
     const requestParams = this.constructParams({method, body});
+    console.log("PARAMS", requestParams);
     return fetch(requestUrl, requestParams);
   };
 }
