@@ -1,0 +1,11 @@
+.audience {
+  margin-bottom: 0.75rem;
+
+  .image-wrapper {
+    @include wrap-image(100%, 546px);
+
+    @include mobile {
+      @include wrap-image(100%, 273px);
+    }
+  }
+}

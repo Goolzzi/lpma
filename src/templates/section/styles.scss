@@ -1,0 +1,26 @@
+.template-page {
+  padding-top: 0.5rem;
+
+  .container.wrapper-cont {
+    background-color: $white;
+    padding: 4rem;
+  }
+
+  h1 {
+    color: $gray-dark;
+    font-weight: 500;
+  }
+
+  .markdown {
+    margin-bottom: 4rem;
+    padding-top: 3rem;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .template-page {
+    .container.wrapper-cont {
+      padding: 3rem 1.5rem;
+    }
+  }
+}

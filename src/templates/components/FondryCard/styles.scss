@@ -1,0 +1,15 @@
+a.foundry-card-item {
+  display: block;
+  background-color: $gray-lighter;
+  padding: 2rem 1.75rem;
+
+  h3 {
+    color: $primary-color;
+    font-weight: 500;
+  }
+
+  p {
+    color: $gray-dark;
+    font-weight: normal;
+  }
+}

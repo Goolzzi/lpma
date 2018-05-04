@@ -1,0 +1,126 @@
+#page_4 {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  &.fill-bk {
+    background: $page4-primary;
+  }
+  .left {
+    position: absolute;
+    overflow: hidden;
+    width: 50%;
+    height: 100%;
+    background-color: transparent;
+    display: flex;
+    align-items: center;
+    .spinner {
+      position: absolute;
+      width: 200vw;
+      height: 200vh;
+      right: 0;
+      background-color: $page4-primary;
+      transform-origin: right center;
+      transform: rotate(-180deg);
+    }
+    .animated {
+      transform: rotate(0deg);
+    }
+  }
+  .right {
+    position: absolute;
+    overflow: hidden;
+    width: 50%;
+    height: 100%;
+    left: 50%;
+    background-color: transparent;
+    display: flex;
+    align-items: center;
+    .spinner {
+      position: absolute;
+      width: 200vw;
+      height: 200vh;
+      transform-origin: left center;
+      background-color: $page4-primary;
+      transform: rotate(-180deg);
+    }
+  }
+  .slide-2 {
+    .background-image {
+      position: fixed;
+      top: 10vh;
+      left: calc(50vw - 45vh);
+      width: 45vh;
+      height: 80vh;
+      opacity: 0;
+      transition: opacity 1s;
+      transition-delay: 1s;
+      background-image: url(../assets/images/NewDesign/bk-intro-4.png);
+      background-size: cover;
+      @media screen and (max-width: $mobile-width) {
+        background-image: url(../assets/images/NewDesign/bk-intro-4-mobile.jpeg);
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background-size: 350%;
+        background-position: 60% 35%;
+        transition: none;
+      }
+    }
+    .full-left {
+      .overlay-spinner {
+        background: $page4-primary;
+      }
+    }
+    .mobile-left {
+      .overlay-spinner {
+        background-color: $page4-primary;
+      }
+    }
+    .mobile-right {
+      .overlay-spinner {
+        background-color: $page4-primary;
+      }
+    }
+    .animating-layer {
+      .right {
+        .overlay-1 {
+          background: $page4-primary-light; 
+        }
+      }
+      .left {
+        .overlay-3 {
+          .inner {
+            background: $page4-primary-light;
+          }
+        }
+      }
+    }
+    .wrapper {
+      h1 {
+        span {
+          color: $page4-primary;
+        }
+      }
+    }
+    .full-right {
+      @media screen and (max-width: $mobile-width) {
+        &.fill-bk {
+          background-color: $page4-primary;
+        }
+      }
+      .overlay-spinner {
+        position: absolute;
+        width: 2000vw;
+        height: 200vw;
+        background: white;
+        overflow: hidden;
+        transform-origin: left center;
+        transform: rotate(-180deg);
+      }
+    }
+  }
+  
+}

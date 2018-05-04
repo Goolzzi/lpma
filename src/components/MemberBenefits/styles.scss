@@ -1,0 +1,75 @@
+.member-benefits {
+  padding: 1rem 2.75rem 1rem;
+
+  h3 {
+    color: $gray-dark;
+    font-size: 1.7777rem;
+    font-family: "DomaineSansMedium",Helvetica, Arial, sans-serif;
+    margin-bottom: 4rem;
+  }
+
+  .benefit-item {
+    position: relative;
+
+    img {
+      position: absolute;
+      top: 0.25rem;
+      width: 48px;
+      height: 48px;
+      margin: 0rem;
+    }
+
+    .cont {
+      margin-left: 4rem;
+
+      h4.text-title {
+        font-family: "DomaineSans", Helvetica, Arial, sans-serif;
+        color: $primary-color;
+        font-size: 1.4444rem;
+        font-weight: normal;
+        text-transform: initial;
+        margin-bottom: 1rem;
+      }
+
+      p.text {
+        font-family: "DomaineSans", Helvetica, Arial, sans-serif;
+        color: $gray-light;
+        font-size: 1rem;
+        margin-bottom: 1.5rem;
+      }
+    }
+  }
+
+  @media screen and (min-width: 769px) {
+    .benefit-item {
+      &:nth-child(odd) {
+        border-right: 3px solid $primary-color;
+        padding-right: 80px;
+      }
+
+      &:nth-child(even) {
+        padding-left: 80px;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .member-benefits {
+    .benefit-item {
+      img {
+        top: 0.5rem;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 1007px) {
+  .member-benefits {
+    .benefit-item {
+      .cont {
+        margin-left: 5rem;
+      }
+    }
+  }
+}

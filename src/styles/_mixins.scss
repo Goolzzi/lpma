@@ -1,0 +1,103 @@
+@mixin mobile {
+  @media (max-width: #{$mobile-width}) {
+    @content;
+  }
+}
+
+@mixin not-mobile {
+  @media (min-width: #{$mobile-width + 1px}) {
+    @content;
+  }
+}
+
+@mixin truncate($lines) {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  line-height: 1.5;
+
+  -webkit-line-clamp: $lines;
+  height: $lines * 1.5rem;
+}
+
+@mixin wrap-image($width: 100%, $height: auto, $vPos: center, $hPos: center, $fit: contain) {
+  width: $width;
+  overflow: hidden;
+
+  
+  @if $vPos != center {
+    height: $height;
+
+    img {
+      margin: 0rem;
+      object-fit: $fit;
+      object-position: $vPos $hPos;
+
+      height: $height;
+      width: $width;
+    }
+  }
+
+  @if $vPos == center {
+    max-height: $height;
+
+    .gatsby-image-wrapper {
+      height: $height;
+    }
+
+    img, div {
+      margin: 0rem;
+      object-fit: $fit;
+      object-position: $vPos $hPos;
+
+      max-height: $height;
+      width: $width;
+    }
+  }
+
+  @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+    overflow: hidden;
+    display: flex;
+    align-items: $vPos $hPos;
+
+    @if $vPos == top {
+      align-items: flex-start;
+    }
+
+    @if $vPos == bottom {
+      align-items: flex-end;
+    }
+
+    img {
+      height: auto;
+      min-width: 100%;
+      min-height: 100%;
+    }
+  }
+
+  @supports (-ms-ime-align: auto) {
+    overflow: hidden;
+    display: flex;
+    align-items: $vPos $hPos;
+
+    @if $vPos == top {
+      align-items: flex-start;
+    }
+
+    @if $vPos == bottom {
+      align-items: flex-end;
+    }
+
+    img {
+      height: auto;
+      min-width: 100%;
+      min-height: 100%;
+    }
+    
+    @if $vPos == center {
+      img, div {
+        max-height: none;
+      }
+    }
+  }
+}

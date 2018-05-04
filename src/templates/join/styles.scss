@@ -1,0 +1,105 @@
+.join-page {
+  .top {
+    @media screen and (max-width: 768px) {
+      .cont-wrapper {
+        display: none;
+      }
+    }
+  }
+}
+
+.join {
+  padding: 0px;
+
+  .any-questions {
+    padding: 5.5rem 2.75rem 5rem 2.75rem;
+
+    h3 {
+      font-size: 1.7777rem;
+      font-weight: normal;
+      color: $primary-color;
+      line-height: normal;
+    }
+
+    p {
+      margin-bottom: 1.5rem;
+
+      font-size: 1.1111rem;
+      font-weight: normal;
+      line-height: 1.45;
+      color: $gray-light;
+    }
+  }
+
+  .join-cont {
+    margin: 3rem 2.75rem;
+    border-left: 3px solid $primary-color;
+    padding-left: 3.5rem;
+
+    input[type="text"], input[type="email"] {
+      display: block;
+      margin-bottom: 1.2rem;
+      width: 100%;
+    }
+
+    h2 {
+      font-size: 2.6666rem;
+      font-weight: normal;
+      color: $primary-color;
+      margin-bottom: 2.5rem;
+      line-height: normal;
+    }
+
+    p {
+      font-size: 2rem;
+      font-weight: normal;
+      color: $gray-light;
+      margin-bottom: 4.5rem;
+      line-height: normal;
+    }
+
+    .step-list {
+      text-align: right;
+      
+      ol {
+        display: inline-block;
+      }
+
+      ol > li {
+        font-size: 1.4444rem;
+        font-weight: normal;
+        line-height: 1.58;
+        color: $gray;
+        margin-bottom: 0rem;
+        white-space: nowrap;
+        text-align: left;
+
+        &.selected {
+          color: $primary-color;
+        }
+      }
+    }
+
+    button {
+      margin-top: 3rem;
+    }
+  }
+}
+
+@media screen and (min-width: 769px) {
+  .join-wrapper {
+    margin-top: -36rem !important;
+    z-index: 1;
+    background-color: $white;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .join {
+    .join-cont {
+      .step-list {
+        text-align: left;
+      }
+    }
+  }
+}

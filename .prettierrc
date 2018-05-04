@@ -1,0 +1,6 @@
+{
+  "bracketSpacing": false,
+  "jsxBracketSameLine": true,
+  "printWidth": 80,
+  "trailingComma": "all"
+}

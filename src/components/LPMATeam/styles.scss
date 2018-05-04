@@ -1,0 +1,62 @@
+.our-team {
+  padding: 3rem 0.5rem 3rem 0.5rem;
+  
+  h3 {
+    color: $gray-dark;
+    font-size: 1.7777rem;
+    font-family: "DomaineSansMedium";
+    margin-bottom: 0.75rem;
+    text-transform: uppercase;
+    padding: 2.25rem;
+  }
+
+  .out-team-item {
+    padding-left: 2.25rem;
+
+    .img-col {
+      .image-wrapper {
+        @include wrap-image(100%, auto, top);
+
+        padding-bottom: 100%;
+        height: 0px;
+      }
+    }
+
+    p {
+      color: $gray-light;
+      font-size: 1.4444rem;
+      font-weight: normal;
+      line-height: normal;
+      padding: 0px 3rem 0px 3rem;
+    }
+
+    span.member-name {
+      color: $primary-color;
+      font-size: 1.4444rem;
+      font-weight: normal;
+      line-height: normal;
+      text-align: right;
+      width: 100%;
+      display: inline-block;
+      padding: 2rem 6rem 0px 5rem;
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    .out-team-item {
+      padding-left: 2.75rem;
+      padding-right: 2.75rem;
+
+      p, span.member-name {
+        padding: 0px;
+      }
+    }
+  }
+}
+
+
+.index-page-us {
+  .our-team {
+    padding: 1rem 0.5rem 3rem 0.5rem;
+  }
+}

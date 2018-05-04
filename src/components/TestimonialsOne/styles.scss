@@ -1,0 +1,56 @@
+.testimonials {
+  .testimonial-item {
+    .text-cont {
+      display: inline-block;
+      padding: 2.25rem;
+      width: 63%;
+
+      p {
+        font-size: 1.4444rem;
+        line-height: 1.31;
+        font-weight: normal;
+        font-family: DomaineSans;
+      }
+
+      div.text-p {
+        color: $gray-light;
+        margin-bottom: 1rem;
+      }
+
+      p.name-p {
+        color: $primary-color;
+      }
+    }
+    .img-cont {
+      vertical-align: top;
+      display: inline-block;
+      width: 35%;
+      padding-top: 2.25rem;
+
+      img {
+        border-radius: 50%;
+        width: 84%;
+        height: 84%;
+        max-width: 84%;
+        max-height: 84%;
+      }
+    }
+  }
+
+  @media screen and (min-width: 769px) {
+    .testimonial-item {
+      &:nth-child(odd) {
+        border-right: 3px solid $primary-color;
+      }
+    }
+  }
+}
+
+h3.test-header{
+  color: $gray-dark;
+  font-size: 1.7777rem;
+  font-family: "DomaineSansMedium";
+  margin-bottom: 0.75rem;
+  text-transform: uppercase;
+  padding: 2.25rem;
+}

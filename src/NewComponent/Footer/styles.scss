@@ -1,0 +1,69 @@
+.footer-wrapper {
+  position: absolute;
+  left: 0;
+  bottom: 4vh;
+  right: 0;
+  width: 80%;
+  height: 30px;
+  line-height: 2em;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin: 0 auto;
+  opacity: 0;
+  .mobile-column {
+    display: flex;
+    flex: 1;
+    justify-content: space-around;
+    span {
+      color: $footer-text;
+      font-size: 0.8em;
+    }
+    .email-us {
+      font-size: 1em;
+      .email-label {
+        font-weight: bold;
+        margin-right: 2em;
+      }
+    }
+  }
+  
+  
+  @media screen and (max-width: $mobile-width) {
+    flex-wrap: wrap;
+    .mobile-column {
+      display: flex;
+      flex-direction: column;
+      flex: none;
+      .email-label {
+        display: none;
+      }
+    }
+  }
+  
+}
+.footer-enter {
+  opacity: 0.01;
+  transform: scale(0.9) translateY(100px);
+}
+.footer-enter-active {
+  opacity: 1;
+  transform: scale(1) translateY(0);
+  transition: all 1s ease-in;
+}
+.footer-enter-done {
+  opacity: 1;
+}
+.footer-exit {
+  opacity: 1;
+  transform: scale(1) translateY(0);
+}
+.footer-exit-active {
+  opacity: 0.01;
+  transform: scale(0.9) translateY(100px);
+  transition: all 1s ease-out;
+}
+.footer-exit-done {
+  opacity: 0.01;
+  transform: scale(0.9) translateY(100px);
+}

@@ -1,0 +1,36 @@
+.blog-post-card {
+    .image {
+      margin-bottom: 1rem !important;
+    }
+  
+    .category-and-date {
+      color: #9b9b9b;
+
+      span:first-child {
+        color: $primary-color;
+      }
+    }
+  
+    h4.title {
+      color: $gray-dark;
+      margin-bottom: 2rem;
+    }
+  
+    .image.avatar {
+      border-radius: 50%;
+      margin: 0px 0.5rem 0px 0px !important;
+      vertical-align: middle;
+      display: inline-block;
+  
+      img {
+        border-radius: 50%;
+      }
+    }
+  
+    .author-name {
+      color: $gray-light;
+      line-height: 48px;
+      vertical-align: middle;
+      display: inline-block;
+    }
+  }

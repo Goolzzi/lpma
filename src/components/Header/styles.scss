@@ -1,0 +1,219 @@
+.navbar-wrapper {
+  background-color: $primary-color;
+  .hide-burger {
+    display: none !important;
+  }
+  .navbar {
+    max-width: 1392px;
+    margin: auto;
+    background-color: $primary-color;
+    font-size: $navbar-font-size;
+    min-height: 5em;
+
+    .navbar-brand {
+      .navbar-item {
+        padding-left: 2.75rem;
+      }
+
+      img {
+        height: 52px;
+        min-height: 52px;
+        margin: 0px;
+      }
+    }
+
+    @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+      height: 90px;
+    }
+
+    @media screen and (max-width: 1007px) {
+      .navbar-menu.is-active {
+        a {
+          color: $gray-dark;
+          padding: 1rem;
+        }
+      }
+    }
+
+    .navbar-item, .navbar-link {
+      color: $white;
+      background-color: $transparent;
+
+      font-size: 1em;
+      line-height: 1em;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      text-align: left;
+
+      &::after {
+        border-color: $white;
+      }
+    }
+
+    button.navbar-item {
+      border: none;
+      outline: none;
+    }
+
+    .navbar-link {
+      background-color: $transparent !important;
+    }
+
+    .navbar-item.has-dropdown {
+      .navbar-dropdown {
+        min-width: 10rem;
+        margin-top: -1rem;
+        border: 1px solid $gray-lighter;
+        border-radius: 0.25rem;
+
+        a.navbar-item {
+          color: $gray-dark;
+
+          &:hover {
+            background-color: $gray-lighter;
+          }
+        }
+      }
+    }
+  }
+
+  @media screen and (min-width: 1008px) {
+    .desctop-menu {
+      padding: 5rem 0px 5rem 0px;
+      background-color: $secondary-color;
+      display: none;
+
+      &.active {
+        display: block;
+      }
+
+      & > .columns {
+        max-width: 1392px;
+        margin: 0px auto;
+
+        .desctop-menu-left {
+          padding: 0px 1.5rem 0px 1.5rem;
+
+          & > .columns {
+            margin: 0px;
+
+            .desctop-menu-item {
+              padding: 0px 1.5rem 3rem 1.5rem;
+              a {
+                display: block;
+                font-size: 1.2222rem;
+                font-weight: normal;
+                line-height: 1.82;
+                color: $white;
+
+                &.title-link {
+                  color: $primary-color;
+                  margin-bottom: 10px;
+                }
+              }
+            }
+          }
+        }
+        .desctop-menu-right {
+          padding: 0px 3rem 0px 3rem;
+          border-left: 3px solid $white;
+
+          h3 {
+            font-size: 1.7777rem;
+            font-weight: normal;
+            color: $primary-color;
+            margin-bottom: 3rem;
+          }
+
+          p {
+            font-size: 1.3333rem;
+            font-weight: normal;
+            line-height: 1.42;
+            color: $white;
+            margin-bottom: 2rem;
+          }
+        }
+      }
+    }
+  }
+
+  @media screen and (max-width: 1007px) {
+    .desctop-menu {
+      display: none;
+    }
+  }
+}
+
+@media screen and (min-width: 1008px) {
+  .navbar-wrapper {
+    min-height: 90px;
+  }
+}
+
+
+button.button.navbar-burger {
+  border: none;
+  outline: none;
+  background-color: $transparent;
+
+  font-size: $navbar-font-size;
+
+  height: 5em;
+  width: 5em;
+
+  $burger-tickness: 4px;
+
+  outline: none;
+  box-shadow: none;
+  &:focus {
+    outline: none;
+    box-shadow: none;
+  }
+
+  span {
+    color: $white;
+
+    left: calc( 50% - #{$navbar-font-size} );
+    height: $burger-tickness;
+    width: calc( 2 * #{$navbar-font-size} );
+
+    &:nth-child(1) {
+      top: calc( 50% - #{$navbar-font-size} );
+    }
+    &:nth-child(2) {
+      top: calc( 50% - ( #{$burger-tickness} / 2 ) );
+    }
+    &:nth-child(3) {
+      top: calc( 50% - #{$burger-tickness} + #{$navbar-font-size} );
+    }
+  }
+
+  &.is-active {
+    span {
+      color: $white;
+
+      left: calc( 50% - #{$navbar-font-size} );
+      height: $burger-tickness;
+      width: calc( 2 * #{$navbar-font-size} );
+
+      &:nth-child(1) {
+        top: calc( 50% - #{$navbar-font-size / 2} + #{$burger-tickness} );
+      }
+      &:nth-child(2) {
+        display: none;
+      }
+      &:nth-child(3) {
+        top: calc( 50% + #{$navbar-font-size / 2} - #{$burger-tickness} );
+      }
+    }
+  }
+
+  &.custom-burger {
+    @media screen and (max-width: 1007px) {
+      display: none;
+    }
+    @media screen and (min-width: 1008px) {
+      display: block;
+    }
+  }
+}

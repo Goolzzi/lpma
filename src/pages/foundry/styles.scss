@@ -1,0 +1,169 @@
+$cover-size: 800px;
+
+.foundry-heading {
+  padding-top: 1.75rem;
+  padding-bottom: 1.75rem;
+
+  h4 {
+    color: $gray-dark;
+    margin: 0px;
+    font-family: "DomaineSans", Helvetica, Arial, sans-serif;
+    font-weight: normal;
+  }
+}
+
+.foundry {
+  position: relative;
+  padding-left: 0px;
+  padding-right: 0px;
+  padding-top: 0px;
+  background: #E3E3E1; 
+  .image-wrapper {
+    @include wrap-image(100%, $cover-size, center, right !important, contain !important);
+
+    @include mobile {
+      display: none;
+    }
+  }
+
+  .loader-wrapper {
+    margin: 0 auto;
+  }
+
+  section.cont {
+    width: 100%;
+
+    @include not-mobile {
+      min-height: $cover-size;
+      margin-top: -$cover-size;
+    }
+
+    .column {
+      .top-text {
+        & > h2 {
+          color: #70BE5B;
+          font-weight: 500;
+          font-size: 3.72222rem;
+          line-height: 4.61111rem;
+          margin-bottom: 4rem;
+          font-family: 'DomaineSansMedium', Helvetica, Arial, sans-serif;
+
+          p {
+            margin-bottom: 0px;
+          }
+
+          p.name {
+            text-transform: capitalize;
+          }
+        }
+        & > p {
+          color: $gray-dark;
+          text-transform: uppercase;
+          font-weight: 500;
+          font-size: 1.25rem;
+        }
+      }
+      .text {
+        background-color: $white;
+        padding: 1.75rem;
+        border-radius: 0.5rem;
+
+        & > h3 {
+          color: $primary-color;
+          font-weight: normal;
+        }
+        & > div {
+          color: $gray-dark;
+          font-weight: normal;
+          margin-bottom: 0px;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .foundry {
+    section.cont {
+      position: static;
+
+      .column {
+        .top-text {
+          & > h2 {
+            //color: $gray-dark;
+          }
+        }
+        .text {
+          padding: 1.75rem 0.75rem 1.75rem 0.75rem;
+        }
+      }
+    }
+  }
+}
+
+
+.foundry-columns {
+  .columns {
+    .column-item {
+      padding: 2rem 1.5rem;
+      background-color: $white;
+
+      h3 {
+        color: $primary-color;
+        font-weight: 500;
+        font-size: 1.25rem;
+      }
+      
+      p {
+        color: $gray-dark;
+        font-weight: normal;
+        font-size: 1rem;
+      }
+    }
+  }
+}
+
+.foundry-video {
+  .title, p {
+    color: $gray-dark;
+  }
+
+  p {
+    margin-bottom: 3.3333rem;
+  }
+
+  .signup {
+    margin-bottom: 3.3333rem;    
+  }
+  
+  .feedback {
+    .contact {
+      color: #70BE5B;
+    }    
+  }
+
+  .fb-like {
+    img {
+      margin-top: -23px !important;
+    }
+  }
+
+  .video-cont {
+    text-align: right;
+    max-width: 100%;
+    margin-bottom: 3.3250rem;
+    position: relative;
+    max-width: 100%;
+    height: 0px;
+    padding-bottom: 56.25%;
+    overflow: hidden;
+
+    iframe {
+      max-width: 100%;
+      max-height: 100%;      
+      position: absolute;
+      left: 0px;
+      top: 0px;
+    }
+  }
+}
