@@ -1,8 +1,11 @@
 class FetchUtils {
   constructor() {
+    const accessToken = process.env.INTERCOM_ACCESS_TOKEN;
     this.baseParams = {
       headers: {
         "Content-Type": "application/json",
+        Accept: "application/json",
+        Authorization: `Bearer ${accessToken}`, // TODO: Clean-up
       },
     };
   }
@@ -18,11 +21,11 @@ class FetchUtils {
       .join("&");
 
   request = (url, params) => {
-    const {method, query, bodyObject} = params;
+    const {query, bodyObject, ...restParams} = params;
     const body = JSON.stringify(bodyObject);
     const queryString = this.objectToQueryString(query || {});
     const requestUrl = `${url}?${queryString}`;
-    const requestParams = this.constructParams({method, body});
+    const requestParams = this.constructParams({...restParams, body});
     return fetch(requestUrl, requestParams);
   };
 }

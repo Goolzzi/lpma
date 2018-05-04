@@ -2,7 +2,6 @@
 import React from "react";
 import PropTypes from "prop-types";
 import withSegmentTracking from "../../utils/withSegmentTracking";
-import withIntercom from "../../utils/withIntercom";
 import "./styles.scss";
 
 class ContactPage extends React.Component {
@@ -19,7 +18,6 @@ class ContactPage extends React.Component {
   }
 
   componentDidMount() {
-    this.props.convertVisitorToLead();
     this.props.trackForm("conatctLPMAForm", "Contact LPMA");
   }
 
@@ -189,7 +187,7 @@ ContactPage.propTypes = {
   trackGroup: PropTypes.func.isRequired,
 };
 
-export default withSegmentTracking(withIntercom(ContactPage));
+export default withSegmentTracking(ContactPage);
 
 export const pageQuery = graphql`
   query ContactLPMAPAgeQuery {
