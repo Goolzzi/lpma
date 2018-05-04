@@ -25,23 +25,22 @@
     position: fixed;
     width: 100%;
     height: 100%;
-    padding-top: calc(50vh - (3em * 2));
+    display: flex;
+    align-items: center;
     opacity: 0;
     .banner-title {
       margin: 0 auto;
       max-width: 60vw;
       color: #fff;
       font-family: "DomaineSansMedium";
-      font-size: 3em;
+      font-size: 4.5em;
       text-align: center;
       letter-spacing: -0.03em;
       span {
         color: $primary-color;
       }
-      @media screen and (max-width: $mobile-width) {
+      @media screen and (max-width: $xl-width) {
         font-size: 3em;
-        max-width: 100vw;
-        padding-top: calc(30vh - (50em * 5));
       }
     }
     .scroll-instruction {
@@ -63,17 +62,20 @@
     position: fixed;
     width: 100%;
     height: 100%;
-    top: calc(50vh - 3em);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     opacity: 0;
     .banner-title {
       width: 100%;
       text-align: center;
       color: #fff;
       font-family: "DomaineSansMedium";
-      font-size: 3em;
+      font-size: 4.5em;
       letter-spacing: -0.03em;
-      @media screen and (max-width: $mobile-width) {
-        top: calc(50vh - 3em * 3);
+      @media screen and (max-width: $xl-width) {
+        font-size: 3em;
       }
     }
     .reason-bar {

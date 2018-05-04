@@ -27,7 +27,6 @@ class LandingPage extends React.Component {
       footerIn: false,
     };
     this.scrolling = false;
-    this.innerScrolling = false;
     this.startY = 0;
     this.moveY = 0;
   }
