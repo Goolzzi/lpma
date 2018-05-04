@@ -54,7 +54,7 @@
   },
   "main": "n/a",
   "scripts": {
-    "build": "rm -rf public; gatsby build",
+    "build": "npm run netlify-func-install && rm -rf public; gatsby build",
     "start": "gatsby develop",
     "netlify-func-install": "cd ./functions && npm install && cd ..",
     "netlify-build": "npm run netlify-func-install && node ./scripts/build_config.js live && rm -rf public; gatsby build && node ./scripts/cp_netlify_public.js",
