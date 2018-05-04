@@ -1,9 +1,9 @@
 class FetchUtils {
   constructor() {
     this.baseParams = {
-      headers: new Headers({
+      headers: {
         "Content-Type": "application/json",
-      }),
+      },
     };
   }
 
