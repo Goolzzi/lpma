@@ -12,10 +12,11 @@ exports.handler = function(event, context, callback) {
   };
   client.visitors.convert(conversion, response => {
     console.log("RESPONSE", response.body);
+    callback(null, {
+      statusCode: 200,
+    });
   });
   callback(null, {
-    statusCode: 200,
-    context: JSON.stringify(context),
-    at: accessToken,
+    statusCode: 400,
   });
 };
