@@ -54,6 +54,7 @@
   
   .navbar-btn-group {
     display: flex;
+    padding-right: 1rem;
     .navbar-item {
       color: white;
       font-size: 0.8em;
@@ -65,7 +66,7 @@
         font-size: 1em;
         background: transparent;
         border: none;
-        color: $primary-color;
+        color: $text-secondary;
         transition: all 1s;
         transition-delay: 1s;
 
@@ -74,9 +75,9 @@
         padding-left: 0;
         padding-right: 0;
         .menu-btn {
-          background: $primary-color;
+          background:$text-secondary;
           color: #fff;
-          padding: 0.8rem 1.8rem;
+          padding: 1.4rem 3rem;
           border: none;
           @media screen and (max-width: $mobile-width){
             padding: 0.8rem 0.8rem;
