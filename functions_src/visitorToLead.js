@@ -9,7 +9,10 @@ exports.handler = function(event, context, callback) {
     visitor: {user_id: visitorId},
     type: "lead",
   };
-  client.visitors.convert(conversion, (response) => {
+  console.log("TOKEN", accessToken);
+  console.log("CLIENT", client);
+  console.log("VISITORID", visitorId);
+  client.visitors.convert(conversion, response => {
     console.log("RESPONSE", response);
   });
   callback(null, {
