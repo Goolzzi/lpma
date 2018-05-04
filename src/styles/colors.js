@@ -1,4 +1,3 @@
-export const mako = '#424552'
-export const ribbon = '#ee0b4f'
+export const grey = '#3B4144'
 // export const grey = '#dadada'
 

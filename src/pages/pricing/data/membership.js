@@ -1,9 +1,9 @@
-export const customer = {
-    heading: 'Customer Excellence',
-    subheading: 'The smartest way of tracking and understanding your team’s offering',
+export const membership = {
+    heading: 'LPMA Membership',
+    subheading: 'Join the largest global network of property management leaders ',
     description: `
-        Learn from the people who know your service best, your clients.
-        Utilise intelligent, trigger based client survey tools to make your offering the best it can be. 
+        As an LPMA member you’ll receive access to things like the Foundry, 
+        discounts to our flagship PM events, and business planning basics.
     `,
     pricing: [
         {

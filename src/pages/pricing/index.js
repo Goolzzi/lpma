@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import styled, { css } from 'styled-components'
 
+import { grey } from '../../styles/colors'
 import { media } from '../../styles/utils'
 import { data } from './data/data'
 
@@ -35,11 +36,15 @@ class Pricing extends Component {
         return (
             <Wrapper>
 				<Container>
-                    <Heading>Pricing</Heading>
+                   
+                    <Top>
+                        <Heading>Pricing</Heading>
+                        
+                        {this.renderDurationSwitcher()}
+                        {this.renderSlider()}
+                    </Top>
 
-                    {this.renderDurationSwitcher()}
-                    {this.renderSlider()}
-
+         
                     {/* Plans  */}
 
                     <PlanWrapper>
@@ -61,6 +66,8 @@ const Wrapper = styled.div`
 	flex-direction: column;
 	justify-content: flex-start;
 	align-items: center;
+    background: ${grey};
+    color: white;
 `
 
 const Container = styled.div`
@@ -68,16 +75,28 @@ const Container = styled.div`
 	flex-direction: column;
 	justify-content: flex-start;
 	align-items: center;
-    max-width: 1280px;
+    max-width: 1400px;
 `
 
 const Heading = styled.div`
-	font-size: 50px;
+    font-family: 'DomaineSansMedium';
+    text-transform: uppercase;
 `
 
 const Subheading = styled.div``
 const Description = styled.div``
 
+const Top = styled.div`
+    padding-top: 178px;
+    padding-bottom: 160px;
+
+    ${Heading} {
+        font-size: 56px;
+        font-weight: 500;
+        line-height: 56px;
+        letter-spacing: -2.5px;
+    }
+`
 
 const PlanWrapper = styled.div`
     display: flex;

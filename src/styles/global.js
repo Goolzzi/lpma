@@ -45,14 +45,14 @@ export const hoverState = css`
 `
 
 export const padding = css`
-    padding-left: 50px; 
-    padding-right: 50px;
+    padding-left: 30px; 
+    padding-right: 30px;
     box-sizing: border-box;
 
-    ${media.tablet`
+    /* ${media.tablet`
         padding-left: 32px; 
         padding-right: 32px;
-    `}
+    `} */
 `
 
 export const bgImage = css`

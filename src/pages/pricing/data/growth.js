@@ -1,9 +1,9 @@
 export const growth = {
-    heading: 'LPMA Membership',
-    subheading: 'Join the largest global network of property management leaders',
+    heading: 'Growth Planning',
+    subheading: 'Digital consulting tools to help you skyrocket to your growth goals',
     description: `
-        As an LPMA member you'll recieve access to things like the Foundry,
-        discounts to our flagship PM events, and business plannnig basics
+        Access to LMPA growth tools which will allow you to 
+        receive your managements, teams and systems to create a custom growth plan.
     `,
     pricing: [
         {

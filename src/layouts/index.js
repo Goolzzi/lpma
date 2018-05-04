@@ -13,6 +13,12 @@ const LayoutTemplate = props => {
   const {
     children,
     location: {pathname},
+    data: {
+      allContentfulAsset: {edges: metaImges},
+      contentfulHeader,
+      contentfulFooter,
+      allContentfulFoundrySection,
+    },
   } = props;
 
   if (pathname.split("/")[1] === "callback") {
@@ -28,9 +34,26 @@ const LayoutTemplate = props => {
 
   return (
     <div>
+      <MetaHead
+        title={title}
+        metaImage1200x630={`${protocol}${metaImges[1].node.file.url}`}
+        metaImage1024x512={`${protocol}${metaImges[0].node.file.url}`}
+      />
+      <Header
+        {...contentfulHeader}
+        forUSA={forUSA}
+        foundryLinks={allContentfulFoundrySection}
+      />
       <div className="page-container">{children()}</div>
+      <Footer {...contentfulFooter} forUSA={forUSA} />
     </div>
   );
+};
+
+LayoutTemplate.propTypes = {
+  children: PropTypes.func,
+  location: PropTypes.object,
+  data: PropTypes.object.isRequired,
 };
 
 export default LayoutTemplate;
