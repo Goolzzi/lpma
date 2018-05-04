@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import styled, { css } from 'styled-components'
+import { find } from 'lodash'
 
 import { grey, green } from '../../styles/colors'
 import { media } from '../../styles/utils'
@@ -12,17 +13,37 @@ class Pricing extends Component {
 
     state = {
         duration: 'annual',
-        sliderValue: 50,
+        sliderValue: 55,
         activePlans: [true],
         featuresVisible: false
     }
     
     renderDurationSwitcher = () => {
-        // To do: Radio button from scratch
+        return (
+            <Button/>
+        )
     }
 
     renderSlider = () => {
-        // To do: Use corvid slider & restyle
+        const { sliderValue } = this.state;
+
+        return (
+            <SliderWrapper>
+                <Heading>{data.sliderHeading}</Heading>
+                <Slider
+                    min={data.sliderRange[0]}
+                    max={data.sliderRange[1]}
+                    defaultValue={sliderValue}
+                    onSliderChange={this.onScaleSliderChange}
+                />
+            </SliderWrapper>
+        )
+    }
+    
+    onScaleSliderChange = (value) => {
+        this.setState({
+            sliderValue: value
+        })
     }
     
     renderPlan = (plan, i) => {
@@ -35,10 +56,12 @@ class Pricing extends Component {
                 onClick={() => this.togglePlan(i)}
             >
                 <Heading>{plan.heading}</Heading>
+
                 <PricingWrapper>
-                    <Price>${this.calculatePricing()}</Price>
+                    <Price>${this.calculatePricing(plan)}</Price>
                     / month
                 </PricingWrapper>
+
                 <Subheading>{plan.subheading}</Subheading>
                 <Description>{plan.description}</Description>
             </Plan>
@@ -46,9 +69,13 @@ class Pricing extends Component {
     }
 
     calculatePricing = (plan) => {
-        // console.log('calculatePricing', plan)
+        const { sliderValue } = this.state;
 
-        return 99;
+        const price = find(plan.pricing, function(o) { 
+            return (o.range[0] <= sliderValue) && (o.range[1] >= sliderValue)
+        });
+
+        return price ? price.monthly : 0;
     }
 
     togglePlan = (i) => {
@@ -59,10 +86,20 @@ class Pricing extends Component {
         } else {
             plans[i] = true
         }
+
+        Array(i + 1).fill().forEach((elm, index) => {
+            if (plans[i]) {
+                plans[index] = true;
+            }
+        })
        
         this.setState({
             activePlans: plans
         })
+    }
+
+    toggleFeatures = () => {
+      
     }
 
     render() {
@@ -78,8 +115,7 @@ class Pricing extends Component {
                         {this.renderSlider()}
                     </Top>
 
-         
-                    {/* Plans  */}
+                    {/* Plans */}
 
                     <PlanWrapper>
                         <Plans>
@@ -111,6 +147,7 @@ const Wrapper = styled.div`
 	justify-content: flex-start;
 	align-items: center;
     background: ${grey};
+    padding-bottom: 177px;
 `
 
 const Container = styled.div`
@@ -139,21 +176,53 @@ const Label = styled.div``
 const Price = styled.div``
 
 const Top = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     padding-top: 178px;
-    padding-bottom: 160px;
 
-    ${Heading} {
+    > ${Heading} {
         font-size: 56px;
         font-weight: 500;
         line-height: 56px;
         letter-spacing: -2.5px;
         color: white;
+        padding-bottom: 160px;
     }
+`
+
+const SliderWrapper = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 98px;
+
+    > ${Heading} {
+        font-size: 24px;
+        font-weight: 500;
+        line-height: 34px;
+        letter-spacing: -0.3px;
+        color: white;
+    }
+
+    /* Slider */
+
+    > :last-child {
+        width: 641px;
+        margin-top: 31px;
+    }
+`
+
+const Button = styled.div`
+    height: 64px;
+    width: 161px;
+    background-color: white;
 `
 
 const PlanWrapper = styled.div`
     display: flex;
     flex-direction: column;
+    margin-top: 64px; 
 `
 
 const Plans = styled.div`

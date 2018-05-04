@@ -8,19 +8,35 @@ export const growth = {
     pricing: [
         {
             range: [1, 50],
-            pricing: 69
+            monthly: 69
         },
         {
             range: [51, 125],
-            pricing: 99
+            monthly: 99
         },
         {
             range: [126, 249],
-            pricing: 179
+            monthly: 119
         },
         {
-            range: [126, 249],
-            pricing: 219
+            range: [250, 399],
+            monthly: 179
+        },
+        {
+            range: [400, 599],
+            monthly: 219
+        },
+        {
+            range: [600, 999],
+            monthly: 249
+        },
+        {
+            range: [1000, 2999],
+            monthly: 269
+        },
+        {
+            range: [3000, 9999],
+            monthly: 269
         },
     ],
     features: [

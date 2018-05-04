@@ -8,19 +8,35 @@ export const customer = {
     pricing: [
         {
             range: [1, 50],
-            monthly: 69,
+            monthly: 75
         },
         {
             range: [51, 125],
-            monthly: 99,
+            monthly: 99
         },
         {
             range: [126, 249],
-            monthly: 179
+            monthly: 249
         },
         {
-            range: [126, 249],
-            monthly: 219
+            range: [250, 399],
+            monthly: 349
+        },
+        {
+            range: [400, 599],
+            monthly: 499
+        },
+        {
+            range: [600, 999],
+            monthly: 799
+        },
+        {
+            range: [1000, 2999],
+            monthly: 999
+        },
+        {
+            range: [3000, 9999],
+            monthly: 1499
         },
     ],
     features: [

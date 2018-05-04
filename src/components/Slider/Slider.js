@@ -22,7 +22,6 @@ class Alignment extends Component {
                <div
                     className={'slider-wrapper'}
                 >
-
                     <ReactSlider 
                         className={'slider'}
                         barClassName={'bar'}

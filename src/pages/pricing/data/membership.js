@@ -7,20 +7,8 @@ export const membership = {
     `,
     pricing: [
         {
-            range: [1, 50],
-            monthly: 69,
-        },
-        {
-            range: [51, 125],
-            monthly: 99,
-        },
-        {
-            range: [126, 249],
-            monthly: 179
-        },
-        {
-            range: [126, 249],
-            monthly: 219
+            range: [1, 9999],
+            monthly: 99
         },
     ],
     features: [
