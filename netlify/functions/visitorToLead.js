@@ -4,7 +4,7 @@ const fs = require("fs");
 exports.handler = function(event, context, callback) {
   const accessToken = process.env.INTERCOM_ACCESS_TOKEN;
   // console.log("INTERCOM", Intercom);
-  console.log("FILES", fs.readdirSync("."));
+  console.log("FILES", fs.readdirSync("./node_modules"));
   callback(null, {
     statusCode: 300,
     context: JSON.stringify(context),
