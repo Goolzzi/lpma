@@ -16,12 +16,16 @@ class Slider extends Component {
         max: 100,
         step: 1,
         defaultValue: 1,
+
         onSliderChange: () => {},
     };
     
     render() {
         const {min, max, step, defaultValue, onSliderChange, onSliderChangeEnd} = this.props;
-        
+
+        let displayValue = defaultValue;
+        if(displayValue>=3000) displayValue = '3000+'
+
         return (
            <Container>
                <div
@@ -44,7 +48,7 @@ class Slider extends Component {
                     >
                         <div className={'custom-handle'}>
                             <div className={'arrowLeft'} />
-                            <div className={'value'}>{defaultValue}</div>
+                            <div className={'value'}>{displayValue}</div>
                             <div className={'arrowRight'} />
                         </div>
                     </ReactSlider>
