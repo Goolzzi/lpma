@@ -121,7 +121,7 @@ injectGlobal`
             border-radius: 4px;
             color: white;
             font-family: 'DomaineSansMedium';   
-
+            cursor: pointer;
             display: flex;
             flex-direction: row;
             justify-content: center;

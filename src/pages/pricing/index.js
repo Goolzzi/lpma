@@ -16,7 +16,8 @@ class Pricing extends Component {
         duration: 'annual',
         sliderValue: 55,
         activePlans: [true],
-        featuresVisible: false
+        featuresVisible: false,
+        totalPrice: 0
     }
 
 
@@ -60,8 +61,6 @@ class Pricing extends Component {
         })
     }
 
-    
-    
     renderPlan = (plan, i) => {
         const { activePlans } = this.state;
         
@@ -147,7 +146,21 @@ class Pricing extends Component {
                             <Expander>{featuresVisible ? '-' : '+'}</Expander>
                         </CompareFeatures>
 
+                        <Total>
+                            <LabelLeft>Total</LabelLeft>
+                            <Price>${this.state.totalPrice}</Price>
+                            <LabelRight>AUD/month</LabelRight>
+                        </Total>
+
                     </PlanWrapper>
+                    
+
+                    {/* Join */}
+
+                    <Join>
+                        
+         
+                    </Join>
 
                 </Container>
             </Wrapper>
@@ -347,5 +360,43 @@ const Expander = styled.div`
         margin-right: 12px;
     }
 `
+
+const LabelLeft = styled.div``
+const LabelRight = styled.div``
+const Total = styled.div`
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
+    
+    ${LabelLeft} { 
+        font-family: 'DomaineSansMedium';
+        font-size: 24px;
+        line-height: 1.42;
+        letter-spacing: -0.6px;
+        color: white;
+        padding-right: 15px;
+        text-transform: uppercase;
+    }
+    ${LabelRight} { 
+        font-family: 'DomaineSansLight';
+        font-size: 24px;
+        line-height: 1.42;
+        letter-spacing: -0.6px;
+        color: white;
+        padding-left: 15px;
+    }
+    ${Price} {
+        color: ${mantis};
+        font-family: 'DomaineSansMedium';
+        font-size: 56px;
+        letter-spacing: -2.5px;
+        line-height: 1;
+    }
+`
+
+const Join = styled.div``
+
 
 export default Pricing;
