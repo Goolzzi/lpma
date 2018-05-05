@@ -1,8 +1,9 @@
 import React, {Component} from 'react'
 import styled, { css } from 'styled-components'
+import { rgba } from 'polished'
 import { find } from 'lodash'
 
-import { grey, green } from '../../styles/colors'
+import { capeCod, mantis, porsche, tonysPink, morningGlory, mako } from '../../styles/colors'
 import { media } from '../../styles/utils'
 import { data } from './data/data'
 
@@ -17,11 +18,24 @@ class Pricing extends Component {
         activePlans: [true],
         featuresVisible: false
     }
+
+
     
     renderDurationSwitcher = () => {
         return (
-            <Button/>
+            <Switch 
+                labelLeft='Monthly'
+                labelRight='Annual'
+                value={this.state.duration}
+                onSwitchChange={this.onSwitchChange}
+            />
         )
+    }
+
+    onSwitchChange = (value) => {
+        this.setState({
+            duration: value
+        })
     }
 
     renderSlider = () => {
@@ -45,6 +59,8 @@ class Pricing extends Component {
             sliderValue: value
         })
     }
+
+    
     
     renderPlan = (plan, i) => {
         const { activePlans } = this.state;
@@ -146,7 +162,7 @@ const Wrapper = styled.div`
 	flex-direction: column;
 	justify-content: flex-start;
 	align-items: center;
-    background: ${grey};
+    background: ${capeCod};
     padding-bottom: 177px;
 `
 
@@ -197,6 +213,8 @@ const SliderWrapper = styled.div`
     align-items: center;
     padding-top: 98px;
 
+    width: 779px;
+
     > ${Heading} {
         font-size: 24px;
         font-weight: 500;
@@ -208,7 +226,7 @@ const SliderWrapper = styled.div`
     /* Slider */
 
     > :last-child {
-        width: 641px;
+        width: 100%;
         margin-top: 31px;
     }
 `
@@ -265,7 +283,7 @@ const Plan = styled.div`
 
     ${Price} {
         font-family: 'DomaineSansMedium';
-        color: ${green};
+        color: ${mantis};
         font-size: 56px;
         line-height: 56px;
     }

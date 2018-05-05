@@ -1,10 +1,13 @@
-import React, { Component } from 'react';
-import styled from 'styled-components';
+import React, { Component } from 'react'
+import styled, { css } from 'styled-components'
+import { rgba } from 'polished'
+import { capeCod, mantis, porsche, tonysPink, morningGlory, mako } from '../../styles/colors'
 
 class Switch extends Component {
 
+
     state = {
-        selected: this.props.value || 'left',
+        selected: this.props.value
     }
 
     componentWillReceiveProps(nextProps){
@@ -13,26 +16,29 @@ class Switch extends Component {
         }
     }
 
-    handleClick = alignment => {
-        this.setState({ selected: alignment });
-        this.props.onSwitchChange(alignment);
+    handleClick = type => {
+        this.setState({ selected: type });
+        this.props.onSwitchChange(type);
     }
 
     render() {
         const { selected } = this.state;
+        const { labelLeft, labelRight } = this.props;
 
         return (
             <Container>
                 <Button
-                    data-selected={selected == 'left' ? true : false}
-                    onClick={() => this.handleClick('left')}
+                    data-selected={selected == 'monthly' ? true : false}
+                    onClick={() => this.handleClick('monthly')}
                     >
+                    {labelLeft}
                 </Button>
 
                 <Button
-                    data-selected={selected == 'right' ? true : false}
-                    onClick={() => this.handleClick('right')}
+                    data-selected={selected == 'annual' ? true : false}
+                    onClick={() => this.handleClick('annual')}
                     >
+                    {labelRight}
                 </Button>
             </Container>
         );
@@ -41,14 +47,13 @@ class Switch extends Component {
 
 const Container = styled.div`
     display: flex;
-    border: 1px solid black;
     border-radius: 4px;
     overflow: hidden;
 `;
 
 const Button = styled.div`
-    height: 30px;
-    width: 32px;
+    height: 64px;
+    width: 161px;
 
     display: flex;
     align-items: center;
@@ -57,15 +62,21 @@ const Button = styled.div`
     cursor: pointer;
     transition: all 0.15s ease;
 
-    background: white;
+    font-family: 'DomaineSansMedium';
+    text-transform: uppercase;
+    color:  ${rgba('white', 0.5)};
+
+    background: ${rgba(mako, 0.5)};
 
     &:hover {
-        background: rgba(black, 0.5);
+
     }
 
     &[data-selected='true'] {
-        background: black;
+        background: white;
+        color: ${capeCod};
     }
+
 `;
 
 export default Switch;

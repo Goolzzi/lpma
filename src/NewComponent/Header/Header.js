@@ -45,10 +45,11 @@ const Header = props => {
                 }
               </li>
               <li>
-                {
+              <Link to="/pricing">Pricing</Link>
+                {/* {
                   //eslint-disable-next-line
                   <a onClick={() => props.selectPage("Pricing")}>Pricing</a>
-                }
+                } */}
               </li>
               <li>
                 <Link to="/blog">Blog</Link>

@@ -3,8 +3,13 @@ import styled from 'styled-components';
 import ReactSlider from 'react-slider';
 import { injectGlobal } from 'styled-components';
 
+import { capeCod, mantis, porsche, tonysPink, morningGlory, mako } from '../../styles/colors'
+import { bgIcon } from '../../styles/global'
 
-class Alignment extends Component {
+import singleHouseIcon from '../../assets/images/icons/icon-single-house.svg';
+import multiHouseIcon from '../../assets/images/icons/icon-multi-house.svg';
+
+class Slider extends Component {
 
     static defaultProps = {
         min: 0,
@@ -22,6 +27,10 @@ class Alignment extends Component {
                <div
                     className={'slider-wrapper'}
                 >
+                    <Icon>
+                        <SingleHouse /> 
+                    </Icon>
+
                     <ReactSlider 
                         className={'slider'}
                         barClassName={'bar'}
@@ -38,6 +47,9 @@ class Alignment extends Component {
                         />
                     </ReactSlider>
 
+                    <Icon>
+                        <MultiHouse />
+                    </Icon>
                 </div>
             </Container>
         )
@@ -48,15 +60,37 @@ class Alignment extends Component {
 const Container = styled.div`
     display: flex;
     flex: 1;
-`;
+`
+const Icon = styled.div`
+    display: flex;
+    justify-content: center;
+    width: 69px;
+`
+const SingleHouse = styled.div`
+    ${bgIcon};
+    width: 14px;
+    height: 14px;
+    background-image: url(${singleHouseIcon});
+`
+const MultiHouse = styled.div`
+    ${bgIcon};
+    width: 21px;
+    height: 17px;
+    background-image: url(${multiHouseIcon});
+`
 
 injectGlobal`
     .slider-wrapper {
         width: 100%;
+        height: 80px;
         display: flex;
-        flex-direction: column;
+        flex-direction: row;
         position: relative;
-        align-items: flex-start;
+        justify-content: center;
+        align-items: center;
+        border-radius: 5px;
+
+        background-color: ${mako};
 
         .bar {
             height: 3px;
@@ -67,7 +101,7 @@ injectGlobal`
         }
 
         .slider {
-            width: 100%;
+            width: 641px;
             display: flex;
             align-items: center;
             height: 20px;
@@ -84,4 +118,4 @@ injectGlobal`
     }
 `
 
-export default Alignment
+export default Slider
