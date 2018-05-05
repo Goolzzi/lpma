@@ -42,9 +42,11 @@ class Slider extends Component {
                         onAfterChange={onSliderChangeEnd}
                         withBars 
                     >
-                        <div
-                            className={'handle'}
-                        />
+                        <div className={'custom-handle'}>
+                            <div className={'arrowLeft'} />
+                            <div className={'value'}>{defaultValue}</div>
+                            <div className={'arrowRight'} />
+                        </div>
                     </ReactSlider>
 
                     <Icon>
@@ -93,11 +95,15 @@ injectGlobal`
         background-color: ${mako};
 
         .bar {
-            height: 3px;
+            height: 8px;
             padding-right: 10px;
             position: relative;
-            background-color: #BDBDBD;
-            border-radius: 6px;
+            border-radius: 4px;
+            background-color: white;
+        }
+
+        .bar-0{
+            background-color: ${mantis};
         }
 
         .slider {
@@ -107,14 +113,31 @@ injectGlobal`
             height: 20px;
         }
 
-        .handle {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            background: #000000;
-            box-shadow: 0 2px 4px 0 rgba(0,0,0,0.19);
-        }
+        .custom-handle {
+            width: 109px;
+            height: 48px;    
+            background-color: ${mantis};
+            border: solid 2px ${mako};
+            border-radius: 4px;
+            color: white;
+            font-family: 'DomaineSansMedium';   
 
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+
+            .arrowLeft {
+
+            }
+            .arrowRight {
+                
+            }
+            .value {
+    
+            }
+        }
+        
     }
 `
 
