@@ -379,6 +379,10 @@ const Plan = styled.div`
     }}
 `
 
+
+const Features = styled.div``
+const Feature = styled.div``
+
 // Compare Features
 
 const CompareFeatures = styled.div`
