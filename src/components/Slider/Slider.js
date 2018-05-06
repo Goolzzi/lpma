@@ -47,9 +47,9 @@ class Slider extends Component {
                         withBars 
                     >
                         <div className={'custom-handle'}>
-                            <div className={'arrowLeft'} />
+                            <div className={'arrow-left'} />
                             <div className={'value'}>{displayValue}</div>
-                            <div className={'arrowRight'} />
+                            <div className={'arrow-right'} />
                         </div>
                     </ReactSlider>
 
@@ -131,10 +131,10 @@ injectGlobal`
             justify-content: center;
             align-items: center;
 
-            .arrowLeft {
+            .arrow-left {
 
             }
-            .arrowRight {
+            .arrow-right {
                 
             }
             .value {

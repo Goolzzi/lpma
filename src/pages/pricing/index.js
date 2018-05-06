@@ -9,6 +9,8 @@ import { data } from './data/data'
 
 import Slider from '../../components/Slider'
 import Switch from '../../components/Switch'
+import Select from '../../components/Select' 
+import Submit from '../../components/Submit' 
 
 class Pricing extends Component {
 
@@ -17,11 +19,12 @@ class Pricing extends Component {
         sliderValue: 55,
         activePlans: [true],
         featuresVisible: false,
-        totalPrice: 0
+        totalPrice: 0,
+        selectOption: '',
+        selectError: false
     }
 
-
-    
+ 
     renderDurationSwitcher = () => {
         return (
             <Switch 
@@ -117,6 +120,30 @@ class Pricing extends Component {
       
     }
 
+    onSelectChange = (value) => {
+        const { selectError } = this.state;
+
+        this.setState({
+            selectOption: value.label,
+            selectError: selectError ? false : selectError
+        })
+    }
+
+    handleSubmit = (e) => {
+        const { selectOption } = this.state;
+
+        if (selectOption == '') {
+            this.setState({
+                selectError: true
+            })
+        } else {
+
+          
+    
+            e.preventDefault();
+        }
+    }
+
     render() {
         const { featuresVisible } = this.state;
 
@@ -158,8 +185,22 @@ class Pricing extends Component {
                     {/* Join */}
 
                     <Join>
-                        
-         
+
+                        <JoinButton
+                            label={'Join'}
+                            handleSubmit={this.handleSubmit}
+                            theme={'mantis'}
+                        />
+
+                         <Select
+                            placeholder={'Please select an option'}
+                            onSelectChange={this.onSelectChange}
+                            error={this.state.selectError}
+                            options={[
+                                { value: 'Speak with us', label: 'Speak with us' }
+                            ]}
+                        />
+
                     </Join>
 
                 </Container>
@@ -369,7 +410,7 @@ const Total = styled.div`
     justify-content: center;
     align-items: center;
     margin-top: 50px;
-    
+
     ${LabelLeft} { 
         font-family: 'DomaineSansMedium';
         font-size: 24px;
@@ -397,6 +438,15 @@ const Total = styled.div`
 `
 
 const Join = styled.div``
+
+const JoinButton = styled(Submit)`
+    height: 56px;
+    margin-top: 32px;
+
+    ${media.phone`
+        margin-top: 16px;
+    `}
+`
 
 
 export default Pricing;
