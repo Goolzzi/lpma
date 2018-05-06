@@ -82,6 +82,10 @@ class Pricing extends Component {
 
                 <Subheading>{plan.subheading}</Subheading>
                 <Description>{plan.description}</Description>
+
+                
+
+
             </Plan>
         )
     }
@@ -187,13 +191,14 @@ class Pricing extends Component {
                     <Join>
 
                         <JoinButton
-                            label={'Join'}
+                            label={'Join Now'}
                             handleSubmit={this.handleSubmit}
                             theme={'mantis'}
                         />
 
                          <Select
                             placeholder={'Please select an option'}
+                            defaultValue={'Speak with us'}
                             onSelectChange={this.onSelectChange}
                             error={this.state.selectError}
                             options={[
@@ -377,7 +382,9 @@ const CompareFeatures = styled.div`
         font-size: 18px;
         line-height: 28px;
         letter-spacing: -0.3px;
+        text-transform: uppercase;
     }
+
 
     user-select: none;
     cursor: pointer;
@@ -396,6 +403,8 @@ const CompareFeatures = styled.div`
 const Expander = styled.div`
     display: flex;
     color: black;
+    font-family: 'DomaineSansMedium';
+    font-size: 28px;
 
     &:not(:last-child) {
         margin-right: 12px;
@@ -437,14 +446,23 @@ const Total = styled.div`
     }
 `
 
-const Join = styled.div``
+const Join = styled.div`
+    margin-top: 85px;
+    width: 560px;
+`
 
 const JoinButton = styled(Submit)`
     height: 56px;
-    margin-top: 32px;
-
+    margin-bottom: 24px;
+    
+    font-family: 'DomaineSansMedium';
+    font-size: 18px;
+    line-height: 1.56;
+    letter-spacing: -0.3px;
+    text-transform: uppercase;
+    
     ${media.phone`
-        margin-top: 16px;
+
     `}
 `
 

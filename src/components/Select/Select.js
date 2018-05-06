@@ -5,7 +5,7 @@ import {default as SelectField} from 'react-select'
 import chevronDown from '../../assets/images/icons/chevron-down.svg'
 import { bgIcon } from '../../styles/global';
 import { media, width } from '../../styles/utils'
-import { ribbon } from '../../styles/colors'
+import { capeCod } from '../../styles/colors'
 
 class Select extends Component{
 
@@ -72,15 +72,17 @@ const Container = styled.div`
 `;
 
 const SelectOption = styled.div`
+
+    font-family: DomaineSansLight;
     font-size: 18px;
-    line-height: 1.44;
-    letter-spacing: -0.4px;
+    line-height: 1.56;
+    letter-spacing: -0.3px;
     height: 56px;
     display: flex;
     justify-content: flex-start;
     align-items: center;
     padding-left: 24px;
-    color: rgba(66, 69, 82, 0.5);
+    color: ${capeCod};
 
     ${media.phone`
         font-size: 16px;
@@ -99,7 +101,7 @@ injectGlobal`
 
         &.error {
             .Select-multi-value-wrapper {
-                border: solid 1px ${ribbon};
+                border: solid 1px ${capeCod};
             }
         }
 
@@ -150,7 +152,7 @@ injectGlobal`
         }
 
         .Select-placeholder {
-            color: rgba(66, 69, 82, 0.5);
+            color: ${capeCod};
         }
 
         .Select-value {
@@ -162,7 +164,7 @@ injectGlobal`
             user-select: none;
             border: 0;
             height: 56px;
-            color: rgba(66, 69, 82, 0.5);
+            color: ${capeCod};
             background: none;
             padding: 0;
         }
