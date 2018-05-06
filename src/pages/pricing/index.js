@@ -64,6 +64,23 @@ class Pricing extends Component {
         })
     }
 
+    renderPlanFeatures = (plan, i) => {
+
+        return (
+
+            <Features>
+                {plan.features.map((item, i) => {
+                    return (
+                        <Feature>
+
+                        </Feature>        
+                    )
+                })}
+     
+            </Features>
+        )
+    }
+
     renderPlan = (plan, i) => {
         const { activePlans } = this.state;
         
@@ -82,9 +99,8 @@ class Pricing extends Component {
 
                 <Subheading>{plan.subheading}</Subheading>
                 <Description>{plan.description}</Description>
-
-                
-
+            
+                {this.renderPlanFeatures(plan)}
 
             </Plan>
         )
