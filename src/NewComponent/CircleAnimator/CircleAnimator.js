@@ -4,6 +4,42 @@ import Img from "gatsby-image";
 import PropTypes from "prop-types";
 import ChapterTitle from "../ChapterTitle";
 import Breakpoint from "../../utils/Breakpoint";
+import image1 from "../../assets/images/NewDesign/bk-intro-2.png";
+import image2 from "../../assets/images/NewDesign/bk-intro-3.png";
+import image3 from "../../assets/images/NewDesign/bk-intro-4.png";
+import image4 from "../../assets/images/NewDesign/bk-intro-5.png";
+
+import image1_mobile from "../../assets/images/NewDesign/bk-intro-2-mobile.jpeg";
+import image2_mobile from "../../assets/images/NewDesign/bk-intro-3-mobile.jpeg";
+import image3_mobile from "../../assets/images/NewDesign/bk-intro-4-mobile.jpeg";
+import image4_mobile from "../../assets/images/NewDesign/bk-intro-5-mobile.jpeg";
+
+const getImage = order => {
+  let image = "",
+    mobile_image = "";
+  switch (order) {
+    case "01":
+      image = image1;
+      mobile_image = image1_mobile;
+      break;
+    case "02":
+      image = image2;
+      mobile_image = image2_mobile;
+      break;
+    case "03":
+      image = image3;
+      mobile_image = image3_mobile;
+      break;
+    case "04":
+      image = image4;
+      mobile_image = image1_mobile;
+      break;
+    default:
+      image = image1;
+      mobile_image = image1_mobile;
+  }
+  return {image, mobile_image};
+};
 const orderName = ["one", "two", "three", "four"];
 const imgStyle = order => {
   let width = 40;
@@ -50,21 +86,24 @@ class CircleAnimator extends React.Component {
         <Transition in={show} timeout={500}>
           {state => (
             <Fragment>
-              <Img
-                position="absolute"
+              <img
                 className="img-bg"
                 sizes={desktopImg.sizes}
                 style={{
                   ...transitionStyles[state],
                   ...imgStyle(order),
                 }}
+                src={getImage(order).image}
+                alt="Chater image"
               />
-              <Img
+              <img
                 className="mobile-img-bg"
                 sizes={mobileImage.sizes}
                 style={{
                   ...transitionStyles[state],
                 }}
+                src={getImage(order).mobile_image}
+                alt="mb chapter mobil"
               />
             </Fragment>
           )}
