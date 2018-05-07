@@ -45,21 +45,24 @@ class Header extends React.Component {
   renderLoginLogout = () => {
     const {auth: authVar, env} = config;
     const {login, logout, isAuthenticated} = this.auth;
-    //TODO: handle logout case!
+
     if (authVar === "iris") {
       const href =
         env === "stage"
           ? "https://dev-new-lpma.netlify.com/login-auth0-ailo"
           : "https://new.lpma.com/login-auth0-ailo";
-      return (
-        <button
-          className="navbar-item"
-          onClick={() => {
-            window.location.replace(href);
-          }}>
-          Login
-        </button>
-      );
+
+      if (!isAuthenticated()) {
+        return (
+          <button
+            className="navbar-item"
+            onClick={() => {
+              window.location.replace(href);
+            }}>
+            Login
+          </button>
+        );
+      }
     }
 
     return (
