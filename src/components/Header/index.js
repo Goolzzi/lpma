@@ -6,6 +6,7 @@ import classNames from "classnames";
 import LoginLogout from "../LoginLogout";
 import IRISAuth from "../../Auth/IRISAuth";
 import {v4} from "uuid";
+import config from "../../../build.config.json";
 import "./styles.scss";
 
 class Header extends React.Component {
@@ -42,15 +43,30 @@ class Header extends React.Component {
   };
 
   renderLoginLogout = () => {
+    const {auth: authVar, env} = config;
+
+    if (authVar === "iris") {
+      const href =
+        env === "stage"
+          ? "https://dev-new-lpma.netlify.com/login-auth0-ailo"
+          : "https://new.lpma.com/login-auth0-ailo";
+      return (
+        <a className="navbar-item" href={href}>
+          Login
+        </a>
+      );
+    }
+
     const {login, logout, isAuthenticated} = this.auth;
-    return this.props.forUSA !== true ? (
+
+    return (
       <LoginLogout
         isAuthenticated={isAuthenticated()}
         login={login}
         logout={logout}
         cssClass={"navbar-item"}
       />
-    ) : null;
+    );
   };
 
   renderFoundrNavItems = (slug, name, isFoundryOpen, foundryLinks) => {

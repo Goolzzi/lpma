@@ -22,9 +22,8 @@ class Auth {
           navigateTo("/foundry");
         }
       } else if (err) {
-        alert(JSON.stringify(err));
         console.log(err); //eslint-disable-line
-        //navigateTo("/");
+        navigateTo("/");
       }
     });
   };
