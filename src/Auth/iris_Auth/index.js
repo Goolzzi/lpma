@@ -25,8 +25,8 @@ class Auth {
           navigateTo("/foundry");
         })
         .catch(err => {
+          console.log("iris user profile error", err);
           alert(JSON.stringify(err));
-          console.log("user profile error", err);
           navigateTo("/");
         }); //eslint-disable-line
     }
