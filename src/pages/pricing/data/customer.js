@@ -41,35 +41,94 @@ export const customer = {
     ],
     features: [
         {
-            title: 'survey',
+            title: 'surveyInvestors',
             variants: [
                 {
                     range: [1, 9999],
                     text: 'Survey your current investors at key stages'
-                },
-            ]
-        },
-        {
-            title: 'suburbs',
-            variants: [
-                {
-                    range: [51, 249],
-                    text: '5 suburbs in your LPMA Growth Model'
-                },
-                {
-                    range: [250, 599],
-                    text: '10 suburbs in your LPMA Growth Model'
-                },
-                {
-                    range: [600, 999],
-                    text: '25 suburbs in your LPMA Growth Model'
-                },
-                {
-                    range: [1000, 9999],
-                    text: 'Unlimited number of suburbs in your LPMA Growth Model'
                 }
             ]
         },
+        {
+            title: 'surveyTenants',
+            variants: [
+                {
+                    range: [126, 9999],
+                    text: 'Survey your current tenants at key stages'
+                }
+            ]
+        },
+        {
+            title: 'portfolio',
+            variants: [
+                {
+                    range: [250, 9999],
+                    text: 'Portfolio level reporting'
+                }
+            ]
+        },
+        {
+            title: 'surveyTeam',
+            variants: [
+                {
+                    range: [250, 9999],
+                    text: 'Survey your team after key events'
+                }
+            ]
+        },
+        {
+            title: 'benchmarkReporting',
+            variants: [
+                {
+                    range: [1, 9999],
+                    text: 'Benchmark reporting'
+                }
+            ]
+        },
+        {
+            title: 'surveyFormerClients',
+            variants: [
+                {
+                    range: [400, 9999],
+                    text: 'Survey your former clients'
+                }
+            ]
+        },
+        {
+            title: 'surveyFormerTenants',
+            variants: [
+                {
+                    range: [600, 9999],
+                    text: 'Survey your former tenants'
+                }
+            ]
+        },
+        {
+            title: 'ailoProtect',
+            variants: [
+                {
+                    range: [1, 249],
+                    text: 'Pay extra to integrate with Ailo Protect'
+                },
+                {
+                    range: [250, 9999],
+                    text: 'Integrate with Ailo Protect'
+                }
+            ]
+        },
+        {
+            title: 'ailoGrow',
+            variants: [
+                {
+                    range: [1, 249],
+                    text: 'Pay extra to integrate with Ailo Grow for leads generated'
+                },
+                {
+                    range: [250, 9999],
+                    text: 'Integrate with Ailo Grow for leads generated'
+                }
+            ]
+        }
     ]
 
 }

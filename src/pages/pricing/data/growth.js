@@ -66,27 +66,6 @@ export const growth = {
             ]
         },
         {
-            title: 'survey',
-            variants: [
-                {
-                    range: [51, 249],
-                    text: 'Survey up to 5 team members'
-                },
-                {
-                    range: [250, 599],
-                    text: 'Survey up to 10 team members'
-                },
-                {
-                    range: [600, 999],
-                    text: 'Survey up to 20 team members'
-                },
-                {
-                    range: [1000, 9999],
-                    text: 'Survey an unlimited number of team members'
-                }
-            ]
-        },
-        {
             title: 'benchmarkGrowth',
             variants: [
                 {
@@ -105,19 +84,10 @@ export const growth = {
             ]
         },
         {
-            title: 'benchmarkCulture',
-            variants: [
-                {
-                    range: [1, 9999],
-                    text: 'Benchmark your culture'
-                },
-            ]
-        },
-        {
             title: 'ailoGrow',
             variants: [
                 {
-                    range: [51, 9999],
+                    range: [1, 9999],
                     text: 'Integrate with Ailo Grow growth targets'
                 },
             ]
