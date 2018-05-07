@@ -44,6 +44,10 @@ export const growth = {
             title: 'suburbs',
             variants: [
                 {
+                    range: [1, 50],
+                    text: '3 suburbs in your LPMA Growth Model'
+                },
+                {
                     range: [51, 249],
                     text: '5 suburbs in your LPMA Growth Model'
                 },
@@ -86,7 +90,7 @@ export const growth = {
             title: 'benchmarkGrowth',
             variants: [
                 {
-                    range: [51, 9999],
+                    range: [1, 9999],
                     text: 'Benchmark your growth'
                 },
             ]
@@ -95,7 +99,7 @@ export const growth = {
             title: 'growth',
             variants: [
                 {
-                    range: [51, 9999],
+                    range: [1, 9999],
                     text: 'LPMA growth awards and recognition program'
                 },
             ]
@@ -104,7 +108,7 @@ export const growth = {
             title: 'benchmarkCulture',
             variants: [
                 {
-                    range: [51, 9999],
+                    range: [1, 9999],
                     text: 'Benchmark your culture'
                 },
             ]

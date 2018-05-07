@@ -151,6 +151,7 @@ class Pricing extends Component {
 
     handleSubmit = (e) => {
         const { selectOption } = this.state;
+        e.preventDefault();
 
         if (selectOption == '') {
             this.setState({
@@ -160,7 +161,7 @@ class Pricing extends Component {
 
           
     
-            e.preventDefault();
+            
         }
     }
 

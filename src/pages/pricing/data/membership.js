@@ -13,32 +13,27 @@ export const membership = {
     ],
     features: [
         {
-            title: 'survey',
+            title: 'base',
             variants: [
                 {
-                    range: [51, 9999],
-                    text: 'Survey your current investors at key stages'
-                },
-            ]
-        },
-        {
-            title: 'suburbs',
-            variants: [
-                {
-                    range: [51, 249],
-                    text: '5 suburbs in your LPMA Growth Model'
+                    range: [1, 9999],
+                    text: 'Basic LPMA Strategic Support'
                 },
                 {
-                    range: [250, 599],
-                    text: '10 suburbs in your LPMA Growth Model'
+                    range: [1, 9999],
+                    text: 'Full access to LMPA Foundry, our information & insights hub Discount for all LPMA functions & events'
                 },
                 {
-                    range: [600, 999],
-                    text: '25 suburbs in your LPMA Growth Model'
+                    range: [1, 9999],
+                    text: 'Access to enter the LMPA Annual Awards'
                 },
                 {
-                    range: [1000, 9999],
-                    text: 'Unlimited number of suburbs in your LPMA Growth Model'
+                    range: [1, 9999],
+                    text: 'Member-only weekly webinars and quarterly meet-ups'
+                },
+                {
+                    range: [1, 9999],
+                    text: 'Three copies of our three strategic PM books'
                 }
             ]
         },

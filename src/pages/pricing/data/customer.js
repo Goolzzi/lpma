@@ -44,7 +44,7 @@ export const customer = {
             title: 'survey',
             variants: [
                 {
-                    range: [51, 9999],
+                    range: [1, 9999],
                     text: 'Survey your current investors at key stages'
                 },
             ]
