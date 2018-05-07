@@ -57,6 +57,9 @@
     .control {
       .input {
         height: 4em;
+        &::placeholder {
+          color: rgba(59, 65, 69, 0.5);
+        }
         @media screen and (max-height: $lg-width ) {
           height: 3em;
         }
