@@ -23,7 +23,6 @@ class Pricing extends Component {
         selectOption: '',
         selectError: false
     }
-
  
     renderDurationSwitcher = () => {
         return (
@@ -64,11 +63,48 @@ class Pricing extends Component {
         })
     }
 
-    renderPlanFeatures = (plan, i) => {
-        const { sliderValue } = this.state;
+    renderAnnualFeatures = (plan) => {
+        const { sliderValue, duration } = this.state;
+
+        if (plan && plan.annualFeatures && duration == 'annual') {
+            return (
+                <Features
+                    annual={true}
+                >
+
+                    <FeatureTitle>
+                        Yearly pricing membership perks
+                    </FeatureTitle>
+    
+                    {plan.annualFeatures.map((item, i) => {
+                        console.log(item)
+    
+                        const variant = find(item.variants, function(o) { 
+                            return (o.range[0] <= sliderValue) && (o.range[1] >= sliderValue)
+                        });
+    
+                        if (variant) {
+                            return (     
+                                <Feature>
+                                    <Dot/>
+                                    {variant.text}
+                                </Feature>
+                            )
+                        }
+                    })}
+    
+                </Features>
+            )
+        }
+
+    }
+    
+    renderFeatures = (plan, i) => {
+        const { sliderValue, duration } = this.state;
 
         return (
             <Features>
+
                 {plan && plan.features.map((item, i) => {
                     console.log(item)
 
@@ -85,6 +121,7 @@ class Pricing extends Component {
                         )
                     }
                 })}
+
             </Features>
         )
     }
@@ -108,7 +145,8 @@ class Pricing extends Component {
                 <Subheading>{plan.subheading}</Subheading>
                 <Description>{plan.description}</Description>
             
-                {this.renderPlanFeatures(plan)}
+                {this.renderFeatures(plan)}
+                {this.renderAnnualFeatures(plan)}
 
             </Plan>
         )
@@ -123,6 +161,23 @@ class Pricing extends Component {
 
         return price ? price.monthly : 0;
     }
+
+    calculateTotalPrice = () => {
+        const { sliderValue, activePlans } = this.state;
+
+        let price = 0; 
+        
+        activePlans.forEach((elm, index) => {
+            if (elm) {
+                const plan = data.plans[index];
+                price = price + this.calculatePricing(plan);
+            }
+        })
+
+        // return price
+        return price
+    }
+    
 
     togglePlan = (i) => {
         const plans = this.state.activePlans;
@@ -202,7 +257,7 @@ class Pricing extends Component {
 
                         <Total>
                             <LabelLeft>Total</LabelLeft>
-                            <Price>${this.state.totalPrice}</Price>
+                            <Price>${this.calculateTotalPrice()}</Price>
                             <LabelRight>AUD/month</LabelRight>
                         </Total>
 
@@ -388,12 +443,11 @@ const Plan = styled.div`
 
 
 const Features = styled.div`
-    margin-top: 56px;
+    margin-top: ${props => props.annual ? '48px' : '56px'};
 `
 
 const Feature = styled.div`
     display: flex;
-
     font-family: 'DomaineSansLight';
     font-size: 14px;
     font-weight: 300;
@@ -405,12 +459,22 @@ const Feature = styled.div`
     }
 `
 
+const FeatureTitle = styled.div`
+    font-family: 'DomaineSansMedium';
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 22px;
+    letter-spacing: -0.3px;
+    margin-bottom: 24px;
+    text-transform: uppercase;
+`
+
 const Dot = styled.div`
     height: 4px;
     width: 4px;
     border-radius: 50%;
     background: ${green};
-    margin-right: 8px;
+    margin-right: 10px;
     transform: translateY(10px);
     flex: 0 1 4px;
     min-width: 4px;
