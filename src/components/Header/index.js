@@ -52,13 +52,13 @@ class Header extends React.Component {
           ? "https://dev-new-lpma.netlify.com/login-auth0-ailo"
           : "https://new.lpma.com/login-auth0-ailo";
       return (
-        <a
+        <button
           className="navbar-item"
           onClick={() => {
             window.location.replace(href);
           }}>
           Login
-        </a>
+        </button>
       );
     }
 
