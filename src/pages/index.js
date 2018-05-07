@@ -25,6 +25,7 @@ class LandingPage extends React.Component {
       showPage: props.showPage,
       scrollHandleClass: "scrollCTROut",
       footerIn: false,
+      pricingVisible: false,
     };
     this.scrolling = false;
     this.startY = 0;
@@ -50,6 +51,8 @@ class LandingPage extends React.Component {
           contactForm: false,
           showPage: "",
           footerIn: false,
+          pricingVisible: false,
+          scrollHandleClass: "scrollCTROut",
         },
         () => {
           this.props.updateState({showPage: ""});
@@ -57,9 +60,12 @@ class LandingPage extends React.Component {
         },
       );
     } else if (nextProps.showPage === "Pricing") {
-      this.setState({animationIndex: 18, footerIn: true}, () => {
-        this.props.onPageChange(this.state.animationIndex);
-      });
+      this.setState(
+        {pricingVisible: true, footerIn: true, scrollHandleClass: "hide"},
+        () => {
+          this.props.onPageChange(this.state.animationIndex);
+        },
+      );
     } else if (nextProps.showPage === "Join") {
       this.joinUs();
     }
@@ -136,7 +142,7 @@ class LandingPage extends React.Component {
     });
   };
   render() {
-    const {animationIndex, scrollDirection} = this.state;
+    const {animationIndex, scrollDirection, pricingVisible} = this.state;
     const {allContentfulChapters: {edges: chapters}} = this.props.data;
     return (
       <div ref={c => (this.wrapper = c)} className="landing-page">
@@ -167,7 +173,7 @@ class LandingPage extends React.Component {
           </ChapterSection>
         ))}
         <PricingDetail
-          startAni={this.state.animationIndex === 18}
+          startAni={this.state.animationIndex === 18 || pricingVisible}
           onSubmit={this.joinUs}
         />
         <Footer footerIn={this.state.footerIn} />
