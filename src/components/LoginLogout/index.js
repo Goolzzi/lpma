@@ -1,19 +1,18 @@
-/* eslint-disable */
 import React from "react";
 import PropTypes from "prop-types";
 
 const LoginLogout = ({logout, login, isAuthenticated, cssClass}) => {
   if (isAuthenticated) {
     return (
-      <a className={cssClass} onClick={() => logout()}>
+      <button className={cssClass} onClick={() => logout()}>
         Logout
-      </a>
+      </button>
     );
   }
   return (
-    <a className={cssClass} onClick={() => login()}>
+    <button className={cssClass} onClick={() => login()}>
       Login
-    </a>
+    </button>
   );
 };
 
