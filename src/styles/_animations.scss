@@ -117,6 +117,11 @@
   opacity: 0;
   transform: translateY(-30px);
 }
+.fade-up-enter-active-initial {
+  opacity: 1;
+  transform: translateY(0);
+  transition: all 1s;
+}
 
 .clockwise-left-enter {
   transform: rotate(0);

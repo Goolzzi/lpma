@@ -7,13 +7,23 @@ class ArticleContent extends React.Component {
       start,
       state,
       order,
+      initial,
       content: {title, description},
     } = this.props;
     return (
       <CSSTransition
         in={start && state == "entered"}
-        classNames="fade-up"
-        timeout={{enter: 1500, exit: 1000}}
+        classNames={{
+          enter: "fade-up-enter",
+          enterActive: initial
+            ? "fade-up-enter-active-initial"
+            : "fade-up-enter-active",
+          enterDone: "fade-up-enter-done",
+          exit: "fade-up-exit",
+          exitActive: "fade-up-exit-active",
+          exitDone: "fade-up-exit-done",
+        }}
+        timeout={{enter: initial ? 1000 : 1500, exit: 1000}}
         unmountOnExit>
         <div className="article-content">
           <div className="wrapper">

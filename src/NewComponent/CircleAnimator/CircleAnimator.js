@@ -94,7 +94,7 @@ class CircleAnimator extends React.Component {
                   ...imgStyle(order),
                 }}
                 src={getImage(order).image}
-                alt="Chater image"
+                alt="chapter-desktop"
               />
               <img
                 className="mobile-img-bg"
@@ -103,7 +103,7 @@ class CircleAnimator extends React.Component {
                   ...transitionStyles[state],
                 }}
                 src={getImage(order).mobile_image}
-                alt="mb chapter mobil"
+                alt="mb chapter mobile"
               />
             </Fragment>
           )}
