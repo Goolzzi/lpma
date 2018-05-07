@@ -172,6 +172,7 @@ class LandingPage extends React.Component {
         <LandingSection
           animationIndex={animationIndex}
           direction={scrollDirection}
+          onChooseChapter={this.onChooseChapter}
         />
         {chapters.map((chapter, i) => (
           <ChapterSection

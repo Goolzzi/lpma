@@ -45,6 +45,7 @@ class LandingSection extends React.Component {
     }
   };
   render() {
+    const {onChooseChapter} = this.props;
     const {animationIndex, slide1, slide2} = this.state;
     return (
       <CSSTransition
@@ -67,11 +68,39 @@ class LandingSection extends React.Component {
             <h1 className="banner-title">
               FOUR STEPS<br />TO LPMA EVOLUTION
             </h1>
-            <div className="reason-bar">
-              <div className="bar item-1" />
-              <div className="bar item-2" />
-              <div className="bar item-3" />
-              <div className="bar item-4" />
+            <div className="step-bar">
+              <div
+                className="step-item item-1"
+                onClick={() => onChooseChapter(1)}>
+                <div className="hint">
+                  <h5>01.</h5>
+                  <p>FACTS NOT MYTHS</p>
+                </div>
+              </div>
+              <div
+                className="step-item item-2"
+                onClick={() => onChooseChapter(2)}>
+                <div className="hint">
+                  <h5>02.</h5>
+                  <p>BUILD A GROWTH PLAN</p>
+                </div>
+              </div>
+              <div
+                className="step-item item-3"
+                onClick={() => onChooseChapter(3)}>
+                <div className="hint">
+                  <h5>03.</h5>
+                  <p>GROW MORE THAN YOUR DOORS</p>
+                </div>
+              </div>
+              <div
+                className="step-item item-4"
+                onClick={() => onChooseChapter(4)}>
+                <div className="hint">
+                  <h5>04.</h5>
+                  <p>FIND STRENGTH IN OUR COMMUNITY</p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
