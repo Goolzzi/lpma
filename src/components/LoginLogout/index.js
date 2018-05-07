@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const LoginLogout = ({logout, login, isAuthenticated, cssClass}) => {
+const LoginLogout = ({logout, login, isAuthenticated, cssClass, loginText}) => {
   if (isAuthenticated) {
     return (
       <button className={cssClass} onClick={() => logout()}>
@@ -11,7 +11,7 @@ const LoginLogout = ({logout, login, isAuthenticated, cssClass}) => {
   }
   return (
     <button className={cssClass} onClick={() => login()}>
-      Login
+      {loginText ? loginText : "Login"}
     </button>
   );
 };
@@ -21,6 +21,7 @@ LoginLogout.propTypes = {
   login: PropTypes.func.isRequired,
   isAuthenticated: PropTypes.bool.isRequired,
   cssClass: PropTypes.string,
+  loginText: PropTypes.string,
 };
 
 export default LoginLogout;
