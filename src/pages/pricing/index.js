@@ -21,7 +21,8 @@ class Pricing extends Component {
         featuresVisible: false,
         totalPrice: 0,
         selectOption: '',
-        selectError: false
+        selectError: false,
+        featuresVisible: false
     }
  
     renderDurationSwitcher = () => {
@@ -127,7 +128,7 @@ class Pricing extends Component {
     }
 
     renderPlan = (plan, i) => {
-        const { activePlans } = this.state;
+        const { activePlans, featuresVisible } = this.state;
         
         return (
             <Plan
@@ -145,8 +146,12 @@ class Pricing extends Component {
                 <Subheading>{plan.subheading}</Subheading>
                 <Description>{plan.description}</Description>
             
-                {this.renderFeatures(plan)}
-                {this.renderAnnualFeatures(plan)}
+                <FeatureWrapper
+                    active={featuresVisible}
+                >
+                    {this.renderFeatures(plan)}
+                    {this.renderAnnualFeatures(plan)}
+                </FeatureWrapper>
 
             </Plan>
         )
@@ -200,7 +205,9 @@ class Pricing extends Component {
     }
 
     toggleFeatures = () => {
-      
+        this.setState({
+            featuresVisible: !this.state.featuresVisible
+        })
     }
 
     onSelectChange = (value) => {
@@ -441,6 +448,10 @@ const Plan = styled.div`
     }}
 `
 
+const FeatureWrapper = styled.div`
+    display: ${props => props.active ? 'flex' : 'none'};
+    flex-direction: column;
+`
 
 const Features = styled.div`
     margin-top: ${props => props.annual ? '48px' : '56px'};
