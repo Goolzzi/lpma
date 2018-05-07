@@ -37,6 +37,21 @@ export const membership = {
                 }
             ]
         },
+        {
+            title: 'annual',
+            variants: [
+                {
+                    range: [1, 9999],
+                    text: '1 free ticket to the LPMA Annual Conference'
+                },
+                {
+                    range: [1, 9999],
+                    text: '1 hour per quarter with an LPMA Consultant'
+                }
+            ]
+        }
     ]
 
 }
+
+
