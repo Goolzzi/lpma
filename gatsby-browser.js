@@ -30,6 +30,14 @@ const handleRedirects = (location, action) => {
   const {pathname} = location;
   const isAuthenticated = auth.isAuthenticated();
 
+  if (pathname.indexOf("login-auth0-ailo") !== -1) {
+    if (!isAuthenticated) {
+      auth.login();
+    } else {
+      history.replace("/contact");
+    }
+  }
+
   //redirect authenticated users form home to foundy page //todo improve with regexp
   if (isAuthenticated && (pathname === "/" || pathname === "/index.html")) {
     history.replace("/foundry");

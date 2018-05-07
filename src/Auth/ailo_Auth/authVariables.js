@@ -1,9 +1,15 @@
 import buildConfig from "../../../build.config.json";
 
+function getDevRedirectUrl() {
+  return process.env.NODE_ENV === "development"
+    ? "http://localhost:8000/callback"
+    : "https://dev-new-lpma.netlify.com/callback";
+}
+
 const authConfig_dev = {
   domain: "ailo-dev.au.auth0.com",
   clientID: "fSFMLtPrgj41huObssvuyRiYMmTkbXr2",
-  redirectUri: "http://localhost:8000/callback",
+  redirectUri: getDevRedirectUrl(),
   audience: "https://dev.ailo.io/",
   responseType: "token id_token",
   scope: "openid email profile",
