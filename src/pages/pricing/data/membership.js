@@ -1,6 +1,6 @@
 export const membership = {
     heading: 'LPMA Membership',
-    subheading: 'Join the largest global network of property management leaders ',
+    subheading: 'Join the largest global network of property management leaders',
     description: `
         As an LPMA member you’ll receive access to things like the Foundry, 
         discounts to our flagship PM events, and business planning basics.
@@ -21,7 +21,11 @@ export const membership = {
                 },
                 {
                     range: [1, 9999],
-                    text: 'Full access to LMPA Foundry, our information & insights hub Discount for all LPMA functions & events'
+                    text: 'Full access to LMPA Foundry, our information & insights hub'
+                },
+                {
+                    range: [1, 9999],
+                    text: 'Discount for all LPMA functions & events'
                 },
                 {
                     range: [1, 9999],

@@ -3,7 +3,7 @@ import styled, { css } from 'styled-components'
 import { rgba } from 'polished'
 import { find } from 'lodash'
 
-import { capeCod, mantis, porsche, tonysPink, morningGlory, mako } from '../../styles/colors'
+import { capeCod, mantis, porsche, tonysPink, morningGlory, mako, green } from '../../styles/colors'
 import { media } from '../../styles/utils'
 import { data } from './data/data'
 
@@ -65,18 +65,26 @@ class Pricing extends Component {
     }
 
     renderPlanFeatures = (plan, i) => {
+        const { sliderValue } = this.state;
 
         return (
-
             <Features>
-                {plan.features.map((item, i) => {
-                    return (
-                        <Feature>
+                {plan && plan.features.map((item, i) => {
+                    console.log(item)
 
-                        </Feature>        
-                    )
+                    const variant = find(item.variants, function(o) { 
+                        return (o.range[0] <= sliderValue) && (o.range[1] >= sliderValue)
+                    });
+
+                    if (variant) {
+                        return (
+                            <Feature>
+                                <Dot/>
+                                {variant.text}
+                            </Feature>        
+                        )
+                    }
                 })}
-     
             </Features>
         )
     }
@@ -158,9 +166,6 @@ class Pricing extends Component {
                 selectError: true
             })
         } else {
-
-          
-    
             
         }
     }
@@ -181,6 +186,7 @@ class Pricing extends Component {
                     {/* Plans */}
 
                     <PlanWrapper>
+
                         <Plans>
                             {data.plans.map((item, i) => {
                                 return this.renderPlan(item, i)
@@ -381,8 +387,34 @@ const Plan = styled.div`
 `
 
 
-const Features = styled.div``
-const Feature = styled.div``
+const Features = styled.div`
+    margin-top: 56px;
+`
+
+const Feature = styled.div`
+    display: flex;
+
+    font-family: 'DomaineSansLight';
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 22px;
+    letter-spacing: -0.3px;
+
+    &:not(:last-child) {
+        margin-bottom: 16px;    
+    }
+`
+
+const Dot = styled.div`
+    height: 4px;
+    width: 4px;
+    border-radius: 50%;
+    background: ${green};
+    margin-right: 8px;
+    transform: translateY(10px);
+    flex: 0 1 4px;
+    min-width: 4px;
+`
 
 // Compare Features
 
