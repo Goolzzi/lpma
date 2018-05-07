@@ -16,7 +16,7 @@ class Auth {
         if (authResult.scope.indexOf("lpma_membership") === -1) {
           //eslint-disable-next-line
           console.log("thes user is not LPMA member");
-          this.logout("isNotMember=1");
+          this.logout("/contact", "isNotMember=1");
         } else {
           this.setUserData(authResult.idTokenPayload);
           navigateTo("/foundry");
@@ -57,10 +57,10 @@ class Auth {
     this.auth0.authorize();
   };
 
-  logout = data => {
+  logout = (data, path) => {
     this.dispose();
     navigateTo({
-      pathname: "/contact",
+      pathname: path ? path : "/",
       hash: data,
     });
   };
