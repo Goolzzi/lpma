@@ -45,6 +45,7 @@ class Header extends React.Component {
   renderLoginLogout = () => {
     const {auth: authVar, env} = config;
     const {login, logout, isAuthenticated} = this.auth;
+    //TODO: handle logout case!
     if (authVar === "iris") {
       const href =
         env === "stage"
@@ -54,7 +55,7 @@ class Header extends React.Component {
         <a
           className="navbar-item"
           onClick={() => {
-            window.location.href = href;
+            window.location.replace(href);
           }}>
           Login
         </a>
