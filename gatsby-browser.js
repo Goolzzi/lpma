@@ -30,7 +30,7 @@ const handleRedirects = (location, action) => {
   const {pathname} = location;
   const isAuthenticated = auth.isAuthenticated();
 
-  if (pathname === "/login-auth0-ailo") {
+  if (pathname.indexOf("login-auth0-ailo") !== -1) {
     if (!isAuthenticated) {
       auth.login();
     } else {
