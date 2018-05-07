@@ -21,7 +21,9 @@ const LayoutTemplate = props => {
     },
   } = props;
 
-  if (pathname.split("/")[1] === "callback") {
+  const pageName = pathname.split("/")[1];
+
+  if (pageName === "callback" || pageName === "login-auth0-ailo") {
     return <div className="page-container">{children()}</div>;
   }
 
