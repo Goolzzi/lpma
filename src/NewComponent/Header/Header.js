@@ -30,7 +30,7 @@ function getLoginLogout(auth) {
           onClick={() => {
             window.location.replace(href);
           }}>
-          Login
+          Sign in
         </button>
       );
     }
