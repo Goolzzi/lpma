@@ -62,7 +62,12 @@ class LandingPage extends React.Component {
       );
     } else if (nextProps.showPage === "Pricing") {
       this.setState(
-        {pricingVisible: true, footerIn: true, scrollHandleClass: "hide"},
+        {
+          pricingVisible: true,
+          animationIndex: 18,
+          footerIn: true,
+          scrollHandleClass: "hide",
+        },
         () => {
           this.props.onPageChange(this.state.animationIndex);
         },

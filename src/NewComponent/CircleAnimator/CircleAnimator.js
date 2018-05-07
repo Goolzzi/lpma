@@ -32,7 +32,7 @@ const getImage = order => {
       break;
     case "04":
       image = image4;
-      mobile_image = image1_mobile;
+      mobile_image = image4_mobile;
       break;
     default:
       image = image1;
