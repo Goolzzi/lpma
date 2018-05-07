@@ -57,8 +57,9 @@
   "scripts": {
     "build": "rm -rf public; gatsby build",
     "start": "gatsby develop",
-    "netlify-build": "node ./scripts/build_config.js live && rm -rf public; gatsby build && node ./scripts/cp_netlify_public.js",
-    "netlify-build-stage": "node ./scripts/build_config.js stage && rm -rf public; gatsby build && node ./scripts/cp_netlify_public.js",
+    "netlify-build": "node ./scripts/build_config.js live iris && rm -rf public; gatsby build && node ./scripts/cp_netlify_public.js",
+    "netlify-build-stage": "node ./scripts/build_config.js stage iris && rm -rf public; gatsby build && node ./scripts/cp_netlify_public.js",
+    "netlify-build-new-lpma": "node ./scripts/build_config.js live ailo && rm -rf public; gatsby build && node ./scripts/cp_netlify_public.js",
     "netlify-deploy-stage": "npm run netlify-build-stage && netlify deploy",
     "netlify-deploy-prod": "npm run netlify-build && netlify deploy",
     "format": "prettier --config .prettierrc --write \"src/**/*.js\""
