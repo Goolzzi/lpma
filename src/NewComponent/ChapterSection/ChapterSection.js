@@ -147,8 +147,7 @@ class ChapterSection extends React.Component {
                     <Breakpoint name="desktop">
                       <CSSTransition
                         in={
-                          animationIndex > minIndex &&
-                          animationIndex <= maxIndex
+                          animationIndex > minIndex && animationIndex < maxIndex
                         }
                         classNames="clockwise-right"
                         timeout={2000}
@@ -165,8 +164,7 @@ class ChapterSection extends React.Component {
                     <Breakpoint name="phone">
                       <CSSTransition
                         in={
-                          animationIndex > minIndex &&
-                          animationIndex <= maxIndex
+                          animationIndex > minIndex && animationIndex < maxIndex
                         }
                         classNames="fade-up"
                         timeout={2000}
@@ -202,7 +200,7 @@ class ChapterSection extends React.Component {
                   <Breakpoint name="desktop">
                     <CSSTransition
                       in={
-                        animationIndex > minIndex && animationIndex <= maxIndex
+                        animationIndex > minIndex && animationIndex < maxIndex
                       }
                       classNames="clockwise-right"
                       timeout={2000}
@@ -219,7 +217,7 @@ class ChapterSection extends React.Component {
                   <Breakpoint name="phone">
                     <CSSTransition
                       in={
-                        animationIndex > minIndex && animationIndex <= maxIndex
+                        animationIndex > minIndex && animationIndex < maxIndex
                       }
                       classNames="fade-up"
                       timeout={2000}

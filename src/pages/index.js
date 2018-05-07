@@ -6,6 +6,7 @@ import ArticleContent from "../NewComponent/ArticleConent";
 import JoinUsForm from "../NewComponent/JoinUsForm";
 import Footer from "../NewComponent/Footer";
 import PricingDetail from "../NewComponent/PricingDetail";
+import DotNavigator from "../NewComponent/DotNavigator";
 
 import CHAPTER_DESKTOP_IMG1 from "../assets/images/NewDesign/bk-intro-2.png";
 import "animate.css/animate.min.css";
@@ -141,6 +142,28 @@ class LandingPage extends React.Component {
       footerIn: true,
     });
   };
+  onChooseChapter = index => {
+    switch (index) {
+      case 0:
+        this.setState({animationIndex: 0});
+        break;
+      case 1:
+        this.setState({animationIndex: 2});
+        break;
+      case 2:
+        this.setState({animationIndex: 6});
+        break;
+      case 3:
+        this.setState({animationIndex: 10});
+        break;
+      case 4:
+        this.setState({animationIndex: 14});
+        break;
+      case 5:
+        this.setState({animationIndex: 18});
+        break;
+    }
+  };
   render() {
     const {animationIndex, scrollDirection, pricingVisible} = this.state;
     const {allContentfulChapters: {edges: chapters}} = this.props.data;
@@ -172,12 +195,17 @@ class LandingPage extends React.Component {
             ))}
           </ChapterSection>
         ))}
+
         <PricingDetail
           startAni={this.state.animationIndex === 18 || pricingVisible}
           onSubmit={this.joinUs}
         />
         <Footer footerIn={this.state.footerIn} />
         <JoinUsForm formIn={this.state.contactForm} />
+        <DotNavigator
+          onChooseChapter={this.onChooseChapter}
+          animationIndex={animationIndex}
+        />
         <div className="scroll-bar">
           <div
             className={`scroll-control ${this.state.scrollHandleClass}`}
