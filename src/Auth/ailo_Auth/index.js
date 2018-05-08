@@ -57,7 +57,7 @@ class Auth {
     this.auth0.authorize();
   };
 
-  logout = (data, path) => {
+  logout = (path, data) => {
     this.dispose();
     navigateTo({
       pathname: path ? path : "/",
