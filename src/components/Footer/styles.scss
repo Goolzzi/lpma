@@ -124,7 +124,6 @@
     .white-links-column {
       button {
         position: absolute;
-        bottom: 0rem;
       }
       .contact-info-wrapper{
         strong {
@@ -137,12 +136,23 @@
         }
       }
 
-      a {
+      a, button {
         color: $white;
         display: block;
-
         font-size: 1.2222rem;
         line-height: 1.82;
+      }
+
+      button.nav-btn {
+        border: none;
+        outline : none;
+        background-color: transparent;
+        text-align: left;
+        letter-spacing : 1px;
+        line-height : 1em;
+        padding: 0;
+        cursor: pointer;
+         
       }
     }
   }

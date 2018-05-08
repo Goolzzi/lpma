@@ -2,19 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import Link from "gatsby-link";
 import IRISAuth from "../../Auth/IRISAuth";
-import LoginLogout from "../../components/LoginLogout";
 import "./styles.scss";
-
-const renderLoginLogout = (auth, forUSA) => {
-  const {login, logout, isAuthenticated} = auth;
-  return forUSA !== true ? (
-    <LoginLogout
-      isAuthenticated={isAuthenticated()}
-      login={login}
-      logout={logout}
-    />
-  ) : null;
-};
 
 //FIXME: improve footer for us and defoult view
 const Footer = ({
@@ -25,6 +13,7 @@ const Footer = ({
   logo,
   socialLinks,
   forUSA,
+  renderLoginLogout,
 }) => {
   const menuItems = forUSA
     ? menu.filter(({country}) => country === "us")
@@ -93,7 +82,7 @@ const Footer = ({
                         </Link>
                       );
                     })}
-                    {renderLoginLogout(auth, forUSA)}
+                    {renderLoginLogout()}
                   </div>
                   <div className="column footer-1">
                     <div className="vertical-line" />
@@ -139,6 +128,7 @@ Footer.propTypes = {
   forUSA: PropTypes.bool.isRequired,
   socialLinks: PropTypes.array.isRequired,
   contactInfo: PropTypes.object.isRequired,
+  renderLoginLogout: PropTypes.func.isRequired,
 };
 
 export default Footer;
