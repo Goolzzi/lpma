@@ -34,8 +34,6 @@ export const Button = styled.div`
     cursor: pointer;
     transition: opacity 0.20s ease;
 
-    
-
     ${media.tablet`
         height: 48px;
     `}

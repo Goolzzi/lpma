@@ -22,6 +22,7 @@ class Select extends Component{
     };
 
     renderOption = (option) => {
+        console.log(option)
         return (
             <SelectOption 
                 style={{
@@ -36,12 +37,19 @@ class Select extends Component{
     }
 
     setValue = (value) => {
-		this.setState({ value });
-        this.props.onSelectChange(value);
+        const { onSelectChange, disableChange } = this.props;
+
+        if (!disableChange) {
+            this.setState({ value });
+
+            if (onSelectChange) {
+                onSelectChange(value)
+            }
+        }
     }
     
     onChange = (params) => {
-        console.log(params);
+        
     }
     
     render() {

@@ -2,16 +2,20 @@ import React, {Component} from 'react'
 import styled, { css } from 'styled-components'
 import { rgba } from 'polished'
 import { find } from 'lodash'
-import Link from "gatsby-link"
+import { navigateTo } from "gatsby-link" 
+
+import arrowDown from '../../assets/images/icon-down-arrow.svg'
 
 import { capeCod, mantis, porsche, tonysPink, morningGlory, mako, green } from '../../styles/colors'
 import { media } from '../../styles/utils'
+import { bgIcon } from '../../styles/global'
 import { data } from './data/data'
 
 import Slider from '../../components/Slider'
 import Switch from '../../components/Switch'
 import Select from '../../components/Select' 
 import Submit from '../../components/Submit' 
+import { bgImage } from '../../styles/global';
 
 class Pricing extends Component {
 
@@ -267,17 +271,54 @@ class Pricing extends Component {
     }
 
     handleSubmit = (e) => {
-        const { selectOption } = this.state;
-        e.preventDefault();
-
-        if (selectOption == '') {
-            this.setState({
-                selectError: true
-            })
-        } else {
-            
+        navigateTo('/contact')
+    }
+    
+    toggleIntercom = () => {
+        if (typeof Intercom !== undefined) {
+            Intercom('showNewMessage');
         }
     }
+
+    handleSpeakOption = (option) => {
+        if (option.link) {
+            window.open(option.link ,'_newtab');
+        } else if (option.callback) {
+            option.callback()
+        }
+    }
+
+    renderSpeakWithUs = () => {
+
+        const options = [
+            { value: 'phone', label: '+61 29 146 0050', link: 'tel:+61291460050' },
+            { value: 'intercom', label: 'Speak with us now', callback: this.toggleIntercom },
+            { value: 'email', label: 'Email Us', link: 'mailto:hello@lpma.com' }
+        ]
+
+        return (
+            <SpeakWithUsWrapper>
+                <SpeakSelect>
+                    <SpeakDefault>
+                        Speak With Us
+                        <Arrow/>
+                    </SpeakDefault>
+                    <SpeakDropdown>
+                        {options.map((option, i) => {
+                            return (
+                                <SpeakOption
+                                    onClick={() => this.handleSpeakOption(option)}
+                                >
+                                    {option.label}
+                                </SpeakOption>
+                            )
+                        })}
+                    </SpeakDropdown>
+                </SpeakSelect>
+            </SpeakWithUsWrapper>
+        )
+    }
+    
 
     render() {
         const { featuresVisible } = this.state;
@@ -328,15 +369,7 @@ class Pricing extends Component {
                             theme={'mantis'}
                         />
 
-                         <Select
-                            placeholder={'Please select an option'}
-                            defaultValue={'Speak with us'}
-                            onSelectChange={this.onSelectChange}
-                            error={this.state.selectError}
-                            options={[
-                                { value: 'Speak with us', label: 'Speak with us' }
-                            ]}
-                        />
+                        {this.renderSpeakWithUs()}
 
                     </Join>
 
@@ -821,5 +854,79 @@ const JoinButton = styled(Submit)`
     `}
 `
 
+
+
+const SpeakDropdown = styled.div`
+    position: absolute;
+    left: 0;
+    top: 54px;
+    right: 0;
+    border-radius: 4px;
+    overflow: hidden;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+
+    opacity: 0;
+    pointer-events: none;
+
+    transition: opacity 0.25s ease;
+`
+
+const SpeakOption = styled.a`
+    background: white;
+    border-top: 1px solid ${rgba('black', 0.2)};
+    cursor: pointer;
+    transition: all 0.15s ease;
+    
+    &:hover {
+        background: ${green};
+        color: white !important;
+    }
+`
+
+const Arrow = styled.div`
+    background-image: url(${arrowDown});
+    ${bgIcon}
+    height: 8px;
+    width: 16px;
+`
+
+const SpeakSelect = styled.div`
+    position: relative;
+    background: white;
+    border-radius: 4px;
+    margin-bottom: 24px;
+`
+
+const SpeakDefault = styled.div`
+    display: flex;
+    justify-content: space-between;
+    cursor: pointer;
+`
+
+const SpeakWithUsWrapper = styled.div`
+    width: 100%;
+
+    ${SpeakOption}, 
+    ${SpeakDefault} {
+        display: flex;
+        align-items: center;
+        padding: 0 24px;
+        height: 56px;
+
+        font-size: 18px;
+        line-height: 28px;
+        letter-spacing: -0.3px;
+        font-family: 'DomaineSansLight';
+        color: ${capeCod};
+    }
+
+    &:hover {
+        ${SpeakDropdown} {
+            opacity: 1;
+            pointer-events: all;
+        }
+    }
+`
 
 export default Pricing;
