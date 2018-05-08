@@ -1,4 +1,4 @@
-import buildConfig from "../../build.config.json";
+import buildConfig from "../../../build.config.json";
 
 const localDevCallback = "http://localhost:8000/callback";
 const stagingCallback = "https://dev-lpma.netlify.com/callback";

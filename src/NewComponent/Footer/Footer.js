@@ -14,7 +14,7 @@ const Footer = ({footerIn}) => (
           <span role="img" aria-label="flag">
             🇦🇺
           </span>{" "}
-          AUS +61 9 146 0050
+          AUS +61 29 146 0050
         </span>
       </div>
       <div className="mobile-column">

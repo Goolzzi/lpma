@@ -9,7 +9,7 @@ import arrowDown from '../../assets/images/icon-down-arrow.svg'
 import { capeCod, mantis, porsche, tonysPink, morningGlory, mako, green } from '../../styles/colors'
 import { media } from '../../styles/utils'
 import { bgIcon } from '../../styles/global'
-import { data } from './data/data'
+import { data } from '../../data/data'
 
 import Slider from '../../components/Slider'
 import Switch from '../../components/Switch'
@@ -21,7 +21,7 @@ class Pricing extends Component {
 
     state = {
         duration: 'annual',
-        sliderValue: 55,
+        sliderValue: 1,
         activePlans: [true],
         featuresVisible: false,
         totalPrice: 0,
@@ -201,31 +201,12 @@ class Pricing extends Component {
 
     togglePlan = (i) => {
         const plans = this.state.activePlans;
-
-        console.log(plans[i])
         
         if (plans[i] && i !== 0) {
             plans[i] = !plans[i]
         } else {
             plans[i] = true
         }
-
-        Array(data.plans.length).fill().forEach((elm, index) => {
-
-            // Disable plans above
-
-            if ((plans[i] == false) && (index >= i)) {
-                plans[index] = false;
-            }
-
-            // Enable plans below 
-
-            if (plans[i] && (index <= i)) {
-                plans[index] = true;
-            }
-            
-       
-        })
        
         this.setState({
             activePlans: plans
