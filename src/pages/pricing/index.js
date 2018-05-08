@@ -201,31 +201,12 @@ class Pricing extends Component {
 
     togglePlan = (i) => {
         const plans = this.state.activePlans;
-
-        console.log(plans[i])
         
         if (plans[i] && i !== 0) {
             plans[i] = !plans[i]
         } else {
             plans[i] = true
         }
-
-        Array(data.plans.length).fill().forEach((elm, index) => {
-
-            // Disable plans above
-
-            if ((plans[i] == false) && (index >= i)) {
-                plans[index] = false;
-            }
-
-            // Enable plans below 
-
-            if (plans[i] && (index <= i)) {
-                plans[index] = true;
-            }
-            
-       
-        })
        
         this.setState({
             activePlans: plans
