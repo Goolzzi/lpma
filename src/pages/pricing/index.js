@@ -196,7 +196,7 @@ class Pricing extends Component {
         })
 
         // return price
-        return price
+        return `$${price}`
     }
 
     togglePlan = (i) => {
@@ -302,7 +302,7 @@ class Pricing extends Component {
     
 
     render() {
-        const { featuresVisible } = this.state;
+        const { featuresVisible, sliderValue } = this.state;
 
         return (
             <Wrapper>
@@ -331,10 +331,18 @@ class Pricing extends Component {
                             <Expander>{featuresVisible ? '–' : '+'}</Expander>
                         </CompareFeatures>
 
-                        <Total>
-                            <LabelLeft>Total</LabelLeft>
-                            <Price>${this.calculateTotalPrice()}</Price>
-                            <LabelRight>AUD/month</LabelRight>
+                        <Total>            
+                            {
+                                sliderValue >= 1200 
+                                ?
+                                    <Price>Contact Us</Price>
+                                :
+                                    <React.Fragment>
+                                        <LabelLeft>Total</LabelLeft>
+                                        <Price>{this.calculateTotalPrice()}</Price>
+                                        <LabelRight>AUD/month</LabelRight>
+                                    </React.Fragment>
+                            }
                         </Total>
 
                     </PlanWrapper>
@@ -405,15 +413,15 @@ const Top = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding-top: 178px;
+    padding-top: 140px;
 
     > ${Heading} {
-        font-size: 56px;
+        font-size: 40px;
         font-weight: 500;
         line-height: 56px;
         letter-spacing: -2.5px;
         color: white;
-        padding-bottom: 160px;
+        padding-bottom: 80px;
 
         ${media.tablet`
             padding-bottom: 75px;
@@ -440,12 +448,12 @@ const SliderWrapper = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding-top: 98px;
+    padding-top: 64px;
     max-width: 779px;
     width: 100%;
 
     > ${Heading} {
-        font-size: 24px;
+        font-size: 18px;
         font-weight: 500;
         line-height: 34px;
         letter-spacing: -0.3px;
