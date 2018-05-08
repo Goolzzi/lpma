@@ -9,7 +9,7 @@ import arrowDown from '../../assets/images/icon-down-arrow.svg'
 import { capeCod, mantis, porsche, tonysPink, morningGlory, mako, green } from '../../styles/colors'
 import { media } from '../../styles/utils'
 import { bgIcon } from '../../styles/global'
-import { data } from './data/data'
+import { data } from '../../data/data'
 
 import Slider from '../../components/Slider'
 import Switch from '../../components/Switch'
