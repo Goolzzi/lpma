@@ -2,9 +2,11 @@ import React, {Component} from 'react'
 import styled from 'styled-components';
 import ReactSlider from 'react-slider';
 import { injectGlobal } from 'styled-components';
+import sliderArrow from "../../assets/images/slider-arrow.svg";
 
+import { media } from '../../styles/utils';
 import { capeCod, mantis, porsche, tonysPink, morningGlory, mako } from '../../styles/colors'
-import { bgIcon } from '../../styles/global'
+import { bgIcon, bgImage } from '../../styles/global'
 
 import singleHouseIcon from '../../assets/images/icons/icon-single-house.svg';
 import multiHouseIcon from '../../assets/images/icons/icon-multi-house.svg';
@@ -106,12 +108,13 @@ injectGlobal`
             background-color: white;
         }
 
-        .bar-0{
+        .bar-0 {
             background-color: ${mantis};
         }
 
         .slider {
-            width: 641px;
+            max-width: 641px;
+            width: 100%;
             display: flex;
             align-items: center;
             height: 20px;
@@ -128,17 +131,42 @@ injectGlobal`
             cursor: pointer;
             display: flex;
             flex-direction: row;
-            justify-content: center;
+            justify-content: space-between;
             align-items: center;
+            box-sizing: border-box;
+            padding: 0 8px;
+
+            ${media.phone`
+                height: 32px; 
+                width: 78px;
+            `}
+
+            .arrow-left, 
+            .arrow-right {
+                background-image: url(${sliderArrow});
+                height: 11px;
+                width: 11px;
+                ${bgIcon}
+
+                ${media.phone`
+                    height: 8px;
+                    width: 8px;
+                `}
+            }
 
             .arrow-left {
 
             }
+
             .arrow-right {
-                
+                transform: rotate(180deg);
             }
             .value {
-    
+                font-size: 18px;
+
+                ${media.phone`
+                    font-size: 12px;
+                `}
             }
         }
         

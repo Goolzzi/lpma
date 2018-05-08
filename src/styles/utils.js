@@ -5,7 +5,7 @@ export const breakpoints = {
     desktop: 1600,
     desktopSmall: 1440,
     tablet: 1024,
-    phone: 820
+    phone: 765
 }
 
 const setMedia = size => (...args) => css`

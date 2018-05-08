@@ -1,6 +1,6 @@
 import {authConfig} from "./authVariables";
 import {parseHash} from "../utils";
-import {navigateTo} from "gatsby-link";
+import Link, {navigateTo} from "gatsby-link";
 import store from "store";
 import isEmpty from "lodash/isEmpty";
 import CryptoJS from "crypto-js";

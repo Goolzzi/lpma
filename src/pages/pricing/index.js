@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import styled, { css } from 'styled-components'
 import { rgba } from 'polished'
 import { find } from 'lodash'
+import Link from "gatsby-link"
 
 import { capeCod, mantis, porsche, tonysPink, morningGlory, mako, green } from '../../styles/colors'
 import { media } from '../../styles/utils'
@@ -22,7 +23,8 @@ class Pricing extends Component {
         totalPrice: 0,
         selectOption: '',
         selectError: false,
-        featuresVisible: false
+        featuresVisible: false,
+        activeFeatures: [],
     }
  
     renderDurationSwitcher = () => {
@@ -78,7 +80,6 @@ class Pricing extends Component {
                     </FeatureTitle>
     
                     {plan.annualFeatures.map((item, i) => {
-                        console.log(item)
     
                         const variant = find(item.variants, function(o) { 
                             return (o.range[0] <= sliderValue) && (o.range[1] >= sliderValue)
@@ -92,6 +93,7 @@ class Pricing extends Component {
                                 </Feature>
                             )
                         }
+
                     })}
     
                 </Features>
@@ -107,7 +109,6 @@ class Pricing extends Component {
             <Features>
 
                 {plan && plan.features.map((item, i) => {
-                    console.log(item)
 
                     const variant = find(item.variants, function(o) { 
                         return (o.range[0] <= sliderValue) && (o.range[1] >= sliderValue)
@@ -121,6 +122,7 @@ class Pricing extends Component {
                             </Feature>        
                         )
                     }
+
                 })}
 
             </Features>
@@ -128,30 +130,40 @@ class Pricing extends Component {
     }
 
     renderPlan = (plan, i) => {
-        const { activePlans, featuresVisible } = this.state;
+        const { activePlans, featuresVisible, activeFeatures } = this.state;
         
         return (
             <Plan
                 key={i}
                 active={activePlans[i] ? true : false}
-                onClick={() => this.togglePlan(i)}
             >
-                <Heading>{plan.heading}</Heading>
-
-                <PricingWrapper>
-                    <Price>${this.calculatePricing(plan)}</Price>
-                    / month
-                </PricingWrapper>
-
-                <Subheading>{plan.subheading}</Subheading>
-                <Description>{plan.description}</Description>
-            
-                <FeatureWrapper
-                    active={featuresVisible}
+                <ClickWrapper
+                    onClick={() => this.togglePlan(i)}
                 >
-                    {this.renderFeatures(plan)}
-                    {this.renderAnnualFeatures(plan)}
-                </FeatureWrapper>
+                    <Heading>{plan.heading}</Heading>
+
+                    <PricingWrapper>
+                        <Price>${this.calculatePricing(plan)}</Price>
+                        / month
+                    </PricingWrapper>
+
+                    <Subheading>{plan.subheading}</Subheading>
+                    <Description>{plan.description}</Description>
+                
+                    <FeatureWrapper
+                        active={(activeFeatures[i] ? true : false) || featuresVisible}
+                    >
+                        {this.renderFeatures(plan)}
+                        {this.renderAnnualFeatures(plan)}
+                    </FeatureWrapper>
+                </ClickWrapper>
+
+                <ShowFeatures
+                    onClick={() => this.toggleFeatures(i)}
+                >
+                    <Label>{activeFeatures[i] ? 'Collapse Features' : 'Show Features'}</Label>
+                    <Expander>{activeFeatures[i] ? '–' : '+'}</Expander>
+                </ShowFeatures>
 
             </Plan>
         )
@@ -182,10 +194,11 @@ class Pricing extends Component {
         // return price
         return price
     }
-    
 
     togglePlan = (i) => {
         const plans = this.state.activePlans;
+
+        console.log(plans[i])
         
         if (plans[i] && i !== 0) {
             plans[i] = !plans[i]
@@ -193,10 +206,21 @@ class Pricing extends Component {
             plans[i] = true
         }
 
-        Array(i + 1).fill().forEach((elm, index) => {
-            if (plans[i]) {
+        Array(data.plans.length).fill().forEach((elm, index) => {
+
+            // Disable plans above
+
+            if ((plans[i] == false) && (index >= i)) {
+                plans[index] = false;
+            }
+
+            // Enable plans below 
+
+            if (plans[i] && (index <= i)) {
                 plans[index] = true;
             }
+            
+       
         })
        
         this.setState({
@@ -204,10 +228,33 @@ class Pricing extends Component {
         })
     }
 
-    toggleFeatures = () => {
-        this.setState({
-            featuresVisible: !this.state.featuresVisible
-        })
+    toggleFeatures = (i) => {
+
+        // Toggle specific plan feature if index supplied (otherwise toggle all)
+
+        console.log('toggleFeatures', i)
+
+        if (typeof i == 'number') {
+            const activeFeatures = this.state.activeFeatures;
+        
+            if (activeFeatures[i]) {
+                activeFeatures[i] = !activeFeatures[i]
+            } else {
+                activeFeatures[i] = true
+            }    
+
+            console.log(activeFeatures)
+           
+            this.setState({
+                activeFeatures: activeFeatures
+            })
+
+        } else {
+            
+            this.setState({
+                featuresVisible: !this.state.featuresVisible
+            })
+        }
     }
 
     onSelectChange = (value) => {
@@ -258,8 +305,8 @@ class Pricing extends Component {
                         <CompareFeatures
                             onClick={() => this.toggleFeatures()}
                         >
-                            <Label>Compare Features</Label>
-                            <Expander>{featuresVisible ? '-' : '+'}</Expander>
+                            <Label>{featuresVisible ? 'Compare Features' : 'Collapse Features'}</Label>
+                            <Expander>{featuresVisible ? '–' : '+'}</Expander>
                         </CompareFeatures>
 
                         <Total>
@@ -316,6 +363,11 @@ const Container = styled.div`
 	justify-content: flex-start;
 	align-items: center;
     max-width: 1400px;
+    padding: 0 40px;
+
+    ${media.phone`
+        padding: 0 20px;
+    `}    
 `
 
 const Heading = styled.div`
@@ -348,7 +400,26 @@ const Top = styled.div`
         letter-spacing: -2.5px;
         color: white;
         padding-bottom: 160px;
+
+        ${media.tablet`
+            padding-bottom: 75px;
+        `}
+
+        ${media.phone`
+            font-size: 32px;
+            line-height: 36px;
+            letter-spacing: -1px;
+            padding-bottom: 40px;
+        `}
     }
+
+    ${media.tablet`
+        width: 100%;
+    `}
+
+    ${media.phone`
+        padding-top: 110px;
+    `}
 `
 
 const SliderWrapper = styled.div`
@@ -356,8 +427,8 @@ const SliderWrapper = styled.div`
     flex-direction: column;
     align-items: center;
     padding-top: 98px;
-
-    width: 779px;
+    max-width: 779px;
+    width: 100%;
 
     > ${Heading} {
         font-size: 24px;
@@ -365,6 +436,18 @@ const SliderWrapper = styled.div`
         line-height: 34px;
         letter-spacing: -0.3px;
         color: white;
+
+        ${media.tablet`
+            text-align: center;
+            max-width: 508px;
+        `}
+
+        ${media.phone`
+            font-size: 18px;
+            font-weight: 500;
+            line-height: 28px;
+            letter-spacing: -0.6px;
+        `}
     }
 
     /* Slider */
@@ -373,6 +456,11 @@ const SliderWrapper = styled.div`
         width: 100%;
         margin-top: 31px;
     }
+
+    ${media.tablet`
+        max-width: 100%;
+        padding-top: 73px;
+    `}
 `
 
 const Button = styled.div`
@@ -385,12 +473,20 @@ const PlanWrapper = styled.div`
     display: flex;
     flex-direction: column;
     margin-top: 64px; 
+
+    ${media.tablet`
+        margin-top: 55px; 
+    `}
 `
 
 const Plans = styled.div`
     display: flex;
-`
 
+    ${media.tablet`
+        flex-direction: column;
+    `}
+`
+const ClickWrapper = styled.div``
 const PricingWrapper = styled.div``
 
 const Plan = styled.div`
@@ -398,6 +494,7 @@ const Plan = styled.div`
     background: #f2f2f2;
     border-top: 8px solid transparent;
     transition: all 0.15s ease;
+    box-sizing: border-box;
 
     &:not(:last-child) {
         margin-right: 2px;
@@ -412,6 +509,7 @@ const Plan = styled.div`
 
     ${Subheading} {
         margin-top: 64px;
+        font-size: 18px;
     }
 
     ${PricingWrapper} {
@@ -423,6 +521,7 @@ const Plan = styled.div`
         font-size: 24px;
         font-weight: 300;
         line-height: 34px;
+        user-select: none;
     }
 
     ${Price} {
@@ -434,7 +533,6 @@ const Plan = styled.div`
 
     ${Description} {
         margin-top: 22px;
-
         font-size: 18px;
         line-height: 28px;
         letter-spacing: -0.3px;
@@ -446,6 +544,58 @@ const Plan = styled.div`
             border-top: 8px solid #70bf54;
         `
     }}
+
+    ${media.tablet`
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        position: relative;
+        padding-bottom: calc(64px + 80px); 
+
+        ${ClickWrapper} {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        ${Heading} {
+            word-spacing: normal;
+        }
+
+        &:not(:last-child) {
+            margin-bottom: 2px;
+        }
+    `}
+
+    ${media.phone`
+        padding: 60px 28px 48px;
+        padding-bottom: calc(48px + 64px); 
+
+        ${Heading} {
+            font-size: 24px;
+            line-height: 28px;
+        }
+
+        ${PricingWrapper} {
+            font-size: 18px;
+            line-height: 28px;
+        }
+
+        ${Price} {
+            font-size: 32px;
+            line-height: 36px;
+            margin-right: 5px;
+        }
+
+        ${Subheading},
+        ${Description} {
+            font-size: 14px;
+            line-height: 22px;
+            letter-spacing: -0.3px;
+        }
+    `}  
 `
 
 const FeatureWrapper = styled.div`
@@ -468,6 +618,14 @@ const Feature = styled.div`
     &:not(:last-child) {
         margin-bottom: 16px;    
     }
+
+    ${media.tablet`
+        text-align: center;
+    `}
+
+    ${media.phone`
+        text-align: left;
+    `}
 `
 
 const FeatureTitle = styled.div`
@@ -524,6 +682,36 @@ const CompareFeatures = styled.div`
     &:hover {
         opacity: 0.8;
     }
+
+    ${media.tablet`
+        display: none;
+    `}
+`
+
+// Show Features (per plan – tablet)
+
+const ShowFeatures = CompareFeatures.extend`
+    display: none;
+    
+    ${media.tablet`
+        display: flex;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        border-top: 1px solid ${capeCod};
+        padding: 0 32px;
+    `}
+
+    ${media.phone`
+        height: 64px;
+
+        ${Label} {
+            font-size: 14px;
+            line-height: 22px;
+            letter-spacing: -0.3px;
+        }
+    `}
 `
 
 // Expander
@@ -539,8 +727,21 @@ const Expander = styled.div`
     }
 `
 
-const LabelLeft = styled.div``
-const LabelRight = styled.div``
+const LabelLeft = styled.div`
+    font-size: 24px;
+    line-height: 1.42;
+    letter-spacing: -0.6px;
+    color: white;
+    text-transform: uppercase;
+`
+
+const LabelRight = styled.div`
+    font-size: 24px;
+    line-height: 1.42;
+    letter-spacing: -0.6px;
+    color: white;
+`
+
 const Total = styled.div`
     display: flex;
     flex-direction: row;
@@ -550,21 +751,14 @@ const Total = styled.div`
 
     ${LabelLeft} { 
         font-family: 'DomaineSansMedium';
-        font-size: 24px;
-        line-height: 1.42;
-        letter-spacing: -0.6px;
-        color: white;
         padding-right: 15px;
-        text-transform: uppercase;
     }
+    
     ${LabelRight} { 
         font-family: 'DomaineSansLight';
-        font-size: 24px;
-        line-height: 1.42;
-        letter-spacing: -0.6px;
-        color: white;
         padding-left: 15px;
     }
+
     ${Price} {
         color: ${mantis};
         font-family: 'DomaineSansMedium';
@@ -572,11 +766,44 @@ const Total = styled.div`
         letter-spacing: -2.5px;
         line-height: 1;
     }
+
+    ${media.phone`
+        align-items: flex-end;
+
+        ${LabelLeft},
+        ${LabelRight} {
+            font-size: 18px;
+            line-height: 28px;
+            letter-spacing: -0.6px;
+        }
+
+        ${LabelLeft} { 
+            padding-right: 8px;
+        }
+        
+        ${LabelRight} { 
+            padding-left: 8px;
+        }
+
+        ${Price} {
+            font-size: 32px;
+            line-height: 36px;
+            letter-spacing: -1px;
+        }
+    `}
 `
 
 const Join = styled.div`
     margin-top: 85px;
     width: 560px;
+
+    ${media.tablet`
+        width: 100%;
+    `}
+
+    ${media.phone`
+        margin-top: 50px;
+    `}
 `
 
 const JoinButton = styled(Submit)`
@@ -588,9 +815,9 @@ const JoinButton = styled(Submit)`
     line-height: 1.56;
     letter-spacing: -0.3px;
     text-transform: uppercase;
-    
-    ${media.phone`
 
+    ${media.phone`
+        height: 64px;
     `}
 `
 

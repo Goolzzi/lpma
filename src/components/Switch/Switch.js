@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import styled, { css } from 'styled-components'
 import { rgba } from 'polished'
 import { capeCod, mantis, porsche, tonysPink, morningGlory, mako } from '../../styles/colors'
+import { media } from '../../styles/utils';
 
 class Switch extends Component {
 
@@ -49,6 +50,10 @@ const Container = styled.div`
     display: flex;
     border-radius: 4px;
     overflow: hidden;
+    
+    ${media.phone`
+        width: 100%;
+    `}
 `;
 
 const Button = styled.div`
@@ -68,6 +73,10 @@ const Button = styled.div`
 
     background: ${rgba(mako, 0.5)};
 
+    font-size: 18px;
+    line-height: 28px;
+    letter-spacing: -0.3px;
+
     &:hover {
 
     }
@@ -76,6 +85,19 @@ const Button = styled.div`
         background: white;
         color: ${capeCod};
     }
+
+    ${media.tablet`
+        width: 216px;
+    `}
+
+
+    ${media.phone`
+        width: 100%;
+        font-size: 14px;
+        line-height: 28px;
+        letter-spacing: -0.3px;
+        height: 56px;
+    `}
 
 `;
 
