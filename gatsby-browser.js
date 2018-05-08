@@ -34,7 +34,7 @@ const handleRedirects = (location, action) => {
     if (!isAuthenticated) {
       auth.login();
     } else {
-      history.replace("/contact");
+      history.replace("/foundry");
     }
   }
 
