@@ -91,7 +91,7 @@ class Pricing extends Component {
     
                         if (variant) {
                             return (     
-                                <Feature>
+                                <Feature key={i}>
                                     <Dot/>
                                     {variant.text}
                                 </Feature>
@@ -120,7 +120,7 @@ class Pricing extends Component {
 
                     if (variant) {
                         return (
-                            <Feature>
+                            <Feature key={i}>
                                 <Dot/>
                                 {variant.text}
                             </Feature>        
@@ -288,6 +288,7 @@ class Pricing extends Component {
                         {options.map((option, i) => {
                             return (
                                 <SpeakOption
+                                    key={i}
                                     onClick={() => this.handleSpeakOption(option)}
                                 >
                                     {option.label}

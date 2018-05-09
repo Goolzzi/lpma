@@ -26,7 +26,8 @@ class Slider extends Component {
         const {min, max, step, defaultValue, onSliderChange, onSliderChangeEnd} = this.props;
 
         let displayValue = defaultValue;
-        if(displayValue>=3000) displayValue = '3000+'
+        if(displayValue>=2000) displayValue = '2000+'
+
 
         return (
            <Container>
