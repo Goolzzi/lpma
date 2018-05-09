@@ -3,10 +3,8 @@ import React from "react";
 import PropTypes from "prop-types";
 import Link from "gatsby-link";
 import classNames from "classnames";
-import LoginLogout from "../LoginLogout";
 import IRISAuth from "../../Auth/IRISAuth";
 import {v4} from "uuid";
-import config from "../../../build.config.json";
 import "./styles.scss";
 
 class Header extends React.Component {
@@ -40,39 +38,6 @@ class Header extends React.Component {
       );
     }
     return null;
-  };
-
-  renderLoginLogout = () => {
-    const {auth: authVar, env} = config;
-    const {login, logout, isAuthenticated} = this.auth;
-
-    if (authVar === "iris") {
-      const href =
-        env === "stage"
-          ? "https://dev-new-lpma.netlify.com/login-auth0-ailo"
-          : "https://new.lpma.com/login-auth0-ailo";
-
-      if (!isAuthenticated()) {
-        return (
-          <button
-            className="navbar-item"
-            onClick={() => {
-              window.location.replace(href);
-            }}>
-            Login
-          </button>
-        );
-      }
-    }
-
-    return (
-      <LoginLogout
-        isAuthenticated={isAuthenticated()}
-        login={login}
-        logout={logout}
-        cssClass={"navbar-item"}
-      />
-    );
   };
 
   renderFoundrNavItems = (slug, name, isFoundryOpen, foundryLinks) => {
@@ -178,7 +143,7 @@ class Header extends React.Component {
                         );
                       }
                     })}
-                    {this.renderLoginLogout()}
+                    {this.props.renderLoginLogout()}
                   </div>
                 </div>
                 <button
@@ -211,6 +176,7 @@ Header.propTypes = {
   logo: PropTypes.object.isRequired,
   foundryLinks: PropTypes.object.isRequired,
   forUSA: PropTypes.bool.isRequired,
+  renderLoginLogout: PropTypes.func.isRequired,
 };
 
 export default Header;
