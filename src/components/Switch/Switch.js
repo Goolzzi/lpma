@@ -57,7 +57,7 @@ const Container = styled.div`
 `;
 
 const Button = styled.div`
-    height: 64px;
+    height: 50px;
     width: 161px;
 
     display: flex;
@@ -96,7 +96,7 @@ const Button = styled.div`
         font-size: 14px;
         line-height: 28px;
         letter-spacing: -0.3px;
-        height: 56px;
+        height: 50px;
     `}
 
 `;

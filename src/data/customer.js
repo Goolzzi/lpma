@@ -31,13 +31,9 @@ export const customer = {
             monthly: 799
         },
         {
-            range: [1000, 2999],
+            range: [1000, 9999],
             monthly: 999
-        },
-        {
-            range: [3000, 9999],
-            monthly: 1499
-        },
+        }
     ],
     features: [
         {

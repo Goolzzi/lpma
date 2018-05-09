@@ -1,9 +1,9 @@
 export const growth = {
     heading: 'Growth Planning',
-    subheading: 'Digital consulting tools to help you skyrocket to your growth goals',
+    subheading: 'Digital consulting tools to help you push your growth to the next level',
     description: `
-        Access to LMPA growth tools which will allow you to 
-        receive your managements, teams and systems to create a custom growth plan.
+        Access LPMA’s growth toolset which allows you to set, track and achieve your business goals 
+        based on your specific market and team. Say goodbye to generic growth plans. 
     `,
     pricing: [
         {
@@ -31,13 +31,9 @@ export const growth = {
             monthly: 249
         },
         {
-            range: [1000, 2999],
+            range: [1000, 9999],
             monthly: 269
-        },
-        {
-            range: [3000, 9999],
-            monthly: 269
-        },
+        }
     ],
     features: [
         {
