@@ -15,7 +15,7 @@ class Slider extends Component {
 
     static defaultProps = {
         min: 0,
-        max: 100,
+        max: 2000,
         step: 1,
         defaultValue: 1,
 
@@ -91,6 +91,7 @@ const MultiHouse = styled.div`
 injectGlobal`
     .slider-wrapper {
         width: 100%;
+        min-width: 641px;
         height: 80px;
         display: flex;
         flex-direction: row;
@@ -100,6 +101,10 @@ injectGlobal`
         border-radius: 5px;
 
         background-color: ${mako};
+
+        ${media.tablet`
+            min-width: 0;
+        `}
 
         .bar {
             height: 8px;
