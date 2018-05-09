@@ -41,8 +41,12 @@ const handleRedirects = (location, action) => {
     if (!isAuthenticated) {
       auth.login();
     } else {
-      history.push("/foundry");
-      window.location.reload(false);
+      //history.push("/foundry");
+      history.push({
+        pathname: "/foundry",
+        search: "?the=query",
+        state: {some: "state"},
+      });
     }
   }
 
