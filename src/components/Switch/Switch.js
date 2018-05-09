@@ -6,7 +6,6 @@ import { media } from '../../styles/utils';
 
 class Switch extends Component {
 
-
     state = {
         selected: this.props.value
     }
