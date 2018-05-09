@@ -82,10 +82,7 @@ const Header = props => {
                 }
               </li>
               <li>
-                {
-                  //eslint-disable-next-line
-                  <a onClick={() => props.selectPage("Pricing")}>Pricing</a>
-                }
+                <Link to="/pricing">Pricing</Link>
               </li>
               <li>
                 <Link to="/blog">Blog</Link>
