@@ -24,17 +24,16 @@ class Header extends React.Component {
     }));
   };
 
-  renderAddMember = () => {
-    const isAuthenticated = this.auth.isAuthenticated();
+  renderAddTeamMember = isAuthenticated => {
     if (isAuthenticated) {
       return (
-        <a
-          href={"https://form.jotform.co/81208927601859"}
-          className="navbar-item add-member"
-          rel="noopener noreferrer"
-          target="_blank">
+        <button
+          className="navbar-item add-member nav-btn"
+          onClick={() => {
+            window.location.replace("https://form.jotform.co/81208927601859");
+          }}>
           Add a team member
-        </a>
+        </button>
       );
     }
     return null;
@@ -143,6 +142,7 @@ class Header extends React.Component {
                         );
                       }
                     })}
+                    {this.renderAddTeamMember(isAuthenticated)}
                     {this.props.renderLoginLogout()}
                   </div>
                 </div>
