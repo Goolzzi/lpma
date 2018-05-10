@@ -142,7 +142,7 @@ class Header extends React.Component {
                         );
                       }
                     })}
-                    <AddMemberMenuItem isAuthenticated={!isAuthenticated} />
+                    <AddMemberMenuItem isAuthenticated={isAuthenticated} />
                     {this.props.renderLoginLogout()}
                   </div>
                 </div>
