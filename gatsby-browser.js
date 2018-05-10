@@ -41,18 +41,15 @@ const handleRedirects = (location, action) => {
     if (!isAuthenticated) {
       auth.login();
     } else {
-      //history.push("/foundry");
-      history.push({
-        pathname: "/foundry",
-        search: "?the=query",
-        state: {some: "state"},
-      });
+      history.push("/foundry");
+      window.location.reload(false);
     }
   }
 
   //redirect authenticated users form home to foundy page //todo improve with regexp
   if (isAuthenticated && (pathname === "/" || pathname === "/index.html")) {
     history.replace("/foundry");
+    window.location.reload(false);
   }
   //redirect users form `join` to `contact` //todo improve with regexp
   if (
