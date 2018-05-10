@@ -24,8 +24,7 @@ class Header extends React.Component {
     }));
   };
 
-  renderAddMember = () => {
-    const isAuthenticated = this.auth.isAuthenticated();
+  renderAddMember = isAuthenticated => {
     if (isAuthenticated) {
       return (
         <a
@@ -143,6 +142,7 @@ class Header extends React.Component {
                         );
                       }
                     })}
+                    {this.renderAddMember(isAuthenticated)}
                     {this.props.renderLoginLogout()}
                   </div>
                 </div>
