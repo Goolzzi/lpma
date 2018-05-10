@@ -142,7 +142,7 @@ class Header extends React.Component {
                         );
                       }
                     })}
-                    {this.renderAddTeamMember(!isAuthenticated)}
+                    {this.renderAddTeamMember(isAuthenticated)}
                     {this.props.renderLoginLogout()}
                   </div>
                 </div>
