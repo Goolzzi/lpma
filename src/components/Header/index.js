@@ -7,21 +7,6 @@ import IRISAuth from "../../Auth/IRISAuth";
 import {v4} from "uuid";
 import "./styles.scss";
 
-function AddMemberMenuItem({isAuthenticated}) {
-  if (isAuthenticated) {
-    return (
-      <a
-        href={"https://form.jotform.co/81208927601859"}
-        className="navbar-item add-member"
-        rel="noopener noreferrer"
-        target="_blank">
-        Add a team member
-      </a>
-    );
-  }
-  return null;
-}
-
 class Header extends React.Component {
   constructor(props) {
     super(props);
@@ -37,6 +22,21 @@ class Header extends React.Component {
       isActive: !prevState.isActive,
       isActiveMenu: !prevState.isActiveMenu,
     }));
+  };
+
+  renderAddTeamMember = isAuthenticated => {
+    if (isAuthenticated) {
+      return (
+        <button
+          className="navbar-item add-member nav-btn"
+          onClick={() => {
+            window.location.replace("https://form.jotform.co/81208927601859");
+          }}>
+          Add a team member
+        </button>
+      );
+    }
+    return null;
   };
 
   renderFoundrNavItems = (slug, name, isFoundryOpen, foundryLinks) => {
@@ -142,7 +142,7 @@ class Header extends React.Component {
                         );
                       }
                     })}
-                    <AddMemberMenuItem isAuthenticated={isAuthenticated} />
+                    {this.renderAddTeamMember(!isAuthenticated)}
                     {this.props.renderLoginLogout()}
                   </div>
                 </div>
