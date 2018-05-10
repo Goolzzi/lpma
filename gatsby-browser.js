@@ -2,7 +2,14 @@ import createHistory from "history/createBrowserHistory";
 import auth from "./src/Auth/auth";
 
 //force full page refreshes for Netlify redirects
-const pathsToforceRefresh = ["us", "join", "ctd-tools", "bb-tools", "ng-tools"];
+const pathsToforceRefresh = [
+  "us",
+  "join",
+  "ctd-tools",
+  "bb-tools",
+  "ng-tools",
+  "lpma2019",
+];
 
 const getRegExpForPaths = path =>
   new RegExp(
@@ -29,6 +36,19 @@ const handleForceRefresh = (action, pathname) => {
 const handleRedirects = (location, action) => {
   const {pathname} = location;
   const isAuthenticated = auth.isAuthenticated();
+
+  if (pathname.indexOf("login-auth0-ailo") !== -1) {
+    if (!isAuthenticated) {
+      auth.login();
+    } else {
+      //history.push("/foundry");
+      history.push({
+        pathname: "/foundry",
+        search: "?the=query",
+        state: {some: "state"},
+      });
+    }
+  }
 
   //redirect authenticated users form home to foundy page //todo improve with regexp
   if (isAuthenticated && (pathname === "/" || pathname === "/index.html")) {

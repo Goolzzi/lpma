@@ -1,5 +1,8 @@
 .navbar-wrapper {
   background-color: $primary-color;
+  button {
+    cursor: pointer;
+  }
   .hide-burger {
     display: none !important;
   }
@@ -14,7 +17,7 @@
       .navbar-item {
         padding-left: 2.75rem;
       }
-
+      
       img {
         height: 52px;
         min-height: 52px;

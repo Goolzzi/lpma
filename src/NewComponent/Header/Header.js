@@ -7,13 +7,47 @@ import IRISAuth from "../../Auth/IRISAuth";
 import imgLogo from "../../assets/images/NewDesign/Header/logo.svg";
 import icClose from "../../assets/images/NewDesign/Header/ic-close.svg";
 import icMenu from "../../assets/images/NewDesign/Header/ic-menu.svg";
+import config from "../../../build.config.json";
+import LoginLogout from "../../components/LoginLogout";
 
 const menuPrimaryIndexes = [0, 1, 18];
 const secondaryIndexes = [2, 6, 10, 14];
 const primaryIndexes = [0, 1, 3, 4, 5, 7, 8, 9, 11, 12, 13, 15, 16, 17, 18];
 var menuClass = "";
 var btnClass = "";
+function getLoginLogout(auth) {
+  const {auth: authVar, env} = config;
+  const {login, logout, isAuthenticated} = auth;
 
+  if (authVar === "iris") {
+    const href =
+      env === "stage"
+        ? "https://dev-new-lpma.netlify.com/login-auth0-ailo"
+        : "https://new.lpma.com/login-auth0-ailo";
+
+    if (!isAuthenticated()) {
+      return (
+        <button
+          className="button menu-btn"
+          onClick={() => {
+            window.location.replace(href);
+          }}>
+          Sign in
+        </button>
+      );
+    }
+  }
+
+  return (
+    <LoginLogout
+      isAuthenticated={isAuthenticated()}
+      login={login}
+      loginText={"Sign in"}
+      logout={logout}
+      cssClass={"button menu-btn"}
+    />
+  );
+}
 class Header extends React.Component {
   constructor(props) {
     super(props);
@@ -65,10 +99,7 @@ class Header extends React.Component {
                   }
                 </li>
                 <li>
-                  {
-                    //eslint-disable-next-line
-                    <a onClick={() => this.props.selectPage("Pricing")}>Pricing</a>
-                  }
+                  <Link to="/pricing">Pricing</Link>
                 </li>
                 <li>
                   <Link to="/blog">Blog</Link>
@@ -80,16 +111,20 @@ class Header extends React.Component {
             </div>
             <div className={`navbar-btn-group ${btnClass}`}>
               <div className="navbar-item">
-                {
-                  //eslint-disable-next-line
-                  <a className="button menu-btn" onClick={() => this.onPage("Join")}>
-                    JOIN LPMA
-                  </a>
-                }
+                <Link
+                  to="/join"
+                  className="button menu-btn"
+                  // onClick={() => props.selectPage("Join")}
+                >
+                  JOIN LPMA
+                </Link>
               </div>
               {!auth.isAuthenticated() ? (
                 <div className="navbar-item">
-                  <a className="button menu-btn sign-btn" onClick={auth.login}>Sign in</a> {/*eslint-disable-line*/}
+                  {getLoginLogout(auth)
+                  //eslint-disable-next-line
+                    //<a className="button menu-btn" onClick={auth.login}>Sign in</a>
+                  }
                 </div>
               ) : (
                 <div className="navbar-item" />
