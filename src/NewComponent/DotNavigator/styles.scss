@@ -1,0 +1,41 @@
+.dot-navigator {
+  position: fixed;
+  top: 50%;
+  left: 3rem;
+  transform: translateY(-50%);
+
+  .navigation-item {
+    position: relative;
+    cursor: pointer;
+    user-select: none;
+    color: transparent;
+    font-family: "DomaineSansLight";
+    font-size: 0.8em;
+    margin: 0;
+    line-height: 2em;
+    text-transform: uppercase;
+    transition: all 0.5s;
+    &::before {
+      content: '';
+      position: absolute;
+      left: -1em;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 8px;
+      height: 8px;
+      background: rgba(255, 255, 255, 0.3);
+      border-radius: 50%;
+    }
+    &:hover {
+      color: rgba(255, 255, 255, 0.3);
+    }
+  }
+  .navigation-item.active {
+    &:hover {
+      color: #fff;
+    }
+    &:before {
+      background: #fff;
+    }
+  }
+}
