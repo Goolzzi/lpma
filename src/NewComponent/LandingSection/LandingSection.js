@@ -15,7 +15,7 @@ const BannerTitle = styled.div`
       letter-spacing: -0.03em;
       line-height: 1em;
       span {
-        color: #6EBF56;
+        color: #6ebf56;
       }
       @media screen and (max-width: $xl-width) {
         font-size: 3em;
@@ -72,7 +72,6 @@ class LandingSection extends React.Component {
   };
   render() {
     const {onChooseChapter, content, chapters} = this.props;
-    console.log('^^^^^^^^^', chapters);
     const {title1, title2} = content[0].node;
     const {animationIndex, slide1, slide2} = this.state;
     return (

@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import {navigateTo} from "gatsby-link";
 import LandingSection from "../NewComponent/LandingSection";
 import ChapterSection from "../NewComponent/ChapterSection";
 import ArticleContent from "../NewComponent/ArticleConent";
@@ -165,7 +166,7 @@ class LandingPage extends React.Component {
         this.setState({animationIndex: 14});
         break;
       case 5:
-        this.setState({animationIndex: 18});
+        navigateTo("/pricing");
         break;
     }
   };
@@ -216,6 +217,7 @@ class LandingPage extends React.Component {
         <DotNavigator
           onChooseChapter={this.onChooseChapter}
           animationIndex={animationIndex}
+          chapters={chapters}
         />
         <div className="scroll-bar">
           <div
