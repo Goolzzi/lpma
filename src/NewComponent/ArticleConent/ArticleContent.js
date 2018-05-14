@@ -1,5 +1,20 @@
 import React from "react";
 import {CSSTransition} from "react-transition-group";
+import styled from "styled-components";
+const ArticleTitle = styled.div`
+  &&&& {
+    p {
+      font-size: 1.8em;
+      font-family: "DomaineSansMedium";
+      text-transform: uppercase;
+      letter-spacing: -1px;
+      line-height: 1.2em;
+      strong {
+        color: ${props => props.tintColor};
+      }
+    }
+  }
+`;
 class ArticleContent extends React.Component {
   render() {
     const {
@@ -8,8 +23,10 @@ class ArticleContent extends React.Component {
       state,
       order,
       initial,
+      tintColor,
       content: {title, description},
     } = this.props;
+    console.log(tintColor);
     return (
       <CSSTransition
         in={start && state == "entered"}
@@ -30,11 +47,11 @@ class ArticleContent extends React.Component {
             <h5>
               {order} / {topic}
             </h5>
-            <div
-              className="article-title"
+            <ArticleTitle
               dangerouslySetInnerHTML={{
                 __html: title.childMarkdownRemark.html,
               }}
+              tintColor={tintColor}
             />
             {description && (
               <div
