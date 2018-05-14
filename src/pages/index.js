@@ -4,9 +4,7 @@ import {navigateTo} from "gatsby-link";
 import LandingSection from "../NewComponent/LandingSection";
 import ChapterSection from "../NewComponent/ChapterSection";
 import ArticleContent from "../NewComponent/ArticleConent";
-import JoinUsForm from "../NewComponent/JoinUsForm";
 import Footer from "../NewComponent/Footer";
-import PricingDetail from "../NewComponent/PricingDetail";
 import DotNavigator from "../NewComponent/DotNavigator";
 
 import CHAPTER_DESKTOP_IMG1 from "../assets/images/NewDesign/bk-intro-2.png";
@@ -207,13 +205,7 @@ class LandingPage extends React.Component {
             ))}
           </ChapterSection>
         ))}
-
-        <PricingDetail
-          startAni={this.state.animationIndex === 18 || pricingVisible}
-          onSubmit={this.joinUs}
-        />
         <Footer footerIn={this.state.footerIn} />
-        <JoinUsForm formIn={this.state.contactForm} />
         <DotNavigator
           onChooseChapter={this.onChooseChapter}
           animationIndex={animationIndex}
