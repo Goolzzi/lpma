@@ -25,10 +25,9 @@ class Auth {
           navigateTo("/foundry");
         })
         .catch(err => {
-          console.log("iris user profile error", err);
-          alert(JSON.stringify(err));
+          alert(JSON.stringify(err)); //eslint-disable-line
           navigateTo("/");
-        }); //eslint-disable-line
+        });
     }
   };
 
