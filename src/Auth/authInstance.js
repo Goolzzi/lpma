@@ -1,6 +1,6 @@
 import buildConfig from "../../build.config.json";
-import ailoAuth0 from "./ailo_auth";
-import irisAuth from "./iris_auth";
+import ailoAuth0 from "./ailoAuth";
+import irisAuth from "./irisAuth";
 
 export default (process.env.NODE_ENV === "development"
   ? ailoAuth0
