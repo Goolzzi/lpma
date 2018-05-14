@@ -64,8 +64,6 @@ const LayoutTemplate = props => {
   }
 
   const protocol = "https:";
-  const forUSA = !!~pathname.indexOf("/us") || !!~pathname.indexOf("-us");
-
   const title = locationToTitleMap[pathname]
     ? locationToTitleMap[pathname]
     : locationToTitleMap["/"];
@@ -79,16 +77,11 @@ const LayoutTemplate = props => {
       />
       <Header
         {...contentfulHeader}
-        forUSA={forUSA}
         foundryLinks={allContentfulFoundrySection}
         renderLoginLogout={renderLoginLogout}
       />
       <div className="page-container">{children()}</div>
-      <Footer
-        {...contentfulFooter}
-        forUSA={forUSA}
-        renderLoginLogout={renderLoginLogout}
-      />
+      <Footer {...contentfulFooter} renderLoginLogout={renderLoginLogout} />
     </div>
   );
 };
