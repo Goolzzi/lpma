@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import Img from "gatsby-image";
-import IRISAuth from "../../Auth/IRISAuth";
+import Auth from "../../Auth";
 import Link from "gatsby-link";
 import {EntypoTools, EntypoUser} from "react-entypo";
 import "./styles.scss";
@@ -21,7 +21,7 @@ const FoundryLogInPage = props => {
   } = props;
 
   return (
-    <IRISAuth
+    <Auth
       render={auth => {
         return (
           <React.Fragment>

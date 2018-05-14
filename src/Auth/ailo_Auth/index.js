@@ -94,11 +94,10 @@ class Auth {
       this.userData = decryptedData;
       return this.userData;
     }
-    return {username: "Test"};
+    return null;
   };
 
   isAuthenticated = () => {
-    return true;
     if (typeof localStorage !== "undefined") {
       let expiresAt = store.get("expires_at");
       if (!expiresAt) {

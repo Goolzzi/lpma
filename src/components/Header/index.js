@@ -3,7 +3,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import Link from "gatsby-link";
 import classNames from "classnames";
-import IRISAuth from "../../Auth/IRISAuth";
+import Auth from "../../Auth";
 import {v4} from "uuid";
 import "./styles.scss";
 
@@ -71,7 +71,7 @@ class Header extends React.Component {
     const {isActive, isFoundryOpen} = this.state;
 
     return (
-      <IRISAuth
+      <Auth
         render={auth => {
           this.auth = auth;
           const isAuthenticated = auth.isAuthenticated();
