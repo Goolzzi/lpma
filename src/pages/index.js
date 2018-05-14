@@ -171,13 +171,18 @@ class LandingPage extends React.Component {
   };
   render() {
     const {animationIndex, scrollDirection, pricingVisible} = this.state;
-    const {allContentfulChapters: {edges: chapters}} = this.props.data;
+    const {
+      allContentfulChapters: {edges: chapters},
+      allContentfulLandingIntro: {edges: landingIntro},
+    } = this.props.data;
     return (
       <div ref={c => (this.wrapper = c)} className="landing-page">
         <LandingSection
           animationIndex={animationIndex}
           direction={scrollDirection}
           onChooseChapter={this.onChooseChapter}
+          content={landingIntro}
+          chapters={chapters}
         />
         {chapters.map((chapter, i) => (
           <ChapterSection
@@ -263,6 +268,22 @@ export const LandingQuery = graphql`
               childMarkdownRemark {
                 html
               }
+            }
+          }
+        }
+      }
+    }
+    allContentfulLandingIntro {
+      edges {
+        node {
+          title1 {
+            childMarkdownRemark {
+              html
+            }
+          }
+          title2 {
+            childMarkdownRemark {
+              html
             }
           }
         }

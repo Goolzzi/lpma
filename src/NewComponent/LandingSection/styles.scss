@@ -27,6 +27,7 @@
     height: 100%;
     display: flex;
     align-items: center;
+    justify-content: center;
     opacity: 0;
     .banner-title {
       margin: 0 auto;
@@ -80,7 +81,7 @@
     }
     .step-bar {
       height: 5px;
-      margin: 0 30vw;
+      margin: 2rem 30vw;
       background: transparent;
       display: flex;
       justify-content: space-between;
@@ -110,6 +111,7 @@
           }
           p {
             font-size: 0.9em;
+            text-transform: uppercase;
           }
         }
       }

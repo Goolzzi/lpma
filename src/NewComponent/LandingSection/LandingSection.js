@@ -1,7 +1,33 @@
 import React from "react";
 import {CSSTransition} from "react-transition-group";
 import PropTypes from "prop-types";
+import styled from "styled-components";
 
+const BannerTitle = styled.div`
+  &&& {
+    p {
+      margin: 0 auto;
+      max-width: 60vw;
+      color: #fff;
+      font-family: "DomaineSansMedium";
+      font-size: 4.5em;
+      text-align: center;
+      letter-spacing: -0.03em;
+      line-height: 1em;
+      span {
+        color: #6EBF56;
+      }
+      @media screen and (max-width: $xl-width) {
+        font-size: 3em;
+      }
+    }
+  }
+`;
+const BannerTitle1 = BannerTitle.extend`
+  p {
+    width: 100%;
+  }
+`;
 class LandingSection extends React.Component {
   constructor(props) {
     super(props);
@@ -45,7 +71,9 @@ class LandingSection extends React.Component {
     }
   };
   render() {
-    const {onChooseChapter} = this.props;
+    const {onChooseChapter, content, chapters} = this.props;
+    console.log('^^^^^^^^^', chapters);
+    const {title1, title2} = content[0].node;
     const {animationIndex, slide1, slide2} = this.state;
     return (
       <CSSTransition
@@ -56,51 +84,34 @@ class LandingSection extends React.Component {
         <div id="landing-section">
           <div className="overlay-image" />
           <div className={`slide-1 ${slide1}`}>
-            <h1 className="banner-title">
-              A MEMBERSHIP FOR THE <span>EVOLUTION</span> OF THE PROPERTY
-              MANAGEMENT INDUSTRY
-            </h1>
+            <BannerTitle
+              dangerouslySetInnerHTML={{
+                __html: title1.childMarkdownRemark.html,
+              }}
+            />
             <h4 className="scroll-instruction">
               Let’s evolve the industry together. <br />Scroll to find out how.
             </h4>
           </div>
           <div className={`slide-2 ${slide2}`}>
-            <h1 className="banner-title">
-              FOUR STEPS<br />TO LPMA EVOLUTION
-            </h1>
+            <BannerTitle1
+              dangerouslySetInnerHTML={{
+                __html: title2.childMarkdownRemark.html,
+              }}
+            />
             <div className="step-bar">
-              <div
-                className="step-item item-1"
-                onClick={() => onChooseChapter(1)}>
-                <div className="hint">
-                  <h5>01.</h5>
-                  <p>FACTS NOT MYTHS</p>
+              {chapters.map((chapter, i) => (
+                <div
+                  key={i}
+                  className="step-item"
+                  style={{borderColor: chapter.node.bgColor}}
+                  onClick={() => onChooseChapter(i + 1)}>
+                  <div className="hint">
+                    <h5>{chapter.node.order}.</h5>
+                    <p>{chapter.node.topic}</p>
+                  </div>
                 </div>
-              </div>
-              <div
-                className="step-item item-2"
-                onClick={() => onChooseChapter(2)}>
-                <div className="hint">
-                  <h5>02.</h5>
-                  <p>BUILD A GROWTH PLAN</p>
-                </div>
-              </div>
-              <div
-                className="step-item item-3"
-                onClick={() => onChooseChapter(3)}>
-                <div className="hint">
-                  <h5>03.</h5>
-                  <p>GROW MORE THAN YOUR DOORS</p>
-                </div>
-              </div>
-              <div
-                className="step-item item-4"
-                onClick={() => onChooseChapter(4)}>
-                <div className="hint">
-                  <h5>04.</h5>
-                  <p>FIND STRENGTH IN OUR COMMUNITY</p>
-                </div>
-              </div>
+              ))}
             </div>
           </div>
         </div>

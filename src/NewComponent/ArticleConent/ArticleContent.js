@@ -2,7 +2,7 @@ import React from "react";
 import {CSSTransition} from "react-transition-group";
 import styled from "styled-components";
 const ArticleTitle = styled.div`
-  &&&& {
+  &&& {
     p {
       font-size: 1.8em;
       font-family: "DomaineSansMedium";
@@ -26,7 +26,6 @@ class ArticleContent extends React.Component {
       tintColor,
       content: {title, description},
     } = this.props;
-    console.log(tintColor);
     return (
       <CSSTransition
         in={start && state == "entered"}
