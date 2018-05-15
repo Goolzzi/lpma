@@ -27,6 +27,7 @@
     height: 100%;
     display: flex;
     align-items: center;
+    justify-content: center;
     opacity: 0;
     .banner-title {
       margin: 0 auto;
@@ -80,7 +81,7 @@
     }
     .step-bar {
       height: 5px;
-      margin: 0 30vw;
+      margin: 2rem 30vw;
       background: transparent;
       display: flex;
       justify-content: space-between;
@@ -110,20 +111,9 @@
           }
           p {
             font-size: 0.9em;
+            text-transform: uppercase;
           }
         }
-      }
-      .item-1 {
-        border-color: #70BF54;
-      }
-      .item-2 {
-        border-color: #93D6E3;
-      }
-      .item-3 {
-        border-color: #F0BC69;
-      }
-      .item-4 {
-        border-color: #E59381;
       }
       @media screen and (max-width: $mobile-width) {
         display: none;

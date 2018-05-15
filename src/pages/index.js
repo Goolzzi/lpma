@@ -1,15 +1,13 @@
 import React from "react";
 import PropTypes from "prop-types";
+import {navigateTo} from "gatsby-link";
 import LandingSection from "../NewComponent/LandingSection";
 import ChapterSection from "../NewComponent/ChapterSection";
 import ArticleContent from "../NewComponent/ArticleConent";
-import JoinUsForm from "../NewComponent/JoinUsForm";
 import Footer from "../NewComponent/Footer";
-import PricingDetail from "../NewComponent/PricingDetail";
 import DotNavigator from "../NewComponent/DotNavigator";
 
 import CHAPTER_DESKTOP_IMG1 from "../assets/images/NewDesign/bk-intro-2.png";
-import "animate.css/animate.min.css";
 
 const scrollCTRIndex = [3, 4, 5, 7, 8, 9, 11, 12, 13, 15, 16, 17];
 
@@ -165,19 +163,24 @@ class LandingPage extends React.Component {
         this.setState({animationIndex: 14});
         break;
       case 5:
-        this.setState({animationIndex: 18});
+        navigateTo("/pricing");
         break;
     }
   };
   render() {
     const {animationIndex, scrollDirection, pricingVisible} = this.state;
-    const {allContentfulChapters: {edges: chapters}} = this.props.data;
+    const {
+      allContentfulChapters: {edges: chapters},
+      allContentfulLandingIntro: {edges: landingIntro},
+    } = this.props.data;
     return (
       <div ref={c => (this.wrapper = c)} className="landing-page">
         <LandingSection
           animationIndex={animationIndex}
           direction={scrollDirection}
           onChooseChapter={this.onChooseChapter}
+          content={landingIntro}
+          chapters={chapters}
         />
         {chapters.map((chapter, i) => (
           <ChapterSection
@@ -201,16 +204,11 @@ class LandingPage extends React.Component {
             ))}
           </ChapterSection>
         ))}
-
-        <PricingDetail
-          startAni={this.state.animationIndex === 18 || pricingVisible}
-          onSubmit={this.joinUs}
-        />
         <Footer footerIn={this.state.footerIn} />
-        <JoinUsForm formIn={this.state.contactForm} />
         <DotNavigator
           onChooseChapter={this.onChooseChapter}
           animationIndex={animationIndex}
+          chapters={chapters}
         />
         <div className="scroll-bar">
           <div
@@ -263,6 +261,22 @@ export const LandingQuery = graphql`
               childMarkdownRemark {
                 html
               }
+            }
+          }
+        }
+      }
+    }
+    allContentfulLandingIntro {
+      edges {
+        node {
+          title1 {
+            childMarkdownRemark {
+              html
+            }
+          }
+          title2 {
+            childMarkdownRemark {
+              html
             }
           }
         }

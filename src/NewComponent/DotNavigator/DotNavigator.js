@@ -52,26 +52,14 @@ export default class DotNavigator extends React.Component {
           onClick={() => this.chooseChapter(0)}
           active={topicIndex === 0}
         />
-        <NavigationItem
-          title="FACTS NOT MYTHS"
-          onClick={() => this.chooseChapter(1)}
-          active={topicIndex === 1}
-        />
-        <NavigationItem
-          title="BUILD A GROWTH PLAN"
-          onClick={() => this.chooseChapter(2)}
-          active={topicIndex === 2}
-        />
-        <NavigationItem
-          title="GROW MORE THAN YOUR DOORS"
-          onClick={() => this.chooseChapter(3)}
-          active={topicIndex === 3}
-        />
-        <NavigationItem
-          title="FIND STRENGTH IN OUR COMMUNITY"
-          onClick={() => this.chooseChapter(4)}
-          active={topicIndex === 4}
-        />
+        {this.props.chapters.map((chapter, i) => (
+          <NavigationItem
+            key={i}
+            title={chapter.node.topic}
+            onClick={() => this.chooseChapter(i + 1)}
+            active={topicIndex === i + 1}
+          />
+        ))}
         <NavigationItem
           title="Pricing"
           onClick={() => this.chooseChapter(5)}

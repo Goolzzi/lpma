@@ -155,7 +155,10 @@ class ChapterSection extends React.Component {
                         {state => (
                           <TransitionGroup className="full-right-spin">
                             {React.Children.map(children, child => {
-                              return React.cloneElement(child, {state: state});
+                              return React.cloneElement(child, {
+                                state: state,
+                                tintColor: brColor,
+                              });
                             })}
                           </TransitionGroup>
                         )}
@@ -172,7 +175,10 @@ class ChapterSection extends React.Component {
                         {state => (
                           <TransitionGroup className="full-right-spin">
                             {React.Children.map(children, child => {
-                              return React.cloneElement(child, {state: state});
+                              return React.cloneElement(child, {
+                                state: state,
+                                tintColor: brColor,
+                              });
                             })}
                           </TransitionGroup>
                         )}
@@ -208,7 +214,10 @@ class ChapterSection extends React.Component {
                       {state => (
                         <TransitionGroup className="full-right-spin">
                           {React.Children.map(children, child => {
-                            return React.cloneElement(child, {state: state});
+                            return React.cloneElement(child, {
+                              state: state,
+                              tintColor: brColor,
+                            });
                           })}
                         </TransitionGroup>
                       )}
@@ -225,7 +234,10 @@ class ChapterSection extends React.Component {
                       {state => (
                         <TransitionGroup className="full-right-spin">
                           {React.Children.map(children, child => {
-                            return React.cloneElement(child, {state: state});
+                            return React.cloneElement(child, {
+                              state: state,
+                              tintColor: brColor,
+                            });
                           })}
                         </TransitionGroup>
                       )}
