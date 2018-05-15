@@ -4,12 +4,14 @@ import classNames from "classnames";
 import store from "store";
 import {EntypoThumbsDown, EntypoThumbsUp} from "react-entypo";
 import PostSubmitMessage from "../PostSubmitMessage";
+import withSegmentTracking from "../../utils/withSegmentTracking";
+import {v4} from "uuid";
 import "./styles.scss";
 
 class FeedbackForm extends React.Component {
   constructor(props) {
     super(props);
-    this.segemetEevent = "Feedback Form";
+    this.segmentEvent = "Feedback Form";
     this.state = {
       formClicked: false,
       emitted: false,
@@ -18,32 +20,29 @@ class FeedbackForm extends React.Component {
   }
 
   submitFeedback = (submitType, params) => {
-    typeof analytics !== "undefined" &&
-      analytics.track(this.segemetEevent, {
-        WasThisHelpful: submitType,
-        params,
-      });
+    this.props.trackIdentify("Was this helpful", params, v4());
+    this.props.track(this.segmentEvent, {
+      WasThisHelpful: submitType,
+      params,
+    });
     this.setState({formClicked: true});
   };
 
   componentDidMount() {
-    typeof analytics !== "undefined" &&
-      analytics.on("track", event => {
-        if (event === this.segemetEevent) {
-          this.setState({emitted: true});
-          store.set(`${this.props.feedbackParams.slug}`, true);
-        }
-      });
+    this.props.trackOn(event => {
+      if (event === this.segmentEvent) {
+        this.setState({emitted: true});
+        store.set(`${this.props.feedbackParams.slug}`, true);
+      }
+    });
   }
 
   render() {
     const {feedbackParams} = this.props;
-    const {formClicked, emitted, userSumbmitted} = this.state;
-
     if (userSumbmitted) {
       return null;
     }
-
+    const {formClicked, emitted, userSumbmitted} = this.state;
     if (!emitted) {
       return (
         <div className="columns helpful is-gapless">
@@ -64,7 +63,9 @@ class FeedbackForm extends React.Component {
           </div>
           <div className="column">
             <button
-              className={classNames({"feedback-btn-disabled": formClicked})}
+              className={classNames({
+                "feedback-btn-disabled": formClicked,
+              })}
               onClick={() => {
                 this.submitFeedback("No", feedbackParams);
               }}>
@@ -84,6 +85,10 @@ FeedbackForm.propTypes = {
     slug: PropTypes.string,
     title: PropTypes.string,
   }).isRequired,
+  trackIdentify: PropTypes.func.isRequired,
+  trackForm: PropTypes.func.isRequired,
+  trackOn: PropTypes.func.isRequired,
+  track: PropTypes.func.isRequired,
 };
 
-export default FeedbackForm;
+export default withSegmentTracking(FeedbackForm);

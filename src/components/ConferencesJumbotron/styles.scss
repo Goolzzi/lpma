@@ -1,0 +1,116 @@
+.lpma2018-top-jumbotron {
+  background-color: $primary-color;
+  background-size: cover;
+  background-position: center center;
+  overflow: hidden;
+  position: relative;
+  height: 36rem;
+  padding: 0px;
+
+  @-webkit-keyframes APPEAR_ANIM {
+    0%   { 
+      transform: scale(0);
+      opacity: 0;
+    }
+    100% {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+  @-moz-keyframes APPEAR_ANIM {
+    0%   { 
+      transform: scale(0);
+      opacity: 0;
+    }
+    100% {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+  @-o-keyframes APPEAR_ANIM {
+    0%   { 
+      transform: scale(0);
+      opacity: 0;
+    }
+    100% {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+  @keyframes APPEAR_ANIM {
+    0%   { 
+      transform: scale(0);
+      opacity: 0;
+    }
+    100% {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+
+  .video-cont {
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 10000px;
+    position: absolute;
+
+    span {
+      position: relative;
+      display: block;
+      left: 0px;
+      top: 0px;
+      width: 100%;
+      height: 10000px;
+
+      .video-frame {
+        left: 0px;
+        top: -50%;
+        width: 100%;
+        height: 10000px;
+        position: absolute;
+        margin-top: 300px;
+      }
+    }
+  }
+
+  .video-cont-cover {
+    background-color: $transparent;
+    left: 0px;
+    right: 0px;
+    top: 0px;
+    bottom: 0px;
+    position: absolute;
+  }
+
+  .video-cont-data {
+    h2 {
+      color: $white;
+      font-weight: 500;
+      margin-bottom: 2rem;
+      margin-top: 4rem;
+      -webkit-animation: APPEAR_ANIM 1s 1;
+      -moz-animation:    APPEAR_ANIM 1s 1;
+      -o-animation:      APPEAR_ANIM 1s 1;
+      animation:         APPEAR_ANIM 1s 1;
+    }
+
+    strong {
+      color: $white;
+      display: block;
+      margin-bottom: 2rem;
+      -webkit-animation: APPEAR_ANIM 1s 1;
+      -moz-animation:    APPEAR_ANIM 1s 1;
+      -o-animation:      APPEAR_ANIM 1s 1;
+      animation:         APPEAR_ANIM 1s 1;
+    }
+
+    img {
+      margin-bottom: 2rem;
+      -webkit-animation: APPEAR_ANIM 1s 1;
+      -moz-animation:    APPEAR_ANIM 1s 1;
+      -o-animation:      APPEAR_ANIM 1s 1;
+      animation:         APPEAR_ANIM 1s 1;
+    }
+  }
+}

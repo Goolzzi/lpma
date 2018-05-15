@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import Link from "gatsby-link";
 import TopJumbotron from "../../components/TopJumbotron";
 import BottomJumbotron from "../../components/BottomJumbotron";
 import "./styles.scss";
@@ -11,6 +12,7 @@ const Event = ({
   description,
   additionalInfo,
   buttonLink,
+  secondButtonLink,
 }) => (
   <div className="columns is-gapless event-item">
     <div className="column is-7 event-name">
@@ -23,12 +25,20 @@ const Event = ({
       <h4>{date}</h4>
       <p>{location}</p>
     </div>
+
     <div className="column is-3 event-button">
-      {buttonLink && (
-        <a href={buttonLink.href}>
-          <button className="btn primary outlined">{buttonLink.name}</button>
-        </a>
-      )}
+      {buttonLink &&
+        buttonLink.href && (
+          <a href={buttonLink.href}>
+            <button className="btn primary outlined">{buttonLink.name}</button>
+          </a>
+        )}
+      {buttonLink &&
+        buttonLink.link && (
+          <Link to={buttonLink.link}>
+            <button className="btn primary outlined">{buttonLink.name}</button>
+          </Link>
+        )}
       {additionalInfo && (
         <div
           className="add-info"
@@ -37,9 +47,29 @@ const Event = ({
           }}
         />
       )}
+      <div>
+        {secondButtonLink &&
+          secondButtonLink.href && (
+            <a href={secondButtonLink.href}>
+              <button className="btn primary outlined">
+                {secondButtonLink.name}
+              </button>
+            </a>
+          )}
+      </div>
     </div>
   </div>
 );
+
+Event.propTypes = {
+  name: PropTypes.string.propTypes,
+  date: PropTypes.string.propTypes,
+  location: PropTypes.string.propTypes,
+  description: PropTypes.string.propTypes,
+  additionalInfo: PropTypes.string,
+  buttonLink: PropTypes.string,
+  secondButtonLink: PropTypes.string,
+};
 
 const Events = ({title, events}) => (
   <section className="section upcoming-events">
@@ -88,9 +118,7 @@ export const pageQuery = graphql`
           name
           date
           orderId
-          location
           name
-          date
           location
           description {
             childMarkdownRemark {
@@ -104,6 +132,12 @@ export const pageQuery = graphql`
           }
           buttonLink {
             href
+            link
+            name
+          }
+          secondButtonLink {
+            href
+            link
             name
           }
         }
@@ -114,20 +148,7 @@ export const pageQuery = graphql`
         node {
           pageLocation
           jumbotron {
-            joinLink {
-              name
-              to
-            }
-            background {
-              id
-              resolutions(quality: 100) {
-                src
-                srcSet
-              }
-            }
-            title {
-              title
-            }
+            ...JumbotronItem
           }
         }
       }

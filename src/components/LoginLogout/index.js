@@ -1,20 +1,27 @@
-/* eslint-disable */
 import React from "react";
-import auth from "../../Auth";
+import PropTypes from "prop-types";
 
-const LoginLogout = ({cssClass}) => {
-  if (auth.isAuthenticated()) {
+const LoginLogout = ({logout, login, isAuthenticated, cssClass, loginText}) => {
+  if (isAuthenticated) {
     return (
-      <a className={cssClass} onClick={auth.logout}>
+      <button className={cssClass} onClick={() => logout()}>
         Logout
-      </a>
+      </button>
     );
   }
   return (
-    <a className={cssClass} onClick={auth.login}>
-      Login
-    </a>
+    <button className={cssClass} onClick={() => login()}>
+      {loginText ? loginText : "Login"}
+    </button>
   );
+};
+
+LoginLogout.propTypes = {
+  logout: PropTypes.func.isRequired,
+  login: PropTypes.func.isRequired,
+  isAuthenticated: PropTypes.bool.isRequired,
+  cssClass: PropTypes.string,
+  loginText: PropTypes.string,
 };
 
 export default LoginLogout;

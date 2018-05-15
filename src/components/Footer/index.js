@@ -1,114 +1,65 @@
 import React from "react";
 import PropTypes from "prop-types";
 import Link from "gatsby-link";
-import LoginLogout from "../../components/LoginLogout";
 import "./styles.scss";
 
-const propTypes = {
-  title: PropTypes.object.isRequired,
-  mainLinks: PropTypes.array.isRequired,
-  secondaryLinks: PropTypes.array.isRequired,
-  privacy: PropTypes.object.isRequired,
-  logo: PropTypes.object.isRequired,
-  forUSA: PropTypes.bool.isRequired,
-  joinLink: PropTypes.object,
-  socialLinks: PropTypes.array.isRequired,
-};
-
-//FIXME: improve footer for us and defoult view
 const Footer = ({
   title,
-  mainLinks,
-  secondaryLinks,
+  menu,
   privacy,
+  contactInfo,
   logo,
-  joinLink,
   socialLinks,
-  forUSA,
+  renderLoginLogout,
 }) => {
-  const menuItems = forUSA
-    ? mainLinks.filter(({country}) => country === "us")
-    : mainLinks;
   return (
     <div className="footer">
-      {forUSA ? (
-        <div className="usa-footer-links">
-          <div className="columns is-gapless">
-            <div className="column is-6 footer-left">
-              <div
-                dangerouslySetInnerHTML={{
-                  __html: title.childMarkdownRemark.html,
-                }}
-              />
-            </div>
-            <div className="column is-6 footer-right">
-              <div className="social-networks">
-                <span>Follow us:</span>
-                {socialLinks.map(({id, href, icon: {file}}) => (
-                  <a key={id} href={href}>
-                    <img
-                      className="social-network-icon"
-                      src={file.url}
-                      alt="Facebook"
-                    />
-                  </a>
-                ))}
-              </div>
+      <div className="footer-links">
+        <div className="columns is-gapless">
+          <div className="column footer-3 primary-links-column">
+            <div
+              dangerouslySetInnerHTML={{
+                __html: title.childMarkdownRemark.html,
+              }}
+            />
+            <div className="social-networks">
+              {socialLinks.map(({id, href, icon: {file}}) => (
+                <a key={id} href={href}>
+                  <img
+                    className="social-network-icon"
+                    src={file.url}
+                    alt="Facebook"
+                  />
+                </a>
+              ))}
             </div>
           </div>
-        </div>
-      ) : (
-        <div className="footer-links">
-          <div className="columns is-gapless">
-            <div className="column footer-3 primary-links-column">
-              <div
-                dangerouslySetInnerHTML={{
-                  __html: title.childMarkdownRemark.html,
-                }}
-              />
-              <div className="social-networks">
-                {socialLinks.map(({id, href, icon: {file}}) => (
-                  <a key={id} href={href}>
-                    <img
-                      className="social-network-icon"
-                      src={file.url}
-                      alt="Facebook"
-                    />
-                  </a>
-                ))}
-              </div>
-            </div>
-            <div className="column footer-1">
-              <div className="vertical-line" />
-            </div>
-            <div className="column footer-2 white-links-column">
-              {menuItems.map(({id, name, to}) => {
-                return (
-                  <Link key={id} to={to}>
-                    {name}
-                  </Link>
-                );
-              })}
-              <LoginLogout />
-            </div>
-            <div className="column footer-1">
-              <div className="vertical-line" />
-            </div>
-            <div className="column footer-2 white-links-column with-button">
-              {secondaryLinks.map(({id, name, to}) => (
+          <div className="column footer-1">
+            <div className="vertical-line" />
+          </div>
+          <div className="column footer-2 white-links-column">
+            {menu.map(({id, name, to}) => {
+              return (
                 <Link key={id} to={to}>
                   {name}
                 </Link>
-              ))}
-              <Link {...joinLink}>
-                <button className="btn primary fullwidth">
-                  {joinLink.name}
-                </button>
-              </Link>
-            </div>
+              );
+            })}
+            {renderLoginLogout()}
+          </div>
+          <div className="column footer-1">
+            <div className="vertical-line" />
+          </div>
+          <div className="column footer-2 white-links-column with-button">
+            <div
+              className="contact-info-wrapper"
+              dangerouslySetInnerHTML={{
+                __html: contactInfo.childMarkdownRemark.html,
+              }}
+            />
           </div>
         </div>
-      )}
+      </div>
       <div className="footer-copyright">
         <div className="level">
           <div className="level-left">
@@ -128,6 +79,14 @@ const Footer = ({
   );
 };
 
-Footer.propTypes = propTypes;
+Footer.propTypes = {
+  title: PropTypes.object.isRequired,
+  menu: PropTypes.array.isRequired,
+  privacy: PropTypes.object.isRequired,
+  logo: PropTypes.object.isRequired,
+  socialLinks: PropTypes.array.isRequired,
+  contactInfo: PropTypes.object.isRequired,
+  renderLoginLogout: PropTypes.func.isRequired,
+};
 
 export default Footer;

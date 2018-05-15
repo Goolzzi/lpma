@@ -1,8 +1,23 @@
 import createHistory from "history/createBrowserHistory";
-import auth from "./src/Auth";
+import auth from "./src/Auth/authInstance";
 
 //force full page refreshes for Netlify redirects
-const pathsToforceRefresh = ["us", "join", "join-us"];
+const pathsToforceRefresh = [
+  "us",
+  "join",
+  "ctd-tools",
+  "bb-tools",
+  "ng-tools",
+  "lpma2019",
+];
+
+//eslint-disable-next-line
+const getRegExpForPaths = path =>
+  new RegExp(
+    `/${path}(/)?$|/
+  ${path}(/)index.html(/)?$`,
+    "i",
+  );
 
 const history = createHistory();
 
@@ -21,14 +36,40 @@ const handleForceRefresh = (action, pathname) => {
 
 const handleRedirects = (location, action) => {
   const {pathname} = location;
+  const isAuthenticated = auth.isAuthenticated();
+
+  if (pathname.indexOf("login-auth0-ailo") !== -1) {
+    if (!isAuthenticated) {
+      auth.login();
+    } else {
+      history.push("/foundry");
+      window.location.reload(false);
+    }
+  }
+
+  //redirect authenticated users form home to foundy page //todo improve with regexp
+  if (isAuthenticated && (pathname === "/" || pathname === "/index.html")) {
+    history.replace("/foundry");
+    window.location.reload(false);
+  }
+  //redirect users form `join` to `contact` //todo improve with regexp
+  if (
+    isAuthenticated &&
+    (pathname === "/join" ||
+      pathname === "/join/" ||
+      pathname === "/join/index.html")
+  ) {
+    history.replace("/contact");
+  }
+
   const isAuthCheckRequiered =
     pathname.indexOf("/foundry") !== -1 ||
     pathname.indexOf("/resources") !== -1;
 
-  if (isAuthCheckRequiered && !auth.isAuthenticated()) {
+  if (isAuthCheckRequiered && !isAuthenticated) {
     history.replace("/login-foundry");
   }
-  if (pathname.indexOf("/login-foundry") !== -1 && auth.isAuthenticated()) {
+  if (pathname.indexOf("/login-foundry") !== -1 && isAuthenticated) {
     history.replace("/foundry");
   }
 

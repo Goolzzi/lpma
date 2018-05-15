@@ -29,15 +29,15 @@ const BlogPostSection = ({heading, blogs, featured, latest, hasLoadMore}) => (
       </div>
       <div className="columns is-multiline">
         {blogs
-          .filter(({node}, index) => (featured ? node.featured : true))
-          .filter(({node}, index) => (latest ? index < 3 : true))
+          .filter(({node}) => (featured ? node.featured : true))
+          .filter((_, index) => (latest ? index < 3 : true))
           .map(({node}) => (
             <div key={node.id} className="column is-4">
               <BlogPostCard node={node} />
             </div>
           ))}
       </div>
-      {hasLoadMore ? <LoadMoreLink /> : <React.Fragment />}
+      {hasLoadMore ? <LoadMoreLink /> : null}
     </div>
   </section>
 );

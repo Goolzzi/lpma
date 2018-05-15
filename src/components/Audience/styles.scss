@@ -2,10 +2,10 @@
   margin-bottom: 0.75rem;
 
   .image-wrapper {
-    @include cover-image(100%, 546px);
+    @include wrap-image(100%, 546px);
 
-    @media screen and (max-width: 768px) {
-      @include cover-image(100%, 273px);
+    @include mobile {
+      @include wrap-image(100%, 273px);
     }
   }
 }

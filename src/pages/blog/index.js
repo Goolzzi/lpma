@@ -42,20 +42,7 @@ export const pageQuery = graphql`
         node {
           pageLocation
           jumbotron {
-            joinLink {
-              name
-              to
-            }
-            background {
-              id
-              resolutions(quality: 100) {
-                src
-                srcSet
-              }
-            }
-            title {
-              title
-            }
+            ...JumbotronItem
           }
         }
       }
@@ -63,10 +50,10 @@ export const pageQuery = graphql`
     allContentfulBlogPost(sort: {fields: [date], order: ASC}) {
       edges {
         node {
+          id
           image {
-            resolutions(quality: 75) {
-              src
-              srcSet
+            sizes(quality: 100, maxWidth: 600, toFormat: JPG) {
+              ...GatsbyContentfulSizes
             }
           }
           category
@@ -75,9 +62,8 @@ export const pageQuery = graphql`
           author {
             name
             image {
-              resolutions(quality: 100) {
-                src
-                srcSet
+              sizes(quality: 100, maxWidth: 600, toFormat: JPG) {
+                ...GatsbyContentfulSizes
               }
             }
           }

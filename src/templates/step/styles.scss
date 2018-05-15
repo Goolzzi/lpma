@@ -99,6 +99,10 @@
             &.active {
               border-left: 3px solid $primary-color;
             }
+            
+            a{
+              display: block;
+            }
           }
         }
       }

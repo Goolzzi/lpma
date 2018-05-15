@@ -15,7 +15,7 @@
 
     .img-col {
       .image-wrapper {
-        @include cover-image(100%, auto, top);
+        @include wrap-image(100%, auto, top);
 
         padding-bottom: 100%;
         height: 0px;

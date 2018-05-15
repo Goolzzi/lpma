@@ -45,5 +45,69 @@ module.exports = `
       }
     }
   }
+  allContentfulConditions {
+    edges {
+      node {
+        title
+        slug
+        content {
+          childMarkdownRemark {
+            html
+          }
+        }
+      }
+    }
+  }
+  allContentfulDocumentsCountry {
+    edges {
+      node {
+        slug
+        name
+        regions {
+            id
+            name
+            slug
+            abbreviation
+            downloads {
+              ... on ContentfulDocumentList {
+                id
+                title
+                slug
+              }
+            }
+          }
+      }
+    }
+  }
+  allContentfulDocumentsRegion {
+    edges {
+      node {
+        name
+        slug
+        downloads {
+          ... on ContentfulDocumentList {
+            id
+            title
+            slug
+          }
+        }
+      }
+    }
+  }
+  allContentfulBusinessCapability {
+    edges {
+      node {
+        slug
+        name
+      }
+    }
+  }
+  allContentfulBooksSeriesSection {
+    edges {
+      node {
+        slug
+      }
+    }
+  }
 }
 `;

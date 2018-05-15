@@ -1,38 +1,35 @@
 import React, {Component} from "react";
-import loading from "./loading.svg";
-import auth from "../../Auth";
-
-const handleAuthentication = ({location}) => {
-  if (/access_token|id_token|error/.test(location.hash)) {
-    auth.handleAuthentication();
-  }
-};
+import PropTypes from "prop-types";
+import Auth from "../../Auth";
+import Loader from "../../components/Loader";
 
 class Callback extends Component {
-  render() {
-    const style = {
-      position: "absolute",
-      display: "flex",
-      justifyContent: "center",
-      height: "100vh",
-      width: "100vw",
-      top: 0,
-      bottom: 0,
-      left: 0,
-      right: 0,
-    };
+  handleAuthentication = auth => {
+    if (/access_token|id_token|error/.test(this.props.location.hash)) {
+      auth.handleAuthentication();
+    } else {
+      console.log("handleAuthentication error"); //eslint-disable-line
+    }
+  };
 
+  render() {
     return (
-      <div style={style}>
-        <img src={loading} alt="loading" />
-      </div>
+      <Auth
+        render={auth => {
+          this.handleAuthentication(auth);
+          return (
+            <div className="loader-wrapper">
+              <Loader />
+            </div>
+          );
+        }}
+      />
     );
   }
 }
 
-const CallbackWithAuthChecks = props => {
-  handleAuthentication(props);
-  return <Callback {...props} />;
+Callback.propTypes = {
+  location: PropTypes.object.isRequired,
 };
 
-export default CallbackWithAuthChecks;
+export default Callback;

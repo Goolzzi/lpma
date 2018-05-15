@@ -1,66 +1,104 @@
 import React from "react";
 import PropTypes from "prop-types";
 import Link from "gatsby-link";
+import withSegmentTracking from "../../utils/withSegmentTracking";
 import TopJumbotron from "../../components/TopJumbotron";
-import BottomJumbotron from "../../components/BottomJumbotron";
 import "./styles.scss";
 
-function getFormMarkup() {
-  return {
-    __html: ` <form id = "join-form" netlify name="joinForm">
-    <input
-     required
-      type="text"
-      class="inp"
-      name="FirstName"
-      placeholder="FirstName"
-    />
-    <input
-      type="text"
-      class="inp"
-      name="LastName"
-      placeholder="LastName"
-    />
-    <input
-      type="text"
-      class="inp"
-      name="AgencyName"
-      placeholder="AgencyName"
-    />
-    <input
-      required
-      type="email"
-      class="inp"
-      name="Email"
-      placeholder="Email"
-    />
-    <input
-      type="text"
-      class="inp"
-      name="ContactNumber"
-      placeholder="ContactNumber"
-    />
-    <button type="submit" class="btn primary halfwidth">
-      Submit
-    </button>
-  </form>`,
-  };
-}
-
-class JoinPage extends React.PureComponent {
+class JoinForm extends React.Component {
   constructor(props) {
     super(props);
-    this.formRef = null;
+    this.state = {
+      FirstName: "",
+      LastName: "",
+      AgencyName: "",
+      Email: "",
+      ContactNumber: "",
+    };
   }
 
   componentDidMount() {
-    // analytics init snippet injected via Netlify Snippet Injection
-    // eslint-disable-next-line no-undef
-    typeof analytics !== "undefined" &&
-      // eslint-disable-next-line no-undef
-      analytics.trackForm(document.getElementById("join-form"), "Join");
+    this.props.trackForm("joinLPMAForm", "Join");
   }
 
+  handleSubmit = () => {
+    this.props.trackIdentify("Join", this.state, this.state.Email);
+    this.props.trackGroup("Join", this.state.Company, this.state);
+  };
+
+  handleChange = ({target: {name, value}}) => {
+    this.setState({[name]: value});
+  };
+
+  render() {
+    return (
+      <form
+        onSubmit={this.handleSubmit}
+        name="joinForm"
+        id="joinLPMAForm"
+        data-netlify="true"
+        method="post"
+        data-netlify-honeypot="bot-field">
+        <input type="hidden" name="form-name" value="joinForm" />
+        <input
+          required
+          type="text"
+          className="inp"
+          name="FirstName"
+          placeholder="First Name"
+          onChange={this.handleChange}
+          value={this.state.FirstName}
+        />
+        <input
+          type="text"
+          className="inp"
+          name="LastName"
+          onChange={this.handleChange}
+          placeholder="Last Name"
+          value={this.state.LastName}
+        />
+        <input
+          type="text"
+          className="inp"
+          name="AgencyName"
+          placeholder="Agency Name"
+          value={this.state.AgencyName}
+          onChange={this.handleChange}
+        />
+        <input
+          required
+          type="email"
+          className="inp"
+          name="Email"
+          placeholder="Email"
+          onChange={this.handleChange}
+          value={this.state.Email}
+        />
+        <input
+          type="text"
+          className="inp"
+          name="ContactNumber"
+          placeholder="Contact Number"
+          onChange={this.handleChange}
+          value={this.state.ContactNumber}
+        />
+        <button type="submit" className="btn primary halfwidth">
+          Submit
+        </button>
+      </form>
+    );
+  }
+}
+
+JoinForm.propTypes = {
+  trackIdentify: PropTypes.func.isRequired,
+  trackForm: PropTypes.func.isRequired,
+  trackGroup: PropTypes.func.isRequired,
+};
+
+const JoinFormWithSegmentTracking = withSegmentTracking(JoinForm);
+
+class JoinPage extends React.PureComponent {
   render() {
     const {data: {allContentfulJoinJumotron: {edges}}} = this.props;
     return (
@@ -76,10 +114,9 @@ class JoinPage extends React.PureComponent {
                   network.
                 </p>
                 <div className="columns">
-                  <div
-                    className="column is-7"
-                    dangerouslySetInnerHTML={getFormMarkup()}
-                  />
+                  <div className="column is-7">
+                    <JoinFormWithSegmentTracking />
+                  </div>
                 </div>
               </div>
             </div>
@@ -92,23 +129,17 @@ class JoinPage extends React.PureComponent {
                   <Link to="mailto:support@lpma.com"> support@lpma.com </Link>
                 </p>
                 <p>
-                  View our Membership
-                  <Link to="http://www.lpma.com/membership-terms-and-conditions/">
-                    {" "}
-                    Terms and Conditions{" "}
+                  View our Membership&nbsp;
+                  <Link to="/membership-terms-and-conditions/">
+                    Terms and Conditions
                   </Link>
-                  or
-                  <Link to="https://www.lpma.com/privacy-policy">
-                    {" "}
-                    Privacy Policy
-                  </Link>
-                  .
+                  &nbsp;or&nbsp;
+                  <Link to="/privacy-policy">Privacy Policy</Link>
                 </p>
               </div>
             </div>
           </div>
         </section>
-        <BottomJumbotron {...edges[1].node} />
       </div>
     );
   }
@@ -126,20 +157,7 @@ export const pageQuery = graphql`
       edges {
         node {
           jumbotron {
-            joinLink {
-              name
-              to
-            }
-            title {
-              title
-            }
-            background {
-              id
-              resolutions(quality: 100) {
-                src
-                srcSet
-              }
-            }
+            ...JumbotronItem
           }
         }
       }

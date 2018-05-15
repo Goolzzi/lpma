@@ -1,0 +1,33 @@
+.events-list {
+    margin-top: 5rem;
+    padding-left: 5rem;
+    padding-right: 5rem;
+
+    .event-item {
+      border-top: 1px solid $gray-border-darkerer;
+      .column {
+        @media screen and (min-width: 769px) {
+          padding: 2.2222rem;
+        }
+
+        p.event-time {
+          font-size: 1.1111rem;
+          color: $gray-dark;
+        }
+
+        p.event-desc {
+          font-size: 1.1111rem;
+          color: $gray-dark;
+
+          span.green {
+            color: $primary-color;
+            font-weight: bold;
+          }
+
+          span.bold {
+            font-weight: bold;
+          }
+        }
+      }
+    }
+  }

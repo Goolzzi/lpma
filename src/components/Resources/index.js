@@ -1,6 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
 import Link from "gatsby-link";
+import Img from "gatsby-image";
+import classNames from "classnames";
 import "./styles.scss";
 
 const ResurceItem = props => {
@@ -8,6 +10,7 @@ const ResurceItem = props => {
     title,
     downloadLink,
     orderLink,
+    downloadableResources,
     description: {childMarkdownRemark},
     image,
   } = props;
@@ -17,28 +20,25 @@ const ResurceItem = props => {
       <h3>{title}</h3>
       <p dangerouslySetInnerHTML={{__html: childMarkdownRemark.html}} />
       {image ? (
-        <div className="image is-16by9">
-          <img
-            src={image.resolutions.src}
-            srcSet={image.resolutions.srcSet}
-            alt=""
-          />
+        <div className="image is-1.5by1">
+          <Img sizes={image.sizes} />
         </div>
-      ) : (
-        <React.Fragment />
-      )}
-      <div className="button-wrapper">
-        {orderLink ? (
+      ) : null}
+      <div
+        className={classNames({
+          "button-wrapper": true,
+          static: !image,
+        })}>
+        {orderLink && (
           <Link to={orderLink.to}>
             <button className="btn secondary halfwidth">
               {orderLink.name}
             </button>
           </Link>
-        ) : (
-          <a href={downloadLink.resourseHref} download>
-            <button className="btn secondary halfwidth">
-              {downloadLink.name}
-            </button>
+        )}
+        {downloadableResources && (
+          <a href={downloadableResources.file.url} download>
+            <button className="btn secondary halfwidth">Download</button>
           </a>
         )}
       </div>

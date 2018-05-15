@@ -8,22 +8,26 @@ const propTypes = {
   data: PropTypes.object.isRequired,
 };
 
-const ResourcesPage = ({
-  data: {
-    allContentfulResoursesJumbotron: {edges},
-    contentfulEventsTopInfoRemark,
-    allContentfulLpmaResource,
-  },
-}) => (
-  <div>
-    <TopJumbotron {...edges[0].node} />
-    <Resources
-      {...contentfulEventsTopInfoRemark}
-      {...allContentfulLpmaResource}
-    />
-    <BottomJumbotron {...edges[1].node} />
-  </div>
-);
+const ResourcesPage = props => {
+  const {
+    data: {
+      headerImage,
+      allContentfulResoursesJumbotron: {edges},
+      contentfulEventsTopInfoRemark,
+      allContentfulLpmaResource,
+    },
+  } = props;
+  return (
+    <div>
+      <TopJumbotron {...edges[0].node} headerImage={headerImage} />
+      <Resources
+        {...contentfulEventsTopInfoRemark}
+        {...allContentfulLpmaResource}
+      />
+      <BottomJumbotron {...edges[1].node} />
+    </div>
+  );
+};
 
 ResourcesPage.propTypes = propTypes;
 
@@ -38,20 +42,7 @@ export const pageQuery = graphql`
         node {
           pageLocation
           jumbotron {
-            joinLink {
-              name
-              to
-            }
-            background {
-              id
-              resolutions(quality: 100) {
-                src
-                srcSet
-              }
-            }
-            title {
-              title
-            }
+            ...JumbotronItem
           }
         }
       }
@@ -71,13 +62,17 @@ export const pageQuery = graphql`
         node {
           id
           title
-          downloadLink {
-            name
-            resourseHref
-          }
           orderLink {
             to
             name
+          }
+          downloadableResources {
+            id
+            file {
+              url
+              fileName
+              contentType
+            }
           }
           description {
             childMarkdownRemark {
@@ -85,9 +80,8 @@ export const pageQuery = graphql`
             }
           }
           image {
-            resolutions(quality: 100) {
-              src
-              srcSet
+            sizes(quality: 100, maxWidth: 600) {
+              ...GatsbyContentfulSizes
             }
           }
         }

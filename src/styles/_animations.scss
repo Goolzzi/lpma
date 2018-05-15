@@ -1,174 +1,170 @@
-// .transition-in-5 {
-//   -webkit-transition: opacity 1s ease-in;
-//   -moz-transition: opacity 1s ease-in;
-//   -o-transition: opacity 1s ease-in;
-//   -ms-transition: opacity 1s ease-in;
-//   transition: opacity 1s ease-in;
-// }
-
-// .transition-out-5 {
-//   -webkit-transition: opacity 1s ease-out;
-//   -moz-transition: opacity 1s ease-out;
-//   -o-transition: opacity 1s ease-out;
-//   -ms-transition: opacity 1s ease-out;
-//   transition: opacity 1s ease-out;
-// }
-
-@keyframes cFadeIn {
-  from { opacity: 0; transform: translateY(30px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-
-.cFadeIn {
-  animation-name: cFadeIn;
-  animation-duration: 2s;
-  animation-fill-mode: forwards;
-}
-@keyframes cFadeOut {
-  from { opacity: 1; transform: translateY(0); }
-  to   { opacity: 0; transform: translateY(30px); }
-}
-
-.cFadeOut {
-  animation-name: cFadeOut;
-  animation-duration: 2s;
-  animation-fill-mode: forwards;
-}
-
-@keyframes cFadeOutUp {
-  from { opacity: 1; transform: translate(0, 0); }
-  to   { opacity: 0; transform: translate(0, -50px); }
-}
-
-.cFadeOutUp {
-  animation-name: cFadeOutUp;
-  animation-duration: 1s;
-  animation-fill-mode: forwards;
-}
-@keyframes cFadeOutDown {
-  from { opacity: 1; transform: translate(0, 0); }
-  to   { opacity: 0; transform: translate(0, 50px); }
-}
-
-.cFadeOutDown {
-  animation-name: cFadeOutDown;
-  animation-duration: 1s;
-  animation-fill-mode: forwards;
-}
-// @keyframes fadeOutDown {
-//   from { opacity: 1; transform: translate(0, -50px); }
-//   to   { opacity: 0; transform: translate(0, 0); }
-// }
-
-// .fadeOutDown {
-//   animation-name: fadeOutDown;
-//   animation-duration: 1s;
-//   animation-fill-mode: forwards;
-// }
-
-@keyframes cFadeInDown {
+@keyframes fade-in-down {
   from { opacity: 0; transform: translate(0, -30px); }
   to   { opacity: 1; transform: translate(0, 0); }
 }
 
-.cFadeInDown {
-  animation-name: cFadeInDown;
+.fade-in-down {
+  animation-name: fade-in-down;
   animation-duration: 1s;
   animation-fill-mode: forwards;
 }
 
-@keyframes cFadeInUp {
-  from { opacity: 0; transform: translate(0, 50px); }
+@keyframes fade-in-up {
+  from { opacity: 0; transform: translate(0, 30px); }
   to   { opacity: 1; transform: translate(0, 0); }
 }
 
-.cFadeInUp {
-  animation-name: cFadeInUp;
+.fade-in-up {
+  animation-name: fade-in-up;
   animation-duration: 1s;
   animation-fill-mode: forwards;
 }
 
 
-@keyframes fullPageFadeInUp {
-  from { opacity: 0; transform: translate(0, 100%); }
-  to   { opacity: 1; transform: translate(0, 0); }
-}
-.fullPageFadeInUp {
-  animation-timing-function: ease-in-out;
-  animation-name: fullPageFadeInUp;
-  animation-duration: 1s;
-  animation-fill-mode: forwards;
-}
-
-
-@keyframes fullPageFadeOutDown {
+@keyframes fade-out-up {
   from { opacity: 1; transform: translate(0, 0); }
-  to   { opacity: 0; transform: translate(0, 100%); }
+  to   { opacity: 0; transform: translate(0, -30px); }
 }
-.fullPageFadeOutDown {
-  animation-timing-function: ease-in;
-  animation-name: fullPageFadeOutDown;
+
+.fade-out-up {
+  animation-name: fade-out-up;
   animation-duration: 1s;
   animation-fill-mode: forwards;
 }
 
-
-
-
-
-@keyframes topBottom {
-  from { transform: translate(0, 0); }
-  to   { transform: translate(0, 50px); }
+@keyframes fade-out-down {
+  from { opacity: 1; transform: translate(0, 0); }
+  to   { opacity: 0; transform: translate(0, 50px); }
 }
 
-.topBottom {
-  animation-name: topBottom;
+.fade-out-down {
+  animation-name: fade-out-down;
   animation-duration: 1s;
   animation-fill-mode: forwards;
 }
 
-@keyframes bottomTop {
-  from { transform: translate(0, 0); }
-  to   { transform: translateY(0, -50px); }
+@keyframes rotateTo360 {
+  0% { transform: rotate(0); }
+  33% { transform: rotate(180deg);}
+  67% { transform: rotate(180deg);}
+  100% { transform: rotate(360deg);}
 }
-
-.bottomTop {
-  animation-name: bottomTop;
-  animation-duration: 1s;
-  animation-fill-mode: forwards;
-}
-@keyframes rotateTo180 {
-  from { transform: rotate(-180deg); }
-  to { transform: rotate(0);}
-}
-.rotateTo180 {
-  animation-name: rotateTo180;
-  animation-duration: 0.5s;
+.rotateTo360 {
+  animation-name: rotateTo360;
+  animation-duration: 1.5s;
   animation-timing-function: linear;
   animation-fill-mode: forwards;
 }
-@keyframes rotateTo0 {
-  from { transform: rotate(0); }
-  to { transform: rotate(-180deg);}
+@keyframes scrollCTRIn {
+  0% { opacity: 1; }
+  50% { opacity: 0; transform: translateX(50px); }
+  100% { opacity: 1; transform: translateX(100px);}
 }
-.rotateTo0 {
-  animation-name: rotateTo0;
-  animation-duration: 0.5s;
-  animation-timing-function: linear;
+.scrollCTRIn {
+  animation-name: scrollCTRIn;
+  animation-duration: 2s;
   animation-fill-mode: forwards;
+  @media screen and (max-width: $mobile-width) {
+    animation-name: scrollCTRMobile;
+  }
+}
+@keyframes scrollCTROut {
+  0% { opacity: 1; transform: translateX(100px);}
+  50% { opacity: 0; transform: translateX(50px); }
+  100% { opacity: 1; transform: translateX(0);}
+}
+@keyframes scrollCTRMobile {
+  0% { opacity: 1; }
+  50% { opacity: 0;  }
+  100% { opacity: 1; }
+}
+.scrollCTROut {
+  animation-name: scrollCTROut;
+  animation-duration: 2s;
+  animation-fill-mode: forwards;
+  @media screen and (max-width: $mobile-width) {
+    animation-name: scrollCTRMobile;
+  }
+}
+.delay-1 {
+  animation-delay: 0.5s;
 }
 
-@keyframes spinOuterIn {
-  0% {transform: rotate(0deg);}
-  100% {transform: rotate(180deg);}
+.fade-up-enter {
+  opacity: 0;
+  transform: translateY(30px);
 }
-.spinOuterIn {
-  animation-delay: 0.3s;
-  animation-name: spinOuterIn;
-  animation-duration: 0.8s;
-  animation-fill-mode: forwards;
-  animation-timing-function: ease-in-out;
+.fade-up-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition: all 1s;
+  transition-delay: 0.5s;
 }
+.fade-up-enter-done {
+  opacity: 1;
+  transform: translateY(0);
+}
+.fade-up-exit {
+  opacity: 1;
+  transform: translateY(0);
+}
+.fade-up-exit-active {
+  opacity: 0;
+  transform: translateY(-30px);
+  transition: all 1s;
+}
+.fade-up-exit-done {
+  opacity: 0;
+  transform: translateY(-30px);
+}
+.fade-up-enter-active-initial {
+  opacity: 1;
+  transform: translateY(0);
+  transition: all 1s;
+}
+
+.clockwise-left-enter {
+  transform: rotate(0);
+}
+.clockwise-left-enter-active {
+  transform: rotate(180deg);
+  transition: transform 0.5s linear;
+}
+.clockwise-left-enter-done {
+  transform: rotate(180deg);
+}
+.clockwise-left-exit {
+  transform: rotate(180deg);
+}
+.clockwise-left-exit-active {
+  transform: rotate(0);
+  transition: transform 0.5s linear;
+}
+.clockwise-left-exit-done {
+  transform: rotate(0);
+}
+
+.clockwise-right-enter {
+  transform: rotate(-180deg);
+}
+.clockwise-right-enter-active {
+  transform: rotate(0);
+  transition: transform 0.5s linear;
+}
+.clockwise-right-enter-done {
+  transform: rotate(0);
+}
+.clockwise-right-exit {
+  transform: rotate(0);
+}
+.clockwise-right-exit-active {
+  transform: rotate(-180deg);
+  transition: transform 0.5s linear;
+}
+.clockwise-right-exit-done {
+  transform: rotate(-180deg);
+}
+
 @keyframes spinInnerIn {
   0% {transform: rotate(-165deg);}
   20% {transform: rotate(-80deg);}
@@ -178,52 +174,8 @@
   100% {transform: rotate(-180deg);}
 }
 .spinInnerIn {
-  animation-delay: 0.3s;
   animation-name: spinInnerIn;
   animation-duration: 0.8s;
   animation-timing-function: ease-out;
   animation-fill-mode: forwards;
-}
-
-
-
-@keyframes spinRightIn {
-  0% {transform: rotate(-180deg);}
-  100% {transform: rotate(0deg);}
-}
-.spinRightIn {
-  animation-name: spinRightIn;
-  animation-duration: 0.8s;
-  animation-fill-mode: forwards;
-  animation-timing-function: ease-in-out;
-}
-@keyframes spinRightOut {
-  0% {transform: rotate(0deg);}
-  100% {transform: rotate(-180deg);}
-}
-.spinRightOut {
-  animation-name: spinRightOut;
-  animation-duration: 0.8s;
-  animation-fill-mode: forwards;
-  animation-timing-function: ease-in-out;
-}
-
-.animation-delay-1 {
-  animation-delay: 0.5s;
-}
-
-.animation-delay-2 {
-  animation-delay: 1s;
-}
-.animation-delay-3 {
-  animation-delay: 1.5s;
-}
-.animation-delay-4 {
-  animation-delay: 1s;
-}
-.show {
-  opacity: 1 !important;
-}
-.hide {
-  opacity: 0 !important;
 }

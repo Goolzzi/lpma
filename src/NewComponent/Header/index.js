@@ -1,1 +1,3 @@
-export { default } from "./Header";
+import "./styles.scss";
+
+export {default} from "./Header";

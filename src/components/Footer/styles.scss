@@ -1,5 +1,5 @@
 .footer {
-  padding: 0rem;
+  padding: 0rem !important;
 
   .usa-footer-links {
     background-color: $secondary-color;
@@ -110,7 +110,7 @@
         img.social-network-icon {
           height: 2rem;
           width: 2rem;
-          margin: 0.5rem 1rem 0.5rem 0rem;
+          margin: 2rem 1rem 0.5rem 0rem;
         }
       }
     }
@@ -118,20 +118,40 @@
     .white-links-column.with-button {
       padding-bottom: 3.3333rem;
       min-height: 150px;
+     
     }
-
+    
     .white-links-column {
       button {
         position: absolute;
-        bottom: 0rem;
+      }
+      .contact-info-wrapper{
+        strong {
+          color: $white;
+        }
+
+        @include mobile {
+          padding-left: 1rem;
+          padding-top: 2rem;
+        }
       }
 
-      a {
+      a, button {
         color: $white;
         display: block;
-
         font-size: 1.2222rem;
         line-height: 1.82;
+      }
+
+      button.nav-btn {
+        border: none;
+        outline : none;
+        background-color: transparent;
+        text-align: left;
+        letter-spacing : 1px;
+        padding: 0;
+        cursor: pointer;
+         
       }
     }
   }
@@ -153,5 +173,9 @@
     p {
       margin: 0rem;
     }
+  }
+  a.link{
+    color: white !important;
+    text-decoration: underline;
   }
 }

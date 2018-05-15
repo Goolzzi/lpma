@@ -1,0 +1,10 @@
+.conditions {
+    padding-top: 0px;
+  
+    .title.top-title {
+      @include not-mobile {
+        margin-bottom: 4rem;
+        margin-top: 1rem;
+      }
+    }
+  }

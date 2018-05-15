@@ -1,136 +1,282 @@
 import React from "react";
 import PropTypes from "prop-types";
+import {navigateTo} from "gatsby-link";
+import LandingSection from "../NewComponent/LandingSection";
+import ChapterSection from "../NewComponent/ChapterSection";
+import ArticleContent from "../NewComponent/ArticleConent";
+import Footer from "../NewComponent/Footer";
+import DotNavigator from "../NewComponent/DotNavigator";
 
-import MemberBenefits from "../components/MemberBenefits";
-import Audience from "../components/Audience";
-import TopJumbotron from "../components/TopJumbotron";
-import TopInfoColumns from "../components/TopInfoColumns";
-import BottomJumbotron from "../components/BottomJumbotron";
-import TestimonialsOne from "../components/TestimonialsOne";
-import TestimonialsTwo from "../components/TestimonilasTwo";
+import CHAPTER_DESKTOP_IMG1 from "../assets/images/NewDesign/bk-intro-2.png";
 
-const propTypes = {
-  data: PropTypes.object.isRequired,
+const scrollCTRIndex = [3, 4, 5, 7, 8, 9, 11, 12, 13, 15, 16, 17];
+
+/*eslint-env browser*/
+
+class LandingPage extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      animationIndex: 0,
+      scrollDirection: true,
+      contactForm: false,
+      showPage: props.showPage,
+      scrollHandleClass: "scrollCTROut",
+      footerIn: false,
+      pricingVisible: false,
+    };
+    this.scrolling = false;
+    this.startY = 0;
+    this.moveY = 0;
+  }
+
+  componentDidMount() {
+    this.wrapper.addEventListener("wheel", this.wheelScroll);
+    this.wrapper.addEventListener("touchstart", this.touchStart);
+    this.wrapper.addEventListener("touchmove", this.touchMove);
+  }
+
+  componentWillUnmount() {
+    this.wrapper.removeEventListener("wheel", this.wheelScroll);
+    this.wrapper.removeEventListener("touchstart", this.touchStart);
+    this.wrapper.removeEventListener("touchmove", this.touchMove);
+  }
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.showPage === "Home") {
+      this.setState(
+        {
+          animationIndex: 0,
+          contactForm: false,
+          showPage: "",
+          footerIn: false,
+          pricingVisible: false,
+          scrollHandleClass: "scrollCTROut",
+        },
+        () => {
+          this.props.updateState({showPage: ""});
+          this.props.onPageChange(this.state.animationIndex);
+        },
+      );
+    } else if (nextProps.showPage === "Pricing") {
+      this.setState(
+        {
+          pricingVisible: true,
+          animationIndex: 18,
+          footerIn: true,
+          scrollHandleClass: "hide",
+        },
+        () => {
+          this.props.onPageChange(this.state.animationIndex);
+        },
+      );
+    } else if (nextProps.showPage === "Join") {
+      this.joinUs();
+    }
+  }
+  touchStart = event => {
+    this.startY = event.changedTouches[0].clientY;
+  };
+  touchMove = event => {
+    this.moveY = event.changedTouches[0].clientY;
+    if (this.moveY > this.startY) {
+      this.scrollWindowUp();
+    } else {
+      this.scrollWindowDown();
+    }
+  };
+  wheelScroll = event => {
+    if (event.deltaY < 0) {
+      this.scrollWindowUp();
+    } else {
+      this.scrollWindowDown();
+    }
+  };
+  scrollWindowUp = () => {
+    if (!this.scrolling && this.state.animationIndex > 0) {
+      this.scrolling = true;
+      this.setState(
+        {
+          animationIndex: this.state.animationIndex - 1,
+          scrollDirection: false,
+        },
+        () => {
+          this.setState({
+            scrollHandleClass:
+              scrollCTRIndex.indexOf(this.state.animationIndex) != -1
+                ? "scrollCTRIn"
+                : "scrollCTROut",
+          });
+          this.props.onPageChange(this.state.animationIndex);
+        },
+      );
+      setTimeout(() => {
+        this.scrolling = false;
+      }, 2000);
+    }
+  };
+  scrollWindowDown = () => {
+    if (!this.scrolling && this.state.animationIndex < 18) {
+      this.scrolling = true;
+      this.setState(
+        {
+          animationIndex: this.state.animationIndex + 1,
+          scrollDirection: true,
+        },
+        () => {
+          this.setState({
+            scrollHandleClass:
+              scrollCTRIndex.indexOf(this.state.animationIndex) != -1
+                ? "scrollCTRIn"
+                : "scrollCTROut",
+          });
+          this.props.onPageChange(this.state.animationIndex);
+        },
+      );
+      setTimeout(() => {
+        this.scrolling = false;
+      }, 2000);
+    }
+  };
+  joinUs = () => {
+    this.setState({
+      contactForm: true,
+      scrollHandleClass: "hide",
+      footerIn: true,
+    });
+  };
+  onChooseChapter = index => {
+    switch (index) {
+      case 0:
+        this.setState({animationIndex: 0});
+        break;
+      case 1:
+        this.setState({animationIndex: 2});
+        break;
+      case 2:
+        this.setState({animationIndex: 6});
+        break;
+      case 3:
+        this.setState({animationIndex: 10});
+        break;
+      case 4:
+        this.setState({animationIndex: 14});
+        break;
+      case 5:
+        navigateTo("/pricing");
+        break;
+    }
+  };
+  render() {
+    const {animationIndex, scrollDirection, pricingVisible} = this.state;
+    const {
+      allContentfulChapters: {edges: chapters},
+      allContentfulLandingIntro: {edges: landingIntro},
+    } = this.props.data;
+    return (
+      <div ref={c => (this.wrapper = c)} className="landing-page">
+        <LandingSection
+          animationIndex={animationIndex}
+          direction={scrollDirection}
+          onChooseChapter={this.onChooseChapter}
+          content={landingIntro}
+          chapters={chapters}
+        />
+        {chapters.map((chapter, i) => (
+          <ChapterSection
+            animationIndex={animationIndex}
+            desktopUrl={CHAPTER_DESKTOP_IMG1}
+            minIndex={2 + i * 4}
+            maxIndex={6 + i * 4}
+            key={i}
+            initial={i == 0}
+            chapter={chapter}>
+            {chapter.node.articles.map((article, index) => (
+              <ArticleContent
+                start={animationIndex == 3 + i * 4 + index}
+                direction={scrollDirection}
+                key={index}
+                initial={index == 0}
+                content={article}
+                order={chapter.node.order}
+                topic={chapter.node.topic}
+              />
+            ))}
+          </ChapterSection>
+        ))}
+        <Footer footerIn={this.state.footerIn} />
+        <DotNavigator
+          onChooseChapter={this.onChooseChapter}
+          animationIndex={animationIndex}
+          chapters={chapters}
+        />
+        <div className="scroll-bar">
+          <div
+            className={`scroll-control ${this.state.scrollHandleClass}`}
+            onClick={this.scrollWindowDown}>
+            <i className="fa fa-angle-down" />
+          </div>
+        </div>
+      </div>
+    );
+  }
+}
+LandingPage.propTypes = {
+  onPageChange: PropTypes.func,
 };
-
-const IndexPage = ({
-  data: {
-    contentfulMemberBenefits,
-    contentfulTestimonials,
-    allContentfulAcquisitionJumbotron: {edges},
-    contentfulAcquisitionTopInfoRemark,
-    allContentfulAcquisitionAudience,
+LandingPage.defaultProps = {
+  onPageChange: pageNumber => {
+    //eslint-disable-next-line
+    console.log(pageNumber);
   },
-}) => (
-  <div>
-    <TopJumbotron {...edges[0].node} />
-    <TopInfoColumns {...contentfulAcquisitionTopInfoRemark} />
-    <MemberBenefits {...contentfulMemberBenefits} />
-    <Audience {...allContentfulAcquisitionAudience} />
-    <h3 className="test-header">{contentfulTestimonials.title}</h3>
-    <TestimonialsOne testimonial={contentfulTestimonials.testimonial1} />
-    <TestimonialsTwo testimonial={contentfulTestimonials.testimonial2} />
-    <BottomJumbotron {...edges[1].node} />
-  </div>
-);
+};
+export default LandingPage;
 
-IndexPage.propTypes = propTypes;
-
-export default IndexPage;
-
-export const pageQuery = graphql`
-  query IndexPageQuery {
-    contentfulMemberBenefits {
-      title
-      memberBenefitItems {
-        id
-        title
-        body {
-          body
-        }
-        checkBoxIcon {
-          file {
-            url
-            fileName
-          }
-        }
-      }
-    }
-    contentfulTestimonials {
-      title
-      testimonial1 {
-        id
-        authorName
-        childContentfulTestimonial1ContentTextNode {
-          childMarkdownRemark {
-            html
-          }
-        }
-        authorPhoto {
-          responsiveResolution(quality: 100) {
-            src
-            srcSet
-          }
-        }
-      }
-      testimonial2 {
-        id
-        image {
-          responsiveResolution(quality: 100) {
-            src
-            srcSet
-          }
-        }
-        childContentfulTestimonial2ContentTextNode {
-          childMarkdownRemark {
-            html
-          }
-        }
-      }
-    }
-    allContentfulAcquisitionJumbotron(
-      sort: {fields: [pageLocation], order: DESC}
-    ) {
+export const LandingQuery = graphql`
+  query LandingPageQuery {
+    allContentfulChapters(sort: {fields: [order], order: ASC}) {
       edges {
         node {
-          pageLocation
-          jumbotron {
-            joinLink {
-              name
-              to
+          order
+          topic
+          circleImage {
+            sizes(quality: 100, maxWidth: 900) {
+              ...GatsbyContentfulSizes
             }
-            background {
-              id
-              resolutions(quality: 100) {
-                src
-                srcSet
+          }
+          mobileCircleImage {
+            sizes(quality: 100, maxWidth: 900) {
+              ...GatsbyContentfulSizes
+            }
+          }
+          bgColor
+          brColor
+          articles {
+            title {
+              childMarkdownRemark {
+                html
               }
             }
-            title {
-              title
+            description {
+              childMarkdownRemark {
+                html
+              }
             }
           }
         }
       }
     }
-    contentfulAcquisitionTopInfoRemark {
-      info {
-        id
-        childContentfulColumnTextRemarkContentTextNode {
-          childMarkdownRemark {
-            html
-          }
-        }
-      }
-    }
-    allContentfulAcquisitionAudience {
+    allContentfulLandingIntro {
       edges {
         node {
-          id
-          image {
-            resolutions(quality: 100) {
-              src
-              srcSet
+          title1 {
+            childMarkdownRemark {
+              html
+            }
+          }
+          title2 {
+            childMarkdownRemark {
+              html
             }
           }
         }
