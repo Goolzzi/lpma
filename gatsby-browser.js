@@ -23,6 +23,8 @@ const history = createHistory();
 
 const handleRedirect = (pathname, reload = false) => {
   history.push(pathname);
+  //Becoce of landing page has differnet layout (see gatsby/onCreatePage) sometimes
+  //after redirecting page header did not appier correctly. To escape just reloading the page.
   if (reload) {
     window.location.reload(false);
   }
