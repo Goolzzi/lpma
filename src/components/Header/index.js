@@ -30,7 +30,7 @@ class Header extends React.Component {
           onClick={() => {
             window.location.replace("https://form.jotform.co/81208927601859");
           }}>
-          Add a team member
+          Invite team
         </button>
       );
     }
