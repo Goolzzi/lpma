@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import MetaHead from "./MetaHead";
-import Auth from "../Auth/auth";
+import auth from "../Auth/authInstance";
 import locationToTitleMap from "./locationTitlesMap";
 import config from "../../build.config.json";
 import LoginLogout from "../components/LoginLogout";
@@ -14,7 +14,7 @@ import "../styles/main.scss";
 
 function renderLoginLogout() {
   const {auth: authVar, env} = config;
-  const {login, logout, isAuthenticated} = Auth;
+  const {login, logout, isAuthenticated} = auth;
 
   if (authVar === "iris") {
     const href =
@@ -64,8 +64,6 @@ const LayoutTemplate = props => {
   }
 
   const protocol = "https:";
-  const forUSA = !!~pathname.indexOf("/us") || !!~pathname.indexOf("-us");
-
   const title = locationToTitleMap[pathname]
     ? locationToTitleMap[pathname]
     : locationToTitleMap["/"];
@@ -79,16 +77,11 @@ const LayoutTemplate = props => {
       />
       <Header
         {...contentfulHeader}
-        forUSA={forUSA}
         foundryLinks={allContentfulFoundrySection}
         renderLoginLogout={renderLoginLogout}
       />
       <div className="page-container">{children()}</div>
-      <Footer
-        {...contentfulFooter}
-        forUSA={forUSA}
-        renderLoginLogout={renderLoginLogout}
-      />
+      <Footer {...contentfulFooter} renderLoginLogout={renderLoginLogout} />
     </div>
   );
 };

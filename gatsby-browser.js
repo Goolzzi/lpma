@@ -1,5 +1,5 @@
 import createHistory from "history/createBrowserHistory";
-import auth from "./src/Auth/auth";
+import auth from "./src/Auth/authInstance";
 
 //force full page refreshes for Netlify redirects
 const pathsToforceRefresh = [
@@ -11,6 +11,7 @@ const pathsToforceRefresh = [
   "lpma2019",
 ];
 
+//eslint-disable-next-line
 const getRegExpForPaths = path =>
   new RegExp(
     `/${path}(/)?$|/

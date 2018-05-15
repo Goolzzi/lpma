@@ -8,7 +8,6 @@ import Footer from "../NewComponent/Footer";
 import DotNavigator from "../NewComponent/DotNavigator";
 
 import CHAPTER_DESKTOP_IMG1 from "../assets/images/NewDesign/bk-intro-2.png";
-import "animate.css/animate.min.css";
 
 const scrollCTRIndex = [3, 4, 5, 7, 8, 9, 11, 12, 13, 15, 16, 17];
 
