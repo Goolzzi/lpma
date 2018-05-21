@@ -3,6 +3,7 @@ import styled, {css} from "styled-components";
 import {rgba} from "polished";
 import {find} from "lodash";
 import {navigateTo} from "gatsby-link";
+import {CSSTransition} from "react-transition-group";
 
 import arrowDown from "../../assets/images/icon-down-arrow.svg";
 
@@ -280,63 +281,74 @@ class Pricing extends Component {
 
   render() {
     const {featuresVisible, sliderValue} = this.state;
+    const {startAni} = this.props;
 
     return (
-      <Wrapper>
-        <Container>
-          <Top>
-            <Heading>Pricing</Heading>
-            {this.renderDurationSwitcher()}
-            {this.renderSlider()}
-          </Top>
+      <CSSTransition
+        in={startAni}
+        timeout={1000}
+        classNames="pricing"
+        unmountOnExit>
+        <Wrapper>
+          <Container>
+            <Top>
+              <Heading>Pricing</Heading>
+              {this.renderDurationSwitcher()}
+              {this.renderSlider()}
+            </Top>
 
-          {/* Plans */}
+            {/* Plans */}
 
-          <PlanWrapper>
-            <Plans>
-              {data.plans.map((item, i) => {
-                return this.renderPlan(item, i);
-              })}
-            </Plans>
+            <PlanWrapper>
+              <Plans>
+                {data.plans.map((item, i) => {
+                  return this.renderPlan(item, i);
+                })}
+              </Plans>
 
-            <CompareFeatures onClick={() => this.toggleFeatures()}>
-              <Label>
-                {featuresVisible ? "Compare Features" : "Collapse Features"}
-              </Label>
-              <Expander>{featuresVisible ? "–" : "+"}</Expander>
-            </CompareFeatures>
+              <CompareFeatures onClick={() => this.toggleFeatures()}>
+                <Label>
+                  {featuresVisible ? "Compare Features" : "Collapse Features"}
+                </Label>
+                <Expander>{featuresVisible ? "–" : "+"}</Expander>
+              </CompareFeatures>
 
-            <Total>
-              {sliderValue >= 1200 ? (
-                <Price>Contact Us</Price>
-              ) : (
-                <React.Fragment>
-                  <LabelLeft>Total</LabelLeft>
-                  <Price>{this.calculateTotalPrice()}</Price>
-                  <LabelRight>AUD/month</LabelRight>
-                </React.Fragment>
-              )}
-            </Total>
-          </PlanWrapper>
+              <Total>
+                {sliderValue >= 1200 ? (
+                  <Price>Contact Us</Price>
+                ) : (
+                  <React.Fragment>
+                    <LabelLeft>Total</LabelLeft>
+                    <Price>{this.calculateTotalPrice()}</Price>
+                    <LabelRight>AUD/month</LabelRight>
+                  </React.Fragment>
+                )}
+              </Total>
+            </PlanWrapper>
 
-          {/* Join */}
+            {/* Join */}
 
-          <Join>
-            <JoinButton
-              label={"Join Now"}
-              handleSubmit={this.handleSubmit}
-              theme={"mantis"}
-            />
+            <Join>
+              <JoinButton
+                label={"Join Now"}
+                handleSubmit={this.handleSubmit}
+                theme={"mantis"}
+              />
 
-            {this.renderSpeakWithUs()}
-          </Join>
-        </Container>
-      </Wrapper>
+              {this.renderSpeakWithUs()}
+            </Join>
+          </Container>
+        </Wrapper>
+      </CSSTransition>
     );
   }
 }
 
 const Wrapper = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
   min-height: 100vh;
   display: flex;
   flex-direction: column;

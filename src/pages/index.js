@@ -1,9 +1,10 @@
 import React from "react";
 import PropTypes from "prop-types";
-import {navigateTo} from "gatsby-link";
+// import {navigateTo} from "gatsby-link";
 import LandingSection from "../NewComponent/LandingSection";
 import ChapterSection from "../NewComponent/ChapterSection";
 import ArticleContent from "../NewComponent/ArticleConent";
+import PricingDetail from "./pricing";
 import Footer from "../NewComponent/Footer";
 import DotNavigator from "../NewComponent/DotNavigator";
 
@@ -94,7 +95,11 @@ class LandingPage extends React.Component {
     }
   };
   scrollWindowUp = () => {
-    if (!this.scrolling && this.state.animationIndex > 0) {
+    if (
+      !this.scrolling &&
+      this.state.animationIndex > 0 &&
+      this.state.animationIndex !== 18
+    ) {
       this.scrolling = true;
       this.setState(
         {
@@ -166,19 +171,24 @@ class LandingPage extends React.Component {
         this.setState({animationIndex: 14, hiphop: true});
         break;
       case 5:
-        navigateTo("/pricing");
+        this.setState({animationIndex: 18, hiphop: true});
         break;
     }
   };
   render() {
-    const {animationIndex, scrollDirection, hiphop} = this.state;
+    const {
+      animationIndex,
+      scrollDirection,
+      hiphop,
+      pricingVisible,
+    } = this.state;
     const {
       allContentfulChapters: {edges: chapters},
       allContentfulLandingIntro: {edges: landingIntro},
     } = this.props.data;
-    if (animationIndex == 18) {
-      navigateTo("/pricing");
-    }
+    // if (animationIndex == 18) {
+    //   navigateTo("/pricing");
+    // }
     return (
       <div ref={c => (this.wrapper = c)} className="landing-page">
         <LandingSection
@@ -211,6 +221,9 @@ class LandingPage extends React.Component {
             ))}
           </ChapterSection>
         ))}
+        <PricingDetail
+          startAni={this.state.animationIndex === 18 || pricingVisible}
+        />
         <Footer footerIn={this.state.footerIn} />
         <DotNavigator
           onChooseChapter={this.onChooseChapter}
