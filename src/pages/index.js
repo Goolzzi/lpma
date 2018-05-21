@@ -176,6 +176,9 @@ class LandingPage extends React.Component {
       allContentfulChapters: {edges: chapters},
       allContentfulLandingIntro: {edges: landingIntro},
     } = this.props.data;
+    if (animationIndex == 18) {
+      navigateTo("/pricing");
+    }
     return (
       <div ref={c => (this.wrapper = c)} className="landing-page">
         <LandingSection
