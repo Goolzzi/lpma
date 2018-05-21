@@ -181,11 +181,17 @@ class LandingPage extends React.Component {
         });
         break;
       case 5:
-        this.setState({
-          animationIndex: 18,
-          hiphop: true,
-          pricingVisible: false,
-        });
+        this.setState(
+          {
+            animationIndex: 18,
+            hiphop: true,
+            pricingVisible: false,
+          },
+          () => {
+            this.props.onPageChange(this.state.animationIndex);
+          },
+        );
+
         break;
     }
   };

@@ -62,7 +62,7 @@ class Header extends React.Component {
   };
   render() {
     const {pageNumber} = this.props;
-
+    let absoluteStyle = pageNumber == 18 ? {position: "absolute"} : null;
     if (secondaryIndexes.indexOf(pageNumber) !== -1) {
       btnClass = "secondary";
     } else if (primaryIndexes.indexOf(pageNumber) !== -1) {
@@ -76,7 +76,9 @@ class Header extends React.Component {
     return (
       <Auth
         render={auth => (
-          <nav className={`navbar is-transparent header-wrapper`}>
+          <nav
+            className={`navbar is-transparent header-wrapper`}
+            style={absoluteStyle}>
             <div className="navbar-brand">
               {
                 //eslint-disable-next-line
@@ -99,7 +101,7 @@ class Header extends React.Component {
                   }
                 </li>
                 <li>
-                {
+                  {
                     //eslint-disable-next-line
                     <a onClick={() => this.props.selectPage("Pricing")}>Pricing</a>
                   }
