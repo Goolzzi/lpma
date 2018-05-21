@@ -25,6 +25,7 @@ class LandingPage extends React.Component {
       scrollHandleClass: "scrollCTROut",
       footerIn: false,
       pricingVisible: false,
+      hiphop: false,
     };
     this.scrolling = false;
     this.startY = 0;
@@ -148,19 +149,19 @@ class LandingPage extends React.Component {
   onChooseChapter = index => {
     switch (index) {
       case 0:
-        this.setState({animationIndex: 0});
+        this.setState({animationIndex: 0, hiphop: true});
         break;
       case 1:
-        this.setState({animationIndex: 2});
+        this.setState({animationIndex: 2, hiphop: true});
         break;
       case 2:
-        this.setState({animationIndex: 6});
+        this.setState({animationIndex: 6, hiphop: true});
         break;
       case 3:
-        this.setState({animationIndex: 10});
+        this.setState({animationIndex: 10, hiphop: true});
         break;
       case 4:
-        this.setState({animationIndex: 14});
+        this.setState({animationIndex: 14, hiphop: true});
         break;
       case 5:
         navigateTo("/pricing");
@@ -168,7 +169,7 @@ class LandingPage extends React.Component {
     }
   };
   render() {
-    const {animationIndex, scrollDirection, pricingVisible} = this.state;
+    const {animationIndex, scrollDirection, hiphop} = this.state;
     const {
       allContentfulChapters: {edges: chapters},
       allContentfulLandingIntro: {edges: landingIntro},
@@ -190,6 +191,7 @@ class LandingPage extends React.Component {
             maxIndex={6 + i * 4}
             key={i}
             initial={i == 0}
+            hiphop={hiphop}
             chapter={chapter}>
             {chapter.node.articles.map((article, index) => (
               <ArticleContent
