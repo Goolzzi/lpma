@@ -1,5 +1,5 @@
 import React from "react";
-import IRISAuth from "../Auth/IRISAuth";
+import Auth from "../Auth";
 import noop from "lodash/noop";
 
 function getDisplayName(WrappedComponent) {
@@ -60,7 +60,7 @@ function withSegmentTracking(WrappedComponent) {
       }
 
       return (
-        <IRISAuth
+        <Auth
           render={auth => {
             this.auth = auth;
             return (

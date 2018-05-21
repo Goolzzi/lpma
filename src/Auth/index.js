@@ -1,8 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
-import auth from "./auth";
+import auth from "./authInstance";
 
-class IRISAuth extends React.Component {
+class Auth extends React.Component {
   static propTypes = {
     render: PropTypes.func.isRequired,
   };
@@ -16,4 +16,4 @@ class IRISAuth extends React.Component {
   }
 }
 
-export default IRISAuth;
+export default Auth;

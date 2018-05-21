@@ -135,11 +135,6 @@ export const pageQuery = graphql`
             link
             name
           }
-          secondButtonLink {
-            href
-            link
-            name
-          }
         }
       }
     }

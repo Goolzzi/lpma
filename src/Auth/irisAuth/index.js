@@ -1,32 +1,34 @@
 import {authConfig} from "./authVariables";
+import {parseHash} from "../../utils";
 import {navigateTo} from "gatsby-link";
 import store from "store";
+import isEmpty from "lodash/isEmpty";
 import CryptoJS from "crypto-js";
 
 class Auth {
   constructor() {
     this.userData = null;
-    this.auth0 = typeof auth0 !== "undefined" && new auth0.WebAuth(authConfig);
   }
-
   handleAuthentication = () => {
-    this.auth0.parseHash((err, authResult) => {
-      if (authResult && authResult.accessToken && authResult.idToken) {
-        this.setSession(authResult);
-        if (authResult.scope.indexOf("lpma_membership") === -1) {
-          //eslint-disable-next-line
-          console.log("thes user is not LPMA member");
-          this.logout("/contact", "isNotMember=1");
-        } else {
-          this.setUserData(authResult.idTokenPayload);
+    const params = parseHash(window.location.hash.substring(1));
+    if (!isEmpty(params)) {
+      this.setSession(params);
+      this.fetchTokenInfo()
+        .then(resoult => resoult.json())
+        .then(info => {
+          if (!~info.group_ids.indexOf(authConfig.lpmaGroupID)) {
+            //eslint-disable-next-line
+            console.log("thes user is not LPMA member");
+            //this.logout("isNotMember=1");
+          }
+          this.setUserData(info);
           navigateTo("/foundry");
-        }
-      } else if (err) {
-        alert(JSON.stringify(err));
-        console.log(err); //eslint-disable-line
-        navigateTo("/");
-      }
-    });
+        })
+        .catch(err => {
+          alert(JSON.stringify(err)); //eslint-disable-line
+          navigateTo("/");
+        });
+    }
   };
 
   setUserData = userData => {
@@ -40,9 +42,9 @@ class Auth {
 
   setSession = authData => {
     let expiresAt = JSON.stringify(
-      authData.expiresIn * 1000 + new Date().getTime(),
+      authData.expires_in * 1000 + new Date().getTime(),
     );
-    store.set("access_token", authData.accessToken);
+    store.set("access_token", authData.access_token);
     store.set("expires_at", expiresAt);
   };
 
@@ -54,13 +56,15 @@ class Auth {
   };
 
   login = () => {
-    this.auth0.authorize();
+    if (window) {
+      window.location.href = authConfig.getIrisNavUrl();
+    }
   };
 
-  logout = (path, data) => {
+  logout = data => {
     this.dispose();
     navigateTo({
-      pathname: path ? path : "/",
+      pathname: "/",
       hash: data,
     });
   };
@@ -69,16 +73,13 @@ class Auth {
     return CryptoJS.MD5(authConfig.clientId).toString();
   };
 
-  fetchProfileInfo = () => {
-    return new Promise((resolve, rejcet) => {
-      let accessToken = this.getAccessToken();
-      this.auth0.client.userInfo(accessToken, (err, profile) => {
-        if (profile) {
-          resolve(profile);
-        }
-        rejcet(err);
-      });
-    });
+  fetchTokenInfo = () => {
+    //eslint-disable-next-line
+    return fetch(
+      `${
+        authConfig.iris
+      }/oauth/token/info?access_token=${this.getAccessToken()}`,
+    );
   };
 
   getUserData = () => {
