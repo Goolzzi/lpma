@@ -100,6 +100,7 @@ class LandingPage extends React.Component {
         {
           animationIndex: this.state.animationIndex - 1,
           scrollDirection: false,
+          hiphop: false,
         },
         () => {
           this.setState({
@@ -123,6 +124,7 @@ class LandingPage extends React.Component {
         {
           animationIndex: this.state.animationIndex + 1,
           scrollDirection: true,
+          hiphop: false,
         },
         () => {
           this.setState({
