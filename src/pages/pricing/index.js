@@ -122,8 +122,11 @@ class Pricing extends Component {
     const {activePlans, featuresVisible, activeFeatures} = this.state;
 
     return (
-      <Plan key={i} active={activePlans[i] ? true : false}>
-        <ClickWrapper onClick={() => this.togglePlan(i)}>
+      <Plan
+        key={i}
+        active={activePlans[i] ? true : false}
+        onClick={() => this.togglePlan(i)}>
+        <ClickWrapper>
           <Heading>{plan.heading}</Heading>
 
           <PricingWrapper>
@@ -179,12 +182,12 @@ class Pricing extends Component {
 
   togglePlan = i => {
     const plans = this.state.activePlans;
-
-    if (plans[i] && i !== 0) {
-      plans[i] = !plans[i];
-    } else {
-      plans[i] = true;
-    }
+    plans[i] = !plans[i];
+    // if (plans[i] && i !== 0) {
+    //   plans[i] = !plans[i];
+    // } else {
+    //   plans[i] = true;
+    // }
 
     this.setState({
       activePlans: plans,
@@ -484,6 +487,7 @@ const Plan = styled.div`
     border-top: 8px solid transparent;
     transition: all 0.15s ease;
     box-sizing: border-box;
+    cursor: pointer;
 
     &:not(:last-child) {
         margin-right: 2px;
