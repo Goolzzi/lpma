@@ -39,7 +39,7 @@ export default class DotNavigator extends React.Component {
     } else if (nextProps.animationIndex < 18) {
       this.setState({topicIndex: 4});
     } else if (nextProps.animationIndex == 18) {
-      this.setState({animationIndex: 5});
+      this.setState({topicIndex: 5});
     }
     this.forceUpdate();
   }

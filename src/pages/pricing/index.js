@@ -20,7 +20,7 @@ class Pricing extends Component {
   state = {
     duration: "annual",
     sliderValue: 1,
-    activePlans: [true],
+    activePlans: [true, false, false],
     featuresVisible: false,
     totalPrice: 0,
     selectOption: "",
