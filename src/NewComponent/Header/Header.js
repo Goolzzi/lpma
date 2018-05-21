@@ -99,7 +99,10 @@ class Header extends React.Component {
                   }
                 </li>
                 <li>
-                  <Link to="/pricing">Pricing</Link>
+                {
+                    //eslint-disable-next-line
+                    <a onClick={() => this.props.selectPage("Pricing")}>Pricing</a>
+                  }
                 </li>
                 <li>
                   <Link to="/blog">Blog</Link>

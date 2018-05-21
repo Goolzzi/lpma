@@ -5,7 +5,7 @@ import LandingSection from "../NewComponent/LandingSection";
 import ChapterSection from "../NewComponent/ChapterSection";
 import ArticleContent from "../NewComponent/ArticleConent";
 import PricingDetail from "./pricing";
-import Footer from "../NewComponent/Footer";
+// import Footer from "../NewComponent/Footer";
 import DotNavigator from "../NewComponent/DotNavigator";
 
 import CHAPTER_DESKTOP_IMG1 from "../assets/images/NewDesign/bk-intro-2.png";
@@ -65,10 +65,12 @@ class LandingPage extends React.Component {
         {
           pricingVisible: true,
           animationIndex: 18,
+          showPage: "",
           footerIn: true,
           scrollHandleClass: "hide",
         },
         () => {
+          this.props.updateState({showPage: ""});
           this.props.onPageChange(this.state.animationIndex);
         },
       );
@@ -156,22 +158,34 @@ class LandingPage extends React.Component {
   onChooseChapter = index => {
     switch (index) {
       case 0:
-        this.setState({animationIndex: 0, hiphop: true});
+        this.setState({animationIndex: 0, hiphop: true, pricingVisible: false});
         break;
       case 1:
-        this.setState({animationIndex: 2, hiphop: true});
+        this.setState({animationIndex: 2, hiphop: true, pricingVisible: false});
         break;
       case 2:
-        this.setState({animationIndex: 6, hiphop: true});
+        this.setState({animationIndex: 6, hiphop: true, pricingVisible: false});
         break;
       case 3:
-        this.setState({animationIndex: 10, hiphop: true});
+        this.setState({
+          animationIndex: 10,
+          hiphop: true,
+          pricingVisible: false,
+        });
         break;
       case 4:
-        this.setState({animationIndex: 14, hiphop: true});
+        this.setState({
+          animationIndex: 14,
+          hiphop: true,
+          pricingVisible: false,
+        });
         break;
       case 5:
-        this.setState({animationIndex: 18, hiphop: true});
+        this.setState({
+          animationIndex: 18,
+          hiphop: true,
+          pricingVisible: false,
+        });
         break;
     }
   };
@@ -224,7 +238,7 @@ class LandingPage extends React.Component {
         <PricingDetail
           startAni={this.state.animationIndex === 18 || pricingVisible}
         />
-        <Footer footerIn={this.state.footerIn} />
+        {/* <Footer footerIn={this.state.footerIn} /> */}
         <DotNavigator
           onChooseChapter={this.onChooseChapter}
           animationIndex={animationIndex}
