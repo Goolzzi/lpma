@@ -26,7 +26,7 @@ class FetchUtils {
     const queryString = this.objectToQueryString(query || {});
     const requestUrl = `${url}?${queryString}`;
     const requestParams = this.constructParams({...restParams, body});
-    return fetch(requestUrl, requestParams);
+    return fetch(requestUrl, requestParams); // eslint-disable-line
   };
 }
 

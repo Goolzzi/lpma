@@ -29,7 +29,7 @@ function withIntercom(WrappedComponent) {
 
     convertVisitorToLead = () => {
       const visitorId = this.getVisitorId();
-      visitorToLead(visitorId);
+      return visitorToLead(visitorId);
     };
 
     render() {
