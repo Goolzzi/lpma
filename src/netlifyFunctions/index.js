@@ -1,5 +1,5 @@
 import fetchUtils from "../utils/fetchUtils";
-const BASE_URI = "http://localhost:9000";
+const BASE_URI = "/.netlify/functions";
 const METHOD_POST = "POST";
 const METHOD_GET = "GET";
 
