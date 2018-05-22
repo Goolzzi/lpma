@@ -2,7 +2,6 @@
 import React from "react";
 import PropTypes from "prop-types";
 import withSegmentTracking from "../../utils/withSegmentTracking";
-import withIntercom from "../../utils/withIntercom";
 import "./styles.scss";
 
 class ContactPage extends React.Component {
@@ -23,25 +22,7 @@ class ContactPage extends React.Component {
   }
 
   handleSubmit = () => {
-    const {trackGroup, convertVisitorToLead, updateLead} = this.props;
-    const lead = this.getLead();
-    trackGroup("Contact", this.state.Company, this.state);
-    convertVisitorToLead();
-    updateLead(lead);
-  };
-
-  getLead = () => {
-    const {FirstName, LastName, WorkNumber: phone, Email: email} = this.state;
-    const user_id = process.env.INTERCOM_ACCESS_TOKEN;
-    return {
-      user_id,
-      phone,
-      email,
-      name: `${FirstName} ${LastName}`,
-      custom_attributes: {
-        "Primary Product": "LPMA",
-      },
-    };
+    this.props.trackGroup("Contact", this.state.Company, this.state);
   };
 
   handleChange = ({target: {name, value}}) => {
@@ -207,7 +188,7 @@ ContactPage.propTypes = {
   updateLead: PropTypes.func.isRequired,
 };
 
-export default withSegmentTracking(withIntercom(ContactPage));
+export default withSegmentTracking(ContactPage);
 
 export const pageQuery = graphql`
   query ContactLPMAPAgeQuery {

@@ -16,6 +16,7 @@ exports.handler = function(event, context, callback) {
       statusCode: 200,
     });
   });
+  // TO BE FIXED
   callback(null, {
     statusCode: 400,
   });
