@@ -1,7 +1,7 @@
 .footer-wrapper {
   position: absolute;
   left: 0;
-  bottom: 4vh;
+  bottom: 1em;
   right: 0;
   width: 80%;
   height: 30px;
@@ -11,6 +11,7 @@
   align-items: center;
   margin: 0 auto;
   opacity: 0;
+  z-index: 10;
   .mobile-column {
     display: flex;
     flex: 1;
@@ -30,6 +31,7 @@
   
   
   @media screen and (max-width: $mobile-width) {
+    bottom: 3em;
     flex-wrap: wrap;
     .mobile-column {
       display: flex;
