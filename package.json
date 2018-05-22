@@ -31,13 +31,10 @@
     "intercom-client": "^2.9.4",
     "lodash": "^4.17.4",
     "moment": "^2.21.0",
-<<<<<<< HEAD
     "netlify-lambda": "^0.4.0",
-=======
     "react-country-region-selector": "^1.3.0",
     "react-responsive": "^4.1.0",
     "polished": "^1.9.2",
->>>>>>> 7a38b5afd6927f78577e3f81df0b07ca9c3e67f9
     "react-entypo": "^1.3.0",
     "react-fa": "^5.0.0",
     "react-modal": "^3.3.2",
