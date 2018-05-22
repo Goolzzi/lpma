@@ -2,6 +2,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import withSegmentTracking from "../../utils/withSegmentTracking";
+import withIntercom from "../../utils/withIntercom";
 import "./styles.scss";
 
 class ContactPage extends React.Component {
@@ -22,8 +23,25 @@ class ContactPage extends React.Component {
   }
 
   handleSubmit = () => {
-    this.props.trackIdentify("Contact", this.state, this.state.Email);
-    this.props.trackGroup("Contact", this.state.Company, this.state);
+    const {trackGroup, convertVisitorToLead, updateLead} = this.props;
+    const lead = this.getLead();
+    trackGroup("Contact", this.state.Company, this.state);
+    convertVisitorToLead();
+    updateLead(lead);
+  };
+
+  getLead = () => {
+    const {FirstName, LastName, WorkNumber: phone, Email: email} = this.state;
+    const user_id = process.env.INTERCOM_ACCESS_TOKEN;
+    return {
+      user_id,
+      phone,
+      email,
+      name: `${FirstName} ${LastName}`,
+      custom_attributes: {
+        "Primary Product": "LPMA",
+      },
+    };
   };
 
   handleChange = ({target: {name, value}}) => {
@@ -185,9 +203,11 @@ ContactPage.propTypes = {
   trackIdentify: PropTypes.func.isRequired,
   trackForm: PropTypes.func.isRequired,
   trackGroup: PropTypes.func.isRequired,
+  convertVisitorToLead: PropTypes.func.isRequired,
+  updateLead: PropTypes.func.isRequired,
 };
 
-export default withSegmentTracking(ContactPage);
+export default withSegmentTracking(withIntercom(ContactPage));
 
 export const pageQuery = graphql`
   query ContactLPMAPAgeQuery {
