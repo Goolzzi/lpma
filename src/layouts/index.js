@@ -3,11 +3,47 @@ import PropTypes from "prop-types";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import MetaHead from "./MetaHead";
+import auth from "../Auth/authInstance";
 import locationToTitleMap from "./locationTitlesMap";
+import config from "../../build.config.json";
+import LoginLogout from "../components/LoginLogout";
 import "bulma";
 import "../styles/fonts";
 import "../styles/global.scss";
 import "../styles/main.scss";
+
+function renderLoginLogout() {
+  const {auth: authVar, env} = config;
+  const {login, logout, isAuthenticated} = auth;
+
+  if (authVar === "iris") {
+    const href =
+      env === "stage"
+        ? "https://dev-new-lpma.netlify.com/login-auth0-ailo"
+        : "https://new.lpma.com/login-auth0-ailo";
+
+    if (!isAuthenticated()) {
+      return (
+        <button
+          className="navbar-item nav-btn"
+          onClick={() => {
+            window.location.replace(href);
+          }}>
+          Login
+        </button>
+      );
+    }
+  }
+
+  return (
+    <LoginLogout
+      isAuthenticated={isAuthenticated()}
+      login={login}
+      logout={logout}
+      cssClass={"navbar-item nav-btn"}
+    />
+  );
+}
 
 const LayoutTemplate = props => {
   const {
@@ -21,13 +57,13 @@ const LayoutTemplate = props => {
     },
   } = props;
 
-  if (pathname.split("/")[1] === "callback") {
+  const pageName = pathname.split("/")[1];
+
+  if (pageName === "callback" || pageName === "login-auth0-ailo") {
     return <div className="page-container">{children()}</div>;
   }
 
   const protocol = "https:";
-  const forUSA = !!~pathname.indexOf("/us") || !!~pathname.indexOf("-us");
-
   const title = locationToTitleMap[pathname]
     ? locationToTitleMap[pathname]
     : locationToTitleMap["/"];
@@ -41,11 +77,11 @@ const LayoutTemplate = props => {
       />
       <Header
         {...contentfulHeader}
-        forUSA={forUSA}
         foundryLinks={allContentfulFoundrySection}
+        renderLoginLogout={renderLoginLogout}
       />
       <div className="page-container">{children()}</div>
-      <Footer {...contentfulFooter} forUSA={forUSA} />
+      <Footer {...contentfulFooter} renderLoginLogout={renderLoginLogout} />
     </div>
   );
 };

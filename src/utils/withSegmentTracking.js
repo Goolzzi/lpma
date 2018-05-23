@@ -1,7 +1,7 @@
 import React from "react";
+import Auth from "../Auth";
 import noop from "lodash/noop";
 import {getComponentDisplayName} from "../utils";
-import IRISAuth from "../Auth/IRISAuth";
 
 function withSegmentTracking(WrappedComponent) {
   class WithSegment extends React.Component {
@@ -57,7 +57,7 @@ function withSegmentTracking(WrappedComponent) {
       }
 
       return (
-        <IRISAuth
+        <Auth
           render={auth => {
             this.auth = auth;
             return (

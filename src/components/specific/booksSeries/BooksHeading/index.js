@@ -46,9 +46,7 @@ class BooksHeading extends Component {
       <section className="section building-blocks-top">
         <div className="container">
           <div className="columns is-multiline">
-            <div className="column is-6">
-              <img src={LPMALogo} alt="this is logo" width="80" />
-            </div>
+            <div className="column is-6" />
             {this.renderBooksSectionLinks()}
             <div className="column is-12">
               <h1 className="title is-1 has-text-white has-text-weight-normal">

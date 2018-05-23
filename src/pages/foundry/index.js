@@ -3,8 +3,7 @@ import PropTypes from "prop-types";
 import Link from "gatsby-link";
 import Img from "gatsby-image";
 import YouTube from "react-youtube";
-import IRISAuth from "../../Auth/IRISAuth";
-import {fisherYates} from "../../utils";
+import Auth from "../../Auth";
 import "./styles.scss";
 
 const videoOptions = {};
@@ -22,7 +21,7 @@ class MyFoundryPage extends React.Component {
     const {isAuthenticated, getUserData} = this.auth;
     if (isAuthenticated()) {
       const user = getUserData();
-      this.setState({username: user.username});
+      this.setState({username: user.nickname ? user.nickname : user.username});
     }
   }
 
@@ -42,7 +41,7 @@ class MyFoundryPage extends React.Component {
       },
     } = this.props;
     return (
-      <IRISAuth
+      <Auth
         render={auth => {
           this.auth = auth;
           return (

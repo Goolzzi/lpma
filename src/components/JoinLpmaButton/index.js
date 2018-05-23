@@ -1,14 +1,14 @@
 import React from "react";
 import PropTypes from "prop-types";
 import Link from "gatsby-link";
-import IRISAuth from "../../Auth/IRISAuth";
+import Auth from "../../Auth";
 
 const JoinLpmaButton = ({joinLink, btnClassName}) => {
   if (!joinLink) {
     return null;
   }
   return (
-    <IRISAuth
+    <Auth
       render={auth => {
         return !auth.isAuthenticated() ? (
           <Link {...joinLink}>
