@@ -12,6 +12,12 @@ exports.handler = function(event, context, callback) {
   console.log("data", data);
   client.visitors.convert(conversion, response => {
     console.log("response", response.body);
+    const {errors} = response;
+    if (errors && errors.length !== 0) {
+      return callback(null, {
+        statusCode: 400,
+      });
+    }
     callback(null, {
       statusCode: 200,
     });
