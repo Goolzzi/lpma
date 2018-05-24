@@ -64,7 +64,7 @@
   "scripts": {
     "build": "npm run netlify-func-install && rm -rf public; gatsby build",
     "start": "gatsby develop",
-    "netlify-lambda-build": "cd ./functions_src && npm install && cd .. && netlify-lambda build functions_src",
+    "netlify-lambda-build": "cd ./lambda && npm install && cd .. && netlify-lambda build lambda",
     "netlify-build": "npm run netlify-lambda-build && node ./scripts/build_config.js live iris && rm -rf public; gatsby build && node ./scripts/cp_netlify_public.js",
     "netlify-build-new-lpma": "npm run netlify-lambda-build && node ./scripts/build_config.js live ailo && rm -rf public; gatsby build && node ./scripts/cp_netlify_public.js",
     "netlify-build-stage": "npm run netlify-lambda-build && node ./scripts/build_config.js stage iris && rm -rf public; gatsby build && node ./scripts/cp_netlify_public.js",
