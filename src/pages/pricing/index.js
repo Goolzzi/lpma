@@ -328,7 +328,7 @@ class Pricing extends Component {
                         <CompareFeatures
                             onClick={() => this.toggleFeatures()}
                         >
-                            <Label>{featuresVisible ? 'Compare Features' : 'Collapse Features'}</Label>
+                            <Label>{featuresVisible ? 'Collapse Features' : 'Compare Features'}</Label>
                             <Expander>{featuresVisible ? '–' : '+'}</Expander>
                         </CompareFeatures>
 
