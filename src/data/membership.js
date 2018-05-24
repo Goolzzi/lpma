@@ -22,11 +22,11 @@ export const membership = {
             ]
         },
         {
-            title: 'LMPA Foundry',
+            title: 'LPMA Foundry',
             variants: [
                 {
                     range: [1, 9999],
-                    text: 'Full access to LMPA Foundry, our information & insights hub'
+                    text: 'Full access to LPMA Foundry, our information & insights hub'
                 },
             ]
         },
@@ -40,11 +40,11 @@ export const membership = {
             ]
         },
         {
-            title: 'LMPA Annual',
+            title: 'LPMA Annual',
             variants: [
                 {
                     range: [1, 9999],
-                    text: 'Access to enter the LMPA Annual Awards'
+                    text: 'Access to enter the LPMA Annual Awards'
                 },
             ]
         },
