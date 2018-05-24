@@ -26,7 +26,6 @@ class ContactPage extends React.Component {
   }
 
   handleSubmit = () => {
-    this.props.trackIdentify("Contact", this.state, this.state.Email);
     this.props.trackGroup("Contact", this.state.Company, this.state);
   };
 
@@ -215,6 +214,8 @@ ContactPage.propTypes = {
   trackIdentify: PropTypes.func.isRequired,
   trackForm: PropTypes.func.isRequired,
   trackGroup: PropTypes.func.isRequired,
+  convertVisitorToLead: PropTypes.func.isRequired,
+  updateLead: PropTypes.func.isRequired,
 };
 
 export default withSegmentTracking(ContactPage);

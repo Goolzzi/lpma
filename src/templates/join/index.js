@@ -2,6 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import Link from "gatsby-link";
 import withSegmentTracking from "../../utils/withSegmentTracking";
+import withIntercom from "../../utils/withIntercom";
 import TopJumbotron from "../../components/TopJumbotron";
 import "./styles.scss";
 
@@ -22,12 +23,37 @@ class JoinForm extends React.Component {
   }
 
   handleSubmit = () => {
-    this.props.trackIdentify("Join", this.state, this.state.Email);
-    this.props.trackGroup("Join", this.state.Company, this.state);
+    const {trackGroup, convertVisitorToLead, updateLead} = this.props;
+    const lead = this.getLead();
+    trackGroup("Join", this.state.Company, this.state);
+    convertVisitorToLead().then(({status}) => {
+      if (status === "200") {
+        updateLead(lead);
+      }
+    });
   };
 
   handleChange = ({target: {name, value}}) => {
     this.setState({[name]: value});
+  };
+
+  getLead = () => {
+    const {
+      FirstName,
+      LastName,
+      ContactNumber: phone,
+      Email: email,
+    } = this.state;
+    const user_id = process.env.INTERCOM_ACCESS_TOKEN;
+    return {
+      user_id,
+      phone,
+      email,
+      name: `${FirstName} ${LastName}`,
+      custom_attributes: {
+        "Primary Product": "LPMA",
+      },
+    };
   };
 
   render() {
@@ -91,12 +117,14 @@ class JoinForm extends React.Component {
 }
 
 JoinForm.propTypes = {
+  convertVisitorToLead: PropTypes.func.isRequired,
+  updateLead: PropTypes.func.isRequired,
   trackIdentify: PropTypes.func.isRequired,
   trackForm: PropTypes.func.isRequired,
   trackGroup: PropTypes.func.isRequired,
 };
 
-const JoinFormWithSegmentTracking = withSegmentTracking(JoinForm);
+const JoinFormWithSegmentTracking = withSegmentTracking(withIntercom(JoinForm));
 
 class JoinPage extends React.PureComponent {
   render() {

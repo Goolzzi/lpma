@@ -2,8 +2,8 @@ import React, {Component} from "react";
 
 function withFormValidations(WrappedComponent) {
   class WithValidations extends Component {
-    // eslint-disable-next-line
     ERROR_MESSAGE = "Validation failed";
+    // eslint-disable-next-line
     emailRegexp = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
     isEmailValid = email => {

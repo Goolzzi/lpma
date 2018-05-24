@@ -1,0 +1,8 @@
+{
+  "name": "functions",
+  "description": "netlify functions",
+  "version": "1.0.0",
+  "dependencies": {
+    "intercom-client": "^2.9.4"
+  }
+}

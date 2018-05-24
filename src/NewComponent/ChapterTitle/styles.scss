@@ -1,0 +1,23 @@
+.chapter-text-view {
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  text-transform: uppercase;
+  flex-direction: column;
+  padding-left: 3.5rem;
+  h3 {
+    font-family: "DomaineSansMedium";
+    font-size: 1.2em;
+    color: $text-primary;
+    letter-spacing: -1px;
+    margin: 0;
+  }
+  h1 {
+    font-family: "DomaineSansMedium";
+    font-size: 3.6em;
+    color: $white;
+    letter-spacing: -0.02em;
+    max-width: 60vh;
+    word-wrap: break-word;
+  }
+}

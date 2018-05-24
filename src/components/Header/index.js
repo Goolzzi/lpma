@@ -3,7 +3,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import Link from "gatsby-link";
 import classNames from "classnames";
-import IRISAuth from "../../Auth/IRISAuth";
+import Auth from "../../Auth";
 import {v4} from "uuid";
 import "./styles.scss";
 
@@ -11,30 +11,27 @@ class Header extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      isActive: false,
       isActiveMenu: false,
       isFoundryOpen: false,
     };
   }
 
-  handleClick = () => {
-    this.setState(prevState => ({
-      isActive: !prevState.isActive,
-      isActiveMenu: !prevState.isActiveMenu,
+  handleFoundryItemClick = () => {
+    this.setState(({isActiveMenu}) => ({
+      isActiveMenu: !isActiveMenu,
     }));
   };
 
-  renderAddMember = () => {
-    const isAuthenticated = this.auth.isAuthenticated();
+  renderAddTeamMember = isAuthenticated => {
     if (isAuthenticated) {
       return (
-        <a
-          href={"https://form.jotform.co/81208927601859"}
-          className="navbar-item add-member"
-          rel="noopener noreferrer"
-          target="_blank">
-          Add a team member
-        </a>
+        <button
+          className="navbar-item add-member nav-btn"
+          onClick={() => {
+            window.location.replace("https://form.jotform.co/81208927601859");
+          }}>
+          Invite team
+        </button>
       );
     }
     return null;
@@ -70,15 +67,11 @@ class Header extends React.Component {
   };
 
   render() {
-    const {topmenu, logo: {file}, foundryLinks, forUSA} = this.props;
-    const {isActive, isActiveMenu, isFoundryOpen} = this.state;
-    //TODO: imprve counry based component building
-    const menuItems = forUSA
-      ? topmenu.filter(({country}) => country === "us")
-      : topmenu;
+    const {topmenu, logo: {file}, foundryLinks} = this.props;
+    const {isActive, isFoundryOpen} = this.state;
 
     return (
-      <IRISAuth
+      <Auth
         render={auth => {
           this.auth = auth;
           const isAuthenticated = auth.isAuthenticated();
@@ -108,7 +101,7 @@ class Header extends React.Component {
                     "is-active": isActive,
                   })}>
                   <div className="navbar-end">
-                    {menuItems.map(({id, to, name, authRequired, slug}) => {
+                    {topmenu.map(({id, to, name, authRequired, slug}) => {
                       if (slug === "foundry") {
                         return isAuthenticated ? (
                           this.renderFoundrNavItems(
@@ -120,7 +113,7 @@ class Header extends React.Component {
                         ) : (
                           <Link
                             className={"navbar-item"}
-                            onClick={this.handleClick}
+                            onClick={this.handleFoundryItemClick}
                             key={id}
                             to={to}>
                             {name}
@@ -136,33 +129,18 @@ class Header extends React.Component {
                           <Link
                             key={v4()}
                             className={"navbar-item"}
-                            onClick={this.handleClick}
+                            onClick={this.handleFoundryItemClick}
                             to={to}>
                             {name}
                           </Link>
                         );
                       }
                     })}
+                    {this.renderAddTeamMember(isAuthenticated)}
                     {this.props.renderLoginLogout()}
                   </div>
                 </div>
-                <button
-                  style={{display: "none"}}
-                  onClick={() =>
-                    this.setState(prevState => ({
-                      isActiveMenu: !prevState.isActiveMenu,
-                    }))
-                  }
-                  className={classNames("button navbar-burger custom-burger", {
-                    "is-active": isActiveMenu,
-                    "hide-burger": forUSA,
-                  })}>
-                  <span />
-                  <span />
-                  <span />
-                </button>
               </nav>
-              {/* <BurgerSubMenu isActiveMenu={isActiveMenu} /> */}
             </div>
           );
         }}
@@ -175,7 +153,6 @@ Header.propTypes = {
   topmenu: PropTypes.array.isRequired,
   logo: PropTypes.object.isRequired,
   foundryLinks: PropTypes.object.isRequired,
-  forUSA: PropTypes.bool.isRequired,
   renderLoginLogout: PropTypes.func.isRequired,
 };
 
