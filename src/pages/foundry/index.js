@@ -2,6 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import Link from "gatsby-link";
 import Img from "gatsby-image";
+import JWTDecode from "jwt-decode";
 import YouTube from "react-youtube";
 import Auth from "../../Auth";
 import "./styles.scss";
@@ -14,14 +15,19 @@ class MyFoundryPage extends React.Component {
     super(props);
     this.state = {
       username: "",
+      tokenData: {},
     };
   }
 
   componentDidMount() {
-    const {isAuthenticated, getUserData} = this.auth;
+    const {isAuthenticated, getUserData, getAccessToken} = this.auth;
     if (isAuthenticated()) {
       const user = getUserData();
-      this.setState({username: user.nickname ? user.nickname : user.username});
+      const tokenData = JWTDecode(getAccessToken());
+      this.setState({
+        username: user.nickname ? user.nickname : user.username,
+        tokenData,
+      });
     }
   }
 
@@ -40,6 +46,21 @@ class MyFoundryPage extends React.Component {
         },
       },
     } = this.props;
+    const newButton = {
+      node: {
+        title: "Growth Model",
+        slug: "growth-model",
+        link: "https://gm.lpma.com",
+        scope: "lpma_growth_planning_au",
+        excerpt: {
+          childMarkdownRemark: {
+            html:
+              "<p>Understand your growth potential & develop your growth plan</p>",
+          },
+        },
+      },
+    };
+
     return (
       <Auth
         render={auth => {
@@ -66,21 +87,47 @@ class MyFoundryPage extends React.Component {
                       </div>
                     </div>
                     <div className="columns is-multiline">
-                      {allContentfulFoundrySection.edges.map(
-                        ({node: {title, slug, excerpt}}) => (
-                          <div key={slug} className="column is-6">
-                            <Link to={`/foundry/${slug}`}>
-                              <div className="text">
-                                <h3>{title}</h3>
-                                <div
-                                  dangerouslySetInnerHTML={{
-                                    __html: excerpt.childMarkdownRemark.html,
-                                  }}
-                                />
-                              </div>
-                            </Link>
-                          </div>
-                        ),
+                      {[...allContentfulFoundrySection.edges, newButton].map(
+                        ({node: {title, slug, link, scope, excerpt}}) => {
+                          if (
+                            scope &&
+                            (!this.state.tokenData ||
+                              !new RegExp(scope).test(
+                                this.state.tokenData.scope,
+                              ))
+                          ) {
+                            return null;
+                          }
+                          return (
+                            <div key={slug} className="column is-6">
+                              {link ? (
+                                <a href={link}>
+                                  <div className="text">
+                                    <h3>{title}</h3>
+                                    <div
+                                      dangerouslySetInnerHTML={{
+                                        __html:
+                                          excerpt.childMarkdownRemark.html,
+                                      }}
+                                    />
+                                  </div>
+                                </a>
+                              ) : (
+                                <Link to={`/foundry/${slug}`}>
+                                  <div className="text">
+                                    <h3>{title}</h3>
+                                    <div
+                                      dangerouslySetInnerHTML={{
+                                        __html:
+                                          excerpt.childMarkdownRemark.html,
+                                      }}
+                                    />
+                                  </div>
+                                </Link>
+                              )}
+                            </div>
+                          );
+                        },
                       )}
                     </div>
                   </div>
