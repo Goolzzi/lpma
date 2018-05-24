@@ -5,7 +5,6 @@ import {getComponentDisplayName} from "../utils";
 import fetchUtils from "../utils/fetchUtils";
 
 // constants
-const LEAD_TYPE = "lead";
 const METHOD_POST = "POST";
 const METHOD_GET = "GET";
 
@@ -22,7 +21,7 @@ function withIntercom(WrappedComponent) {
         method: METHOD_POST,
         bodyObject: leadInfo,
       };
-      fetchUtils.request(url, params);
+      return fetchUtils.request(url, params);
     };
 
     getVisitorId = () => Intercom("getVisitorId"); // eslint-disable-line
@@ -34,7 +33,6 @@ function withIntercom(WrappedComponent) {
 
     render() {
       if (typeof Intercom === "undefined") {
-        console.log("INTERCOM IS NOT DEFINED");
         return (
           <WrappedComponent
             {...this.props}
