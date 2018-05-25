@@ -31,6 +31,13 @@ class MyFoundryPage extends React.Component {
     }
   }
 
+  isButtonVisible = ({node: {scope}}) => {
+    const {tokenData} = this.state;
+    const scopeTest = new RegExp(scope);
+    const isVisible = !scope || (tokenData && scopeTest.test(tokenData.scope));
+    return isVisible;
+  };
+
   render() {
     const {
       data: {
@@ -46,20 +53,7 @@ class MyFoundryPage extends React.Component {
         },
       },
     } = this.props;
-    const newButton = {
-      node: {
-        title: "Growth Model",
-        slug: "growth-model",
-        link: "https://gm.lpma.com",
-        scope: "lpma_growth_planning_au",
-        excerpt: {
-          childMarkdownRemark: {
-            html:
-              "<p>Understand your growth potential & develop your growth plan</p>",
-          },
-        },
-      },
-    };
+    const isButtonVisible = this.isButtonVisible;
 
     return (
       <Auth
@@ -87,48 +81,35 @@ class MyFoundryPage extends React.Component {
                       </div>
                     </div>
                     <div className="columns is-multiline">
-                      {[...allContentfulFoundrySection.edges, newButton].map(
-                        ({node: {title, slug, link, scope, excerpt}}) => {
-                          if (
-                            scope &&
-                            (!this.state.tokenData ||
-                              !new RegExp(scope).test(
-                                this.state.tokenData.scope,
-                              ))
-                          ) {
-                            return null;
-                          }
-                          return (
-                            <div key={slug} className="column is-6">
-                              {link ? (
-                                <a href={link}>
-                                  <div className="text">
-                                    <h3>{title}</h3>
-                                    <div
-                                      dangerouslySetInnerHTML={{
-                                        __html:
-                                          excerpt.childMarkdownRemark.html,
-                                      }}
-                                    />
-                                  </div>
-                                </a>
-                              ) : (
-                                <Link to={`/foundry/${slug}`}>
-                                  <div className="text">
-                                    <h3>{title}</h3>
-                                    <div
-                                      dangerouslySetInnerHTML={{
-                                        __html:
-                                          excerpt.childMarkdownRemark.html,
-                                      }}
-                                    />
-                                  </div>
-                                </Link>
-                              )}
-                            </div>
-                          );
-                        },
-                      )}
+                      {allContentfulFoundrySection.edges
+                        .filter(isButtonVisible)
+                        .map(({node: {title, slug, link, excerpt}}) => (
+                          <div key={slug} className="column is-6">
+                            {link ? (
+                              <a href={link}>
+                                <div className="text">
+                                  <h3>{title}</h3>
+                                  <div
+                                    dangerouslySetInnerHTML={{
+                                      __html: excerpt.childMarkdownRemark.html,
+                                    }}
+                                  />
+                                </div>
+                              </a>
+                            ) : (
+                              <Link to={`/foundry/${slug}`}>
+                                <div className="text">
+                                  <h3>{title}</h3>
+                                  <div
+                                    dangerouslySetInnerHTML={{
+                                      __html: excerpt.childMarkdownRemark.html,
+                                    }}
+                                  />
+                                </div>
+                              </Link>
+                            )}
+                          </div>
+                        ))}
                     </div>
                   </div>
                 </section>
@@ -239,6 +220,8 @@ export const pageQuery = graphql`
         node {
           title
           slug
+          link
+          scope
           excerpt {
             childMarkdownRemark {
               html
