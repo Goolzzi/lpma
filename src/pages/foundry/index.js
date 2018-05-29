@@ -21,7 +21,6 @@ class MyFoundryPage extends React.Component {
 
   componentDidMount() {
     const {isAuthenticated, getUserData, getAccessToken} = this.auth;
-    debugger;
     if (isAuthenticated()) {
       const user = getUserData();
       const tokenData = JWTDecode(getAccessToken());
