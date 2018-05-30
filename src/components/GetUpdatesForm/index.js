@@ -29,9 +29,8 @@ class GetUpdatesForm extends Component {
   }
 
   submitSuccessHandler = () => {
-    const {trackIdentify, track} = this.props;
+    const {track} = this.props;
     const {email} = this.state;
-    trackIdentify("Get Blog Update form", email, email);
     track(this.trackingEventName, {email});
     this.setState({formClicked: true, errorMessage: ""});
   };

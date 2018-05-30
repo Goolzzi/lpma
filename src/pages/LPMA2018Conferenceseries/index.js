@@ -29,11 +29,6 @@ class BuildForm extends React.Component {
   }
 
   handleSubmit = () => {
-    this.props.trackIdentify(
-      "LPMA2018Conference",
-      this.state,
-      this.state.Email,
-    );
     this.props.trackGroup("LPMA2018Conference", this.state.Company, this.state);
   };
 
