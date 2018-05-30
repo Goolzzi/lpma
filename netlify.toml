@@ -1,8 +1,2 @@
 [build]
   functions = "./functions"
-
-[[redirects]]
-  from = "https://new.lpma.com/*"
-  to = " https://lpma.com/:splat"
-  status = 301
-  force = true
