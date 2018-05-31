@@ -25,6 +25,7 @@ class JoinForm extends React.Component {
   handleSubmit = () => {
     const {trackGroup, convertVisitorToLead, updateLead} = this.props;
     const lead = this.getLead();
+    updateLead(lead);
     trackGroup("Join", this.state.Company, this.state);
     convertVisitorToLead().then(({status}) => {
       if (status === "200") {

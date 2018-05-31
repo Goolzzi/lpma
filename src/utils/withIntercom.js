@@ -17,9 +17,11 @@ function withIntercom(WrappedComponent) {
 
     updateLead = leadInfo => {
       const url = `${this.API_BASE_URI}/contacts`;
+      const visitorId = this.getVisitorId();
+      const lead = {...leadInfo, user_id: visitorId};
       const params = {
         method: METHOD_POST,
-        bodyObject: leadInfo,
+        bodyObject: lead,
       };
       return fetchUtils.request(url, params);
     };
