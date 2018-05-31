@@ -27,9 +27,7 @@ class JoinForm extends React.Component {
     const lead = this.getLead();
     trackGroup("Join", this.state.Company, this.state);
     convertVisitorToLead().then(({status}) => {
-      if (status === "200") {
-        updateLead(lead);
-      }
+      updateLead(lead);
     });
   };
 
