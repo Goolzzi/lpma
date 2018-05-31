@@ -19,7 +19,7 @@ function renderLoginLogout() {
   if (authVar === "iris") {
     const href =
       env === "stage"
-        ? "https://dev-lpma.netlify.com/login-auth0-ailo"
+        ? "https://dev.lpma.com/login-auth0-ailo"
         : "https://lpma.com/login-auth0-ailo";
 
     if (!isAuthenticated()) {
