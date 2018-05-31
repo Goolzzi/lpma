@@ -1,16 +1,15 @@
 class FetchUtils {
   constructor() {
-    const accessToken = process.env.INTERCOM_ACCESS_TOKEN;
-    this.baseParams = {
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-        Authorization: `Bearer ${accessToken}`, // TODO: Clean-up
-      },
+    this.baseHeaders = {
+      "Content-Type": "application/json",
+      Accept: "application/json",
     };
   }
 
-  constructParams = params => ({...this.baseParams, ...params});
+  constructParams = ({headers, ...params}) => ({
+    ...params,
+    headers: {...this.baseHeaders, ...headers},
+  });
 
   objectToQueryString = queryObject =>
     Object.keys(queryObject)
