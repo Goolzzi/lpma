@@ -1,7 +1,7 @@
 import buildConfig from "../../../build.config.json";
 
 const localDevCallback = "http://localhost:8000/callback";
-const stagingCallback = "https://dev-lpma.netlify.com/callback";
+const stagingCallback = "https://dev.lpma.com/callback";
 const liveCallBack = "https://lpma.com/callback";
 
 const authConfig_prod = {
