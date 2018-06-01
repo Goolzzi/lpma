@@ -1,10 +1,11 @@
 import React from "react";
 import PropTypes from "prop-types";
-import {navigateTo} from "gatsby-link";
+// import {navigateTo} from "gatsby-link";
 import LandingSection from "../NewComponent/LandingSection";
 import ChapterSection from "../NewComponent/ChapterSection";
 import ArticleContent from "../NewComponent/ArticleConent";
-import Footer from "../NewComponent/Footer";
+import PricingDetail from "./pricing";
+// import Footer from "../NewComponent/Footer";
 import DotNavigator from "../NewComponent/DotNavigator";
 
 import CHAPTER_DESKTOP_IMG1 from "../assets/images/NewDesign/bk-intro-2.png";
@@ -25,6 +26,7 @@ class LandingPage extends React.Component {
       scrollHandleClass: "scrollCTROut",
       footerIn: false,
       pricingVisible: false,
+      hiphop: false,
     };
     this.scrolling = false;
     this.startY = 0;
@@ -63,10 +65,12 @@ class LandingPage extends React.Component {
         {
           pricingVisible: true,
           animationIndex: 18,
+          showPage: "",
           footerIn: true,
           scrollHandleClass: "hide",
         },
         () => {
+          this.props.updateState({showPage: ""});
           this.props.onPageChange(this.state.animationIndex);
         },
       );
@@ -93,12 +97,17 @@ class LandingPage extends React.Component {
     }
   };
   scrollWindowUp = () => {
-    if (!this.scrolling && this.state.animationIndex > 0) {
+    if (
+      !this.scrolling &&
+      this.state.animationIndex > 0 &&
+      this.state.animationIndex !== 18
+    ) {
       this.scrolling = true;
       this.setState(
         {
           animationIndex: this.state.animationIndex - 1,
           scrollDirection: false,
+          hiphop: false,
         },
         () => {
           this.setState({
@@ -122,6 +131,7 @@ class LandingPage extends React.Component {
         {
           animationIndex: this.state.animationIndex + 1,
           scrollDirection: true,
+          hiphop: false,
         },
         () => {
           this.setState({
@@ -148,31 +158,57 @@ class LandingPage extends React.Component {
   onChooseChapter = index => {
     switch (index) {
       case 0:
-        this.setState({animationIndex: 0});
+        this.setState({animationIndex: 0, hiphop: true, pricingVisible: false});
         break;
       case 1:
-        this.setState({animationIndex: 2});
+        this.setState({animationIndex: 2, hiphop: true, pricingVisible: false});
         break;
       case 2:
-        this.setState({animationIndex: 6});
+        this.setState({animationIndex: 6, hiphop: true, pricingVisible: false});
         break;
       case 3:
-        this.setState({animationIndex: 10});
+        this.setState({
+          animationIndex: 10,
+          hiphop: true,
+          pricingVisible: false,
+        });
         break;
       case 4:
-        this.setState({animationIndex: 14});
+        this.setState({
+          animationIndex: 14,
+          hiphop: true,
+          pricingVisible: false,
+        });
         break;
       case 5:
-        navigateTo("/pricing");
+        this.setState(
+          {
+            animationIndex: 18,
+            hiphop: true,
+            pricingVisible: false,
+          },
+          () => {
+            this.props.onPageChange(this.state.animationIndex);
+          },
+        );
+
         break;
     }
   };
   render() {
-    const {animationIndex, scrollDirection, pricingVisible} = this.state;
+    const {
+      animationIndex,
+      scrollDirection,
+      hiphop,
+      pricingVisible,
+    } = this.state;
     const {
       allContentfulChapters: {edges: chapters},
       allContentfulLandingIntro: {edges: landingIntro},
     } = this.props.data;
+    // if (animationIndex == 18) {
+    //   navigateTo("/pricing");
+    // }
     return (
       <div ref={c => (this.wrapper = c)} className="landing-page">
         <LandingSection
@@ -190,6 +226,7 @@ class LandingPage extends React.Component {
             maxIndex={6 + i * 4}
             key={i}
             initial={i == 0}
+            hiphop={hiphop}
             chapter={chapter}>
             {chapter.node.articles.map((article, index) => (
               <ArticleContent
@@ -204,7 +241,10 @@ class LandingPage extends React.Component {
             ))}
           </ChapterSection>
         ))}
-        <Footer footerIn={this.state.footerIn} />
+        <PricingDetail
+          startAni={this.state.animationIndex === 18 || pricingVisible}
+        />
+        {/* <Footer footerIn={this.state.footerIn} /> */}
         <DotNavigator
           onChooseChapter={this.onChooseChapter}
           animationIndex={animationIndex}

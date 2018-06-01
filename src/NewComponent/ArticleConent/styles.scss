@@ -25,4 +25,7 @@
     width: 100vw;
     padding: 0 4em;
   }
+  @media screen and (max-width: $xl-width) and (min-width: 1007px) {
+    padding: 0 4em;
+  }
 }
