@@ -5,8 +5,8 @@ const METHOD_GET = "GET";
 
 const getUri = path => `${BASE_URI}${path}`;
 
-export const visitorToLead = visitorId => {
+export const visitorToLead = lead => {
   const url = getUri("/visitorToLead");
-  const params = {method: METHOD_POST, bodyObject: {visitorId}};
+  const params = {method: METHOD_POST, bodyObject: {lead}};
   return fetchUtils.request(url, params);
 };

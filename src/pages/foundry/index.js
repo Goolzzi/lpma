@@ -4,6 +4,7 @@ import Link from "gatsby-link";
 import Img from "gatsby-image";
 import JWTDecode from "jwt-decode";
 import YouTube from "react-youtube";
+import withSegmentTracking from "../../utils/withSegmentTracking";
 import Auth from "../../Auth";
 import "./styles.scss";
 
@@ -20,8 +21,10 @@ class MyFoundryPage extends React.Component {
   }
 
   componentDidMount() {
+    const {trackIdentify} = this.props;
     const {isAuthenticated, getUserData, getAccessToken} = this.auth;
     if (isAuthenticated()) {
+      trackIdentify();
       const user = getUserData();
       const tokenData = JWTDecode(getAccessToken());
       this.setState({
@@ -166,10 +169,11 @@ class MyFoundryPage extends React.Component {
 }
 
 MyFoundryPage.propTypes = {
+  trackIdentify: PropTypes.func,
   data: PropTypes.object.isRequired,
 };
 
-export default MyFoundryPage;
+export default withSegmentTracking(MyFoundryPage);
 
 export const pageQuery = graphql`
   query MyFoundryPageQuery {

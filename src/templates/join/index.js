@@ -18,19 +18,11 @@ class JoinForm extends React.Component {
     };
   }
 
-  componentDidMount() {
-    this.props.trackForm("joinLPMAForm", "Join");
-  }
-
   handleSubmit = () => {
-    const {trackGroup, convertVisitorToLead, updateLead} = this.props;
+    const {trackGroup, convertVisitorToLead} = this.props;
     const lead = this.getLead();
     trackGroup("Join", this.state.Company, this.state);
-    convertVisitorToLead().then(({status}) => {
-      if (status === "200") {
-        updateLead(lead);
-      }
-    });
+    convertVisitorToLead(lead);
   };
 
   handleChange = ({target: {name, value}}) => {
@@ -38,13 +30,14 @@ class JoinForm extends React.Component {
   };
 
   getLead = () => {
+    const {getVisitorId} = this.props;
     const {
       FirstName,
       LastName,
       ContactNumber: phone,
       Email: email,
     } = this.state;
-    const user_id = process.env.INTERCOM_ACCESS_TOKEN;
+    const user_id = getVisitorId();
     return {
       user_id,
       phone,
@@ -117,8 +110,8 @@ class JoinForm extends React.Component {
 }
 
 JoinForm.propTypes = {
+  getVisitorId: PropTypes.func.isRequired,
   convertVisitorToLead: PropTypes.func.isRequired,
-  updateLead: PropTypes.func.isRequired,
   trackIdentify: PropTypes.func.isRequired,
   trackForm: PropTypes.func.isRequired,
   trackGroup: PropTypes.func.isRequired,

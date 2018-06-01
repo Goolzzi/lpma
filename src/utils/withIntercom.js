@@ -16,29 +16,11 @@ function withIntercom(WrappedComponent) {
       this.API_BASE_URI = "https://api.intercom.io";
     }
 
-    updateLead = leadInfo => {
-      const url = `${this.API_BASE_URI}/contacts`;
-      const visitorId = this.getVisitorId();
-      const lead = {...leadInfo, user_id: visitorId};
-      const Authorization = this.getAuthorizationHeader();
-      const params = {
-        method: METHOD_POST,
-        bodyObject: lead,
-        headers: {
-          Authorization,
-        },
-      };
-      return fetchUtils.request(url, params);
-    };
-
     getVisitorId = () => Intercom("getVisitorId"); // eslint-disable-line
 
     getAuthorizationHeader = () => `Bearer ${this.ACCESS_TOKEN}`;
 
-    convertVisitorToLead = () => {
-      const visitorId = this.getVisitorId();
-      return visitorToLead(visitorId);
-    };
+    convertVisitorToLead = lead => visitorToLead(lead);
 
     render() {
       if (typeof Intercom === "undefined") {
@@ -47,7 +29,6 @@ function withIntercom(WrappedComponent) {
             {...this.props}
             getVisitorId={noop}
             convertVisitorToLead={noop}
-            updateLead={noop}
           />
         );
       }
@@ -57,7 +38,6 @@ function withIntercom(WrappedComponent) {
           {...this.props}
           getVisitorId={this.getVisitorId}
           convertVisitorToLead={this.convertVisitorToLead}
-          updateLead={this.updateLead}
         />
       );
     }

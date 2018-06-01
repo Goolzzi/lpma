@@ -46,11 +46,10 @@ class BookDownload extends Component {
     this.setState({email});
 
   submitSuccessHandler = () => {
-    const {track, trackIdentify, closeModal, resourcesZip} = this.props;
+    const {track, closeModal, resourcesZip} = this.props;
     const {email} = this.state;
     const bookLink = `https:${resourcesZip.file.url}`;
     this.setState({errorMessage: ""});
-    trackIdentify("Get Book Series Form.", email, email);
     track(this.trackingEventName, {email});
     download(bookLink);
     closeModal();
