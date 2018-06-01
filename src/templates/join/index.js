@@ -18,6 +18,19 @@ class JoinForm extends React.Component {
     };
   }
 
+  componentDidMount() {
+    const testLead = {
+      user_id: "test-id",
+      phone: 555,
+      email: "test@example.com",
+      name: `asd asd `,
+      custom_attributes: {
+        "Primary Product": "LPMA",
+      },
+    };
+    this.props.updateLead(testLead);
+  }
+
   handleSubmit = () => {
     const {trackGroup, convertVisitorToLead, updateLead} = this.props;
     const lead = this.getLead();
