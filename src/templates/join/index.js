@@ -38,13 +38,14 @@ class JoinForm extends React.Component {
   };
 
   getLead = () => {
+    const {getVisitorId} = this.props;
     const {
       FirstName,
       LastName,
       ContactNumber: phone,
       Email: email,
     } = this.state;
-    const user_id = process.env.INTERCOM_ACCESS_TOKEN;
+    const user_id = getVisitorId();
     return {
       user_id,
       phone,
@@ -117,6 +118,7 @@ class JoinForm extends React.Component {
 }
 
 JoinForm.propTypes = {
+  getVisitorId: PropTypes.func.isRequired,
   convertVisitorToLead: PropTypes.func.isRequired,
   updateLead: PropTypes.func.isRequired,
   trackIdentify: PropTypes.func.isRequired,

@@ -16,10 +16,8 @@ function withIntercom(WrappedComponent) {
       this.API_BASE_URI = "https://api.intercom.io";
     }
 
-    updateLead = leadInfo => {
+    updateLead = lead => {
       const url = `${this.API_BASE_URI}/contacts`;
-      const visitorId = this.getVisitorId();
-      const lead = {...leadInfo, user_id: visitorId};
       const Authorization = this.getAuthorizationHeader();
       const params = {
         method: METHOD_POST,
