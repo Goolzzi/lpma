@@ -2,6 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import Link from "gatsby-link";
 import Img from "gatsby-image";
+import JWTDecode from "jwt-decode";
 import YouTube from "react-youtube";
 import Auth from "../../Auth";
 import "./styles.scss";
@@ -14,16 +15,28 @@ class MyFoundryPage extends React.Component {
     super(props);
     this.state = {
       username: "",
+      tokenData: {},
     };
   }
 
   componentDidMount() {
-    const {isAuthenticated, getUserData} = this.auth;
+    const {isAuthenticated, getUserData, getAccessToken} = this.auth;
     if (isAuthenticated()) {
       const user = getUserData();
-      this.setState({username: user.nickname ? user.nickname : user.username});
+      const tokenData = JWTDecode(getAccessToken());
+      this.setState({
+        username: user.nickname ? user.nickname : user.username,
+        tokenData,
+      });
     }
   }
+
+  isButtonVisible = ({node: {scope}}) => {
+    const {tokenData} = this.state;
+    const scopeTest = new RegExp(scope);
+    const isVisible = !scope || (tokenData && scopeTest.test(tokenData.scope));
+    return isVisible;
+  };
 
   render() {
     const {
@@ -40,6 +53,8 @@ class MyFoundryPage extends React.Component {
         },
       },
     } = this.props;
+    const isButtonVisible = this.isButtonVisible;
+
     return (
       <Auth
         render={auth => {
@@ -66,22 +81,35 @@ class MyFoundryPage extends React.Component {
                       </div>
                     </div>
                     <div className="columns is-multiline">
-                      {allContentfulFoundrySection.edges.map(
-                        ({node: {title, slug, excerpt}}) => (
+                      {allContentfulFoundrySection.edges
+                        .filter(isButtonVisible)
+                        .map(({node: {title, slug, link, excerpt}}) => (
                           <div key={slug} className="column is-6">
-                            <Link to={`/foundry/${slug}`}>
-                              <div className="text">
-                                <h3>{title}</h3>
-                                <div
-                                  dangerouslySetInnerHTML={{
-                                    __html: excerpt.childMarkdownRemark.html,
-                                  }}
-                                />
-                              </div>
-                            </Link>
+                            {link ? (
+                              <a href={link}>
+                                <div className="text">
+                                  <h3>{title}</h3>
+                                  <div
+                                    dangerouslySetInnerHTML={{
+                                      __html: excerpt.childMarkdownRemark.html,
+                                    }}
+                                  />
+                                </div>
+                              </a>
+                            ) : (
+                              <Link to={`/foundry/${slug}`}>
+                                <div className="text">
+                                  <h3>{title}</h3>
+                                  <div
+                                    dangerouslySetInnerHTML={{
+                                      __html: excerpt.childMarkdownRemark.html,
+                                    }}
+                                  />
+                                </div>
+                              </Link>
+                            )}
                           </div>
-                        ),
-                      )}
+                        ))}
                     </div>
                   </div>
                 </section>
@@ -192,6 +220,8 @@ export const pageQuery = graphql`
         node {
           title
           slug
+          link
+          scope
           excerpt {
             childMarkdownRemark {
               html
