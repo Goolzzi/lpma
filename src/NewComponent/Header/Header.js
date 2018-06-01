@@ -23,7 +23,7 @@ function getLoginLogout(auth) {
   if (authVar === "iris") {
     const href =
       env === "stage"
-        ? "https://dev.lpma.com/login-auth0-ailo"
+        ? "https://qa.lpma.com/login-auth0-ailo"
         : "https://lpma.com/login-auth0-ailo";
 
     if (!isAuthenticated()) {
