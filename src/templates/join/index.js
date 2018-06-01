@@ -18,22 +18,12 @@ class JoinForm extends React.Component {
     };
   }
 
-  componentDidMount() {
-    this.props.trackForm("joinLPMAForm", "Join");
-  }
-
-  componentWillReceiveProps(nextProps) {
-    console.log("convertVisitorToLead", nextProps.convertVisitorToLead);
-    
-  }
-
   handleSubmit = () => {
     const {trackGroup, convertVisitorToLead, updateLead} = this.props;
     const lead = this.getLead();
     trackGroup("Join", this.state.Company, this.state);
     convertVisitorToLead().then(({status}) => {
       if (status === "200") {
-        debugger;
         updateLead(lead);
       }
     });
