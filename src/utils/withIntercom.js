@@ -33,10 +33,7 @@ function withIntercom(WrappedComponent) {
 
     getAuthorizationHeader = () => `Bearer ${this.ACCESS_TOKEN}`;
 
-    convertVisitorToLead = () => {
-      const visitorId = this.getVisitorId();
-      return visitorToLead(visitorId);
-    };
+    convertVisitorToLead = lead => visitorToLead(lead);
 
     render() {
       if (typeof Intercom === "undefined") {
