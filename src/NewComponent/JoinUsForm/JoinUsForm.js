@@ -22,7 +22,6 @@ class JoinUsForm extends React.Component {
   }
 
   handleSubmit = () => {
-    this.props.trackIdentify("JoinUs", this.state, this.state.Email);
     this.props.trackGroup("JoinUs", this.state.Company, this.state);
   };
 
