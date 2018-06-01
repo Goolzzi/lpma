@@ -116,6 +116,7 @@ class ChapterSection extends React.Component {
       chapter: {
         node: {order, bgColor, brColor, topic, circleImage, mobileCircleImage},
       },
+      hiphop,
     } = this.props;
     const {animationIndex, ready} = this.state;
     const Container = initial ? FullPageSlide : FullPageCircle;
@@ -147,9 +148,19 @@ class ChapterSection extends React.Component {
                     <Breakpoint name="desktop">
                       <CSSTransition
                         in={
-                          animationIndex > minIndex && animationIndex < maxIndex
+                          animationIndex > minIndex &&
+                          animationIndex <= maxIndex
                         }
-                        classNames="clockwise-right"
+                        classNames={{
+                          enter: "clockwise-right-enter",
+                          enterActive: hiphop
+                            ? "clockwise-right-enter-active transition-delay-2"
+                            : "clockwise-right-enter-active",
+                          enterDone: "clockwise-right-enter-done",
+                          exit: "clockwise-right-exit",
+                          exitActive: "clockwise-right-exit-active",
+                          exitDone: "clockwise-right-exit-done",
+                        }}
                         timeout={2000}
                         unmountOnExit>
                         {state => (
@@ -206,9 +217,18 @@ class ChapterSection extends React.Component {
                   <Breakpoint name="desktop">
                     <CSSTransition
                       in={
-                        animationIndex > minIndex && animationIndex < maxIndex
+                        animationIndex > minIndex && animationIndex <= maxIndex
                       }
-                      classNames="clockwise-right"
+                      classNames={{
+                        enter: "clockwise-right-enter",
+                        enterActive: hiphop
+                          ? "clockwise-right-enter-active transition-delay-2"
+                          : "clockwise-right-enter-active",
+                        enterDone: "clockwise-right-enter-done",
+                        exit: "clockwise-right-exit",
+                        exitActive: "clockwise-right-exit-active",
+                        exitDone: "clockwise-right-exit-done",
+                      }}
                       timeout={2000}
                       unmountOnExit>
                       {state => (
