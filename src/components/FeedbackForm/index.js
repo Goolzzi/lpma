@@ -20,7 +20,6 @@ class FeedbackForm extends React.Component {
   }
 
   submitFeedback = (submitType, params) => {
-    this.props.trackIdentify("Was this helpful", params, v4());
     this.props.track(this.segmentEvent, {
       WasThisHelpful: submitType,
       params,
