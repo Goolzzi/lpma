@@ -131,6 +131,10 @@ class LandingPage extends React.Component {
                 : "scrollCTROut",
           });
           this.props.onPageChange(this.state.animationIndex);
+         
+          if(this.state.animationIndex===18){
+            navigateTo("/pricing");
+          }
         },
       );
       setTimeout(() => {
@@ -173,6 +177,7 @@ class LandingPage extends React.Component {
       allContentfulChapters: {edges: chapters},
       allContentfulLandingIntro: {edges: landingIntro},
     } = this.props.data;
+
     return (
       <div ref={c => (this.wrapper = c)} className="landing-page">
         <LandingSection
@@ -227,7 +232,7 @@ LandingPage.propTypes = {
 LandingPage.defaultProps = {
   onPageChange: pageNumber => {
     //eslint-disable-next-line
-    console.log(pageNumber);
+    console.log('pageNumber',pageNumber);
   },
 };
 export default LandingPage;

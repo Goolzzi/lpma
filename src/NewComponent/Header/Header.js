@@ -94,9 +94,10 @@ class Header extends React.Component {
             <div className={`menu ${menuClass}`}>
               <ul>
                 <li>
+                    <Link to="/">Home</Link>
                   {
                     //eslint-disable-next-line
-                    <a onClick={() => this.props.selectPage("Home")}>Home</a>
+                    // <a onClick={() => this.props.selectPage("Home")}>Home</a>
                   }
                 </li>
                 <li>
