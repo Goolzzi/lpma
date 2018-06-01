@@ -20,7 +20,7 @@ exports.handler = function(event, context, callback) {
       return send400(callback)();
     }
     console.log("STATUS 200");
-    client.update(lead, send200(callback));
+    client.leads.update(lead, send200(callback));
   });
   // callback(null, {
   //   statusCode: 400,
