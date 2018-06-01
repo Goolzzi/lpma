@@ -7,10 +7,10 @@ function getDevRedirectUrl() {
 }
 
 const authConfig_dev = {
-  domain: "ailo-dev.au.auth0.com",
+  domain: "ailo-qa.au.auth0.com",
   clientID: "fSFMLtPrgj41huObssvuyRiYMmTkbXr2",
   redirectUri: getDevRedirectUrl(),
-  audience: "https://dev.ailo.io/",
+  audience: "https://qa.ailo.io/",
   responseType: "token id_token",
   scope: "openid email profile",
 };
