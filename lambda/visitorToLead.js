@@ -12,17 +12,11 @@ exports.handler = function(event, context, callback) {
     visitor: {user_id: lead.user_id},
     type: "lead",
   };
-  console.log("data", data);
   client.visitors.convert(conversion, response => {
-    console.log("response", response.body);
     const {errors} = response;
     if (errors && errors.length !== 0) {
       return send400(callback)();
     }
-    console.log("STATUS 200");
     client.leads.update(lead, send200(callback));
   });
-  // callback(null, {
-  //   statusCode: 400,
-  // });
 };

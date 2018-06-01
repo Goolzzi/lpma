@@ -112,7 +112,6 @@ class JoinForm extends React.Component {
 JoinForm.propTypes = {
   getVisitorId: PropTypes.func.isRequired,
   convertVisitorToLead: PropTypes.func.isRequired,
-  updateLead: PropTypes.func.isRequired,
   trackIdentify: PropTypes.func.isRequired,
   trackForm: PropTypes.func.isRequired,
   trackGroup: PropTypes.func.isRequired,

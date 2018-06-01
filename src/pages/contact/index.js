@@ -215,7 +215,6 @@ ContactPage.propTypes = {
   trackForm: PropTypes.func.isRequired,
   trackGroup: PropTypes.func.isRequired,
   convertVisitorToLead: PropTypes.func.isRequired,
-  updateLead: PropTypes.func.isRequired,
 };
 
 export default withSegmentTracking(ContactPage);
