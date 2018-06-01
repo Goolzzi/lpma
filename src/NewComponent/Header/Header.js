@@ -15,6 +15,7 @@ const secondaryIndexes = [2, 6, 10, 14];
 const primaryIndexes = [0, 1, 3, 4, 5, 7, 8, 9, 11, 12, 13, 15, 16, 17, 18];
 var menuClass = "";
 var btnClass = "";
+
 function getLoginLogout(auth) {
   const {auth: authVar, env} = config;
   const {login, logout, isAuthenticated} = auth;
@@ -22,8 +23,8 @@ function getLoginLogout(auth) {
   if (authVar === "iris") {
     const href =
       env === "stage"
-        ? "https://dev-new-lpma.netlify.com/login-auth0-ailo"
-        : "https://new.lpma.com/login-auth0-ailo";
+        ? "https://dev-lpma.netlify.com/login-auth0-ailo"
+        : "https://lpma.com/login-auth0-ailo";
 
     if (!isAuthenticated()) {
       return (

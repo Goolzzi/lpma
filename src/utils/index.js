@@ -19,3 +19,7 @@ export function parseHash(hash) {
   });
   return params;
 }
+
+export function getComponentDisplayName(Component) {
+  return Component.displayName || Component.name || "Component";
+}

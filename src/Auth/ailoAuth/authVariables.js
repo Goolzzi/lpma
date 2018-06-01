@@ -3,7 +3,7 @@ import buildConfig from "../../../build.config.json";
 function getDevRedirectUrl() {
   return process.env.NODE_ENV === "development"
     ? "http://localhost:8000/callback"
-    : "https://dev-new-lpma.netlify.com/callback";
+    : "https://dev-lpma.netlify.com/callback";
 }
 
 const authConfig_dev = {
@@ -18,7 +18,7 @@ const authConfig_dev = {
 const authConfig_prod = {
   domain: "login.ailo.io",
   clientID: "ulcwqnerf7Zgpjn4HoJ0UiqeKDDXRi4b",
-  redirectUri: "https://new.lpma.com/callback",
+  redirectUri: "https://lpma.com/callback",
   audience: "https://app.ailo.io/",
   responseType: "token id_token",
   scope: "openid email profile",
