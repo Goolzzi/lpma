@@ -12,19 +12,26 @@ function withIntercom(WrappedComponent) {
   class WithIntercom extends React.Component {
     constructor(props) {
       super(props);
+      this.ACCESS_TOKEN = process.env.INTERCOM_ACCESS_TOKEN;
       this.API_BASE_URI = "https://api.intercom.io";
     }
 
-    updateLead = leadInfo => {
+    updateLead = lead => {
       const url = `${this.API_BASE_URI}/contacts`;
+      const Authorization = this.getAuthorizationHeader();
       const params = {
         method: METHOD_POST,
-        bodyObject: leadInfo,
+        bodyObject: lead,
+        headers: {
+          Authorization,
+        },
       };
       return fetchUtils.request(url, params);
     };
 
     getVisitorId = () => Intercom("getVisitorId"); // eslint-disable-line
+
+    getAuthorizationHeader = () => `Bearer ${this.ACCESS_TOKEN}`;
 
     convertVisitorToLead = () => {
       const visitorId = this.getVisitorId();

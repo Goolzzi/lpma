@@ -18,6 +18,7 @@ exports.handler = function(event, context, callback) {
         statusCode: 400,
       });
     }
+    console.log("STATUS 200");
     callback(null, {
       statusCode: 200,
     });

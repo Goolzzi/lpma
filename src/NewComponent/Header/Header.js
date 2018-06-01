@@ -23,7 +23,7 @@ function getLoginLogout(auth) {
   if (authVar === "iris") {
     const href =
       env === "stage"
-        ? "https://dev-lpma.netlify.com/login-auth0-ailo"
+        ? "https://qa.lpma.com/login-auth0-ailo"
         : "https://lpma.com/login-auth0-ailo";
 
     if (!isAuthenticated()) {
@@ -63,7 +63,7 @@ class Header extends React.Component {
   };
   render() {
     const {pageNumber} = this.props;
-
+    let absoluteStyle = pageNumber == 18 ? {position: "absolute"} : null;
     if (secondaryIndexes.indexOf(pageNumber) !== -1) {
       btnClass = "secondary";
     } else if (primaryIndexes.indexOf(pageNumber) !== -1) {
@@ -77,7 +77,9 @@ class Header extends React.Component {
     return (
       <Auth
         render={auth => (
-          <nav className={`navbar is-transparent header-wrapper`}>
+          <nav
+            className={`navbar is-transparent header-wrapper`}
+            style={absoluteStyle}>
             <div className="navbar-brand">
               {
                 //eslint-disable-next-line
@@ -100,7 +102,10 @@ class Header extends React.Component {
                   }
                 </li>
                 <li>
-                  <Link to="/pricing">Pricing</Link>
+                  {
+                    //eslint-disable-next-line
+                    <a onClick={() => this.props.selectPage("Pricing")}>Pricing</a>
+                  }
                 </li>
                 <li>
                   <Link to="/blog">Blog</Link>

@@ -17,8 +17,12 @@ const BannerTitle = styled.div`
       span {
         color: #6ebf56;
       }
-      @media screen and (max-width: $xl-width) {
+      @media screen and (max-width: 1440px) {
         font-size: 3em;
+      }
+      @media screen and (max-width: 768px) {
+        font-size: 2.5em;
+        max-width: 90vw;
       }
     }
   }

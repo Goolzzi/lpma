@@ -3,7 +3,7 @@ import buildConfig from "../../../build.config.json";
 function getDevRedirectUrl() {
   return process.env.NODE_ENV === "development"
     ? "http://localhost:8000/callback"
-    : "https://dev-lpma.netlify.com/callback";
+    : "https://qa.lpma.com/callback";
 }
 
 const authConfig_dev = {
