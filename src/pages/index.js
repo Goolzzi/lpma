@@ -246,13 +246,11 @@ class LandingPage extends React.Component {
           startAni={this.state.animationIndex === 18 || pricingVisible}
         />
         {/* <Footer footerIn={this.state.footerIn} /> */}
-        <BreakPoint name="desktop">
-          <DotNavigator
-            onChooseChapter={this.onChooseChapter}
-            animationIndex={animationIndex}
-            chapters={chapters}
-          />
-        </BreakPoint>
+        <DotNavigator
+          onChooseChapter={this.onChooseChapter}
+          animationIndex={animationIndex}
+          chapters={chapters}
+        />
         <div className="scroll-bar">
           <div
             className={`scroll-control ${this.state.scrollHandleClass}`}
