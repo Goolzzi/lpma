@@ -25,7 +25,7 @@ function withSegmentTracking(WrappedComponent) {
       if (typeof auth !== "undefined") {
         const token = JWTDecode(auth.getAccessToken());
         const scope = token.scope;
-        const userIdIndex = scope.indexOf(USER_ID_PREFIX);
+        const userIdIndex = scope.indexOf(USER_ID_PREFIX) + 5;
         userId = scope.substring(userIdIndex);
       }
       return userId;
