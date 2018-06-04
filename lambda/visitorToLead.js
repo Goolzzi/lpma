@@ -4,7 +4,6 @@ const send200 = callback => () => callback(null, {statusCode: 200});
 const send400 = callback => () => callback(null, {statusCode: 400});
 
 exports.handler = function(event, context, callback) {
-  console.log("visitorToLead invoked");
   const accessToken = process.env.INTERCOM_ACCESS_TOKEN;
   const client = new Intercom.Client({token: accessToken});
   const data = JSON.parse(event.body);
