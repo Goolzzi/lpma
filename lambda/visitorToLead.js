@@ -3,7 +3,7 @@ const utils = require("./utils");
 
 const send200 = utils.send200;
 const send400 = utils.send400;
-const logInvoked = utils.logInvoked,
+const logInvoked = utils.logInvoked;
 
 exports.handler = function(event, context, callback) {
   logInvoked("visitorToLead");
