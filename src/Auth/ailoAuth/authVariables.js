@@ -1,9 +1,10 @@
 import buildConfig from "../../../build.config.json";
 
 function getDevRedirectUrl() {
-  return process.env.NODE_ENV === "development"
-    ? "http://localhost:8000/callback"
-    : "https://qa.lpma.com/callback";
+  // return process.env.NODE_ENV === "development"
+  //   ? "http://localhost:8000/callback"
+  //   : "https://qa.lpma.com/callback";
+  return "http://localhost:8000/callback";
 }
 
 const authConfig_dev = {
