@@ -1,9 +1,12 @@
 const Intercom = require("intercom-client");
+const utils = require("./utils");
 
-const send200 = callback => () => callback(null, {statusCode: 200});
-const send400 = callback => () => callback(null, {statusCode: 400});
+const send200 = utils.send200;
+const send400 = utils.send400;
+const logInvoked = utils.logInvoked,
 
 exports.handler = function(event, context, callback) {
+  logInvoked("visitorToLead");
   const accessToken = process.env.INTERCOM_ACCESS_TOKEN;
   const client = new Intercom.Client({token: accessToken});
   const data = JSON.parse(event.body);
