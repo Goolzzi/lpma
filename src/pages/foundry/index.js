@@ -224,8 +224,6 @@ export const pageQuery = graphql`
         node {
           title
           slug
-          link
-          scope
           excerpt {
             childMarkdownRemark {
               html
