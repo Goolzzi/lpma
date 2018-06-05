@@ -38,4 +38,7 @@
       background: #fff;
     }
   }
+  @media screen and (max-width: $mobile-width) {
+    display: none;
+  }
 }
