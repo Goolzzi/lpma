@@ -1,11 +1,9 @@
 .expired-frame {
     .container {
-      width: 80rem;
-      padding: 86px !important;
       background-color: $white;
-      padding: 0.5rem 2.5rem 0.5rem 2.5rem;
+      padding: 4rem 2.5rem 4rem 2.5rem;
       @include mobile {
-        padding: 0.5rem 0.75rem 0.5rem 0.75rem;
+        padding: 2rem 0.75rem 2rem 0.75rem;
       }
 
       .title {
@@ -20,6 +18,10 @@
           color: #4E5254;
           padding-left: 260px;
           padding-right: 260px;
+          @include mobile {
+            padding-left: 25px;
+            padding-right: 25px;
+          }
           margin-bottom: 60px;
           font-size: 20px;
       }
@@ -28,15 +30,26 @@
           color: #4E5254;
           padding-left: 360px;
           padding-right: 360px;
+          @include mobile {
+              padding-left: 25px;
+              padding-right: 25px;
+          }
           margin-bottom: 60px;
           font-size: 20px;
       }
 
       .expired-email-input {
-        padding: 25px;
+        @include not-mobile {
+            width: 55%;          
+        }
+        @include mobile {
+            width: 100%;
+            font-size: 12px;
+            margin-bottom: 25px;
+        }
+        padding: 25px 0px 25px 25px;            
         margin-bottom: 50px;
         font-size: 20px;
-        width: 810px;
         height: 65px;
         border: 1px solid #CAD7DC;
         border-radius: 6px;
@@ -49,7 +62,12 @@
           color: $white;
           border: none;
           border-radius: 7px;
-          padding: 25px 103px 25px 103px;
+          padding: 25px 103px;
+          @include mobile {
+              padding: 16px 0px;
+              width: 100%;
+              font-size: 14px;
+          }
       }
     }
 }
