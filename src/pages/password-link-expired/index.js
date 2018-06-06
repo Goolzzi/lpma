@@ -2,21 +2,33 @@ import React, {Component} from "react";
 import PropTypes from "prop-types";
 import "./styles.scss";
 
-const propTypes = {};
+const propTypes = {
+  data: PropTypes.object.isRequired,
+};
 
 class LinkExpired extends Component {
   render() {
+    const {
+      data: {
+        contentfulExpiredPasswordPagesContent: {
+          expiredTitle,
+          firstMessage,
+          secondMessage,
+        },
+      },
+    } = this.props;
     return (
       <section className="section expired-frame container">
         <div className="container has-text-centered">
-          <h3 className="title">Your set password link has expired</h3>
-          <p className="first-message">
-            To keep your account secure the set password link you received in
-            your email can only be used once and expires after ten days.
-          </p>
-          <p className="second-message has-text-weight-bold">
-            Enter in your email address below to get a new set password link.
-          </p>
+          <h3 className="title">{expiredTitle}</h3>
+          <p
+            className="first-message"
+            dangerouslySetInnerHTML={{__html: firstMessage}}
+          />
+          <p
+            className="second-message has-text-weight-bold"
+            dangerouslySetInnerHTML={{__html: secondMessage}}
+          />
           <input className="expired-email-input" placeholder="Email address" />
           <br />
           <button className="expired-send-button">Send reset link</button>
@@ -29,3 +41,13 @@ class LinkExpired extends Component {
 LinkExpired.propTypes = propTypes;
 
 export default LinkExpired;
+
+export const pageQuery = graphql`
+  query LinkExpiredQuery {
+    contentfulExpiredPasswordPagesContent {
+      expiredTitle
+      firstMessage
+      secondMessage
+    }
+  }
+`;

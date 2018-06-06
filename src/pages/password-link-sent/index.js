@@ -3,19 +3,31 @@ import PropTypes from "prop-types";
 import {Icon} from "react-fa";
 import "./styles.scss";
 
-const propTypes = {};
+const propTypes = {
+  data: PropTypes.object.isRequired,
+};
 
-const LinkSent = () => (
+const LinkSent = ({
+  data: {
+    contentfulExpiredPasswordPagesContent: {
+      sentFirstMessage,
+      sentSecondMessage,
+    },
+  },
+}) => (
   <section className="section expired-frame container">
     <div className="container has-text-centered">
-      <div className="green-circle"><Icon name="check" /></div>
-      <p className="first-message">
-        We've sent a password reset link to the email address you submitted
-        (provided it belongs an LPMA member)
-      </p>
-      <p className="second-message has-text-weight-bold">
-        Click the link in the email to get started.
-      </p>
+      <div className="green-circle">
+        <Icon name="check" />
+      </div>
+      <p
+        className="first-message"
+        dangerouslySetInnerHTML={{__html: sentFirstMessage}}
+      />
+      <p
+        className="second-message has-text-weight-bold"
+        dangerouslySetInnerHTML={{__html: sentSecondMessage}}
+      />
     </div>
   </section>
 );
@@ -23,3 +35,12 @@ const LinkSent = () => (
 LinkSent.propTypes = propTypes;
 
 export default LinkSent;
+
+export const pageQuery = graphql`
+  query LinkSentQuery {
+    contentfulExpiredPasswordPagesContent {
+      sentFirstMessage
+      sentSecondMessage
+    }
+  }
+`;
