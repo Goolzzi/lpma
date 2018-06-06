@@ -1,0 +1,55 @@
+.expired-frame {
+    .container {
+      width: 80rem;
+      padding: 86px !important;
+      background-color: $white;
+      padding: 0.5rem 2.5rem 0.5rem 2.5rem;
+      @include mobile {
+        padding: 0.5rem 0.75rem 0.5rem 0.75rem;
+      }
+
+      .title {
+          color: $text-secondary;
+          margin-bottom: 60px;
+          font-family: DomaineSansLight;
+          font-size: 2rem;
+          line-height: 24px;
+      }
+
+      .first-message {
+          color: #4E5254;
+          padding-left: 260px;
+          padding-right: 260px;
+          margin-bottom: 60px;
+          font-size: 20px;
+      }
+
+      .second-message {
+          color: #4E5254;
+          padding-left: 360px;
+          padding-right: 360px;
+          margin-bottom: 60px;
+          font-size: 20px;
+      }
+
+      .expired-email-input {
+        padding: 25px;
+        margin-bottom: 50px;
+        font-size: 20px;
+        width: 810px;
+        height: 65px;
+        border: 1px solid #CAD7DC;
+        border-radius: 6px;
+        background: #EEF4F7;
+        color: #9CAAAF;
+      }
+
+      .expired-send-button {
+          background: $text-secondary;
+          color: $white;
+          border: none;
+          border-radius: 7px;
+          padding: 25px 103px 25px 103px;
+      }
+    }
+}
