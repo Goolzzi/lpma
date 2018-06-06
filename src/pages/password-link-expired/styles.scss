@@ -57,6 +57,10 @@
         color: #9CAAAF;
       }
 
+      .warning {
+        border: 0.5px solid salmon;
+      }
+
       .expired-send-button {
           background: $text-secondary;
           color: $white;
