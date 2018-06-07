@@ -1,4 +1,4 @@
-import React from "react";
+import React, {Fragment} from "react";
 import Link from "gatsby-link";
 import PropTypes from "prop-types";
 import {CSSTransition} from "react-transition-group";
@@ -11,6 +11,8 @@ import icMenuBright from "../../assets/images/NewDesign/Header/ic-menu-bright.sv
 import imgLogoBright from "../../assets/images/NewDesign/Header/logo-bright.svg";
 import config from "../../../build.config.json";
 import LoginLogout from "../../components/LoginLogout";
+import BreakPoint from "../../utils/Breakpoint";
+
 
 const menuPrimaryIndexes = [0, 1, 18];
 const secondaryIndexes = [2, 6, 10, 14];
@@ -84,12 +86,24 @@ class Header extends React.Component {
       menuImage = <img src={icMenu} alt="menu icon" />;
     } else if (primaryIndexes.indexOf(pageNumber) !== -1) {
       btnClass = "";
-      logoImage = (<img
-        src={imgLogoBright}
-        alt="this is logo"
-        width="112"
-        height="28"
-      />)
+      logoImage = (<Fragment>
+          <BreakPoint name="phone">
+            <img
+              src={imgLogoBright}
+              alt="this is logo"
+              width="112"
+              height="28"
+            />
+          </BreakPoint>
+          <BreakPoint name="desktop">
+            <img
+              src={imgLogo}
+              alt="this is logo"
+              width="112"
+              height="28"
+            />
+          </BreakPoint>
+      </Fragment>)
       menuImage = <img src={icMenuBright} alt="menu icon" />;
     }
     if (menuPrimaryIndexes.indexOf(pageNumber) !== -1) {
