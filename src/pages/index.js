@@ -39,6 +39,8 @@ class LandingPage extends React.Component {
     this.wrapper.addEventListener("touchstart", this.touchStart);
     this.wrapper.addEventListener("touchmove", this.touchMove);
     this.pricingWrapper.addEventListener("wheel", this.pricingWheel);
+    this.pricingWrapper.addEventListener("touchstart", this.pricingTouchStart);
+    this.pricingWrapper.addEventListener("touchmove", this.pricingTouchMove);
   }
 
   componentWillUnmount() {
@@ -46,6 +48,8 @@ class LandingPage extends React.Component {
     this.wrapper.removeEventListener("touchstart", this.touchStart);
     this.wrapper.removeEventListener("touchmove", this.touchMove);
     this.pricingWrapper.removeEventListener("wheel", this.pricingWheel);
+    this.pricingWrapper.addEventListener("touchstart", this.pricingTouchStart);
+    this.pricingWrapper.addEventListener("touchmove", this.pricingTouchMove);
   }
   pricingWheel = event => {
     if(event.deltaY < 0 && this.pricingWrapper.scrollTop === 0) {
@@ -91,15 +95,35 @@ class LandingPage extends React.Component {
       this.joinUs();
     }
   }
-  touchStart = event => {
+  pricingTouchStart = event => {
     this.startY = event.changedTouches[0].clientY;
   };
-  touchMove = event => {
+  pricingTouchMove = event => {
     this.moveY = event.changedTouches[0].clientY;
-    if (this.moveY > this.startY) {
-      this.scrollWindowUp();
-    } else {
-      this.scrollWindowDown();
+    if (this.moveY > this.startY && this.pricingWrapper.scrollTop === 0) {
+      if(this.state.pricingFlag === true) {
+        this.scrollWindowUp();
+      }
+      setTimeout(() => {
+        this.setState({pricingFlag: true})
+      }, 1000)
+
+    }
+  };
+  touchStart = event => {
+    if(this.state.animationIndex !== 18) {
+      this.startY = event.changedTouches[0].clientY;
+    }
+  };
+  touchMove = event => {
+    if(this.state.animationIndex !== 18) {
+      this.setState({pricingFlag: false})
+      this.moveY = event.changedTouches[0].clientY;
+      if (this.moveY > this.startY) {
+        this.scrollWindowUp();
+      } else {
+        this.scrollWindowDown();
+      }
     }
   };
   wheelScroll = event => {
