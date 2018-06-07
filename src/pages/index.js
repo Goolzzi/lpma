@@ -7,7 +7,6 @@ import ArticleContent from "../NewComponent/ArticleConent";
 import PricingDetail from "./pricing";
 // import Footer from "../NewComponent/Footer";
 import DotNavigator from "../NewComponent/DotNavigator";
-import BreakPoint from "../utils/Breakpoint";
 
 import CHAPTER_DESKTOP_IMG1 from "../assets/images/NewDesign/bk-intro-2.png";
 
@@ -28,6 +27,7 @@ class LandingPage extends React.Component {
       footerIn: false,
       pricingVisible: false,
       hiphop: false,
+      pricingFlag: false,
     };
     this.scrolling = false;
     this.startY = 0;
@@ -38,12 +38,25 @@ class LandingPage extends React.Component {
     this.wrapper.addEventListener("wheel", this.wheelScroll);
     this.wrapper.addEventListener("touchstart", this.touchStart);
     this.wrapper.addEventListener("touchmove", this.touchMove);
+    this.pricingWrapper.addEventListener("wheel", this.pricingWheel);
   }
 
   componentWillUnmount() {
     this.wrapper.removeEventListener("wheel", this.wheelScroll);
     this.wrapper.removeEventListener("touchstart", this.touchStart);
     this.wrapper.removeEventListener("touchmove", this.touchMove);
+    this.pricingWrapper.removeEventListener("wheel", this.pricingWheel);
+  }
+  pricingWheel = event => {
+    if(event.deltaY < 0 && this.pricingWrapper.scrollTop === 0) {
+      if(this.state.pricingFlag === true) {
+        this.scrollWindowUp();
+      }
+      setTimeout(() => {
+        this.setState({pricingFlag: true})
+      }, 1000)
+
+    }
   }
   componentWillReceiveProps(nextProps) {
     if (nextProps.showPage === "Home") {
@@ -64,7 +77,6 @@ class LandingPage extends React.Component {
     } else if (nextProps.showPage === "Pricing") {
       this.setState(
         {
-          pricingVisible: true,
           animationIndex: 18,
           showPage: "",
           footerIn: true,
@@ -91,17 +103,19 @@ class LandingPage extends React.Component {
     }
   };
   wheelScroll = event => {
-    if (event.deltaY < 0) {
-      this.scrollWindowUp();
-    } else {
-      this.scrollWindowDown();
+    if(this.state.animationIndex !== 18) {
+      this.setState({pricingFlag: false})
+      if (event.deltaY < 0) {
+        this.scrollWindowUp();
+      } else {
+        this.scrollWindowDown();
+      }
     }
   };
   scrollWindowUp = () => {
     if (
       !this.scrolling &&
-      this.state.animationIndex > 0 &&
-      this.state.animationIndex !== 18
+      this.state.animationIndex > 0
     ) {
       this.scrolling = true;
       this.setState(
@@ -242,10 +256,13 @@ class LandingPage extends React.Component {
             ))}
           </ChapterSection>
         ))}
-        <PricingDetail
-          startAni={this.state.animationIndex === 18 || pricingVisible}
-        />
+        
         {/* <Footer footerIn={this.state.footerIn} /> */}
+        <div className="pricing-section" ref={c=> this.pricingWrapper = c}>
+          <PricingDetail
+            startAni={this.state.animationIndex === 18 || pricingVisible}
+          />
+        </div>
         <DotNavigator
           onChooseChapter={this.onChooseChapter}
           animationIndex={animationIndex}
