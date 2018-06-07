@@ -2,7 +2,7 @@ import React, {Component} from "react";
 import PropTypes from "prop-types";
 import classNames from "classnames";
 import fetchUtils from "../../utils/fetchUtils";
-import authConfig from "../../Auth/ailoAuth/authVariables";
+import {authConfig} from "../../Auth/ailoAuth/authVariables";
 import withFormValidations from "../../utils/withFormValidations";
 import "./styles.scss";
 
@@ -37,7 +37,7 @@ class LinkExpired extends Component {
 
   submitSuccessHandler = () => {
     this.setState({errorMessage: ""});
-    const redirectToSent = this.redirectToSent();
+    const redirectToSent = this.redirectToSent;
     const url = this.getSubmitUrl();
     const params = this.getSubmitParams();
     fetchUtils.request(url, params).then(redirectToSent);
