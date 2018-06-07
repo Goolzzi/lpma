@@ -44,8 +44,25 @@ const handleForceRefresh = (action, pathname) => {
 };
 
 const handleRedirects = (location, action) => {
-  const {pathname} = location;
+  const {pathname, search} = location;
   const isAuthenticated = auth.isAuthenticated();
+
+  if (
+    pathname === "/" &&
+    search.indexOf("email=") !== -1 &&
+    search.indexOf("message=") !== -1 &&
+    search.indexOf("success=") !== -1
+  ) {
+    handleRedirect("/password-link-expired");
+  }
+
+  if (
+    (pathname.indexOf("password-link-expired") !== -1 ||
+      pathname.indexOf("password-link-sent")) !== -1 &&
+    action !== "PUSH"
+  ) {
+    handleRedirect("/");
+  }
 
   if (pathname.indexOf("login-auth0-ailo") !== -1) {
     if (!isAuthenticated) {

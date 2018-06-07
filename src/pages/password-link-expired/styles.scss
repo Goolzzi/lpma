@@ -1,0 +1,80 @@
+.expired-frame {
+    .container {
+      background-color: $white;
+      padding: 4rem 2.5rem 4rem 2.5rem;
+      @include mobile {
+        padding: 2rem 0.75rem 2rem 0.75rem;
+      }
+
+      .title {
+          color: $text-secondary;
+          margin-bottom: 60px;
+          font-family: DomaineSansLight;
+          font-size: 2rem;
+          line-height: 24px;
+      }
+
+      .first-message {
+          color: #4E5254;
+          padding-left: 260px;
+          padding-right: 260px;
+          @include mobile {
+            padding-left: 25px;
+            padding-right: 25px;
+          }
+          margin-bottom: 60px;
+          font-size: 20px;
+      }
+
+      .second-message {
+          color: #4E5254;
+          padding-left: 360px;
+          padding-right: 360px;
+          @include mobile {
+              padding-left: 25px;
+              padding-right: 25px;
+          }
+          margin-bottom: 60px;
+          font-size: 20px;
+      }
+
+      .expired-email-input {
+        @include not-mobile {
+            width: 55%;          
+        }
+        @include mobile {
+            width: 100%;
+            font-size: 12px;
+            margin-bottom: 25px;
+        }
+        padding: 25px 0px 25px 25px;            
+        margin-bottom: 50px;
+        font-size: 20px;
+        height: 65px;
+        border: 1px solid #CAD7DC;
+        border-radius: 6px;
+        background: #EEF4F7;
+        color: #9CAAAF;
+      }
+
+      .warning {
+        border: 0.5px solid salmon;
+      }
+
+      .expired-send-button {
+          background: $text-secondary;
+          color: $white;
+          border: none;
+          border-radius: 7px;
+          padding: 25px 103px;
+          @include mobile {
+              padding: 16px 0px;
+              width: 100%;
+              font-size: 14px;
+          }
+          &:hover {
+              cursor: pointer;
+          }
+      }
+    }
+}
