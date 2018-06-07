@@ -7,6 +7,8 @@ import Auth from "../../Auth";
 import imgLogo from "../../assets/images/NewDesign/Header/logo.svg";
 import icClose from "../../assets/images/NewDesign/Header/ic-close.svg";
 import icMenu from "../../assets/images/NewDesign/Header/ic-menu.svg";
+import icMenuBright from "../../assets/images/NewDesign/Header/ic-menu-bright.svg";
+import imgLogoBright from "../../assets/images/NewDesign/Header/logo-bright.svg";
 import config from "../../../build.config.json";
 import LoginLogout from "../../components/LoginLogout";
 
@@ -63,14 +65,42 @@ class Header extends React.Component {
   };
   render() {
     const {pageNumber} = this.props;
+    let logoImage = (<img
+      src={imgLogo}
+      alt="this is logo"
+      width="112"
+      height="28"
+    />)
+    let menuImage = <img src={icMenu} alt="menu icon" />;
     let absoluteStyle = pageNumber == 18 ? {position: "absolute"} : null;
     if (secondaryIndexes.indexOf(pageNumber) !== -1) {
       btnClass = "secondary";
+      logoImage = (<img
+        src={imgLogo}
+        alt="this is logo"
+        width="112"
+        height="28"
+      />)
+      menuImage = <img src={icMenu} alt="menu icon" />;
     } else if (primaryIndexes.indexOf(pageNumber) !== -1) {
       btnClass = "";
+      logoImage = (<img
+        src={imgLogoBright}
+        alt="this is logo"
+        width="112"
+        height="28"
+      />)
+      menuImage = <img src={icMenuBright} alt="menu icon" />;
     }
     if (menuPrimaryIndexes.indexOf(pageNumber) !== -1) {
       menuClass = "";
+      logoImage = (<img
+        src={imgLogo}
+        alt="this is logo"
+        width="112"
+        height="28"
+      />)
+      menuImage = <img src={icMenu} alt="menu icon" />;
     } else {
       menuClass = "secondary";
     }
@@ -81,17 +111,9 @@ class Header extends React.Component {
             className={`navbar is-transparent header-wrapper`}
             style={absoluteStyle}>
             <div className="navbar-brand">
-              {
-                //eslint-disable-next-line
-                <a className="navbar-item" onClick={() => this.props.selectPage("Home")}>
-                  <img
-                    src={imgLogo}
-                    alt="this is logo"
-                    width="112"
-                    height="28"
-                  />
-                </a>
-              }
+              <a className="navbar-item" onClick={() => this.props.selectPage("Home")}>
+                {logoImage}
+              </a>
             </div>
             <div className={`menu ${menuClass}`}>
               <ul>
@@ -137,7 +159,7 @@ class Header extends React.Component {
               )}
               <div className="navbar-item">
                 <a className="button menu-btn collapse-btn" onClick={() => this.setState({visible: true})}> {/*eslint-disable-line*/}
-                  <img src={icMenu} alt="menu icon" />
+                  {menuImage}
                 </a>
               </div>
             </div>
