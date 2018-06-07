@@ -5,6 +5,11 @@ import BreadCrumb from "../../components/BreadCrumb";
 import FeedbackForm from "../../components/FeedbackForm";
 import "./styles.scss";
 
+const BASE_URL =
+  process.env.NODE_ENV === "production"
+    ? "https://lpma.com"
+    : "https://qa.lpma.com";
+
 const propTypes = {
   data: PropTypes.object.isRequired,
   pathContext: PropTypes.object.isRequired,
@@ -67,7 +72,7 @@ const FoundrySection = ({
           <FeedbackForm
             feedbackParams={{
               "Content ID": id,
-              url: pathname,
+              url: `${BASE_URL}${pathname}`,
             }}
           />
         )}
