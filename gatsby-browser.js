@@ -51,7 +51,7 @@ const handleRedirects = (location, action) => {
     pathname === "/" &&
     search.indexOf("email=") !== -1 &&
     search.indexOf("message=") !== -1 &&
-    search.indexOf("success=") !== -1
+    search.indexOf("success=false") !== -1
   ) {
     handleRedirect("/password-link-expired");
   }
