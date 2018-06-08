@@ -15,7 +15,8 @@ const propTypes = {
 class LinkExpired extends Component {
   state = {email: "", errorMessage: ""};
 
-  getSubmitUrl = () => `${authConfig.domain}/dbconnections/change_password`;
+  getSubmitUrl = () =>
+    `https://${authConfig.domain}/dbconnections/change_password`;
 
   getSubmitBody = () => ({
     client_id: authConfig.clientID,
