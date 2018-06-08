@@ -39,6 +39,14 @@ const Event = ({
             <button className="btn primary outlined">{buttonLink.name}</button>
           </Link>
         )}
+      {secondButtonLink &&
+        secondButtonLink.href && (
+          <a href={secondButtonLink.href}>
+            <button className="btn primary outlined second-button">
+              {secondButtonLink.name}
+            </button>
+          </a>
+        )}
       {additionalInfo && (
         <div
           className="add-info"
@@ -47,16 +55,6 @@ const Event = ({
           }}
         />
       )}
-      <div>
-        {secondButtonLink &&
-          secondButtonLink.href && (
-            <a href={secondButtonLink.href}>
-              <button className="btn primary outlined">
-                {secondButtonLink.name}
-              </button>
-            </a>
-          )}
-      </div>
     </div>
   </div>
 );
@@ -131,6 +129,11 @@ export const pageQuery = graphql`
             }
           }
           buttonLink {
+            href
+            link
+            name
+          }
+          secondButtonLink {
             href
             link
             name
