@@ -1,4 +1,4 @@
-/summit https://www.eventbrite.com.au/e/leadership-summit-tickets-41443198723
+/summit https://summit.lpma.com/
 
 #/secret/* /secret/index.html 200! Role=admin
 #/secret /test1/ 401
