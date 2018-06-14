@@ -11,7 +11,8 @@ import "./styles.scss";
 class FeedbackForm extends React.Component {
   constructor(props) {
     super(props);
-    this.segmentEvent = "Feedback Form";
+    this.helpfulEvent = "Article Marked 👍";
+    this.notHelpfulEvent = "Article Marked 👎";
     this.state = {
       formClicked: false,
       emitted: false,
@@ -19,17 +20,18 @@ class FeedbackForm extends React.Component {
     };
   }
 
-  submitFeedback = (submitType, params) => {
-    this.props.track(this.segmentEvent, {
-      WasThisHelpful: submitType,
-      params,
-    });
+  getSegmentEvent = wasHelpful =>
+    wasHelpful ? this.helpfulEvent : this.notHelpfulEvent;
+
+  submitFeedback = (wasHelpful, params) => {
+    const event = this.getSegmentEvent(wasHelpful);
+    this.props.track(event, params);
     this.setState({formClicked: true});
   };
 
   componentDidMount() {
     this.props.trackOn(event => {
-      if (event === this.segmentEvent) {
+      if (event === this.helpfulEvent || event === this.notHelpfulEvent) {
         this.setState({emitted: true});
         store.set(`${this.props.feedbackParams.slug}`, true);
       }
@@ -54,7 +56,7 @@ class FeedbackForm extends React.Component {
                 "feedback-btn-disabled": formClicked,
               })}
               onClick={() => {
-                this.submitFeedback("Yes", feedbackParams);
+                this.submitFeedback(true, feedbackParams);
               }}>
               <EntypoThumbsUp className="icon-style thumbs-up" />
               <span>Yes</span>
@@ -66,7 +68,7 @@ class FeedbackForm extends React.Component {
                 "feedback-btn-disabled": formClicked,
               })}
               onClick={() => {
-                this.submitFeedback("No", feedbackParams);
+                this.submitFeedback(false, feedbackParams);
               }}>
               <EntypoThumbsDown className="icon-style thumbs-down" />
               <span>No</span>

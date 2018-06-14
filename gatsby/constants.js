@@ -8,4 +8,8 @@ module.exports = {
     title: "Business Resources",
     path: "/documents",
   },
+  leaderboardsCrumb: {
+    title: "Leaderboards",
+    path: "/leaderboards",
+  },
 };
