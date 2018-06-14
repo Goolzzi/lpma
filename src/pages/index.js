@@ -7,6 +7,7 @@ import ArticleContent from "../NewComponent/ArticleConent";
 import PricingDetail from "./pricing";
 // import Footer from "../NewComponent/Footer";
 import DotNavigator from "../NewComponent/DotNavigator";
+import BreakPoint from "../utils/Breakpoint";
 
 import CHAPTER_DESKTOP_IMG1 from "../assets/images/NewDesign/bk-intro-2.png";
 
