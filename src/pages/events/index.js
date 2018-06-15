@@ -39,10 +39,10 @@ const Event = ({
             <button className="btn primary outlined">{buttonLink.name}</button>
           </Link>
         )}
+      <br />
       {secondButtonLink &&
         secondButtonLink.href && (
           <a href={secondButtonLink.href}>
-          <br/>
             <button className="btn primary outlined second-button">
               {secondButtonLink.name}
             </button>
