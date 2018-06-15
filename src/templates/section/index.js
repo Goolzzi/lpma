@@ -5,23 +5,29 @@ import BreadCrumb from "../../components/BreadCrumb";
 import FeedbackForm from "../../components/FeedbackForm";
 import "./styles.scss";
 
+const BASE_URL =
+  process.env.NODE_ENV === "production"
+    ? "https://lpma.com"
+    : "https://qa.lpma.com";
+
 const propTypes = {
   data: PropTypes.object.isRequired,
   pathContext: PropTypes.object.isRequired,
+  history: PropTypes.object.isRequired,
 };
 
 const FoundrySection = ({
-  pathContext: {parentPath, breadCrumbs},
+  pathContext: {id, parentPath, breadCrumbs},
   data: {
     contentfulFoundrySection: {
       title,
-      slug,
       feedbackForm,
       contentPartOne,
       contentPartTwo,
       subjects,
     },
   },
+  history: {location: {pathname}},
 }) => {
   return (
     <section className="section template-page">
@@ -65,9 +71,8 @@ const FoundrySection = ({
         {feedbackForm !== false && (
           <FeedbackForm
             feedbackParams={{
-              type: "section",
-              title,
-              slug,
+              "Content ID": id,
+              url: `${BASE_URL}${pathname}`,
             }}
           />
         )}
