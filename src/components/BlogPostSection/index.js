@@ -15,7 +15,7 @@ const LoadMoreLink = () => (
 const filterFeaturedPosts = featured => ({node}) =>
   featured ? node.featured : true;
 
-const filterLatestPosts = latest => (_, index) => (latest ? index < 3 : true);
+const filterLatestPosts = latest => (_, index) => (latest ? index < 6 : true);
 
 const mapPostToCard = ({node}) => (
   <div key={node.id} className="column is-4">
