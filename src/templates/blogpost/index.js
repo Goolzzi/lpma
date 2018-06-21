@@ -48,7 +48,7 @@ const BlogPost = ({data}) => {
     <React.Fragment>
       <Helmet>
         <meta name="og:title" content={title} />
-        <meta name="og:image" content={image.sizes.src} />
+        <meta name="og:image" content={`https:${image.sizes.src}`} />
       </Helmet>
       <TopJumbotron {...topJumbotron} />
       <BlogPageHeading blog={data.contentfulBlogPost} />
