@@ -2,7 +2,7 @@
     .container {
       background-color: $white;
       padding: 4rem 2.5rem 4rem 2.5rem;
-      @include mobile {
+      @media(max-width: 1250px) {
         padding: 2rem 0.75rem 2rem 0.75rem;
       }
 
@@ -18,7 +18,7 @@
           color: #4E5254;
           padding-left: 260px;
           padding-right: 260px;
-          @include mobile {
+          @media(max-width: 1250px) {
             padding-left: 25px;
             padding-right: 25px;
           }
@@ -30,7 +30,7 @@
           color: #4E5254;
           padding-left: 360px;
           padding-right: 360px;
-          @include mobile {
+          @media(max-width: 1250px) {
               padding-left: 25px;
               padding-right: 25px;
           }
@@ -39,10 +39,10 @@
       }
 
       .expired-email-input {
-        @include not-mobile {
+        @media(min-width: 1250px) {
             width: 55%;          
         }
-        @include mobile {
+        @media(max-width: 1250px) {
             width: 100%;
             font-size: 12px;
             margin-bottom: 25px;
@@ -67,7 +67,7 @@
           border: none;
           border-radius: 7px;
           padding: 25px 103px;
-          @include mobile {
+          @media(max-width: 1250px) {
               padding: 16px 0px;
               width: 100%;
               font-size: 14px;
