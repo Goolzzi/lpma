@@ -44,11 +44,16 @@ const BlogPost = ({data}) => {
   const topJumbotron = generateBlogJumbotron(data.contentfulBlogPost);
   const otherBlogs = fisherYates(edges, 3);
   const blogUrl = getblogUrl();
+  const sharedImage = `https:${image.sizes.src}`;
   return (
     <React.Fragment>
       <Helmet>
         <meta name="og:title" content={title} />
-        <meta name="og:image" content={`https:${image.sizes.src}`} />
+        <meta name="twitter:title" content={title} />
+        <meta name="og:image" content={sharedImage} />
+        <meta name="image" content={sharedImage} />
+        <meta itemProp="image" content={sharedImage} />
+        <meta name="twitter:image:src" content={sharedImage} />
       </Helmet>
       <TopJumbotron {...topJumbotron} />
       <BlogPageHeading blog={data.contentfulBlogPost} />
