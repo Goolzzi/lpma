@@ -33,7 +33,7 @@ const BusinessCapability = ({
       {documentTypes.map((documentType, index) => (
         <BCSection key={index} documents={documents} {...documentType} />
       ))}
-      <BackToButton link="/foundry/documents" prefix="Building a Business" />
+      <BackToButton link="/foundry/documents" prefix="Business Resources" />
     </div>
   </section>
 );
