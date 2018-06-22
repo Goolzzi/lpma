@@ -4,14 +4,19 @@ const {foundryCrumb, documentSuiteCrumb} = constants;
 
 module.exports = function(data, createPage) {
   const bcTemplate = path.resolve("src/templates/businessCapability/index.js");
-  data.allContentfulBusinessCapability.edges.forEach(({node}) => {
+  data.allContentfulBusinessCapability.edges.forEach(({node: {slug, name}}) => {
+    const businessCapabilityCrumb = {title: name, path: slug};
     createPage({
-      path: `foundry/${node.slug}`,
+      path: `foundry/${slug}`,
       component: bcTemplate,
       context: {
-        slug: node.slug,
+        slug,
         parentPath: `/foundry/`,
-        breadCrumbs: [foundryCrumb, documentSuiteCrumb],
+        breadCrumbs: [
+          foundryCrumb,
+          documentSuiteCrumb,
+          businessCapabilityCrumb,
+        ],
       },
     });
   });

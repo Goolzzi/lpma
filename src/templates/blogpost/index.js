@@ -8,6 +8,7 @@ import {
   FacebookShareCount,
   LinkedinShareCount,
 } from "react-share";
+import Helmet from "react-helmet";
 import TopJumbotron from "../../components/TopJumbotron";
 import BottomJumbotron from "../../components/BottomJumbotron";
 import BlogPostSection from "../../components/BlogPostSection";
@@ -37,14 +38,23 @@ const propTypes = {
 };
 
 const BlogPost = ({data}) => {
-  const {content} = data.contentfulBlogPost;
+  const {content, title, image} = data.contentfulBlogPost;
   const {edges} = data.allContentfulBlogPost;
   const {contentfulBlogJumbotron: bottomJumbotron} = data;
   const topJumbotron = generateBlogJumbotron(data.contentfulBlogPost);
   const otherBlogs = fisherYates(edges, 3);
   const blogUrl = getblogUrl();
+  const sharedImage = `https:${image.sizes.src}`;
   return (
     <React.Fragment>
+      <Helmet>
+        <meta name="og:title" content={title} />
+        <meta name="twitter:title" content={title} />
+        <meta name="og:image" content={sharedImage} />
+        <meta name="image" content={sharedImage} />
+        <meta itemProp="image" content={sharedImage} />
+        <meta name="twitter:image:src" content={sharedImage} />
+      </Helmet>
       <TopJumbotron {...topJumbotron} />
       <BlogPageHeading blog={data.contentfulBlogPost} />
       <section className="section blog-social-icons">
@@ -103,6 +113,7 @@ export const pageQuery = graphql`
   fragment ImgeSizes on ContentfulAsset {
     sizes(quality: 100, maxWidth: 1280, toFormat: JPG) {
       ...GatsbyContentfulSizes
+      src
     }
   }
 
