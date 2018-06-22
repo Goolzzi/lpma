@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 import Modal from "react-modal";
 import {parseHash} from "../../utils";
 import withSegmentTracking from "../../utils/withSegmentTracking";
+import withIntercom from "../../utils/withIntercom";
 import "./styles.scss";
 
 class ContactPage extends React.Component {
@@ -34,7 +35,7 @@ class ContactPage extends React.Component {
   };
 
   render() {
-    const {contentfulContactLpma} = this.props.data;
+    const {showNewMessage, data: {contentfulContactLpma}} = this.props;
     return (
       <React.Fragment>
         <Modal
@@ -92,113 +93,12 @@ class ContactPage extends React.Component {
                   data-netlify="true"
                   method="post"
                   data-netlify-honeypot="bot-field">
-                  <input type="hidden" name="form-name" value="ContactLPMA" />
-                  <div className="field">
-                    <label className="label has-text-white has-text-weight-normal">
-                      Your Name (required)
-                    </label>
-                    <div className="control">
-                      <input
-                        className="input"
-                        type="text"
-                        placeholder="Full Name"
-                        name="FullName"
-                        onChange={this.handleChange}
-                        value={this.state.FullName}
-                        required
-                      />
-                    </div>
-                  </div>
-
-                  <div className="field">
-                    <label className="label has-text-white has-text-weight-normal">
-                      Your Email (required)
-                    </label>
-                    <div className="control">
-                      <input
-                        className="input"
-                        type="email"
-                        placeholder="Work@emailaddress.com"
-                        name="Email"
-                        onChange={this.handleChange}
-                        value={this.state.Email}
-                        required
-                      />
-                    </div>
-                  </div>
-
-                  <div className="field">
-                    <label className="label has-text-white has-text-weight-normal">
-                      Your Work Number (required)
-                    </label>
-                    <div className="control">
-                      <input
-                        className="input"
-                        type="text"
-                        placeholder="0412 345 678"
-                        name="WorkNumber"
-                        onChange={this.handleChange}
-                        value={this.state.WorkNumber}
-                        required
-                      />
-                    </div>
-                  </div>
-
-                  <div className="field">
-                    <label className="label has-text-white has-text-weight-normal">
-                      Your Company (required)
-                    </label>
-                    <div className="control">
-                      <input
-                        className="input"
-                        type="text"
-                        placeholder="Ultimate Property Management"
-                        name="Company"
-                        onChange={this.handleChange}
-                        value={this.state.Company}
-                        required
-                      />
-                    </div>
-                  </div>
-
-                  <div className="field">
-                    <label className="label has-text-white has-text-weight-normal">
-                      Subject
-                    </label>
-                    <div className="control">
-                      <input
-                        className="input"
-                        type="text"
-                        placeholder="Hey LPMA"
-                        name="Subject"
-                        onChange={this.handleChange}
-                        value={this.state.Subject}
-                      />
-                    </div>
-                  </div>
-
-                  <div className="field">
-                    <label className="label has-text-white has-text-weight-normal">
-                      Your Message
-                    </label>
-                    <div className="control">
-                      <textarea
-                        className="textarea"
-                        placeholder="I have a question"
-                        name="Message"
-                        onChange={this.handleChange}
-                        value={this.state.Message}
-                      />
-                    </div>
-                  </div>
-
-                  <div className="has-text-centered-mobile">
-                    <button
-                      type="submit"
-                      className="btn secondary with-radius-5 smallest smaller-text">
-                      Send
-                    </button>
-                  </div>
+                  <button
+                    onClick={showNewMessage}
+                    type="submit"
+                    className="btn secondary with-radius-5 smallest smaller-text">
+                    Talk to us
+                  </button>
                 </form>
               </div>
             </div>
@@ -215,9 +115,10 @@ ContactPage.propTypes = {
   trackForm: PropTypes.func.isRequired,
   trackGroup: PropTypes.func.isRequired,
   convertVisitorToLead: PropTypes.func.isRequired,
+  showNewMessage: PropTypes.func.isRequired,
 };
 
-export default withSegmentTracking(ContactPage);
+export default withIntercom(withSegmentTracking(ContactPage));
 
 export const pageQuery = graphql`
   query ContactLPMAPAgeQuery {
