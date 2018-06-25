@@ -16,6 +16,8 @@ function withIntercom(WrappedComponent) {
       this.API_BASE_URI = "https://api.intercom.io";
     }
 
+    showNewMessage = () => Intercom("showNewMessage"); // eslint-disable-line
+
     getVisitorId = () => Intercom("getVisitorId"); // eslint-disable-line
 
     getAuthorizationHeader = () => `Bearer ${this.ACCESS_TOKEN}`;
@@ -29,6 +31,7 @@ function withIntercom(WrappedComponent) {
             {...this.props}
             getVisitorId={noop}
             convertVisitorToLead={noop}
+            showNewMessage={noop}
           />
         );
       }
@@ -38,6 +41,7 @@ function withIntercom(WrappedComponent) {
           {...this.props}
           getVisitorId={this.getVisitorId}
           convertVisitorToLead={this.convertVisitorToLead}
+          showNewMessage={this.showNewMessage}
         />
       );
     }

@@ -55,7 +55,7 @@ const BlogPost = ({data}) => {
         <meta itemProp="image" content={sharedImage} />
         <meta name="twitter:image:src" content={sharedImage} />
       </Helmet>
-      <TopJumbotron {...topJumbotron} />
+      <TopJumbotron {...topJumbotron} hideJoin />
       <BlogPageHeading blog={data.contentfulBlogPost} />
       <section className="section blog-social-icons">
         <div className="container narrow">

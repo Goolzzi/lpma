@@ -19,7 +19,7 @@ const BlogPostCard = ({
   <LinkToBlog slug={slug}>
     <div className="blog-post-card">
       <div className="image is-1.7by1">
-        <Img sizes={image.sizes} />
+        <Img className="gatsbyImage" sizes={image.sizes} />
       </div>
 
       <span className="category-and-date">
