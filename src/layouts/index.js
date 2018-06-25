@@ -132,6 +132,7 @@ export const pageQuery = graphql`
         slug
         to
       }
+      invitationText
     }
     contentfulFooter {
       title {
