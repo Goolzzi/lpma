@@ -152,6 +152,7 @@ class Header extends React.Component {
 
 Header.propTypes = {
   topmenu: PropTypes.array.isRequired,
+  invitationText: PropTypes.string.isRequired,
   logo: PropTypes.object.isRequired,
   foundryLinks: PropTypes.object.isRequired,
   renderLoginLogout: PropTypes.func.isRequired,
