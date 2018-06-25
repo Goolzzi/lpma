@@ -23,6 +23,7 @@ class Header extends React.Component {
   };
 
   renderAddTeamMember = isAuthenticated => {
+    const {invitationText} = this.props;
     if (isAuthenticated) {
       return (
         <button
@@ -30,7 +31,7 @@ class Header extends React.Component {
           onClick={() => {
             window.location.replace("https://form.jotform.co/81208927601859");
           }}>
-          Invite team
+          {invitationText}
         </button>
       );
     }
@@ -151,6 +152,7 @@ class Header extends React.Component {
 
 Header.propTypes = {
   topmenu: PropTypes.array.isRequired,
+  invitationText: PropTypes.string.isRequired,
   logo: PropTypes.object.isRequired,
   foundryLinks: PropTypes.object.isRequired,
   renderLoginLogout: PropTypes.func.isRequired,
