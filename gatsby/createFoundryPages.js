@@ -24,7 +24,7 @@ module.exports = function(data, createPage) {
         component: sectionTemplate,
         context: {
           slug: node.slug,
-          id: node.slug,
+          id: node.id,
           parentPath: `/foundry/`,
           breadCrumbs: [
             foundryCrumb,
@@ -55,7 +55,7 @@ module.exports = function(data, createPage) {
 
     breadCrumbs = [foundryCrumb, parentCrumb, crumb];
 
-    obj[crumb.slug] = breadCrumbs;
+    obj[crumb.path] = breadCrumbs;
 
     createPage({
       path: `foundry/${node.slug}`,
@@ -63,28 +63,30 @@ module.exports = function(data, createPage) {
       context: {
         parentPath: `/foundry/`,
         slug: node.slug,
-        id: node.slug,
+        id: node.id,
         breadCrumbs,
       },
     });
   });
+
   data.allContentfulFoundryGuide.edges.forEach(
     ({node: {slug: parentSlug, steps, foundrysubject}}) => {
       const subjectTitle = foundrysubject ? foundrysubject[0].title : "";
       const subjectSlug = foundrysubject ? foundrysubject[0].slug : "";
       steps &&
-        steps.forEach(({slug: childSlug, title}, stepIndex) => {
+        steps.forEach(({id, slug: childSlug, title}, stepIndex) => {
           createPage({
             path: `foundry/${parentSlug}/${childSlug}`,
             component: stepTemplate,
             context: {
+              id,
               subjectTitle,
               subjectPath: `/foundry/${subjectSlug}`,
               stepIndex,
               slug: childSlug,
               parentSlug,
               parentPath: `/foundry/`,
-              breadCrumbs: [...obj[foundrysubject.slug], {title, path: ""}],
+              breadCrumbs: [...obj[subjectSlug], {title, path: ""}],
             },
           });
         });

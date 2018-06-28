@@ -1,0 +1,10 @@
+.liderboard {
+    .titles-wrapper {
+        .title {
+            margin-bottom: 20px !important;
+        }
+    }
+    & .container > p, hr {
+        margin-bottom: 50px !important;
+    }
+}

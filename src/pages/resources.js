@@ -1,15 +1,18 @@
 import React from "react";
 import PropTypes from "prop-types";
+import withSegmentTracking from "../utils/withSegmentTracking";
 import TopJumbotron from "../components/TopJumbotron";
 import BottomJumbotron from "../components/BottomJumbotron";
 import Resources from "../components/Resources";
 
 const propTypes = {
   data: PropTypes.object.isRequired,
+  trackIdentify: PropTypes.func,
 };
 
 const ResourcesPage = props => {
   const {
+    trackIdentify,
     data: {
       headerImage,
       allContentfulResoursesJumbotron: {edges},
@@ -17,6 +20,7 @@ const ResourcesPage = props => {
       allContentfulLpmaResource,
     },
   } = props;
+  trackIdentify();
   return (
     <div>
       <TopJumbotron {...edges[0].node} headerImage={headerImage} />
@@ -31,7 +35,7 @@ const ResourcesPage = props => {
 
 ResourcesPage.propTypes = propTypes;
 
-export default ResourcesPage;
+export default withSegmentTracking(ResourcesPage);
 
 export const pageQuery = graphql`
   query ResourcesPageQuery {

@@ -1,10 +1,10 @@
 import React from "react";
-import IRISAuth from "../Auth/IRISAuth";
+import Auth from "../Auth";
 import noop from "lodash/noop";
+import JWTDecode from "jwt-decode";
+import {getComponentDisplayName} from "../utils";
 
-function getDisplayName(WrappedComponent) {
-  return WrappedComponent.displayName || WrappedComponent.name || "Component";
-}
+const USER_ID_PREFIX = "user:";
 
 function withSegmentTracking(WrappedComponent) {
   class WithSegment extends React.Component {
@@ -19,21 +19,24 @@ function withSegmentTracking(WrappedComponent) {
       });
     };
 
+    getUserId = () => {
+      const auth = this.auth;
+      let userId;
+      if (typeof auth !== "undefined") {
+        const token = JWTDecode(auth.getAccessToken());
+        const scope = token.scope;
+        const userIdIndex = scope.indexOf(USER_ID_PREFIX) + 5;
+        userId = scope.substring(userIdIndex);
+      }
+      return userId;
+    };
+
     trackIdentify = (form, formData, anonymousId) => {
       if (this.auth.isAuthenticated()) {
-        const user = this.auth.getUserData();
-        analytics.identify(user.username, {
-          form,
-          formData,
-          isAuthenticated: true,
-          ...user,
-        });
+        const userId = this.getUserId();
+        analytics.identify(userId);
       } else {
-        analytics.identify(anonymousId, {
-          form,
-          formData,
-          isAuthenticated: false,
-        });
+        analytics.identify(anonymousId);
       }
     };
 
@@ -60,7 +63,7 @@ function withSegmentTracking(WrappedComponent) {
       }
 
       return (
-        <IRISAuth
+        <Auth
           render={auth => {
             this.auth = auth;
             return (
@@ -78,7 +81,7 @@ function withSegmentTracking(WrappedComponent) {
       );
     }
   }
-  WithSegment.displayName = `WithSegmentTracking(${getDisplayName(
+  WithSegment.displayName = `WithSegmentTracking(${getComponentDisplayName(
     WrappedComponent,
   )})`;
 

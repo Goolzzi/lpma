@@ -1,3 +1,5 @@
+/summit https://summit.lpma.com/
+
 #/secret/* /secret/index.html 200! Role=admin
 #/secret /test1/ 401
 
@@ -20,3 +22,5 @@
 /promotools /resources 302
 #/lpma2018 https://www.eventbrite.com.au/e/lpma-2018-tickets-38800722004 302
 /lpma2019 https://www.eventbrite.com.au/e/lpma-2019-tickets-45880977238 302
+
+https://new.lpma.com/* https://lpma.com/:splat 301!

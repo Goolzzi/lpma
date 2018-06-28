@@ -1,0 +1,31 @@
+.article-content {
+  position: absolute;
+  height: 100%;
+  width: 50vw;
+  padding: 0 7em;
+  .wrapper {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    h5 {
+      text-transform: uppercase;
+      font-family: "DomaineSansMedium";
+      color: rgba(59, 65, 69, 0.3);
+      font-size: 0.7em;
+      margin-bottom: 1em;
+    }
+    p {
+      font-family: "DomaineSansLight";
+      font-size: 1em;
+    }
+  }
+  @media screen and (max-width: $mobile-width) {
+    width: 100vw;
+    padding: 0 4em;
+  }
+  @media screen and (max-width: $xl-width) and (min-width: 1007px) {
+    padding: 0 4em;
+  }
+}

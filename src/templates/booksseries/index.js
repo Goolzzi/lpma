@@ -5,7 +5,7 @@ import BooksLoginMessage from "../../components/specific/booksSeries/BooksLoginM
 import BooksList from "../../components/specific/booksSeries/BooksList";
 import BooksBottom from "../../components/specific/booksSeries/BooksBottom";
 import BookDownload from "../../components/modals/BookDownload";
-import IRISAuth from "../../Auth/IRISAuth";
+import Auth from "../../Auth";
 
 const propTypes = {
   data: PropTypes.object.isRequired,
@@ -44,11 +44,7 @@ class BooksSeries extends Component {
           sections={edges}
           resourceTitle={title}
         />
-        {!isAuthenticated ? (
-          <BooksLoginMessage login={login} />
-        ) : (
-          <React.Fragment />
-        )}
+        {!isAuthenticated ? <BooksLoginMessage login={login} /> : null}
         <BooksList
           isAuthenticated={isAuthenticated}
           books={books}
@@ -70,7 +66,7 @@ class BooksSeries extends Component {
   };
 
   render() {
-    return <IRISAuth render={this.renderIrisAuth} />;
+    return <Auth render={this.renderIrisAuth} />;
   }
 }
 

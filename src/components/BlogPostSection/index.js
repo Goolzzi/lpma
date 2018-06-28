@@ -12,6 +12,17 @@ const LoadMoreLink = () => (
   </div>
 );
 
+const filterFeaturedPosts = featured => ({node}) =>
+  featured ? node.featured : true;
+
+const filterLatestPosts = latest => (_, index) => (latest ? index < 6 : true);
+
+const mapPostToCard = ({node}) => (
+  <div key={node.id} className="column is-4">
+    <BlogPostCard node={node} />
+  </div>
+);
+
 const propTypes = {
   heading: PropTypes.string.isRequired,
   blogs: PropTypes.array.isRequired,
@@ -29,13 +40,9 @@ const BlogPostSection = ({heading, blogs, featured, latest, hasLoadMore}) => (
       </div>
       <div className="columns is-multiline">
         {blogs
-          .filter(({node}) => (featured ? node.featured : true))
-          .filter((_, index) => (latest ? index < 3 : true))
-          .map(({node}) => (
-            <div key={node.id} className="column is-4">
-              <BlogPostCard node={node} />
-            </div>
-          ))}
+          .filter(filterFeaturedPosts(featured))
+          .filter(filterLatestPosts(latest))
+          .map(mapPostToCard)}
       </div>
       {hasLoadMore ? <LoadMoreLink /> : null}
     </div>

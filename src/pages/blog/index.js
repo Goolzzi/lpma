@@ -24,9 +24,7 @@ const BlogPage = ({
       featured={true}
     />
     <BlogPostSection heading="Latest Posts" blogs={blogEdges} latest={true} />
-    <section className="section container form-columns">
-      <GetUpdatesForm />
-    </section>
+    <GetUpdatesForm />
     <BottomJumbotron {...edges[1].node} />
   </React.Fragment>
 );
@@ -47,7 +45,7 @@ export const pageQuery = graphql`
         }
       }
     }
-    allContentfulBlogPost(sort: {fields: [date], order: ASC}) {
+    allContentfulBlogPost(sort: {fields: [date], order: DESC}) {
       edges {
         node {
           id

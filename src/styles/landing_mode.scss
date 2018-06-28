@@ -1,235 +1,29 @@
 @import "variables";
 @import "typography";
 @import "animations";
-@import "./components/page1.scss";
-@import "./components/page2.scss";
-@import "./components/page3.scss";
-@import "./components/page4.scss";
-@import "./components/page5.scss";
-@import "./components/page6.scss";
 
 ::-webkit-scrollbar { 
-  display: none; 
+  display: none;
 }
 ul, li {
   margin: 0;
 }
-.animating-layer {
-  width: 80vh;
-  height: 80vh;
-  position: fixed;
-  top: 10vh;
-  left: calc(50vw - 40vh);
-  border-radius: 50%;
-  overflow: hidden;
-  .left {
-    position: absolute;
-    top: 0;
-    left: 0;
-    overflow: hidden;
-    width: 50%;
-    height: 100%;
-    background-color: transparent;
-  }
-  .right {
-    position: absolute;
-    top: 0;
-    left: 50%;
-    overflow: hidden;
-    width: 50%;
-    height: 100%;
-    background-color: transparent;
-  }
-  .overlay-1 {
-    height: 100%;
-    width: 100%;
-    display: flex;
-    overflow: hidden;
-    position: absolute;
-    transform-origin: left center;
-    transform: rotate(-180deg);
-    opacity: 0;
-    background: #78CC5A;
-  }
-  .overlay-3 {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background: transparent;
-    overflow: hidden;
-    transform-origin: right center;
-    transform: rotate(0deg);
-    .inner {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      background:#78CC5A;
-      transform-origin: right center;
-      transform: rotate(-180deg);
-    }
-  }
-  @media screen and (max-width: $mobile-width) {
-    display: none;
-  }
-}
-.full-left {
-  width: 50vw;
-  position: fixed;
-  height: 100vh;
+.landing-page {
+  position: absolute;
   top: 0;
-  
-  overflow: hidden;
-  .overlay-spinner {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background: #70bf54;
-    overflow: hidden;
-    transform-origin: right center;
-    transform: rotate(0deg);
-    opacity: 0;
-    @media screen and (max-width: $mobile-width) {
-      display: none;
-    }
-  }
-  @media screen and (max-width: $mobile-width) {
-    display: none;
-  }
-}
-.full-right {
-  position: fixed;
-  width: 50vw;
+  left: 0;
+  width: 100vw;
   height: 100vh;
+}
+.pricing-section {
+  position: absolute;
   top: 0;
+  left: 0;
   right: 0;
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-  background-color: transparent;
-  transition: background-color 0.5s;
-  transition-delay: 3s;
+  bottom: 0;
+  overflow: scroll;
+}
 
-  .chapter-text-view {
-    position: fixed;
-    display: flex;
-    justify-content: center;
-    text-transform: uppercase;
-    flex-direction: column;
-    padding-left: 3.5rem;
-    opacity: 0;
-    h3 {
-      font-family: "DomaineSansMedium";
-      font-size: 1.2em;
-      color: $text-primary;
-      letter-spacing: -1px;
-      margin: 0;
-    }
-    h1 {
-      font-family: "DomaineSansMedium";
-      font-size: 3.6em;
-      color: $white;
-      letter-spacing: -0.02em;
-    }
-  }
-  .overlay-spinner {
-    position: absolute;
-    left: 0;
-    width: 2000vw;
-    height: 200vw;
-    background: white;
-    overflow: hidden;
-    transform-origin: left center;
-    transform: rotate(-180deg);
-    &.show {
-      opacity: 1;
-    }
-    &.hide {
-      opacity: 0;
-    }
-    @media screen and (max-width: $mobile-width) {
-      display: none;
-    }
-  }
-  .tutor-wrapper {
-    position: absolute;
-    height: 100%;
-    width: 100%;
-    padding: 5rem 5em;
-    display: flex;
-    align-items: center;
-    opacity: 0;
-    .wrapper {
-      h5 {
-        text-transform: uppercase;
-        font-family: "DomaineSansMedium";
-        color: rgba(59, 65, 69, 0.3);
-        font-size: 0.7em
-      }
-      h1 {
-        font-size: 1.4em;
-        font-family: "DomaineSansMedium";
-        text-transform: uppercase;
-        letter-spacing: -0.6px;
-        span {
-          color: $text-secondary;
-        }
-      }
-      p {
-        font-family: "DomaineSansLight";
-        font-size: 0.8em;
-      }
-    }
-    @media screen and (max-width: $mobile-width) {
-      background: $white;
-    }
-  }
-  @media screen and (max-width: $mobile-width) {
-    width: 100vw;
-  }
-}
-.mobile-left {
-  display: none;
-  position: fixed;
-  width: 50vw;
-  height: 100vh;
-  background-color: transparent;
-  overflow: hidden;
-  align-items: center;
-  .overlay-spinner {
-    position: absolute;
-    width: 200vh;
-    height: 200vh;
-    right: 0;
-    background-color: $page2-primary;
-    transform-origin: right center;
-    opacity: 0;
-  }
-  @media screen and (max-width: $mobile-width) {
-    display: flex;
-  }
-}
-.mobile-right {
-  display: none;
-  position: fixed;
-  width: 50vw;
-  height: 100vh;
-  right: 0;
-  background-color: transparent;
-  overflow: hidden;
-  align-items: center;
-  .overlay-spinner {
-    position: absolute;
-    width: 200vh;
-    height: 200vh;
-    left: 0;
-    background-color: $page2-primary;
-    transform-origin: left center;
-    opacity: 0;
-  }
-  @media screen and (max-width: $mobile-width) {
-    display: flex;
-  }
-}
 .scroll-bar {
   position: fixed;
   bottom: 3vh;
@@ -261,6 +55,9 @@ ul, li {
     }
   }
 }
-
-@import "./components/header.scss";
-
+.hide {
+  opacity: 0;
+}
+.show {
+  opacity: 1;
+}

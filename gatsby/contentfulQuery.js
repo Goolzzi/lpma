@@ -32,9 +32,11 @@ module.exports = `
   allContentfulFoundryGuide {
     edges {
       node {
+        id
         title
         slug
         steps {
+          id
           title
           slug
         }

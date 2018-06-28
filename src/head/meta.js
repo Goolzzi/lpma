@@ -12,6 +12,7 @@ const meta = [
   <link rel="alternate" href="https://us.lpma.com/" hrefLang="en-US" />,
   <link rel="alternate" href="https://lpma.com/" hrefLang="en-AU" />,
   <link rel="alternate" href="https://lpma.com/" hrefLang="en" />,
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700" rel="stylesheet"/>,
 ];
 
 export default meta;

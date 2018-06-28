@@ -7,6 +7,11 @@ import classNames from "classnames";
 import Helmet from "react-helmet";
 import "./styles.scss";
 
+const BASE_URL =
+  process.env.NODE_ENV === "production"
+    ? "https://lpma.com"
+    : "https://qa.lpma.com";
+
 const StepLink = ({wrapperClassName, stepType, dispalyName, href}) => {
   return (
     <div className={wrapperClassName}>
@@ -31,6 +36,7 @@ StepLink.propTypes = {
 const Step = props => {
   const {
     pathContext: {
+      id,
       parentSlug,
       stepIndex,
       subjectTitle,
@@ -39,6 +45,7 @@ const Step = props => {
       parentPath,
     },
     data: {contentfulFoundryGuide: {steps}, contentfulFoundryStep},
+    history: {location: {pathname}},
   } = props;
 
   const basePathName = `/foundry/${parentSlug}/`;
@@ -87,9 +94,8 @@ const Step = props => {
             {contentfulFoundryStep.feedbackForm !== false && (
               <FeedbackForm
                 feedbackParams={{
-                  type: "step",
-                  title: steps[stepIndex].title,
-                  slug: steps[stepIndex].slug,
+                  "Content ID": id,
+                  url: `${BASE_URL}${pathname}`,
                 }}
               />
             )}
@@ -142,6 +148,7 @@ const Step = props => {
 Step.propTypes = {
   pathContext: PropTypes.object.isRequired,
   data: PropTypes.object.isRequired,
+  history: PropTypes.object.isRequired,
 };
 
 export default Step;

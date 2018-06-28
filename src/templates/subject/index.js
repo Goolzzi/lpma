@@ -6,6 +6,11 @@ import BreadCrumb from "../../components/BreadCrumb";
 import FeedbackForm from "../../components/FeedbackForm";
 import "./styles.scss";
 
+const BASE_URL =
+  process.env.NODE_ENV === "production"
+    ? "https://lpma.com"
+    : "https://qa.lpma.com";
+
 const TabItem = ({tab, isActive, onClick, index}) => (
   <li onClick={() => onClick(index)} className={classNames({active: isActive})}>
     <span>{tab}</span>
@@ -16,6 +21,7 @@ class FoundrySubject extends React.Component {
   static propTypes = {
     data: PropTypes.object.isRequired,
     pathContext: PropTypes.object.isRequired,
+    history: PropTypes.object.isRequired,
   };
 
   constructor(props) {
@@ -31,17 +37,12 @@ class FoundrySubject extends React.Component {
 
   render() {
     const {
-      pathContext: {parentPath, breadCrumbs},
+      pathContext: {id, parentPath, breadCrumbs},
       data: {contentfulFoundrySubject},
+      history: {location: {pathname}},
     } = this.props;
     const {activeTabIndex} = this.state;
-    const {
-      title,
-      slug,
-      content,
-      guideTypes,
-      feedbackForm,
-    } = contentfulFoundrySubject;
+    const {title, content, guideTypes, feedbackForm} = contentfulFoundrySubject;
     const tabCount = guideTypes ? guideTypes.tabs.length : 0;
 
     return (
@@ -109,9 +110,8 @@ class FoundrySubject extends React.Component {
           {feedbackForm !== false && (
             <FeedbackForm
               feedbackParams={{
-                type: "subject",
-                title,
-                slug,
+                "Content ID": id,
+                url: `${BASE_URL}${pathname}`,
               }}
             />
           )}

@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 import PropTypes from "prop-types";
-import IRISAuth from "../../Auth/IRISAuth";
+import Auth from "../../Auth";
 import Loader from "../../components/Loader";
 
 class Callback extends Component {
@@ -14,7 +14,7 @@ class Callback extends Component {
 
   render() {
     return (
-      <IRISAuth
+      <Auth
         render={auth => {
           this.handleAuthentication(auth);
           return (
