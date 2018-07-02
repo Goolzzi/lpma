@@ -13,6 +13,7 @@ import background from "../assets/images/home/background.jpg";
 
 import Testimonials from "../templates/homeSections/homeTestimonials"
 import Events from "../templates/homeSections/homeEvents"
+import Resources from "../templates/homeSections/homeResources"
 
 import {capeCod, mantis, green, darkGrey} from "../styles/colors";
 import {media, width} from "../styles/utils";
@@ -126,36 +127,6 @@ class Home extends Component {
         )
     }
 
-
-    
-    
-    renderResources = () => {
-        return (
-            <Resources>
-                <Container>
-
-                    <SectionHeader>
-                        <Title>Resources to plan the next step</Title>
-                    </SectionHeader>
-
-                    <ResourcesContent>
-                        <Content>
-                            <Description>LPMA offers members a comprehensive suite of business planning frameworks and practical resources to help you take control and drive change in your business.</Description>
-                        </Content>
-
-                        <ResourcesListing>
-
-                        </ResourcesListing>
-                    </ResourcesContent>
-
-                </Container>
-            
-            </Resources>
-        )
-    }
-
-    
-    
     render() {
         const {featuresVisible, sliderValue} = this.state;
 
@@ -164,7 +135,7 @@ class Home extends Component {
                 {this.renderHero()}
                 {this.renderFeatures()}
                 <Events/>
-                {this.renderResources()}
+                <Resources/>
                 <Testimonials/>
             </Wrapper>
         )
@@ -474,32 +445,5 @@ const FeatureIndicator = styled.div`
 
 
 
-// Resources
-
-const Resources = styled.div``
-
-const ResourcesContent = styled.div`
-    display: flex;
-    
-    ${Description} {
-        font-family: Montserrat;
-        font-size: 21px;
-        max-width: 506px;
-        line-height: 31px;
-
-        ${media.tablet`
-            max-width: 648px;
-        `}
-
-        ${media.phone`
-            line-height: 26px;
-            font-size: 18px;
-        `}
-    }
-`
-
-const ResourcesListing = styled.div`
-    
-`
 
 export default Home;
