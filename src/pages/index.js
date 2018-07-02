@@ -135,31 +135,36 @@ class Home extends Component {
 
     renderEventListing = () => {
 
-  
         const events = [
             {
                 title: 'PMC 18',
-                image: 'event-PMC-18.png',
+                image: eventPMC18,
+                link: ''
             },
             {
                 title: 'LPMA NZ 2018',
-                image: 'event-LPMA-NZ.png',
+                image: eventLPMANZ,
+                link: ''
             },
             {
                 title: 'LPMA Australia',
-                image: 'event-LPMA-Australia.png',
+                image: eventLPMAAustralia,
+                link: ''
             },
             {
                 title: 'LPMA Premium Connection',
-                image: 'event-LPMA-Premium-Connection.png',
+                image: eventLPMAPremium,
+                link: ''
             },
             {
                 title: 'LPMA Round Table',
-                image: 'event-LPMA-Round-Table.png',
+                image: eventLPMARoundTable,
+                link: ''
             },
             {
                 title: 'LPMA Leadership Summit',
-                image: 'event-LPMA-Leadership-Summit.png',
+                image: eventLPMALeadershipSummit,
+                link: ''
             } 
         ]
 
@@ -167,8 +172,9 @@ class Home extends Component {
             console.log('event',event);
             return (
                 <Event 
-                    image={`../assets/images/home/${event.image}`} 
                     key={i}
+                    image={event.image} 
+                    // onClick={}
                 />
             )
         })
@@ -190,13 +196,7 @@ class Home extends Component {
                         </Content>
 
                         <EventsListing> 
-                            {/* {this.renderEventListing()} */}
-                            <Event image={eventPMC18} />
-                            <Event image={eventLPMANZ} />
-                            <Event image={eventLPMAAustralia} />
-                            <Event image={eventLPMAPremium} />
-                            <Event image={eventLPMARoundTable} />
-                            <Event image={eventLPMALeadershipSummit} />
+                            {this.renderEventListing()}
                         </EventsListing>
                     </EventsContent>
 
