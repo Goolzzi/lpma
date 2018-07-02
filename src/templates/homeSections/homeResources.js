@@ -7,44 +7,46 @@ import {CSSTransition} from "react-transition-group";
 import { VelocityComponent } from 'velocity-react';
 import VisibilitySensor from 'react-visibility-sensor'
 
+import playIcon from "../../assets/images/home/play-icon.svg";
+import resourcesImage from "../../assets/images/home/resources-book.jpg";
+
 import {capeCod, mantis, green, darkGrey} from "../../styles/colors";
 import {media, width} from "../../styles/utils";
 
 import {bgIcon, bgImage, button, hoverState} from "../../styles/global";
-import { data } from "../../data/front";
+import {data} from "../../data/front";
 
-class HomeClients extends Component {
+import { section } from '../../pages/index'
 
-    renderClients = () => {
-        return data.clients.map((client, i) => {
-            return (
-                <Client
-                    src={client.image}
-                />
-            )
-        })
-    }
+class HomeResources extends Component {
+    
 
     render() {
         return (
-            <Clients>
+            <Resources>
                 <Container>
 
                     <SectionHeader>
-                        <Title>You’ll be in great company</Title>
+                        <Title>Resources to plan the next step</Title>
                     </SectionHeader>
 
-                    <ClientsContent>
-                        {this.renderClients()}
-                    </ClientsContent>
+                    <ResourcesContent>
+
+                        <ResourcesImage
+                            image={resourcesImage}
+                        />
+                        <Description>LPMA offers members a comprehensive suite of business planning frameworks and practical resources to help you take control and drive change in your business.</Description>
+                     
+
+                    </ResourcesContent>
 
                 </Container>
-            </Clients>
+            </Resources>
         )
     }
 }
 
-// Testimonials
+// Resources
 
 export const Container = styled.div`
     display: flex;
@@ -57,6 +59,7 @@ export const Container = styled.div`
 
     ${media.phone`
         padding: 0 20px;
+        max-width: 100%;
     `}
 `
 
@@ -66,18 +69,23 @@ export const Subtitle = styled.div``
 export const Description = styled.div``
 export const SectionHeader = styled.div``
 
-const Clients = styled.div`
+
+
+
+// Resources
+
+const Resources = styled.div`
     background: white;
     display: flex;
     justify-content: center;
-    margin-bottom: 158px;
+    margin-bottom: 112px;
 
     ${media.tablet`
-        margin-bottom: 135px;
+        margin-bottom: 105px;
     `}
 
     ${media.phone`
-        margin-bottom: 62px;
+        margin-bottom: 80px;
     `}
 
     ${Container} {
@@ -91,10 +99,14 @@ const Clients = styled.div`
             justify-content: center;
             align-items: center;
             text-align: center;
-            margin-bottom: 24px;
+            margin-bottom: 48px;
+
+            ${media.tablet`
+                margin-bottom: 12px;
+            `}
 
             ${media.phone`
-                margin-bottom: 40px;
+                margin-bottom: 19px;
             `}
 
             ${Title} {
@@ -115,22 +127,45 @@ const Clients = styled.div`
     }
 `
 
-const ClientsContent = styled.div`
+const ResourcesContent = styled.div`
+
     display: flex;
-    align-items: center;
-    flex-flow: row wrap;
-    justify-content: center;
+    
+    ${media.tablet`
+        flex-direction: column;
+    `}
+        
+    ${Description} {
+        font-family: Montserrat;
+        font-size: 21px;
+        max-width: 604px;
+        line-height: 31px;
+        margin-top: 90px;
+        margin-left: 75px;
+
+        ${media.tablet`
+ 
+            margin-top: 24px;
+            margin-left: 0;
+        `}
+
+        ${media.phone`
+
+        `}
+    }
 `
 
-const Client = styled.img`
-    max-height: 45px;
-    max-width: 73px;
-    width: auto;
-    height: 100%;
+const ResourcesImage = styled.div`
+    background-image: url(${props => props.image});
+    ${bgImage}
+    width: 465px;
+    height: 303px;
 
-    &:not(:last-child) {
-        margin-right: 30px;
-    }
-`;
+    ${media.tablet`
+        width: 100%;
+        height 337px;
+    `}
+`
 
-export default HomeClients;
+
+export default HomeResources;

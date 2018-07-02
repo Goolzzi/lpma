@@ -1,27 +1,23 @@
 import React, {Component} from "react";
 import styled, {css} from "styled-components";
-import {rgba, clearFix} from "polished";
+import {rgba, clearFix, padding} from "polished";
 import {find} from "lodash";
 import {navigateTo} from "gatsby-link";
 import {CSSTransition} from "react-transition-group";
 import { VelocityComponent } from 'velocity-react';
 import VisibilitySensor from 'react-visibility-sensor'
+import moment from 'moment'
 
 import arrowDown from "../assets/images/icon-down-arrow.svg";
 import playIcon from "../assets/images/home/play-icon.svg";
 import background from "../assets/images/home/background.jpg";
 
-import eventLPMAAustralia from "../assets/images/home/event-LPMA-Australia.png";
-import eventLPMALeadershipSummit from "../assets/images/home/event-LPMA-Leadership-Summit.png";
-import eventLPMANZ from "../assets/images/home/event-LPMA-NZ.png";
-import eventLPMAPremium from "../assets/images/home/event-LPMA-Premium-Connection.png";
-import eventLPMARoundTable from "../assets/images/home/event-LPMA-Round-Table.png";
-import eventPMC18 from "../assets/images/home/event-PMC-18.png";
-
 import Testimonials from "../templates/homeSections/homeTestimonials"
 import Clients from "../templates/homeSections/homeClients"
+import Events from "../templates/homeSections/homeEvents"
+import Resources from "../templates/homeSections/homeResources"
 
-import {capeCod, mantis, green, darkGrey} from "../styles/colors";
+import {capeCod, mantis, green, darkGrey, mako} from "../styles/colors";
 import {media, width} from "../styles/utils";
 
 import {bgIcon, bgImage, button, hoverState} from "../styles/global";
@@ -44,6 +40,10 @@ class Home extends Component {
             })
         }
     }
+
+    navigateToSignup = () => {
+        navigateTo('join');
+    }
     
     renderHero = () => {
         return (
@@ -53,7 +53,11 @@ class Home extends Component {
                 <Container>
                     <Title>Take the next step.</Title>
                     <Description>The community of business leaders supporting each other to take the next step.</Description>
-                    <SignupButton>Sign Up</SignupButton>
+                    <SignupButton
+                        onClick={() => this.navigateToSignup()}
+                    >
+                        Sign Up
+                    </SignupButton>
                 </Container>
             </Hero>
         )
@@ -133,106 +137,25 @@ class Home extends Component {
         )
     }
 
-
-    renderEventListing = () => {
-
-        const events = [
-            {
-                title: 'PMC 18',
-                image: eventPMC18,
-                link: ''
-            },
-            {
-                title: 'LPMA NZ 2018',
-                image: eventLPMANZ,
-                link: ''
-            },
-            {
-                title: 'LPMA Australia',
-                image: eventLPMAAustralia,
-                link: ''
-            },
-            {
-                title: 'LPMA Premium Connection',
-                image: eventLPMAPremium,
-                link: ''
-            },
-            {
-                title: 'LPMA Round Table',
-                image: eventLPMARoundTable,
-                link: ''
-            },
-            {
-                title: 'LPMA Leadership Summit',
-                image: eventLPMALeadershipSummit,
-                link: ''
-            } 
-        ]
-
-        return events.map((event, i) => {
-            console.log('event',event);
-            return (
-                <Event 
-                    key={i}
-                    image={event.image} 
-                    // onClick={}
-                />
-            )
-        })
-    }
-
-    renderEvents = () => {
+    renderFooter = () => {
         return (
-            <Events>
-                <Container>
-
-                    <SectionHeader>
-                        <Title>An event for every step of the journey</Title>
-                    </SectionHeader>
-
-                    <EventsContent>
-                        <Content>
-                            <Description>The LPMA conference series has the largest and most comprehensive small and large format conference calendar in the world. Our conference series reflects all that we believe in property management.</Description>
-                            <ViewMore>View More</ViewMore>    
-                        </Content>
-
-                        <EventsListing> 
-                            {this.renderEventListing()}
-                        </EventsListing>
-                    </EventsContent>
-
-                </Container>
-            
-            </Events>
+            <Footer>
+                <CTA>
+                    <Container>
+                        <Title>Take your next step today</Title>   
+                        <Signup
+                            onClick={() => this.navigateToSignup()}
+                        >
+                            Sign up
+                        </Signup> 
+                    </Container>
+                </CTA>
+                <Copyright>
+                    <Container>{moment().format('YYYY')} © LPMA</Container>
+                </Copyright>
+            </Footer>
         )
     }
-    
-    renderResources = () => {
-        return (
-            <Resources>
-                <Container>
-
-                    <SectionHeader>
-                        <Title>Resources to plan the next step</Title>
-                    </SectionHeader>
-
-                    <ResourcesContent>
-                        <Content>
-                            <Description>LPMA offers members a comprehensive suite of business planning frameworks and practical resources to help you take control and drive change in your business.</Description>
-                        </Content>
-
-                        <ResourcesListing>
-
-                        </ResourcesListing>
-                    </ResourcesContent>
-
-                </Container>
-            
-            </Resources>
-        )
-    }
-
-    
     
     render() {
         const {featuresVisible, sliderValue} = this.state;
@@ -241,10 +164,13 @@ class Home extends Component {
             <Wrapper>
                 {this.renderHero()}
                 {this.renderFeatures()}
-                {this.renderEvents()}
-                {this.renderResources()}
+
+                <Events/>
+                <Resources/>
                 <Testimonials/>
                 <Clients/>
+
+                {this.renderFooter()}
             </Wrapper>
         )
     }
@@ -276,22 +202,6 @@ export const Title = styled.div``
 export const Subtitle = styled.div``
 export const Description = styled.div``
 export const SectionHeader = styled.div``
-
-const ViewMore = styled.div`
-    font-family: Montserrat;
-    font-size: 14px;
-    font-weight: 600;
-    text-align: center;
-    color: #424b4f;
-    width: 126px;
-    height: 42px;
-    border-radius: 40px;
-    border: solid 1px #cad7dc;
-    padding-top: 10px;
-	align-self: center;
-	${hoverState}
-    cursor: pointer;
-`
 
 const Hero = styled.div`
     display: flex;
@@ -564,128 +474,63 @@ const FeatureIndicator = styled.div`
     border-radius: 50%;
 `;
 
+// Footer
 
-// Events
-
-const Events = styled.div`
-    background: white;
+const Footer = styled.div`
     display: flex;
+    flex-direction: column;
+    width: 100%;
+`;
+
+const CTA = styled.div`
+    height: 417px;
+    background: ${mako};
+
+    display: flex;
+    flex-direction: column;
     justify-content: center;
-    margin-bottom: 220px;
+    align-items: center;
+    padding: 0 20px;
+
+    ${Title} {
+        font-family: Montserrat;
+        font-weight: 600;
+        font-size: 32px;
+        color: white;
+        margin-bottom: 8px;
+
+        ${media.tablet`
+            font-size: 18px;
+            margin-bottom: 12px;
+        `}
+    }
 
     ${media.tablet`
-        margin-bottom: 105px;
+        height: 257px;
     `}
-
-    ${media.phone`
-        margin-bottom: 80px;
-    `}
-
-    ${Container} {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-
-        ${SectionHeader} {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            margin-bottom: 48px;
-
-            ${media.tablet`
-                margin-bottom: 24px;
-            `}
-
-            ${media.phone`
-                margin-bottom: 40px;
-            `}
-
-            ${Title} {
-                font-size: 32px;
-                font-weight: bold;
-
-                ${media.tablet`
-                    font-family: Montserrat;
-                    font-weight: bold;
-                    font-size: 24px;
-                `}
-
-                ${media.phone`
-                    font-size: 21px;
-                `}
-            }
-        }
-    }
 `;
 
-const EventsContent = styled.div`
-    display: flex;
-
-    ${Container}{
-
-    }
-    
-    ${Description} {
-        font-family: Montserrat;
-        font-size: 21px;
-        max-width: 506px;
-        line-height: 31px;
-        margin-bottom: 19px;
-
-        ${media.tablet`
-            max-width: 648px;
-        `}
-
-        ${media.phone`
-            line-height: 26px;
-            font-size: 18px;
-        `}
-    }
+const Signup = styled.div`
+    ${button}
+    cursor: pointer;
 `;
 
-const EventsListing = styled.div`
+const Copyright = styled.div`
+    background: ${capeCod};
+
     display: flex;
-    width: 561px;
-    flex-wrap: wrap;
-    justify-content: space-between;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    height: 72px;
+
+    font-family: Montserrat;
+    font-weight: 600;
+    font-size: 16px;
+    color: white;
 `;
-
-const Event = styled.div`
-    background-image: url(${props => props.image});
-    ${bgImage}
-    width: 270px;
-    height: 88px;
-    margin-bottom: 21px;
-`
-
-// Resources
-
-const Resources = styled.div``
-
-const ResourcesContent = styled.div`
-    display: flex;
     
-    ${Description} {
-        font-family: Montserrat;
-        font-size: 21px;
-        max-width: 506px;
-        line-height: 31px;
 
-        ${media.tablet`
-            max-width: 648px;
-        `}
-
-        ${media.phone`
-            line-height: 26px;
-            font-size: 18px;
-        `}
-    }
-`
-
-const ResourcesListing = styled.div`
-    
-`
 
 export default Home;
