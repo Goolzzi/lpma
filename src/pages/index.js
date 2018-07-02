@@ -19,6 +19,7 @@ import eventLPMARoundTable from "../assets/images/home/event-LPMA-Round-Table.pn
 import eventPMC18 from "../assets/images/home/event-PMC-18.png";
 
 import Testimonials from "../templates/homeSections/homeTestimonials"
+import Clients from "../templates/homeSections/homeClients"
 
 import {capeCod, mantis, green, darkGrey} from "../styles/colors";
 import {media, width} from "../styles/utils";
@@ -243,6 +244,7 @@ class Home extends Component {
                 {this.renderEvents()}
                 {this.renderResources()}
                 <Testimonials/>
+                <Clients/>
             </Wrapper>
         )
     }

@@ -26,5 +26,22 @@ export const data = {
             text: `Click to hear Jeremy's story`,
             video: 'http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4'
         }
+    ],
+    clients: [
+        {
+            image: require("../assets/images/home/clients/ray-white.svg"),
+        },
+        {
+            image: require("../assets/images/home/clients/john-pye.svg"),
+        },
+        {
+            image: require("../assets/images/home/clients/independant.svg"),
+        },
+        {
+            image: require("../assets/images/home/clients/spade.svg"),
+        },
+        {
+            image: require("../assets/images/home/clients/sutherlands.svg"),
+        }
     ]
 }

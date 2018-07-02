@@ -159,14 +159,10 @@ const Testimonials = styled.div`
     background: white;
     display: flex;
     justify-content: center;
-    margin-bottom: 220px;
-
-    ${media.tablet`
-        margin-bottom: 105px;
-    `}
+    margin-bottom: 100px;
 
     ${media.phone`
-        margin-bottom: 80px;
+        margin-bottom: 93px;
     `}
 
     ${Container} {
