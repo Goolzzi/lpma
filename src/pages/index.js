@@ -693,6 +693,13 @@ const EventsContent = styled.div`
     }
 `;
 
+const Event = styled.div`
+    display: flex;
+    width: 561px;
+    flex-wrap: wrap;
+    justify-content: space-between;
+`
+
 const EventsListing = styled.div`
     
 `;
@@ -758,12 +765,6 @@ const TestimonalGroup = styled.div`
 `
 
 const Testimonial = styled.div`
-    display: flex;
-    width: 561px;
-    flex-wrap: wrap;
-    justify-content: space-between;
-`
-const Event = styled.div`
     background-image: url(${props => props.image});
     ${bgImage}
     box-sizing: border-box;
