@@ -6,6 +6,7 @@ import {navigateTo} from "gatsby-link";
 import {CSSTransition} from "react-transition-group";
 import { VelocityComponent } from 'velocity-react';
 import VisibilitySensor from 'react-visibility-sensor'
+import Modal from 'react-modal';
 
 import playIcon from "../../assets/images/home/play-icon.svg";
 
@@ -18,11 +19,16 @@ import {data} from "../../data/front";
 import { section } from '../../pages/index'
 
 class HomeTestimonials extends Component {
+
+    state = {
+        modalVisible: false,
+        videoUrl: 'http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4' 
+    }
     
     renderTestimonial = (testimonial) => {
         return (
             <Testimonial
-                // onClick={}
+                onClick={() => this.toggleVideoModel(testimonial.video)}
                 image={testimonial.image}
             >
                 <Fade/>
@@ -35,7 +41,42 @@ class HomeTestimonials extends Component {
         )
     }
 
+    handleCloseModal = () => {
+        this.setState({
+            modalVisible: false
+        })
+    }
+
+    toggleVideoModel = (video) => {
+        this.setState({
+            modalVisible: true,
+            videoUrl: video
+        })
+    }
+
     render() {
+        const { videoUrl } = this.state;
+
+        const customStyles = {
+            content: {
+                top: '50%',
+                left: '50%',
+                right: 'auto',
+                bottom: 'auto',
+                marginRight: '-50%',
+                transform: 'translate(-50%, -50%)',
+                padding: 20,
+                border: 0,
+                backgroundColor: 'transparent',
+                transition: 'opacity 0.5s ease'
+            },
+            overlay: {
+                backgroundColor: `${rgba('black', 0.2)}`,
+                zIndex: 10,
+                transition: 'opacity 0.5s ease'
+            }
+        };
+
         return (
             <Testimonials>
                 <Container>
@@ -64,7 +105,28 @@ class HomeTestimonials extends Component {
 
                     </TestimonialsContent>
 
+                    <MobileTestimonials>
+                        {this.renderTestimonial(data.testimonals[0])}
+                        {this.renderTestimonial(data.testimonals[1])}
+                        {this.renderTestimonial(data.testimonals[2])}
+                    </MobileTestimonials>
+
                 </Container>
+
+                {/* Video Modal */}
+
+                <Modal
+                    isOpen={this.state.modalVisible}
+                    style={customStyles}
+                    onRequestClose={this.handleCloseModal}
+                >
+                    <VideoPlayer controls>
+                        <source 
+                            src={videoUrl} 
+                            type="video/mp4"
+                        />
+                    </VideoPlayer>
+                </Modal>
             
             </Testimonials>
         )
@@ -166,6 +228,10 @@ const TestimonialsContent = styled.div`
     height: 450px;
     width: 100%;
 
+    ${media.tablet`
+        height: 275px;
+    `}
+
     >:nth-child(1),
     >:nth-child(3) {
         flex: 0 1 25%;
@@ -177,19 +243,35 @@ const TestimonialsContent = styled.div`
         flex: 1;
         margin: 0 20px;
 
+        ${media.tablet`
+            margin: 0 12px;
+        `}
+
         ${TestimonalGroup} {
             flex: 1;
             margin-bottom: 20px;
+
+            ${media.tablet`
+                margin-bottom: 12px;
+            `}
 
             ${Testimonial} {
                 flex: 1;
 
                 &:nth-child(1) {
                     margin-right: 10px;
+
+                    ${media.tablet`
+                        margin-right: 6px;
+                    `}
                 }
 
                 &:nth-child(2) {
                     margin-left: 10px;
+
+                    ${media.tablet`
+                        margin-left: 6px;
+                    `}
                 }
             }
         }
@@ -198,7 +280,29 @@ const TestimonialsContent = styled.div`
             flex: 1;
         }
     }
+
+    ${media.phone`
+        display: none;
+    `}
 `
+
+const MobileTestimonials = styled.div`
+    display: none;
+    width: 100%;
+
+    ${media.phone`
+        display: flex;
+        flex-direction: column;
+
+        ${Testimonial} {
+            height: 212px;
+
+            &:not(:last-child) {
+                margin-bottom: 16px;
+            }
+        }
+    `}
+`;
 
 const Info = styled.div`
     display: flex;
@@ -209,6 +313,10 @@ const Info = styled.div`
     bottom: 0;
     left: 0;
     right: 0;
+
+    ${media.tablet`
+        padding: 12px;
+    `}
 `
 
 const Caption = styled.div`
@@ -226,6 +334,12 @@ const PlayIcon = styled.div`
     width: 30px;
     height: 30px;
     ${bgIcon}
+
+    ${media.tablet`
+        width: 20px;
+        height: 20px;
+        flex: 0 1 30px;
+    `}
 `
 
 const Fade = styled.div`
@@ -237,5 +351,15 @@ const Fade = styled.div`
     background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.7) 100%);
 `;
 
+// Video modal
+
+const VideoPlayer = styled.video`
+    max-width: 714px;
+    max-height: 427px;
+    width: 100%;
+    height: 100%;
+    margin-bottom: -10px;
+    border-radius: 5px;
+`;
 
 export default HomeTestimonials;
