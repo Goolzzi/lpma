@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 import styled, {css} from "styled-components";
-import {rgba} from "polished";
+import {rgba, clearFix} from "polished";
 import {find} from "lodash";
 import {navigateTo} from "gatsby-link";
 import {CSSTransition} from "react-transition-group";
@@ -8,8 +8,16 @@ import { VelocityComponent } from 'velocity-react';
 import VisibilitySensor from 'react-visibility-sensor'
 
 import arrowDown from "../assets/images/icon-down-arrow.svg";
-
 import background from "../assets/images/home/background.jpg";
+
+import eventLPMAAustralia from "../assets/images/home/event-LPMA-Australia.png";
+import eventLPMALeadershipSummit from "../assets/images/home/event-LPMA-Leadership-Summit.png";
+import eventLPMANZ from "../assets/images/home/event-LPMA-NZ.png";
+import eventLPMAPremium from "../assets/images/home/event-LPMA-Premium-Connection.png";
+import eventLPMARoundTable from "../assets/images/home/event-LPMA-Round-Table.png";
+import eventPMC18 from "../assets/images/home/event-PMC-18.png";
+ 
+
 
 import {capeCod, mantis, green, darkGrey} from "../styles/colors";
 import {media, width} from "../styles/utils";
@@ -122,6 +130,48 @@ class Home extends Component {
         )
     }
 
+
+    // renderEventListing = () => {
+
+  
+    //     const events = [
+    //         {
+    //             title: 'PMC 18',
+    //             image: 'event-PMC-18.png',
+    //         },
+    //         {
+    //             title: 'LPMA NZ 2018',
+    //             image: 'event-LPMA-NZ.png',
+    //         },
+    //         {
+    //             title: 'LPMA Australia',
+    //             image: 'event-LPMA-Australia.png',
+    //         },
+    //         {
+    //             title: 'LPMA Premium Connection',
+    //             image: 'event-LPMA-Premium-Connection.png',
+    //         },
+    //         {
+    //             title: 'LPMA Round Table',
+    //             image: 'event-LPMA-Round-Table.png',
+    //         },
+    //         {
+    //             title: 'LPMA Leadership Summit',
+    //             image: 'event-LPMA-Leadership-Summit.png',
+    //         } 
+    //     ]
+
+    //     return events.map((event, i) => {
+    //         console.log('event',event);
+    //         return (
+    //             <Event 
+    //                 image={`../assets/images/home/${event.image}`} 
+    //                 key={i}
+    //             />
+    //         )
+    //     })
+    // }
+
     renderEvents = () => {
         return (
             <Events>
@@ -138,7 +188,13 @@ class Home extends Component {
                         </Content>
 
                         <EventsListing>
-
+                            {/* {this.renderEventListing()} */}
+                            <Event image={eventPMC18} />
+                            <Event image={eventLPMANZ} />
+                            <Event image={eventLPMAAustralia} />
+                            <Event image={eventLPMAPremium} />
+                            <Event image={eventLPMARoundTable} />
+                            <Event image={eventLPMALeadershipSummit} />
                         </EventsListing>
                     </EventsContent>
 
@@ -162,9 +218,9 @@ class Home extends Component {
                             <Description>LPMA offers members a comprehensive suite of business planning frameworks and practical resources to help you take control and drive change in your business.</Description>
                         </Content>
 
-                        <EventsListing>
+                        <ResourcesListing>
 
-                        </EventsListing>
+                        </ResourcesListing>
                     </ResourcesContent>
 
                 </Container>
@@ -199,7 +255,7 @@ const Container = styled.div`
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-    max-width: 1126px;
+    max-width: 1144px;
     width: 100%;
     padding: 0 40px;
 
@@ -225,13 +281,9 @@ const ViewMore = styled.div`
     border-radius: 40px;
     border: solid 1px #cad7dc;
     padding-top: 10px;
-
-
 	align-self: center;
-
 	${hoverState}
     cursor: pointer;
-
 `
 
 const Hero = styled.div`
@@ -563,12 +615,17 @@ const Events = styled.div`
 
 const EventsContent = styled.div`
     display: flex;
+
+    ${Container}{
+
+    }
     
     ${Description} {
         font-family: Montserrat;
         font-size: 21px;
         max-width: 506px;
-        line-height: normal;
+        line-height: 31px;
+        margin-bottom: 19px;
 
         ${media.tablet`
             max-width: 648px;
@@ -579,12 +636,22 @@ const EventsContent = styled.div`
             font-size: 18px;
         `}
     }
-`;
+`
+
 
 const EventsListing = styled.div`
-    
-`;
-
+    display: flex;
+    width: 561px;
+    flex-wrap: wrap;
+    justify-content: space-between;
+`
+const Event = styled.div`
+    background-image: url(${props => props.image});
+    ${bgImage}
+    width: 270px;
+    height: 88px;
+    margin-bottom: 21px;
+`
 
 const Resources = styled.div``
 
@@ -595,7 +662,7 @@ const ResourcesContent = styled.div`
         font-family: Montserrat;
         font-size: 21px;
         max-width: 506px;
-        line-height: normal;
+        line-height: 31px;
 
         ${media.tablet`
             max-width: 648px;
@@ -606,10 +673,10 @@ const ResourcesContent = styled.div`
             font-size: 18px;
         `}
     }
-`;
+`
 
 const ResourcesListing = styled.div`
     
-`;
+`
 
 export default Home;
