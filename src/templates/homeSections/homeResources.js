@@ -59,6 +59,7 @@ export const Container = styled.div`
 
     ${media.phone`
         padding: 0 20px;
+        max-width: 100%;
     `}
 `
 
@@ -101,11 +102,11 @@ const Resources = styled.div`
             margin-bottom: 48px;
 
             ${media.tablet`
-                margin-bottom: 24px;
+                margin-bottom: 12px;
             `}
 
             ${media.phone`
-                margin-bottom: 40px;
+                margin-bottom: 19px;
             `}
 
             ${Title} {
@@ -129,6 +130,10 @@ const Resources = styled.div`
 const ResourcesContent = styled.div`
 
     display: flex;
+    
+    ${media.tablet`
+        flex-direction: column;
+    `}
         
     ${Description} {
         font-family: Montserrat;
@@ -139,15 +144,15 @@ const ResourcesContent = styled.div`
         margin-left: 75px;
 
         ${media.tablet`
-            max-width: 648px;
+ 
+            margin-top: 24px;
+            margin-left: 0;
         `}
 
         ${media.phone`
-            line-height: 26px;
-            font-size: 18px;
+
         `}
     }
-
 `
 
 const ResourcesImage = styled.div`
@@ -155,6 +160,11 @@ const ResourcesImage = styled.div`
     ${bgImage}
     width: 465px;
     height: 303px;
+
+    ${media.tablet`
+        width: 100%;
+        height 337px;
+    `}
 `
 
 
