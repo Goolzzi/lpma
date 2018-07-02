@@ -273,11 +273,12 @@ class Home extends Component {
                 // onClick={}
                 image={testimonial.image}
             >
+                <Fade/>
+
                 <Info>
                     <PlayIcon/>
                     <Caption>{testimonial.text}</Caption>
                 </Info>
-             
             </Testimonial>
         )
     }
@@ -705,9 +706,6 @@ const Event = styled.div`
     width: 270px;
     height: 88px;
     margin-bottom: 21px;
-    // box-sizing: border-box;
-    // flex: 1;
-    // position: relative;
 `
 
 // Testimonials
@@ -771,12 +769,14 @@ const TestimonalGroup = styled.div`
 `
 
 const Testimonial = styled.div`
-    display: flex;
-    width: 561px;
-    flex-wrap: wrap;
-    justify-content: space-between;
+    background-image: url(${props => props.image});
+    ${bgImage};
+    box-sizing: border-box;
+    flex: 1;
+    position: relative;
+    ${hoverState};
+    cursor: pointer;
 `
-
 
 const TestimonialsContent = styled.div`
     display: flex;
@@ -819,6 +819,7 @@ const TestimonialsContent = styled.div`
 
 const Info = styled.div`
     display: flex;
+    align-items: center;
     padding: 20px;
 
     position: absolute;
@@ -828,7 +829,13 @@ const Info = styled.div`
 `
 
 const Caption = styled.div`
-    
+    font-family: Montserrat;
+    font-weight: 500;
+    line-height: 20px;
+    font-size: 15px;
+    letter-spacing: -0.055px;
+    color: white;
+    margin-left: 8px;
 `
 
 const PlayIcon = styled.div`
@@ -837,6 +844,15 @@ const PlayIcon = styled.div`
     height: 30px;
     ${bgIcon}
 `
+
+const Fade = styled.div`
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 72px;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.7) 100%);
+`;
 
 // Resources
 
