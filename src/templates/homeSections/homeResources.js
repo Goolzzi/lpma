@@ -8,6 +8,7 @@ import { VelocityComponent } from 'velocity-react';
 import VisibilitySensor from 'react-visibility-sensor'
 
 import playIcon from "../../assets/images/home/play-icon.svg";
+import resourcesImage from "../../assets/images/home/resources-book.jpg";
 
 import {capeCod, mantis, green, darkGrey} from "../../styles/colors";
 import {media, width} from "../../styles/utils";
@@ -30,9 +31,12 @@ class HomeResources extends Component {
                     </SectionHeader>
 
                     <ResourcesContent>
-                        <Content>
-                            <Description>LPMA offers members a comprehensive suite of business planning frameworks and practical resources to help you take control and drive change in your business.</Description>
-                        </Content>
+
+                        <ResourcesImage
+                            image={resourcesImage}
+                        />
+                        <Description>LPMA offers members a comprehensive suite of business planning frameworks and practical resources to help you take control and drive change in your business.</Description>
+                     
 
                     </ResourcesContent>
 
@@ -69,16 +73,70 @@ export const SectionHeader = styled.div``
 
 // Resources
 
-const Resources = styled.div``
+const Resources = styled.div`
+    background: white;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 112px;
+
+    ${media.tablet`
+        margin-bottom: 105px;
+    `}
+
+    ${media.phone`
+        margin-bottom: 80px;
+    `}
+
+    ${Container} {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
+        ${SectionHeader} {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            margin-bottom: 48px;
+
+            ${media.tablet`
+                margin-bottom: 24px;
+            `}
+
+            ${media.phone`
+                margin-bottom: 40px;
+            `}
+
+            ${Title} {
+                font-size: 32px;
+                font-weight: bold;
+
+                ${media.tablet`
+                    font-family: Montserrat;
+                    font-weight: bold;
+                    font-size: 24px;
+                `}
+
+                ${media.phone`
+                    font-size: 21px;
+                `}
+            }
+        }
+    }
+`
 
 const ResourcesContent = styled.div`
+
     display: flex;
-    
+        
     ${Description} {
         font-family: Montserrat;
         font-size: 21px;
-        max-width: 506px;
+        max-width: 604px;
         line-height: 31px;
+        margin-top: 90px;
+        margin-left: 75px;
 
         ${media.tablet`
             max-width: 648px;
@@ -89,10 +147,15 @@ const ResourcesContent = styled.div`
             font-size: 18px;
         `}
     }
+
 `
 
-const ResourcesListing = styled.div`
-    
+const ResourcesImage = styled.div`
+    background-image: url(${props => props.image});
+    ${bgImage}
+    width: 465px;
+    height: 303px;
 `
+
 
 export default HomeResources;

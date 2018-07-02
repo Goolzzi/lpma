@@ -80,31 +80,31 @@ class HomeEvents extends Component {
     render() {
         return (
             <Events>
-            <Container>
+                <Container>
 
-                <SectionHeader>
-                    <Title>An event for every step of the journey</Title>
-                </SectionHeader>
+                    <SectionHeader>
+                        <Title>An event for every step of the journey</Title>
+                    </SectionHeader>
 
-                <EventsContent>
-                    <Content>
-                        <Description>The LPMA conference series has the largest and most comprehensive small and large format conference calendar in the world. Our conference series reflects all that we believe in property management.</Description>
-                        <ViewMore
-                             href="https://lpma.com/events"
-                             target="_blank"
-                        >
-                            View More
-                        </ViewMore>
-                    </Content>
+                    <EventsContent>
+                        <Content>
+                            <Description>The LPMA conference series has the largest and most comprehensive small and large format conference calendar in the world. Our conference series reflects all that we believe in property management.</Description>
+                            <ViewMore
+                                href="https://lpma.com/events"
+                                target="_blank"
+                            >
+                                View More
+                            </ViewMore>
+                        </Content>
 
-                    <EventsListing> 
-                        {this.renderEventListing()}
-                    </EventsListing>
-                </EventsContent>
+                        <EventsListing> 
+                            {this.renderEventListing()}
+                        </EventsListing>
+                    </EventsContent>
 
-            </Container>
-        
-        </Events>
+                </Container>
+            
+            </Events>
         )
     }
 }
@@ -154,7 +154,7 @@ const Events = styled.div`
     background: white;
     display: flex;
     justify-content: center;
-    margin-bottom: 220px;
+    margin-bottom: 112px;
 
     ${media.tablet`
         margin-bottom: 105px;
