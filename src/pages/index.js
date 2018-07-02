@@ -14,7 +14,7 @@ import background from "../assets/images/home/background.jpg";
 import {capeCod, mantis, green, darkGrey} from "../styles/colors";
 import {media, width} from "../styles/utils";
 import {bgIcon, bgImage, button} from "../styles/global";
-import {data} from "../data/data";
+import {data} from "../data/front";
 
 import Slider from "../components/Slider";
 import Switch from "../components/Switch";
@@ -136,8 +136,7 @@ class Home extends Component {
                             <Description>The LPMA conference series has the largest and most comprehensive small and large format conference calendar in the world. Our conference series reflects all that we believe in property management.</Description>
                         </Content>
 
-                        <EventsListing>
-
+                        <EventsListing> 
                         </EventsListing>
                     </EventsContent>
 
@@ -146,8 +145,45 @@ class Home extends Component {
             </Events>
         )
     }
-    
 
+    renderTestimonials = () => {
+        
+        return (
+            <Testimonials>
+                <Container>
+
+                    <SectionHeader>
+                        <Title>Share your Journey</Title>
+                    </SectionHeader>
+
+                    <TestimonialsContent>
+
+                            <TestimonalGroup>
+                                {this.renderTestimonial(data.testimonals[0])}
+                            </TestimonalGroup>
+
+                            <TestimonalGroup>
+                                {this.renderTestimonial(data.testimonals[1])}
+                                {this.renderTestimonial(data.testimonals[2])}
+                                {this.renderTestimonial(data.testimonals[3])}
+                            </TestimonalGroup>
+
+                            <TestimonalGroup>
+                                {this.renderTestimonial(data.testimonals[4])}
+                            </TestimonalGroup>
+
+                    </TestimonialsContent>
+
+                </Container>
+            
+            </Testimonials>
+        )
+    }
+    
+    renderTestimonial = () => {
+      
+    }
+    
     render() {
         const {featuresVisible, sliderValue} = this.state;
 
@@ -155,7 +191,8 @@ class Home extends Component {
             <Wrapper>
                 {this.renderHero()}
                 {this.renderFeatures()}
-                {this.renderEvents()}
+                {/* {this.renderEvents()} */}
+                {this.renderTestimonials()}
             </Wrapper>
         )
     }
@@ -536,6 +573,65 @@ const EventsContent = styled.div`
 `;
 
 const EventsListing = styled.div`
+    
+`;
+
+// Testimonials
+
+const Testimonials = styled.div`
+    background: white;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 220px;
+
+    ${media.tablet`
+        margin-bottom: 105px;
+    `}
+
+    ${media.phone`
+        margin-bottom: 80px;
+    `}
+
+    ${Container} {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
+        ${SectionHeader} {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            margin-bottom: 48px;
+
+            ${media.tablet`
+                margin-bottom: 24px;
+            `}
+
+            ${media.phone`
+                margin-bottom: 40px;
+            `}
+
+            ${Title} {
+                font-size: 32px;
+                font-weight: bold;
+
+                ${media.tablet`
+                    font-family: Montserrat;
+                    font-weight: bold;
+                    font-size: 24px;
+                `}
+
+                ${media.phone`
+                    font-size: 21px;
+                `}
+            }
+        }
+    }
+`;
+
+const TestimonialsContent = styled.div`
     
 `;
 
