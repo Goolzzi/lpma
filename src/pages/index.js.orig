@@ -8,7 +8,10 @@ import { VelocityComponent } from 'velocity-react';
 import VisibilitySensor from 'react-visibility-sensor'
 
 import arrowDown from "../assets/images/icon-down-arrow.svg";
+<<<<<<< HEAD
+=======
 import playIcon from "../assets/images/home/play-icon.svg";
+>>>>>>> 1eaf3cedff7147d0ec78a81bb39ed3c53eb60e7b
 import background from "../assets/images/home/background.jpg";
 
 import eventLPMAAustralia from "../assets/images/home/event-LPMA-Australia.png";
@@ -189,7 +192,8 @@ class Home extends Component {
                             <ViewMore>View More</ViewMore>    
                         </Content>
 
-                        <EventsListing> 
+<<<<<<< HEAD
+                        <EventsListing>
                             {/* {this.renderEventListing()} */}
                             <Event image={eventPMC18} />
                             <Event image={eventLPMANZ} />
@@ -197,6 +201,9 @@ class Home extends Component {
                             <Event image={eventLPMAPremium} />
                             <Event image={eventLPMARoundTable} />
                             <Event image={eventLPMALeadershipSummit} />
+=======
+                        <EventsListing> 
+>>>>>>> 1eaf3cedff7147d0ec78a81bb39ed3c53eb60e7b
                         </EventsListing>
                     </EventsContent>
 
@@ -309,7 +316,11 @@ const Container = styled.div`
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
+<<<<<<< HEAD
+    max-width: 1144px;
+=======
     max-width: 1225px;
+>>>>>>> 1eaf3cedff7147d0ec78a81bb39ed3c53eb60e7b
     width: 100%;
     padding: 0 40px;
 
@@ -690,12 +701,24 @@ const EventsContent = styled.div`
             font-size: 18px;
         `}
     }
-`;
+`
 
+
+<<<<<<< HEAD
 const EventsListing = styled.div`
-    
-`;
-
+    display: flex;
+    width: 561px;
+    flex-wrap: wrap;
+    justify-content: space-between;
+`
+const Event = styled.div`
+    background-image: url(${props => props.image});
+    ${bgImage}
+    width: 270px;
+    height: 88px;
+    margin-bottom: 21px;
+`
+=======
 // Testimonials
 
 const Testimonials = styled.div`
@@ -758,11 +781,6 @@ const TestimonalGroup = styled.div`
 
 const Testimonial = styled.div`
     display: flex;
-    width: 561px;
-    flex-wrap: wrap;
-    justify-content: space-between;
-`
-const Event = styled.div`
     background-image: url(${props => props.image});
     ${bgImage}
     box-sizing: border-box;
@@ -831,6 +849,7 @@ const PlayIcon = styled.div`
 `
 
 // Resources
+>>>>>>> 1eaf3cedff7147d0ec78a81bb39ed3c53eb60e7b
 
 const Resources = styled.div``
 
