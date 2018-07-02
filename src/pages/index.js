@@ -133,46 +133,46 @@ class Home extends Component {
     }
 
 
-    // renderEventListing = () => {
+    renderEventListing = () => {
 
   
-    //     const events = [
-    //         {
-    //             title: 'PMC 18',
-    //             image: 'event-PMC-18.png',
-    //         },
-    //         {
-    //             title: 'LPMA NZ 2018',
-    //             image: 'event-LPMA-NZ.png',
-    //         },
-    //         {
-    //             title: 'LPMA Australia',
-    //             image: 'event-LPMA-Australia.png',
-    //         },
-    //         {
-    //             title: 'LPMA Premium Connection',
-    //             image: 'event-LPMA-Premium-Connection.png',
-    //         },
-    //         {
-    //             title: 'LPMA Round Table',
-    //             image: 'event-LPMA-Round-Table.png',
-    //         },
-    //         {
-    //             title: 'LPMA Leadership Summit',
-    //             image: 'event-LPMA-Leadership-Summit.png',
-    //         } 
-    //     ]
+        const events = [
+            {
+                title: 'PMC 18',
+                image: 'event-PMC-18.png',
+            },
+            {
+                title: 'LPMA NZ 2018',
+                image: 'event-LPMA-NZ.png',
+            },
+            {
+                title: 'LPMA Australia',
+                image: 'event-LPMA-Australia.png',
+            },
+            {
+                title: 'LPMA Premium Connection',
+                image: 'event-LPMA-Premium-Connection.png',
+            },
+            {
+                title: 'LPMA Round Table',
+                image: 'event-LPMA-Round-Table.png',
+            },
+            {
+                title: 'LPMA Leadership Summit',
+                image: 'event-LPMA-Leadership-Summit.png',
+            } 
+        ]
 
-    //     return events.map((event, i) => {
-    //         console.log('event',event);
-    //         return (
-    //             <Event 
-    //                 image={`../assets/images/home/${event.image}`} 
-    //                 key={i}
-    //             />
-    //         )
-    //     })
-    // }
+        return events.map((event, i) => {
+            console.log('event',event);
+            return (
+                <Event 
+                    image={`../assets/images/home/${event.image}`} 
+                    key={i}
+                />
+            )
+        })
+    }
 
     renderEvents = () => {
         return (
@@ -291,7 +291,7 @@ class Home extends Component {
                 {this.renderHero()}
                 {this.renderFeatures()}
                 {this.renderEvents()}
-                {this.renderResources()} 
+                {this.renderResources()}
                 {this.renderTestimonials()}
             </Wrapper>
         )
@@ -693,16 +693,20 @@ const EventsContent = styled.div`
     }
 `;
 
-const Event = styled.div`
+const EventsListing = styled.div`
     display: flex;
     width: 561px;
     flex-wrap: wrap;
     justify-content: space-between;
-`
-
-const EventsListing = styled.div`
-    
 `;
+
+const Event = styled.div`
+    background-image: url(${props => props.image});
+    ${bgImage}
+    width: 270px;
+    height: 88px;
+    margin-bottom: 21px;
+`
 
 // Testimonials
 
@@ -766,11 +770,11 @@ const TestimonalGroup = styled.div`
 
 const Testimonial = styled.div`
     background-image: url(${props => props.image});
-    ${bgImage}
+    ${bgImage};
     box-sizing: border-box;
     flex: 1;
     position: relative;
-    ${hoverState}
+    ${hoverState};
     cursor: pointer;
 `
 
