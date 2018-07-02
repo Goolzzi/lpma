@@ -13,7 +13,7 @@ import background from "../assets/images/home/background.jpg";
 
 import {capeCod, mantis, green, darkGrey} from "../styles/colors";
 import {media, width} from "../styles/utils";
-import {bgIcon, bgImage, button} from "../styles/global";
+import {bgIcon, bgImage, button, hoverState} from "../styles/global";
 import {data} from "../data/data";
 
 import Slider from "../components/Slider";
@@ -134,6 +134,7 @@ class Home extends Component {
                     <EventsContent>
                         <Content>
                             <Description>The LPMA conference series has the largest and most comprehensive small and large format conference calendar in the world. Our conference series reflects all that we believe in property management.</Description>
+                            <ViewMore>View More</ViewMore>    
                         </Content>
 
                         <EventsListing>
@@ -147,6 +148,30 @@ class Home extends Component {
         )
     }
     
+    renderResources = () => {
+        return (
+            <Resources>
+                <Container>
+
+                    <SectionHeader>
+                        <Title>Resources to plan the next step</Title>
+                    </SectionHeader>
+
+                    <ResourcesContent>
+                        <Content>
+                            <Description>LPMA offers members a comprehensive suite of business planning frameworks and practical resources to help you take control and drive change in your business.</Description>
+                        </Content>
+
+                        <EventsListing>
+
+                        </EventsListing>
+                    </ResourcesContent>
+
+                </Container>
+            
+            </Resources>
+        )
+    }
 
     render() {
         const {featuresVisible, sliderValue} = this.state;
@@ -156,6 +181,7 @@ class Home extends Component {
                 {this.renderHero()}
                 {this.renderFeatures()}
                 {this.renderEvents()}
+                {this.renderResources()}
             </Wrapper>
         )
     }
@@ -187,6 +213,26 @@ const Title = styled.div``
 const Subtitle = styled.div``
 const Description = styled.div``
 const SectionHeader = styled.div``
+
+const ViewMore = styled.div`
+    font-family: Montserrat;
+    font-size: 14px;
+    font-weight: 600;
+    text-align: center;
+    color: #424b4f;
+    width: 126px;
+    height: 42px;
+    border-radius: 40px;
+    border: solid 1px #cad7dc;
+    padding-top: 10px;
+
+
+	align-self: center;
+
+	${hoverState}
+    cursor: pointer;
+
+`
 
 const Hero = styled.div`
     display: flex;
@@ -536,6 +582,33 @@ const EventsContent = styled.div`
 `;
 
 const EventsListing = styled.div`
+    
+`;
+
+
+const Resources = styled.div``
+
+const ResourcesContent = styled.div`
+    display: flex;
+    
+    ${Description} {
+        font-family: Montserrat;
+        font-size: 21px;
+        max-width: 506px;
+        line-height: normal;
+
+        ${media.tablet`
+            max-width: 648px;
+        `}
+
+        ${media.phone`
+            line-height: 26px;
+            font-size: 18px;
+        `}
+    }
+`;
+
+const ResourcesListing = styled.div`
     
 `;
 
