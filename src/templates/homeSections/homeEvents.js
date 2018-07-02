@@ -62,16 +62,51 @@ class HomeEvents extends Component {
         ]
 
         return events.map((event, i) => {
-            console.log('event',event);
-            return (
-                <Event 
-                    key={i}
-                    title={event.title}
-                    image={event.image} 
-                    href={event.link}
-                    target="_blank"
-                />
-            )
+
+            if(event.link){
+                return (
+                    <EventImageLink 
+                        key={i}
+                        title={event.title}
+                        href={event.link}
+                        target="_blank"
+                    >
+                        <EventImage 
+                            src={event.image}
+                        />
+                    </EventImageLink>
+                )
+            } else {
+                return (
+                    <EventImageNoLink
+                        key={i}
+                    >
+                        <EventImage 
+                            src={event.image}
+                        />
+                    </EventImageNoLink>
+                )
+            }
+
+
+            // if(event.link){
+            //     return (
+            //         <EventLink 
+            //             key={i}
+            //             title={event.title}
+            //             image={event.image} 
+            //             href={event.link}
+            //             target="_blank"
+            //         />
+            //     )
+            // } else {
+            //     return (
+            //         <EventNoLink
+            //             key={i}
+            //             image={event.image} 
+            //         />
+            //     )
+            // }
         })
     }
 
@@ -92,6 +127,7 @@ class HomeEvents extends Component {
                             <ViewMore
                                 href="https://lpma.com/events"
                                 target="_blank"
+                                pos="1"
                             >
                                 View More
                             </ViewMore>
@@ -100,6 +136,15 @@ class HomeEvents extends Component {
                         <EventsListing> 
                             {this.renderEventListing()}
                         </EventsListing>
+
+                        <ViewMore
+                            href="https://lpma.com/events"
+                            target="_blank"
+                            pos="2"
+                        >
+                            View More
+                        </ViewMore>
+
                     </EventsContent>
 
                 </Container>
@@ -146,6 +191,20 @@ const ViewMore = styled.a`
 	align-self: center;
 	${hoverState}
     cursor: pointer;
+
+    ${props => {
+        if (props.pos == 1) return css`
+            ${media.tablet`
+                display:none;
+            `}
+        `
+        if (props.pos == 2) return css`
+            display:none;
+            ${media.tablet`
+                display:block;
+            `}
+        `
+    }}
 `
 
 // Events
@@ -178,11 +237,7 @@ const Events = styled.div`
             margin-bottom: 48px;
 
             ${media.tablet`
-                margin-bottom: 24px;
-            `}
-
-            ${media.phone`
-                margin-bottom: 40px;
+                margin-bottom: 18px;
             `}
 
             ${Title} {
@@ -205,6 +260,10 @@ const Events = styled.div`
 
 const EventsContent = styled.div`
     display: flex;
+
+    ${media.tablet`
+        flex-direction: column;
+    `}
     
     ${Description} {
         font-family: Montserrat;
@@ -217,9 +276,10 @@ const EventsContent = styled.div`
 
         ${media.tablet`
             max-width: 648px;
+            margin-top: 0;
         `}
-
         ${media.phone`
+            width: 100%;
             line-height: 26px;
             font-size: 18px;
         `}
@@ -231,9 +291,36 @@ const EventsListing = styled.div`
     width: 561px;
     flex-wrap: wrap;
     justify-content: space-between;
+    ${media.tablet`
+        width: 100%;
+    `}
 `;
 
-const Event = styled.a`
+const EventImage = styled.img`
+    width: 100%;
+    height: auto;
+    margin-bottom: 0;
+`
+const EventBlockMixin = css`
+    width: 48%; 
+    margin-bottom: 20px;
+    ${media.tablet`
+        width: 48%; 
+    `}
+    ${media.phone`
+        width: 100%; 
+    `}
+`
+const EventImageLink = styled.a`
+    ${EventBlockMixin}
+    display:block;
+    ${hoverState}
+`
+const EventImageNoLink = styled.div`
+    ${EventBlockMixin}
+`
+/*
+const EventLink = styled.a`
     display:block;
     background-image: url(${props => props.image});
     ${bgImage}
@@ -242,7 +329,30 @@ const Event = styled.a`
     margin-bottom: 21px;
     ${hoverState}
     cursor: pointer;
+    ${media.tablet`
+        width: 49%; 
+        height: 110px;
+    `}
+    ${media.phone`
+        width: 100%; 
+    `}
 `
+const EventNoLink= styled.div`
+    background-image: url(${props => props.image});
+    ${bgImage}
+    width: 270px;
+    height: 88px;
+    margin-bottom: 21px;
+    ${media.tablet`
+        width: 49%;
+        height: 110px;
+    `}
+    ${media.phone`
+        width: 100%;
+    `}
+`
+*/
+
 
 
 export default HomeEvents;

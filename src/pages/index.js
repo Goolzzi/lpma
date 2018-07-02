@@ -277,6 +277,14 @@ const Features = styled.div`
         justify-content: center;
         margin-top: 104px;
 
+        ${media.tablet`
+            margin-top: 85px;
+        `}
+
+        ${media.phone`
+            margin-top: 50px;
+        `}
+
         ${SectionHeader} {
             display: flex;
             flex-direction: column;
