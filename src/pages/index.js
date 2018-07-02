@@ -11,14 +11,8 @@ import arrowDown from "../assets/images/icon-down-arrow.svg";
 import playIcon from "../assets/images/home/play-icon.svg";
 import background from "../assets/images/home/background.jpg";
 
-import eventLPMAAustralia from "../assets/images/home/event-LPMA-Australia.png";
-import eventLPMALeadershipSummit from "../assets/images/home/event-LPMA-Leadership-Summit.png";
-import eventLPMANZ from "../assets/images/home/event-LPMA-NZ.png";
-import eventLPMAPremium from "../assets/images/home/event-LPMA-Premium-Connection.png";
-import eventLPMARoundTable from "../assets/images/home/event-LPMA-Round-Table.png";
-import eventPMC18 from "../assets/images/home/event-PMC-18.png";
-
 import Testimonials from "../templates/homeSections/homeTestimonials"
+import Events from "../templates/homeSections/homeEvents"
 
 import {capeCod, mantis, green, darkGrey} from "../styles/colors";
 import {media, width} from "../styles/utils";
@@ -133,78 +127,7 @@ class Home extends Component {
     }
 
 
-    renderEventListing = () => {
-
-        const events = [
-            {
-                title: 'PMC 18',
-                image: eventPMC18,
-                link: ''
-            },
-            {
-                title: 'LPMA NZ 2018',
-                image: eventLPMANZ,
-                link: ''
-            },
-            {
-                title: 'LPMA Australia',
-                image: eventLPMAAustralia,
-                link: ''
-            },
-            {
-                title: 'LPMA Premium Connection',
-                image: eventLPMAPremium,
-                link: ''
-            },
-            {
-                title: 'LPMA Round Table',
-                image: eventLPMARoundTable,
-                link: ''
-            },
-            {
-                title: 'LPMA Leadership Summit',
-                image: eventLPMALeadershipSummit,
-                link: ''
-            } 
-        ]
-
-        return events.map((event, i) => {
-            console.log('event',event);
-            return (
-                <Event 
-                    key={i}
-                    image={event.image} 
-                    // onClick={}
-                />
-            )
-        })
-    }
-
-    renderEvents = () => {
-        return (
-            <Events>
-                <Container>
-
-                    <SectionHeader>
-                        <Title>An event for every step of the journey</Title>
-                    </SectionHeader>
-
-                    <EventsContent>
-                        <Content>
-                            <Description>The LPMA conference series has the largest and most comprehensive small and large format conference calendar in the world. Our conference series reflects all that we believe in property management.</Description>
-                            <ViewMore>View More</ViewMore>    
-                        </Content>
-
-                        <EventsListing> 
-                            {this.renderEventListing()}
-                        </EventsListing>
-                    </EventsContent>
-
-                </Container>
-            
-            </Events>
-        )
-    }
+    
     
     renderResources = () => {
         return (
@@ -240,7 +163,7 @@ class Home extends Component {
             <Wrapper>
                 {this.renderHero()}
                 {this.renderFeatures()}
-                {this.renderEvents()}
+                <Events/>
                 {this.renderResources()}
                 <Testimonials/>
             </Wrapper>
@@ -275,21 +198,7 @@ export const Subtitle = styled.div``
 export const Description = styled.div``
 export const SectionHeader = styled.div``
 
-const ViewMore = styled.div`
-    font-family: Montserrat;
-    font-size: 14px;
-    font-weight: 600;
-    text-align: center;
-    color: #424b4f;
-    width: 126px;
-    height: 42px;
-    border-radius: 40px;
-    border: solid 1px #cad7dc;
-    padding-top: 10px;
-	align-self: center;
-	${hoverState}
-    cursor: pointer;
-`
+
 
 const Hero = styled.div`
     display: flex;
@@ -563,100 +472,7 @@ const FeatureIndicator = styled.div`
 `;
 
 
-// Events
 
-const Events = styled.div`
-    background: white;
-    display: flex;
-    justify-content: center;
-    margin-bottom: 220px;
-
-    ${media.tablet`
-        margin-bottom: 105px;
-    `}
-
-    ${media.phone`
-        margin-bottom: 80px;
-    `}
-
-    ${Container} {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-
-        ${SectionHeader} {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            margin-bottom: 48px;
-
-            ${media.tablet`
-                margin-bottom: 24px;
-            `}
-
-            ${media.phone`
-                margin-bottom: 40px;
-            `}
-
-            ${Title} {
-                font-size: 32px;
-                font-weight: bold;
-
-                ${media.tablet`
-                    font-family: Montserrat;
-                    font-weight: bold;
-                    font-size: 24px;
-                `}
-
-                ${media.phone`
-                    font-size: 21px;
-                `}
-            }
-        }
-    }
-`;
-
-const EventsContent = styled.div`
-    display: flex;
-
-    ${Container}{
-
-    }
-    
-    ${Description} {
-        font-family: Montserrat;
-        font-size: 21px;
-        max-width: 506px;
-        line-height: 31px;
-        margin-bottom: 19px;
-
-        ${media.tablet`
-            max-width: 648px;
-        `}
-
-        ${media.phone`
-            line-height: 26px;
-            font-size: 18px;
-        `}
-    }
-`;
-
-const EventsListing = styled.div`
-    display: flex;
-    width: 561px;
-    flex-wrap: wrap;
-    justify-content: space-between;
-`;
-
-const Event = styled.div`
-    background-image: url(${props => props.image});
-    ${bgImage}
-    width: 270px;
-    height: 88px;
-    margin-bottom: 21px;
-`
 
 // Resources
 
