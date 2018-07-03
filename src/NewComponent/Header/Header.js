@@ -8,6 +8,7 @@ import Auth from "../../Auth";
 
 import logo from "../../assets/images/header/header-logo.svg";
 import hamburger from "../../assets/images/header/hamburger.svg";
+import close from "../../assets/images/header/close.svg";
 import downArrow from "../../assets/images/header/down-arrow.svg";
 import flagAU from "../../assets/images/header/flag-au.svg";
 import flagNZ from "../../assets/images/header/flag-nz.svg";
@@ -27,6 +28,25 @@ const secondaryIndexes = [2, 6, 10, 14];
 const primaryIndexes = [0, 1, 3, 4, 5, 7, 8, 9, 11, 12, 13, 15, 16, 17, 18];
 var menuClass = "";
 var btnClass = "";
+
+const navItems = [
+	{
+		title: 'Home',
+		link: '/'
+	},
+	{
+		title: 'Pricing',
+		link: '/pricing'
+	},
+	{
+		title: 'Blog',
+		link: '/blog'
+	},
+	{
+		title: 'Events',
+		link: '/events'
+	},
+]
 
 function getLoginLogout(auth) {
 	const {auth: authVar, env} = config;
@@ -85,8 +105,10 @@ class Header extends React.Component {
 	}
 
 	toggleMobileMenu = () => {
+		const { mobileMenuActive } = this.state;
+
 		this.setState({
-			mobileMenuActive: false
+			mobileMenuActive: !mobileMenuActive
 		})
 	}
 
@@ -99,25 +121,6 @@ class Header extends React.Component {
     }
 
 	renderNavItems = () => {
-		const navItems = [
-			{
-				title: 'Home',
-				link: '/'
-			},
-			{
-				title: 'Pricing',
-				link: '/pricing'
-			},
-			{
-				title: 'Blog',
-				link: '/blog'
-			},
-			{
-				title: 'Events',
-				link: '/events'
-			},
-		]
-
 		const items = navItems.map((item, i) => {
 			return (
 				<NavItem
@@ -127,6 +130,23 @@ class Header extends React.Component {
 				>
 					{item.title}
 				</NavItem>
+			)
+		})
+
+		return items
+	}
+
+
+	renderMobileNavItems = () => {
+		const items = navItems.map((item, i) => {
+			return (
+				<MobileNavItem
+					key={i}
+					to={item.link}
+					activeClassName={'active'}
+				>
+					{item.title}
+				</MobileNavItem>
 			)
 		})
 
@@ -208,6 +228,72 @@ class Header extends React.Component {
 			</CountryMenu>
 		)
 	}
+
+	renderMobile = (auth) => {
+		const { mobileMenuActive } = this.state;
+
+		return (
+			<MobileNav
+				visible={mobileMenuActive}
+			>
+
+				<MobileTop>
+					{getLoginLogout(auth)}
+
+					<Signup
+						onClick={() => this.navigateToSignup()}
+					>
+						Sign up
+					</Signup> 
+
+					{this.renderCountrySwitcher()}
+
+					<Close
+						onClick={this.toggleMobileMenu}
+					/>
+
+				</MobileTop>
+
+				<MobileMenu>					
+					{this.renderMobileNavItems()}	
+
+					<MobileNavItemNoLink
+						mobileOnly={true}
+					>
+						{getLoginLogout(auth)}
+					</MobileNavItemNoLink>
+
+					<MobileNavItemNoLink
+						mobileOnly={true}
+					>
+						<Signup
+							onClick={() => this.navigateToSignup()}
+						>
+							Sign up
+						</Signup> 
+					</MobileNavItemNoLink>
+
+				</MobileMenu>
+			</MobileNav>
+		)
+	}
+
+	renderDesktop = (auth) => {
+		return (
+			<DesktopNav>
+				{this.renderNavItems()}
+				{getLoginLogout(auth)}
+
+				<Signup
+					onClick={() => this.navigateToSignup()}
+				>
+					Sign up
+				</Signup> 
+
+				{this.renderCountrySwitcher()}
+			</DesktopNav>
+		)
+	}
 	
 	render() {
 		return (	
@@ -219,23 +305,13 @@ class Header extends React.Component {
 								to="/"
 							/>
 
-							<Nav>
-								{this.renderNavItems()}
-								{getLoginLogout(auth)}
-
-								<Signup
-									onClick={() => this.navigateToSignup()}
-								>
-									Sign up
-								</Signup> 
-
-								{this.renderCountrySwitcher()}
-							</Nav>
+							{this.renderDesktop(auth)}
+							{this.renderMobile(auth)}
 
 							<Hamburger
-								onClick={this.mobileMenuActive}	
+								onClick={this.toggleMobileMenu}	
 							/>
-
+						
 						</Container>
 					</Wrapper>
 				)}
@@ -263,8 +339,8 @@ export const Container = styled.div`
     padding: 0 40px;
 	padding-top: 24px;
 
-    ${media.phone`
-        padding: 0 20px;
+    ${media.tablet`
+        height: 70px;
     `}
 `
 
@@ -276,7 +352,7 @@ const Logo = styled(Link)`
 	margin-right: auto;
 `;
 
-const Nav = styled.div`
+const DesktopNav = styled.div`
 	display: flex;
 	align-items: center;
 	
@@ -424,6 +500,7 @@ const CountryMenu = styled.div`
 	transform: translateY(100%);
 	background: white;
 	border-radius: 3px;	
+	z-index: 10;
 	
 	opacity: 0;
 	pointer-events: none;
@@ -435,6 +512,11 @@ const CountryMenu = styled.div`
 			pointer-events: all;
 		`
 	}}
+
+	${media.phone`
+		right: auto;
+		left: 0;
+	`}
 `;
 
 
@@ -475,6 +557,122 @@ const CountryItemLabel = styled.div`
 	font-weight: 600;
 	font-size: 10px;
 	color: #595959;
+`;
+
+// Mobile
+
+const MobileNav = styled.div`
+	display: flex;
+	flex-direction: column;
+
+	opacity: 0;
+	pointer-events: none;
+	transition: opacity 0.35s ease;
+
+	${props => {
+		if (props.visible) return css`
+			opacity: 1;
+			pointer-events: all;
+		`
+	}}
+`;
+
+const MobileTop = styled.div`
+	position: absolute;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	top: 0;
+	background: white;	
+
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+	padding: 0 40px;
+
+	${Signup},
+	.header-login {
+		font-size: 14px;
+		height: 42px;
+	}
+
+	.header-login {
+		color: #424B4F	;
+		border: 1px solid #CAD7DC;
+	}
+
+	${media.phone`
+		padding: 0 20px;
+		justify-content: space-between;
+
+		${Signup},
+		.header-login {
+			display: none;
+		}
+
+	`}
+`;
+
+const MobileMenu = styled.div`
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	transform: translateY(100%);
+	border-bottom: 1px solid #CAD7DC;
+`;
+
+const mobileNavItem = css`
+	background: white;		
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 70px;
+
+	font-family: Montserrat;
+	font-weight: 600;
+	font-size: 16px;
+	text-align: center;
+	color: #595959;
+
+	border-top: 1px solid #CAD7DC;
+
+	${Signup},
+	.header-login {
+		font-size: 14px;
+		height: 42px;
+	}
+
+	.header-login {
+		color: #424B4F;
+		border: 1px solid #CAD7DC;
+	}
+
+	${props => {
+		if (props.mobileOnly) return css`
+			display: none;
+
+			${media.phone`
+				display: flex;
+			`}
+		`
+	}}
+`
+
+const Close = styled.div`
+	width: 32px;
+	height: 32px;
+	${bgIcon}
+	background-image: url(${close});
+	margin-left: 25px;
+`;
+
+const MobileNavItemNoLink = styled.div`
+	${mobileNavItem}
+`
+
+const MobileNavItem = styled(Link)`
+	${mobileNavItem}
 `;
 
 const mapDispatchToProps = dispatch => ({
