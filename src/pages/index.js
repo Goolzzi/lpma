@@ -18,6 +18,8 @@ import Clients from "../templates/homeSections/homeClients"
 import Events from "../templates/homeSections/homeEvents"
 import Resources from "../templates/homeSections/homeResources"
 
+import { fetchSettings, getSettings, updateSettings } from '../store/settings';
+
 import {capeCod, mantis, green, darkGrey, mako} from "../styles/colors";
 import {media, width} from "../styles/utils";
 
@@ -34,6 +36,21 @@ class Home extends Component {
         featuresSeen: false,
     };
 
+    componentWillMount = () => {
+        const { fetchSettings, updateSettings, pathContext } = this.props;
+        
+        fetchSettings();
+        this.updateLocale(pathContext.locale);
+    }
+
+    updateLocale = (locale) => {
+        const { updateSettings } = this.props; 
+
+        updateSettings({
+            locale: locale
+        }); 
+    }
+    
     toggleFeaturesSeen = (visible) => {
         if (visible) {
             this.setState({
@@ -113,6 +130,8 @@ class Home extends Component {
     }
 
     renderFeatures = () => {
+        const { settings } = this.props;
+         
         return (
             <Features>
                 <Container>
@@ -160,6 +179,7 @@ class Home extends Component {
     
     render() {
         const {featuresVisible, sliderValue} = this.state;
+        console.log(this)
 
         return (
             <Wrapper>
@@ -539,18 +559,18 @@ const Copyright = styled.div`
     font-size: 16px;
     color: white;
 `;
-    
 
+const mapDispatchToProps = dispatch => ({
+    fetchSettings() {
+        dispatch(fetchSettings())
+    },
+    updateSettings(setting) {
+        dispatch(updateSettings(setting))
+    },
+})
 
-export default Home;
+const mapStateToProps = (state, props) => ({
+    settings: state.settings.settings
+})
 
-
-// const mapDispatchToProps = dispatch => ({
-
-// })
-
-// const mapStateToProps = (state, props) => ({
-
-// })
-
-// export default connect(mapStateToProps, mapDispatchToProps)(Home);
+export default connect(mapStateToProps, mapDispatchToProps)(Home);

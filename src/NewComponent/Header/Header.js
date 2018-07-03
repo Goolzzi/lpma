@@ -1,4 +1,5 @@
 import React, {Fragment} from "react";
+import { connect } from "react-redux";
 import Link, { navigateTo } from "gatsby-link";
 import PropTypes from "prop-types";
 import styled, {css, injectGlobal} from 'styled-components';
@@ -6,6 +7,7 @@ import {CSSTransition} from "react-transition-group";
 import Auth from "../../Auth";
 
 import logo from "../../assets/images/header/header-logo.svg";
+import hamburger from "../../assets/images/header/hamburger.svg";
 import downArrow from "../../assets/images/header/down-arrow.svg";
 import flagAU from "../../assets/images/header/flag-au.svg";
 import flagNZ from "../../assets/images/header/flag-nz.svg";
@@ -15,6 +17,7 @@ import config from "../../../build.config.json";
 import LoginLogout from "../../components/LoginLogout";
 import BreakPoint from "../../utils/Breakpoint";
 
+import { fetchSettings, getSettings, updateSettings } from '../../store/settings';
 import { media, width } from "../../styles/utils";
 import { bgImage, bgIcon, hoverState, button } from "../../styles/global";
 import { opacify } from "polished";
@@ -62,9 +65,15 @@ function getLoginLogout(auth) {
 class Header extends React.Component {
 
 	state = {
-		activeCountry: 'au',
 		countryMenuVisible: false,
+		mobileMenuActive: false
 	}
+
+    componentWillMount = () => {
+        const { fetchSettings, updateSettings, pathContext } = this.props;
+        
+        fetchSettings();
+    }
 
 	navigateToSignup = () => {
         navigateTo('join');
@@ -73,7 +82,21 @@ class Header extends React.Component {
 	onPage = pageName => {
 		this.setState({visible: false});
 		this.props.selectPage(pageName);
-	};
+	}
+
+	toggleMobileMenu = () => {
+		this.setState({
+			mobileMenuActive: false
+		})
+	}
+
+	updateLocale = (locale) => {
+        const { updateSettings } = this.props; 
+
+        updateSettings({
+            locale: locale
+        }); 
+    }
 
 	renderNavItems = () => {
 		const navItems = [
@@ -112,6 +135,7 @@ class Header extends React.Component {
 
 	renderCountrySwitcher = () => {
 		const { activeCountry, countryMenuVisible } = this.state;
+		const { settings } = this.props;
 
 		return (
 			<CountrySwitcher>
@@ -119,7 +143,7 @@ class Header extends React.Component {
 					onClick={() => this.setState({countryMenuVisible: !countryMenuVisible })}
 				>
 					<ActiveFlag
-						activeCountry={activeCountry}
+						activeCountry={settings.locale}
 					/>
 					<DownArrow/>
 				</Switcher>
@@ -127,6 +151,14 @@ class Header extends React.Component {
 				{this.renderCountryMenu()}				
 			</CountrySwitcher>
 		)
+	}
+	
+	handleCountryItemPress = (locale) => {
+		this.updateLocale(locale)
+
+		this.setState({
+			countryMenuVisible: false
+		})
 	}
 	
 	renderCountryMenu = () => {
@@ -154,10 +186,7 @@ class Header extends React.Component {
 			return (
 				<CountryItem
 					key={i}
-					onClick={() => this.setState({
-						activeCountry: country.locale, 
-						countryMenuVisible: false
-					})}
+					onClick={() => this.handleCountryItemPress(country.locale)}
 				>
 					<CountryItemFlag
 						image={country.icon}
@@ -203,7 +232,10 @@ class Header extends React.Component {
 								{this.renderCountrySwitcher()}
 							</Nav>
 
-							<Hamburger/>
+							<Hamburger
+								onClick={this.mobileMenuActive}	
+							/>
+
 						</Container>
 					</Wrapper>
 				)}
@@ -255,6 +287,10 @@ const Nav = styled.div`
 
 const Hamburger = styled.div`
 	display: none;
+	background-image: url(${hamburger});
+	width: 29px;
+	height: 22px;
+	${hoverState}
 
 	${media.tablet`
 		display: flex;
@@ -441,5 +477,18 @@ const CountryItemLabel = styled.div`
 	color: #595959;
 `;
 
+const mapDispatchToProps = dispatch => ({
+    fetchSettings() {
+        dispatch(fetchSettings())
+    },
+    updateSettings(setting) {
+        dispatch(updateSettings(setting))
+    },
+})
 
-export default Header;
+const mapStateToProps = (state, props) => ({
+    settings: state.settings.settings
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(Header);
+

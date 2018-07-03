@@ -10,6 +10,7 @@ const createRegionsPages = require("./createRegionsPages");
 const createDocumentListPages = require("./createDocumentListPages");
 const createBusinessCapabilityPages = require("./createBusinessCapabilityPages");
 const createBooksSeriesPages = require("./createBooksSeriesPages");
+const createHomePages = require("./createHomePages");
 
 module.exports = ({graphql, boundActionCreators}) => {
   const {createPage} = boundActionCreators;
@@ -29,6 +30,7 @@ module.exports = ({graphql, boundActionCreators}) => {
         createBusinessCapabilityPages(result.data, createPage);
         createBooksSeriesPages(result.data, createPage);
         createJoinPages(null, createPage);
+        createHomePages(null, createPage);
       }),
     );
   });

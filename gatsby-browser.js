@@ -1,10 +1,12 @@
+import React from 'react'
 import { Provider } from 'react-redux'
+import { Router } from 'react-router-dom'
 import configureStore from './src/store/configureStore';
 import createHistory from "history/createBrowserHistory";
 import auth from "./src/Auth/authInstance";
 
-// const initialState = window.__INITIAL_STATE__;
-// const store = configureStore(initialState)
+const initialState = {}
+const store = configureStore(initialState)
 
 //https://github.com/gatsbyjs/gatsby/releases/tag/v0.12.34
 // exports.wrapRootComponent = Root => {
@@ -13,17 +15,17 @@ import auth from "./src/Auth/authInstance";
 //         <Root />
 //       </Provider>
 //     );
-//   };
+// };
 
 //https://github.com/gatsbyjs/gatsby/tree/master/examples/using-redux
-// export const replaceRouterComponent = ({ history }) => {
-//     const ConnectedRouterWrapper = ({ children }) => (
-//         <Provider store={store}>
-//             <Router history={history}>{children}</Router>
-//         </Provider>
-//     )
-//     return ConnectedRouterWrapper
-// }
+export const replaceRouterComponent = ({ history }) => {
+    const ConnectedRouterWrapper = ({ children }) => (
+        <Provider store={store}>
+            <Router history={history}>{children}</Router>
+        </Provider>
+    )
+    return ConnectedRouterWrapper
+}
 
 
 //force full page refreshes for Netlify redirects

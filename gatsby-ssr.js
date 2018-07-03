@@ -6,20 +6,19 @@
 
 // You can delete this file if you're not using it
 
+import React from 'react'
+import { Provider } from 'react-redux'
+import { renderToString } from 'react-dom/server'
 
-// import React from 'react'
-// import { Provider } from 'react-redux'
-// import { renderToString } from 'react-dom/server'
+import configureStore from './src/store/configureStore'
 
-// import configureStore from './src/store/configureStore'
+export const replaceRenderer = ({ bodyComponent, replaceBodyHTMLString }) => {
+    const store = configureStore()
 
-// export const replaceRenderer = ({ bodyComponent, replaceBodyHTMLString }) => {
-//     const store = configureStore()
-
-//     const ConnectedBody = () => (
-//         <Provider store={store}>
-//             {bodyComponent}
-//         </Provider>
-//     )
-//     replaceBodyHTMLString(renderToString(<ConnectedBody/>))
-// }
+    const ConnectedBody = () => (
+        <Provider store={store}>
+            {bodyComponent}
+        </Provider>
+    )
+    replaceBodyHTMLString(renderToString(<ConnectedBody/>))
+}

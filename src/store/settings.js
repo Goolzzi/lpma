@@ -7,14 +7,14 @@ const FETCH_SETTINGS_SUCCESS = 'FETCH_SETTINGS_SUCCESS'
 const FETCH_SETTINGS_FAILURE = 'FETCH_SETTINGS_FAILURE'
 
 let defaultSettings = {
-    menuActive: false
+    locale: 'au'
 }
 
 const settings = (state = [], action) => {
     switch (action.type) {
 
         case FETCH_SETTINGS_SUCCESS:
-            return action.response
+            return action.response  
 
         default: 
             return state
@@ -39,6 +39,8 @@ export const fetchSettings = () => dispatch => {
 }
 
 export const updateSettings = (setting: Object) => dispatch => {
+
+    console.log('updateSettings', setting)
     
     dispatch({
         type: FETCH_SETTINGS_REQUEST

@@ -10,7 +10,6 @@ const logger = createLogger({
 const composedStore = compose(
     applyMiddleware(thunk),
     applyMiddleware(logger),
-    window.devToolsExtension ? window.devToolsExtension() : f => f
 )(createStore)
 
 const configureStore = (initialState) => {
