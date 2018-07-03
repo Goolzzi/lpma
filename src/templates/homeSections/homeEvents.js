@@ -87,26 +87,6 @@ class HomeEvents extends Component {
                     </EventImageNoLink>
                 )
             }
-
-
-            // if(event.link){
-            //     return (
-            //         <EventLink 
-            //             key={i}
-            //             title={event.title}
-            //             image={event.image} 
-            //             href={event.link}
-            //             target="_blank"
-            //         />
-            //     )
-            // } else {
-            //     return (
-            //         <EventNoLink
-            //             key={i}
-            //             image={event.image} 
-            //         />
-            //     )
-            // }
         })
     }
 
@@ -324,40 +304,5 @@ const EventImageLink = styled.a`
 const EventImageNoLink = styled.div`
     ${EventBlockMixin}
 `
-/*
-const EventLink = styled.a`
-    display:block;
-    background-image: url(${props => props.image});
-    ${bgImage}
-    width: 270px;
-    height: 88px;
-    margin-bottom: 21px;
-    ${hoverState}
-    cursor: pointer;
-    ${media.tablet`
-        width: 49%; 
-        height: 110px;
-    `}
-    ${media.phone`
-        width: 100%; 
-    `}
-`
-const EventNoLink= styled.div`
-    background-image: url(${props => props.image});
-    ${bgImage}
-    width: 270px;
-    height: 88px;
-    margin-bottom: 21px;
-    ${media.tablet`
-        width: 49%;
-        height: 110px;
-    `}
-    ${media.phone`
-        width: 100%;
-    `}
-`
-*/
-
-
 
 export default HomeEvents;
