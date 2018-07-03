@@ -77,14 +77,12 @@ class Home extends Component {
             }
         })
 
-        console.log('heroText', heroText.title);
-
         return (
             <Hero
                 image={background}
             >
                 <Container>
-                    <Title>Take the next step.</Title>
+                    <Title>{heroText.title}</Title>
                     <Description>The community of business leaders supporting each other to take the next step.</Description>
                     <SignupButton
                         onClick={() => this.navigateToSignup()}
@@ -194,7 +192,6 @@ class Home extends Component {
     
     render() {
         const {featuresVisible, sliderValue} = this.state;
-        console.log(this)
 
         return (
             <Wrapper>
