@@ -15,8 +15,9 @@ const settings = (state = [], action) => {
     switch (action.type) {
 
         case FETCH_SETTINGS_SUCCESS:
-
-            localforage.setItem('settingsData', action.response )  
+            if (typeof window !== 'undefined') {
+                localforage.setItem('settingsData', action.response )  
+            }
             return action.response  
 
         default: 
@@ -34,18 +35,25 @@ export const fetchSettings = () => dispatch => {
         type: FETCH_SETTINGS_REQUEST
     })
 
-    localforage.getItem('settingsData').then(function(data) {
-        let settings = defaultSettings;
-        if(data){
-            console.log('settingsData',data);
-            settings = data;
-        }
+    if (typeof window !== 'undefined') {
+        localforage.getItem('settingsData').then(function(data) {
+            let settings = defaultSettings;
+            if(data){
+                console.log('settingsData',data);
+                settings = data;
+            }
+            dispatch({
+                type: FETCH_SETTINGS_SUCCESS,
+                response: settings
+            }) 
+        })
+    } else {
         dispatch({
             type: FETCH_SETTINGS_SUCCESS,
-            response: settings
-        })
-        
-    })
+            response: defaultSettings
+        }) 
+    }
+    
 }
 
 export const updateSettings = (setting: Object) => dispatch => {
