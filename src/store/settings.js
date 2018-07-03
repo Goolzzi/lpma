@@ -71,7 +71,9 @@ export const updateSettings = (setting: Object) => dispatch => {
     
     const newSettings = Object.assign({}, defaultSettings, setting)
 
-    localforage.setItem('settingsData', newSettings)  
+    if (typeof window !== 'undefined') {
+        localforage.setItem('settingsData', newSettings)  
+    }
 
     dispatch({
         type: FETCH_SETTINGS_SUCCESS,
