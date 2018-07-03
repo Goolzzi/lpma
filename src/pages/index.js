@@ -41,7 +41,9 @@ class Home extends Component {
         const { fetchSettings, updateSettings, pathContext } = this.props;
         
         fetchSettings();
-        this.updateLocale(pathContext.locale);
+        if(pathContext.locale){
+            this.updateLocale(pathContext.locale);
+        }
     }
 
     updateLocale = (locale) => {
