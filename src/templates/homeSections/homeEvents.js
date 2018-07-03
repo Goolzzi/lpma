@@ -304,11 +304,16 @@ const EventImage = styled.img`
 const EventBlockMixin = css`
     width: 48%; 
     margin-bottom: 20px;
+    
     ${media.tablet`
         width: 48%; 
     `}
     ${media.phone`
         width: 100%; 
+        display:none;
+        &:nth-child(-n+3){
+            display: block;
+        }
     `}
 `
 const EventImageLink = styled.a`
