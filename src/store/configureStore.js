@@ -16,4 +16,5 @@ const configureStore = (initialState) => {
     return composedStore(reducer, initialState)
 }
 
+
 export default configureStore
