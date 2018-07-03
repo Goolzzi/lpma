@@ -75,7 +75,7 @@ class Header extends React.Component {
 		this.props.selectPage(pageName);
 	};
 
-	renderNav = () => {
+	renderNavItems = () => {
 		const navItems = [
 			{
 				title: 'Home',
@@ -95,8 +95,7 @@ class Header extends React.Component {
 			},
 		]
 
-		const items =  navItems.map((item, i) => {
-
+		const items = navItems.map((item, i) => {
 			return (
 				<NavItem
 					key={i}
@@ -108,11 +107,7 @@ class Header extends React.Component {
 			)
 		})
 
-		return (
-			<Nav>
-				{items}
-			</Nav>
-		)
+		return items
 	}
 
 	renderCountrySwitcher = () => {
@@ -191,17 +186,24 @@ class Header extends React.Component {
 				render={auth => (
 					<Wrapper>
 						<Container>
-							<Logo/>
-							{this.renderNav()}
-							{getLoginLogout(auth)}
+							<Logo
+								to="/"
+							/>
 
-							<Signup
-								onClick={() => this.navigateToSignup()}
-							>
-								Sign up
-							</Signup> 
+							<Nav>
+								{this.renderNavItems()}
+								{getLoginLogout(auth)}
 
-							{this.renderCountrySwitcher()}
+								<Signup
+									onClick={() => this.navigateToSignup()}
+								>
+									Sign up
+								</Signup> 
+
+								{this.renderCountrySwitcher()}
+							</Nav>
+
+							<Hamburger/>
 						</Container>
 					</Wrapper>
 				)}
@@ -227,22 +229,36 @@ export const Container = styled.div`
     max-width: 1225px;
     width: 100%;
     padding: 0 40px;
+	padding-top: 24px;
 
     ${media.phone`
         padding: 0 20px;
     `}
 `
 
-const Logo = styled.div`
+const Logo = styled(Link)`
 	background-image: url(${logo});
 	${bgIcon}
-	height: 75px;
-	width: 52px;
+	width: 75px;
+	height: 51.59px;
 	margin-right: auto;
 `;
 
 const Nav = styled.div`
+	display: flex;
+	align-items: center;
+	
+	${media.tablet`
+		display: none;
+	`}
+`;
 
+const Hamburger = styled.div`
+	display: none;
+
+	${media.tablet`
+		display: flex;
+	`}
 `;
 
 const NavItem = styled(Link)`
@@ -266,7 +282,7 @@ const NavItem = styled(Link)`
 			position: absolute;
 			left: 3px;
 			right: 3px;
-			bottom: -2px;
+			bottom: -1px;
 			height: 1px;
 			background: white;
 		}
