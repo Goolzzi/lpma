@@ -1,0 +1,64 @@
+import { combineReducers } from 'redux'
+
+// Fetch Settings
+
+const FETCH_SETTINGS_REQUEST = 'FETCH_SETTINGS_REQUEST'
+const FETCH_SETTINGS_SUCCESS = 'FETCH_SETTINGS_SUCCESS'
+const FETCH_SETTINGS_FAILURE = 'FETCH_SETTINGS_FAILURE'
+
+let defaultSettings = {
+    menuActive: false
+}
+
+const settings = (state = [], action) => {
+    switch (action.type) {
+
+        case FETCH_SETTINGS_SUCCESS:
+            return action.response
+
+        default: 
+            return state
+    }  
+}
+
+const reducer = combineReducers({
+    settings
+})
+
+export const fetchSettings = () => dispatch => {
+
+    dispatch({
+        type: FETCH_SETTINGS_REQUEST
+    })
+
+    dispatch({
+        type: FETCH_SETTINGS_SUCCESS,
+        response: defaultSettings
+    })
+
+}
+
+export const updateSettings = (setting: Object) => dispatch => {
+    
+    dispatch({
+        type: FETCH_SETTINGS_REQUEST
+    })
+
+    defaultSettings = {
+        ...defaultSettings,
+        ...setting,
+    }
+    
+    const newSettings = Object.assign({}, defaultSettings, setting)
+
+    dispatch({
+        type: FETCH_SETTINGS_SUCCESS,
+        response: newSettings
+    })
+}
+
+
+export const getSettings = state => state.settings.settings
+
+export default reducer
+

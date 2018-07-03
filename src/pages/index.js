@@ -1,4 +1,5 @@
 import React, {Component} from "react";
+import { connect } from "react-redux";
 import styled, {css} from "styled-components";
 import {rgba, clearFix, padding} from "polished";
 import {find} from "lodash";
@@ -542,3 +543,14 @@ const Copyright = styled.div`
 
 
 export default Home;
+
+
+// const mapDispatchToProps = dispatch => ({
+
+// })
+
+// const mapStateToProps = (state, props) => ({
+
+// })
+
+// export default connect(mapStateToProps, mapDispatchToProps)(Home);
