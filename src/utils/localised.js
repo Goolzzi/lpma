@@ -1,4 +1,4 @@
-import ProxyPolyfill from 'proxy-polyfill/src/proxy'
+import ProxyPolyfill from './proxy'
 import store from '../store/configureStore'
 
 const Proxy = new ProxyPolyfill();
