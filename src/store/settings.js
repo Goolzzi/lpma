@@ -1,4 +1,5 @@
 import { combineReducers } from 'redux'
+import localforage from 'localforage'
 
 // Fetch Settings
 
@@ -14,6 +15,11 @@ const settings = (state = [], action) => {
     switch (action.type) {
 
         case FETCH_SETTINGS_SUCCESS:
+
+            localforage.setItem('SettingsData', {
+                lastFetched: Date.now(),
+                data: action.response
+            })  
             return action.response  
 
         default: 

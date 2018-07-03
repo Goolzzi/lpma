@@ -30,6 +30,7 @@
     "gatsby-transformer-sharp": "^1.6.22",
     "intercom-client": "^2.9.4",
     "jwt-decode": "^2.2.0",
+    "localforage": "^1.7.2",
     "lodash": "^4.17.4",
     "moment": "^2.21.0",
     "netlify-lambda": "^0.4.0",
