@@ -12,9 +12,6 @@ const composedStore = compose(
     applyMiddleware(logger),
 )(createStore)
 
-const configureStore = (initialState) => {
-    return composedStore(reducer, initialState)
-}
+const store = composedStore(reducer);
 
-
-export default configureStore
+export default store

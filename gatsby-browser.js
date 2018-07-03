@@ -1,12 +1,9 @@
 import React from 'react'
 import { Provider } from 'react-redux'
 import { Router } from 'react-router-dom'
-import configureStore from './src/store/configureStore';
+import store from './src/store/configureStore';
 import createHistory from "history/createBrowserHistory";
 import auth from "./src/Auth/authInstance";
-
-const initialState = {}
-const store = configureStore(initialState)
 
 //https://github.com/gatsbyjs/gatsby/releases/tag/v0.12.34
 // exports.wrapRootComponent = Root => {

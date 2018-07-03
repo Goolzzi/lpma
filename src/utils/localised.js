@@ -1,6 +1,5 @@
 import ProxyPolyfill from 'proxy-polyfill/src/proxy'
-import configureStore from '../store/configureStore'
-
+import store from '../store/configureStore'
 
 const Proxy = new ProxyPolyfill();
 
@@ -14,7 +13,7 @@ const Localised = (strings, localeOverride) => {
             if (localeOverride) {
                 locale = localeOverride
             } else {
-                const state = configureStore.getState();
+                const state = store.getState();
                 locale = state.settings.settings.locale;
             }
 

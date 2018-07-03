@@ -74,8 +74,7 @@ class Home extends Component {
             }
         })
 
-        console.log('heroText',heroText.title);
-
+        console.log('heroText', heroText.title);
 
         return (
             <Hero
