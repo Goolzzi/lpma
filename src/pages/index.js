@@ -8,6 +8,7 @@ import {CSSTransition} from "react-transition-group";
 import { VelocityComponent } from 'velocity-react';
 import VisibilitySensor from 'react-visibility-sensor'
 import moment from 'moment'
+import Localised from '../utils/localised';
 
 import arrowDown from "../assets/images/icon-down-arrow.svg";
 import playIcon from "../assets/images/home/play-icon.svg";
@@ -64,6 +65,18 @@ class Home extends Component {
     }
     
     renderHero = () => {
+
+        const heroText = new Localised({
+            title: {
+                au: 'Take the next step.',
+                us: 'Text for US people',
+                nz: 'Text for NZ people',
+            }
+        })
+
+        console.log('heroText',heroText.title);
+
+
         return (
             <Hero
                 image={background}
