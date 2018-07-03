@@ -1,17 +1,23 @@
 import React, {Fragment} from "react";
-import Link from "gatsby-link";
+import Link, { navigateTo } from "gatsby-link";
 import PropTypes from "prop-types";
+import styled, {css, injectGlobal} from 'styled-components';
 import {CSSTransition} from "react-transition-group";
 import Auth from "../../Auth";
 
-import imgLogo from "../../assets/images/NewDesign/Header/logo.svg";
-import icClose from "../../assets/images/NewDesign/Header/ic-close.svg";
-import icMenu from "../../assets/images/NewDesign/Header/ic-menu.svg";
-import icMenuBright from "../../assets/images/NewDesign/Header/ic-menu-bright.svg";
-import imgLogoBright from "../../assets/images/NewDesign/Header/logo-bright.svg";
+import logo from "../../assets/images/header/header-logo.svg";
+import downArrow from "../../assets/images/header/down-arrow.svg";
+import flagAU from "../../assets/images/header/flag-au.svg";
+import flagNZ from "../../assets/images/header/flag-nz.svg";
+import flagUS from "../../assets/images/header/flag-us.svg";
+
 import config from "../../../build.config.json";
 import LoginLogout from "../../components/LoginLogout";
 import BreakPoint from "../../utils/Breakpoint";
+
+import { media, width } from "../../styles/utils";
+import { bgImage, bgIcon, hoverState, button } from "../../styles/global";
+import { opacify } from "polished";
 
 const menuPrimaryIndexes = [0, 1, 18];
 const secondaryIndexes = [2, 6, 10, 14];
@@ -36,7 +42,7 @@ function getLoginLogout(auth) {
 				onClick={() => {
 					window.location.replace(href);
 				}}>
-				Sign in
+					Sign in
 				</button>	
 			);
 		}
@@ -46,32 +52,378 @@ function getLoginLogout(auth) {
 		<LoginLogout
 			isAuthenticated={isAuthenticated()}
 			login={login}
-			loginText={"Sign in"}
+			loginText={"Login"}
 			logout={logout}
-			cssClass={"button menu-btn"}
+			cssClass={"button menu-btn header-login"}
 		/>
 	);
 }
 
 class Header extends React.Component {
-	constructor(props) {
-		super(props);
 
-		this.state = {
-			visible: false,
-		};
+	state = {
+		activeCountry: 'au',
+		countryMenuVisible: false,
 	}
+
+	navigateToSignup = () => {
+        navigateTo('join');
+    }
 
 	onPage = pageName => {
 		this.setState({visible: false});
 		this.props.selectPage(pageName);
 	};
 
-	render() {
+	renderNav = () => {
+		const navItems = [
+			{
+				title: 'Home',
+				link: '/'
+			},
+			{
+				title: 'Pricing',
+				link: '/pricing'
+			},
+			{
+				title: 'Blog',
+				link: '/blog'
+			},
+			{
+				title: 'Events',
+				link: '/events'
+			},
+		]
+
+		const items =  navItems.map((item, i) => {
+
+			return (
+				<NavItem
+					key={i}
+					to={item.link}
+					activeClassName={'active'}
+				>
+					{item.title}
+				</NavItem>
+			)
+		})
+
 		return (
-        <div/>
-      )
+			<Nav>
+				{items}
+			</Nav>
+		)
+	}
+
+	renderCountrySwitcher = () => {
+		const { activeCountry, countryMenuVisible } = this.state;
+
+		return (
+			<CountrySwitcher>
+				<Switcher
+					onClick={() => this.setState({countryMenuVisible: !countryMenuVisible })}
+				>
+					<ActiveFlag
+						activeCountry={activeCountry}
+					/>
+					<DownArrow/>
+				</Switcher>
+
+				{this.renderCountryMenu()}				
+			</CountrySwitcher>
+		)
+	}
+	
+	renderCountryMenu = () => {
+		const { countryMenuVisible } = this.state;
+
+		const countries = [
+			{
+				label: 'Australia',
+				locale: 'au',
+				icon: flagAU
+			},
+			{
+				label: 'New Zealand',
+				locale: 'nz',
+				icon: flagNZ
+			},
+			{
+				label: 'United States',
+				locale: 'us',
+				icon: flagUS
+			},
+		]
+
+		const items = countries.map((country, i) => {
+			return (
+				<CountryItem
+					key={i}
+					onClick={() => this.setState({
+						activeCountry: country.locale, 
+						countryMenuVisible: false
+					})}
+				>
+					<CountryItemFlag
+						image={country.icon}
+					/>
+
+					<CountryItemLabel>
+						{country.label}
+					</CountryItemLabel>
+				</CountryItem>
+			)
+		})
+
+		return (
+			<CountryMenu
+				active={countryMenuVisible}
+			>
+				<MenuArrow/>
+				{items}
+			</CountryMenu>
+		)
+	}
+	
+	render() {
+		return (	
+			<Auth
+				render={auth => (
+					<Wrapper>
+						<Container>
+							<Logo/>
+							{this.renderNav()}
+							{getLoginLogout(auth)}
+
+							<Signup
+								onClick={() => this.navigateToSignup()}
+							>
+								Sign up
+							</Signup> 
+
+							{this.renderCountrySwitcher()}
+						</Container>
+					</Wrapper>
+				)}
+			/>
+      	)
   	}
 }
+
+const Wrapper = styled.div`
+    font-family: 'Montserrat';
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+
+	display: flex;
+	justify-content: center;
+`
+
+export const Container = styled.div`
+    display: flex;
+    align-items: center;
+    max-width: 1225px;
+    width: 100%;
+    padding: 0 40px;
+
+    ${media.phone`
+        padding: 0 20px;
+    `}
+`
+
+const Logo = styled.div`
+	background-image: url(${logo});
+	${bgIcon}
+	height: 75px;
+	width: 52px;
+	margin-right: auto;
+`;
+
+const Nav = styled.div`
+
+`;
+
+const NavItem = styled(Link)`
+	font-family: Montserrat;
+	font-weight: 600;
+	font-size: 14px;
+	margin-right: 30px;
+	color: white;
+	position: relative;
+	${hoverState}
+
+	&:hover {
+		color: white;
+	}
+
+	&.active {
+		font-weight: 800;
+
+		&::after {
+			content: '';
+			position: absolute;
+			left: 3px;
+			right: 3px;
+			bottom: -2px;
+			height: 1px;
+			background: white;
+		}
+	}
+`;
+
+injectGlobal`
+	.header-login {
+		min-width: 80px;
+		padding: 0 22px;
+		height: 31px;
+
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		color: white;
+
+		font-family: Montserrat;
+		font-weight: 600;
+		font-size: 12px;
+
+		background: none;
+		border: 1px solid white;
+		border-radius: 20px;
+		margin-right: 8px;
+
+		${hoverState}
+
+		&:hover {
+			color: white;
+			border: 1px solid white;
+		}
+	} 
+`
+
+const Signup = styled.a`
+    ${button}
+
+	width: auto;
+	min-width: 80px;
+	padding: 0 22px;
+	height: 31px;
+
+	font-family: Montserrat;
+	font-weight: 600;
+	font-size: 12px;
+	margin-right: 12px;
+`;
+
+//  Country Switcher
+
+const CountrySwitcher = styled.div`
+	position: relative;
+`;
+
+
+const Switcher = styled.div`
+	display: flex;
+	align-items: center;
+	cursor: pointer;
+`;
+
+
+const ActiveFlag = styled.div`
+	width: 25px;
+	height: 27px;
+	${bgIcon}
+
+	${props => {
+		if (props.activeCountry == 'au') return css`
+			background-image: url(${flagAU});
+		`
+
+		if (props.activeCountry == 'nz') return css`
+			background-image: url(${flagNZ});
+		`
+
+		if (props.activeCountry == 'us') return css`
+			background-image: url(${flagUS});
+		`
+	}}
+`;
+
+const DownArrow = styled.div`
+	background-image: url(${downArrow});
+	${bgIcon}
+	width: 7.5px;
+	height: 4.5px;
+`;
+
+// Country Menu
+
+const CountryMenu = styled.div`
+	box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+	width: 130px;
+	
+	position: absolute;
+	right: 0;
+	bottom: -8px;
+
+	display: flex;
+	flex-direction: column;
+	transform: translateY(100%);
+	background: white;
+	border-radius: 3px;	
+	
+	opacity: 0;
+	pointer-events: none;
+	transition: opacity 0.35s ease;
+
+	${props => {
+		if (props.active) return css`
+			opacity: 1;
+			pointer-events: all;
+		`
+	}}
+`;
+
+
+const MenuArrow = styled.div`
+	width: 0;
+	height: 0;
+	border-style: solid;
+	border-width: 0 5.5px 4.5px 5.5px;
+	border-color: transparent transparent #ffffff transparent;
+
+	position: absolute;
+	top: -3.5px;
+	right: 10px;
+`;
+
+const CountryItem = styled.div`
+	height: 30px;
+	display: flex;
+	align-items: center;
+	padding-left: 8px;
+	cursor: pointer;
+	
+	&:not(:last-child) {
+		border-bottom: 0.5px solid #CAD7DC;
+	}
+`;
+
+const CountryItemFlag = styled.div`
+	width: 25px;
+	height: 23px;
+	${bgIcon}
+	background-image: url(${props => props.image});
+	margin-right: 8px;
+`;
+
+const CountryItemLabel = styled.div`
+	font-family: Montserrat;
+	font-weight: 600;
+	font-size: 10px;
+	color: #595959;
+`;
+
 
 export default Header;
