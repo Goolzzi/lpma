@@ -22,7 +22,7 @@ const Localised = (strings, localeOverride) => {
             if (obj[prop] && obj[prop][locale]) {
                 return obj[prop][locale] 
             } else {
-                return `Localised string not found for ${locale}`
+                return ''
             }
         }
     };
