@@ -82,7 +82,7 @@ class Home extends Component {
                 image={background}
             >
                 <Container>
-                    <Title>Take the next step.</Title>
+                    <Title>{heroText.title}</Title>
                     <Description>The community of business leaders supporting each other to take the next step.</Description>
                     <SignupButton
                         onClick={() => this.navigateToSignup()}
