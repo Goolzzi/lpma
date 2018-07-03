@@ -70,7 +70,7 @@ class Home extends Component {
             title: {
                 au: 'Take the next step.',
                 us: 'Text for US people',
-                us: 'Text for NZ people',
+                nz: 'Text for NZ people',
             }
         })
 
