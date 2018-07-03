@@ -76,8 +76,6 @@ class Home extends Component {
             }
         })
 
-        console.log('heroText', heroText.title);
-
         return (
             <Hero
                 image={background}
@@ -193,7 +191,6 @@ class Home extends Component {
     
     render() {
         const {featuresVisible, sliderValue} = this.state;
-        console.log(this)
 
         return (
             <Wrapper>
