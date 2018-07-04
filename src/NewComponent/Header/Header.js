@@ -127,6 +127,7 @@ class Header extends React.Component {
 					key={i}
 					to={item.link}
 					activeClassName={'active'}
+					exact
 				>
 					{item.title}
 				</NavItem>
@@ -144,6 +145,7 @@ class Header extends React.Component {
 					key={i}
 					to={item.link}
 					activeClassName={'active'}
+					exact
 				>
 					{item.title}
 				</MobileNavItem>
