@@ -5,16 +5,8 @@ import store from './src/store/configureStore';
 import createHistory from "history/createBrowserHistory";
 import auth from "./src/Auth/authInstance";
 
-//https://github.com/gatsbyjs/gatsby/releases/tag/v0.12.34
-// exports.wrapRootComponent = Root => {
-//     return () => (
-//       <Provider store={store}>
-//         <Root />
-//       </Provider>
-//     );
-// };
 
-//https://github.com/gatsbyjs/gatsby/tree/master/examples/using-redux
+// Redux
 export const replaceRouterComponent = ({ history }) => {
     const ConnectedRouterWrapper = ({ children }) => (
         <Provider store={store}>

@@ -1,3 +1,7 @@
+/  /us   302  Country=us
+/  /nz   302  Country=nz
+/  /au   302  Country=au
+
 /summit https://summit.lpma.com/
 
 #/secret/* /secret/index.html 200! Role=admin
