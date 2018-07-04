@@ -44,7 +44,7 @@ class Home extends Component {
     componentWillUpdate = (nextProps, nextState) => {
         const newLocale = nextProps.settings.locale;
 
-        if (newLocale !== this.props.pathContext.locale) {
+        if (newLocale && newLocale !== this.props.pathContext.locale) {
             navigateTo(`/${newLocale}`)
         }
     }
