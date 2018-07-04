@@ -287,11 +287,7 @@ class Pricing extends Component {
     const {startAni} = this.props;
 
     return (
-      <CSSTransition
-        in={startAni}
-        timeout={1000}
-        classNames="pricing"
-        unmountOnExit>
+  
         <Wrapper>
           <Container>
             <Top>
@@ -342,7 +338,6 @@ class Pricing extends Component {
             </Join>
           </Container>
         </Wrapper>
-      </CSSTransition>
     );
   }
 }
