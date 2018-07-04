@@ -8,7 +8,7 @@ const FETCH_SETTINGS_SUCCESS = 'FETCH_SETTINGS_SUCCESS'
 const FETCH_SETTINGS_FAILURE = 'FETCH_SETTINGS_FAILURE'
 
 let defaultSettings = {
-    locale: 'au'
+    locale: null
 }
 
 const settings = (state = [], action) => {

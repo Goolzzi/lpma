@@ -117,7 +117,7 @@ class Header extends React.Component {
 
         updateSettings({
             locale: locale
-        }); 
+		}); 
     }
 
 	renderNavItems = () => {

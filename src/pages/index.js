@@ -39,11 +39,13 @@ class Home extends Component {
 
     componentWillMount = () => {
         const { fetchSettings, updateSettings, pathContext } = this.props;
-        
-        fetchSettings();
+    }
 
-        if (pathContext.locale) {
-            this.updateLocale(pathContext.locale);
+    componentWillUpdate = (nextProps, nextState) => {
+        const newLocale = nextProps.settings.locale;
+
+        if (newLocale !== this.props.pathContext.locale) {
+            navigateTo(`/${newLocale}`)
         }
     }
 
@@ -52,7 +54,7 @@ class Home extends Component {
 
         updateSettings({
             locale: locale
-        }); 
+        });  
     }
     
     toggleFeaturesSeen = (visible) => {
