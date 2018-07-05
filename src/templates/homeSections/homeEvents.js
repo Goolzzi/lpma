@@ -32,38 +32,38 @@ class HomeEvents extends Component {
             {
                 title: 'PMC 18',
                 image: eventPMC18,
-                link: 'https://pmconference.com.au'
+                // link: 'https://pmconference.com.au'
             },
             {
                 title: 'LPMA NZ 2018',
                 image: eventLPMANZ,
-                link: 'https://nz.lpma.com'
+                // link: 'https://nz.lpma.com'
             },
             {
                 title: 'LPMA Australia',
                 image: eventLPMAAustralia,
-                link: ''
+                // link: ''
             },
             {
                 title: 'LPMA Premium Connection',
                 image: eventLPMAPremium,
-                link: ''
+                // link: ''
             },
             {
                 title: 'LPMA Round Table',
                 image: eventLPMARoundTable,
-                link: ''
+                // link: ''
             },
             {
                 title: 'LPMA Leadership Summit',
                 image: eventLPMALeadershipSummit,
-                link: ''
+                // link: ''
             } 
         ]
 
         return events.map((event, i) => {
 
-            if(event.link){
+            if(event.link) {
                 return (
                     <EventImageLink 
                         key={i}

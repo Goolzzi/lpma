@@ -71,20 +71,12 @@ class Home extends Component {
     
     renderHero = () => {
 
-        const heroText = new Localised({
-            title: {
-                au: 'Take the next step.',
-                us: 'Text for US people',
-                nz: 'Text for NZ people',
-            }
-        })
-
         return (
             <Hero
                 image={background}
             >
                 <Container>
-                    <Title>{heroText.title}</Title>
+                    <Title>Take the next step</Title>
                     <Description>The community of business leaders supporting each other to take the next step.</Description>
                     <SignupButton
                         onClick={() => this.navigateToSignup()}
@@ -200,9 +192,9 @@ class Home extends Component {
                 {this.renderHero()}
                 {this.renderFeatures()}
 
-                <Events/>
                 <Resources/>
-                <Testimonials/>
+                <Events/>
+                {/* <Testimonials/> */}
                 <Clients/>
 
                 {this.renderFooter()}
