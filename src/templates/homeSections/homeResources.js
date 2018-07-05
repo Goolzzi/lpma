@@ -8,12 +8,13 @@ import { VelocityComponent } from 'velocity-react';
 import VisibilitySensor from 'react-visibility-sensor'
 
 import playIcon from "../../assets/images/home/play-icon.svg";
-import resourcesImage from "../../assets/images/home/resources-book.jpg";
+import resourcesImage from "../../assets/images/home/resources-screens-x2.png";
+import resourcesImageTablet from "../../assets/images/home/resources-screens-tablet.png";
 
 import {capeCod, mantis, green, darkGrey} from "../../styles/colors";
 import {media, width} from "../../styles/utils";
 
-import {bgIcon, bgImage, button, hoverState} from "../../styles/global";
+import {bgIcon, bgImage, button, hoverState, padding} from "../../styles/global";
 import {data} from "../../data/front";
 
 import { section } from '../../pages/index'
@@ -23,39 +24,35 @@ class HomeResources extends Component {
 
     render() {
         return (
-            <Resources>
-                <Container>
+            <Resources
+                image={resourcesImage}
+            >
 
-                    <SectionHeader>
-                        <Title>Resources to plan the next step</Title>
-                    </SectionHeader>
+                <ResourcesContent>
 
-                    <ResourcesContent>
+                    <Title>Resources to plan the next step</Title>
 
-                        <ResourcesImage
-                            image={resourcesImage}
-                        />
-                        <Description>LPMA offers members a comprehensive suite of business planning frameworks and practical resources to help you take control and drive change in your business.</Description>
-                     
+                    <ResourcesImageTablet
+                        image={resourcesImageTablet}         
+                    />
 
-                    </ResourcesContent>
+                    <Description>LPMA offers members a comprehensive suite of business planning frameworks and practical resources to help you take control and drive change in your business.</Description>
+                    
+                </ResourcesContent>
 
-                </Container>
             </Resources>
         )
     }
 }
 
-// Resources
+
 
 export const Container = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-    max-width: 1225px;
     width: 100%;
-    padding: 0 40px;
 
     ${media.phone`
         padding: 0 20px;
@@ -63,109 +60,101 @@ export const Container = styled.div`
     `}
 `
 
-export const Content = styled.div``
 export const Title = styled.div``
-export const Subtitle = styled.div``
 export const Description = styled.div``
-export const SectionHeader = styled.div``
-
-
-
-
-// Resources
 
 const Resources = styled.div`
     background: white;
     display: flex;
-    justify-content: center;
     margin-bottom: 112px;
 
+    background-color: #F7F7F7;
+    background-image: url(${props => props.image});
+    ${bgImage}
+    height: 642px;
+
     ${media.tablet`
+        background-image: none;
         margin-bottom: 105px;
+        height: auto;
     `}
-
     ${media.phone`
-        margin-bottom: 80px;
+        margin-bottom: 39px;
     `}
+`
 
-    ${Container} {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-
-        ${SectionHeader} {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            margin-bottom: 48px;
-
-            ${media.tablet`
-                margin-bottom: 12px;
-            `}
-
-            ${media.phone`
-                margin-bottom: 19px;
-            `}
-
-            ${Title} {
-                font-size: 32px;
-                font-weight: bold;
-
-                ${media.tablet`
-                    font-family: Montserrat;
-                    font-weight: bold;
-                    font-size: 24px;
-                `}
-
-                ${media.phone`
-                    font-size: 21px;
-                `}
-            }
-        }
-    }
+const ResourcesImageTablet = styled.div`
+    display:none;
+    background-image: url(${props => props.image});
+    ${bgImage}
+    height: 337px;
+    width: 100%;
+    ${media.tablet`
+        display:block;
+    `}
+    ${media.phone`
+        height: 192px;
+    `}
 `
 
 const ResourcesContent = styled.div`
 
-    display: flex;
-    
+    display: flex;   
+    padding-left: 50%;
+    flex-direction: column;
+
     ${media.tablet`
-        flex-direction: column;
+        padding: 0;
+        width: 100%;
     `}
+
+    ${Title} {
+        font-family: Montserrat;
+        font-size: 32px;
+        font-weight: bold;
+        max-width: 550px;
+        margin-top: 200px;
         
+        ${media.tablet`
+            font-size: 24px;
+            text-align: center;
+            max-width: 100%;
+            margin-top: 41px;
+            margin-bottom: 29px;
+        `}
+        ${media.phone`
+            margin-top: 52px;
+            margin-bottom: 19px;
+            font-size: 21px;
+            padding: 0 40px;
+        `}
+    }
+
     ${Description} {
         font-family: Montserrat;
         font-size: 21px;
-        max-width: 604px;
         line-height: 31px;
-        margin-top: 90px;
-        margin-left: 75px;
+        max-width: 550px;
+        margin-top: 34px;
 
         ${media.tablet`
- 
             margin-top: 24px;
+            margin-bottom: 24px;
             margin-left: 0;
+            max-width: 100%;
+            text-align: center;
+            padding: 0 60px;
         `}
-
         ${media.phone`
-
+            margin-top: 40px;
+            margin-bottom: 49px;
+            font-size: 18px;
+            text-align: left;
+            padding: 0 15px;
         `}
     }
+    
+        
 `
-
-const ResourcesImage = styled.div`
-    background-image: url(${props => props.image});
-    ${bgImage}
-    width: 465px;
-    height: 303px;
-
-    ${media.tablet`
-        width: 100%;
-        height 337px;
-    `}
-`
-
 
 export default HomeResources;
