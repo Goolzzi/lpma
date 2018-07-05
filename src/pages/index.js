@@ -12,7 +12,7 @@ import Localised from '../utils/localised';
 
 import arrowDown from "../assets/images/icon-down-arrow.svg";
 import playIcon from "../assets/images/home/play-icon.svg";
-import background from "../assets/images/home/background.jpg";
+import background from "../assets/images/home/hero.jpg";
 
 import Testimonials from "../templates/homeSections/homeTestimonials"
 import Clients from "../templates/homeSections/homeClients"
