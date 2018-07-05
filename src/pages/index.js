@@ -66,7 +66,7 @@ class Home extends Component {
     }
 
     navigateToSignup = () => {
-        navigateTo('join');
+        navigateTo('/join');
     }
     
     renderHero = () => {
