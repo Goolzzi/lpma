@@ -28,7 +28,3 @@
 /lpma2019 https://www.eventbrite.com.au/e/lpma-2019-tickets-45880977238 302
 
 https://new.lpma.com/* https://lpma.com/:splat 301!
-
-/  /us   302  Country=us
-/  /nz   302  Country=nz
-/  /au   302  Country=au

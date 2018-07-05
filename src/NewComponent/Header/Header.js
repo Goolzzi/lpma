@@ -96,7 +96,7 @@ class Header extends React.Component {
     }
 
 	navigateToSignup = () => {
-        navigateTo('join');
+		navigateTo('/join');
     }
 
 	onPage = pageName => {
