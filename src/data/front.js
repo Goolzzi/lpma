@@ -29,7 +29,7 @@ export const data = {
     ],
     clients: [
         {
-            image: require("../assets/images/home/clients/ray-white.svg"),
+            image: require("../assets/images/home/clients/pure-real-estate.svg"),
         },
         {
             image: require("../assets/images/home/clients/john-pye.svg"),

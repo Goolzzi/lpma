@@ -77,7 +77,7 @@ class Home extends Component {
             >
                 <Container>
                     <Title>Take the next step</Title>
-                    <Description>The community of business leaders supporting each other to take the next step.</Description>
+                    <Description>The community of property management leaders supporting each other to take the next step.</Description>
                     <SignupButton
                         onClick={() => this.navigateToSignup()}
                     >
