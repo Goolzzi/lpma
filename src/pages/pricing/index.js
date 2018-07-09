@@ -319,7 +319,7 @@ class Pricing extends Component {
                   <React.Fragment>
                     <LabelLeft>Total</LabelLeft>
                     <Price>{this.calculateTotalPrice()}</Price>
-                    <LabelRight>AUD/month</LabelRight>
+                    <LabelRight>month</LabelRight>
                   </React.Fragment>
                 )}
               </Total>
